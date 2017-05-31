@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.Odbc;
-using System.Configuration;
 using System.Data;
-using System.Collections.Generic;
 
 namespace PalletCard
 {
@@ -16,34 +14,6 @@ namespace PalletCard
 
         private void Home_Load(object sender, EventArgs e)
         {
-            //OdbcConnection conn = new OdbcConnection();
-            //conn.ConnectionString = "Dsn=TharData;uid=tharuser";
-            //try
-            //{
-            //    conn.Open();
-            //    using (OdbcCommand com = new OdbcCommand("SELECT JobNo FROM app_PalletOperations", conn))
-            //    {
-            //        using (OdbcDataReader reader = com.ExecuteReader())
-            //        {
-            //            while (reader.Read())
-            //            {
-            //                string word = reader.GetString(0);
-            //                // Word is from the database. Do something with it.
-            //                label1.Text = reader.GetValue(0).ToString();
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Failed to connect to data source");
-            //}
-            //finally
-            //{
-            //    conn.Close();
-            //}
-
-
             string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
             string CommandText = "SELECT * FROM app_PalletOperations";
 
@@ -52,11 +22,11 @@ namespace PalletCard
 
             OdbcDataAdapter myAdapter = new OdbcDataAdapter();
             myAdapter.SelectCommand = myCommand;
-            DataSet myDataSet = new DataSet();
+            DataSet tharData = new DataSet();
             try
             {
                 myConnection.Open();
-                myAdapter.Fill(myDataSet);
+                myAdapter.Fill(tharData);
             }
             catch (Exception ex)
             {
@@ -67,11 +37,21 @@ namespace PalletCard
                 myConnection.Close();
             }
 
-            using (DataTable dt = new DataTable())
+            using (DataTable operations = new DataTable())
             {
-                myAdapter.Fill(dt);
-                dataGridView1.DataSource = dt;
+                myAdapter.Fill(operations);
+                dataGridView1.DataSource = operations;
             }
         }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%'", searchBox.Text.Trim().Replace("'", "''"));
+            }
+            catch (Exception) { }
+        }
+
     }
 }
