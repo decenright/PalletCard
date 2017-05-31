@@ -49,6 +49,8 @@ namespace PalletCard
             try
             {
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%'", searchBox.Text.Trim().Replace("'", "''"));
+                lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
+                lblJobNo.Visible = true;
             }
             catch (Exception) { }
         }
