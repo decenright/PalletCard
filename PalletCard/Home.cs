@@ -7,6 +7,10 @@ namespace PalletCard
 {
     public partial class Home : Form
     {
+        int    numberUp, jobGanged, paperSectionNo, heightMM, invoiceCustomerCode, qtyRequired;
+        string jobNo, resourceID, name, expr1, id, workingSize, description, code, jobDesc, invoiceCustomerName, ref7;
+        bool jobCompleted, jobCancelled;
+
         public Home()
         {
             InitializeComponent();
@@ -58,13 +62,30 @@ namespace PalletCard
                 {
                     lblPress.Text = "710UV";
                     lblPress.Visible = true;
+                    getOperationsData();
                 }
                 else
                 {
                     lblPress.Visible = false;
+                    MessageBox.Show("The Job number you entered is not on this press");
                 }
             }
             catch (Exception) { }
         }
+
+        private void getOperationsData()
+        {
+            jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            resourceID = dataGridView1.Rows[0].Cells[1].Value.ToString();
+            name = dataGridView1.Rows[0].Cells[2].Value.ToString();
+            //MessageBox.Show(jobNo); MessageBox.Show(resourceID); MessageBox.Show(name);
+
+            if  (!(string.IsNullOrEmpty(name)))
+            {
+                btnName.Visible = true;
+                btnName.Text = name;
+            }
+        }
+
     }
 }

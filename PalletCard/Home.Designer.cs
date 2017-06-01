@@ -40,6 +40,7 @@
             this.btnBackupVarnishPallet = new System.Windows.Forms.Button();
             this.btnRejectPaper = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.btnName = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,6 +148,7 @@
             this.btnPalletCard.TabIndex = 8;
             this.btnPalletCard.Text = "PalletCard";
             this.btnPalletCard.UseVisualStyleBackColor = false;
+            this.btnPalletCard.Visible = false;
             // 
             // btnReturnPaper
             // 
@@ -160,6 +162,7 @@
             this.btnReturnPaper.TabIndex = 9;
             this.btnReturnPaper.Text = "ReturnPaper";
             this.btnReturnPaper.UseVisualStyleBackColor = false;
+            this.btnReturnPaper.Visible = false;
             // 
             // btnBackupVarnishPallet
             // 
@@ -173,6 +176,7 @@
             this.btnBackupVarnishPallet.TabIndex = 10;
             this.btnBackupVarnishPallet.Text = "BackupVarnishPallet";
             this.btnBackupVarnishPallet.UseVisualStyleBackColor = false;
+            this.btnBackupVarnishPallet.Visible = false;
             // 
             // btnRejectPaper
             // 
@@ -186,6 +190,7 @@
             this.btnRejectPaper.TabIndex = 11;
             this.btnRejectPaper.Text = "RejectPaper";
             this.btnRejectPaper.UseVisualStyleBackColor = false;
+            this.btnRejectPaper.Visible = false;
             // 
             // btnSearch
             // 
@@ -201,12 +206,27 @@
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // btnName
+            // 
+            this.btnName.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnName.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnName.Location = new System.Drawing.Point(269, 109);
+            this.btnName.Name = "btnName";
+            this.btnName.Size = new System.Drawing.Size(233, 50);
+            this.btnName.TabIndex = 12;
+            this.btnName.Text = "btnName";
+            this.btnName.UseVisualStyleBackColor = false;
+            this.btnName.Visible = false;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 761);
+            this.Controls.Add(this.btnName);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnRejectPaper);
             this.Controls.Add(this.btnBackupVarnishPallet);
@@ -220,7 +240,7 @@
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Home";
-            this.Text = "Pallet Card App";
+            this.Text = "Pallet Card App 710UV";
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -242,6 +262,7 @@
         private System.Windows.Forms.Button btnBackupVarnishPallet;
         private System.Windows.Forms.Button btnRejectPaper;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnName;
     }
 }
 
