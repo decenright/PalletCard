@@ -43,17 +43,28 @@ namespace PalletCard
                 dataGridView1.DataSource = operations;
             }
         }
+//SEARCH______________________________________________________________________________________________________________________
 
-        private void searchBox_TextChanged(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%'", searchBox.Text.Trim().Replace("'", "''"));
                 lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                 lblJobNo.Visible = true;
+
+                int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
+                if (resourceID == 5)
+                {
+                    lblPress.Text = "710UV";
+                    lblPress.Visible = true;
+                }
+                else
+                {
+                    lblPress.Visible = false;
+                }
             }
             catch (Exception) { }
         }
-
     }
 }
