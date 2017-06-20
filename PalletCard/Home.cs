@@ -16,7 +16,27 @@ namespace PalletCard
         int numberUp, jobGanged, paperSectionNo, heightMM, invoiceCustomerCode, qtyRequired;
         string jobNo, resourceID, name, expr1, id, workingSize, description, code, jobDesc, invoiceCustomerName, ref7;
         bool jobCompleted, jobCancelled;
-        
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            // #1. Make second form
+            Home form2 = new Home();
+            // #2. Set second form's size
+            form2.Width = this.Width;
+            form2.Height = this.Height;
+            // #3. Set second form's start position as same as parent form
+            form2.StartPosition = FormStartPosition.Manual;
+            form2.Location = new Point(this.Location.X, this.Location.Y);
+            // #4. Set parent form's visibility to true
+            this.Visible = true;
+            // #5. Open second dialog
+            form2.ShowDialog();
+            // #6. Set parent form's visibility to false
+            this.Visible = false;
+
+        }
+
+
         private void Home_Load(object sender, EventArgs e)
         {
             string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
@@ -77,19 +97,15 @@ namespace PalletCard
         {
             jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
             resourceID = dataGridView1.Rows[0].Cells[1].Value.ToString();
-            //name = dataGridView1.Rows[0].Cells[2].Value.ToString();
-            //foreach (DataGridViewRow row in dataGridView1.Rows)
+            //loop through datagrid rows
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                //MessageBox.Show(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                //if datagrid is not empty create a button for each row at cells[2] - "Name"
                 if (!(string.IsNullOrEmpty(dataGridView1.Rows[i].Cells[2].Value.ToString())))
                 {
                     for (int j = 0; j < 1; j++ )
                     {
-                        //btn1.Visible = true;
-                        //btn1.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
-
-                        System.Windows.Forms.Button btn = new System.Windows.Forms.Button();
+                        Button btn = new Button();
                         this.Controls.Add(btn);
                         btn.Top = A * 80;
                         btn.Height = 50;
@@ -100,12 +116,23 @@ namespace PalletCard
                         btn.Left = 260;
                         btn.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
                         A = A + 1;
-                        //return btn;
+                        btn.Click += new System.EventHandler(this.btnClick);     
                     }
                 }
                 
             }
         }
-
+        void btnClick(object sender, EventArgs e) {
+            Button btn = sender as Button;
+            //foreach (Control c in this.Controls)
+            //{
+            //    if (c is Button)
+            //    {
+            //        Button bt = c as Button;
+            //        MessageBox.Show(bt.Text);
+            //    }
+            //}
+            MessageBox.Show(btn.Text);
+        }
     }
 }
