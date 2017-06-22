@@ -51,17 +51,17 @@
             // 
             // searchBox
             // 
-            this.searchBox.Location = new System.Drawing.Point(172, 42);
+            this.searchBox.Location = new System.Drawing.Point(12, 42);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(215, 20);
+            this.searchBox.Size = new System.Drawing.Size(201, 20);
             this.searchBox.TabIndex = 1;
             // 
             // lblJobNo
             // 
-            this.lblJobNo.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.lblJobNo.BackColor = System.Drawing.Color.DarkCyan;
             this.lblJobNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblJobNo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblJobNo.Location = new System.Drawing.Point(12, 109);
+            this.lblJobNo.Location = new System.Drawing.Point(12, 185);
             this.lblJobNo.MaximumSize = new System.Drawing.Size(200, 45);
             this.lblJobNo.MinimumSize = new System.Drawing.Size(200, 45);
             this.lblJobNo.Name = "lblJobNo";
@@ -73,10 +73,10 @@
             // 
             // lblPress
             // 
-            this.lblPress.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.lblPress.BackColor = System.Drawing.Color.DarkCyan;
             this.lblPress.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPress.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPress.Location = new System.Drawing.Point(12, 159);
+            this.lblPress.Location = new System.Drawing.Point(12, 235);
             this.lblPress.MaximumSize = new System.Drawing.Size(200, 45);
             this.lblPress.MinimumSize = new System.Drawing.Size(200, 45);
             this.lblPress.Name = "lblPress";
@@ -88,32 +88,32 @@
             // 
             // lblReturnPaper
             // 
-            this.lblReturnPaper.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.lblReturnPaper.BackColor = System.Drawing.Color.DarkCyan;
             this.lblReturnPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReturnPaper.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblReturnPaper.Location = new System.Drawing.Point(12, 209);
+            this.lblReturnPaper.Location = new System.Drawing.Point(12, 285);
             this.lblReturnPaper.MaximumSize = new System.Drawing.Size(200, 45);
             this.lblReturnPaper.MinimumSize = new System.Drawing.Size(200, 45);
             this.lblReturnPaper.Name = "lblReturnPaper";
             this.lblReturnPaper.Padding = new System.Windows.Forms.Padding(5);
             this.lblReturnPaper.Size = new System.Drawing.Size(200, 45);
             this.lblReturnPaper.TabIndex = 5;
-            this.lblReturnPaper.Text = "lblReturnPaper";
+            this.lblReturnPaper.Text = "Return Paper";
             this.lblReturnPaper.Visible = false;
             // 
             // lblDescription
             // 
-            this.lblDescription.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.lblDescription.BackColor = System.Drawing.Color.DarkCyan;
             this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblDescription.Location = new System.Drawing.Point(12, 259);
+            this.lblDescription.Location = new System.Drawing.Point(12, 335);
             this.lblDescription.MaximumSize = new System.Drawing.Size(200, 45);
             this.lblDescription.MinimumSize = new System.Drawing.Size(200, 45);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Padding = new System.Windows.Forms.Padding(5);
             this.lblDescription.Size = new System.Drawing.Size(200, 45);
             this.lblDescription.TabIndex = 6;
-            this.lblDescription.Text = "lblDescription";
+            this.lblDescription.Text = "Description";
             this.lblDescription.Visible = false;
             // 
             // btnSearch
@@ -122,9 +122,9 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearch.Location = new System.Drawing.Point(407, 29);
+            this.btnSearch.Location = new System.Drawing.Point(12, 72);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(117, 41);
+            this.btnSearch.Size = new System.Drawing.Size(200, 41);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -132,17 +132,17 @@
             // 
             // lblWorkingSize
             // 
-            this.lblWorkingSize.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.lblWorkingSize.BackColor = System.Drawing.Color.DarkCyan;
             this.lblWorkingSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWorkingSize.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblWorkingSize.Location = new System.Drawing.Point(13, 311);
+            this.lblWorkingSize.Location = new System.Drawing.Point(13, 387);
             this.lblWorkingSize.MaximumSize = new System.Drawing.Size(200, 45);
             this.lblWorkingSize.MinimumSize = new System.Drawing.Size(200, 45);
             this.lblWorkingSize.Name = "lblWorkingSize";
             this.lblWorkingSize.Padding = new System.Windows.Forms.Padding(5);
             this.lblWorkingSize.Size = new System.Drawing.Size(200, 45);
             this.lblWorkingSize.TabIndex = 16;
-            this.lblWorkingSize.Text = "lblWorkingSize";
+            this.lblWorkingSize.Text = "WorkingSize";
             this.lblWorkingSize.Visible = false;
             // 
             // btnBack
