@@ -37,7 +37,21 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblWorkingSize = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
+            this.returnpaper0 = new System.Windows.Forms.Panel();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.returnpaper1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Label();
+            this.btnRejectPaper = new System.Windows.Forms.Button();
+            this.btnBackupVarnish = new System.Windows.Forms.Button();
+            this.btnReturnPaper = new System.Windows.Forms.Button();
+            this.btnPalletCard = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Label();
+            this.returnpaper2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.returnpaper0.SuspendLayout();
+            this.returnpaper1.SuspendLayout();
+            this.returnpaper2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -147,7 +161,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(48, 486);
+            this.btnBack.Location = new System.Drawing.Point(16, 486);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(88, 44);
             this.btnBack.TabIndex = 17;
@@ -155,12 +169,131 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // returnpaper0
+            // 
+            this.returnpaper0.Controls.Add(this.panel1);
+            this.returnpaper0.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnpaper0.Location = new System.Drawing.Point(250, 42);
+            this.returnpaper0.Name = "returnpaper0";
+            this.returnpaper0.Size = new System.Drawing.Size(522, 545);
+            this.returnpaper0.TabIndex = 18;
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(124, 486);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(88, 44);
+            this.btnNext.TabIndex = 19;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // returnpaper1
+            // 
+            this.returnpaper1.Controls.Add(this.btnRejectPaper);
+            this.returnpaper1.Controls.Add(this.btnBackupVarnish);
+            this.returnpaper1.Controls.Add(this.btnReturnPaper);
+            this.returnpaper1.Controls.Add(this.btnPalletCard);
+            this.returnpaper1.Controls.Add(this.panel2);
+            this.returnpaper1.Location = new System.Drawing.Point(250, 42);
+            this.returnpaper1.Name = "returnpaper1";
+            this.returnpaper1.Size = new System.Drawing.Size(522, 545);
+            this.returnpaper1.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.AutoSize = true;
+            this.panel2.Location = new System.Drawing.Point(240, 20);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(39, 13);
+            this.panel2.TabIndex = 0;
+            this.panel2.Text = "panel2";
+            // 
+            // btnRejectPaper
+            // 
+            this.btnRejectPaper.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnRejectPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRejectPaper.ForeColor = System.Drawing.Color.White;
+            this.btnRejectPaper.Location = new System.Drawing.Point(35, 274);
+            this.btnRejectPaper.Name = "btnRejectPaper";
+            this.btnRejectPaper.Size = new System.Drawing.Size(465, 48);
+            this.btnRejectPaper.TabIndex = 7;
+            this.btnRejectPaper.Text = "Reject Paper";
+            this.btnRejectPaper.UseVisualStyleBackColor = false;
+            // 
+            // btnBackupVarnish
+            // 
+            this.btnBackupVarnish.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnBackupVarnish.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackupVarnish.ForeColor = System.Drawing.Color.White;
+            this.btnBackupVarnish.Location = new System.Drawing.Point(35, 203);
+            this.btnBackupVarnish.Name = "btnBackupVarnish";
+            this.btnBackupVarnish.Size = new System.Drawing.Size(465, 48);
+            this.btnBackupVarnish.TabIndex = 6;
+            this.btnBackupVarnish.Text = "Back Up/Varnish Pallet";
+            this.btnBackupVarnish.UseVisualStyleBackColor = false;
+            // 
+            // btnReturnPaper
+            // 
+            this.btnReturnPaper.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnReturnPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturnPaper.ForeColor = System.Drawing.Color.White;
+            this.btnReturnPaper.Location = new System.Drawing.Point(35, 131);
+            this.btnReturnPaper.Name = "btnReturnPaper";
+            this.btnReturnPaper.Size = new System.Drawing.Size(465, 48);
+            this.btnReturnPaper.TabIndex = 5;
+            this.btnReturnPaper.Text = "Return Paper";
+            this.btnReturnPaper.UseVisualStyleBackColor = false;
+            this.btnReturnPaper.Click += new System.EventHandler(this.btnReturnPaper_Click);
+            // 
+            // btnPalletCard
+            // 
+            this.btnPalletCard.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnPalletCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPalletCard.ForeColor = System.Drawing.Color.White;
+            this.btnPalletCard.Location = new System.Drawing.Point(35, 56);
+            this.btnPalletCard.Name = "btnPalletCard";
+            this.btnPalletCard.Size = new System.Drawing.Size(465, 48);
+            this.btnPalletCard.TabIndex = 4;
+            this.btnPalletCard.Text = "Pallet Card";
+            this.btnPalletCard.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.Location = new System.Drawing.Point(245, 17);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(67, 24);
+            this.panel1.TabIndex = 5;
+            this.panel1.Text = "panel1";
+            // 
+            // returnpaper2
+            // 
+            this.returnpaper2.Controls.Add(this.panel3);
+            this.returnpaper2.Location = new System.Drawing.Point(250, 42);
+            this.returnpaper2.Name = "returnpaper2";
+            this.returnpaper2.Size = new System.Drawing.Size(522, 545);
+            this.returnpaper2.TabIndex = 8;
+            // 
+            // panel3
+            // 
+            this.panel3.AutoSize = true;
+            this.panel3.Location = new System.Drawing.Point(240, 20);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(39, 13);
+            this.panel3.TabIndex = 0;
+            this.panel3.Text = "panel3";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 761);
+            this.Controls.Add(this.returnpaper2);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.returnpaper1);
+            this.Controls.Add(this.returnpaper0);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblWorkingSize);
             this.Controls.Add(this.btnSearch);
@@ -174,6 +307,12 @@
             this.Text = "Pallet Card App 710UV";
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.returnpaper0.ResumeLayout(false);
+            this.returnpaper0.PerformLayout();
+            this.returnpaper1.ResumeLayout(false);
+            this.returnpaper1.PerformLayout();
+            this.returnpaper2.ResumeLayout(false);
+            this.returnpaper2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,6 +329,17 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblWorkingSize;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Panel returnpaper0;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Panel returnpaper1;
+        private System.Windows.Forms.Label panel2;
+        private System.Windows.Forms.Label panel1;
+        private System.Windows.Forms.Button btnRejectPaper;
+        private System.Windows.Forms.Button btnBackupVarnish;
+        private System.Windows.Forms.Button btnReturnPaper;
+        private System.Windows.Forms.Button btnPalletCard;
+        private System.Windows.Forms.Panel returnpaper2;
+        private System.Windows.Forms.Label panel3;
     }
 }
 
