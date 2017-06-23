@@ -38,20 +38,25 @@
             this.lblWorkingSize = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.returnpaper0 = new System.Windows.Forms.Panel();
-            this.btnNext = new System.Windows.Forms.Button();
             this.returnpaper1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Label();
+            this.returnpaper2 = new System.Windows.Forms.Panel();
             this.btnRejectPaper = new System.Windows.Forms.Button();
             this.btnBackupVarnish = new System.Windows.Forms.Button();
             this.btnReturnPaper = new System.Windows.Forms.Button();
             this.btnPalletCard = new System.Windows.Forms.Button();
+            this.panel0 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Label();
-            this.returnpaper2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Label();
+            this.returnpaper3 = new System.Windows.Forms.Panel();
+            this.lblPalletHeight = new System.Windows.Forms.Label();
+            this.tbxPalletHeight = new System.Windows.Forms.TextBox();
+            this.lblPheight = new System.Windows.Forms.Label();
+            this.btnPalletHeight = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.returnpaper0.SuspendLayout();
             this.returnpaper1.SuspendLayout();
             this.returnpaper2.SuspendLayout();
+            this.returnpaper3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -171,43 +176,32 @@
             // 
             // returnpaper0
             // 
-            this.returnpaper0.Controls.Add(this.panel1);
+            this.returnpaper0.Controls.Add(this.panel0);
             this.returnpaper0.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.returnpaper0.Location = new System.Drawing.Point(250, 42);
             this.returnpaper0.Name = "returnpaper0";
             this.returnpaper0.Size = new System.Drawing.Size(522, 545);
             this.returnpaper0.TabIndex = 18;
             // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(124, 486);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(88, 44);
-            this.btnNext.TabIndex = 19;
-            this.btnNext.Text = "Next";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
             // returnpaper1
             // 
+            this.returnpaper1.Controls.Add(this.panel1);
             this.returnpaper1.Controls.Add(this.btnRejectPaper);
             this.returnpaper1.Controls.Add(this.btnBackupVarnish);
             this.returnpaper1.Controls.Add(this.btnReturnPaper);
             this.returnpaper1.Controls.Add(this.btnPalletCard);
-            this.returnpaper1.Controls.Add(this.panel2);
             this.returnpaper1.Location = new System.Drawing.Point(250, 42);
             this.returnpaper1.Name = "returnpaper1";
             this.returnpaper1.Size = new System.Drawing.Size(522, 545);
             this.returnpaper1.TabIndex = 4;
             // 
-            // panel2
+            // returnpaper2
             // 
-            this.panel2.AutoSize = true;
-            this.panel2.Location = new System.Drawing.Point(240, 20);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(39, 13);
-            this.panel2.TabIndex = 0;
-            this.panel2.Text = "panel2";
+            this.returnpaper2.Controls.Add(this.panel2);
+            this.returnpaper2.Location = new System.Drawing.Point(253, 42);
+            this.returnpaper2.Name = "returnpaper2";
+            this.returnpaper2.Size = new System.Drawing.Size(522, 545);
+            this.returnpaper2.TabIndex = 8;
             // 
             // btnRejectPaper
             // 
@@ -258,31 +252,82 @@
             this.btnPalletCard.Text = "Pallet Card";
             this.btnPalletCard.UseVisualStyleBackColor = false;
             // 
+            // panel0
+            // 
+            this.panel0.AutoSize = true;
+            this.panel0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel0.Location = new System.Drawing.Point(228, 4);
+            this.panel0.Name = "panel0";
+            this.panel0.Size = new System.Drawing.Size(39, 13);
+            this.panel0.TabIndex = 6;
+            this.panel0.Text = "panel0";
+            // 
             // panel1
             // 
             this.panel1.AutoSize = true;
-            this.panel1.Location = new System.Drawing.Point(245, 17);
+            this.panel1.Location = new System.Drawing.Point(266, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(67, 24);
-            this.panel1.TabIndex = 5;
+            this.panel1.Size = new System.Drawing.Size(39, 13);
+            this.panel1.TabIndex = 19;
             this.panel1.Text = "panel1";
             // 
-            // returnpaper2
+            // panel2
             // 
-            this.returnpaper2.Controls.Add(this.panel3);
-            this.returnpaper2.Location = new System.Drawing.Point(250, 42);
-            this.returnpaper2.Name = "returnpaper2";
-            this.returnpaper2.Size = new System.Drawing.Size(522, 545);
-            this.returnpaper2.TabIndex = 8;
+            this.panel2.AutoSize = true;
+            this.panel2.Location = new System.Drawing.Point(228, 4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(39, 13);
+            this.panel2.TabIndex = 0;
+            this.panel2.Text = "panel2";
             // 
-            // panel3
+            // returnpaper3
             // 
-            this.panel3.AutoSize = true;
-            this.panel3.Location = new System.Drawing.Point(240, 20);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(39, 13);
-            this.panel3.TabIndex = 0;
-            this.panel3.Text = "panel3";
+            this.returnpaper3.Controls.Add(this.btnPalletHeight);
+            this.returnpaper3.Controls.Add(this.lblPheight);
+            this.returnpaper3.Controls.Add(this.tbxPalletHeight);
+            this.returnpaper3.Controls.Add(this.lblPalletHeight);
+            this.returnpaper3.Location = new System.Drawing.Point(250, 42);
+            this.returnpaper3.Name = "returnpaper3";
+            this.returnpaper3.Size = new System.Drawing.Size(525, 545);
+            this.returnpaper3.TabIndex = 1;
+            // 
+            // lblPalletHeight
+            // 
+            this.lblPalletHeight.AutoSize = true;
+            this.lblPalletHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPalletHeight.Location = new System.Drawing.Point(195, 38);
+            this.lblPalletHeight.Name = "lblPalletHeight";
+            this.lblPalletHeight.Size = new System.Drawing.Size(152, 24);
+            this.lblPalletHeight.TabIndex = 2;
+            this.lblPalletHeight.Text = "Pallet Height mm";
+            // 
+            // tbxPalletHeight
+            // 
+            this.tbxPalletHeight.Location = new System.Drawing.Point(199, 84);
+            this.tbxPalletHeight.Name = "tbxPalletHeight";
+            this.tbxPalletHeight.Size = new System.Drawing.Size(148, 20);
+            this.tbxPalletHeight.TabIndex = 3;
+            this.tbxPalletHeight.TextChanged += new System.EventHandler(this.tbxPalletHeight_TextChanged);
+            // 
+            // lblPheight
+            // 
+            this.lblPheight.BackColor = System.Drawing.Color.LightSalmon;
+            this.lblPheight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPheight.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblPheight.Location = new System.Drawing.Point(177, 139);
+            this.lblPheight.Name = "lblPheight";
+            this.lblPheight.Size = new System.Drawing.Size(200, 40);
+            this.lblPheight.TabIndex = 4;
+            this.lblPheight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnPalletHeight
+            // 
+            this.btnPalletHeight.Location = new System.Drawing.Point(241, 218);
+            this.btnPalletHeight.Name = "btnPalletHeight";
+            this.btnPalletHeight.Size = new System.Drawing.Size(84, 44);
+            this.btnPalletHeight.TabIndex = 5;
+            this.btnPalletHeight.Text = "OK";
+            this.btnPalletHeight.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
@@ -290,10 +335,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 761);
-            this.Controls.Add(this.returnpaper2);
-            this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.returnpaper1);
-            this.Controls.Add(this.returnpaper0);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblWorkingSize);
             this.Controls.Add(this.btnSearch);
@@ -303,6 +344,10 @@
             this.Controls.Add(this.lblJobNo);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.returnpaper3);
+            this.Controls.Add(this.returnpaper2);
+            this.Controls.Add(this.returnpaper0);
+            this.Controls.Add(this.returnpaper1);
             this.Name = "Home";
             this.Text = "Pallet Card App 710UV";
             this.Load += new System.EventHandler(this.Home_Load);
@@ -313,6 +358,8 @@
             this.returnpaper1.PerformLayout();
             this.returnpaper2.ResumeLayout(false);
             this.returnpaper2.PerformLayout();
+            this.returnpaper3.ResumeLayout(false);
+            this.returnpaper3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,16 +377,20 @@
         private System.Windows.Forms.Label lblWorkingSize;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel returnpaper0;
-        private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Panel returnpaper1;
-        private System.Windows.Forms.Label panel2;
-        private System.Windows.Forms.Label panel1;
         private System.Windows.Forms.Button btnRejectPaper;
         private System.Windows.Forms.Button btnBackupVarnish;
         private System.Windows.Forms.Button btnReturnPaper;
         private System.Windows.Forms.Button btnPalletCard;
         private System.Windows.Forms.Panel returnpaper2;
-        private System.Windows.Forms.Label panel3;
+        private System.Windows.Forms.Label panel0;
+        private System.Windows.Forms.Label panel1;
+        private System.Windows.Forms.Label panel2;
+        private System.Windows.Forms.Panel returnpaper3;
+        private System.Windows.Forms.Label lblPalletHeight;
+        private System.Windows.Forms.Label lblPheight;
+        private System.Windows.Forms.TextBox tbxPalletHeight;
+        private System.Windows.Forms.Button btnPalletHeight;
     }
 }
 
