@@ -5,9 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Drawing.Printing;
-using System.Drawing.Drawing2D;
-using System.IO;
-using System.Drawing.Imaging;
 
 namespace PalletCard
 {
@@ -21,11 +18,53 @@ namespace PalletCard
         string jobNo, resourceID, name, id, workingSize, description, code, jobDesc, invoiceCustomerName, ref7;
         bool jobCompleted, jobCancelled;
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 5";
+
+            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+
+            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+            myAdapter.SelectCommand = myCommand;
+            DataSet tharData = new DataSet();
+            try
+            {
+                myConnection.Open();
+                myAdapter.Fill(tharData);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            using (DataTable operations = new DataTable())
+            {
+                myAdapter.Fill(operations);
+                dataGridView1.DataSource = operations;
+            }
+
+            listPanel[0].BringToFront();
+            lblJobNo.Visible = false;
+            lblPress.Visible = false;
+            lblReturnPaper.Visible = false;
+            lblDescription.Visible = false;
+            lblWorkingSize.Visible = false;
+            searchBox.Text = "";
+            searchBox.Focus();
+        }
+
         private void btnPrint_Click(object sender, EventArgs e)
         {
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(PrintImage);
+            btnPrint.Visible = false;
             pd.Print();
+            btnPrint.Visible = true;
         }
 
         void PrintImage(object o, PrintPageEventArgs e)
@@ -75,40 +114,56 @@ namespace PalletCard
 
         private void btnReturnPaper_Click(object sender, EventArgs e)
         {
-            lblReturnPaper.Visible = true;
-            listPanel[2].BringToFront();
-            index = 2;
+                lblReturnPaper.Visible = true;
+                listPanel[2].BringToFront();
+                index = 2;
 
-            jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
-            resourceID = dataGridView1.Rows[0].Cells[1].Value.ToString();
+                jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+                resourceID = dataGridView1.Rows[0].Cells[1].Value.ToString();
 
-            if (sectionbtns == false) { 
-            //loop through datagrid rows                    
-            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            var name1 = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            var name2 = dataGridView1.Rows[1].Cells[11].Value.ToString();
+            if (name1 == name2)
             {
-                //if datagrid is not empty create a button for each row at cells[2] - "Name"
+                listPanel[3].BringToFront();
+                lblDescription.Visible = true;
+                lblDescription.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                index = 3;
+                sectionbtns = true;
+            }
 
-                if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+            else
                 {
-                    for (int j = 0; j < 1; j++)
+                    //prevent section buttons from drawing again if back button is selected
+                    if (sectionbtns == false)
                     {
-                        Button btn = new Button();
-                        this.returnpaper2.Controls.Add(btn);
-                        btn.Top = A * 80;
-                        btn.Height = 48;
-                        btn.Width = 465;
-                        btn.BackColor = Color.SteelBlue;
-                        btn.Font = new Font("Microsoft Sans Serif", 13.25f);
-                        btn.ForeColor = Color.White;
-                        btn.Left = 30;
-                        btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-                        A = A + 1;
-                        btn.Click += new System.EventHandler(this.expr1);
+                        //loop through datagrid rows                    
+                        for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                        {
+                            //if datagrid is not empty create a button for each row at cells[2] - "Name"
+
+                            if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+                            {
+                                for (int j = 0; j < 1; j++)
+                                {
+                                    Button btn = new Button();
+                                    this.returnpaper2.Controls.Add(btn);
+                                    btn.Top = A * 80;
+                                    btn.Height = 48;
+                                    btn.Width = 465;
+                                    btn.BackColor = Color.SteelBlue;
+                                    btn.Font = new Font("Microsoft Sans Serif", 13.25f);
+                                    btn.ForeColor = Color.White;
+                                    btn.Left = 30;
+                                    btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
+                                    A = A + 1;
+                                    btn.Click += new System.EventHandler(this.expr1);
+                                }
+                            }
+                        }
                     }
+                    sectionbtns = true;
                 }
-            }
-            }
-            sectionbtns = true;
         }
 
         //private void btnNext_Click(object sender, EventArgs e)
@@ -140,7 +195,7 @@ namespace PalletCard
         private void Home_Load(object sender, EventArgs e)
         {
             string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-            string CommandText = "SELECT * FROM app_PalletOperations";
+            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 5";
 
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
@@ -208,39 +263,39 @@ namespace PalletCard
         }
 
 
-        private void getSection()
-        {
-            jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
-            resourceID = dataGridView1.Rows[0].Cells[1].Value.ToString();
+        //private void getSection()
+        //{
+        //    jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+        //    resourceID = dataGridView1.Rows[0].Cells[1].Value.ToString();
 
-            //loop through datagrid rows                    
-            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-            {
-                //if datagrid is not empty create a button for each row at cells[11] - "Expr1"
+        //    //loop through datagrid rows                    
+        //    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+        //    {
+        //        //if datagrid is not empty create a button for each row at cells[11] - "Expr1"
 
-                if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
-                {
-                    for (int j = 0; j < 1; j++)
-                    {
-                        Button btn = new Button();
-                        this.Controls.Add(btn);
-                        btn.Top = A * 80;
-                        btn.Height = 50;
-                        btn.Width = 500;
-                        btn.BackColor = Color.SteelBlue;
-                        btn.Font = new Font("Microsoft Sans Serif", 13.25f);
-                        btn.ForeColor = Color.White;
-                        btn.Left = 260;
-                        btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-                        A = A + 1;
-                        btn.Click += new System.EventHandler(this.expr1);
-                    }
-                }        
-            }
-        }
+        //        if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+        //        {
+        //            for (int j = 0; j < 1; j++)
+        //            {
+        //                Button btn = new Button();
+        //                this.Controls.Add(btn);
+        //                btn.Top = A * 80;
+        //                btn.Height = 50;
+        //                btn.Width = 500;
+        //                btn.BackColor = Color.SteelBlue;
+        //                btn.Font = new Font("Microsoft Sans Serif", 13.25f);
+        //                btn.ForeColor = Color.White;
+        //                btn.Left = 260;
+        //                btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
+        //                A = A + 1;
+        //                btn.Click += new System.EventHandler(this.expr1);
+        //            }
+        //        }        
+        //    }
+        //}
 
         //Dynamic button click - Return Paper work flow
-        void expr1(object sender, EventArgs e) {
+        private void expr1(object sender, EventArgs e) {
             Button btn = sender as Button;
 
             //foreach (Control c in this.Controls)
