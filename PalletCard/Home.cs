@@ -22,10 +22,8 @@ namespace PalletCard
         {
             string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
             string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 5";
-
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-
             OdbcDataAdapter myAdapter = new OdbcDataAdapter();
             myAdapter.SelectCommand = myCommand;
             DataSet tharData = new DataSet();
@@ -47,7 +45,6 @@ namespace PalletCard
                 myAdapter.Fill(operations);
                 dataGridView1.DataSource = operations;
             }
-
             listPanel[0].BringToFront();
             lblJobNo.Visible = false;
             lblPress.Visible = false;
@@ -56,6 +53,8 @@ namespace PalletCard
             lblWorkingSize.Visible = false;
             searchBox.Text = "";
             searchBox.Focus();
+            sectionbtns = false;
+            tbxPalletHeight.Text = null;
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -73,11 +72,8 @@ namespace PalletCard
             int y = SystemInformation.WorkingArea.Y;
             int width = this.Width;
             int height = this.Height;
-
             Rectangle bounds = new Rectangle(x, y, width, height);
-
             Bitmap img = new Bitmap(width, height);
-
             returnpaper4.DrawToBitmap(img, bounds);
             Point p = new Point(100, 100);
             e.Graphics.DrawImage(img, p);
@@ -86,7 +82,6 @@ namespace PalletCard
         private void btnPalletHeight_Click(object sender, EventArgs e)
         {
             listPanel[4].BringToFront();
-
             lblPrint1.Text = dataGridView1.Rows[0].Cells[2].Value.ToString();
             lblPrint2.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
             lblPrint3.Text = lblPheight.Text;
@@ -100,11 +95,14 @@ namespace PalletCard
             TextBox objTextBox = (TextBox)sender;
             int p1;
             int p2;
+            if (!String.IsNullOrEmpty(tbxPalletHeight.Text))
+            { 
             p1 = Convert.ToInt32(objTextBox.Text);
             p2 = Convert.ToInt32(this.dataGridView1.Rows[0].Cells[20].Value);
             int result = p1 * p2;
             string r1 = Convert.ToString(result);
             lblPheight.Text = (r1 + " sheets");
+            }
         }
 
         public Home()
@@ -117,9 +115,7 @@ namespace PalletCard
                 lblReturnPaper.Visible = true;
                 listPanel[2].BringToFront();
                 index = 2;
-
                 jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
-                resourceID = dataGridView1.Rows[0].Cells[1].Value.ToString();
 
             var name1 = dataGridView1.Rows[0].Cells[11].Value.ToString();
             var name2 = dataGridView1.Rows[1].Cells[11].Value.ToString();
@@ -141,7 +137,6 @@ namespace PalletCard
                         for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                         {
                             //if datagrid is not empty create a button for each row at cells[2] - "Name"
-
                             if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
                             {
                                 for (int j = 0; j < 1; j++)
@@ -196,10 +191,8 @@ namespace PalletCard
         {
             string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
             string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 5";
-
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-
             OdbcDataAdapter myAdapter = new OdbcDataAdapter();
             myAdapter.SelectCommand = myCommand;
             DataSet tharData = new DataSet();
@@ -221,22 +214,18 @@ namespace PalletCard
                 myAdapter.Fill(operations);
                 dataGridView1.DataSource = operations;
             }
-
             listPanel.Add(returnpaper0);
             listPanel.Add(returnpaper1);
             listPanel.Add(returnpaper2);
             listPanel.Add(returnpaper3);
             listPanel.Add(returnpaper4);
-
             listPanel[0] = returnpaper0;
             listPanel[1] = returnpaper1;
             listPanel[2] = returnpaper2;
             listPanel[3] = returnpaper3;
             listPanel[4] = returnpaper4;
-
             listPanel[0].BringToFront();
         }
-//SEARCH______________________________________________________________________________________________________________________
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -261,8 +250,6 @@ namespace PalletCard
             catch (Exception) { }
             index = 1;
         }
-
-
         //private void getSection()
         //{
         //    jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
