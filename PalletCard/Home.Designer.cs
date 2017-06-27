@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.lblJobNo = new System.Windows.Forms.Label();
@@ -38,25 +39,38 @@
             this.lblWorkingSize = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.returnpaper0 = new System.Windows.Forms.Panel();
+            this.panel0 = new System.Windows.Forms.Label();
             this.returnpaper1 = new System.Windows.Forms.Panel();
-            this.returnpaper2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Label();
             this.btnRejectPaper = new System.Windows.Forms.Button();
             this.btnBackupVarnish = new System.Windows.Forms.Button();
             this.btnReturnPaper = new System.Windows.Forms.Button();
             this.btnPalletCard = new System.Windows.Forms.Button();
-            this.panel0 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Label();
+            this.returnpaper2 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Label();
             this.returnpaper3 = new System.Windows.Forms.Panel();
-            this.lblPalletHeight = new System.Windows.Forms.Label();
-            this.tbxPalletHeight = new System.Windows.Forms.TextBox();
-            this.lblPheight = new System.Windows.Forms.Label();
             this.btnPalletHeight = new System.Windows.Forms.Button();
+            this.lblPheight = new System.Windows.Forms.Label();
+            this.tbxPalletHeight = new System.Windows.Forms.TextBox();
+            this.lblPalletHeight = new System.Windows.Forms.Label();
+            this.returnpaper4 = new System.Windows.Forms.Panel();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblPrint6 = new System.Windows.Forms.Label();
+            this.lblPrint5 = new System.Windows.Forms.Label();
+            this.lblPrint4 = new System.Windows.Forms.Label();
+            this.lblPrint3 = new System.Windows.Forms.Label();
+            this.lblPrint2 = new System.Windows.Forms.Label();
+            this.lblPrint1 = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.returnpaper0.SuspendLayout();
             this.returnpaper1.SuspendLayout();
             this.returnpaper2.SuspendLayout();
             this.returnpaper3.SuspendLayout();
+            this.returnpaper4.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -70,10 +84,13 @@
             // 
             // searchBox
             // 
+            this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBox.Location = new System.Drawing.Point(12, 42);
+            this.searchBox.Multiline = true;
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(201, 20);
+            this.searchBox.Size = new System.Drawing.Size(201, 40);
             this.searchBox.TabIndex = 1;
+            this.searchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblJobNo
             // 
@@ -141,7 +158,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearch.Location = new System.Drawing.Point(12, 72);
+            this.btnSearch.Location = new System.Drawing.Point(12, 98);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(200, 41);
             this.btnSearch.TabIndex = 2;
@@ -166,11 +183,12 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(16, 486);
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(68, 485);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(88, 44);
             this.btnBack.TabIndex = 17;
-            this.btnBack.Text = "Back";
+            this.btnBack.Text = "BACK";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -182,6 +200,16 @@
             this.returnpaper0.Name = "returnpaper0";
             this.returnpaper0.Size = new System.Drawing.Size(522, 545);
             this.returnpaper0.TabIndex = 18;
+            // 
+            // panel0
+            // 
+            this.panel0.AutoSize = true;
+            this.panel0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel0.Location = new System.Drawing.Point(228, 4);
+            this.panel0.Name = "panel0";
+            this.panel0.Size = new System.Drawing.Size(39, 13);
+            this.panel0.TabIndex = 6;
+            this.panel0.Text = "panel0";
             // 
             // returnpaper1
             // 
@@ -195,13 +223,14 @@
             this.returnpaper1.Size = new System.Drawing.Size(522, 545);
             this.returnpaper1.TabIndex = 4;
             // 
-            // returnpaper2
+            // panel1
             // 
-            this.returnpaper2.Controls.Add(this.panel2);
-            this.returnpaper2.Location = new System.Drawing.Point(253, 42);
-            this.returnpaper2.Name = "returnpaper2";
-            this.returnpaper2.Size = new System.Drawing.Size(522, 545);
-            this.returnpaper2.TabIndex = 8;
+            this.panel1.AutoSize = true;
+            this.panel1.Location = new System.Drawing.Point(266, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(39, 13);
+            this.panel1.TabIndex = 19;
+            this.panel1.Text = "panel1";
             // 
             // btnRejectPaper
             // 
@@ -252,24 +281,13 @@
             this.btnPalletCard.Text = "Pallet Card";
             this.btnPalletCard.UseVisualStyleBackColor = false;
             // 
-            // panel0
+            // returnpaper2
             // 
-            this.panel0.AutoSize = true;
-            this.panel0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel0.Location = new System.Drawing.Point(228, 4);
-            this.panel0.Name = "panel0";
-            this.panel0.Size = new System.Drawing.Size(39, 13);
-            this.panel0.TabIndex = 6;
-            this.panel0.Text = "panel0";
-            // 
-            // panel1
-            // 
-            this.panel1.AutoSize = true;
-            this.panel1.Location = new System.Drawing.Point(266, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(39, 13);
-            this.panel1.TabIndex = 19;
-            this.panel1.Text = "panel1";
+            this.returnpaper2.Controls.Add(this.panel2);
+            this.returnpaper2.Location = new System.Drawing.Point(253, 42);
+            this.returnpaper2.Name = "returnpaper2";
+            this.returnpaper2.Size = new System.Drawing.Size(522, 545);
+            this.returnpaper2.TabIndex = 8;
             // 
             // panel2
             // 
@@ -291,23 +309,16 @@
             this.returnpaper3.Size = new System.Drawing.Size(525, 545);
             this.returnpaper3.TabIndex = 1;
             // 
-            // lblPalletHeight
+            // btnPalletHeight
             // 
-            this.lblPalletHeight.AutoSize = true;
-            this.lblPalletHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPalletHeight.Location = new System.Drawing.Point(195, 38);
-            this.lblPalletHeight.Name = "lblPalletHeight";
-            this.lblPalletHeight.Size = new System.Drawing.Size(152, 24);
-            this.lblPalletHeight.TabIndex = 2;
-            this.lblPalletHeight.Text = "Pallet Height mm";
-            // 
-            // tbxPalletHeight
-            // 
-            this.tbxPalletHeight.Location = new System.Drawing.Point(199, 84);
-            this.tbxPalletHeight.Name = "tbxPalletHeight";
-            this.tbxPalletHeight.Size = new System.Drawing.Size(148, 20);
-            this.tbxPalletHeight.TabIndex = 3;
-            this.tbxPalletHeight.TextChanged += new System.EventHandler(this.tbxPalletHeight_TextChanged);
+            this.btnPalletHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPalletHeight.Location = new System.Drawing.Point(241, 218);
+            this.btnPalletHeight.Name = "btnPalletHeight";
+            this.btnPalletHeight.Size = new System.Drawing.Size(84, 44);
+            this.btnPalletHeight.TabIndex = 5;
+            this.btnPalletHeight.Text = "OK";
+            this.btnPalletHeight.UseVisualStyleBackColor = true;
+            this.btnPalletHeight.Click += new System.EventHandler(this.btnPalletHeight_Click);
             // 
             // lblPheight
             // 
@@ -320,14 +331,134 @@
             this.lblPheight.TabIndex = 4;
             this.lblPheight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnPalletHeight
+            // tbxPalletHeight
             // 
-            this.btnPalletHeight.Location = new System.Drawing.Point(241, 218);
-            this.btnPalletHeight.Name = "btnPalletHeight";
-            this.btnPalletHeight.Size = new System.Drawing.Size(84, 44);
-            this.btnPalletHeight.TabIndex = 5;
-            this.btnPalletHeight.Text = "OK";
-            this.btnPalletHeight.UseVisualStyleBackColor = true;
+            this.tbxPalletHeight.Location = new System.Drawing.Point(199, 84);
+            this.tbxPalletHeight.Name = "tbxPalletHeight";
+            this.tbxPalletHeight.Size = new System.Drawing.Size(148, 20);
+            this.tbxPalletHeight.TabIndex = 3;
+            this.tbxPalletHeight.TextChanged += new System.EventHandler(this.tbxPalletHeight_TextChanged);
+            // 
+            // lblPalletHeight
+            // 
+            this.lblPalletHeight.AutoSize = true;
+            this.lblPalletHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPalletHeight.Location = new System.Drawing.Point(195, 38);
+            this.lblPalletHeight.Name = "lblPalletHeight";
+            this.lblPalletHeight.Size = new System.Drawing.Size(164, 24);
+            this.lblPalletHeight.TabIndex = 2;
+            this.lblPalletHeight.Text = "Pallet Height (mm)";
+            // 
+            // returnpaper4
+            // 
+            this.returnpaper4.Controls.Add(this.btnPrint);
+            this.returnpaper4.Controls.Add(this.label1);
+            this.returnpaper4.Controls.Add(this.lblPrint6);
+            this.returnpaper4.Controls.Add(this.lblPrint5);
+            this.returnpaper4.Controls.Add(this.lblPrint4);
+            this.returnpaper4.Controls.Add(this.lblPrint3);
+            this.returnpaper4.Controls.Add(this.lblPrint2);
+            this.returnpaper4.Controls.Add(this.lblPrint1);
+            this.returnpaper4.Location = new System.Drawing.Point(247, 42);
+            this.returnpaper4.Name = "returnpaper4";
+            this.returnpaper4.Size = new System.Drawing.Size(525, 545);
+            this.returnpaper4.TabIndex = 6;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(222, 381);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(85, 41);
+            this.btnPrint.TabIndex = 7;
+            this.btnPrint.Text = "PRINT";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(229, 242);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Return from:";
+            // 
+            // lblPrint6
+            // 
+            this.lblPrint6.AutoSize = true;
+            this.lblPrint6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint6.Location = new System.Drawing.Point(241, 339);
+            this.lblPrint6.Name = "lblPrint6";
+            this.lblPrint6.Size = new System.Drawing.Size(45, 16);
+            this.lblPrint6.TabIndex = 5;
+            this.lblPrint6.Text = "label1";
+            // 
+            // lblPrint5
+            // 
+            this.lblPrint5.AutoSize = true;
+            this.lblPrint5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint5.Location = new System.Drawing.Point(241, 306);
+            this.lblPrint5.Name = "lblPrint5";
+            this.lblPrint5.Size = new System.Drawing.Size(45, 16);
+            this.lblPrint5.TabIndex = 4;
+            this.lblPrint5.Text = "label1";
+            // 
+            // lblPrint4
+            // 
+            this.lblPrint4.AutoSize = true;
+            this.lblPrint4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint4.Location = new System.Drawing.Point(241, 270);
+            this.lblPrint4.Name = "lblPrint4";
+            this.lblPrint4.Size = new System.Drawing.Size(45, 16);
+            this.lblPrint4.TabIndex = 3;
+            this.lblPrint4.Text = "label1";
+            // 
+            // lblPrint3
+            // 
+            this.lblPrint3.AutoSize = true;
+            this.lblPrint3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint3.Location = new System.Drawing.Point(232, 182);
+            this.lblPrint3.Name = "lblPrint3";
+            this.lblPrint3.Size = new System.Drawing.Size(70, 25);
+            this.lblPrint3.TabIndex = 2;
+            this.lblPrint3.Text = "label1";
+            // 
+            // lblPrint2
+            // 
+            this.lblPrint2.AutoSize = true;
+            this.lblPrint2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint2.Location = new System.Drawing.Point(231, 107);
+            this.lblPrint2.Name = "lblPrint2";
+            this.lblPrint2.Size = new System.Drawing.Size(70, 25);
+            this.lblPrint2.TabIndex = 1;
+            this.lblPrint2.Text = "label1";
+            this.lblPrint2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblPrint1
+            // 
+            this.lblPrint1.AutoSize = true;
+            this.lblPrint1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint1.Location = new System.Drawing.Point(229, 35);
+            this.lblPrint1.Name = "lblPrint1";
+            this.lblPrint1.Size = new System.Drawing.Size(70, 25);
+            this.lblPrint1.TabIndex = 0;
+            this.lblPrint1.Text = "label1";
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // Home
             // 
@@ -348,6 +479,7 @@
             this.Controls.Add(this.returnpaper2);
             this.Controls.Add(this.returnpaper0);
             this.Controls.Add(this.returnpaper1);
+            this.Controls.Add(this.returnpaper4);
             this.Name = "Home";
             this.Text = "Pallet Card App 710UV";
             this.Load += new System.EventHandler(this.Home_Load);
@@ -360,6 +492,8 @@
             this.returnpaper2.PerformLayout();
             this.returnpaper3.ResumeLayout(false);
             this.returnpaper3.PerformLayout();
+            this.returnpaper4.ResumeLayout(false);
+            this.returnpaper4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,6 +525,18 @@
         private System.Windows.Forms.Label lblPheight;
         private System.Windows.Forms.TextBox tbxPalletHeight;
         private System.Windows.Forms.Button btnPalletHeight;
+        private System.Windows.Forms.Panel returnpaper4;
+        private System.Windows.Forms.Label lblPrint6;
+        private System.Windows.Forms.Label lblPrint5;
+        private System.Windows.Forms.Label lblPrint4;
+        private System.Windows.Forms.Label lblPrint3;
+        private System.Windows.Forms.Label lblPrint2;
+        private System.Windows.Forms.Label lblPrint1;
+        private System.Windows.Forms.Label label1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
 

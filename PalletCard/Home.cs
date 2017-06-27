@@ -4,6 +4,10 @@ using System.Data.Odbc;
 using System.Data;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Drawing.Printing;
+using System.Drawing.Drawing2D;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace PalletCard
 {
@@ -17,6 +21,41 @@ namespace PalletCard
         string jobNo, resourceID, name, id, workingSize, description, code, jobDesc, invoiceCustomerName, ref7;
         bool jobCompleted, jobCancelled;
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(PrintImage);
+            pd.Print();
+        }
+
+        void PrintImage(object o, PrintPageEventArgs e)
+        {
+            int x = SystemInformation.WorkingArea.X;
+            int y = SystemInformation.WorkingArea.Y;
+            int width = this.Width;
+            int height = this.Height;
+
+            Rectangle bounds = new Rectangle(x, y, width, height);
+
+            Bitmap img = new Bitmap(width, height);
+
+            returnpaper4.DrawToBitmap(img, bounds);
+            Point p = new Point(100, 100);
+            e.Graphics.DrawImage(img, p);
+        }
+
+        private void btnPalletHeight_Click(object sender, EventArgs e)
+        {
+            listPanel[4].BringToFront();
+
+            lblPrint1.Text = dataGridView1.Rows[0].Cells[2].Value.ToString();
+            lblPrint2.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+            lblPrint3.Text = lblPheight.Text;
+            lblPrint4.Text = "Press - 710UV";
+            lblPrint5.Text = "Job - " + jobNo;
+            lblPrint6.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+        }
+
         private void tbxPalletHeight_TextChanged(object sender, EventArgs e)
         {
             TextBox objTextBox = (TextBox)sender;
@@ -28,7 +67,6 @@ namespace PalletCard
             string r1 = Convert.ToString(result);
             lblPheight.Text = (r1 + " sheets");
         }
-
 
         public Home()
         {
@@ -133,11 +171,13 @@ namespace PalletCard
             listPanel.Add(returnpaper1);
             listPanel.Add(returnpaper2);
             listPanel.Add(returnpaper3);
+            listPanel.Add(returnpaper4);
 
             listPanel[0] = returnpaper0;
             listPanel[1] = returnpaper1;
             listPanel[2] = returnpaper2;
             listPanel[3] = returnpaper3;
+            listPanel[4] = returnpaper4;
 
             listPanel[0].BringToFront();
         }
@@ -182,7 +222,7 @@ namespace PalletCard
                 {
                     for (int j = 0; j < 1; j++)
                     {
-                            Button btn = new Button();
+                        Button btn = new Button();
                         this.Controls.Add(btn);
                         btn.Top = A * 80;
                         btn.Height = 50;
@@ -220,14 +260,10 @@ namespace PalletCard
             index = 3;
             sectionbtns = true;
 
-
             //for (int ix = this.Controls.Count - 1; ix >= 0; ix--)
             //{
             //    if (this.Controls[ix] is Button ) this.Controls[ix].Dispose();
             //}
-
-
-
         }
     }
 }
