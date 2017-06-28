@@ -90,6 +90,7 @@ namespace PalletCard
             lblPrint6.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
         }
 
+        // Pallet Height textBox
         private void tbxPalletHeight_TextChanged(object sender, EventArgs e)
         {
             TextBox objTextBox = (TextBox)sender;
@@ -117,10 +118,18 @@ namespace PalletCard
                 index = 2;
                 jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
 
-            var name1 = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            var name2 = dataGridView1.Rows[1].Cells[11].Value.ToString();
-            if (name1 == name2)
+            string x;
+            string y;
+            x = dataGridView1.Rows[0].Cells[11].Value.ToString();
+
+            bool control = false;
+            for (int i = 1; i < this.dataGridView1.Rows.Count - 1; i++)
             {
+                y = dataGridView1.Rows[i].Cells[11].Value.ToString();
+                if (x == y) { control = true; }
+            }
+
+            if (control) {                               
                 listPanel[3].BringToFront();
                 lblDescription.Visible = true;
                 lblDescription.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
@@ -129,8 +138,7 @@ namespace PalletCard
             }
 
             else
-                {
-                    //prevent section buttons from drawing again if back button is selected
+            { //prevent section buttons from drawing again if back button is selected
                     if (sectionbtns == false)
                     {
                         //loop through datagrid rows                    
