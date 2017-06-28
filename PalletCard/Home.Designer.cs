@@ -63,6 +63,7 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.btnClear = new System.Windows.Forms.Button();
+            this.lbltextBoxDescription = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.returnpaper1.SuspendLayout();
             this.returnpaper3.SuspendLayout();
@@ -168,7 +169,7 @@
             this.lblWorkingSize.BackColor = System.Drawing.Color.DarkCyan;
             this.lblWorkingSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWorkingSize.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblWorkingSize.Location = new System.Drawing.Point(13, 387);
+            this.lblWorkingSize.Location = new System.Drawing.Point(13, 385);
             this.lblWorkingSize.MaximumSize = new System.Drawing.Size(200, 45);
             this.lblWorkingSize.MinimumSize = new System.Drawing.Size(200, 45);
             this.lblWorkingSize.Name = "lblWorkingSize";
@@ -444,12 +445,27 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // lbltextBoxDescription
+            // 
+            this.lbltextBoxDescription.BackColor = System.Drawing.Color.DarkCyan;
+            this.lbltextBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbltextBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltextBoxDescription.ForeColor = System.Drawing.Color.White;
+            this.lbltextBoxDescription.Location = new System.Drawing.Point(12, 336);
+            this.lbltextBoxDescription.Multiline = true;
+            this.lbltextBoxDescription.Name = "lbltextBoxDescription";
+            this.lbltextBoxDescription.ReadOnly = true;
+            this.lbltextBoxDescription.Size = new System.Drawing.Size(201, 40);
+            this.lbltextBoxDescription.TabIndex = 20;
+            this.lbltextBoxDescription.Visible = false;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 761);
+            this.Controls.Add(this.lbltextBoxDescription);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblWorkingSize);
@@ -515,6 +531,7 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.TextBox lbltextBoxDescription;
     }
 }
 
