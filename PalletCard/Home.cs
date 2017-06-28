@@ -133,16 +133,18 @@ namespace PalletCard
                 listPanel[3].BringToFront();
                 lblDescription.Visible = true;
                 lblDescription.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                lblWorkingSize.Visible = true;
+                lblWorkingSize.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
                 index = 3;
                 sectionbtns = true;
             }
 
             else
             { //prevent section buttons from drawing again if back button is selected
-                    if (sectionbtns == false)
-                    {
-                        //loop through datagrid rows                    
-                        for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                if (!sectionbtns)
+                {
+                    //loop through datagrid rows                    
+                    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                         {
                             //if datagrid is not empty create a button for each row at cells[2] - "Name"
                             if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
@@ -165,8 +167,8 @@ namespace PalletCard
                             }
                         }
                     }
-                    sectionbtns = true;
-                }
+                sectionbtns = true;
+            }
         }
 
         //private void btnNext_Click(object sender, EventArgs e)
@@ -187,6 +189,7 @@ namespace PalletCard
 
             if (index == 2)
                 listPanel[1].BringToFront();
+            lblReturnPaper.Visible = true;
                 lblDescription.Visible = false;
                 lblWorkingSize.Visible = false;               
 
@@ -289,7 +292,7 @@ namespace PalletCard
         //    }
         //}
 
-        //Dynamic button click - Return Paper work flow
+        //Dynamic button click - Section buttons, Return Paper work flow
         private void expr1(object sender, EventArgs e) {
             Button btn = sender as Button;
 
@@ -306,9 +309,10 @@ namespace PalletCard
             listPanel[3].BringToFront();
             lblDescription.Visible = true;
             lblDescription.Text = btn.Text;
-            btn.Visible = false;
+            lblWorkingSize.Visible = true;
+            lblWorkingSize.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
             index = 3;
-            sectionbtns = true;
+            //sectionbtns = true;
 
             //for (int ix = this.Controls.Count - 1; ix >= 0; ix--)
             //{
