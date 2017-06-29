@@ -12,8 +12,9 @@ namespace PalletCard
     {
         List<Panel> listPanel = new List<Panel>();
         int index;
-        bool sectionbtns = false;
+        bool sectionbtns;
         int A = 1;
+        bool control;
         int numberUp, jobGanged, paperSectionNo, heightMM, invoiceCustomerCode, qtyRequired;
         string jobNo, resourceID, name, id, workingSize, description, code, jobDesc, invoiceCustomerName, ref7;
         bool jobCompleted, jobCancelled;
@@ -53,7 +54,7 @@ namespace PalletCard
             lblWorkingSize.Visible = false;
             searchBox.Text = "";
             searchBox.Focus();
-            sectionbtns = false;
+            sectionbtns = true;
             tbxPalletHeight.Text = null;
         }
 
@@ -118,10 +119,11 @@ namespace PalletCard
                 index = 2;
                 jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
 
+            //loop through datagridview to see if each value of field "Expr1" is the same
             string x;
             string y;
             x = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            bool control = false;
+            control = false;
             for (int i = 1; i < this.dataGridView1.Rows.Count - 1; i++)
             {
                 y = dataGridView1.Rows[i].Cells[11].Value.ToString();
@@ -141,7 +143,7 @@ namespace PalletCard
             { //prevent section buttons from drawing again if back button is selected
                 if (!sectionbtns)
                 {
-                    //loop through datagrid rows                    
+                    //loop through datagrid rows to create a button for each value of field "Expr1"                  
                     for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                         {
                             //if datagrid is not empty create a button for each row at cells[2] - "Name"
@@ -149,6 +151,8 @@ namespace PalletCard
                             {
                                 for (int j = 0; j < 1; j++)
                                 {
+                                //var v = this.dataGridView1.Rows[i].Cells[11].Value as string; ;
+                                //if (btnBack.Text != v) { 
                                     Button btn = new Button();
                                     this.returnpaper2.Controls.Add(btn);
                                     btn.Top = A * 80;
@@ -161,7 +165,8 @@ namespace PalletCard
                                     btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
                                     A = A + 1;
                                     btn.Click += new System.EventHandler(this.expr1);
-                                }
+                                //}
+                            }
                             }
                         }
                     }
@@ -200,6 +205,7 @@ namespace PalletCard
                 lblReturnPaper.Visible = true;
                 lbltextBoxDescription.Visible = false;
                 lblWorkingSize.Visible = false;
+                lblPheight.Text = "";
         }
 
         private void Home_Load(object sender, EventArgs e)
