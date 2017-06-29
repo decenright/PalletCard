@@ -63,6 +63,7 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lbltextBoxDescription = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.returnpaper1.SuspendLayout();
             this.returnpaper3.SuspendLayout();
@@ -187,9 +188,9 @@
             this.returnpaper1.Controls.Add(this.btnBackupVarnish);
             this.returnpaper1.Controls.Add(this.btnReturnPaper);
             this.returnpaper1.Controls.Add(this.btnPalletCard);
-            this.returnpaper1.Location = new System.Drawing.Point(250, 42);
+            this.returnpaper1.Location = new System.Drawing.Point(247, 42);
             this.returnpaper1.Name = "returnpaper1";
-            this.returnpaper1.Size = new System.Drawing.Size(522, 545);
+            this.returnpaper1.Size = new System.Drawing.Size(525, 545);
             this.returnpaper1.TabIndex = 4;
             // 
             // btnRejectPaper
@@ -305,6 +306,7 @@
             // 
             // returnpaper4
             // 
+            this.returnpaper4.Controls.Add(this.label2);
             this.returnpaper4.Controls.Add(this.btnPrint);
             this.returnpaper4.Controls.Add(this.label1);
             this.returnpaper4.Controls.Add(this.lblPrint6);
@@ -325,7 +327,7 @@
             this.btnPrint.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnPrint.Location = new System.Drawing.Point(57, 479);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(423, 41);
+            this.btnPrint.Size = new System.Drawing.Size(404, 41);
             this.btnPrint.TabIndex = 7;
             this.btnPrint.TabStop = false;
             this.btnPrint.Text = "Print";
@@ -336,7 +338,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(56, 278);
+            this.label1.Location = new System.Drawing.Point(31, 320);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 24);
             this.label1.TabIndex = 6;
@@ -345,61 +347,61 @@
             // lblPrint6
             // 
             this.lblPrint6.AutoSize = true;
-            this.lblPrint6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint6.Location = new System.Drawing.Point(225, 403);
+            this.lblPrint6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint6.Location = new System.Drawing.Point(198, 398);
             this.lblPrint6.Name = "lblPrint6";
-            this.lblPrint6.Size = new System.Drawing.Size(60, 24);
+            this.lblPrint6.Size = new System.Drawing.Size(65, 20);
             this.lblPrint6.TabIndex = 5;
-            this.lblPrint6.Text = "label1";
+            this.lblPrint6.Text = "lblPrint6";
             // 
             // lblPrint5
             // 
             this.lblPrint5.AutoSize = true;
-            this.lblPrint5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint5.Location = new System.Drawing.Point(225, 342);
+            this.lblPrint5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint5.Location = new System.Drawing.Point(198, 362);
             this.lblPrint5.Name = "lblPrint5";
-            this.lblPrint5.Size = new System.Drawing.Size(60, 24);
+            this.lblPrint5.Size = new System.Drawing.Size(65, 20);
             this.lblPrint5.TabIndex = 4;
-            this.lblPrint5.Text = "label1";
+            this.lblPrint5.Text = "lblPrint5";
             // 
             // lblPrint4
             // 
             this.lblPrint4.AutoSize = true;
-            this.lblPrint4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint4.Location = new System.Drawing.Point(225, 279);
+            this.lblPrint4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint4.Location = new System.Drawing.Point(198, 325);
             this.lblPrint4.Name = "lblPrint4";
-            this.lblPrint4.Size = new System.Drawing.Size(60, 24);
+            this.lblPrint4.Size = new System.Drawing.Size(65, 20);
             this.lblPrint4.TabIndex = 3;
-            this.lblPrint4.Text = "label1";
+            this.lblPrint4.Text = "lblPrint4";
             // 
             // lblPrint3
             // 
             this.lblPrint3.AutoSize = true;
-            this.lblPrint3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint3.Location = new System.Drawing.Point(53, 193);
+            this.lblPrint3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint3.Location = new System.Drawing.Point(30, 251);
             this.lblPrint3.Name = "lblPrint3";
-            this.lblPrint3.Size = new System.Drawing.Size(92, 31);
+            this.lblPrint3.Size = new System.Drawing.Size(76, 25);
             this.lblPrint3.TabIndex = 2;
-            this.lblPrint3.Text = "label1";
+            this.lblPrint3.Text = "label3";
             // 
             // lblPrint2
             // 
             this.lblPrint2.AutoSize = true;
-            this.lblPrint2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint2.Location = new System.Drawing.Point(52, 120);
+            this.lblPrint2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint2.Location = new System.Drawing.Point(30, 187);
             this.lblPrint2.Name = "lblPrint2";
-            this.lblPrint2.Size = new System.Drawing.Size(92, 31);
+            this.lblPrint2.Size = new System.Drawing.Size(76, 25);
             this.lblPrint2.TabIndex = 1;
-            this.lblPrint2.Text = "label1";
+            this.lblPrint2.Text = "label2";
             this.lblPrint2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblPrint1
             // 
             this.lblPrint1.AutoSize = true;
-            this.lblPrint1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint1.Location = new System.Drawing.Point(51, 51);
+            this.lblPrint1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint1.Location = new System.Drawing.Point(31, 126);
             this.lblPrint1.Name = "lblPrint1";
-            this.lblPrint1.Size = new System.Drawing.Size(92, 31);
+            this.lblPrint1.Size = new System.Drawing.Size(57, 20);
             this.lblPrint1.TabIndex = 0;
             this.lblPrint1.Text = "label1";
             // 
@@ -441,6 +443,16 @@
             this.lbltextBoxDescription.Size = new System.Drawing.Size(201, 40);
             this.lbltextBoxDescription.TabIndex = 20;
             this.lbltextBoxDescription.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(155, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(197, 39);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "RETURN PAPER";
             // 
             // Home
             // 
@@ -513,6 +525,7 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox lbltextBoxDescription;
+        private System.Windows.Forms.Label label2;
     }
 }
 

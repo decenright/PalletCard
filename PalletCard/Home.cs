@@ -14,7 +14,6 @@ namespace PalletCard
         int index;
         bool sectionbtns = false;
         int A = 1;
-        string d;
         int numberUp, jobGanged, paperSectionNo, heightMM, invoiceCustomerCode, qtyRequired;
         string jobNo, resourceID, name, id, workingSize, description, code, jobDesc, invoiceCustomerName, ref7;
         bool jobCompleted, jobCancelled;
@@ -83,7 +82,7 @@ namespace PalletCard
         private void btnPalletHeight_Click(object sender, EventArgs e)
         {
             listPanel[4].BringToFront();
-            lblPrint1.Text = dataGridView1.Rows[0].Cells[2].Value.ToString();
+            lblPrint1.Text = dataGridView1.Rows[0].Cells[16].Value.ToString();
             lblPrint2.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
             lblPrint3.Text = lblPheight.Text;
             lblPrint4.Text = "Press - 710UV";
@@ -101,7 +100,7 @@ namespace PalletCard
             { 
             p1 = Convert.ToInt32(objTextBox.Text);
             p2 = Convert.ToInt32(this.dataGridView1.Rows[0].Cells[20].Value);
-            int result = p1 * p2;
+            int result = p1 * p2 /1000;
             string r1 = Convert.ToString(result);
             lblPheight.Text = (r1 + " sheets");
             }
@@ -122,26 +121,22 @@ namespace PalletCard
             string x;
             string y;
             x = dataGridView1.Rows[0].Cells[11].Value.ToString();
-
             bool control = false;
             for (int i = 1; i < this.dataGridView1.Rows.Count - 1; i++)
             {
                 y = dataGridView1.Rows[i].Cells[11].Value.ToString();
                 if (x == y) { control = true; }
             }
-
             if (control) {                               
                 listPanel[3].BringToFront();
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 lbltextBoxDescription.Text = d;
                 lbltextBoxDescription.Visible = true;
-
                 lblWorkingSize.Visible = true;
                 lblWorkingSize.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
                 index = 4;
                 sectionbtns = true;
             }
-
             else
             { //prevent section buttons from drawing again if back button is selected
                 if (!sectionbtns)
@@ -190,6 +185,8 @@ namespace PalletCard
                 lblReturnPaper.Visible = false;
                 lbltextBoxDescription.Visible = false;
                 lblWorkingSize.Visible = false;
+                tbxPalletHeight.Text = "";
+                lblPheight.Text = "";
             if (index == 2)
                 listPanel[1].BringToFront();
                 lblReturnPaper.Visible = true;
@@ -199,7 +196,7 @@ namespace PalletCard
                 listPanel[2].BringToFront();
                 lblWorkingSize.Visible = false;
             if (index == 4)
-                listPanel[1].BringToFront();
+                listPanel[3].BringToFront();
                 lblReturnPaper.Visible = true;
                 lbltextBoxDescription.Visible = false;
                 lblWorkingSize.Visible = false;
@@ -316,8 +313,7 @@ namespace PalletCard
             listPanel[3].BringToFront();
             lblWorkingSize.Visible = true;
             lblWorkingSize.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-            index = 3;
-
+            index = 4;
             lbltextBoxDescription.Text = btn.Text;
             lbltextBoxDescription.Visible = true;
 
