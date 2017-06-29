@@ -15,6 +15,7 @@ namespace PalletCard
         bool sectionbtns;
         int A = 1;
         bool control;
+        string v = "";
         int numberUp, jobGanged, paperSectionNo, heightMM, invoiceCustomerCode, qtyRequired;
         string jobNo, resourceID, name, id, workingSize, description, code, jobDesc, invoiceCustomerName, ref7;
         bool jobCompleted, jobCancelled;
@@ -148,25 +149,25 @@ namespace PalletCard
                         {
                             //if datagrid is not empty create a button for each row at cells[2] - "Name"
                             if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+
+                            if (! (this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i+1].Cells[11].Value as string)) { 
                             {
-                                for (int j = 0; j < 1; j++)
-                                {
-                                //var v = this.dataGridView1.Rows[i].Cells[11].Value as string; ;
-                                //if (btnBack.Text != v) { 
-                                    Button btn = new Button();
-                                    this.returnpaper2.Controls.Add(btn);
-                                    btn.Top = A * 80;
-                                    btn.Height = 48;
-                                    btn.Width = 465;
-                                    btn.BackColor = Color.SteelBlue;
-                                    btn.Font = new Font("Microsoft Sans Serif", 13.25f);
-                                    btn.ForeColor = Color.White;
-                                    btn.Left = 30;
-                                    btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-                                    A = A + 1;
-                                    btn.Click += new System.EventHandler(this.expr1);
-                                //}
-                            }
+                                    for (int j = 0; j < 1; j++)
+                                    { 
+                                        Button btn = new Button();
+                                        this.returnpaper2.Controls.Add(btn);
+                                        btn.Top = A * 80;
+                                        btn.Height = 48;
+                                        btn.Width = 465;
+                                        btn.BackColor = Color.SteelBlue;
+                                        btn.Font = new Font("Microsoft Sans Serif", 13.25f);
+                                        btn.ForeColor = Color.White;
+                                        btn.Left = 30;
+                                        btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
+                                        A = A + 1;
+                                        btn.Click += new System.EventHandler(this.expr1);
+                                    }
+                                }
                             }
                         }
                     }
