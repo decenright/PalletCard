@@ -19,7 +19,7 @@ namespace PalletCard
         string jobNo, resourceID, name, id, workingSize, description, code, jobDesc, invoiceCustomerName, ref7;
         bool jobCompleted, jobCancelled;
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
             string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 5";
@@ -50,7 +50,7 @@ namespace PalletCard
             lblJobNo.Visible = false;
             lblPress.Visible = false;
             lblReturnPaper.Visible = false;
-            lblDescription.Visible = false;
+            lbltextBoxDescription.Visible = false;
             lblWorkingSize.Visible = false;
             searchBox.Text = "";
             searchBox.Focus();
@@ -132,9 +132,6 @@ namespace PalletCard
 
             if (control) {                               
                 listPanel[3].BringToFront();
-                lblDescription.Visible = true;
-                lblDescription.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
-
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 lbltextBoxDescription.Text = d;
                 lbltextBoxDescription.Visible = true;
@@ -191,15 +188,11 @@ namespace PalletCard
             if (index == 1)
                 listPanel[0].BringToFront();
                 lblReturnPaper.Visible = false;
-
-                lblDescription.Visible = false;
                 lbltextBoxDescription.Visible = false;
                 lblWorkingSize.Visible = false;
             if (index == 2)
                 listPanel[1].BringToFront();
                 lblReturnPaper.Visible = true;
-
-                lblDescription.Visible = false;
                 lbltextBoxDescription.Visible = false;
                 lblWorkingSize.Visible = false;               
             if (index == 3)
@@ -208,8 +201,6 @@ namespace PalletCard
             if (index == 4)
                 listPanel[1].BringToFront();
                 lblReturnPaper.Visible = true;
-
-                lblDescription.Visible = false;
                 lbltextBoxDescription.Visible = false;
                 lblWorkingSize.Visible = false;
         }
@@ -323,8 +314,6 @@ namespace PalletCard
             //MessageBox.Show(btn.Text);
 
             listPanel[3].BringToFront();
-            lblDescription.Visible = true;
-            lblDescription.Text = btn.Text;
             lblWorkingSize.Visible = true;
             lblWorkingSize.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
             index = 3;

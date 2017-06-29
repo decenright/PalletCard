@@ -34,7 +34,6 @@
             this.lblJobNo = new System.Windows.Forms.Label();
             this.lblPress = new System.Windows.Forms.Label();
             this.lblReturnPaper = new System.Windows.Forms.Label();
-            this.lblDescription = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblWorkingSize = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
@@ -62,7 +61,7 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.lbltextBoxDescription = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.returnpaper1.SuspendLayout();
@@ -131,24 +130,8 @@
             this.lblReturnPaper.Padding = new System.Windows.Forms.Padding(5);
             this.lblReturnPaper.Size = new System.Drawing.Size(200, 45);
             this.lblReturnPaper.TabIndex = 5;
-            this.lblReturnPaper.Text = "Return Paper";
+            this.lblReturnPaper.Text = "lblReturn Paper";
             this.lblReturnPaper.Visible = false;
-            // 
-            // lblDescription
-            // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.BackColor = System.Drawing.Color.DarkCyan;
-            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblDescription.Location = new System.Drawing.Point(12, 335);
-            this.lblDescription.MaximumSize = new System.Drawing.Size(200, 45);
-            this.lblDescription.MinimumSize = new System.Drawing.Size(200, 45);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Padding = new System.Windows.Forms.Padding(5);
-            this.lblDescription.Size = new System.Drawing.Size(200, 45);
-            this.lblDescription.TabIndex = 6;
-            this.lblDescription.Text = "Description";
-            this.lblDescription.Visible = false;
             // 
             // btnSearch
             // 
@@ -176,7 +159,7 @@
             this.lblWorkingSize.Padding = new System.Windows.Forms.Padding(5);
             this.lblWorkingSize.Size = new System.Drawing.Size(200, 45);
             this.lblWorkingSize.TabIndex = 16;
-            this.lblWorkingSize.Text = "WorkingSize";
+            this.lblWorkingSize.Text = "lblWorkingSize";
             this.lblWorkingSize.Visible = false;
             // 
             // btnBack
@@ -434,16 +417,16 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // btnClear
+            // btnCancel
             // 
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(124, 485);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(88, 38);
-            this.btnClear.TabIndex = 19;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(124, 485);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(88, 38);
+            this.btnCancel.TabIndex = 19;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lbltextBoxDescription
             // 
@@ -451,7 +434,7 @@
             this.lbltextBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbltextBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltextBoxDescription.ForeColor = System.Drawing.Color.White;
-            this.lbltextBoxDescription.Location = new System.Drawing.Point(12, 336);
+            this.lbltextBoxDescription.Location = new System.Drawing.Point(12, 337);
             this.lbltextBoxDescription.Multiline = true;
             this.lbltextBoxDescription.Name = "lbltextBoxDescription";
             this.lbltextBoxDescription.ReadOnly = true;
@@ -466,11 +449,10 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 761);
             this.Controls.Add(this.lbltextBoxDescription);
-            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblWorkingSize);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblReturnPaper);
             this.Controls.Add(this.lblPress);
             this.Controls.Add(this.lblJobNo);
@@ -502,7 +484,6 @@
         private System.Windows.Forms.Label lblJobNo;
         private System.Windows.Forms.Label lblPress;
         private System.Windows.Forms.Label lblReturnPaper;
-        private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblWorkingSize;
         private System.Windows.Forms.Button btnBack;
@@ -530,7 +511,7 @@
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox lbltextBoxDescription;
     }
 }
