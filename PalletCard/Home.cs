@@ -15,7 +15,6 @@ namespace PalletCard
         bool sectionbtns;
         int A = 1;
         bool control;
-        string v = "";
         int numberUp, jobGanged, paperSectionNo, heightMM, invoiceCustomerCode, qtyRequired;
         string jobNo, resourceID, name, id, workingSize, description, code, jobDesc, invoiceCustomerName, ref7;
         bool jobCompleted, jobCancelled;
@@ -150,6 +149,7 @@ namespace PalletCard
                             //if datagrid is not empty create a button for each row at cells[2] - "Name"
                             if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
 
+                            //offer only one button where Expr1 field has two rows with the same value
                             if (! (this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i+1].Cells[11].Value as string)) { 
                             {
                                     for (int j = 0; j < 1; j++)
@@ -323,6 +323,28 @@ namespace PalletCard
             index = 4;
             lbltextBoxDescription.Text = btn.Text;
             lbltextBoxDescription.Visible = true;
+
+
+
+            try
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + lbltextBoxDescription.Text + "%'";
+                //lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
+                //lblJobNo.Visible = true;
+                //int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
+                //if (resourceID == 5)
+                //{
+                //    lblPress.Text = "710UV";
+                //    lblPress.Visible = true;
+                //    listPanel[1].BringToFront();
+                //}
+                //else
+                //{
+                //    lblPress.Visible = false;
+                //    MessageBox.Show("The Job number you entered is not on this press");
+                //}
+            }
+            catch (Exception) { }
 
 
 
