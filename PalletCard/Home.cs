@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Drawing.Printing;
+using System.Data.SqlClient;
 
 namespace PalletCard
 {
@@ -63,8 +64,29 @@ namespace PalletCard
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(PrintImage);
             btnPrint.Visible = false;
-            pd.Print();
+            //pd.Print();
             btnPrint.Visible = true;
+
+
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            string Query = "insert into Log (Routine, JobNo) values('" + this.lblReturnPaper + "','" + this.lblJobNo + "');";
+            SqlConnection conDatabase = new SqlConnection(constring);
+            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            SqlDataReader myReader;
+            try
+            {
+                conDatabase.Open();
+                myReader = cmdDatabase.ExecuteReader();
+                MessageBox.Show("Saved");
+                while (myReader.Read())
+                {
+
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         void PrintImage(object o, PrintPageEventArgs e)
@@ -324,25 +346,10 @@ namespace PalletCard
             lbltextBoxDescription.Text = btn.Text;
             lbltextBoxDescription.Visible = true;
 
-
-
+            //filter datagridview1 with the button text choice
             try
             {
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + lbltextBoxDescription.Text + "%'";
-                //lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
-                //lblJobNo.Visible = true;
-                //int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
-                //if (resourceID == 5)
-                //{
-                //    lblPress.Text = "710UV";
-                //    lblPress.Visible = true;
-                //    listPanel[1].BringToFront();
-                //}
-                //else
-                //{
-                //    lblPress.Visible = false;
-                //    MessageBox.Show("The Job number you entered is not on this press");
-                //}
             }
             catch (Exception) { }
 
