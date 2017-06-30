@@ -50,6 +50,7 @@
             this.tbxPalletHeight = new System.Windows.Forms.TextBox();
             this.lblPalletHeight = new System.Windows.Forms.Label();
             this.returnpaper4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblPrint6 = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lbltextBoxDescription = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.returnpaper1.SuspendLayout();
             this.returnpaper3.SuspendLayout();
@@ -320,6 +320,16 @@
             this.returnpaper4.Size = new System.Drawing.Size(525, 545);
             this.returnpaper4.TabIndex = 6;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(155, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(197, 39);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "RETURN PAPER";
+            // 
             // btnPrint
             // 
             this.btnPrint.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -443,16 +453,6 @@
             this.lbltextBoxDescription.Size = new System.Drawing.Size(201, 40);
             this.lbltextBoxDescription.TabIndex = 20;
             this.lbltextBoxDescription.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(155, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(197, 39);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "RETURN PAPER";
             // 
             // Home
             // 
