@@ -208,27 +208,72 @@ namespace PalletCard
         {
             //if (index > 0)
             //    listPanel[--index].BringToFront();
+
+
             if (index == 1)
-                listPanel[0].BringToFront();
-                lblReturnPaper.Visible = false;
-                lbltextBoxDescription.Visible = false;
-                lblWorkingSize.Visible = false;
-                tbxPalletHeight.Text = "";
-                lblPheight.Text = "";
-            if (index == 2)
-                listPanel[1].BringToFront();
-                lblReturnPaper.Visible = true;
-                lbltextBoxDescription.Visible = false;
-                lblWorkingSize.Visible = false;               
-            if (index == 3)
-                listPanel[2].BringToFront();
-                lblWorkingSize.Visible = false;
-            if (index == 4)
-                listPanel[3].BringToFront();
-                lblReturnPaper.Visible = true;
-                lbltextBoxDescription.Visible = false;
-                lblWorkingSize.Visible = false;
-                lblPheight.Text = "";
+            { 
+            listPanel[0].BringToFront();
+            lblReturnPaper.Visible = false;
+            lbltextBoxDescription.Visible = false;
+            lblWorkingSize.Visible = false;
+            tbxPalletHeight.Text = "";
+            lblPheight.Text = "";
+            }
+            else if (index == 2)
+            { 
+            listPanel[1].BringToFront();
+            lblReturnPaper.Visible = true;
+            lbltextBoxDescription.Visible = false;
+            lblWorkingSize.Visible = false;
+            index = 1;
+            }
+            else if (index == 3)
+            { 
+            listPanel[2].BringToFront();
+            lblWorkingSize.Visible = false;
+            index = 2;
+                }
+            else if (index == 4)
+            { 
+            listPanel[3].BringToFront();
+            lblReturnPaper.Visible = true;
+            lbltextBoxDescription.Visible = false;
+            lblWorkingSize.Visible = false;
+            lblPheight.Text = "";
+            tbxPalletHeight.Text = "";
+            index = 3;
+            }
+
+
+
+            //if (listPanel[0].Visible)
+            //{
+            //    listPanel[2].Visible = true;
+            //    listPanel[1].Visible = false;
+            //    listPanel[3].Visible = false;
+            //}
+            //else if (listPanel[1].Visible)
+            //{
+            //    listPanel[0].Visible = true;
+            //    listPanel[1].Visible = false;
+            //    listPanel[2].Visible = false;
+            //    listPanel[3].Visible = false;
+            //}
+            //else if (listPanel[2].Visible)
+            //{
+            //    listPanel[0].Visible = false;
+            //    listPanel[1].Visible = true;
+            //    listPanel[2].Visible = false;
+            //    listPanel[3].Visible = false;
+            //}
+            //else if (listPanel[3].Visible)
+            //{
+            //    listPanel[0].Visible = false;
+            //    listPanel[1].Visible = false;
+            //    listPanel[2].Visible = true;
+            //    listPanel[3].Visible = false;
+            //}
+
         }
 
         private void Home_Load(object sender, EventArgs e)
