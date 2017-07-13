@@ -16,9 +16,7 @@ namespace PalletCard
         bool sectionbtns;
         int A = 1;
         bool control;
-        int numberUp, jobGanged, paperSectionNo, heightMM, invoiceCustomerCode, qtyRequired;
-        string jobNo, resourceID, name, id, workingSize, description, code, jobDesc, invoiceCustomerName, ref7;
-        bool jobCompleted, jobCancelled;
+        string jobNo;
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -47,7 +45,7 @@ namespace PalletCard
                 myAdapter.Fill(operations);
                 dataGridView1.DataSource = operations;
             }
-            listPanel[0].BringToFront();
+            returnpaper0.BringToFront();
             lblJobNo.Visible = false;
             lblPress.Visible = false;
             lblReturnPaper.Visible = false;
@@ -104,7 +102,7 @@ namespace PalletCard
 
         private void btnPalletHeight_Click(object sender, EventArgs e)
         {
-            listPanel[4].BringToFront();
+            returnpaper4.BringToFront();
             lblPrint1.Text = dataGridView1.Rows[0].Cells[16].Value.ToString();
             lblPrint2.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
             lblPrint3.Text = lblPheight.Text;
@@ -113,7 +111,7 @@ namespace PalletCard
             lblPrint6.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
         }
 
-        // Pallet Height textBox
+        // Pallet Height textBox calculation for Return Paper
         private void tbxPalletHeight_TextChanged(object sender, EventArgs e)
         {
             TextBox objTextBox = (TextBox)sender;
@@ -137,7 +135,8 @@ namespace PalletCard
         private void btnReturnPaper_Click(object sender, EventArgs e)
         {
                 lblReturnPaper.Visible = true;
-                listPanel[2].BringToFront();
+                lblReturnPaper.Text = "Return Paper";
+                returnpaper2.BringToFront();
                 index = 2;
                 jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
 
@@ -152,7 +151,7 @@ namespace PalletCard
                 if (x == y) { control = true; }
             }
             if (control) {                               
-                listPanel[3].BringToFront();
+                returnpaper3.BringToFront();
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 lbltextBoxDescription.Text = d;
                 lbltextBoxDescription.Visible = true;
@@ -198,21 +197,11 @@ namespace PalletCard
             }
         }
 
-        //private void btnNext_Click(object sender, EventArgs e)
-        //{
-        //    if (index < listPanel.Count - 1)
-        //        listPanel[++index].BringToFront();
-        //}
-
         private void btnBack_Click(object sender, EventArgs e)
         {
-            //if (index > 0)
-            //    listPanel[--index].BringToFront();
-
-
             if (index == 1)
             { 
-            listPanel[0].BringToFront();
+            returnpaper0.BringToFront();
             lblReturnPaper.Visible = false;
             lbltextBoxDescription.Visible = false;
             lblWorkingSize.Visible = false;
@@ -221,7 +210,7 @@ namespace PalletCard
             }
             else if (index == 2)
             { 
-            listPanel[1].BringToFront();
+            returnpaper1.BringToFront();
             lblReturnPaper.Visible = true;
             lbltextBoxDescription.Visible = false;
             lblWorkingSize.Visible = false;
@@ -229,13 +218,23 @@ namespace PalletCard
             }
             else if (index == 3)
             { 
-            listPanel[2].BringToFront();
+            returnpaper2.BringToFront();
             lblWorkingSize.Visible = false;
             index = 2;
+                // if no section buttons go straight back to Choose Action screen
+                if (returnpaper2.Controls.Count == 0)
+                    {
+                        returnpaper1.BringToFront();
+                        lblReturnPaper.Visible = true;
+                        lbltextBoxDescription.Visible = false;
+                        lblWorkingSize.Visible = false;
+                        index = 1;
+                        sectionbtns = false;
+                    }
                 }
             else if (index == 4)
             { 
-            listPanel[3].BringToFront();
+            returnpaper3.BringToFront();
             lblReturnPaper.Visible = true;
             lbltextBoxDescription.Visible = false;
             lblWorkingSize.Visible = false;
@@ -243,37 +242,6 @@ namespace PalletCard
             tbxPalletHeight.Text = "";
             index = 3;
             }
-
-
-
-            //if (listPanel[0].Visible)
-            //{
-            //    listPanel[2].Visible = true;
-            //    listPanel[1].Visible = false;
-            //    listPanel[3].Visible = false;
-            //}
-            //else if (listPanel[1].Visible)
-            //{
-            //    listPanel[0].Visible = true;
-            //    listPanel[1].Visible = false;
-            //    listPanel[2].Visible = false;
-            //    listPanel[3].Visible = false;
-            //}
-            //else if (listPanel[2].Visible)
-            //{
-            //    listPanel[0].Visible = false;
-            //    listPanel[1].Visible = true;
-            //    listPanel[2].Visible = false;
-            //    listPanel[3].Visible = false;
-            //}
-            //else if (listPanel[3].Visible)
-            //{
-            //    listPanel[0].Visible = false;
-            //    listPanel[1].Visible = false;
-            //    listPanel[2].Visible = true;
-            //    listPanel[3].Visible = false;
-            //}
-
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -328,7 +296,7 @@ namespace PalletCard
                 {
                     lblPress.Text = "710UV";
                     lblPress.Visible = true;
-                    listPanel[1].BringToFront();
+                    returnpaper1.BringToFront();
                 }
                 else
                 {
@@ -338,58 +306,18 @@ namespace PalletCard
             }
             catch (Exception) { }
             index = 1;
+            returnpaper2.Controls.Clear();
         }
-        //private void getSection()
-        //{
-        //    jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
-        //    resourceID = dataGridView1.Rows[0].Cells[1].Value.ToString();
-
-        //    //loop through datagrid rows                    
-        //    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-        //    {
-        //        //if datagrid is not empty create a button for each row at cells[11] - "Expr1"
-
-        //        if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
-        //        {
-        //            for (int j = 0; j < 1; j++)
-        //            {
-        //                Button btn = new Button();
-        //                this.Controls.Add(btn);
-        //                btn.Top = A * 80;
-        //                btn.Height = 50;
-        //                btn.Width = 500;
-        //                btn.BackColor = Color.SteelBlue;
-        //                btn.Font = new Font("Microsoft Sans Serif", 13.25f);
-        //                btn.ForeColor = Color.White;
-        //                btn.Left = 260;
-        //                btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-        //                A = A + 1;
-        //                btn.Click += new System.EventHandler(this.expr1);
-        //            }
-        //        }        
-        //    }
-        //}
 
         //Dynamic button click - Section buttons, Return Paper work flow
         private void expr1(object sender, EventArgs e) {
             Button btn = sender as Button;
-
-            //foreach (Control c in this.Controls)
-            //{
-            //    if (c is Button)
-            //    {
-            //        Button bt = c as Button;
-            //        MessageBox.Show(bt.Text);
-            //    }
-            //}
-            //MessageBox.Show(btn.Text);
-
-            listPanel[3].BringToFront();
+            returnpaper3.BringToFront();
             lblWorkingSize.Visible = true;
             lblWorkingSize.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-            index = 4;
-            lbltextBoxDescription.Text = btn.Text;
             lbltextBoxDescription.Visible = true;
+            lbltextBoxDescription.Text = btn.Text;
+            index = 4;
 
             //filter datagridview1 with the button text choice
             try
@@ -398,14 +326,6 @@ namespace PalletCard
             }
             catch (Exception) { }
 
-
-
-            //sectionbtns = true;
-
-            //for (int ix = this.Controls.Count - 1; ix >= 0; ix--)
-            //{
-            //    if (this.Controls[ix] is Button ) this.Controls[ix].Dispose();
-            //}
         }
     }
 }
