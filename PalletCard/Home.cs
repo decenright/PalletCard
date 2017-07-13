@@ -17,6 +17,7 @@ namespace PalletCard
         int A = 1;
         bool control;
         string jobNo;
+        bool searchChanged;
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -55,6 +56,8 @@ namespace PalletCard
             searchBox.Focus();
             sectionbtns = true;
             tbxPalletHeight.Text = null;
+
+            searchChanged = false;
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -139,6 +142,7 @@ namespace PalletCard
                 returnpaper2.BringToFront();
                 index = 2;
                 jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            searchChanged = false;
 
             //loop through datagridview to see if each value of field "Expr1" is the same
             string x;
@@ -177,11 +181,11 @@ namespace PalletCard
                                     { 
                                         Button btn = new Button();
                                         this.returnpaper2.Controls.Add(btn);
-                                        btn.Top = A * 80;
-                                        btn.Height = 48;
+                                        btn.Top = A * 100;
+                                        btn.Height = 80;
                                         btn.Width = 465;
                                         btn.BackColor = Color.SteelBlue;
-                                        btn.Font = new Font("Microsoft Sans Serif", 13.25f);
+                                        btn.Font = new Font("Microsoft Sans Serif", 20);
                                         btn.ForeColor = Color.White;
                                         btn.Left = 30;
                                         btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
@@ -211,7 +215,7 @@ namespace PalletCard
             else if (index == 2)
             { 
             returnpaper1.BringToFront();
-            lblReturnPaper.Visible = true;
+            lblReturnPaper.Visible = false;
             lbltextBoxDescription.Visible = false;
             lblWorkingSize.Visible = false;
             index = 1;
@@ -225,7 +229,7 @@ namespace PalletCard
                 if (returnpaper2.Controls.Count == 0)
                     {
                         returnpaper1.BringToFront();
-                        lblReturnPaper.Visible = true;
+                        lblReturnPaper.Visible = false;
                         lbltextBoxDescription.Visible = false;
                         lblWorkingSize.Visible = false;
                         index = 1;
@@ -286,6 +290,7 @@ namespace PalletCard
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            searchChanged = false;
             try
             {
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%'", searchBox.Text.Trim().Replace("'", "''"));
@@ -306,7 +311,11 @@ namespace PalletCard
             }
             catch (Exception) { }
             index = 1;
-            returnpaper2.Controls.Clear();
+            if (searchChanged == true)
+                { 
+                returnpaper2.Controls.Clear();
+                }
+            A = 1;
         }
 
         //Dynamic button click - Section buttons, Return Paper work flow
@@ -317,7 +326,7 @@ namespace PalletCard
             lblWorkingSize.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
             lbltextBoxDescription.Visible = true;
             lbltextBoxDescription.Text = btn.Text;
-            index = 4;
+            index = 4;    
 
             //filter datagridview1 with the button text choice
             try
@@ -326,6 +335,16 @@ namespace PalletCard
             }
             catch (Exception) { }
 
+        }
+
+        private void btnPalletCard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            searchChanged = true;
         }
     }
 }
