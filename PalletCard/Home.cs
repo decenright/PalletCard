@@ -54,10 +54,8 @@ namespace PalletCard
             lblWorkingSize.Visible = false;
             searchBox.Text = "";
             searchBox.Focus();
-            sectionbtns = true;
+            sectionbtns = false;
             tbxPalletHeight.Text = null;
-
-            searchChanged = false;
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -142,7 +140,6 @@ namespace PalletCard
                 returnpaper2.BringToFront();
                 index = 2;
                 jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
-            searchChanged = false;
 
             //loop through datagridview to see if each value of field "Expr1" is the same
             string x;
@@ -197,7 +194,6 @@ namespace PalletCard
                         }
                     }
                 sectionbtns = true;
-                index = 3;
             }
         }
 
@@ -232,8 +228,7 @@ namespace PalletCard
                         lblReturnPaper.Visible = false;
                         lbltextBoxDescription.Visible = false;
                         lblWorkingSize.Visible = false;
-                        index = 1;
-                        sectionbtns = false;
+                        index = 1;                      
                     }
                 }
             else if (index == 4)
@@ -290,14 +285,15 @@ namespace PalletCard
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            searchChanged = false;
             try
             {
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%'", searchBox.Text.Trim().Replace("'", "''"));
                 lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                 lblJobNo.Visible = true;
                 int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
-                if (resourceID == 5)
+                //if (resourceID == 5)
+                //if (dataGridView1.RowCount > 0)
+                if (dataGridView1.Rows[0].Cells[0].Value != null)
                 {
                     lblPress.Text = "710UV";
                     lblPress.Visible = true;
@@ -309,7 +305,10 @@ namespace PalletCard
                     MessageBox.Show("The Job number you entered is not on this press");
                 }
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+                MessageBox.Show("The Job number you entered is not on this press");
+            }
             index = 1;
             if (searchChanged == true)
                 { 
