@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.searchBox = new System.Windows.Forms.TextBox();
@@ -64,6 +67,7 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lbltextBoxDescription = new System.Windows.Forms.TextBox();
+            this.lblPaperType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.returnpaper1.SuspendLayout();
             this.returnpaper3.SuspendLayout();
@@ -72,17 +76,41 @@
             // 
             // dataGridView1
             // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 759);
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridView1.Location = new System.Drawing.Point(4, 871);
             this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(782, 165);
+            this.dataGridView1.Size = new System.Drawing.Size(782, 147);
             this.dataGridView1.TabIndex = 0;
             // 
             // searchBox
             // 
             this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBox.Location = new System.Drawing.Point(277, 41);
+            this.searchBox.Location = new System.Drawing.Point(237, 41);
             this.searchBox.Multiline = true;
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(241, 71);
@@ -93,46 +121,49 @@
             // lblJobNo
             // 
             this.lblJobNo.BackColor = System.Drawing.Color.DarkCyan;
-            this.lblJobNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJobNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblJobNo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblJobNo.Location = new System.Drawing.Point(4, 40);
-            this.lblJobNo.MaximumSize = new System.Drawing.Size(240, 100);
-            this.lblJobNo.MinimumSize = new System.Drawing.Size(240, 100);
+            this.lblJobNo.MaximumSize = new System.Drawing.Size(200, 80);
+            this.lblJobNo.MinimumSize = new System.Drawing.Size(200, 80);
             this.lblJobNo.Name = "lblJobNo";
             this.lblJobNo.Padding = new System.Windows.Forms.Padding(5);
-            this.lblJobNo.Size = new System.Drawing.Size(240, 100);
+            this.lblJobNo.Size = new System.Drawing.Size(200, 80);
             this.lblJobNo.TabIndex = 3;
             this.lblJobNo.Text = "lblJobNo";
+            this.lblJobNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblJobNo.Visible = false;
             // 
             // lblPress
             // 
             this.lblPress.BackColor = System.Drawing.Color.DarkCyan;
-            this.lblPress.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPress.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPress.Location = new System.Drawing.Point(4, 144);
-            this.lblPress.MaximumSize = new System.Drawing.Size(240, 100);
-            this.lblPress.MinimumSize = new System.Drawing.Size(240, 100);
+            this.lblPress.Location = new System.Drawing.Point(4, 122);
+            this.lblPress.MaximumSize = new System.Drawing.Size(200, 80);
+            this.lblPress.MinimumSize = new System.Drawing.Size(200, 80);
             this.lblPress.Name = "lblPress";
             this.lblPress.Padding = new System.Windows.Forms.Padding(5);
-            this.lblPress.Size = new System.Drawing.Size(240, 100);
+            this.lblPress.Size = new System.Drawing.Size(200, 80);
             this.lblPress.TabIndex = 4;
             this.lblPress.Text = "lblPress";
+            this.lblPress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblPress.Visible = false;
             // 
             // lblReturnPaper
             // 
             this.lblReturnPaper.BackColor = System.Drawing.Color.DarkCyan;
-            this.lblReturnPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReturnPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReturnPaper.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblReturnPaper.Location = new System.Drawing.Point(4, 248);
-            this.lblReturnPaper.MaximumSize = new System.Drawing.Size(240, 100);
-            this.lblReturnPaper.MinimumSize = new System.Drawing.Size(240, 100);
+            this.lblReturnPaper.Location = new System.Drawing.Point(4, 204);
+            this.lblReturnPaper.MaximumSize = new System.Drawing.Size(200, 80);
+            this.lblReturnPaper.MinimumSize = new System.Drawing.Size(200, 80);
             this.lblReturnPaper.Name = "lblReturnPaper";
             this.lblReturnPaper.Padding = new System.Windows.Forms.Padding(5);
-            this.lblReturnPaper.Size = new System.Drawing.Size(240, 100);
+            this.lblReturnPaper.Size = new System.Drawing.Size(200, 80);
             this.lblReturnPaper.TabIndex = 5;
             this.lblReturnPaper.Text = "lblReturn Paper";
+            this.lblReturnPaper.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblReturnPaper.Visible = false;
             // 
             // btnSearch
@@ -141,7 +172,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearch.Location = new System.Drawing.Point(552, 41);
+            this.btnSearch.Location = new System.Drawing.Point(512, 41);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(200, 71);
             this.btnSearch.TabIndex = 2;
@@ -152,22 +183,23 @@
             // lblWorkingSize
             // 
             this.lblWorkingSize.BackColor = System.Drawing.Color.DarkCyan;
-            this.lblWorkingSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWorkingSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWorkingSize.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblWorkingSize.Location = new System.Drawing.Point(4, 456);
-            this.lblWorkingSize.MaximumSize = new System.Drawing.Size(240, 100);
-            this.lblWorkingSize.MinimumSize = new System.Drawing.Size(240, 100);
+            this.lblWorkingSize.Location = new System.Drawing.Point(4, 450);
+            this.lblWorkingSize.MaximumSize = new System.Drawing.Size(200, 80);
+            this.lblWorkingSize.MinimumSize = new System.Drawing.Size(200, 80);
             this.lblWorkingSize.Name = "lblWorkingSize";
             this.lblWorkingSize.Padding = new System.Windows.Forms.Padding(5);
-            this.lblWorkingSize.Size = new System.Drawing.Size(240, 100);
+            this.lblWorkingSize.Size = new System.Drawing.Size(200, 80);
             this.lblWorkingSize.TabIndex = 16;
             this.lblWorkingSize.Text = "lblWorkingSize";
+            this.lblWorkingSize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblWorkingSize.Visible = false;
             // 
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(30, 582);
+            this.btnBack.Location = new System.Drawing.Point(18, 582);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(176, 66);
             this.btnBack.TabIndex = 17;
@@ -178,7 +210,7 @@
             // returnpaper0
             // 
             this.returnpaper0.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returnpaper0.Location = new System.Drawing.Point(250, 147);
+            this.returnpaper0.Location = new System.Drawing.Point(214, 147);
             this.returnpaper0.Name = "returnpaper0";
             this.returnpaper0.Size = new System.Drawing.Size(522, 545);
             this.returnpaper0.TabIndex = 18;
@@ -189,7 +221,7 @@
             this.returnpaper1.Controls.Add(this.btnBackupVarnish);
             this.returnpaper1.Controls.Add(this.btnReturnPaper);
             this.returnpaper1.Controls.Add(this.btnPalletCard);
-            this.returnpaper1.Location = new System.Drawing.Point(247, 147);
+            this.returnpaper1.Location = new System.Drawing.Point(211, 147);
             this.returnpaper1.Name = "returnpaper1";
             this.returnpaper1.Size = new System.Drawing.Size(525, 545);
             this.returnpaper1.TabIndex = 4;
@@ -246,7 +278,7 @@
             // 
             // returnpaper2
             // 
-            this.returnpaper2.Location = new System.Drawing.Point(247, 147);
+            this.returnpaper2.Location = new System.Drawing.Point(211, 147);
             this.returnpaper2.Name = "returnpaper2";
             this.returnpaper2.Size = new System.Drawing.Size(528, 545);
             this.returnpaper2.TabIndex = 8;
@@ -257,7 +289,7 @@
             this.returnpaper3.Controls.Add(this.lblPheight);
             this.returnpaper3.Controls.Add(this.tbxPalletHeight);
             this.returnpaper3.Controls.Add(this.lblPalletHeight);
-            this.returnpaper3.Location = new System.Drawing.Point(247, 147);
+            this.returnpaper3.Location = new System.Drawing.Point(211, 147);
             this.returnpaper3.Name = "returnpaper3";
             this.returnpaper3.Size = new System.Drawing.Size(528, 545);
             this.returnpaper3.TabIndex = 1;
@@ -317,9 +349,9 @@
             this.returnpaper4.Controls.Add(this.lblPrint3);
             this.returnpaper4.Controls.Add(this.lblPrint2);
             this.returnpaper4.Controls.Add(this.lblPrint1);
-            this.returnpaper4.Location = new System.Drawing.Point(247, 147);
+            this.returnpaper4.Location = new System.Drawing.Point(211, 147);
             this.returnpaper4.Name = "returnpaper4";
-            this.returnpaper4.Size = new System.Drawing.Size(525, 545);
+            this.returnpaper4.Size = new System.Drawing.Size(525, 1109);
             this.returnpaper4.TabIndex = 6;
             // 
             // label2
@@ -337,7 +369,7 @@
             this.btnPrint.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnPrint.Location = new System.Drawing.Point(57, 440);
+            this.btnPrint.Location = new System.Drawing.Point(54, 411);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(404, 80);
             this.btnPrint.TabIndex = 7;
@@ -434,7 +466,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(30, 666);
+            this.btnCancel.Location = new System.Drawing.Point(18, 666);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(176, 66);
             this.btnCancel.TabIndex = 19;
@@ -446,28 +478,48 @@
             // 
             this.lbltextBoxDescription.BackColor = System.Drawing.Color.DarkCyan;
             this.lbltextBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbltextBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltextBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltextBoxDescription.ForeColor = System.Drawing.Color.White;
-            this.lbltextBoxDescription.Location = new System.Drawing.Point(4, 352);
-            this.lbltextBoxDescription.MaximumSize = new System.Drawing.Size(240, 100);
-            this.lbltextBoxDescription.MinimumSize = new System.Drawing.Size(240, 100);
+            this.lbltextBoxDescription.Location = new System.Drawing.Point(4, 286);
+            this.lbltextBoxDescription.MaximumSize = new System.Drawing.Size(200, 80);
+            this.lbltextBoxDescription.MinimumSize = new System.Drawing.Size(200, 80);
             this.lbltextBoxDescription.Multiline = true;
             this.lbltextBoxDescription.Name = "lbltextBoxDescription";
             this.lbltextBoxDescription.ReadOnly = true;
-            this.lbltextBoxDescription.Size = new System.Drawing.Size(240, 100);
+            this.lbltextBoxDescription.Size = new System.Drawing.Size(200, 80);
             this.lbltextBoxDescription.TabIndex = 20;
+            this.lbltextBoxDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.lbltextBoxDescription.Visible = false;
+            // 
+            // lblPaperType
+            // 
+            this.lblPaperType.BackColor = System.Drawing.Color.DarkCyan;
+            this.lblPaperType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaperType.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblPaperType.Location = new System.Drawing.Point(4, 368);
+            this.lblPaperType.MaximumSize = new System.Drawing.Size(200, 80);
+            this.lblPaperType.MinimumSize = new System.Drawing.Size(200, 80);
+            this.lblPaperType.Name = "lblPaperType";
+            this.lblPaperType.Padding = new System.Windows.Forms.Padding(5);
+            this.lblPaperType.Size = new System.Drawing.Size(200, 80);
+            this.lblPaperType.TabIndex = 21;
+            this.lblPaperType.Text = "lblPaperType";
+            this.lblPaperType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPaperType.Visible = false;
             // 
             // Home
             // 
+            this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(784, 1053);
-            this.Controls.Add(this.returnpaper2);
+            this.ClientSize = new System.Drawing.Size(736, 1053);
+            this.Controls.Add(this.lblPaperType);
             this.Controls.Add(this.returnpaper3);
-            this.Controls.Add(this.returnpaper1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.returnpaper4);
+            this.Controls.Add(this.returnpaper2);
+            this.Controls.Add(this.returnpaper1);
             this.Controls.Add(this.lbltextBoxDescription);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnBack);
@@ -477,7 +529,6 @@
             this.Controls.Add(this.lblPress);
             this.Controls.Add(this.lblJobNo);
             this.Controls.Add(this.searchBox);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.returnpaper0);
             this.Name = "Home";
             this.Text = "Pallet Card App 710UV";
@@ -530,6 +581,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox lbltextBoxDescription;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPaperType;
     }
 }
 
