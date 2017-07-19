@@ -155,7 +155,7 @@ namespace PalletCard
             }
             catch (Exception)
             {
-                MessageBox.Show("The Job number you entered is not on this press");
+                MessageBox.Show("Tap Cancel and search again");
             }
             index = 1;
             if (searchChanged == true)
@@ -258,7 +258,6 @@ namespace PalletCard
             }
             catch (Exception) { }
 
-
         }
 
         private void btnPalletHeight_Click(object sender, EventArgs e)
@@ -275,17 +274,25 @@ namespace PalletCard
 
         // Pallet Height textBox calculation for Return Paper
         private void tbxPalletHeight_TextChanged(object sender, EventArgs e)
+
         {
-            TextBox objTextBox = (TextBox)sender;
-            int p1;
-            int p2;
-            if (!String.IsNullOrEmpty(tbxPalletHeight.Text))
+            try
+            { 
+                TextBox objTextBox = (TextBox)sender;
+                int p1;
+                int p2;
+                if (!String.IsNullOrEmpty(tbxPalletHeight.Text))
+                {
+                    p1 = Convert.ToInt32(objTextBox.Text);
+                    p2 = Convert.ToInt32(this.dataGridView1.Rows[0].Cells[20].Value);
+                    int result = p1 * p2 / 1000;
+                    string r1 = Convert.ToString(result);
+                    lblPheight.Text = (r1 + " sheets");
+                }
+            }
+            catch
             {
-                p1 = Convert.ToInt32(objTextBox.Text);
-                p2 = Convert.ToInt32(this.dataGridView1.Rows[0].Cells[20].Value);
-                int result = p1 * p2 / 1000;
-                string r1 = Convert.ToString(result);
-                lblPheight.Text = (r1 + " sheets");
+                MessageBox.Show("Please enter a valid number");
             }
         }
 
