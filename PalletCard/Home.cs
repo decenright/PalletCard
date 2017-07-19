@@ -6,9 +6,6 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Data.SqlClient;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
-
 
 
 namespace PalletCard
@@ -23,207 +20,11 @@ namespace PalletCard
         string jobNo;
         bool searchChanged;
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 5";
-            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
-            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
-            myAdapter.SelectCommand = myCommand;
-            DataSet tharData = new DataSet();
-            try
-            {
-                myConnection.Open();
-                myAdapter.Fill(tharData);
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-            using (DataTable operations = new DataTable())
-            {
-                myAdapter.Fill(operations);
-                dataGridView1.DataSource = operations;
-            }
-            returnpaper0.BringToFront();
-            lblJobNo.Visible = false;
-            lblPress.Visible = false;
-            lblReturnPaper.Visible = false;
-            lbltextBoxDescription.Visible = false;
-            lblPaperType.Visible = false;
-            lblWorkingSize.Visible = false;
-            searchBox.Text = "";
-            searchBox.Focus();
-            sectionbtns = false;
-            tbxPalletHeight.Text = null;
-            btnSearch.Visible = true;
-        }
-
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(PrintImage);
-            btnPrint.Visible = false;
-            //pd.Print();
-            btnPrint.Visible = true;
-
-
-
-
-
-
-            //ReportDocument myDataReport = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-            //myDataReport.Load(@"S:\\Production Admin\\Declan Enright\\Pallet Card Project\\Github\PalletCardApp\\PalletCard\\CrystalReport1.rpt");
-            //myDataReport.SetParameterValue("JobNo", searchBox.Text);
-
-
-
-            //ReportDocument myDataReport = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-            //myDataReport.Load(@"C:\Layouts\Report.rpt");
-            //ParameterField myParam = new ParameterField();
-            //ParameterDiscreteValue myDiscreteValue = new ParameterDiscreteValue();
-            //myParam.ParameterFieldName = "MyParameter";
-            //myDiscreteValue.Value = "Hello";
-            //myParam.CurrentValues.Add(myDiscreteValue);
-            //myDataReport.ParameterFields.Add(myParam);
-            //myDataReport.SetDataSource(myDataTable);
-            //myDataReport.SetParameterValue("MyParameter", "Hello");
-            //Stream returnData = myDataReport.ExportToStream(PortableDocFormat);
-            //myDataReport.Close();
-            //return returnData;
-
-
-
-
-
-
-
-
-
-
-            ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load("S:\\Production Admin\\Declan Enright\\Pallet Card Project\\Github\\PalletCardApp\\PalletCard\\CrystalReport1.rpt");
-            cryRpt.SetParameterValue("JobNo", searchBox.Text);
-
-            TableLogOnInfos crtableLogoninfos = new TableLogOnInfos();
-            TableLogOnInfo crtableLogoninfo = new TableLogOnInfo();
-            ConnectionInfo crConnectionInfo = new ConnectionInfo();
-            Tables CrTables;
-
-            crConnectionInfo.ServerName = "CMDB2";
-            crConnectionInfo.DatabaseName = "Thardata";
-            crConnectionInfo.UserID = "PalletCardAdmin";
-            crConnectionInfo.Password = "Pa!!etCard01";
-
-            CrTables = cryRpt.Database.Tables;
-            foreach (Table CrTable in CrTables)
-            {
-                crtableLogoninfo = CrTable.LogOnInfo;
-                crtableLogoninfo.ConnectionInfo = crConnectionInfo;
-                CrTable.ApplyLogOnInfo(crtableLogoninfo);
-            }
-
-            cryRpt.Refresh();
-            cryRpt.PrintToPrinter(2, true, 1, 2);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //ParameterFields paramFields = crystalReportViewer1.ParameterFieldInfo;
-
-            //string reportName; 
-            //ReportDocument rpt = new ReportDocument();
-            //reportName = "Works Instruction - Job Docket";
-            //string reportPath = Application.StartupPath + "\\P:\\Live Reports & Documents\\Documents\\Works Instruction\\" + reportName;
-            //rpt.Load(reportPath);
-            //rpt.SetParameterValue("@JobNo", searchBox.Text.Trim());
-
-
-
-
-            //CrystalDecisions.CrystalReports.Engine.ReportDocument cryRpt = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-            //cryRpt.Load("P:\\Live Reports & Documents\\Documents\\Works Instruction - Job Docket.rpt");
-
-            //CrystalDecisions.CrystalReports.Engine.ParameterFieldDefinitions crParameterFieldDefinitions;
-            //CrystalDecisions.CrystalReports.Engine.ParameterFieldDefinition crParameterFieldDefinition;
-            //CrystalDecisions.Shared.ParameterValues crParameterValues = new CrystalDecisions.Shared.ParameterValues();
-            //CrystalDecisions.Shared.ParameterDiscreteValue crParameterDiscreteValue = new CrystalDecisions.Shared.ParameterDiscreteValue();
-
-            //crParameterDiscreteValue.Value = searchBox.Text;
-            //crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
-            //crParameterFieldDefinition = crParameterFieldDefinitions["JobNo"];
-            //crParameterValues = crParameterFieldDefinition.CurrentValues;
-
-            //crParameterValues.Clear();
-            //crParameterValues.Add(crParameterDiscreteValue);
-            //crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
-
-            //crystalReportViewer1.ReportSource = cryRpt;
-            //crystalReportViewer1.Refresh();
-
-
-
-
-
-            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lblReturnPaper.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbltextBoxDescription.Text + "','" + this.lblWorkingSize.Text + "','" + this.lblPrint3.Text + "');";
-            //SqlConnection conDatabase = new SqlConnection(constring);
-            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            //SqlDataReader myReader;
-            //try
-            //{
-            //    conDatabase.Open();
-            //    myReader = cmdDatabase.ExecuteReader();
-            //    MessageBox.Show("Saved");
-            //    while (myReader.Read())
-            //    {
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-        }
-
-        void PrintImage(object o, PrintPageEventArgs e)
-        {
-            int x = SystemInformation.WorkingArea.X;
-            int y = SystemInformation.WorkingArea.Y;
-            int width = this.Width;
-            int height = this.Height;
-            Rectangle bounds = new Rectangle(x, y, width, height);
-            Bitmap img = new Bitmap(width, height);
-            returnpaper4.DrawToBitmap(img, bounds);
-            Point p = new Point(100, 100);
-            e.Graphics.DrawImage(img, p);
-        }
-
         public Home()
         {
             InitializeComponent();
         }
-
-        
-
+       
         private void btnBack_Click(object sender, EventArgs e)
         {
             if (index==0)
@@ -251,6 +52,7 @@ namespace PalletCard
             lbltextBoxDescription.Visible = false;
             lblPaperType.Visible = false;    
             lblWorkingSize.Visible = false;
+            btnBack.Visible = false;
             index = 1;
             }
             else if (index == 3)
@@ -274,6 +76,7 @@ namespace PalletCard
                         lblPaperType.Visible = false;
                         lblWorkingSize.Visible = false;
                         tbxPalletHeight.Text = "";
+                        btnBack.Visible = false;
                         index = 1;                      
                     }
                 }
@@ -328,6 +131,7 @@ namespace PalletCard
             listPanel[3] = returnpaper3;
             listPanel[4] = returnpaper4;
             listPanel[0].BringToFront();
+            btnBack.Visible = false;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -338,8 +142,6 @@ namespace PalletCard
                 lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                 lblJobNo.Visible = true;
                 int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
-                //if (resourceID == 5)
-                //if (dataGridView1.RowCount > 0)
                 if (dataGridView1.Rows[0].Cells[0].Value != null)
                 {
                     lblPress.Text = "710UV";
@@ -349,7 +151,6 @@ namespace PalletCard
                 else
                 {
                     lblPress.Visible = false;
-                    MessageBox.Show("The Job number you entered is not on this press");
                 }
             }
             catch (Exception)
@@ -362,9 +163,14 @@ namespace PalletCard
                 returnpaper2.Controls.Clear();
                 }
             A = 1;
-            btnBack.Visible = true;
+            btnBack.Visible = false;
         }
-        
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            searchChanged = true;
+        }
+
         private void btnReturnPaper_Click(object sender, EventArgs e)
         {
                 lblReturnPaper.Visible = true;
@@ -372,6 +178,7 @@ namespace PalletCard
                 returnpaper2.BringToFront();
                 index = 2;
                 jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+                btnBack.Visible = true;
 
             //loop through datagridview to see if each value of field "Expr1" is the same
             string x;
@@ -454,17 +261,6 @@ namespace PalletCard
 
         }
 
-        private void btnPalletCard_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void searchBox_TextChanged(object sender, EventArgs e)
-        {
-            searchChanged = true;
-        }
-
-
         private void btnPalletHeight_Click(object sender, EventArgs e)
         {
             returnpaper4.BringToFront();
@@ -493,5 +289,107 @@ namespace PalletCard
             }
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(PrintImage);
+            btnPrint.Visible = false;
+            //pd.Print();
+            btnPrint.Visible = true;
+
+            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lblReturnPaper.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbltextBoxDescription.Text + "','" + this.lblWorkingSize.Text + "','" + this.lblPrint3.Text + "');";
+            //SqlConnection conDatabase = new SqlConnection(constring);
+            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            //SqlDataReader myReader;
+            //try
+            //{
+            //    conDatabase.Open();
+            //    myReader = cmdDatabase.ExecuteReader();
+            //    MessageBox.Show("Saved");
+            //    while (myReader.Read())
+            //    {
+
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+        }
+
+        void PrintImage(object o, PrintPageEventArgs e)
+        {
+            int x = SystemInformation.WorkingArea.X;
+            int y = SystemInformation.WorkingArea.Y;
+            int width = this.Width;
+            int height = this.Height;
+            Rectangle bounds = new Rectangle(x, y, width, height);
+            Bitmap img = new Bitmap(width, height);
+            returnpaper4.DrawToBitmap(img, bounds);
+            Point p = new Point(100, 100);
+            e.Graphics.DrawImage(img, p);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 5";
+            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+            myAdapter.SelectCommand = myCommand;
+            DataSet tharData = new DataSet();
+            try
+            {
+                myConnection.Open();
+                myAdapter.Fill(tharData);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            using (DataTable operations = new DataTable())
+            {
+                myAdapter.Fill(operations);
+                dataGridView1.DataSource = operations;
+            }
+            returnpaper0.BringToFront();
+            lblJobNo.Visible = false;
+            lblPress.Visible = false;
+            lblReturnPaper.Visible = false;
+            lbltextBoxDescription.Visible = false;
+            lblPaperType.Visible = false;
+            lblWorkingSize.Visible = false;
+            searchBox.Text = "";
+            searchBox.Focus();
+            sectionbtns = false;
+            tbxPalletHeight.Text = null;
+            btnSearch.Visible = true;
+        }
+
+        private void tbxPalletHeight_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxPalletHeight_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                SelectNextControl(ActiveControl, true, true, true, true);
+            }
+        }
+
+        private void searchBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnSearch_Click(searchBox, new EventArgs());
+        }
     }
 }
