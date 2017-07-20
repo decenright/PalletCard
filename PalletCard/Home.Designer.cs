@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.searchBox = new System.Windows.Forms.TextBox();
+            this.tbxSearchBox = new System.Windows.Forms.TextBox();
             this.lblJobNo = new System.Windows.Forms.Label();
             this.lblPress = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
@@ -59,7 +59,6 @@
             this.lbl2 = new System.Windows.Forms.TextBox();
             this.lbl3 = new System.Windows.Forms.Label();
             this.pnlRejectPaper1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.pnlReturnPaper3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
@@ -72,59 +71,67 @@
             this.lblPrint1 = new System.Windows.Forms.Label();
             this.pnlRejectPaper2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.tbxQtySheetsAffected = new System.Windows.Forms.TextBox();
+            this.btnDogEarsTIC = new System.Windows.Forms.Button();
+            this.btnMottle = new System.Windows.Forms.Button();
+            this.btnCreasing = new System.Windows.Forms.Button();
+            this.btnBladeLine = new System.Windows.Forms.Button();
+            this.btnPalletDamage = new System.Windows.Forms.Button();
+            this.btnCigarRoll = new System.Windows.Forms.Button();
+            this.btnOtherReason = new System.Windows.Forms.Button();
+            this.tbxOtherReason = new System.Windows.Forms.TextBox();
+            this.btnOKRejectPaper = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome1.SuspendLayout();
             this.pnlReturnPaper2.SuspendLayout();
-            this.pnlRejectPaper1.SuspendLayout();
             this.pnlReturnPaper3.SuspendLayout();
             this.pnlRejectPaper2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridView1.Location = new System.Drawing.Point(4, 871);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(730, 147);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.Visible = false;
             // 
-            // searchBox
+            // tbxSearchBox
             // 
-            this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBox.Location = new System.Drawing.Point(237, 41);
-            this.searchBox.Multiline = true;
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(241, 71);
-            this.searchBox.TabIndex = 1;
-            this.searchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
-            this.searchBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchBox_KeyUp);
+            this.tbxSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxSearchBox.Location = new System.Drawing.Point(237, 41);
+            this.tbxSearchBox.Multiline = true;
+            this.tbxSearchBox.Name = "tbxSearchBox";
+            this.tbxSearchBox.Size = new System.Drawing.Size(241, 71);
+            this.tbxSearchBox.TabIndex = 1;
+            this.tbxSearchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbxSearchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
+            this.tbxSearchBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchBox_KeyUp);
             // 
             // lblJobNo
             // 
@@ -236,7 +243,7 @@
             // 
             // btnRejectPaper
             // 
-            this.btnRejectPaper.BackColor = System.Drawing.Color.Silver;
+            this.btnRejectPaper.BackColor = System.Drawing.Color.SteelBlue;
             this.btnRejectPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRejectPaper.ForeColor = System.Drawing.Color.White;
             this.btnRejectPaper.Location = new System.Drawing.Point(35, 325);
@@ -407,20 +414,10 @@
             // 
             // pnlRejectPaper1
             // 
-            this.pnlRejectPaper1.Controls.Add(this.label3);
             this.pnlRejectPaper1.Location = new System.Drawing.Point(206, 147);
             this.pnlRejectPaper1.Name = "pnlRejectPaper1";
             this.pnlRejectPaper1.Size = new System.Drawing.Size(528, 700);
             this.pnlRejectPaper1.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(187, 216);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "pnlRejectPaper1";
             // 
             // pnlReturnPaper3
             // 
@@ -535,6 +532,16 @@
             // 
             // pnlRejectPaper2
             // 
+            this.pnlRejectPaper2.Controls.Add(this.btnOKRejectPaper);
+            this.pnlRejectPaper2.Controls.Add(this.tbxOtherReason);
+            this.pnlRejectPaper2.Controls.Add(this.btnOtherReason);
+            this.pnlRejectPaper2.Controls.Add(this.btnBladeLine);
+            this.pnlRejectPaper2.Controls.Add(this.btnPalletDamage);
+            this.pnlRejectPaper2.Controls.Add(this.btnCigarRoll);
+            this.pnlRejectPaper2.Controls.Add(this.btnCreasing);
+            this.pnlRejectPaper2.Controls.Add(this.btnMottle);
+            this.pnlRejectPaper2.Controls.Add(this.btnDogEarsTIC);
+            this.pnlRejectPaper2.Controls.Add(this.tbxQtySheetsAffected);
             this.pnlRejectPaper2.Controls.Add(this.label4);
             this.pnlRejectPaper2.Location = new System.Drawing.Point(206, 147);
             this.pnlRejectPaper2.Name = "pnlRejectPaper2";
@@ -544,11 +551,139 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(211, 224);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(147, 4);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.Size = new System.Drawing.Size(223, 29);
             this.label4.TabIndex = 0;
-            this.label4.Text = "pnlRejectPaper2";
+            this.label4.Text = "Qty Sheets Affected";
+            // 
+            // tbxQtySheetsAffected
+            // 
+            this.tbxQtySheetsAffected.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxQtySheetsAffected.Location = new System.Drawing.Point(140, 48);
+            this.tbxQtySheetsAffected.Multiline = true;
+            this.tbxQtySheetsAffected.Name = "tbxQtySheetsAffected";
+            this.tbxQtySheetsAffected.Size = new System.Drawing.Size(241, 63);
+            this.tbxQtySheetsAffected.TabIndex = 1;
+            // 
+            // btnDogEarsTIC
+            // 
+            this.btnDogEarsTIC.BackColor = System.Drawing.Color.LightCoral;
+            this.btnDogEarsTIC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDogEarsTIC.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDogEarsTIC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDogEarsTIC.Location = new System.Drawing.Point(76, 138);
+            this.btnDogEarsTIC.Name = "btnDogEarsTIC";
+            this.btnDogEarsTIC.Size = new System.Drawing.Size(150, 70);
+            this.btnDogEarsTIC.TabIndex = 2;
+            this.btnDogEarsTIC.Text = "Dog Ears/TIC";
+            this.btnDogEarsTIC.UseVisualStyleBackColor = false;
+            this.btnDogEarsTIC.Click += new System.EventHandler(this.btnDogEarsTIC_Click);
+            // 
+            // btnMottle
+            // 
+            this.btnMottle.BackColor = System.Drawing.Color.LightCoral;
+            this.btnMottle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMottle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMottle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnMottle.Location = new System.Drawing.Point(76, 228);
+            this.btnMottle.Name = "btnMottle";
+            this.btnMottle.Size = new System.Drawing.Size(150, 70);
+            this.btnMottle.TabIndex = 3;
+            this.btnMottle.Text = "Mottle";
+            this.btnMottle.UseVisualStyleBackColor = false;
+            this.btnMottle.Click += new System.EventHandler(this.btnMottle_Click);
+            // 
+            // btnCreasing
+            // 
+            this.btnCreasing.BackColor = System.Drawing.Color.LightCoral;
+            this.btnCreasing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreasing.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreasing.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCreasing.Location = new System.Drawing.Point(76, 316);
+            this.btnCreasing.Name = "btnCreasing";
+            this.btnCreasing.Size = new System.Drawing.Size(150, 70);
+            this.btnCreasing.TabIndex = 4;
+            this.btnCreasing.Text = "Creasing";
+            this.btnCreasing.UseVisualStyleBackColor = false;
+            this.btnCreasing.Click += new System.EventHandler(this.btnCreasing_Click);
+            // 
+            // btnBladeLine
+            // 
+            this.btnBladeLine.BackColor = System.Drawing.Color.LightCoral;
+            this.btnBladeLine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBladeLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBladeLine.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBladeLine.Location = new System.Drawing.Point(302, 316);
+            this.btnBladeLine.Name = "btnBladeLine";
+            this.btnBladeLine.Size = new System.Drawing.Size(150, 70);
+            this.btnBladeLine.TabIndex = 7;
+            this.btnBladeLine.Text = "Blade Line";
+            this.btnBladeLine.UseVisualStyleBackColor = false;
+            this.btnBladeLine.Click += new System.EventHandler(this.btnBladeLine_Click);
+            // 
+            // btnPalletDamage
+            // 
+            this.btnPalletDamage.BackColor = System.Drawing.Color.LightCoral;
+            this.btnPalletDamage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPalletDamage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPalletDamage.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPalletDamage.Location = new System.Drawing.Point(302, 228);
+            this.btnPalletDamage.Name = "btnPalletDamage";
+            this.btnPalletDamage.Size = new System.Drawing.Size(150, 70);
+            this.btnPalletDamage.TabIndex = 6;
+            this.btnPalletDamage.Text = "Pallet Damage";
+            this.btnPalletDamage.UseVisualStyleBackColor = false;
+            this.btnPalletDamage.Click += new System.EventHandler(this.btnPalletDamage_Click);
+            // 
+            // btnCigarRoll
+            // 
+            this.btnCigarRoll.BackColor = System.Drawing.Color.LightCoral;
+            this.btnCigarRoll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCigarRoll.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCigarRoll.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCigarRoll.Location = new System.Drawing.Point(302, 138);
+            this.btnCigarRoll.Name = "btnCigarRoll";
+            this.btnCigarRoll.Size = new System.Drawing.Size(150, 70);
+            this.btnCigarRoll.TabIndex = 5;
+            this.btnCigarRoll.Text = "Cigar Roll";
+            this.btnCigarRoll.UseVisualStyleBackColor = false;
+            this.btnCigarRoll.Click += new System.EventHandler(this.btnCigarRoll_Click);
+            // 
+            // btnOtherReason
+            // 
+            this.btnOtherReason.BackColor = System.Drawing.Color.LightCoral;
+            this.btnOtherReason.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOtherReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOtherReason.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnOtherReason.Location = new System.Drawing.Point(76, 408);
+            this.btnOtherReason.Name = "btnOtherReason";
+            this.btnOtherReason.Size = new System.Drawing.Size(150, 70);
+            this.btnOtherReason.TabIndex = 8;
+            this.btnOtherReason.Text = "Other Reason";
+            this.btnOtherReason.UseVisualStyleBackColor = false;
+            this.btnOtherReason.Click += new System.EventHandler(this.btnOtherReason_Click);
+            // 
+            // tbxOtherReason
+            // 
+            this.tbxOtherReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxOtherReason.Location = new System.Drawing.Point(76, 489);
+            this.tbxOtherReason.Multiline = true;
+            this.tbxOtherReason.Name = "tbxOtherReason";
+            this.tbxOtherReason.Size = new System.Drawing.Size(383, 110);
+            this.tbxOtherReason.TabIndex = 9;
+            this.tbxOtherReason.Text = "Enter Reason";
+            // 
+            // btnOKRejectPaper
+            // 
+            this.btnOKRejectPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOKRejectPaper.Location = new System.Drawing.Point(228, 635);
+            this.btnOKRejectPaper.Name = "btnOKRejectPaper";
+            this.btnOKRejectPaper.Size = new System.Drawing.Size(88, 62);
+            this.btnOKRejectPaper.TabIndex = 10;
+            this.btnOKRejectPaper.Text = "OK";
+            this.btnOKRejectPaper.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
@@ -556,11 +691,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1053);
-            this.Controls.Add(this.pnlReturnPaper2);
-            this.Controls.Add(this.pnlHome1);
-            this.Controls.Add(this.pnlReturnPaper1);
-            this.Controls.Add(this.pnlRejectPaper1);
             this.Controls.Add(this.pnlRejectPaper2);
+            this.Controls.Add(this.pnlHome1);
+            this.Controls.Add(this.pnlRejectPaper1);
+            this.Controls.Add(this.pnlReturnPaper1);
+            this.Controls.Add(this.pnlReturnPaper2);
             this.Controls.Add(this.pnlReturnPaper3);
             this.Controls.Add(this.pnlHome0);
             this.Controls.Add(this.lbl3);
@@ -573,7 +708,7 @@
             this.Controls.Add(this.lbl1);
             this.Controls.Add(this.lblPress);
             this.Controls.Add(this.lblJobNo);
-            this.Controls.Add(this.searchBox);
+            this.Controls.Add(this.tbxSearchBox);
             this.Name = "Home";
             this.Text = "Pallet Card App 710UV";
             this.Load += new System.EventHandler(this.Home_Load);
@@ -581,8 +716,6 @@
             this.pnlHome1.ResumeLayout(false);
             this.pnlReturnPaper2.ResumeLayout(false);
             this.pnlReturnPaper2.PerformLayout();
-            this.pnlRejectPaper1.ResumeLayout(false);
-            this.pnlRejectPaper1.PerformLayout();
             this.pnlReturnPaper3.ResumeLayout(false);
             this.pnlReturnPaper3.PerformLayout();
             this.pnlRejectPaper2.ResumeLayout(false);
@@ -595,7 +728,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.TextBox tbxSearchBox;
         private System.Windows.Forms.Label lblJobNo;
         private System.Windows.Forms.Label lblPress;
         private System.Windows.Forms.Label lbl1;
@@ -632,8 +765,17 @@
         private System.Windows.Forms.Label lblPrint2;
         private System.Windows.Forms.Label lblPrint1;
         private System.Windows.Forms.Panel pnlRejectPaper2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnBladeLine;
+        private System.Windows.Forms.Button btnPalletDamage;
+        private System.Windows.Forms.Button btnCigarRoll;
+        private System.Windows.Forms.Button btnCreasing;
+        private System.Windows.Forms.Button btnMottle;
+        private System.Windows.Forms.Button btnDogEarsTIC;
+        private System.Windows.Forms.TextBox tbxQtySheetsAffected;
+        private System.Windows.Forms.TextBox tbxOtherReason;
+        private System.Windows.Forms.Button btnOtherReason;
+        private System.Windows.Forms.Button btnOKRejectPaper;
     }
 }
 

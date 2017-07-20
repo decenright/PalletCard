@@ -91,6 +91,40 @@ namespace PalletCard
             tbxPalletHeight.Text = "";
             index = 3;
             }
+            else if (index == 5)
+            {
+                pnlHome1.BringToFront();
+                lbl1.Visible = false;
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                index = 1;
+            }
+            else if (index == 6)
+            {
+                pnlRejectPaper1.BringToFront();
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                index = 5;
+                // if no section buttons go straight back to Choose Action screen
+                if (pnlRejectPaper1.Controls.Count == 0)
+                {
+                    pnlHome1.BringToFront();
+                    lbl1.Visible = false;
+                    lbl2.Visible = false;
+                    lbl3.Visible = false;
+                    lbl3.Visible = false;
+                    lbl4.Visible = false;
+                    btnBack.Visible = false;
+                    index = 1;
+                }
+            }
+
+
+
+
+
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -138,7 +172,7 @@ namespace PalletCard
         {
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%'", searchBox.Text.Trim().Replace("'", "''"));
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%'", tbxSearchBox.Text.Trim().Replace("'", "''"));
                 lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                 lblJobNo.Visible = true;
                 int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
@@ -170,6 +204,11 @@ namespace PalletCard
         {
             searchChanged = true;
         }
+
+
+//****************************************************************************************************
+//RETURN PAPER WORKFLOW
+//****************************************************************************************************
 
         private void btnReturnPaper_Click(object sender, EventArgs e)
         {
@@ -372,8 +411,8 @@ namespace PalletCard
             lbl2.Visible = false;
             lbl3.Visible = false;
             lbl4.Visible = false;
-            searchBox.Text = "";
-            searchBox.Focus();
+            tbxSearchBox.Text = "";
+            tbxSearchBox.Focus();
             sectionbtns = false;
             tbxPalletHeight.Text = null;
             btnSearch.Visible = true;
@@ -391,7 +430,7 @@ namespace PalletCard
         private void searchBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                btnSearch_Click(searchBox, new EventArgs());
+                btnSearch_Click(tbxSearchBox, new EventArgs());
         }
 
 
@@ -401,78 +440,78 @@ namespace PalletCard
 
         private void btnRejectPaper_Click(object sender, EventArgs e)
         {
-            //lbl1.Visible = true;
-            //lbl1.Text = "Reject Paper";
-            //pnlRejectPaper1.BringToFront();
-            //index = 5;
-            //jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
-            //btnBack.Visible = true;
+            lbl1.Visible = true;
+            lbl1.Text = "Reject Paper";
+            pnlRejectPaper1.BringToFront();
+            index = 5;
+            jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            btnBack.Visible = true;
 
-            ////loop through datagridview to see if each value of field "Expr1" is the same
-            //string x;
-            //string y;
-            //x = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            //control = false;
-            //for (int i = 1; i < this.dataGridView1.Rows.Count - 1; i++)
-            //{
-            //    y = dataGridView1.Rows[i].Cells[11].Value.ToString();
-            //    if (x == y) { control = true; }
-            //}
-            //if (control)
-            //{
-            //    pnlRejectPaper2.BringToFront();
-            //    string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            //    lbl2.Text = d;
-            //    lbl2.Visible = true;
-            //    lbl3.Visible = true;
-            //    lbl3.Text = this.dataGridView1.Rows[0].Cells[16].Value as string;
-            //    lbl4.Visible = true;
-            //    lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-            //    index = 3;
-            //    sectionbtns = true;
-            //}
-            //else
-            //{ //prevent section buttons from drawing again if back button is selected
-            //    if (!sectionbtns)
-            //    {
-            //        //loop through datagrid rows to create a button for each value of field "Expr1"                  
-            //        for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-            //        {
-            //            //if datagrid is not empty create a button for each row at cells[2] - "Name"
-            //            if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+            //loop through datagridview to see if each value of field "Expr1" is the same
+            string x;
+            string y;
+            x = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            control = false;
+            for (int i = 1; i < this.dataGridView1.Rows.Count - 1; i++)
+            {
+                y = dataGridView1.Rows[i].Cells[11].Value.ToString();
+                if (x == y) { control = true; }
+            }
+            if (control || dataGridView1.RowCount ==2)
+            {
+                pnlRejectPaper2.BringToFront();
+                string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                lbl2.Text = d;
+                lbl2.Visible = true;
+                lbl3.Visible = true;
+                lbl3.Text = this.dataGridView1.Rows[0].Cells[16].Value as string;
+                lbl4.Visible = true;
+                lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+                index = 3;
+                sectionbtns = true;
+            }
+            else
+            { //prevent section buttons from drawing again if back button is selected
+                if (!sectionbtns)
+                {
+                    //loop through datagrid rows to create a button for each value of field "Expr1"                  
+                    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                    {
+                        //if datagrid is not empty create a button for each row at cells[2] - "Name"
+                        if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
 
-            //                //offer only one button where Expr1 field has two rows with the same value
-            //                if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
-            //                {
-            //                    {
-            //                        for (int j = 0; j < 1; j++)
-            //                        {
-            //                            Button btn = new Button();
-            //                            this.pnlRejectPaper1.Controls.Add(btn);
-            //                            btn.Top = A * 100;
-            //                            btn.Height = 80;
-            //                            btn.Width = 465;
-            //                            btn.BackColor = Color.SteelBlue;
-            //                            btn.Font = new Font("Microsoft Sans Serif", 14);
-            //                            btn.ForeColor = Color.White;
-            //                            btn.Left = 30;
-            //                            btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-            //                            A = A + 1;
-            //                            btn.Click += new System.EventHandler(this.expr2);
-            //                        }
-            //                    }
-            //                }
-            //        }
-            //    }
-            //    sectionbtns = true;
-            //}
+                            //offer only one button where Expr1 field has two rows with the same value
+                            if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
+                            {
+                                {
+                                    for (int j = 0; j < 1; j++)
+                                    {
+                                        Button btn = new Button();
+                                        this.pnlRejectPaper1.Controls.Add(btn);
+                                        btn.Top = A * 100;
+                                        btn.Height = 80;
+                                        btn.Width = 465;
+                                        btn.BackColor = Color.SteelBlue;
+                                        btn.Font = new Font("Microsoft Sans Serif", 14);
+                                        btn.ForeColor = Color.White;
+                                        btn.Left = 30;
+                                        btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
+                                        A = A + 1;
+                                        btn.Click += new System.EventHandler(this.expr2);
+                                    }
+                                }
+                            }
+                    }
+                }
+                sectionbtns = true;
+            }
         }
 
 
         //Dynamic button click - Section buttons, Return Paper work flow
         private void expr2(object sender, EventArgs e)
         {
-            //MessageBox.Show("Expr2");
+            MessageBox.Show("Expr2");
 
             //Button btn = sender as Button;
             //pnlReturnPaper2.BringToFront();
@@ -493,6 +532,39 @@ namespace PalletCard
             //catch (Exception) { }
         }
 
+        private void btnDogEarsTIC_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Dog Ears/TIC selected");
+        }
 
+        private void btnMottle_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Mottle selected");
+        }
+
+        private void btnCreasing_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Creasing selected");
+        }
+
+        private void btnCigarRoll_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Cigar Roll selected");
+        }
+
+        private void btnPalletDamage_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Pallet Damage selected");
+        }
+
+        private void btnBladeLine_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Blade line selected");
+        }
+
+        private void btnOtherReason_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Other reason selected");
+        }
     }
 }
