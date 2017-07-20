@@ -37,10 +37,10 @@ namespace PalletCard
             else if (index == 1)
             { 
             returnpaper0.BringToFront();
-            lblReturnPaper.Visible = false;
-            lbltextBoxDescription.Visible = false;
-            lblPaperType.Visible = false;
-            lblWorkingSize.Visible = false;
+            lbl1.Visible = false;
+            lbl2.Visible = false;
+            lbl3.Visible = false;
+            lbl4.Visible = false;
             tbxPalletHeight.Text = "";
             lblPheight.Text = "";
             index = 0;
@@ -48,10 +48,10 @@ namespace PalletCard
             else if (index == 2)
             { 
             returnpaper1.BringToFront();
-            lblReturnPaper.Visible = false;
-            lbltextBoxDescription.Visible = false;
-            lblPaperType.Visible = false;    
-            lblWorkingSize.Visible = false;
+            lbl1.Visible = false;
+            lbl2.Visible = false;
+            lbl3.Visible = false;    
+            lbl4.Visible = false;
             btnBack.Visible = false;
             index = 1;
             }
@@ -60,21 +60,21 @@ namespace PalletCard
                 returnpaper2.BringToFront();
                 lblPheight.Text = "";
                 tbxPalletHeight.Text = "";
-                lbltextBoxDescription.Visible = false;
-                lblPaperType.Visible = false;
-                lblWorkingSize.Visible = false;
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
                 index = 2;
                 // if no section buttons go straight back to Choose Action screen
                 if (returnpaper2.Controls.Count == 0)
                     {
                         returnpaper1.BringToFront();
-                        lblReturnPaper.Visible = false;
-                        lbltextBoxDescription.Visible = false;
-                        lblPaperType.Visible = false;
-                        lblWorkingSize.Visible = false;
+                        lbl1.Visible = false;
+                        lbl2.Visible = false;
+                        lbl3.Visible = false;
+                        lbl4.Visible = false;
                         lblPheight.Text = "";
-                        lblPaperType.Visible = false;
-                        lblWorkingSize.Visible = false;
+                        lbl3.Visible = false;
+                        lbl4.Visible = false;
                         tbxPalletHeight.Text = "";
                         btnBack.Visible = false;
                         index = 1;                      
@@ -83,10 +83,10 @@ namespace PalletCard
             else if (index == 4)
             { 
             returnpaper3.BringToFront();
-            lblReturnPaper.Visible = true;
-            lbltextBoxDescription.Visible = true;
-            lblPaperType.Visible = true;
-            lblWorkingSize.Visible = true;
+            lbl1.Visible = true;
+            lbl2.Visible = true;
+            lbl3.Visible = true;
+            lbl4.Visible = true;
             lblPheight.Text = "";
             tbxPalletHeight.Text = "";
             index = 3;
@@ -173,8 +173,8 @@ namespace PalletCard
 
         private void btnReturnPaper_Click(object sender, EventArgs e)
         {
-                lblReturnPaper.Visible = true;
-                lblReturnPaper.Text = "Return Paper";
+                lbl1.Visible = true;
+                lbl1.Text = "Return Paper";
                 returnpaper2.BringToFront();
                 index = 2;
                 jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
@@ -193,12 +193,12 @@ namespace PalletCard
             if (control) {                               
                 returnpaper3.BringToFront();
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
-                lbltextBoxDescription.Text = d;
-                lbltextBoxDescription.Visible = true;
-                lblPaperType.Visible = true;
-                lblPaperType.Text = this.dataGridView1.Rows[0].Cells[16].Value as string;
-                lblWorkingSize.Visible = true;
-                lblWorkingSize.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+                lbl2.Text = d;
+                lbl2.Visible = true;
+                lbl3.Visible = true;
+                lbl3.Text = this.dataGridView1.Rows[0].Cells[16].Value as string;
+                lbl4.Visible = true;
+                lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
                 index = 3;
                 sectionbtns = true;
             }
@@ -242,12 +242,12 @@ namespace PalletCard
         private void expr1(object sender, EventArgs e) {
             Button btn = sender as Button;
             returnpaper3.BringToFront();
-            lblWorkingSize.Visible = true;
-            lblWorkingSize.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-            lblPaperType.Visible = true;
-            lblPaperType.Text = dataGridView1.Rows[0].Cells[16].Value.ToString();
-            lbltextBoxDescription.Visible = true;
-            lbltextBoxDescription.Text = btn.Text;
+            lbl4.Visible = true;
+            lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+            lbl3.Visible = true;
+            lbl3.Text = dataGridView1.Rows[0].Cells[16].Value.ToString();
+            lbl2.Visible = true;
+            lbl2.Text = btn.Text;
             tbxPalletHeight.Text = "";
             index = 3;    
 
@@ -305,7 +305,7 @@ namespace PalletCard
             btnPrint.Visible = true;
 
             //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lblReturnPaper.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbltextBoxDescription.Text + "','" + this.lblWorkingSize.Text + "','" + this.lblPrint3.Text + "');";
+            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
             //SqlConnection conDatabase = new SqlConnection(constring);
             //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             //SqlDataReader myReader;
@@ -368,20 +368,15 @@ namespace PalletCard
             returnpaper0.BringToFront();
             lblJobNo.Visible = false;
             lblPress.Visible = false;
-            lblReturnPaper.Visible = false;
-            lbltextBoxDescription.Visible = false;
-            lblPaperType.Visible = false;
-            lblWorkingSize.Visible = false;
+            lbl1.Visible = false;
+            lbl2.Visible = false;
+            lbl3.Visible = false;
+            lbl4.Visible = false;
             searchBox.Text = "";
             searchBox.Focus();
             sectionbtns = false;
             tbxPalletHeight.Text = null;
             btnSearch.Visible = true;
-        }
-
-        private void tbxPalletHeight_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void tbxPalletHeight_KeyDown(object sender, KeyEventArgs e)
@@ -398,5 +393,11 @@ namespace PalletCard
             if (e.KeyCode == Keys.Enter)
                 btnSearch_Click(searchBox, new EventArgs());
         }
+
+//****************************************************************************************************
+//REJECT PAPER WORKFLOW
+//****************************************************************************************************
+
+
     }
 }

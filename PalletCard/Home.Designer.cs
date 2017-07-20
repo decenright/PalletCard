@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.lblJobNo = new System.Windows.Forms.Label();
             this.lblPress = new System.Windows.Forms.Label();
-            this.lblReturnPaper = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.lblWorkingSize = new System.Windows.Forms.Label();
+            this.lbl4 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.returnpaper0 = new System.Windows.Forms.Panel();
             this.returnpaper1 = new System.Windows.Forms.Panel();
@@ -66,8 +66,8 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.lbltextBoxDescription = new System.Windows.Forms.TextBox();
-            this.lblPaperType = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.TextBox();
+            this.lbl3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.returnpaper1.SuspendLayout();
             this.returnpaper3.SuspendLayout();
@@ -76,33 +76,33 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Location = new System.Drawing.Point(4, 871);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(782, 147);
             this.dataGridView1.TabIndex = 0;
@@ -151,21 +151,21 @@
             this.lblPress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblPress.Visible = false;
             // 
-            // lblReturnPaper
+            // lbl1
             // 
-            this.lblReturnPaper.BackColor = System.Drawing.Color.DarkCyan;
-            this.lblReturnPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReturnPaper.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblReturnPaper.Location = new System.Drawing.Point(4, 204);
-            this.lblReturnPaper.MaximumSize = new System.Drawing.Size(200, 80);
-            this.lblReturnPaper.MinimumSize = new System.Drawing.Size(200, 80);
-            this.lblReturnPaper.Name = "lblReturnPaper";
-            this.lblReturnPaper.Padding = new System.Windows.Forms.Padding(5);
-            this.lblReturnPaper.Size = new System.Drawing.Size(200, 80);
-            this.lblReturnPaper.TabIndex = 5;
-            this.lblReturnPaper.Text = "lblReturn Paper";
-            this.lblReturnPaper.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblReturnPaper.Visible = false;
+            this.lbl1.BackColor = System.Drawing.Color.DarkCyan;
+            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl1.Location = new System.Drawing.Point(4, 204);
+            this.lbl1.MaximumSize = new System.Drawing.Size(200, 80);
+            this.lbl1.MinimumSize = new System.Drawing.Size(200, 80);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Padding = new System.Windows.Forms.Padding(5);
+            this.lbl1.Size = new System.Drawing.Size(200, 80);
+            this.lbl1.TabIndex = 5;
+            this.lbl1.Text = "lbl1";
+            this.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl1.Visible = false;
             // 
             // btnSearch
             // 
@@ -181,21 +181,21 @@
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // lblWorkingSize
+            // lbl4
             // 
-            this.lblWorkingSize.BackColor = System.Drawing.Color.DarkCyan;
-            this.lblWorkingSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkingSize.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblWorkingSize.Location = new System.Drawing.Point(4, 450);
-            this.lblWorkingSize.MaximumSize = new System.Drawing.Size(200, 80);
-            this.lblWorkingSize.MinimumSize = new System.Drawing.Size(200, 80);
-            this.lblWorkingSize.Name = "lblWorkingSize";
-            this.lblWorkingSize.Padding = new System.Windows.Forms.Padding(5);
-            this.lblWorkingSize.Size = new System.Drawing.Size(200, 80);
-            this.lblWorkingSize.TabIndex = 16;
-            this.lblWorkingSize.Text = "lblWorkingSize";
-            this.lblWorkingSize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblWorkingSize.Visible = false;
+            this.lbl4.BackColor = System.Drawing.Color.DarkCyan;
+            this.lbl4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl4.Location = new System.Drawing.Point(4, 450);
+            this.lbl4.MaximumSize = new System.Drawing.Size(200, 80);
+            this.lbl4.MinimumSize = new System.Drawing.Size(200, 80);
+            this.lbl4.Name = "lbl4";
+            this.lbl4.Padding = new System.Windows.Forms.Padding(5);
+            this.lbl4.Size = new System.Drawing.Size(200, 80);
+            this.lbl4.TabIndex = 16;
+            this.lbl4.Text = "lbl4";
+            this.lbl4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl4.Visible = false;
             // 
             // btnBack
             // 
@@ -475,38 +475,38 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // lbltextBoxDescription
+            // lbl2
             // 
-            this.lbltextBoxDescription.BackColor = System.Drawing.Color.DarkCyan;
-            this.lbltextBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbltextBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltextBoxDescription.ForeColor = System.Drawing.Color.White;
-            this.lbltextBoxDescription.Location = new System.Drawing.Point(4, 286);
-            this.lbltextBoxDescription.MaximumSize = new System.Drawing.Size(200, 80);
-            this.lbltextBoxDescription.MinimumSize = new System.Drawing.Size(200, 80);
-            this.lbltextBoxDescription.Multiline = true;
-            this.lbltextBoxDescription.Name = "lbltextBoxDescription";
-            this.lbltextBoxDescription.ReadOnly = true;
-            this.lbltextBoxDescription.Size = new System.Drawing.Size(200, 80);
-            this.lbltextBoxDescription.TabIndex = 20;
-            this.lbltextBoxDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.lbltextBoxDescription.Visible = false;
+            this.lbl2.BackColor = System.Drawing.Color.DarkCyan;
+            this.lbl2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl2.ForeColor = System.Drawing.Color.White;
+            this.lbl2.Location = new System.Drawing.Point(4, 286);
+            this.lbl2.MaximumSize = new System.Drawing.Size(200, 80);
+            this.lbl2.MinimumSize = new System.Drawing.Size(200, 80);
+            this.lbl2.Multiline = true;
+            this.lbl2.Name = "lbl2";
+            this.lbl2.ReadOnly = true;
+            this.lbl2.Size = new System.Drawing.Size(200, 80);
+            this.lbl2.TabIndex = 20;
+            this.lbl2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lbl2.Visible = false;
             // 
-            // lblPaperType
+            // lbl3
             // 
-            this.lblPaperType.BackColor = System.Drawing.Color.DarkCyan;
-            this.lblPaperType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaperType.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPaperType.Location = new System.Drawing.Point(4, 368);
-            this.lblPaperType.MaximumSize = new System.Drawing.Size(200, 80);
-            this.lblPaperType.MinimumSize = new System.Drawing.Size(200, 80);
-            this.lblPaperType.Name = "lblPaperType";
-            this.lblPaperType.Padding = new System.Windows.Forms.Padding(5);
-            this.lblPaperType.Size = new System.Drawing.Size(200, 80);
-            this.lblPaperType.TabIndex = 21;
-            this.lblPaperType.Text = "lblPaperType";
-            this.lblPaperType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPaperType.Visible = false;
+            this.lbl3.BackColor = System.Drawing.Color.DarkCyan;
+            this.lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl3.Location = new System.Drawing.Point(4, 368);
+            this.lbl3.MaximumSize = new System.Drawing.Size(200, 80);
+            this.lbl3.MinimumSize = new System.Drawing.Size(200, 80);
+            this.lbl3.Name = "lbl3";
+            this.lbl3.Padding = new System.Windows.Forms.Padding(5);
+            this.lbl3.Size = new System.Drawing.Size(200, 80);
+            this.lbl3.TabIndex = 21;
+            this.lbl3.Text = "lbl3";
+            this.lbl3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl3.Visible = false;
             // 
             // Home
             // 
@@ -514,18 +514,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1053);
-            this.Controls.Add(this.lblPaperType);
+            this.Controls.Add(this.lbl3);
             this.Controls.Add(this.returnpaper3);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.returnpaper4);
             this.Controls.Add(this.returnpaper2);
             this.Controls.Add(this.returnpaper1);
-            this.Controls.Add(this.lbltextBoxDescription);
+            this.Controls.Add(this.lbl2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.lblWorkingSize);
+            this.Controls.Add(this.lbl4);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.lblReturnPaper);
+            this.Controls.Add(this.lbl1);
             this.Controls.Add(this.lblPress);
             this.Controls.Add(this.lblJobNo);
             this.Controls.Add(this.searchBox);
@@ -550,9 +550,9 @@
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Label lblJobNo;
         private System.Windows.Forms.Label lblPress;
-        private System.Windows.Forms.Label lblReturnPaper;
+        private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label lblWorkingSize;
+        private System.Windows.Forms.Label lbl4;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel returnpaper0;
         private System.Windows.Forms.Panel returnpaper1;
@@ -579,9 +579,9 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox lbltextBoxDescription;
+        private System.Windows.Forms.TextBox lbl2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblPaperType;
+        private System.Windows.Forms.Label lbl3;
     }
 }
 
