@@ -96,7 +96,7 @@ namespace PalletCard
         private void Home_Load(object sender, EventArgs e)
         {
             string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 5";
+            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
             OdbcDataAdapter myAdapter = new OdbcDataAdapter();
@@ -144,7 +144,7 @@ namespace PalletCard
                 int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
                 if (dataGridView1.Rows[0].Cells[0].Value != null)
                 {
-                    lblPress.Text = "710UV";
+                    lblPress.Text = "XL106";
                     lblPress.Visible = true;
                     pnlHome1.BringToFront();
                 }
@@ -190,7 +190,7 @@ namespace PalletCard
                 y = dataGridView1.Rows[i].Cells[11].Value.ToString();
                 if (x == y) { control = true; }
             }
-            if (control) {                               
+            if (control || dataGridView1.RowCount ==2 ) {                               
                 pnlReturnPaper2.BringToFront();
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 lbl2.Text = d;
@@ -266,7 +266,7 @@ namespace PalletCard
             lblPrint1.Text = dataGridView1.Rows[0].Cells[16].Value.ToString();
             lblPrint2.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
             lblPrint3.Text = lblPheight.Text;
-            lblPrint4.Text = "Press - 710UV";
+            lblPrint4.Text = "Press - XL106";
             lblPrint5.Text = "Job - " + jobNo;
             lblPrint6.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
             index = 4;
@@ -301,28 +301,28 @@ namespace PalletCard
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(PrintImage);
             btnPrint.Visible = false;
-            //pd.Print();
+            pd.Print();
             btnPrint.Visible = true;
 
-            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
-            //SqlConnection conDatabase = new SqlConnection(constring);
-            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            //SqlDataReader myReader;
-            //try
-            //{
-            //    conDatabase.Open();
-            //    myReader = cmdDatabase.ExecuteReader();
-            //    MessageBox.Show("Saved");
-            //    while (myReader.Read())
-            //    {
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
+            SqlConnection conDatabase = new SqlConnection(constring);
+            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            SqlDataReader myReader;
+            try
+            {
+                conDatabase.Open();
+                myReader = cmdDatabase.ExecuteReader();
+                MessageBox.Show("Saved");
+                while (myReader.Read())
+                {
 
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         void PrintImage(object o, PrintPageEventArgs e)
@@ -341,7 +341,7 @@ namespace PalletCard
         private void btnCancel_Click(object sender, EventArgs e)
         {
             string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 5";
+            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
             OdbcDataAdapter myAdapter = new OdbcDataAdapter();
@@ -401,78 +401,78 @@ namespace PalletCard
 
         private void btnRejectPaper_Click(object sender, EventArgs e)
         {
-            lbl1.Visible = true;
-            lbl1.Text = "Reject Paper";
-            pnlRejectPaper1.BringToFront();
-            index = 5;
-            jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
-            btnBack.Visible = true;
+            //lbl1.Visible = true;
+            //lbl1.Text = "Reject Paper";
+            //pnlRejectPaper1.BringToFront();
+            //index = 5;
+            //jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            //btnBack.Visible = true;
 
-            //loop through datagridview to see if each value of field "Expr1" is the same
-            string x;
-            string y;
-            x = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            control = false;
-            for (int i = 1; i < this.dataGridView1.Rows.Count - 1; i++)
-            {
-                y = dataGridView1.Rows[i].Cells[11].Value.ToString();
-                if (x == y) { control = true; }
-            }
-            if (control)
-            {
-                pnlRejectPaper2.BringToFront();
-                string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
-                lbl2.Text = d;
-                lbl2.Visible = true;
-                lbl3.Visible = true;
-                lbl3.Text = this.dataGridView1.Rows[0].Cells[16].Value as string;
-                lbl4.Visible = true;
-                lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-                index = 3;
-                sectionbtns = true;
-            }
-            else
-            { //prevent section buttons from drawing again if back button is selected
-                if (!sectionbtns)
-                {
-                    //loop through datagrid rows to create a button for each value of field "Expr1"                  
-                    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-                    {
-                        //if datagrid is not empty create a button for each row at cells[2] - "Name"
-                        if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+            ////loop through datagridview to see if each value of field "Expr1" is the same
+            //string x;
+            //string y;
+            //x = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            //control = false;
+            //for (int i = 1; i < this.dataGridView1.Rows.Count - 1; i++)
+            //{
+            //    y = dataGridView1.Rows[i].Cells[11].Value.ToString();
+            //    if (x == y) { control = true; }
+            //}
+            //if (control)
+            //{
+            //    pnlRejectPaper2.BringToFront();
+            //    string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            //    lbl2.Text = d;
+            //    lbl2.Visible = true;
+            //    lbl3.Visible = true;
+            //    lbl3.Text = this.dataGridView1.Rows[0].Cells[16].Value as string;
+            //    lbl4.Visible = true;
+            //    lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+            //    index = 3;
+            //    sectionbtns = true;
+            //}
+            //else
+            //{ //prevent section buttons from drawing again if back button is selected
+            //    if (!sectionbtns)
+            //    {
+            //        //loop through datagrid rows to create a button for each value of field "Expr1"                  
+            //        for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            //        {
+            //            //if datagrid is not empty create a button for each row at cells[2] - "Name"
+            //            if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
 
-                            //offer only one button where Expr1 field has two rows with the same value
-                            if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
-                            {
-                                {
-                                    for (int j = 0; j < 1; j++)
-                                    {
-                                        Button btn = new Button();
-                                        this.pnlRejectPaper1.Controls.Add(btn);
-                                        btn.Top = A * 100;
-                                        btn.Height = 80;
-                                        btn.Width = 465;
-                                        btn.BackColor = Color.SteelBlue;
-                                        btn.Font = new Font("Microsoft Sans Serif", 14);
-                                        btn.ForeColor = Color.White;
-                                        btn.Left = 30;
-                                        btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-                                        A = A + 1;
-                                        btn.Click += new System.EventHandler(this.expr2);
-                                    }
-                                }
-                            }
-                    }
-                }
-                sectionbtns = true;
-            }
+            //                //offer only one button where Expr1 field has two rows with the same value
+            //                if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
+            //                {
+            //                    {
+            //                        for (int j = 0; j < 1; j++)
+            //                        {
+            //                            Button btn = new Button();
+            //                            this.pnlRejectPaper1.Controls.Add(btn);
+            //                            btn.Top = A * 100;
+            //                            btn.Height = 80;
+            //                            btn.Width = 465;
+            //                            btn.BackColor = Color.SteelBlue;
+            //                            btn.Font = new Font("Microsoft Sans Serif", 14);
+            //                            btn.ForeColor = Color.White;
+            //                            btn.Left = 30;
+            //                            btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
+            //                            A = A + 1;
+            //                            btn.Click += new System.EventHandler(this.expr2);
+            //                        }
+            //                    }
+            //                }
+            //        }
+            //    }
+            //    sectionbtns = true;
+            //}
         }
 
 
         //Dynamic button click - Section buttons, Return Paper work flow
         private void expr2(object sender, EventArgs e)
         {
-            MessageBox.Show("Expr2");
+            //MessageBox.Show("Expr2");
 
             //Button btn = sender as Button;
             //pnlReturnPaper2.BringToFront();

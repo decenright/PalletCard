@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.searchBox = new System.Windows.Forms.TextBox();
@@ -59,19 +59,18 @@
             this.lbl2 = new System.Windows.Forms.TextBox();
             this.lbl3 = new System.Windows.Forms.Label();
             this.pnlRejectPaper1 = new System.Windows.Forms.Panel();
-            this.pnlReturnPaper3 = new System.Windows.Forms.Panel();
-            this.lblPrint1 = new System.Windows.Forms.Label();
-            this.lblPrint2 = new System.Windows.Forms.Label();
-            this.lblPrint3 = new System.Windows.Forms.Label();
-            this.lblPrint4 = new System.Windows.Forms.Label();
-            this.lblPrint5 = new System.Windows.Forms.Label();
-            this.lblPrint6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnlRejectPaper2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.pnlReturnPaper3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblPrint6 = new System.Windows.Forms.Label();
+            this.lblPrint5 = new System.Windows.Forms.Label();
+            this.lblPrint4 = new System.Windows.Forms.Label();
+            this.lblPrint3 = new System.Windows.Forms.Label();
+            this.lblPrint2 = new System.Windows.Forms.Label();
+            this.lblPrint1 = new System.Windows.Forms.Label();
+            this.pnlRejectPaper2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome1.SuspendLayout();
@@ -83,36 +82,37 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(4, 871);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(782, 147);
+            this.dataGridView1.Size = new System.Drawing.Size(730, 147);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.Visible = false;
             // 
             // searchBox
             // 
@@ -220,24 +220,23 @@
             this.pnlHome0.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlHome0.Location = new System.Drawing.Point(210, 147);
             this.pnlHome0.Name = "pnlHome0";
-            this.pnlHome0.Size = new System.Drawing.Size(522, 545);
+            this.pnlHome0.Size = new System.Drawing.Size(528, 700);
             this.pnlHome0.TabIndex = 18;
             // 
             // pnlHome1
             // 
-            this.pnlHome1.Controls.Add(this.flowLayoutPanel1);
             this.pnlHome1.Controls.Add(this.btnRejectPaper);
             this.pnlHome1.Controls.Add(this.btnBackupVarnish);
             this.pnlHome1.Controls.Add(this.btnReturnPaper);
             this.pnlHome1.Controls.Add(this.btnPalletCard);
             this.pnlHome1.Location = new System.Drawing.Point(207, 147);
             this.pnlHome1.Name = "pnlHome1";
-            this.pnlHome1.Size = new System.Drawing.Size(525, 545);
+            this.pnlHome1.Size = new System.Drawing.Size(528, 700);
             this.pnlHome1.TabIndex = 4;
             // 
             // btnRejectPaper
             // 
-            this.btnRejectPaper.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnRejectPaper.BackColor = System.Drawing.Color.Silver;
             this.btnRejectPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRejectPaper.ForeColor = System.Drawing.Color.White;
             this.btnRejectPaper.Location = new System.Drawing.Point(35, 325);
@@ -250,7 +249,7 @@
             // 
             // btnBackupVarnish
             // 
-            this.btnBackupVarnish.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnBackupVarnish.BackColor = System.Drawing.Color.Silver;
             this.btnBackupVarnish.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackupVarnish.ForeColor = System.Drawing.Color.White;
             this.btnBackupVarnish.Location = new System.Drawing.Point(35, 220);
@@ -275,7 +274,7 @@
             // 
             // btnPalletCard
             // 
-            this.btnPalletCard.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnPalletCard.BackColor = System.Drawing.Color.Silver;
             this.btnPalletCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPalletCard.ForeColor = System.Drawing.Color.White;
             this.btnPalletCard.Location = new System.Drawing.Point(35, 13);
@@ -289,7 +288,7 @@
             // 
             this.pnlReturnPaper1.Location = new System.Drawing.Point(207, 147);
             this.pnlReturnPaper1.Name = "pnlReturnPaper1";
-            this.pnlReturnPaper1.Size = new System.Drawing.Size(528, 545);
+            this.pnlReturnPaper1.Size = new System.Drawing.Size(528, 700);
             this.pnlReturnPaper1.TabIndex = 8;
             // 
             // pnlReturnPaper2
@@ -300,13 +299,13 @@
             this.pnlReturnPaper2.Controls.Add(this.lblPalletHeight);
             this.pnlReturnPaper2.Location = new System.Drawing.Point(207, 148);
             this.pnlReturnPaper2.Name = "pnlReturnPaper2";
-            this.pnlReturnPaper2.Size = new System.Drawing.Size(528, 545);
+            this.pnlReturnPaper2.Size = new System.Drawing.Size(528, 700);
             this.pnlReturnPaper2.TabIndex = 1;
             // 
             // btnPalletHeight
             // 
             this.btnPalletHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPalletHeight.Location = new System.Drawing.Point(241, 292);
+            this.btnPalletHeight.Location = new System.Drawing.Point(241, 333);
             this.btnPalletHeight.Name = "btnPalletHeight";
             this.btnPalletHeight.Size = new System.Drawing.Size(88, 62);
             this.btnPalletHeight.TabIndex = 5;
@@ -319,7 +318,7 @@
             this.lblPheight.BackColor = System.Drawing.Color.LightSlateGray;
             this.lblPheight.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPheight.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblPheight.Location = new System.Drawing.Point(142, 190);
+            this.lblPheight.Location = new System.Drawing.Point(142, 206);
             this.lblPheight.Name = "lblPheight";
             this.lblPheight.Size = new System.Drawing.Size(275, 63);
             this.lblPheight.TabIndex = 4;
@@ -329,7 +328,7 @@
             // 
             this.tbxPalletHeight.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxPalletHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPalletHeight.Location = new System.Drawing.Point(140, 91);
+            this.tbxPalletHeight.Location = new System.Drawing.Point(140, 82);
             this.tbxPalletHeight.Multiline = true;
             this.tbxPalletHeight.Name = "tbxPalletHeight";
             this.tbxPalletHeight.Size = new System.Drawing.Size(275, 59);
@@ -411,8 +410,17 @@
             this.pnlRejectPaper1.Controls.Add(this.label3);
             this.pnlRejectPaper1.Location = new System.Drawing.Point(206, 147);
             this.pnlRejectPaper1.Name = "pnlRejectPaper1";
-            this.pnlRejectPaper1.Size = new System.Drawing.Size(528, 545);
+            this.pnlRejectPaper1.Size = new System.Drawing.Size(528, 700);
             this.pnlRejectPaper1.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(187, 216);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "pnlRejectPaper1";
             // 
             // pnlReturnPaper3
             // 
@@ -430,76 +438,15 @@
             this.pnlReturnPaper3.Size = new System.Drawing.Size(528, 700);
             this.pnlReturnPaper3.TabIndex = 6;
             // 
-            // lblPrint1
+            // label2
             // 
-            this.lblPrint1.AutoSize = true;
-            this.lblPrint1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint1.Location = new System.Drawing.Point(31, 90);
-            this.lblPrint1.Name = "lblPrint1";
-            this.lblPrint1.Size = new System.Drawing.Size(57, 20);
-            this.lblPrint1.TabIndex = 0;
-            this.lblPrint1.Text = "label1";
-            // 
-            // lblPrint2
-            // 
-            this.lblPrint2.AutoSize = true;
-            this.lblPrint2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint2.Location = new System.Drawing.Point(30, 151);
-            this.lblPrint2.Name = "lblPrint2";
-            this.lblPrint2.Size = new System.Drawing.Size(76, 25);
-            this.lblPrint2.TabIndex = 1;
-            this.lblPrint2.Text = "label2";
-            this.lblPrint2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblPrint3
-            // 
-            this.lblPrint3.AutoSize = true;
-            this.lblPrint3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint3.Location = new System.Drawing.Point(30, 215);
-            this.lblPrint3.Name = "lblPrint3";
-            this.lblPrint3.Size = new System.Drawing.Size(76, 25);
-            this.lblPrint3.TabIndex = 2;
-            this.lblPrint3.Text = "label3";
-            // 
-            // lblPrint4
-            // 
-            this.lblPrint4.AutoSize = true;
-            this.lblPrint4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint4.Location = new System.Drawing.Point(198, 299);
-            this.lblPrint4.Name = "lblPrint4";
-            this.lblPrint4.Size = new System.Drawing.Size(65, 20);
-            this.lblPrint4.TabIndex = 3;
-            this.lblPrint4.Text = "lblPrint4";
-            // 
-            // lblPrint5
-            // 
-            this.lblPrint5.AutoSize = true;
-            this.lblPrint5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint5.Location = new System.Drawing.Point(198, 336);
-            this.lblPrint5.Name = "lblPrint5";
-            this.lblPrint5.Size = new System.Drawing.Size(65, 20);
-            this.lblPrint5.TabIndex = 4;
-            this.lblPrint5.Text = "lblPrint5";
-            // 
-            // lblPrint6
-            // 
-            this.lblPrint6.AutoSize = true;
-            this.lblPrint6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint6.Location = new System.Drawing.Point(198, 372);
-            this.lblPrint6.Name = "lblPrint6";
-            this.lblPrint6.Size = new System.Drawing.Size(65, 20);
-            this.lblPrint6.TabIndex = 5;
-            this.lblPrint6.Text = "lblPrint6";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(31, 294);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 24);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Return from:";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(155, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(197, 39);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "RETURN PAPER";
             // 
             // btnPrint
             // 
@@ -515,39 +462,84 @@
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // label2
+            // label1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(155, 2);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(197, 39);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "RETURN PAPER";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(31, 294);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(125, 24);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Return from:";
             // 
-            // flowLayoutPanel1
+            // lblPrint6
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(111, 491);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(525, 545);
-            this.flowLayoutPanel1.TabIndex = 8;
+            this.lblPrint6.AutoSize = true;
+            this.lblPrint6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint6.Location = new System.Drawing.Point(198, 372);
+            this.lblPrint6.Name = "lblPrint6";
+            this.lblPrint6.Size = new System.Drawing.Size(65, 20);
+            this.lblPrint6.TabIndex = 5;
+            this.lblPrint6.Text = "lblPrint6";
+            // 
+            // lblPrint5
+            // 
+            this.lblPrint5.AutoSize = true;
+            this.lblPrint5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint5.Location = new System.Drawing.Point(198, 336);
+            this.lblPrint5.Name = "lblPrint5";
+            this.lblPrint5.Size = new System.Drawing.Size(65, 20);
+            this.lblPrint5.TabIndex = 4;
+            this.lblPrint5.Text = "lblPrint5";
+            // 
+            // lblPrint4
+            // 
+            this.lblPrint4.AutoSize = true;
+            this.lblPrint4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint4.Location = new System.Drawing.Point(198, 299);
+            this.lblPrint4.Name = "lblPrint4";
+            this.lblPrint4.Size = new System.Drawing.Size(65, 20);
+            this.lblPrint4.TabIndex = 3;
+            this.lblPrint4.Text = "lblPrint4";
+            // 
+            // lblPrint3
+            // 
+            this.lblPrint3.AutoSize = true;
+            this.lblPrint3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint3.Location = new System.Drawing.Point(30, 215);
+            this.lblPrint3.Name = "lblPrint3";
+            this.lblPrint3.Size = new System.Drawing.Size(76, 25);
+            this.lblPrint3.TabIndex = 2;
+            this.lblPrint3.Text = "label3";
+            // 
+            // lblPrint2
+            // 
+            this.lblPrint2.AutoSize = true;
+            this.lblPrint2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint2.Location = new System.Drawing.Point(30, 151);
+            this.lblPrint2.Name = "lblPrint2";
+            this.lblPrint2.Size = new System.Drawing.Size(76, 25);
+            this.lblPrint2.TabIndex = 1;
+            this.lblPrint2.Text = "label2";
+            this.lblPrint2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblPrint1
+            // 
+            this.lblPrint1.AutoSize = true;
+            this.lblPrint1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint1.Location = new System.Drawing.Point(31, 90);
+            this.lblPrint1.Name = "lblPrint1";
+            this.lblPrint1.Size = new System.Drawing.Size(57, 20);
+            this.lblPrint1.TabIndex = 0;
+            this.lblPrint1.Text = "label1";
             // 
             // pnlRejectPaper2
             // 
             this.pnlRejectPaper2.Controls.Add(this.label4);
             this.pnlRejectPaper2.Location = new System.Drawing.Point(206, 147);
             this.pnlRejectPaper2.Name = "pnlRejectPaper2";
-            this.pnlRejectPaper2.Size = new System.Drawing.Size(528, 545);
+            this.pnlRejectPaper2.Size = new System.Drawing.Size(528, 700);
             this.pnlRejectPaper2.TabIndex = 22;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(187, 216);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "pnlRejectPaper1";
             // 
             // label4
             // 
@@ -564,12 +556,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1053);
-            this.Controls.Add(this.pnlRejectPaper2);
-            this.Controls.Add(this.pnlRejectPaper1);
-            this.Controls.Add(this.pnlReturnPaper3);
             this.Controls.Add(this.pnlReturnPaper2);
             this.Controls.Add(this.pnlHome1);
             this.Controls.Add(this.pnlReturnPaper1);
+            this.Controls.Add(this.pnlRejectPaper1);
+            this.Controls.Add(this.pnlRejectPaper2);
+            this.Controls.Add(this.pnlReturnPaper3);
             this.Controls.Add(this.pnlHome0);
             this.Controls.Add(this.lbl3);
             this.Controls.Add(this.dataGridView1);
@@ -629,7 +621,6 @@
         private System.Windows.Forms.TextBox lbl2;
         private System.Windows.Forms.Label lbl3;
         private System.Windows.Forms.Panel pnlRejectPaper1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel pnlReturnPaper3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnPrint;
