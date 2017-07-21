@@ -346,7 +346,7 @@ namespace PalletCard
         private void btnPrint_Click(object sender, EventArgs e)
         {
             PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(PrintImage);
+            pd.PrintPage += new PrintPageEventHandler(PrintImageReturnPaper);
             btnPrint.Visible = false;
             pd.Print();
             btnPrint.Visible = true;
@@ -372,7 +372,7 @@ namespace PalletCard
             }
         }
 
-        void PrintImage(object o, PrintPageEventArgs e)
+        void PrintImageReturnPaper(object o, PrintPageEventArgs e)
         {
             int x = SystemInformation.WorkingArea.X;
             int y = SystemInformation.WorkingArea.Y;
@@ -571,10 +571,10 @@ namespace PalletCard
             index = 7;
         }
 
-        private void btnRecectPaperPrint_Click(object sender, EventArgs e)
+        private void btnRejectPaperPrint_Click(object sender, EventArgs e)
         {
             PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(PrintImage);
+            pd.PrintPage += new PrintPageEventHandler(PrintImageRejectPaper);
             btnPrint.Visible = false;
             pd.Print();
             btnPrint.Visible = true;
@@ -599,5 +599,20 @@ namespace PalletCard
                 MessageBox.Show(ex.Message);
             }
         }
+
+        void PrintImageRejectPaper(object o, PrintPageEventArgs e)
+        {
+            int x = SystemInformation.WorkingArea.X;
+            int y = SystemInformation.WorkingArea.Y;
+            int width = this.Width;
+            int height = this.Height;
+            Rectangle bounds = new Rectangle(x, y, width, height);
+            Bitmap img = new Bitmap(width, height);
+            pnlRejectPaper3.DrawToBitmap(img, bounds);
+            Point p = new Point(100, 100);
+            e.Graphics.DrawImage(img, p);
+        }
+
+
     }
 }
