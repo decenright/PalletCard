@@ -120,7 +120,15 @@ namespace PalletCard
                     index = 1;
                 }
             }
-
+            else if (index == 7)
+            {
+                pnlRejectPaper2.BringToFront();
+                lbl1.Visible = true;
+                lbl2.Visible = true;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                index = 6;
+            }
 
 
 
@@ -434,9 +442,9 @@ namespace PalletCard
         }
 
 
-        //****************************************************************************************************
-        //REJECT PAPER WORKFLOW
-        //****************************************************************************************************
+//****************************************************************************************************
+//REJECT PAPER WORKFLOW
+//****************************************************************************************************
 
         private void btnRejectPaper_Click(object sender, EventArgs e)
         {
@@ -463,10 +471,6 @@ namespace PalletCard
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 lbl2.Text = d;
                 lbl2.Visible = true;
-                lbl3.Visible = true;
-                lbl3.Text = this.dataGridView1.Rows[0].Cells[16].Value as string;
-                lbl4.Visible = true;
-                lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
                 index = 3;
                 sectionbtns = true;
             }
@@ -511,60 +515,89 @@ namespace PalletCard
         //Dynamic button click - Section buttons, Return Paper work flow
         private void expr2(object sender, EventArgs e)
         {
-            MessageBox.Show("Expr2");
+            Button btn = sender as Button;
+            pnlRejectPaper2.BringToFront();
+            lbl2.Visible = true;
+            lbl2.Text = btn.Text;
+            index = 6;
 
-            //Button btn = sender as Button;
-            //pnlReturnPaper2.BringToFront();
-            //lbl4.Visible = true;
-            //lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-            //lbl3.Visible = true;
-            //lbl3.Text = dataGridView1.Rows[0].Cells[16].Value.ToString();
-            //lbl2.Visible = true;
-            //lbl2.Text = btn.Text;
-            //tbxPalletHeight.Text = "";
-            //index = 3;
-
-            ////filter datagridview1 with the button text choice
-            //try
-            //{
-            //    ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + this.dataGridView1.Rows[0].Cells[11].Value + "%'";
-            //}
-            //catch (Exception) { }
+            //filter datagridview1 with the button text choice
+            try
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + this.dataGridView1.Rows[0].Cells[11].Value + "%'";
+            }
+            catch (Exception) { }
         }
 
-        private void btnDogEarsTIC_Click(object sender, EventArgs e)
+        private void ckbDogEarsTIC_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Dog Ears/TIC selected");
+            MessageBox.Show(ckbDogEarsTIC.Text + "" + ckbDogEarsTIC.CheckState.ToString());
         }
 
-        private void btnMottle_Click(object sender, EventArgs e)
+        private void ckbMottle_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Mottle selected");
+
         }
 
-        private void btnCreasing_Click(object sender, EventArgs e)
+        private void ckbCreasing_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Creasing selected");
+
         }
 
-        private void btnCigarRoll_Click(object sender, EventArgs e)
+        private void ckbCigarRoll_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Cigar Roll selected");
+
         }
 
-        private void btnPalletDamage_Click(object sender, EventArgs e)
+        private void ckbPalletDamage_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Pallet Damage selected");
+
         }
 
-        private void btnBladeLine_Click(object sender, EventArgs e)
+        private void ckbBladeLine_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Blade line selected");
+
         }
 
-        private void btnOtherReason_Click(object sender, EventArgs e)
+        private void btnOKRejectPaper_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Other reason selected");
+            pnlRejectPaper3.BringToFront();
+            lblPrint7.Text = ckbDogEarsTIC.Text;
+            lblPrint8.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+            lblPrint9.Text = dataGridView1.Rows[0].Cells[26].Value.ToString() + " Sheets";
+            lblPrint10.Text = "Press - XL106";
+            lblPrint11.Text = "Job - " + jobNo;
+            lblPrint12.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            index = 7;
+        }
+
+        private void btnRecectPaperPrint_Click(object sender, EventArgs e)
+        {
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(PrintImage);
+            btnPrint.Visible = false;
+            pd.Print();
+            btnPrint.Visible = true;
+
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
+            SqlConnection conDatabase = new SqlConnection(constring);
+            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            SqlDataReader myReader;
+            try
+            {
+                conDatabase.Open();
+                myReader = cmdDatabase.ExecuteReader();
+                MessageBox.Show("Saved");
+                while (myReader.Read())
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
