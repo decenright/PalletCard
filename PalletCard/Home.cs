@@ -30,6 +30,7 @@ namespace PalletCard
             if (index==0)
             {
                 btnBack.Visible = false;
+                btnCancel.Visible = false;
                 btnSearch.Visible = false;
                 lblJobNo.Visible = false;
                 lblPress.Visible = false;
@@ -89,6 +90,7 @@ namespace PalletCard
             lbl4.Visible = true;
             lblPheight.Text = "";
             tbxPalletHeight.Text = "";
+            this.ActiveControl = tbxPalletHeight;
             index = 3;
             }
             else if (index == 5)
@@ -174,6 +176,7 @@ namespace PalletCard
             listPanel[4] = pnlReturnPaper3;
             listPanel[0].BringToFront();
             btnBack.Visible = false;
+            this.ActiveControl = tbxSearchBox;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -213,10 +216,66 @@ namespace PalletCard
             searchChanged = true;
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
+            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+            myAdapter.SelectCommand = myCommand;
+            DataSet tharData = new DataSet();
+            try
+            {
+                myConnection.Open();
+                myAdapter.Fill(tharData);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            using (DataTable operations = new DataTable())
+            {
+                myAdapter.Fill(operations);
+                dataGridView1.DataSource = operations;
+            }
+            pnlHome0.BringToFront();
+            lblJobNo.Visible = false;
+            lblPress.Visible = false;
+            lbl1.Visible = false;
+            lbl2.Visible = false;
+            lbl3.Visible = false;
+            lbl4.Visible = false;
+            tbxSearchBox.Text = "";
+            tbxSearchBox.Focus();
+            sectionbtns = false;
+            tbxPalletHeight.Text = null;
+            btnSearch.Visible = true;
+            this.ActiveControl = tbxSearchBox;
+        }
 
-//****************************************************************************************************
-//RETURN PAPER WORKFLOW
-//****************************************************************************************************
+        private void tbxPalletHeight_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                SelectNextControl(ActiveControl, true, true, true, true);
+            }
+        }
+
+        private void searchBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnSearch_Click(tbxSearchBox, new EventArgs());
+        }
+
+        //****************************************************************************************************
+        //RETURN PAPER WORKFLOW
+        //****************************************************************************************************
 
         private void btnReturnPaper_Click(object sender, EventArgs e)
         {
@@ -248,6 +307,7 @@ namespace PalletCard
                 lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
                 index = 3;
                 sectionbtns = true;
+                this.ActiveControl = tbxPalletHeight;
             }
             else
             { //prevent section buttons from drawing again if back button is selected
@@ -297,6 +357,7 @@ namespace PalletCard
             lbl2.Visible = true;
             lbl2.Text = btn.Text;
             tbxPalletHeight.Text = "";
+            this.ActiveControl = tbxPalletHeight;
             index = 3;    
 
             //filter datagridview1 with the button text choice
@@ -351,25 +412,33 @@ namespace PalletCard
             pd.Print();
             btnPrint.Visible = true;
 
-            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
-            SqlConnection conDatabase = new SqlConnection(constring);
-            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            SqlDataReader myReader;
-            try
-            {
-                conDatabase.Open();
-                myReader = cmdDatabase.ExecuteReader();
-                MessageBox.Show("Saved");
-                while (myReader.Read())
-                {
+            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
+            //SqlConnection conDatabase = new SqlConnection(constring);
+            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            //SqlDataReader myReader;
+            //try
+            //{
+            //    conDatabase.Open();
+            //    myReader = cmdDatabase.ExecuteReader();
+            //    while (myReader.Read())
+            //    {
 
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            pnlHome0.BringToFront();
+            lblJobNo.Visible = false;
+            lblPress.Visible = false;
+            lbl1.Visible = false;
+            lbl2.Visible = false;
+            lbl3.Visible = false;
+            lbl4.Visible = false;
+            btnBack.Visible = false;
+            btnCancel.Visible = false;
         }
 
         void PrintImageReturnPaper(object o, PrintPageEventArgs e)
@@ -385,61 +454,7 @@ namespace PalletCard
             e.Graphics.DrawImage(img, p);
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
-            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
-            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
-            myAdapter.SelectCommand = myCommand;
-            DataSet tharData = new DataSet();
-            try
-            {
-                myConnection.Open();
-                myAdapter.Fill(tharData);
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-            using (DataTable operations = new DataTable())
-            {
-                myAdapter.Fill(operations);
-                dataGridView1.DataSource = operations;
-            }
-            pnlHome0.BringToFront();
-            lblJobNo.Visible = false;
-            lblPress.Visible = false;
-            lbl1.Visible = false;
-            lbl2.Visible = false;
-            lbl3.Visible = false;
-            lbl4.Visible = false;
-            tbxSearchBox.Text = "";
-            tbxSearchBox.Focus();
-            sectionbtns = false;
-            tbxPalletHeight.Text = null;
-            btnSearch.Visible = true;
-        }
-
-        private void tbxPalletHeight_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-                SelectNextControl(ActiveControl, true, true, true, true);
-            }
-        }
-
-        private void searchBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                btnSearch_Click(tbxSearchBox, new EventArgs());
-        }
+        
 
 
 //****************************************************************************************************
@@ -454,6 +469,7 @@ namespace PalletCard
             index = 5;
             jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
             btnBack.Visible = true;
+            this.ActiveControl = tbxQtySheetsAffected;
 
             //loop through datagridview to see if each value of field "Expr1" is the same
             string x;
@@ -564,7 +580,8 @@ namespace PalletCard
             pnlRejectPaper3.BringToFront();
             lblPrint7.Text = ckbDogEarsTIC.Text;
             lblPrint8.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-            lblPrint9.Text = dataGridView1.Rows[0].Cells[26].Value.ToString() + " Sheets";
+            //lblPrint9.Text = dataGridView1.Rows[0].Cells[26].Value.ToString() + " Sheets";
+            lblPrint9.Text = tbxQtySheetsAffected.Text;
             lblPrint10.Text = "Press - XL106";
             lblPrint11.Text = "Job - " + jobNo;
             lblPrint12.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
@@ -579,25 +596,33 @@ namespace PalletCard
             pd.Print();
             btnPrint.Visible = true;
 
-            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
-            SqlConnection conDatabase = new SqlConnection(constring);
-            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            SqlDataReader myReader;
-            try
-            {
-                conDatabase.Open();
-                myReader = cmdDatabase.ExecuteReader();
-                MessageBox.Show("Saved");
-                while (myReader.Read())
-                {
+            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
+            //SqlConnection conDatabase = new SqlConnection(constring);
+            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            //SqlDataReader myReader;
+            //try
+            //{
+            //    conDatabase.Open();
+            //    myReader = cmdDatabase.ExecuteReader();
+            //    while (myReader.Read())
+            //    {
 
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            pnlHome0.BringToFront();
+            lblJobNo.Visible = false;
+            lblPress.Visible = false;
+            lbl1.Visible = false;
+            lbl2.Visible = false;
+            lbl3.Visible = false;
+            lbl4.Visible = false;
+            btnBack.Visible = false;
+            btnCancel.Visible = false;
         }
 
         void PrintImageRejectPaper(object o, PrintPageEventArgs e)
