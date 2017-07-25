@@ -30,7 +30,6 @@ namespace PalletCard
             if (index==0)
             {
                 btnBack.Visible = false;
-                btnCancel.Visible = false;
                 btnSearch.Visible = false;
                 lblJobNo.Visible = false;
                 lblPress.Visible = false;
@@ -78,8 +77,8 @@ namespace PalletCard
                         lbl4.Visible = false;
                         tbxPalletHeight.Text = "";
                         btnBack.Visible = false;
-                        index = 1;                      
-                    }
+                        index = 1;
+                }
                 }
             else if (index == 4)
             { 
@@ -100,6 +99,8 @@ namespace PalletCard
                 lbl2.Visible = false;
                 lbl3.Visible = false;
                 lbl4.Visible = false;
+                btnBack.Visible = false;
+                tbxQtySheetsAffected.Text = "";
                 index = 1;
             }
             else if (index == 6)
@@ -129,7 +130,10 @@ namespace PalletCard
                 lbl2.Visible = true;
                 lbl3.Visible = false;
                 lbl4.Visible = false;
+                this.ActiveControl = tbxQtySheetsAffected;
+                tbxQtySheetsAffected.Text = "";
                 index = 6;
+
             }
 
 
@@ -216,7 +220,8 @@ namespace PalletCard
             searchChanged = true;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+
+        private void Cancel ()
         {
             string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
             string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
@@ -256,6 +261,13 @@ namespace PalletCard
             tbxPalletHeight.Text = null;
             btnSearch.Visible = true;
             this.ActiveControl = tbxSearchBox;
+            btnCancel.Visible = false;
+        }
+
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Cancel();
         }
 
         private void tbxPalletHeight_KeyDown(object sender, KeyEventArgs e)
@@ -282,7 +294,6 @@ namespace PalletCard
                 lbl1.Visible = true;
                 lbl1.Text = "Return Paper";
                 pnlReturnPaper1.BringToFront();
-                index = 2;
                 jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
                 btnBack.Visible = true;
 
@@ -296,7 +307,13 @@ namespace PalletCard
                 y = dataGridView1.Rows[i].Cells[11].Value.ToString();
                 if (x == y) { control = true; }
             }
-            if (control || dataGridView1.RowCount ==2 ) {                               
+
+
+            //|| dataGridView1.RowCount ==2
+
+            
+            if (control || dataGridView1.Rows.Count  == 1)
+            {
                 pnlReturnPaper2.BringToFront();
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 lbl2.Text = d;
@@ -309,6 +326,8 @@ namespace PalletCard
                 sectionbtns = true;
                 this.ActiveControl = tbxPalletHeight;
             }
+            
+
             else
             { //prevent section buttons from drawing again if back button is selected
                 if (!sectionbtns)
@@ -316,8 +335,8 @@ namespace PalletCard
                     //loop through datagrid rows to create a button for each value of field "Expr1"                  
                     for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                         {
-                            //if datagrid is not empty create a button for each row at cells[2] - "Name"
-                            if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+                        //if datagrid is not empty create a button for each row at cells[2] - "Name"
+                        if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
 
                             //offer only one button where Expr1 field has two rows with the same value
                             if (! (this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i+1].Cells[11].Value as string)) { 
@@ -343,6 +362,7 @@ namespace PalletCard
                     }
                 sectionbtns = true;
             }
+            index = 3;
         }
 
         //Dynamic button click - Section buttons, Return Paper work flow
@@ -358,7 +378,7 @@ namespace PalletCard
             lbl2.Text = btn.Text;
             tbxPalletHeight.Text = "";
             this.ActiveControl = tbxPalletHeight;
-            index = 3;    
+            index = 2;
 
             //filter datagridview1 with the button text choice
             try
@@ -439,6 +459,7 @@ namespace PalletCard
             lbl4.Visible = false;
             btnBack.Visible = false;
             btnCancel.Visible = false;
+            Cancel();
         }
 
         void PrintImageReturnPaper(object o, PrintPageEventArgs e)
@@ -481,7 +502,7 @@ namespace PalletCard
                 y = dataGridView1.Rows[i].Cells[11].Value.ToString();
                 if (x == y) { control = true; }
             }
-            if (control || dataGridView1.RowCount ==2)
+            if (control )
             {
                 pnlRejectPaper2.BringToFront();
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
@@ -535,6 +556,7 @@ namespace PalletCard
             pnlRejectPaper2.BringToFront();
             lbl2.Visible = true;
             lbl2.Text = btn.Text;
+            this.ActiveControl = tbxQtySheetsAffected;
             index = 6;
 
             //filter datagridview1 with the button text choice
@@ -580,7 +602,6 @@ namespace PalletCard
             pnlRejectPaper3.BringToFront();
             lblPrint7.Text = ckbDogEarsTIC.Text;
             lblPrint8.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-            //lblPrint9.Text = dataGridView1.Rows[0].Cells[26].Value.ToString() + " Sheets";
             lblPrint9.Text = tbxQtySheetsAffected.Text;
             lblPrint10.Text = "Press - XL106";
             lblPrint11.Text = "Job - " + jobNo;
@@ -592,9 +613,9 @@ namespace PalletCard
         {
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(PrintImageRejectPaper);
-            btnPrint.Visible = false;
+            btnRejectPaperPrint.Visible = false;
             pd.Print();
-            btnPrint.Visible = true;
+            btnRejectPaperPrint.Visible = true;
 
             //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
             //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
@@ -623,6 +644,7 @@ namespace PalletCard
             lbl4.Visible = false;
             btnBack.Visible = false;
             btnCancel.Visible = false;
+            Cancel();
         }
 
         void PrintImageRejectPaper(object o, PrintPageEventArgs e)
