@@ -16,7 +16,6 @@ namespace PalletCard
         int index;
         bool sectionbtns;
         int A = 1;
-        bool control;
         string jobNo;
         bool searchChanged;
 
@@ -313,7 +312,7 @@ namespace PalletCard
             string y;
             x = dataGridView1.Rows[0].Cells[11].Value.ToString();
             y = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            for (int i = 1; i < this.dataGridView1.Rows.Count  ; i++)
+            for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
             {
                 y = dataGridView1.Rows[i].Cells[11].Value.ToString();
             }       
@@ -503,13 +502,12 @@ namespace PalletCard
             string x;
             string y;
             x = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            control = false;
-            for (int i = 1; i < this.dataGridView1.Rows.Count - 1; i++)
+            y = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
             {
                 y = dataGridView1.Rows[i].Cells[11].Value.ToString();
-                if (x == y) { control = true; }
             }
-            if (control )
+            if (x == y)
             {
                 pnlRejectPaper2.BringToFront();
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
@@ -569,7 +567,7 @@ namespace PalletCard
             //filter datagridview1 with the button text choice
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + this.dataGridView1.Rows[0].Cells[11].Value + "%'";
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%'";
             }
             catch (Exception) { }
         }
