@@ -53,7 +53,9 @@ namespace PalletCard
             lbl3.Visible = false;    
             lbl4.Visible = false;
             btnBack.Visible = false;
-            index = 1;
+                Search();
+                index = 1;
+                sectionbtns = false;
             }
             else if (index == 3)
             { 
@@ -183,36 +185,43 @@ namespace PalletCard
             this.ActiveControl = tbxSearchBox;
         }
 
+
+        private void Search()
+        {
+            {
+                try
+                {
+                    ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%'", tbxSearchBox.Text.Trim().Replace("'", "''"));
+                    lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
+                    lblJobNo.Visible = true;
+                    int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
+                    if (dataGridView1.Rows[0].Cells[0].Value != null)
+                    {
+                        lblPress.Text = "XL106";
+                        lblPress.Visible = true;
+                        pnlHome1.BringToFront();
+                    }
+                    else
+                    {
+                        lblPress.Visible = false;
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Tap Cancel and search again");
+                }
+                index = 1;
+                if (searchChanged == true)
+                {
+                    pnlReturnPaper1.Controls.Clear();
+                }
+                A = 1;
+                btnBack.Visible = false;
+            }
+        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%'", tbxSearchBox.Text.Trim().Replace("'", "''"));
-                lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
-                lblJobNo.Visible = true;
-                int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
-                if (dataGridView1.Rows[0].Cells[0].Value != null)
-                {
-                    lblPress.Text = "XL106";
-                    lblPress.Visible = true;
-                    pnlHome1.BringToFront();
-                }
-                else
-                {
-                    lblPress.Visible = false;
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Tap Cancel and search again");
-            }
-            index = 1;
-            if (searchChanged == true)
-                { 
-                pnlReturnPaper1.Controls.Clear();
-                }
-            A = 1;
-            btnBack.Visible = false;
+            Search();
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
@@ -221,7 +230,7 @@ namespace PalletCard
         }
 
 
-        private void Cancel ()
+        private void Cancel()
         {
             string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
             string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
@@ -261,7 +270,7 @@ namespace PalletCard
             tbxPalletHeight.Text = null;
             btnSearch.Visible = true;
             this.ActiveControl = tbxSearchBox;
-            btnCancel.Visible = false;
+            index = 0;
         }
 
 
@@ -285,6 +294,7 @@ namespace PalletCard
                 btnSearch_Click(tbxSearchBox, new EventArgs());
         }
 
+
         //****************************************************************************************************
         //RETURN PAPER WORKFLOW
         //****************************************************************************************************
@@ -298,21 +308,16 @@ namespace PalletCard
                 btnBack.Visible = true;
 
             //loop through datagridview to see if each value of field "Expr1" is the same
+            //(If only one datagridview row or rows are all the same then go straight to pallet height - else create dynamic buttons)
             string x;
             string y;
             x = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            control = false;
-            for (int i = 1; i < this.dataGridView1.Rows.Count - 1; i++)
+            y = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            for (int i = 1; i < this.dataGridView1.Rows.Count  ; i++)
             {
                 y = dataGridView1.Rows[i].Cells[11].Value.ToString();
-                if (x == y) { control = true; }
-            }
-
-
-            //|| dataGridView1.RowCount ==2
-
-            
-            if (control || dataGridView1.Rows.Count  == 1)
+            }       
+            if (x == y)
             {
                 pnlReturnPaper2.BringToFront();
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
@@ -327,7 +332,6 @@ namespace PalletCard
                 this.ActiveControl = tbxPalletHeight;
             }
             
-
             else
             { //prevent section buttons from drawing again if back button is selected
                 if (!sectionbtns)
@@ -335,11 +339,12 @@ namespace PalletCard
                     //loop through datagrid rows to create a button for each value of field "Expr1"                  
                     for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                         {
-                        //if datagrid is not empty create a button for each row at cells[2] - "Name"
+                        //if datagrid is not empty create a button for each row at cells[11] - "Expr1"
                         if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
 
                             //offer only one button where Expr1 field has two rows with the same value
-                            if (! (this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i+1].Cells[11].Value as string)) { 
+                            dataGridView1.AllowUserToAddRows = true;
+                        if (! (this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i+1].Cells[11].Value as string)) { 
                             {
                                     for (int j = 0; j < 1; j++)
                                     { 
@@ -355,14 +360,16 @@ namespace PalletCard
                                         btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string; 
                                         A = A + 1;
                                         btn.Click += new System.EventHandler(this.expr1);
-                                    }
+                                    index = 2;
                                 }
-                            }
+                                }
+                            dataGridView1.AllowUserToAddRows = false;
+                        }
                         }
                     }
                 sectionbtns = true;
             }
-            index = 3;
+            
         }
 
         //Dynamic button click - Section buttons, Return Paper work flow
