@@ -320,7 +320,7 @@ namespace PalletCard
             {
                 pnlReturnPaper2.BringToFront();
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
-                lbl2.Text = d;
+                lbl2.Text = d;           
                 lbl2.Visible = true;
                 lbl3.Visible = true;
                 lbl3.Text = this.dataGridView1.Rows[0].Cells[16].Value as string;
@@ -527,7 +527,8 @@ namespace PalletCard
                         if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
 
                             //offer only one button where Expr1 field has two rows with the same value
-                            if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
+                            dataGridView1.AllowUserToAddRows = true;
+                        if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
                             {
                                 {
                                     for (int j = 0; j < 1; j++)
@@ -547,6 +548,7 @@ namespace PalletCard
                                     }
                                 }
                             }
+                        dataGridView1.AllowUserToAddRows = false;
                     }
                 }
                 sectionbtns = true;
