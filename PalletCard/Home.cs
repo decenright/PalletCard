@@ -361,7 +361,7 @@ namespace PalletCard
                                         A = A + 1;
                                         btn.Click += new System.EventHandler(this.expr1);
                                     index = 2;
-                                }
+                                    }
                                 }
                             dataGridView1.AllowUserToAddRows = false;
                         }
@@ -396,12 +396,12 @@ namespace PalletCard
             lbl2.Text = btn.Text;
             tbxPalletHeight.Text = "";
             this.ActiveControl = tbxPalletHeight;
-            index = 2;
+            index = 3;
 
             //filter datagridview1 with the button text choice
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%'";
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
             }
             catch (Exception) { }
         }
@@ -450,8 +450,11 @@ namespace PalletCard
             pd.Print();
             btnPrint.Visible = true;
 
+            DateTime CurrentDate;
+            CurrentDate = DateTime.Now;
+
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, ResourceID, Expr1, WorkingSize, SheetQty, Description) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','" + this.lbl3.Text + "');";
+            string Query = "insert into Log (Routine, JobNo, ResourceID, Expr1, WorkingSize, SheetQty, Description, Timestamp) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','" + this.lbl3.Text + "','" + CurrentDate + "');";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             SqlDataReader myReader;
