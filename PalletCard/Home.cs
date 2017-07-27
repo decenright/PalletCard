@@ -18,6 +18,7 @@ namespace PalletCard
         int A = 1;
         string jobNo;
         bool searchChanged;
+        string val;
 
         public Home()
         {
@@ -356,7 +357,7 @@ namespace PalletCard
                                         btn.Font = new Font("Microsoft Sans Serif", 14);
                                         btn.ForeColor = Color.White;
                                         btn.Left = 30;                                     
-                                        btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string; 
+                                        btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
                                         A = A + 1;
                                         btn.Click += new System.EventHandler(this.expr1);
                                     index = 2;
@@ -376,10 +377,21 @@ namespace PalletCard
         {
             Button btn = sender as Button;
             pnlReturnPaper2.BringToFront();
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                string val = dataGridView1.Rows[i].Cells[11].Value.ToString();
+                if (btn.Text == val)
+                {
+                    lbl4.Text = dataGridView1.Rows[i].Cells[13].Value.ToString();
+                    lbl3.Text = dataGridView1.Rows[i].Cells[16].Value.ToString();
+                }
+            }
+
             lbl4.Visible = true;
-            lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+            //lbl4.Text = dataGridView1.Rows[rowindex].Cells[13].Value.ToString();
             lbl3.Visible = true;
-            lbl3.Text = dataGridView1.Rows[0].Cells[16].Value.ToString();
+            //lbl3.Text = dataGridView1.Rows[rowindex].Cells[16].Value.ToString();
             lbl2.Visible = true;
             lbl2.Text = btn.Text;
             tbxPalletHeight.Text = "";
@@ -438,24 +450,24 @@ namespace PalletCard
             pd.Print();
             btnPrint.Visible = true;
 
-            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
-            //SqlConnection conDatabase = new SqlConnection(constring);
-            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            //SqlDataReader myReader;
-            //try
-            //{
-            //    conDatabase.Open();
-            //    myReader = cmdDatabase.ExecuteReader();
-            //    while (myReader.Read())
-            //    {
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            string Query = "insert into Log (Routine, JobNo, ResourceID, Expr1, WorkingSize, SheetQty, Description) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','" + this.lbl3.Text + "');";
+            SqlConnection conDatabase = new SqlConnection(constring);
+            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            SqlDataReader myReader;
+            try
+            {
+                conDatabase.Open();
+                myReader = cmdDatabase.ExecuteReader();
+                while (myReader.Read())
+                {
 
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             pnlHome0.BringToFront();
             lblJobNo.Visible = false;
             lblPress.Visible = false;
