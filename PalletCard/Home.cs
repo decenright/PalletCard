@@ -344,8 +344,9 @@ namespace PalletCard
 
                             //offer only one button where Expr1 field has two rows with the same value
                             dataGridView1.AllowUserToAddRows = true;
-                        if (! (this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i+1].Cells[11].Value as string)) { 
-                            {
+                            if (! (this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i+1].Cells[11].Value as string))
+                            { 
+                                {
                                     for (int j = 0; j < 1; j++)
                                     { 
                                         Button btn = new Button();
@@ -364,11 +365,11 @@ namespace PalletCard
                                     }
                                 }
                             dataGridView1.AllowUserToAddRows = false;
-                        }
+                            }
                         }
                     }
-                sectionbtns = true;
-            }
+                    sectionbtns = true;
+                }
             
         }
 
@@ -377,6 +378,13 @@ namespace PalletCard
         {
             Button btn = sender as Button;
             pnlReturnPaper2.BringToFront();
+
+            //filter datagridview1 with the button text choice
+            try
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
+            }
+            catch (Exception) { }
 
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
@@ -398,12 +406,7 @@ namespace PalletCard
             this.ActiveControl = tbxPalletHeight;
             index = 3;
 
-            //filter datagridview1 with the button text choice
-            try
-            {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
-            }
-            catch (Exception) { }
+
         }
 
         private void btnPalletHeight_Click(object sender, EventArgs e)
@@ -563,7 +566,7 @@ namespace PalletCard
                                     }
                                 }
                             }
-                        dataGridView1.AllowUserToAddRows = false;
+                            dataGridView1.AllowUserToAddRows = false;
                     }
                 }
                 sectionbtns = true;
