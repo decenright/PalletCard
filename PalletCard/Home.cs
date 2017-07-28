@@ -330,8 +330,7 @@ namespace PalletCard
                 index = 3;
                 sectionbtns = true;
                 this.ActiveControl = tbxPalletHeight;
-            }
-            
+            }       
             else
             { //prevent section buttons from drawing again if back button is selected
                 if (!sectionbtns)
@@ -397,16 +396,12 @@ namespace PalletCard
             }
 
             lbl4.Visible = true;
-            //lbl4.Text = dataGridView1.Rows[rowindex].Cells[13].Value.ToString();
             lbl3.Visible = true;
-            //lbl3.Text = dataGridView1.Rows[rowindex].Cells[16].Value.ToString();
             lbl2.Visible = true;
             lbl2.Text = btn.Text;
             tbxPalletHeight.Text = "";
             this.ActiveControl = tbxPalletHeight;
             index = 3;
-
-
         }
 
         private void btnPalletHeight_Click(object sender, EventArgs e)
