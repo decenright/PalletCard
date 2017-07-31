@@ -583,47 +583,36 @@ namespace PalletCard
             //filter datagridview1 with the button text choice
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%'";
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
             }
             catch (Exception) { }
         }
 
-        private void ckbDogEarsTIC_CheckedChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show(ckbDogEarsTIC.Text + "" + ckbDogEarsTIC.CheckState.ToString());
-        }
-
-        private void ckbMottle_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ckbCreasing_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ckbCigarRoll_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ckbPalletDamage_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ckbBladeLine_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnOKRejectPaper_Click(object sender, EventArgs e)
         {
             pnlRejectPaper3.BringToFront();
-            lblPrint7.Text = ckbDogEarsTIC.Text;
+            string s = "";
+            foreach (Control c in this.groupBox1.Controls)
+            {
+                if (c is CheckBox)
+                {
+                    CheckBox b = (CheckBox)c;
+                    if (b.Checked)
+                        {
+                        s = b.Text + " * " + s;
+                        }
+                }
+            }
+            lbl3.Text = s;
+            lbl3.Visible = true;
+            lblPrint7.Text = s;
+            lblPrint7.MaximumSize = new Size(450, 220);
+            lblPrint7.AutoSize = true;
             lblPrint8.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-            lblPrint9.Text = tbxQtySheetsAffected.Text;
+            lblPrint9.Text = tbxQtySheetsAffected.Text + " Sheets";
+            lblPrint13.Text = tbxOtherReason.Text;
             lblPrint10.Text = "Press - XL106";
             lblPrint11.Text = "Job - " + jobNo;
             lblPrint12.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbxSearchBox = new System.Windows.Forms.TextBox();
@@ -99,6 +99,7 @@
             this.lblBack4 = new System.Windows.Forms.Label();
             this.lblBack5 = new System.Windows.Forms.Label();
             this.lblBack6 = new System.Windows.Forms.Label();
+            this.lblPrint13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -112,37 +113,36 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.Location = new System.Drawing.Point(4, 871);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(730, 147);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.Visible = false;
             // 
             // tbxSearchBox
             // 
@@ -606,7 +606,6 @@
             this.ckbBladeLine.TabIndex = 5;
             this.ckbBladeLine.Text = "Blade Line";
             this.ckbBladeLine.UseVisualStyleBackColor = true;
-            this.ckbBladeLine.CheckedChanged += new System.EventHandler(this.ckbBladeLine_CheckedChanged);
             // 
             // ckbPalletDamage
             // 
@@ -618,7 +617,6 @@
             this.ckbPalletDamage.TabIndex = 4;
             this.ckbPalletDamage.Text = "Pallet Damage";
             this.ckbPalletDamage.UseVisualStyleBackColor = true;
-            this.ckbPalletDamage.CheckedChanged += new System.EventHandler(this.ckbPalletDamage_CheckedChanged);
             // 
             // ckbCigarRoll
             // 
@@ -630,7 +628,6 @@
             this.ckbCigarRoll.TabIndex = 3;
             this.ckbCigarRoll.Text = "Cigar Roll";
             this.ckbCigarRoll.UseVisualStyleBackColor = true;
-            this.ckbCigarRoll.CheckedChanged += new System.EventHandler(this.ckbCigarRoll_CheckedChanged);
             // 
             // ckbCreasing
             // 
@@ -642,7 +639,6 @@
             this.ckbCreasing.TabIndex = 2;
             this.ckbCreasing.Text = "Creasing";
             this.ckbCreasing.UseVisualStyleBackColor = true;
-            this.ckbCreasing.CheckedChanged += new System.EventHandler(this.ckbCreasing_CheckedChanged);
             // 
             // ckbMottle
             // 
@@ -654,7 +650,6 @@
             this.ckbMottle.TabIndex = 1;
             this.ckbMottle.Text = "Mottle";
             this.ckbMottle.UseVisualStyleBackColor = true;
-            this.ckbMottle.CheckedChanged += new System.EventHandler(this.ckbMottle_CheckedChanged);
             // 
             // ckbDogEarsTIC
             // 
@@ -666,7 +661,6 @@
             this.ckbDogEarsTIC.TabIndex = 0;
             this.ckbDogEarsTIC.Text = "Dog Ears/TIC";
             this.ckbDogEarsTIC.UseVisualStyleBackColor = true;
-            this.ckbDogEarsTIC.CheckedChanged += new System.EventHandler(this.ckbDogEarsTIC_CheckedChanged);
             // 
             // btnOKRejectPaper
             // 
@@ -717,6 +711,8 @@
             // 
             // pnlRejectPaper3
             // 
+            this.pnlRejectPaper3.AutoScroll = true;
+            this.pnlRejectPaper3.Controls.Add(this.lblPrint13);
             this.pnlRejectPaper3.Controls.Add(this.btnRejectPaperPrint);
             this.pnlRejectPaper3.Controls.Add(this.label6);
             this.pnlRejectPaper3.Controls.Add(this.lblPrint12);
@@ -749,7 +745,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(58, 587);
+            this.label6.Location = new System.Drawing.Point(58, 601);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(133, 24);
             this.label6.TabIndex = 7;
@@ -759,7 +755,7 @@
             // 
             this.lblPrint12.AutoSize = true;
             this.lblPrint12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint12.Location = new System.Drawing.Point(224, 659);
+            this.lblPrint12.Location = new System.Drawing.Point(224, 673);
             this.lblPrint12.Name = "lblPrint12";
             this.lblPrint12.Size = new System.Drawing.Size(86, 24);
             this.lblPrint12.TabIndex = 6;
@@ -769,7 +765,7 @@
             // 
             this.lblPrint11.AutoSize = true;
             this.lblPrint11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint11.Location = new System.Drawing.Point(223, 624);
+            this.lblPrint11.Location = new System.Drawing.Point(223, 638);
             this.lblPrint11.Name = "lblPrint11";
             this.lblPrint11.Size = new System.Drawing.Size(86, 24);
             this.lblPrint11.TabIndex = 5;
@@ -779,7 +775,7 @@
             // 
             this.lblPrint10.AutoSize = true;
             this.lblPrint10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint10.Location = new System.Drawing.Point(224, 587);
+            this.lblPrint10.Location = new System.Drawing.Point(224, 601);
             this.lblPrint10.Name = "lblPrint10";
             this.lblPrint10.Size = new System.Drawing.Size(86, 24);
             this.lblPrint10.TabIndex = 4;
@@ -788,10 +784,10 @@
             // lblPrint9
             // 
             this.lblPrint9.AutoSize = true;
-            this.lblPrint9.Font = new System.Drawing.Font("Impact", 38.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint9.Location = new System.Drawing.Point(53, 446);
+            this.lblPrint9.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint9.Location = new System.Drawing.Point(40, 500);
             this.lblPrint9.Name = "lblPrint9";
-            this.lblPrint9.Size = new System.Drawing.Size(216, 63);
+            this.lblPrint9.Size = new System.Drawing.Size(205, 60);
             this.lblPrint9.TabIndex = 3;
             this.lblPrint9.Text = "lblPrint9";
             // 
@@ -799,7 +795,7 @@
             // 
             this.lblPrint8.AutoSize = true;
             this.lblPrint8.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint8.Location = new System.Drawing.Point(52, 306);
+            this.lblPrint8.Location = new System.Drawing.Point(40, 415);
             this.lblPrint8.Name = "lblPrint8";
             this.lblPrint8.Size = new System.Drawing.Size(205, 60);
             this.lblPrint8.TabIndex = 2;
@@ -808,10 +804,10 @@
             // lblPrint7
             // 
             this.lblPrint7.AutoSize = true;
-            this.lblPrint7.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint7.Location = new System.Drawing.Point(10, 193);
+            this.lblPrint7.Font = new System.Drawing.Font("Impact", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint7.Location = new System.Drawing.Point(42, 193);
             this.lblPrint7.Name = "lblPrint7";
-            this.lblPrint7.Size = new System.Drawing.Size(123, 36);
+            this.lblPrint7.Size = new System.Drawing.Size(147, 43);
             this.lblPrint7.TabIndex = 1;
             this.lblPrint7.Text = "lblPrint7";
             // 
@@ -909,17 +905,27 @@
             this.lblBack6.TabIndex = 30;
             this.lblBack6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblPrint13
+            // 
+            this.lblPrint13.AutoSize = true;
+            this.lblPrint13.Font = new System.Drawing.Font("Impact", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint13.Location = new System.Drawing.Point(45, 335);
+            this.lblPrint13.Name = "lblPrint13";
+            this.lblPrint13.Size = new System.Drawing.Size(166, 43);
+            this.lblPrint13.TabIndex = 9;
+            this.lblPrint13.Text = "lblPrint13";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1053);
-            this.Controls.Add(this.pnlReturnPaper3);
-            this.Controls.Add(this.pnlReturnPaper2);
-            this.Controls.Add(this.pnlHome1);
             this.Controls.Add(this.pnlRejectPaper3);
             this.Controls.Add(this.pnlRejectPaper2);
+            this.Controls.Add(this.pnlHome1);
+            this.Controls.Add(this.pnlReturnPaper3);
+            this.Controls.Add(this.pnlReturnPaper2);
             this.Controls.Add(this.pnlRejectPaper1);
             this.Controls.Add(this.pnlHome0);
             this.Controls.Add(this.pnlReturnPaper1);
@@ -1029,6 +1035,7 @@
         private System.Windows.Forms.Label lblBack4;
         private System.Windows.Forms.Label lblBack5;
         private System.Windows.Forms.Label lblBack6;
+        private System.Windows.Forms.Label lblPrint13;
     }
 }
 
