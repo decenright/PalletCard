@@ -111,6 +111,14 @@ namespace PalletCard
                 lbl2.Visible = false;
                 lbl3.Visible = false;
                 lbl4.Visible = false;
+                tbxQtySheetsAffected.Text = "";
+                tbxOtherReason.Text = "";
+                ckbDogEarsTIC.Checked = false;
+                ckbMottle.Checked = false;
+                ckbCreasing.Checked = false;
+                ckbCigarRoll.Checked = false;
+                ckbPalletDamage.Checked = false;
+                ckbBladeLine.Checked = false;
                 index = 5;
                 // if no section buttons go straight back to Choose Action screen
                 if (pnlRejectPaper1.Controls.Count == 0)
@@ -122,6 +130,14 @@ namespace PalletCard
                     lbl3.Visible = false;
                     lbl4.Visible = false;
                     btnBack.Visible = false;
+                    tbxOtherReason.Text = "";
+                    ckbDogEarsTIC.Checked = false;
+                    ckbMottle.Checked = false;
+                    ckbCreasing.Checked = false;
+                    ckbCigarRoll.Checked = false;
+                    ckbPalletDamage.Checked = false;
+                    ckbBladeLine.Checked = false;
+                    tbxQtySheetsAffected.Text = "";
                     index = 1;
                 }
             }
@@ -134,8 +150,15 @@ namespace PalletCard
                 lbl4.Visible = false;
                 this.ActiveControl = tbxQtySheetsAffected;
                 tbxQtySheetsAffected.Text = "";
+                tbxOtherReason.Text = "";
+                ckbDogEarsTIC.Checked = false;
+                ckbMottle.Checked = false;
+                ckbCreasing.Checked = false;
+                ckbCigarRoll.Checked = false;
+                ckbPalletDamage.Checked = false;
+                ckbBladeLine.Checked = false;
+                tbxQtySheetsAffected.Text = "";
                 index = 6;
-
             }
 
 
@@ -592,6 +615,7 @@ namespace PalletCard
 
         private void btnOKRejectPaper_Click(object sender, EventArgs e)
         {
+            //Get values of checked checkboxes
             pnlRejectPaper3.BringToFront();
             string s = "";
             foreach (Control c in this.groupBox1.Controls)
@@ -612,6 +636,16 @@ namespace PalletCard
             lblPrint7.AutoSize = true;
             lblPrint8.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
             lblPrint9.Text = tbxQtySheetsAffected.Text + " Sheets";
+            int parsedValue;
+            if (!int.TryParse(tbxQtySheetsAffected.Text, out parsedValue))
+            {
+                MessageBox.Show("Please enter a valid number in the Quantity Sheets affected box");
+                pnlRejectPaper2.BringToFront();
+                ActiveControl = tbxQtySheetsAffected;
+                tbxQtySheetsAffected.Text = "";
+                return;
+            }
+
             lblPrint13.Text = tbxOtherReason.Text;
             lblPrint10.Text = "Press - XL106";
             lblPrint11.Text = "Job - " + jobNo;
