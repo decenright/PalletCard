@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Data.SqlClient;
-
+using System.IO;
+using System.Xml.Serialization;
 
 namespace PalletCard
 {
@@ -18,7 +19,8 @@ namespace PalletCard
         int A = 1;
         string jobNo;
         bool searchChanged;
-        string val;
+        byte[] SignatureByte;
+
 
         public Home()
         {
@@ -467,7 +469,7 @@ namespace PalletCard
         private void btnPrint_Click(object sender, EventArgs e)
         {
             PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(PrintImageReturnPaper);
+            pd.PrintPage += new PrintPageEventHandler(PrintSig);
             btnPrint.Visible = false;
             pd.Print();
             btnPrint.Visible = true;
@@ -505,7 +507,7 @@ namespace PalletCard
             Cancel();
         }
 
-        void PrintImageReturnPaper(object o, PrintPageEventArgs e)
+        void PrintSig(object o, PrintPageEventArgs e)
         {
             int x = SystemInformation.WorkingArea.X;
             int y = SystemInformation.WorkingArea.Y;
@@ -611,7 +613,14 @@ namespace PalletCard
             catch (Exception) { }
         }
 
-        
+        private void tbxQtySheetsAffected_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                SelectNextControl(ActiveControl, true, true, true, true);
+            }
+        }
 
         private void btnOKRejectPaper_Click(object sender, EventArgs e)
         {
@@ -705,5 +714,372 @@ namespace PalletCard
         }
 
 
+
+        //****************************************************************************************************
+        //Signature
+        //****************************************************************************************************
+
+        [Serializable]
+        public class Line
+        {
+            public Line()
+            {
+
+            }
+
+            public Line(Point startPoint, Point endPoint)
+            {
+                this.StartPoint = startPoint;
+                this.EndPoint = endPoint;
+            }
+
+            public Point StartPoint { get; set; }
+            public Point EndPoint { get; set; }
+        }
+
+        [Serializable]
+        public class Glyph
+        {
+            public Glyph()
+            {
+                this.Lines = new List<Line>();
+            }
+            public List<Line> Lines { get; set; }
+        }
+
+        [Serializable]
+        public class Signature
+        {
+            public Signature()
+            {
+                this.Glyphs = new List<Glyph>();
+            }
+
+            public List<Glyph> Glyphs { get; set; }
+        }
+
+        Boolean IsCapturing = false;
+        private Point startPoint;
+        private Point endPoint;
+        Pen pen = new Pen(Color.Black);
+        Glyph glyph = null;
+        Signature signature = new Signature();
+        String fileName = @"signature.xml";
+
+        private void SignaturePanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (IsCapturing)
+            {
+                if (startPoint.IsEmpty && endPoint.IsEmpty)
+                {
+                    endPoint = e.Location;
+                }
+                else
+                {
+                    startPoint = endPoint;
+                    endPoint = e.Location;
+                    Line line = new Line(startPoint, endPoint);
+                    glyph.Lines.Add(line);
+                    DrawLine(line);
+                }
+            }
+        }
+
+        private void SignaturePanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            IsCapturing = false;
+            signature.Glyphs.Add(glyph);
+            startPoint = new Point();
+            endPoint = new Point();
+
+        }
+
+        private void SignaturePanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            IsCapturing = true;
+            glyph = new Glyph();
+        }
+
+        private void DrawLine(Line line)
+        {
+            using (Graphics graphic = this.SignaturePanel.CreateGraphics())
+            {
+                graphic.DrawLine(pen, line.StartPoint, line.EndPoint);
+            }
+        }
+
+        private void SerializeSignature()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Signature));
+
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
+
+            using (TextWriter textWriter = new StreamWriter(fileName))
+            {
+                serializer.Serialize(textWriter, signature);
+                textWriter.Close();
+            }
+        }
+
+        private void DeserializeSignature()
+        {
+            XmlSerializer deserializer = new XmlSerializer(typeof(Signature));
+            using (TextReader textReader = new StreamReader(fileName))
+            {
+                signature = (Signature)deserializer.Deserialize(textReader);
+                textReader.Close();
+            }
+        }
+
+        private void DrawSignature()
+        {
+            foreach (Glyph glyph in signature.Glyphs)
+            {
+                foreach (Line line in glyph.Lines)
+                {
+                    DrawLine(line);
+                }
+            }
+        }
+
+        private void ExportButton_Click(object sender, EventArgs e)
+        {
+            SerializeSignature();
+        }
+
+        private void ImportButton_Click(object sender, EventArgs e)
+        {
+            DeserializeSignature();
+            ClearSignaturePanel();
+            DrawSignature();
+        }
+        private void ClearSignaturePanel()
+        {
+            using (Graphics graphic = this.SignaturePanel.CreateGraphics())
+            {
+                SolidBrush solidBrush = new SolidBrush(Color.LightBlue);
+                graphic.FillRectangle(solidBrush, 0, 0, SignaturePanel.Width, SignaturePanel.Height);
+            }
+
+        }
+
+
+        //void SignatureBmp(Image image, System.Drawing.Imaging.ImageFormat format)
+        //{
+        //    int x = SystemInformation.WorkingArea.X;
+        //    int y = SystemInformation.WorkingArea.Y;
+        //    int width = this.Width;
+        //    int height = this.Height;
+        //    Rectangle bounds = new Rectangle(x, y, width, height);
+        //    Bitmap img = new Bitmap(width, height);
+        //    SignaturePanel.DrawToBitmap(img, bounds);
+        //    Point p = new Point(100, 100);
+        //    e.Graphics.DrawImage(img, p);
+
+        //    using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
+        //    {
+        //        img.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+        //        SignatureByte = stream.ToArray();
+        //    }
+        //}
+
+
+        //public byte SignatureBmp(Image image, System.Drawing.Imaging.ImageFormat format)
+        //{
+        //    int x = SystemInformation.WorkingArea.X;
+        //    int y = SystemInformation.WorkingArea.Y;
+        //    int width = this.Width;
+        //    int height = this.Height;
+        //    Rectangle bounds = new Rectangle(x, y, width, height);
+        //    Bitmap img = new Bitmap(width, height);
+        //    SignaturePanel.DrawToBitmap(img, bounds);
+        //    Point p = new Point(100, 100);
+
+
+        //    using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
+        //    {
+        //        img.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+        //        SignatureByte = stream.ToArray();
+        //        return img;
+        //    }
+        //}
+
+
+        //Bitmap img;
+
+
+        //public string ImageToBase64(Image image,
+        //  System.Drawing.Imaging.ImageFormat format)
+        //{
+
+        //    int x = SystemInformation.WorkingArea.X;
+        //    int y = SystemInformation.WorkingArea.Y;
+        //    int width = this.Width;
+        //    int height = this.Height;
+        //    Rectangle bounds = new Rectangle(x, y, width, height);
+        //    Bitmap img = new Bitmap(width, height);
+        //    SignaturePanel.DrawToBitmap(img, bounds);
+        //    Point p = new Point(100, 100);
+
+
+        //    Bitmap bmp = new Bitmap(this.SignaturePanel.Width, this.SignaturePanel.Height);
+        //    this.SignaturePanel.DrawToBitmap(bmp, new Rectangle(0, 0, this.SignaturePanel.Width, this.SignaturePanel.Height));
+        //    bmp.Save("panel.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+
+        //    using (MemoryStream ms = new MemoryStream())
+        //    {
+        //        // Convert Image to byte[]
+        //        this.img.Save(ms, format);
+        //        byte[] imageBytes = ms.ToArray();
+
+        //        // Convert byte[] to Base64 String
+        //        string base64String = Convert.ToBase64String(imageBytes);
+        //        return base64String;
+        //    }
+        //}
+
+
+
+        //byte bmp;
+
+        //    public void saveSig(System.Drawing.Imaging.ImageFormat)
+        //{
+        //    Bitmap bmp = new Bitmap(SignaturePanel.Width, SignaturePanel.Height);
+        //    SignaturePanel.DrawToBitmap(bmp, SignaturePanel.Bounds);
+        //    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+        //    bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+        //    byte[] result = new byte[ms.Length];
+        //    ms.Seek(0, System.IO.SeekOrigin.Begin);
+        //    ms.Read(result, 0, result.Length);
+        //}
+
+        void PrintSignature(object o, PrintPageEventArgs e)
+        {
+            int x = SystemInformation.WorkingArea.X;
+            int y = SystemInformation.WorkingArea.Y;
+            int width = this.Width;
+            int height = this.Height;
+            Rectangle bounds = new Rectangle(x, y, width, height);
+            Bitmap img = new Bitmap(width, height);
+            SignaturePanel.DrawToBitmap(img, bounds);
+            Point p = new Point(100, 100);
+            e.Graphics.DrawImage(img, p);
+            img.Save(@"C:\Temp\MyPanelImage.bmp");
+        }
+
+
+
+        private void btnQATravellerBlurb_Click(object sender, EventArgs e)
+        {
+
+
+
+
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(PrintSignature);
+            btnPrint.Visible = false;
+            pd.Print();
+            btnPrint.Visible = true;
+
+
+
+
+
+
+
+
+
+
+
+            //Bitmap bmp = new Bitmap(SignaturePanel.Width, SignaturePanel.Height);
+            //SignaturePanel.DrawToBitmap(bmp, SignaturePanel.Bounds);
+            //System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            //bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+
+            //ms.ToArray();
+            //byte[] imgbyte = ms.ToArray();
+
+
+
+            //DateTime CurrentDate = DateTime.Now;
+            //string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+
+
+            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            //using (SqlConnection cs = new SqlConnection(constring))
+            //{
+            //    try
+            //    {
+            //        SqlCommand cmd = new SqlCommand("insert Log(Signature, Timestamp1) values('" + imgbyte + "','" + CurrentDate + "')", cs);
+            //        //SqlCommand cmd = new SqlCommand("insert Log(Signature, Timestamp1) values('" + ImageToBase64(img, System.Drawing.Imaging.ImageFormat.Jpeg) + "','" + CurrentDate + "')", cs);
+
+            //        cs.Open();
+            //        cmd.ExecuteNonQuery();
+            //        cs.Close();
+            //    }
+            //    catch (Exception err)
+            //    {
+            //        MessageBox.Show(err.Message);
+            //    }
+            //}
+
+
+
+
+
+
+
+
+
+
+
+
+            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            //string Query = "insert into Log (SignatureByte) values(@SignatureByte);";
+
+            //SqlConnection conDatabase = new SqlConnection(constring);
+            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            //SqlDataReader myReader;
+
+
+            //cmdDatabase.Parameters.AddWithValue(constring, SignatureByte);
+
+
+            //try
+            //{
+            //    conDatabase.Open();
+            //    myReader = cmdDatabase.ExecuteReader();
+            //    while (myReader.Read())
+            //    {
+
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+        }
+
+
+
+
+
+        //****************************************************************************************************
+        //Pallet Card
+        //****************************************************************************************************
+
+        private void btnPalletCard_Click(object sender, EventArgs e)
+        {
+            pnlSignature.BringToFront();
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearSignaturePanel();
+        }
     }
 }
