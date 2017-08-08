@@ -8,6 +8,7 @@ using System.Drawing.Printing;
 using System.Data.SqlClient;
 using System.IO;
 using System.Xml.Serialization;
+using System.Drawing.Imaging;
 
 namespace PalletCard
 {
@@ -552,7 +553,7 @@ namespace PalletCard
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 lbl2.Text = d;
                 lbl2.Visible = true;
-                index = 3;
+                index = 6;
                 sectionbtns = true;
             }
             else
@@ -866,6 +867,10 @@ namespace PalletCard
 
         }
 
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearSignaturePanel();
+        }
 
         //void SignatureBmp(Image image, System.Drawing.Imaging.ImageFormat format)
         //{
@@ -956,37 +961,96 @@ namespace PalletCard
         //    ms.Read(result, 0, result.Length);
         //}
 
-        void PrintSignature(object o, PrintPageEventArgs e)
+        //void PrintSignature(object o, PrintPageEventArgs e)
+        //{
+        //    int x = SystemInformation.WorkingArea.X;
+        //    int y = SystemInformation.WorkingArea.Y;
+        //    int width = this.Width;
+        //    int height = this.Height;
+        //    Rectangle bounds = new Rectangle(x, y, width, height);
+        //    Bitmap img = new Bitmap(width, height);
+        //    SignaturePanel.DrawToBitmap(img, bounds);
+        //    Point p = new Point(100, 100);
+        //    e.Graphics.DrawImage(img, p);
+        //    img.Save(@"C:\Temp\MyPanelImage.bmp");
+        //}
+
+
+
+
+
+        private static Bitmap DrawControlToBitmap(Control control)
         {
-            int x = SystemInformation.WorkingArea.X;
-            int y = SystemInformation.WorkingArea.Y;
-            int width = this.Width;
-            int height = this.Height;
-            Rectangle bounds = new Rectangle(x, y, width, height);
-            Bitmap img = new Bitmap(width, height);
-            SignaturePanel.DrawToBitmap(img, bounds);
-            Point p = new Point(100, 100);
-            e.Graphics.DrawImage(img, p);
-            img.Save(@"C:\Temp\MyPanelImage.bmp");
+            Bitmap bitmap = new Bitmap(control.Width, control.Height);
+            Graphics graphics = Graphics.FromImage(bitmap);
+            Rectangle rect = control.RectangleToScreen(control.ClientRectangle);
+            graphics.CopyFromScreen(rect.Location, Point.Empty, control.Size);
+            return bitmap;
         }
+
+        int sig = 1000;
+
+
+
 
 
 
         private void btnQATravellerBlurb_Click(object sender, EventArgs e)
         {
+            //PrintDocument pd = new PrintDocument();
+            //pd.PrintPage += new PrintPageEventHandler(PrintSignature);
+            //btnPrint.Visible = false;
+            ////pd.Print();
+            //btnPrint.Visible = true;
+
+            DateTime CurrentDate = DateTime.Now;
+            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+
+            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            //using (SqlConnection cs = new SqlConnection(constring))
+            //{
+            //    try
+            //    {
+            //        SqlCommand cmd = new SqlCommand("SELECT TOP 1 Signature FROM Log ORDER BY Signature DESC");                 
+            //        cs.Open();
+            //        cmd.ExecuteNonQuery();
+            //        cs.Close();
+            //    }
+            //    catch (Exception err)
+            //    {
+            //        MessageBox.Show(err.Message);
+            //    }
+            //}
 
 
 
 
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(PrintSignature);
-            btnPrint.Visible = false;
-            pd.Print();
-            btnPrint.Visible = true;
 
 
 
+            Bitmap bitmap = DrawControlToBitmap(SignaturePanel);
+            bitmap.Save("c://Temp//" + sig + ".jpg", ImageFormat.Jpeg);
+            System.Diagnostics.Process.Start("c://Temp//"+ sig + ".jpg");
 
+
+
+            //Rectangle bounds = Home.GetBounds(Point.Empty);
+            //using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
+            //{
+            //    using (Graphics g = Graphics.FromImage(bitmap))
+            //    {
+            //        g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
+            //    }
+            //    bitmap.Save("c://Temp//My_Img.jpg", ImageFormat.Jpeg);
+            //}
+
+
+            //Rectangle rect = new Rectangle(0, 0, 100, 100);
+            //Bitmap bmp = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
+            //Graphics g = Graphics.FromImage(bmp);
+            //g.CopyFromScreen(rect.Left, rect.Top, 0, 0, bmp.Size, CopyPixelOperation.SourceCopy);
+            //bmp.Save("c://Temp//My_Img.jpg", ImageFormat.Jpeg);
 
 
 
@@ -1004,28 +1068,26 @@ namespace PalletCard
 
 
 
-            //DateTime CurrentDate = DateTime.Now;
-            //string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
-
-
-
             //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //using (SqlConnection cs = new SqlConnection(constring))
-            //{
-            //    try
-            //    {
-            //        SqlCommand cmd = new SqlCommand("insert Log(Signature, Timestamp1) values('" + imgbyte + "','" + CurrentDate + "')", cs);
-            //        //SqlCommand cmd = new SqlCommand("insert Log(Signature, Timestamp1) values('" + ImageToBase64(img, System.Drawing.Imaging.ImageFormat.Jpeg) + "','" + CurrentDate + "')", cs);
 
-            //        cs.Open();
-            //        cmd.ExecuteNonQuery();
-            //        cs.Close();
-            //    }
-            //    catch (Exception err)
-            //    {
-            //        MessageBox.Show(err.Message);
-            //    }
-            //}
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            using (SqlConnection cs = new SqlConnection(constring))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("insert Log(Signature, Timestamp1) values('" + sig + "','" + CurrentDate + "')", cs);
+                    //SqlCommand cmd = new SqlCommand("insert Log(Signature, Timestamp1) values('" + ImageToBase64(img, System.Drawing.Imaging.ImageFormat.Jpeg) + "','" + CurrentDate + "')", cs);
+
+                    cs.Open();
+                    cmd.ExecuteNonQuery();
+                    cs.Close();
+                    sig = sig + 1;
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+            }
 
 
 
@@ -1077,9 +1139,6 @@ namespace PalletCard
             pnlSignature.BringToFront();
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            ClearSignaturePanel();
-        }
+
     }
 }

@@ -101,11 +101,9 @@
             this.lblBack5 = new System.Windows.Forms.Label();
             this.lblBack6 = new System.Windows.Forms.Label();
             this.pnlSignature = new System.Windows.Forms.Panel();
-            this.ExportButton = new System.Windows.Forms.Button();
-            this.ImportButton = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.btnQATravellerBlurb = new System.Windows.Forms.Button();
             this.SignaturePanel = new System.Windows.Forms.Panel();
-            this.buttonClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -927,8 +925,6 @@
             // pnlSignature
             // 
             this.pnlSignature.Controls.Add(this.buttonClear);
-            this.pnlSignature.Controls.Add(this.ExportButton);
-            this.pnlSignature.Controls.Add(this.ImportButton);
             this.pnlSignature.Controls.Add(this.btnQATravellerBlurb);
             this.pnlSignature.Controls.Add(this.SignaturePanel);
             this.pnlSignature.Location = new System.Drawing.Point(206, 4);
@@ -936,25 +932,15 @@
             this.pnlSignature.Size = new System.Drawing.Size(528, 828);
             this.pnlSignature.TabIndex = 31;
             // 
-            // ExportButton
+            // buttonClear
             // 
-            this.ExportButton.Location = new System.Drawing.Point(132, 70);
-            this.ExportButton.Name = "ExportButton";
-            this.ExportButton.Size = new System.Drawing.Size(75, 23);
-            this.ExportButton.TabIndex = 15;
-            this.ExportButton.Text = "Export";
-            this.ExportButton.UseVisualStyleBackColor = true;
-            this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
-            // 
-            // ImportButton
-            // 
-            this.ImportButton.Location = new System.Drawing.Point(132, 129);
-            this.ImportButton.Name = "ImportButton";
-            this.ImportButton.Size = new System.Drawing.Size(75, 23);
-            this.ImportButton.TabIndex = 14;
-            this.ImportButton.Text = "Import";
-            this.ImportButton.UseVisualStyleBackColor = true;
-            this.ImportButton.Click += new System.EventHandler(this.ImportButton_Click);
+            this.buttonClear.Location = new System.Drawing.Point(165, 238);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(152, 46);
+            this.buttonClear.TabIndex = 16;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // btnQATravellerBlurb
             // 
@@ -976,16 +962,6 @@
             this.SignaturePanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SignaturePanel_MouseDown);
             this.SignaturePanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SignaturePanel_MouseMove);
             this.SignaturePanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SignaturePanel_MouseUp);
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Location = new System.Drawing.Point(132, 190);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(75, 23);
-            this.buttonClear.TabIndex = 16;
-            this.buttonClear.Text = "Clear";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // Home
             // 
@@ -1113,8 +1089,6 @@
         private System.Windows.Forms.Panel pnlSignature;
         private System.Windows.Forms.Button btnQATravellerBlurb;
         private System.Windows.Forms.Panel SignaturePanel;
-        private System.Windows.Forms.Button ExportButton;
-        private System.Windows.Forms.Button ImportButton;
         private System.Windows.Forms.Button buttonClear;
     }
 }
