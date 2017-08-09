@@ -6,8 +6,6 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Data.SqlClient;
-using System.IO;
-using System.Xml.Serialization;
 using System.Drawing.Imaging;
 
 namespace PalletCard
@@ -20,8 +18,6 @@ namespace PalletCard
         int A = 1;
         string jobNo;
         bool searchChanged;
-        byte[] SignatureByte;
-
 
         public Home()
         {
@@ -106,6 +102,10 @@ namespace PalletCard
                 lbl4.Visible = false;
                 btnBack.Visible = false;
                 tbxQtySheetsAffected.Text = "";
+                lblBack5.Visible = false;
+                lblBack6.Visible = false;
+                lblBack5.Visible = true;
+                lblBack6.Visible = true;
                 index = 1;
             }
             else if (index == 6)
@@ -122,8 +122,8 @@ namespace PalletCard
                 ckbCigarRoll.Checked = false;
                 ckbPalletDamage.Checked = false;
                 ckbBladeLine.Checked = false;
-                lblBack5.Visible = true;
-                lblBack6.Visible = true;
+                lblBack5.Visible = false;
+                lblBack6.Visible = false;
                 index = 5;
                 // if no section buttons go straight back to Choose Action screen
                 if (pnlRejectPaper1.Controls.Count == 0)
@@ -452,13 +452,13 @@ namespace PalletCard
             try
             { 
                 TextBox objTextBox = (TextBox)sender;
-                int p1;
-                int p2;
+                double p1;
+                double p2;
                 if (!String.IsNullOrEmpty(tbxPalletHeight.Text))
                 {
                     p1 = Convert.ToInt32(objTextBox.Text);
                     p2 = Convert.ToInt32(this.dataGridView1.Rows[0].Cells[20].Value);
-                    int result = p1 * p2 / 1000;
+                    double result = Math.Ceiling (p1 / (p2/1000)) ;
                     string r1 = Convert.ToString(result);
                     lblPheight.Text = (r1 + " sheets");
                 }
@@ -596,6 +596,8 @@ namespace PalletCard
                     }
                 }
                 sectionbtns = true;
+                lblBack5.Visible = false;
+                lblBack6.Visible = false;
             }
         }
 
@@ -613,7 +615,7 @@ namespace PalletCard
             //filter datagridview1 with the button text choice
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr2 like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
             }
             catch (Exception) { }
         }
@@ -719,17 +721,14 @@ namespace PalletCard
         }
 
 
+//****************************************************************************************************
+//    SIGNATURE
+//****************************************************************************************************
 
-        //****************************************************************************************************
-        //Signature
-        //****************************************************************************************************
-
-        [Serializable]
         public class Line
         {
             public Line()
             {
-
             }
 
             public Line(Point startPoint, Point endPoint)
@@ -742,7 +741,6 @@ namespace PalletCard
             public Point EndPoint { get; set; }
         }
 
-        [Serializable]
         public class Glyph
         {
             public Glyph()
@@ -752,7 +750,6 @@ namespace PalletCard
             public List<Line> Lines { get; set; }
         }
 
-        [Serializable]
         public class Signature
         {
             public Signature()
@@ -769,7 +766,7 @@ namespace PalletCard
         Pen pen = new Pen(Color.Black);
         Glyph glyph = null;
         Signature signature = new Signature();
-        String fileName = @"signature.xml";
+        //String fileName = @"signature.xml";
 
         private void SignaturePanel_MouseMove(object sender, MouseEventArgs e)
         {
@@ -796,7 +793,6 @@ namespace PalletCard
             signature.Glyphs.Add(glyph);
             startPoint = new Point();
             endPoint = new Point();
-
         }
 
         private void SignaturePanel_MouseDown(object sender, MouseEventArgs e)
@@ -813,32 +809,6 @@ namespace PalletCard
             }
         }
 
-        private void SerializeSignature()
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(Signature));
-
-            if (File.Exists(fileName))
-            {
-                File.Delete(fileName);
-            }
-
-            using (TextWriter textWriter = new StreamWriter(fileName))
-            {
-                serializer.Serialize(textWriter, signature);
-                textWriter.Close();
-            }
-        }
-
-        private void DeserializeSignature()
-        {
-            XmlSerializer deserializer = new XmlSerializer(typeof(Signature));
-            using (TextReader textReader = new StreamReader(fileName))
-            {
-                signature = (Signature)deserializer.Deserialize(textReader);
-                textReader.Close();
-            }
-        }
-
         private void DrawSignature()
         {
             foreach (Glyph glyph in signature.Glyphs)
@@ -850,138 +820,19 @@ namespace PalletCard
             }
         }
 
-        private void ExportButton_Click(object sender, EventArgs e)
-        {
-            SerializeSignature();
-        }
-
-        private void ImportButton_Click(object sender, EventArgs e)
-        {
-            DeserializeSignature();
-            ClearSignaturePanel();
-            DrawSignature();
-        }
         private void ClearSignaturePanel()
         {
             using (Graphics graphic = this.SignaturePanel.CreateGraphics())
             {
-                SolidBrush solidBrush = new SolidBrush(Color.LightBlue);
+                SolidBrush solidBrush = new SolidBrush(Color.Gainsboro);
                 graphic.FillRectangle(solidBrush, 0, 0, SignaturePanel.Width, SignaturePanel.Height);
             }
-
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
             ClearSignaturePanel();
         }
-
-        //void SignatureBmp(Image image, System.Drawing.Imaging.ImageFormat format)
-        //{
-        //    int x = SystemInformation.WorkingArea.X;
-        //    int y = SystemInformation.WorkingArea.Y;
-        //    int width = this.Width;
-        //    int height = this.Height;
-        //    Rectangle bounds = new Rectangle(x, y, width, height);
-        //    Bitmap img = new Bitmap(width, height);
-        //    SignaturePanel.DrawToBitmap(img, bounds);
-        //    Point p = new Point(100, 100);
-        //    e.Graphics.DrawImage(img, p);
-
-        //    using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
-        //    {
-        //        img.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
-        //        SignatureByte = stream.ToArray();
-        //    }
-        //}
-
-
-        //public byte SignatureBmp(Image image, System.Drawing.Imaging.ImageFormat format)
-        //{
-        //    int x = SystemInformation.WorkingArea.X;
-        //    int y = SystemInformation.WorkingArea.Y;
-        //    int width = this.Width;
-        //    int height = this.Height;
-        //    Rectangle bounds = new Rectangle(x, y, width, height);
-        //    Bitmap img = new Bitmap(width, height);
-        //    SignaturePanel.DrawToBitmap(img, bounds);
-        //    Point p = new Point(100, 100);
-
-
-        //    using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
-        //    {
-        //        img.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
-        //        SignatureByte = stream.ToArray();
-        //        return img;
-        //    }
-        //}
-
-
-        //Bitmap img;
-
-
-        //public string ImageToBase64(Image image,
-        //  System.Drawing.Imaging.ImageFormat format)
-        //{
-
-        //    int x = SystemInformation.WorkingArea.X;
-        //    int y = SystemInformation.WorkingArea.Y;
-        //    int width = this.Width;
-        //    int height = this.Height;
-        //    Rectangle bounds = new Rectangle(x, y, width, height);
-        //    Bitmap img = new Bitmap(width, height);
-        //    SignaturePanel.DrawToBitmap(img, bounds);
-        //    Point p = new Point(100, 100);
-
-
-        //    Bitmap bmp = new Bitmap(this.SignaturePanel.Width, this.SignaturePanel.Height);
-        //    this.SignaturePanel.DrawToBitmap(bmp, new Rectangle(0, 0, this.SignaturePanel.Width, this.SignaturePanel.Height));
-        //    bmp.Save("panel.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-
-        //    using (MemoryStream ms = new MemoryStream())
-        //    {
-        //        // Convert Image to byte[]
-        //        this.img.Save(ms, format);
-        //        byte[] imageBytes = ms.ToArray();
-
-        //        // Convert byte[] to Base64 String
-        //        string base64String = Convert.ToBase64String(imageBytes);
-        //        return base64String;
-        //    }
-        //}
-
-
-
-        //byte bmp;
-
-        //    public void saveSig(System.Drawing.Imaging.ImageFormat)
-        //{
-        //    Bitmap bmp = new Bitmap(SignaturePanel.Width, SignaturePanel.Height);
-        //    SignaturePanel.DrawToBitmap(bmp, SignaturePanel.Bounds);
-        //    System.IO.MemoryStream ms = new System.IO.MemoryStream();
-        //    bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-        //    byte[] result = new byte[ms.Length];
-        //    ms.Seek(0, System.IO.SeekOrigin.Begin);
-        //    ms.Read(result, 0, result.Length);
-        //}
-
-        //void PrintSignature(object o, PrintPageEventArgs e)
-        //{
-        //    int x = SystemInformation.WorkingArea.X;
-        //    int y = SystemInformation.WorkingArea.Y;
-        //    int width = this.Width;
-        //    int height = this.Height;
-        //    Rectangle bounds = new Rectangle(x, y, width, height);
-        //    Bitmap img = new Bitmap(width, height);
-        //    SignaturePanel.DrawToBitmap(img, bounds);
-        //    Point p = new Point(100, 100);
-        //    e.Graphics.DrawImage(img, p);
-        //    img.Save(@"C:\Temp\MyPanelImage.bmp");
-        //}
-
-
-
-
 
         private static Bitmap DrawControlToBitmap(Control control)
         {
@@ -992,12 +843,46 @@ namespace PalletCard
             return bitmap;
         }
 
-        int sig = 1000;
+        private void getAutoNumber()
+        {
+
+            //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+            //string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
+            //OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            //OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
 
 
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            using (SqlConnection cs = new SqlConnection(constring))
+            {
+                try
+                {
+                    string query = "SELECT MAX(AutoNum) FROM Log";
+                    //SqlCommand comSelect = new SqlCommand(query, constring);
+                    //int autoNum = (int)comSelect.ExecuteScalar();
 
 
+                    //SqlCommand cmd = new SqlCommand("SELECT MAX(AutoNum) FROM Log");
+                    //cs.Open();
+                    //int autoNum = (int)cmd.ExecuteScalar() +1;
+                    //cmd.Connection = constring;
+                    //cs.Close();
 
+
+                    //SqlCommand cmd = new SqlCommand("SELECT TOP 1 Signature FROM Log ORDER BY Signature DESC");
+                    //cs.Open();
+                    //cmd.ExecuteNonQuery();
+                    //cs.Close();
+
+
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+            }
+        }
+        int autoNum;
 
         private void btnQATravellerBlurb_Click(object sender, EventArgs e)
         {
@@ -1007,102 +892,33 @@ namespace PalletCard
             ////pd.Print();
             //btnPrint.Visible = true;
 
+            getAutoNumber();
+
             DateTime CurrentDate = DateTime.Now;
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
 
-            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //using (SqlConnection cs = new SqlConnection(constring))
-            //{
-            //    try
-            //    {
-            //        SqlCommand cmd = new SqlCommand("SELECT TOP 1 Signature FROM Log ORDER BY Signature DESC");                 
-            //        cs.Open();
-            //        cmd.ExecuteNonQuery();
-            //        cs.Close();
-            //    }
-            //    catch (Exception err)
-            //    {
-            //        MessageBox.Show(err.Message);
-            //    }
-            //}
-
-
-
-
-
-
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
 
             Bitmap bitmap = DrawControlToBitmap(SignaturePanel);
-            bitmap.Save("c://Temp//" + sig + ".jpg", ImageFormat.Jpeg);
-            System.Diagnostics.Process.Start("c://Temp//"+ sig + ".jpg");
-
-
-
-            //Rectangle bounds = Home.GetBounds(Point.Empty);
-            //using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
-            //{
-            //    using (Graphics g = Graphics.FromImage(bitmap))
-            //    {
-            //        g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
-            //    }
-            //    bitmap.Save("c://Temp//My_Img.jpg", ImageFormat.Jpeg);
-            //}
-
-
-            //Rectangle rect = new Rectangle(0, 0, 100, 100);
-            //Bitmap bmp = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
-            //Graphics g = Graphics.FromImage(bmp);
-            //g.CopyFromScreen(rect.Left, rect.Top, 0, 0, bmp.Size, CopyPixelOperation.SourceCopy);
-            //bmp.Save("c://Temp//My_Img.jpg", ImageFormat.Jpeg);
-
-
-
-
-
-
-
-            //Bitmap bmp = new Bitmap(SignaturePanel.Width, SignaturePanel.Height);
-            //SignaturePanel.DrawToBitmap(bmp, SignaturePanel.Bounds);
-            //System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            //bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-
-            //ms.ToArray();
-            //byte[] imgbyte = ms.ToArray();
-
-
-
-            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-
-            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            bitmap.Save("c://Temp//" + this.autoNum + ".jpg", ImageFormat.Jpeg);
+            System.Diagnostics.Process.Start("c://Temp//"+ this.autoNum + ".jpg");
+          
             using (SqlConnection cs = new SqlConnection(constring))
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("insert Log(Signature, Timestamp1) values('" + sig + "','" + CurrentDate + "')", cs);
-                    //SqlCommand cmd = new SqlCommand("insert Log(Signature, Timestamp1) values('" + ImageToBase64(img, System.Drawing.Imaging.ImageFormat.Jpeg) + "','" + CurrentDate + "')", cs);
-
+                    SqlCommand cmd = new SqlCommand("insert Log(Signature, Timestamp1) values('" + this.autoNum + "','" + CurrentDate + "')", cs);                  
                     cs.Open();
                     cmd.ExecuteNonQuery();
                     cs.Close();
-                    sig = sig + 1;
+                    this.autoNum = this.autoNum + 1;
                 }
                 catch (Exception err)
                 {
                     MessageBox.Show(err.Message);
                 }
             }
-
-
-
-
-
-
-
-
-
-
-
 
             //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
             //string Query = "insert into Log (SignatureByte) values(@SignatureByte);";
@@ -1134,13 +950,79 @@ namespace PalletCard
 
 
 
-        //****************************************************************************************************
-        //Pallet Card
-        //****************************************************************************************************
+//****************************************************************************************************
+//   PALLET CARD
+//****************************************************************************************************
 
         private void btnPalletCard_Click(object sender, EventArgs e)
         {
-            pnlSignature.BringToFront();
+            //pnlSignature.BringToFront();
+
+            //    lbl1.Visible = true;
+            //    lbl1.Text = "Pallet Card";
+            //    pnlPalletCard1.BringToFront();
+            //    index = 8;
+            //    jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            //    btnBack.Visible = true;
+            //    //this.ActiveControl = tbxQtySheetsAffected;
+
+            //    //loop through datagridview to see if each value of field "Section Name" is the same
+            //    string x;
+            //    string y;
+            //    x = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            //    y = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            //    for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
+            //    {
+            //        y = dataGridView1.Rows[i].Cells[11].Value.ToString();
+            //    }
+            //    if (x == y)
+            //    {
+            //        pnlRejectPaper2.BringToFront();
+            //        string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            //        lbl2.Text = d;
+            //        lbl2.Visible = true;
+            //        lblBack5.Visible = false;
+            //        lblBack6.Visible = false;
+            //        index = 6;
+            //        sectionbtns = true;
+            //    }
+            //    else
+            //    { //prevent section buttons from drawing again if back button is selected
+            //        if (!sectionbtns)
+            //        {
+            //            //loop through datagrid rows to create a button for each value of field "Expr1"                  
+            //            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            //            {
+            //                //if datagrid is not empty create a button for each row at cells[2] - "Name"
+            //                if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+
+            //                    //offer only one button where Expr1 field has two rows with the same value
+            //                    dataGridView1.AllowUserToAddRows = true;
+            //                if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
+            //                {
+            //                    {
+            //                        for (int j = 0; j < 1; j++)
+            //                        {
+            //                            Button btn = new Button();
+            //                            this.pnlRejectPaper1.Controls.Add(btn);
+            //                            btn.Top = A * 100;
+            //                            btn.Height = 80;
+            //                            btn.Width = 465;
+            //                            btn.BackColor = Color.SteelBlue;
+            //                            btn.Font = new Font("Microsoft Sans Serif", 14);
+            //                            btn.ForeColor = Color.White;
+            //                            btn.Left = 30;
+            //                            btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
+            //                            A = A + 1;
+            //                            btn.Click += new System.EventHandler(this.expr2);
+            //                        }
+            //                    }
+            //                }
+            //                dataGridView1.AllowUserToAddRows = false;
+            //            }
+            //        }
+            //        sectionbtns = true;
+            //    }
         }
 
 
