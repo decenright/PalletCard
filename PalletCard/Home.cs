@@ -122,6 +122,8 @@ namespace PalletCard
                 ckbCigarRoll.Checked = false;
                 ckbPalletDamage.Checked = false;
                 ckbBladeLine.Checked = false;
+                lblBack5.Visible = true;
+                lblBack6.Visible = true;
                 index = 5;
                 // if no section buttons go straight back to Choose Action screen
                 if (pnlRejectPaper1.Controls.Count == 0)
@@ -553,6 +555,8 @@ namespace PalletCard
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 lbl2.Text = d;
                 lbl2.Visible = true;
+                lblBack5.Visible = false;
+                lblBack6.Visible = false;
                 index = 6;
                 sectionbtns = true;
             }
@@ -639,8 +643,7 @@ namespace PalletCard
                         }
                 }
             }
-            lbl3.Text = s;
-            lbl3.Visible = true;
+
             lblPrint7.Text = s;
             lblPrint7.MaximumSize = new Size(450, 220);
             lblPrint7.AutoSize = true;
@@ -656,10 +659,11 @@ namespace PalletCard
                 return;
             }
 
-            lblPrint13.Text = tbxOtherReason.Text;
             lblPrint10.Text = "Press - XL106";
             lblPrint11.Text = "Job - " + jobNo;
             lblPrint12.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            lblPrint13.Text = tbxOtherReason.Text;
+            lblPrint14.Text = this.dataGridView1.Rows[0].Cells[17].Value.ToString();
             index = 7;
         }
 
