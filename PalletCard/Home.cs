@@ -15,6 +15,7 @@ namespace PalletCard
         List<Panel> listPanel = new List<Panel>();
         int index;
         bool sectionbtns;
+        bool sigBtns;
         int A = 1;
         string jobNo;
         bool searchChanged;
@@ -427,7 +428,6 @@ namespace PalletCard
                                         btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
                                         A = A + 1;
                                         btn.Click += new System.EventHandler(this.expr1);
-                                    //index = 2;
                                     }
                                 }
                             dataGridView1.AllowUserToAddRows = false;
@@ -1032,7 +1032,7 @@ namespace PalletCard
                         //if datagrid is not empty create a button for each row at cells[2] - "Name"
                         if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[15].Value as string)))
 
-                            //offer only one button where Expr1 field has two rows with the same value
+                            //offer only one button where SectionName field has two rows with the same value
                             dataGridView1.AllowUserToAddRows = true;
                         if (!(this.dataGridView1.Rows[i].Cells[15].Value as string == this.dataGridView1.Rows[i + 1].Cells[15].Value as string))
                         {
@@ -1060,20 +1060,69 @@ namespace PalletCard
                 sectionbtns = true;
             }
         }
-        //Dynamic button click - Section buttons, Return Paper work flow
+        //Dynamic button click - Section buttons, Pallet Card work flow
         private void expr3(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             pnlPalletCard2.BringToFront();
             lbl2.Visible = true;
             lbl2.Text = btn.Text;
-            //this.ActiveControl = tbxQtySheetsAffected;
             index = 9;
 
             //filter datagridview1 with the button text choice
             try
             {
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "SectionName like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
+            }
+            catch (Exception) { }
+
+
+
+
+
+            if (!sigBtns) { 
+
+                //loop through datagrid rows to create a button for each value of field "PaperSectionNumber"                  
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            {
+                //if datagrid is not empty create a button for each row at cells[19] - "PaperSectionNumber"
+                //if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[19].Value as string)))
+                    for (int j = 0; j < 1; j++)
+                    {
+                        Button btnSig = new Button();
+                        this.flowLayoutPanel1.Controls.Add(btnSig);
+                        //this.pnlPalletCard2.Controls.Add(btnSig);
+                        //btnSig.Top = A * 60;
+                        btnSig.Height = 80;
+                        btnSig.Width = 120;
+                        btnSig.BackColor = Color.SteelBlue;
+                        btnSig.Font = new Font("Microsoft Sans Serif", 14);
+                        btnSig.ForeColor = Color.White;
+                        btnSig.Left = 30;
+                        btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
+                        A = A + 1;
+                        btnSig.Click += new System.EventHandler(this.DynamicSigBtn);
+                    }
+
+                }
+            }
+            sigBtns = true;
+        }
+
+
+        //Dynamic button click - Section buttons, Pallet Card work flow
+        private void DynamicSigBtn(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            pnlPalletCard2.BringToFront();
+            lbl2.Visible = true;
+            lbl2.Text = btn.Text;
+            index = 9;
+
+            //filter datagridview1 with the button text choice
+            try
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "PaperSectionNo like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
             }
             catch (Exception) { }
         }
