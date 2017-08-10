@@ -26,7 +26,7 @@ namespace PalletCard
        
         private void btnBack_Click(object sender, EventArgs e)
         {
-            if (index==0)
+            if (index == 0)
             {
                 btnBack.Visible = false;
                 btnSearch.Visible = false;
@@ -34,30 +34,30 @@ namespace PalletCard
                 lblPress.Visible = false;
             }
             else if (index == 1)
-            { 
-            pnlHome0.BringToFront();
-            lbl1.Visible = false;
-            lbl2.Visible = false;
-            lbl3.Visible = false;
-            lbl4.Visible = false;
-            tbxPalletHeight.Text = "";
-            lblPheight.Text = "";
-            index = 0;
+            {
+                pnlHome0.BringToFront();
+                lbl1.Visible = false;
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                tbxPalletHeight.Text = "";
+                lblPheight.Text = "";
+                index = 0;
             }
             else if (index == 2)
-            { 
-            pnlHome1.BringToFront();
-            lbl1.Visible = false;
-            lbl2.Visible = false;
-            lbl3.Visible = false;    
-            lbl4.Visible = false;
-            btnBack.Visible = false;
-            Search();
-            index = 1;
-            sectionbtns = false;
+            {
+                pnlHome1.BringToFront();
+                lbl1.Visible = false;
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                btnBack.Visible = false;
+                Search();
+                index = 1;
+                sectionbtns = false;
             }
             else if (index == 3)
-            { 
+            {
                 pnlReturnPaper1.BringToFront();
                 lblPheight.Text = "";
                 tbxPalletHeight.Text = "";
@@ -67,31 +67,31 @@ namespace PalletCard
                 index = 2;
                 // if no section buttons go straight back to Choose Action screen
                 if (pnlReturnPaper1.Controls.Count == 0)
-                    {
-                        pnlHome1.BringToFront();
-                        lbl1.Visible = false;
-                        lbl2.Visible = false;
-                        lbl3.Visible = false;
-                        lbl4.Visible = false;
-                        lblPheight.Text = "";
-                        lbl3.Visible = false;
-                        lbl4.Visible = false;
-                        tbxPalletHeight.Text = "";
-                        btnBack.Visible = false;
-                        index = 1;
+                {
+                    pnlHome1.BringToFront();
+                    lbl1.Visible = false;
+                    lbl2.Visible = false;
+                    lbl3.Visible = false;
+                    lbl4.Visible = false;
+                    lblPheight.Text = "";
+                    lbl3.Visible = false;
+                    lbl4.Visible = false;
+                    tbxPalletHeight.Text = "";
+                    btnBack.Visible = false;
+                    index = 1;
                 }
-                }
+            }
             else if (index == 4)
-            { 
-            pnlReturnPaper2.BringToFront();
-            lbl1.Visible = true;
-            lbl2.Visible = true;
-            lbl3.Visible = true;
-            lbl4.Visible = true;
-            lblPheight.Text = "";
-            tbxPalletHeight.Text = "";
-            this.ActiveControl = tbxPalletHeight;
-            index = 3;
+            {
+                pnlReturnPaper2.BringToFront();
+                lbl1.Visible = true;
+                lbl2.Visible = true;
+                lbl3.Visible = true;
+                lbl4.Visible = true;
+                lblPheight.Text = "";
+                tbxPalletHeight.Text = "";
+                this.ActiveControl = tbxPalletHeight;
+                index = 3;
             }
             else if (index == 5)
             {
@@ -167,10 +167,43 @@ namespace PalletCard
                 tbxQtySheetsAffected.Text = "";
                 index = 6;
             }
+            else if (index == 8)
+            {
+                pnlHome1.BringToFront();
+                lbl1.Visible = false;
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                btnBack.Visible = false;
+                lblBack5.Visible = false;
+                lblBack6.Visible = false;
+                lblBack5.Visible = true;
+                lblBack6.Visible = true;
+                Search();
+                index = 1;
+                sectionbtns = false;
+            }
+            else if (index == 9)
+            {
+                pnlPalletCard1.BringToFront();
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                index = 8;
+                // if no section buttons go straight back to Choose Action screen
+                if (pnlPalletCard1.Controls.Count == 0)
+                {
+                    pnlHome1.BringToFront();
+                    lbl1.Visible = false;
+                    lbl2.Visible = false;
+                    lbl3.Visible = false;
+                    lbl3.Visible = false;
+                    lbl4.Visible = false;
+                    btnBack.Visible = false;
+                    index = 1;
+                }
 
-
-
-
+            }
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -328,15 +361,16 @@ namespace PalletCard
         }
 
 
-        //****************************************************************************************************
-        //RETURN PAPER WORKFLOW
-        //****************************************************************************************************
+//****************************************************************************************************
+//    RETURN PAPER WORKFLOW
+//****************************************************************************************************
 
         private void btnReturnPaper_Click(object sender, EventArgs e)
         {
                 lbl1.Visible = true;
                 lbl1.Text = "Return Paper";
                 pnlReturnPaper1.BringToFront();
+                index = 2;
                 jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
                 btnBack.Visible = true;
 
@@ -393,7 +427,7 @@ namespace PalletCard
                                         btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
                                         A = A + 1;
                                         btn.Click += new System.EventHandler(this.expr1);
-                                    index = 2;
+                                    //index = 2;
                                     }
                                 }
                             dataGridView1.AllowUserToAddRows = false;
@@ -401,8 +435,7 @@ namespace PalletCard
                         }
                     }
                     sectionbtns = true;
-                }
-            
+                }          
         }
 
         //Dynamic button click - Section buttons, Return Paper work flow
@@ -427,7 +460,6 @@ namespace PalletCard
                     lbl3.Text = dataGridView1.Rows[i].Cells[16].Value.ToString();
                 }
             }
-
             lbl4.Visible = true;
             lbl3.Visible = true;
             lbl2.Visible = true;
@@ -619,7 +651,7 @@ namespace PalletCard
             //filter datagridview1 with the button text choice
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr2 like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
             }
             catch (Exception) { }
         }
@@ -962,73 +994,89 @@ namespace PalletCard
         {
             //pnlSignature.BringToFront();
 
-        //    lbl1.Visible = true;
-        //    lbl1.Text = "Pallet Card";
-        //    pnlPalletCard1.BringToFront();
-        //    index = 8;
-        //    jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
-        //    btnBack.Visible = true;
-        //    //this.ActiveControl = tbxQtySheetsAffected;
+            lbl1.Visible = true;
+            lbl1.Text = "Pallet Card";
+            pnlPalletCard1.BringToFront();
+            index = 8;
+            jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            btnBack.Visible = true;
+            //this.ActiveControl = tbxQtySheetsAffected;
 
-        //    //loop through datagridview to see if each value of field "Section Name" is the same
-        //    string x;
-        //    string y;
-        //    x = dataGridView1.Rows[0].Cells[11].Value.ToString();
-        //    y = dataGridView1.Rows[0].Cells[11].Value.ToString();
-        //    for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
-        //    {
-        //        y = dataGridView1.Rows[i].Cells[11].Value.ToString();
-        //    }
-        //    if (x == y)
-        //    {
-        //        pnlRejectPaper2.BringToFront();
-        //        string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
-        //        lbl2.Text = d;
-        //        lbl2.Visible = true;
-        //        lblBack5.Visible = false;
-        //        lblBack6.Visible = false;
-        //        index = 6;
-        //        sectionbtns = true;
-        //    }
-        //    else
-        //    { //prevent section buttons from drawing again if back button is selected
-        //        if (!sectionbtns)
-        //        {
-        //            //loop through datagrid rows to create a button for each value of field "Expr1"                  
-        //            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-        //            {
-        //                //if datagrid is not empty create a button for each row at cells[2] - "Name"
-        //                if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+            //loop through datagridview to see if each value of field "Section Name" is the same
+            string x;
+            string y;
+            x = dataGridView1.Rows[0].Cells[15].Value.ToString();
+            y = dataGridView1.Rows[0].Cells[15].Value.ToString();
+            for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
+            {
+                y = dataGridView1.Rows[i].Cells[15].Value.ToString();
+            }
+            if (x == y)
+            {
+                pnlPalletCard2.BringToFront();
+                string d = dataGridView1.Rows[0].Cells[15].Value.ToString();
+                lbl2.Text = d;
+                lbl2.Visible = true;
+                //lblBack5.Visible = false;
+                //lblBack6.Visible = false;
+                index = 9;
+                sectionbtns = true;
+            }
+            else
+            { //prevent section buttons from drawing again if back button is selected
+                if (!sectionbtns)
+                {
+                    //loop through datagrid rows to create a button for each value of field "Section Name"                  
+                    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                    {
+                        //if datagrid is not empty create a button for each row at cells[2] - "Name"
+                        if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[15].Value as string)))
 
-        //                    //offer only one button where Expr1 field has two rows with the same value
-        //                    dataGridView1.AllowUserToAddRows = true;
-        //                if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
-        //                {
-        //                    {
-        //                        for (int j = 0; j < 1; j++)
-        //                        {
-        //                            Button btn = new Button();
-        //                            this.pnlRejectPaper1.Controls.Add(btn);
-        //                            btn.Top = A * 100;
-        //                            btn.Height = 80;
-        //                            btn.Width = 465;
-        //                            btn.BackColor = Color.SteelBlue;
-        //                            btn.Font = new Font("Microsoft Sans Serif", 14);
-        //                            btn.ForeColor = Color.White;
-        //                            btn.Left = 30;
-        //                            btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-        //                            A = A + 1;
-        //                            btn.Click += new System.EventHandler(this.expr2);
-        //                        }
-        //                    }
-        //                }
-        //                dataGridView1.AllowUserToAddRows = false;
-        //            }
-        //        }
-        //        sectionbtns = true;
-        //    }
+                            //offer only one button where Expr1 field has two rows with the same value
+                            dataGridView1.AllowUserToAddRows = true;
+                        if (!(this.dataGridView1.Rows[i].Cells[15].Value as string == this.dataGridView1.Rows[i + 1].Cells[15].Value as string))
+                        {
+                            {
+                                for (int j = 0; j < 1; j++)
+                                {
+                                    Button btn = new Button();
+                                    this.pnlPalletCard1.Controls.Add(btn);
+                                    btn.Top = A * 100;
+                                    btn.Height = 80;
+                                    btn.Width = 465;
+                                    btn.BackColor = Color.SteelBlue;
+                                    btn.Font = new Font("Microsoft Sans Serif", 14);
+                                    btn.ForeColor = Color.White;
+                                    btn.Left = 30;
+                                    btn.Text = this.dataGridView1.Rows[i].Cells[15].Value as string;
+                                    A = A + 1;
+                                    btn.Click += new System.EventHandler(this.expr3);
+                                }
+                            }
+                        }
+                        dataGridView1.AllowUserToAddRows = false;
+                    }
+                }
+                sectionbtns = true;
+            }
         }
+        //Dynamic button click - Section buttons, Return Paper work flow
+        private void expr3(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            pnlPalletCard2.BringToFront();
+            lbl2.Visible = true;
+            lbl2.Text = btn.Text;
+            //this.ActiveControl = tbxQtySheetsAffected;
+            index = 9;
 
+            //filter datagridview1 with the button text choice
+            try
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "SectionName like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
+            }
+            catch (Exception) { }
+        }
 
     }
 }

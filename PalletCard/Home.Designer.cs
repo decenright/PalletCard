@@ -106,6 +106,8 @@
             this.btnQATravellerBlurb = new System.Windows.Forms.Button();
             this.SignaturePanel = new System.Windows.Forms.Panel();
             this.pnlPalletCard1 = new System.Windows.Forms.Panel();
+            this.pnlPalletCard2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -115,6 +117,7 @@
             this.groupBox1.SuspendLayout();
             this.pnlRejectPaper3.SuspendLayout();
             this.pnlSignature.SuspendLayout();
+            this.pnlPalletCard2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -326,7 +329,7 @@
             // 
             // pnlReturnPaper1
             // 
-            this.pnlReturnPaper1.Location = new System.Drawing.Point(207, 3);
+            this.pnlReturnPaper1.Location = new System.Drawing.Point(207, 4);
             this.pnlReturnPaper1.Name = "pnlReturnPaper1";
             this.pnlReturnPaper1.Size = new System.Drawing.Size(528, 828);
             this.pnlReturnPaper1.TabIndex = 8;
@@ -985,16 +988,32 @@
             this.pnlPalletCard1.Size = new System.Drawing.Size(528, 828);
             this.pnlPalletCard1.TabIndex = 32;
             // 
+            // pnlPalletCard2
+            // 
+            this.pnlPalletCard2.Controls.Add(this.label8);
+            this.pnlPalletCard2.Location = new System.Drawing.Point(205, 5);
+            this.pnlPalletCard2.Name = "pnlPalletCard2";
+            this.pnlPalletCard2.Size = new System.Drawing.Size(528, 828);
+            this.pnlPalletCard2.TabIndex = 33;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(207, 13);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(75, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "pnlPalletCard2";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1053);
-            this.Controls.Add(this.pnlReturnPaper2);
-            this.Controls.Add(this.pnlHome1);
-            this.Controls.Add(this.pnlReturnPaper1);
+            this.Controls.Add(this.pnlPalletCard2);
             this.Controls.Add(this.pnlPalletCard1);
+            this.Controls.Add(this.pnlReturnPaper1);
             this.Controls.Add(this.pnlSignature);
             this.Controls.Add(this.pnlRejectPaper1);
             this.Controls.Add(this.pnlHome0);
@@ -1016,6 +1035,8 @@
             this.Controls.Add(this.pnlReturnPaper3);
             this.Controls.Add(this.pnlRejectPaper3);
             this.Controls.Add(this.pnlRejectPaper2);
+            this.Controls.Add(this.pnlReturnPaper2);
+            this.Controls.Add(this.pnlHome1);
             this.Name = "Home";
             this.Text = "Pallet Card App XL106";
             this.Load += new System.EventHandler(this.Home_Load);
@@ -1034,6 +1055,8 @@
             this.pnlRejectPaper3.ResumeLayout(false);
             this.pnlRejectPaper3.PerformLayout();
             this.pnlSignature.ResumeLayout(false);
+            this.pnlPalletCard2.ResumeLayout(false);
+            this.pnlPalletCard2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1115,6 +1138,8 @@
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Label lblPrint14;
         private System.Windows.Forms.Panel pnlPalletCard1;
+        private System.Windows.Forms.Panel pnlPalletCard2;
+        private System.Windows.Forms.Label label8;
     }
 }
 
