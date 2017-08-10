@@ -52,9 +52,9 @@ namespace PalletCard
             lbl3.Visible = false;    
             lbl4.Visible = false;
             btnBack.Visible = false;
-                Search();
-                index = 1;
-                sectionbtns = false;
+            Search();
+            index = 1;
+            sectionbtns = false;
             }
             else if (index == 3)
             { 
@@ -106,7 +106,9 @@ namespace PalletCard
                 lblBack6.Visible = false;
                 lblBack5.Visible = true;
                 lblBack6.Visible = true;
+                Search();
                 index = 1;
+                sectionbtns = false;
             }
             else if (index == 6)
             {
@@ -243,6 +245,7 @@ namespace PalletCard
                 {
                     pnlReturnPaper1.Controls.Clear();
                 }
+                //reset dynamic buttons origin
                 A = 1;
                 btnBack.Visible = false;
             }
@@ -292,6 +295,7 @@ namespace PalletCard
             lbl2.Visible = false;
             lbl3.Visible = false;
             lbl4.Visible = false;
+            lblPheight.Text = "";
             tbxSearchBox.Text = "";
             tbxSearchBox.Focus();
             sectionbtns = false;
@@ -958,71 +962,71 @@ namespace PalletCard
         {
             //pnlSignature.BringToFront();
 
-            //    lbl1.Visible = true;
-            //    lbl1.Text = "Pallet Card";
-            //    pnlPalletCard1.BringToFront();
-            //    index = 8;
-            //    jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
-            //    btnBack.Visible = true;
-            //    //this.ActiveControl = tbxQtySheetsAffected;
+        //    lbl1.Visible = true;
+        //    lbl1.Text = "Pallet Card";
+        //    pnlPalletCard1.BringToFront();
+        //    index = 8;
+        //    jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+        //    btnBack.Visible = true;
+        //    //this.ActiveControl = tbxQtySheetsAffected;
 
-            //    //loop through datagridview to see if each value of field "Section Name" is the same
-            //    string x;
-            //    string y;
-            //    x = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            //    y = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            //    for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
-            //    {
-            //        y = dataGridView1.Rows[i].Cells[11].Value.ToString();
-            //    }
-            //    if (x == y)
-            //    {
-            //        pnlRejectPaper2.BringToFront();
-            //        string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            //        lbl2.Text = d;
-            //        lbl2.Visible = true;
-            //        lblBack5.Visible = false;
-            //        lblBack6.Visible = false;
-            //        index = 6;
-            //        sectionbtns = true;
-            //    }
-            //    else
-            //    { //prevent section buttons from drawing again if back button is selected
-            //        if (!sectionbtns)
-            //        {
-            //            //loop through datagrid rows to create a button for each value of field "Expr1"                  
-            //            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-            //            {
-            //                //if datagrid is not empty create a button for each row at cells[2] - "Name"
-            //                if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+        //    //loop through datagridview to see if each value of field "Section Name" is the same
+        //    string x;
+        //    string y;
+        //    x = dataGridView1.Rows[0].Cells[11].Value.ToString();
+        //    y = dataGridView1.Rows[0].Cells[11].Value.ToString();
+        //    for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
+        //    {
+        //        y = dataGridView1.Rows[i].Cells[11].Value.ToString();
+        //    }
+        //    if (x == y)
+        //    {
+        //        pnlRejectPaper2.BringToFront();
+        //        string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
+        //        lbl2.Text = d;
+        //        lbl2.Visible = true;
+        //        lblBack5.Visible = false;
+        //        lblBack6.Visible = false;
+        //        index = 6;
+        //        sectionbtns = true;
+        //    }
+        //    else
+        //    { //prevent section buttons from drawing again if back button is selected
+        //        if (!sectionbtns)
+        //        {
+        //            //loop through datagrid rows to create a button for each value of field "Expr1"                  
+        //            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+        //            {
+        //                //if datagrid is not empty create a button for each row at cells[2] - "Name"
+        //                if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
 
-            //                    //offer only one button where Expr1 field has two rows with the same value
-            //                    dataGridView1.AllowUserToAddRows = true;
-            //                if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
-            //                {
-            //                    {
-            //                        for (int j = 0; j < 1; j++)
-            //                        {
-            //                            Button btn = new Button();
-            //                            this.pnlRejectPaper1.Controls.Add(btn);
-            //                            btn.Top = A * 100;
-            //                            btn.Height = 80;
-            //                            btn.Width = 465;
-            //                            btn.BackColor = Color.SteelBlue;
-            //                            btn.Font = new Font("Microsoft Sans Serif", 14);
-            //                            btn.ForeColor = Color.White;
-            //                            btn.Left = 30;
-            //                            btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-            //                            A = A + 1;
-            //                            btn.Click += new System.EventHandler(this.expr2);
-            //                        }
-            //                    }
-            //                }
-            //                dataGridView1.AllowUserToAddRows = false;
-            //            }
-            //        }
-            //        sectionbtns = true;
-            //    }
+        //                    //offer only one button where Expr1 field has two rows with the same value
+        //                    dataGridView1.AllowUserToAddRows = true;
+        //                if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
+        //                {
+        //                    {
+        //                        for (int j = 0; j < 1; j++)
+        //                        {
+        //                            Button btn = new Button();
+        //                            this.pnlRejectPaper1.Controls.Add(btn);
+        //                            btn.Top = A * 100;
+        //                            btn.Height = 80;
+        //                            btn.Width = 465;
+        //                            btn.BackColor = Color.SteelBlue;
+        //                            btn.Font = new Font("Microsoft Sans Serif", 14);
+        //                            btn.ForeColor = Color.White;
+        //                            btn.Left = 30;
+        //                            btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
+        //                            A = A + 1;
+        //                            btn.Click += new System.EventHandler(this.expr2);
+        //                        }
+        //                    }
+        //                }
+        //                dataGridView1.AllowUserToAddRows = false;
+        //            }
+        //        }
+        //        sectionbtns = true;
+        //    }
         }
 
 
