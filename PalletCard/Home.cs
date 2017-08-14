@@ -14,7 +14,7 @@ namespace PalletCard
     {
         List<Panel> listPanel = new List<Panel>();
         int index;
-        bool sectionbtns;
+        bool sectionBtns;
         bool sigBtns;
         int A = 1;
         string jobNo;
@@ -55,7 +55,7 @@ namespace PalletCard
                 btnBack.Visible = false;
                 Search();
                 index = 1;
-                sectionbtns = false;
+                sectionBtns = false;
             }
             else if (index == 3)
             {
@@ -109,7 +109,7 @@ namespace PalletCard
                 lblBack6.Visible = true;
                 Search();
                 index = 1;
-                sectionbtns = false;
+                sectionBtns = false;
             }
             else if (index == 6)
             {
@@ -182,15 +182,19 @@ namespace PalletCard
                 lblBack6.Visible = true;
                 Search();
                 index = 1;
-                sectionbtns = false;
+                sectionBtns = false;
             }
             else if (index == 9)
             {
+                Search();
                 pnlPalletCard1.BringToFront();
                 lbl2.Visible = false;
                 lbl3.Visible = false;
                 lbl4.Visible = false;
+                btnBack.Visible = true;
                 index = 8;
+                sigBtns = false;
+                removeFlowLayoutBtns();
                 // if no section buttons go straight back to Choose Action screen
                 if (pnlPalletCard1.Controls.Count == 0)
                 {
@@ -203,9 +207,29 @@ namespace PalletCard
                     btnBack.Visible = false;
                     index = 1;
                 }
-
+            }
+            else if (index == 10)
+            {
+                pnlPalletCard2.BringToFront();
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                index = 9;
+                // if no sig buttons go straight back to Choose Section screen
+                if (pnlPalletCard2.Controls.Count == 0)
+                {
+                    pnlHome1.BringToFront();
+                    lbl1.Visible = false;
+                    lbl2.Visible = false;
+                    lbl3.Visible = false;
+                    lbl3.Visible = false;
+                    lbl4.Visible = false;
+                    btnBack.Visible = false;
+                    index = 1;
+                }
             }
         }
+
+
 
         private void Home_Load(object sender, EventArgs e)
         {
@@ -332,7 +356,7 @@ namespace PalletCard
             lblPheight.Text = "";
             tbxSearchBox.Text = "";
             tbxSearchBox.Focus();
-            sectionbtns = false;
+            sectionBtns = false;
             tbxPalletHeight.Text = null;
             btnSearch.Visible = true;
             btnBack.Visible = false;
@@ -361,10 +385,14 @@ namespace PalletCard
                 btnSearch_Click(tbxSearchBox, new EventArgs());
         }
 
+        private void removeFlowLayoutBtns()
+        {
+            flowLayoutPanel1.Controls.Clear();
+        }
 
-//****************************************************************************************************
-//    RETURN PAPER WORKFLOW
-//****************************************************************************************************
+        //****************************************************************************************************
+        //    RETURN PAPER WORKFLOW
+        //****************************************************************************************************
 
         private void btnReturnPaper_Click(object sender, EventArgs e)
         {
@@ -396,12 +424,12 @@ namespace PalletCard
                 lbl4.Visible = true;
                 lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
                 index = 3;
-                sectionbtns = true;
+                sectionBtns = true;
                 this.ActiveControl = tbxPalletHeight;
             }       
             else
             { //prevent section buttons from drawing again if back button is selected
-                if (!sectionbtns)
+                if (!sectionBtns)
                 {
                     //loop through datagrid rows to create a button for each value of field "Expr1"                  
                     for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
@@ -434,7 +462,7 @@ namespace PalletCard
                             }
                         }
                     }
-                    sectionbtns = true;
+                    sectionBtns = true;
                 }          
         }
 
@@ -594,11 +622,11 @@ namespace PalletCard
                 lblBack5.Visible = false;
                 lblBack6.Visible = false;
                 index = 6;
-                sectionbtns = true;
+                sectionBtns = true;
             }
             else
             { //prevent section buttons from drawing again if back button is selected
-                if (!sectionbtns)
+                if (!sectionBtns)
                 {
                     //loop through datagrid rows to create a button for each value of field "Expr1"                  
                     for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
@@ -631,14 +659,14 @@ namespace PalletCard
                             dataGridView1.AllowUserToAddRows = false;
                     }
                 }
-                sectionbtns = true;
+                sectionBtns = true;
                 lblBack5.Visible = false;
                 lblBack6.Visible = false;
             }
         }
 
 
-        //Dynamic button click - Section buttons, Return Paper work flow
+        //Dynamic button click - Section buttons, Reject Paper work flow
         private void expr2(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -1013,18 +1041,18 @@ namespace PalletCard
             }
             if (x == y)
             {
-                pnlPalletCard2.BringToFront();
-                string d = dataGridView1.Rows[0].Cells[15].Value.ToString();
+                pnlPalletCard3.BringToFront();
+                string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 lbl2.Text = d;
                 lbl2.Visible = true;
                 //lblBack5.Visible = false;
                 //lblBack6.Visible = false;
                 index = 9;
-                sectionbtns = true;
+                sectionBtns = true;
             }
             else
             { //prevent section buttons from drawing again if back button is selected
-                if (!sectionbtns)
+                if (!sectionBtns)
                 {
                     //loop through datagrid rows to create a button for each value of field "Section Name"                  
                     for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
@@ -1057,7 +1085,7 @@ namespace PalletCard
                         dataGridView1.AllowUserToAddRows = false;
                     }
                 }
-                sectionbtns = true;
+                sectionBtns = true;
             }
         }
         //Dynamic button click - Section buttons, Pallet Card work flow
@@ -1072,7 +1100,7 @@ namespace PalletCard
             //filter datagridview1 with the button text choice
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "SectionName like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "SectionName = '" + btn.Text + "' and JobNo like '%" + lblJobNo.Text + "%'";
             }
             catch (Exception) { }
 
@@ -1080,29 +1108,34 @@ namespace PalletCard
 
 
 
-            if (!sigBtns) { 
-
-                //loop through datagrid rows to create a button for each value of field "PaperSectionNumber"                  
-                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            if (!sigBtns)
             {
-                //if datagrid is not empty create a button for each row at cells[19] - "PaperSectionNumber"
-                //if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[19].Value as string)))
-                    for (int j = 0; j < 1; j++)
+                //loop through datagrid rows to create a button for each value of field "PaperSectionNo"                  
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                {
+                    //if datagrid is not empty create a button for each row at cells[19] - "PaperSectionNo"
+                    //if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[19].Value as string)))
+
+                    //dataGridView1.AllowUserToAddRows = true;
+                    //if (!(this.dataGridView1.Rows[i].Cells[19].Value as string == this.dataGridView1.Rows[i + 1].Cells[19].Value as string))
+                    //{
+                    //    {
+                            for (int j = 0; j < 1; j++)
                     {
                         Button btnSig = new Button();
                         this.flowLayoutPanel1.Controls.Add(btnSig);
-                        //this.pnlPalletCard2.Controls.Add(btnSig);
-                        //btnSig.Top = A * 60;
-                        btnSig.Height = 80;
+                        btnSig.Height = 70;
                         btnSig.Width = 120;
                         btnSig.BackColor = Color.SteelBlue;
                         btnSig.Font = new Font("Microsoft Sans Serif", 14);
                         btnSig.ForeColor = Color.White;
                         btnSig.Left = 30;
                         btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
-                        A = A + 1;
                         btnSig.Click += new System.EventHandler(this.DynamicSigBtn);
                     }
+                    //    }
+                    //}
+                    //dataGridView1.AllowUserToAddRows = false;
 
                 }
             }
@@ -1110,14 +1143,14 @@ namespace PalletCard
         }
 
 
-        //Dynamic button click - Section buttons, Pallet Card work flow
+        //Dynamic button click - Sig buttons, Pallet Card work flow
         private void DynamicSigBtn(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            pnlPalletCard2.BringToFront();
-            lbl2.Visible = true;
-            lbl2.Text = btn.Text;
-            index = 9;
+            pnlPalletCard3.BringToFront();
+            lbl3.Visible = true;
+            lbl3.Text = btn.Text;
+            index = 10;
 
             //filter datagridview1 with the button text choice
             try
