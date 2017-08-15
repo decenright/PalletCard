@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbxSearchBox = new System.Windows.Forms.TextBox();
@@ -121,12 +121,15 @@
             this.lblBack7 = new System.Windows.Forms.Label();
             this.lbl5 = new System.Windows.Forms.Label();
             this.pnlPalletCard4 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnMarkBad = new System.Windows.Forms.Button();
+            this.btnExtraInformationPalletCard = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnExtraInformationPalletCard = new System.Windows.Forms.Button();
+            this.btnMarkBad = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.pnlPalletCard5 = new System.Windows.Forms.Panel();
+            this.btnWholePalletBadSection = new System.Windows.Forms.Button();
+            this.tbxSheetsAffectedBadSection = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.lbl6 = new System.Windows.Forms.Label();
             this.lblBack8 = new System.Windows.Forms.Label();
@@ -150,33 +153,33 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Location = new System.Drawing.Point(205, 839);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(529, 147);
             this.dataGridView1.TabIndex = 0;
@@ -343,7 +346,7 @@
             // 
             // btnPalletCard
             // 
-            this.btnPalletCard.BackColor = System.Drawing.Color.Silver;
+            this.btnPalletCard.BackColor = System.Drawing.Color.SteelBlue;
             this.btnPalletCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPalletCard.ForeColor = System.Drawing.Color.White;
             this.btnPalletCard.Location = new System.Drawing.Point(35, 105);
@@ -1185,27 +1188,15 @@
             this.pnlPalletCard4.Size = new System.Drawing.Size(528, 828);
             this.pnlPalletCard4.TabIndex = 37;
             // 
-            // label10
+            // btnExtraInformationPalletCard
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(145, 69);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(250, 25);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "EXTRA INFORMATION";
-            // 
-            // btnMarkBad
-            // 
-            this.btnMarkBad.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnMarkBad.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarkBad.ForeColor = System.Drawing.Color.White;
-            this.btnMarkBad.Location = new System.Drawing.Point(33, 157);
-            this.btnMarkBad.Name = "btnMarkBad";
-            this.btnMarkBad.Size = new System.Drawing.Size(465, 80);
-            this.btnMarkBad.TabIndex = 7;
-            this.btnMarkBad.Text = "Mark Bad Section";
-            this.btnMarkBad.UseVisualStyleBackColor = false;
+            this.btnExtraInformationPalletCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExtraInformationPalletCard.Location = new System.Drawing.Point(217, 583);
+            this.btnExtraInformationPalletCard.Name = "btnExtraInformationPalletCard";
+            this.btnExtraInformationPalletCard.Size = new System.Drawing.Size(88, 62);
+            this.btnExtraInformationPalletCard.TabIndex = 15;
+            this.btnExtraInformationPalletCard.Text = "OK";
+            this.btnExtraInformationPalletCard.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -1226,31 +1217,80 @@
             this.textBox1.Size = new System.Drawing.Size(455, 145);
             this.textBox1.TabIndex = 13;
             // 
-            // btnExtraInformationPalletCard
+            // btnMarkBad
             // 
-            this.btnExtraInformationPalletCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExtraInformationPalletCard.Location = new System.Drawing.Point(217, 583);
-            this.btnExtraInformationPalletCard.Name = "btnExtraInformationPalletCard";
-            this.btnExtraInformationPalletCard.Size = new System.Drawing.Size(88, 62);
-            this.btnExtraInformationPalletCard.TabIndex = 15;
-            this.btnExtraInformationPalletCard.Text = "OK";
-            this.btnExtraInformationPalletCard.UseVisualStyleBackColor = true;
+            this.btnMarkBad.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnMarkBad.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarkBad.ForeColor = System.Drawing.Color.White;
+            this.btnMarkBad.Location = new System.Drawing.Point(33, 157);
+            this.btnMarkBad.Name = "btnMarkBad";
+            this.btnMarkBad.Size = new System.Drawing.Size(465, 80);
+            this.btnMarkBad.TabIndex = 7;
+            this.btnMarkBad.Text = "Mark Bad Section";
+            this.btnMarkBad.UseVisualStyleBackColor = false;
+            this.btnMarkBad.Click += new System.EventHandler(this.btnMarkBad_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(105, 69);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(318, 33);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "EXTRA INFORMATION";
             // 
             // pnlPalletCard5
             // 
+            this.pnlPalletCard5.Controls.Add(this.btnWholePalletBadSection);
+            this.pnlPalletCard5.Controls.Add(this.tbxSheetsAffectedBadSection);
+            this.pnlPalletCard5.Controls.Add(this.label15);
             this.pnlPalletCard5.Controls.Add(this.label14);
             this.pnlPalletCard5.Location = new System.Drawing.Point(208, 5);
             this.pnlPalletCard5.Name = "pnlPalletCard5";
             this.pnlPalletCard5.Size = new System.Drawing.Size(528, 828);
             this.pnlPalletCard5.TabIndex = 38;
             // 
+            // btnWholePalletBadSection
+            // 
+            this.btnWholePalletBadSection.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnWholePalletBadSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWholePalletBadSection.ForeColor = System.Drawing.Color.White;
+            this.btnWholePalletBadSection.Location = new System.Drawing.Point(33, 323);
+            this.btnWholePalletBadSection.Name = "btnWholePalletBadSection";
+            this.btnWholePalletBadSection.Size = new System.Drawing.Size(465, 80);
+            this.btnWholePalletBadSection.TabIndex = 11;
+            this.btnWholePalletBadSection.Text = "Whole Pallet";
+            this.btnWholePalletBadSection.UseVisualStyleBackColor = false;
+            // 
+            // tbxSheetsAffectedBadSection
+            // 
+            this.tbxSheetsAffectedBadSection.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tbxSheetsAffectedBadSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxSheetsAffectedBadSection.Location = new System.Drawing.Point(125, 213);
+            this.tbxSheetsAffectedBadSection.Multiline = true;
+            this.tbxSheetsAffectedBadSection.Name = "tbxSheetsAffectedBadSection";
+            this.tbxSheetsAffectedBadSection.Size = new System.Drawing.Size(275, 59);
+            this.tbxSheetsAffectedBadSection.TabIndex = 10;
+            this.tbxSheetsAffectedBadSection.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(139, 173);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(241, 37);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Sheets Affected";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(159, 72);
+            this.label14.Font = new System.Drawing.Font("Tahoma", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(154, 71);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(210, 31);
+            this.label14.Size = new System.Drawing.Size(204, 33);
             this.label14.TabIndex = 0;
             this.label14.Text = "BAD SECTION";
             // 
@@ -1320,12 +1360,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1053);
+            this.Controls.Add(this.pnlPalletCard5);
+            this.Controls.Add(this.pnlPalletCard4);
             this.Controls.Add(this.lbl7);
             this.Controls.Add(this.lblBack9);
             this.Controls.Add(this.lbl6);
             this.Controls.Add(this.lblBack8);
-            this.Controls.Add(this.pnlPalletCard5);
-            this.Controls.Add(this.pnlPalletCard4);
             this.Controls.Add(this.lbl5);
             this.Controls.Add(this.lblBack7);
             this.Controls.Add(this.pnlPalletCard3);
@@ -1487,6 +1527,9 @@
         private System.Windows.Forms.Label lblBack8;
         private System.Windows.Forms.Label lbl7;
         private System.Windows.Forms.Label lblBack9;
+        private System.Windows.Forms.Button btnWholePalletBadSection;
+        private System.Windows.Forms.TextBox tbxSheetsAffectedBadSection;
+        private System.Windows.Forms.Label label15;
     }
 }
 

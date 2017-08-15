@@ -254,6 +254,12 @@ namespace PalletCard
                 lblPheightPalletCard.Text = "";
                 index = 10;
             }
+            else if (index == 12)
+            {
+                pnlPalletCard4.BringToFront();
+                lbl6.Visible = false;
+                index = 11;
+            }
 
         }
 
@@ -1262,7 +1268,7 @@ namespace PalletCard
                     p2 = Convert.ToInt32(this.dataGridView1.Rows[0].Cells[20].Value);
                     double result = (int)(p1 * (p2 / 1000));
                     string r1 = Convert.ToString(result);
-                    lblPheightPalletCard.Text = (r1);
+                    lblPheightPalletCard.Text = (r1 + " mm");
                 }
             }
             catch
@@ -1282,6 +1288,18 @@ namespace PalletCard
             lbl4.Visible = true;
             lbl5.Text = lblPheightPalletCard.Text;
             lbl5.Visible = true;
+        }
+
+        private void btnMarkBad_Click(object sender, EventArgs e)
+        {
+            pnlPalletCard5.BringToFront();
+            index = 12;
+            lbl4.Text = lblSheetCountPalletCard.Text;
+            lbl4.Visible = true;
+            lbl5.Text = lblPheightPalletCard.Text;
+            lbl5.Visible = true;
+            lbl6.Text = "Bad Section";
+            lbl6.Visible = true;
         }
     }
 }
