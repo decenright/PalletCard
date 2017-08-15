@@ -195,6 +195,10 @@ namespace PalletCard
                 index = 8;
                 sigBtns = false;
                 removeFlowLayoutBtns();
+                tbxPalletHeightPalletCard.Text = "";
+                lblSheetCountPalletCard.Text = "";
+                tbxSheetCountPalletCard.Text = "";
+                lblPheightPalletCard.Text = "";
                 // if no section buttons go straight back to Choose Action screen
                 if (pnlPalletCard1.Controls.Count == 0)
                 {
@@ -205,6 +209,10 @@ namespace PalletCard
                     lbl3.Visible = false;
                     lbl4.Visible = false;
                     btnBack.Visible = false;
+                    tbxPalletHeightPalletCard.Text = "";
+                    lblSheetCountPalletCard.Text = "";
+                    tbxSheetCountPalletCard.Text = "";
+                    lblPheightPalletCard.Text = "";
                     index = 1;
                 }
             }
@@ -213,6 +221,10 @@ namespace PalletCard
                 pnlPalletCard2.BringToFront();
                 lbl3.Visible = false;
                 lbl4.Visible = false;
+                tbxPalletHeightPalletCard.Text = "";
+                lblSheetCountPalletCard.Text = "";
+                tbxSheetCountPalletCard.Text = "";
+                lblPheightPalletCard.Text = "";
                 index = 9;
                 // if no sig buttons go straight back to Choose Section screen
                 if (pnlPalletCard2.Controls.Count == 0)
@@ -223,10 +235,26 @@ namespace PalletCard
                     lbl3.Visible = false;
                     lbl3.Visible = false;
                     lbl4.Visible = false;
+                    tbxPalletHeightPalletCard.Text = "";
+                    lblSheetCountPalletCard.Text = "";
+                    tbxSheetCountPalletCard.Text = "";
+                    lblPheightPalletCard.Text = "";
                     btnBack.Visible = false;
                     index = 1;
                 }
             }
+            else if (index == 11)
+            {
+                pnlPalletCard3.BringToFront();
+                lbl4.Visible = false;
+                lbl5.Visible = false;
+                tbxPalletHeightPalletCard.Text = "";
+                lblSheetCountPalletCard.Text = "";
+                tbxSheetCountPalletCard.Text = "";
+                lblPheightPalletCard.Text = "";
+                index = 10;
+            }
+
         }
 
 
@@ -1045,10 +1073,13 @@ namespace PalletCard
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 lbl2.Text = d;
                 lbl2.Visible = true;
+                string s = dataGridView1.Rows[0].Cells[19].Value.ToString();
+                lbl3.Text = "Sig " + s;
+                lbl3.Visible = true;
                 //lblBack5.Visible = false;
                 //lblBack6.Visible = false;
                 index = 9;
-                sectionBtns = true;
+                sectionBtns = true;             
             }
             else
             { //prevent section buttons from drawing again if back button is selected
@@ -1110,34 +1141,68 @@ namespace PalletCard
 
             if (!sigBtns)
             {
-                //loop through datagrid rows to create a button for each value of field "PaperSectionNo"                  
+                //loop through datagrid rows to create a button for each value of field "PaperSectionNo"  
+
+
                 for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                 {
-                    //if datagrid is not empty create a button for each row at cells[19] - "PaperSectionNo"
-                    //if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[19].Value as string)))
-
-                    //dataGridView1.AllowUserToAddRows = true;
-                    //if (!(this.dataGridView1.Rows[i].Cells[19].Value as string == this.dataGridView1.Rows[i + 1].Cells[19].Value as string))
-                    //{
-                    //    {
-                            for (int j = 0; j < 1; j++)
+                    var v = dataGridView1.Rows[i].Cells[19].Value;
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
                     {
-                        Button btnSig = new Button();
-                        this.flowLayoutPanel1.Controls.Add(btnSig);
-                        btnSig.Height = 70;
-                        btnSig.Width = 120;
-                        btnSig.BackColor = Color.SteelBlue;
-                        btnSig.Font = new Font("Microsoft Sans Serif", 14);
-                        btnSig.ForeColor = Color.White;
-                        btnSig.Left = 30;
-                        btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
-                        btnSig.Click += new System.EventHandler(this.DynamicSigBtn);
+                        if (!(v == dataGridView1.Rows[i].Cells[19].Value))
+                        {
+                            for (int k = 0; k < 1; k++)
+                            {
+                                Button btnSig = new Button();
+                                this.flowLayoutPanel1.Controls.Add(btnSig);
+                                btnSig.Height = 70;
+                                btnSig.Width = 120;
+                                btnSig.BackColor = Color.SteelBlue;
+                                btnSig.Font = new Font("Microsoft Sans Serif", 14);
+                                btnSig.ForeColor = Color.White;
+                                btnSig.Left = 30;
+                                btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
+                                btnSig.Click += new System.EventHandler(this.DynamicSigBtn);
+                            }
+                        }
                     }
-                    //    }
-                    //}
-                    //dataGridView1.AllowUserToAddRows = false;
 
                 }
+
+
+
+
+
+
+
+                //for (int i = 0; i <= this.dataGridView1.Rows.Count+1; i++)
+                //{
+                //    //if datagrid is not empty create a button for each row at cells[19] - "PaperSectionNo"
+                //    //if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[19].Value as string)))
+
+
+                    //    int rowCount = dataGridView1.Rows.Count +1;
+                    //    dataGridView1.AllowUserToAddRows = true;
+
+                    //    dataGridView1.Rows[rowCount].Cells[19].Value = 0;
+                    //    if (!(this.dataGridView1.Rows[i].Cells[19].Value == this.dataGridView1.Rows[i + 1].Cells[19].Value))
+                    //    {                      
+                    //            for (int j = 0; j < 1; j++)
+                    //        {
+                    //            Button btnSig = new Button();
+                    //            this.flowLayoutPanel1.Controls.Add(btnSig);
+                    //            btnSig.Height = 70;
+                    //            btnSig.Width = 120;
+                    //            btnSig.BackColor = Color.SteelBlue;
+                    //            btnSig.Font = new Font("Microsoft Sans Serif", 14);
+                    //            btnSig.ForeColor = Color.White;
+                    //            btnSig.Left = 30;
+                    //            btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
+                    //            btnSig.Click += new System.EventHandler(this.DynamicSigBtn);                        
+                    //        }
+                    //    }
+                    //    dataGridView1.AllowUserToAddRows = false;
+                    //}
             }
             sigBtns = true;
         }
@@ -1160,5 +1225,63 @@ namespace PalletCard
             catch (Exception) { }
         }
 
+        // Pallet Height textBox calculation for Pallet Card
+        private void tbxPalletHeightPalletCard_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBox objTextBox = (TextBox)sender;
+                double p1;
+                double p2;
+                if (!String.IsNullOrEmpty(tbxPalletHeightPalletCard.Text))
+                {
+                    p1 = Convert.ToInt32(objTextBox.Text);
+                    p2 = Convert.ToInt32(this.dataGridView1.Rows[0].Cells[20].Value);
+                    double result = Math.Ceiling(p1 / (p2 / 1000));
+                    string r1 = Convert.ToString(result);
+                    lblSheetCountPalletCard.Text = (r1 + " sheets");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Please enter a valid number");
+            }
+        }
+
+        // Sheet Count textBox calculation for Pallet Card
+        private void tbxSheetCountPalletCard_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBox objTextBox = (TextBox)sender;
+                double p1;
+                double p2;
+                if (!String.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
+                {
+                    p1 = Convert.ToInt32(objTextBox.Text);
+                    p2 = Convert.ToInt32(this.dataGridView1.Rows[0].Cells[20].Value);
+                    double result = (int)(p1 * (p2 / 1000));
+                    string r1 = Convert.ToString(result);
+                    lblPheightPalletCard.Text = (r1);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Please enter a valid number");
+            }
+
+
+
+        }
+
+        private void btnPalletHeightSheetCountPalletCard_Click(object sender, EventArgs e)
+        {
+            pnlPalletCard4.BringToFront();
+            index = 11;
+            lbl4.Text = lblSheetCountPalletCard.Text;
+            lbl4.Visible = true;
+            lbl5.Text = lblPheightPalletCard.Text;
+            lbl5.Visible = true;
+        }
     }
 }
