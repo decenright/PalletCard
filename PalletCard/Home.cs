@@ -1068,7 +1068,7 @@ namespace PalletCard
             lbl1.Text = "Pallet Card";
             pnlPalletCard1.BringToFront();
             index = 8;
-            jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            tbxPalletHeightPalletCard.Focus();
             btnBack.Visible = true;            
 
             //loop through datagridview to see if each value of field "Section Name" is the same
@@ -1253,6 +1253,7 @@ namespace PalletCard
                     double result = Math.Ceiling(p1 / (p2 / 1000));
                     string r1 = Convert.ToString(result);
                     lblSheetCountPalletCard.Text = (r1 + " sheets");
+
                 }
             }
             catch
@@ -1292,10 +1293,28 @@ namespace PalletCard
             pnlPalletCard4.BringToFront();
             this.ActiveControl = tbxExtraInfoComment;
             index = 11;
-            lbl4.Text = lblSheetCountPalletCard.Text;
-            lbl4.Visible = true;
-            lbl5.Text = lblPheightPalletCard.Text;
-            lbl5.Visible = true;
+            if (!string.IsNullOrEmpty(tbxPalletHeightPalletCard.Text))
+            {
+                lbl4.Text = tbxPalletHeightPalletCard.Text;
+                lbl4.Visible = true;
+                lbl5.Text = lblSheetCountPalletCard.Text;
+                lbl5.Visible = true;
+            }
+            else if (!string.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
+            {
+                lbl4.Text = tbxSheetCountPalletCard.Text;
+                lbl4.Visible = true;
+                lbl5.Text = lblPheightPalletCard.Text;
+                lbl5.Visible = true;
+            }
+            else 
+            {
+                lbl4.Text = tbxPalletHeightPalletCard.Text;
+                lbl4.Visible = true;
+                lbl5.Text = lblSheetCountPalletCard.Text;
+                lbl5.Visible = true;
+            }
+
         }
 
         private void btnMarkBad_Click(object sender, EventArgs e)
