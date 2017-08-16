@@ -1300,6 +1300,39 @@ namespace PalletCard
             lbl5.Visible = true;
             lbl6.Text = "Bad Section";
             lbl6.Visible = true;
+
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                Button btn1 = new Button();
+                this.flowLayoutPanel2.Controls.Add(btn1);
+                btn1.Height = 70;
+                btn1.Width = 120;
+                btn1.BackColor = Color.SteelBlue;
+                btn1.Font = new Font("Microsoft Sans Serif", 14);
+                btn1.ForeColor = Color.White;
+                btn1.Left = 20;
+                btn1.Text = this.dataGridView1.Rows[i].Cells[0].Value as string;
+                btn1.Click += new System.EventHandler(this.DynamicSigBtn);
+
+                Button btn2 = new Button();
+                this.flowLayoutPanel2.Controls.Add(btn2);
+                btn2.Height = 70;
+                btn2.Width = 120;
+                btn2.BackColor = Color.SteelBlue;
+                btn2.Font = new Font("Microsoft Sans Serif", 14);
+                btn2.ForeColor = Color.White;
+                btn2.Left = 50;
+                btn2.Text = this.dataGridView1.Rows[i].Cells[12].Value as string + " Up";
+                btn2.Click += new System.EventHandler(this.DynamicSigBtn);
+
+                TextBox textBox1 = new TextBox();
+                this.flowLayoutPanel2.Controls.Add(textBox1);
+                textBox1.Height = 70;
+                textBox1.Width = 120;
+                textBox1.Multiline = true;
+                textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
+                textBox1.TextAlign = HorizontalAlignment.Center;
+            }
         }
     }
 }
