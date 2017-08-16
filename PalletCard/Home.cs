@@ -16,6 +16,7 @@ namespace PalletCard
         int index;
         bool sectionBtns;
         bool sigBtns;
+        bool badSectionLbls;
         int A = 1;
         string jobNo;
         bool searchChanged;
@@ -227,7 +228,7 @@ namespace PalletCard
                 lblPheightPalletCard.Text = "";
                 index = 9;
                 // if no sig buttons go straight back to Choose Section screen
-                if (pnlPalletCard2.Controls.Count == 0)
+                if (flowLayoutPanel1.Controls.Count == 0)
                 {
                     pnlHome1.BringToFront();
                     lbl1.Visible = false;
@@ -258,6 +259,12 @@ namespace PalletCard
             {
                 pnlPalletCard4.BringToFront();
                 lbl6.Visible = false;
+                this.ActiveControl = tbxExtraInfoComment;
+                flowLayoutPanel2.Enabled = true;
+                tbxSheetsAffectedBadSection.Enabled = true;
+                tbxSheetsAffectedBadSection.Text = "";
+                btnWholePalletBadSection.Enabled = true;
+                badSectionLbls = false;
                 index = 11;
             }
 
@@ -387,6 +394,7 @@ namespace PalletCard
             lbl2.Visible = false;
             lbl3.Visible = false;
             lbl4.Visible = false;
+            lbl5.Visible = false;
             lblPheight.Text = "";
             tbxSearchBox.Text = "";
             tbxSearchBox.Focus();
@@ -395,6 +403,7 @@ namespace PalletCard
             btnSearch.Visible = true;
             btnBack.Visible = false;
             this.ActiveControl = tbxSearchBox;
+            badSectionLbls = false;
             index = 0;
         }
 
@@ -545,7 +554,6 @@ namespace PalletCard
 
         // Pallet Height textBox calculation for Return Paper
         private void tbxPalletHeight_TextChanged(object sender, EventArgs e)
-
         {
             try
             { 
@@ -1061,8 +1069,7 @@ namespace PalletCard
             pnlPalletCard1.BringToFront();
             index = 8;
             jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
-            btnBack.Visible = true;
-            //this.ActiveControl = tbxQtySheetsAffected;
+            btnBack.Visible = true;            
 
             //loop through datagridview to see if each value of field "Section Name" is the same
             string x;
@@ -1168,7 +1175,7 @@ namespace PalletCard
                                 btnSig.ForeColor = Color.White;
                                 btnSig.Left = 30;
                                 btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
-                                btnSig.Click += new System.EventHandler(this.DynamicSigBtn);
+                                btnSig.Click += new System.EventHandler(this.sigButton);
                             }
                         }
                     }
@@ -1215,7 +1222,7 @@ namespace PalletCard
 
 
         //Dynamic button click - Sig buttons, Pallet Card work flow
-        private void DynamicSigBtn(object sender, EventArgs e)
+        private void sigButton(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             pnlPalletCard3.BringToFront();
@@ -1283,6 +1290,7 @@ namespace PalletCard
         private void btnPalletHeightSheetCountPalletCard_Click(object sender, EventArgs e)
         {
             pnlPalletCard4.BringToFront();
+            this.ActiveControl = tbxExtraInfoComment;
             index = 11;
             lbl4.Text = lblSheetCountPalletCard.Text;
             lbl4.Visible = true;
@@ -1292,7 +1300,9 @@ namespace PalletCard
 
         private void btnMarkBad_Click(object sender, EventArgs e)
         {
+            this.flowLayoutPanel2.Controls.Clear();
             pnlPalletCard5.BringToFront();
+            this.ActiveControl = tbxSheetsAffectedBadSection;
             index = 12;
             lbl4.Text = lblSheetCountPalletCard.Text;
             lbl4.Visible = true;
@@ -1301,38 +1311,54 @@ namespace PalletCard
             lbl6.Text = "Bad Section";
             lbl6.Visible = true;
 
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                Button btn1 = new Button();
-                this.flowLayoutPanel2.Controls.Add(btn1);
-                btn1.Height = 70;
-                btn1.Width = 120;
-                btn1.BackColor = Color.SteelBlue;
-                btn1.Font = new Font("Microsoft Sans Serif", 14);
-                btn1.ForeColor = Color.White;
-                btn1.Left = 20;
-                btn1.Text = this.dataGridView1.Rows[i].Cells[0].Value as string;
-                btn1.Click += new System.EventHandler(this.DynamicSigBtn);
+            if(!badSectionLbls)
+            { 
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    Label lbl1 = new Label();
+                    this.flowLayoutPanel2.Controls.Add(lbl1);
+                    lbl1.Height = 60;
+                    lbl1.Width = 120;
+                    lbl1.BackColor = Color.Tan;
+                    lbl1.Font = new Font("Microsoft Sans Serif", 14);
+                    lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                    lbl1.ForeColor = Color.White;
+                    lbl1.Left = 20;
+                    lbl1.Text = this.dataGridView1.Rows[i].Cells[0].Value as string;                   
 
-                Button btn2 = new Button();
-                this.flowLayoutPanel2.Controls.Add(btn2);
-                btn2.Height = 70;
-                btn2.Width = 120;
-                btn2.BackColor = Color.SteelBlue;
-                btn2.Font = new Font("Microsoft Sans Serif", 14);
-                btn2.ForeColor = Color.White;
-                btn2.Left = 50;
-                btn2.Text = this.dataGridView1.Rows[i].Cells[12].Value as string + " Up";
-                btn2.Click += new System.EventHandler(this.DynamicSigBtn);
+                    Label lbl2 = new Label();
+                    this.flowLayoutPanel2.Controls.Add(lbl2);
+                    lbl2.Height = 60;
+                    lbl2.Width = 120;
+                    lbl2.BackColor = Color.Tan;
+                    lbl2.Font = new Font("Microsoft Sans Serif", 14);
+                    lbl2.TextAlign = ContentAlignment.MiddleCenter;
+                    lbl2.ForeColor = Color.White;
+                    lbl2.Left = 50;
+                    lbl2.Text = this.dataGridView1.Rows[i].Cells[12].Value.ToString();
 
-                TextBox textBox1 = new TextBox();
-                this.flowLayoutPanel2.Controls.Add(textBox1);
-                textBox1.Height = 70;
-                textBox1.Width = 120;
-                textBox1.Multiline = true;
-                textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
-                textBox1.TextAlign = HorizontalAlignment.Center;
+                    TextBox textBox1 = new TextBox();
+                    this.flowLayoutPanel2.Controls.Add(textBox1);
+                    textBox1.Height = 55;
+                    textBox1.Width = 170;
+                    textBox1.Multiline = true;
+                    textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
+                    textBox1.TextAlign = HorizontalAlignment.Center;
+                    textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
+                }
             }
+            badSectionLbls = true;
+        }
+
+        private void btnWholePalletBadSection_Click(object sender, EventArgs e)
+        {          
+                flowLayoutPanel2.Enabled = false;          
+        }
+
+        private void markBadTextBoxQty(Object sender, EventArgs e)
+        {
+            tbxSheetsAffectedBadSection.Enabled = false;
+            btnWholePalletBadSection.Enabled = false;
         }
     }
 }

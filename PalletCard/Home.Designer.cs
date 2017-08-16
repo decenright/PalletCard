@@ -123,7 +123,7 @@
             this.pnlPalletCard4 = new System.Windows.Forms.Panel();
             this.btnExtraInformationPalletCard = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxExtraInfoComment = new System.Windows.Forms.TextBox();
             this.btnMarkBad = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.pnlPalletCard5 = new System.Windows.Forms.Panel();
@@ -136,6 +136,10 @@
             this.lbl7 = new System.Windows.Forms.Label();
             this.lblBack9 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnBadSectionOK = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -1181,7 +1185,7 @@
             // 
             this.pnlPalletCard4.Controls.Add(this.btnExtraInformationPalletCard);
             this.pnlPalletCard4.Controls.Add(this.label12);
-            this.pnlPalletCard4.Controls.Add(this.textBox1);
+            this.pnlPalletCard4.Controls.Add(this.tbxExtraInfoComment);
             this.pnlPalletCard4.Controls.Add(this.btnMarkBad);
             this.pnlPalletCard4.Controls.Add(this.label10);
             this.pnlPalletCard4.Location = new System.Drawing.Point(208, 5);
@@ -1203,27 +1207,27 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(34, 316);
+            this.label12.Location = new System.Drawing.Point(34, 288);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(189, 25);
             this.label12.TabIndex = 14;
             this.label12.Text = "Enter a comment";
             // 
-            // textBox1
+            // tbxExtraInfoComment
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(39, 348);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(455, 145);
-            this.textBox1.TabIndex = 13;
+            this.tbxExtraInfoComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxExtraInfoComment.Location = new System.Drawing.Point(39, 316);
+            this.tbxExtraInfoComment.Multiline = true;
+            this.tbxExtraInfoComment.Name = "tbxExtraInfoComment";
+            this.tbxExtraInfoComment.Size = new System.Drawing.Size(455, 177);
+            this.tbxExtraInfoComment.TabIndex = 13;
             // 
             // btnMarkBad
             // 
             this.btnMarkBad.BackColor = System.Drawing.Color.SteelBlue;
             this.btnMarkBad.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMarkBad.ForeColor = System.Drawing.Color.White;
-            this.btnMarkBad.Location = new System.Drawing.Point(33, 157);
+            this.btnMarkBad.Location = new System.Drawing.Point(33, 131);
             this.btnMarkBad.Name = "btnMarkBad";
             this.btnMarkBad.Size = new System.Drawing.Size(465, 80);
             this.btnMarkBad.TabIndex = 7;
@@ -1235,7 +1239,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(105, 69);
+            this.label10.Location = new System.Drawing.Point(112, 24);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(318, 33);
             this.label10.TabIndex = 0;
@@ -1243,6 +1247,10 @@
             // 
             // pnlPalletCard5
             // 
+            this.pnlPalletCard5.Controls.Add(this.btnBadSectionOK);
+            this.pnlPalletCard5.Controls.Add(this.label18);
+            this.pnlPalletCard5.Controls.Add(this.label17);
+            this.pnlPalletCard5.Controls.Add(this.label16);
             this.pnlPalletCard5.Controls.Add(this.flowLayoutPanel2);
             this.pnlPalletCard5.Controls.Add(this.btnWholePalletBadSection);
             this.pnlPalletCard5.Controls.Add(this.tbxSheetsAffectedBadSection);
@@ -1258,12 +1266,13 @@
             this.btnWholePalletBadSection.BackColor = System.Drawing.Color.SteelBlue;
             this.btnWholePalletBadSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWholePalletBadSection.ForeColor = System.Drawing.Color.White;
-            this.btnWholePalletBadSection.Location = new System.Drawing.Point(34, 204);
+            this.btnWholePalletBadSection.Location = new System.Drawing.Point(34, 184);
             this.btnWholePalletBadSection.Name = "btnWholePalletBadSection";
             this.btnWholePalletBadSection.Size = new System.Drawing.Size(465, 80);
             this.btnWholePalletBadSection.TabIndex = 11;
             this.btnWholePalletBadSection.Text = "Whole Pallet";
             this.btnWholePalletBadSection.UseVisualStyleBackColor = false;
+            this.btnWholePalletBadSection.Click += new System.EventHandler(this.btnWholePalletBadSection_Click);
             // 
             // tbxSheetsAffectedBadSection
             // 
@@ -1358,10 +1367,50 @@
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(55, 316);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(47, 330);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(436, 509);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(452, 430);
             this.flowLayoutPanel2.TabIndex = 12;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(55, 303);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(115, 24);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Job Number";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(185, 303);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(108, 24);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "Number Up";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(346, 303);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(78, 24);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "Quantity";
+            // 
+            // btnBadSectionOK
+            // 
+            this.btnBadSectionOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBadSectionOK.Location = new System.Drawing.Point(217, 764);
+            this.btnBadSectionOK.Name = "btnBadSectionOK";
+            this.btnBadSectionOK.Size = new System.Drawing.Size(88, 62);
+            this.btnBadSectionOK.TabIndex = 16;
+            this.btnBadSectionOK.Text = "OK";
+            this.btnBadSectionOK.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
@@ -1527,7 +1576,7 @@
         private System.Windows.Forms.Panel pnlPalletCard4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxExtraInfoComment;
         private System.Windows.Forms.Button btnMarkBad;
         private System.Windows.Forms.Button btnExtraInformationPalletCard;
         private System.Windows.Forms.Panel pnlPalletCard5;
@@ -1540,6 +1589,10 @@
         private System.Windows.Forms.TextBox tbxSheetsAffectedBadSection;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnBadSectionOK;
     }
 }
 
