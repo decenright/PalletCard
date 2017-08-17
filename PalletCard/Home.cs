@@ -404,6 +404,7 @@ namespace PalletCard
             btnBack.Visible = false;
             this.ActiveControl = tbxSearchBox;
             badSectionLbls = false;
+            pnlPalletCard1.Controls.Clear();
             index = 0;
         }
 
@@ -1076,64 +1077,128 @@ namespace PalletCard
             string y;
             x = dataGridView1.Rows[0].Cells[15].Value.ToString();
             y = dataGridView1.Rows[0].Cells[15].Value.ToString();
-            for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
-            {
-                y = dataGridView1.Rows[i].Cells[15].Value.ToString();
-            }
-            if (x == y)
-            {
-                pnlPalletCard3.BringToFront();
-                string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
-                lbl2.Text = d;
-                lbl2.Visible = true;
-                string s = dataGridView1.Rows[0].Cells[19].Value.ToString();
-                lbl3.Text = "Sig " + s;
-                lbl3.Visible = true;
-                //lblBack5.Visible = false;
-                //lblBack6.Visible = false;
-                index = 9;
-                sectionBtns = true;             
-            }
-            else
-            { //prevent section buttons from drawing again if back button is selected
-                if (!sectionBtns)
+            //***************Check if Section Name field is empty
+            if (!(x == ""))
+            { 
+                for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
                 {
-                    //loop through datagrid rows to create a button for each value of field "Section Name"                  
-                    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                    y = dataGridView1.Rows[i].Cells[15].Value.ToString();
+                }
+                if (x == y)
+                {
+                    pnlPalletCard3.BringToFront();
+                    string sectionName = dataGridView1.Rows[0].Cells[15].Value.ToString();
+                    string sig = dataGridView1.Rows[0].Cells[19].Value.ToString();
+                    lbl2.Text = sectionName;
+                    lbl2.Visible = true;
+                    lbl3.Text = "Sig " + sig;
+                    lbl3.Visible = true;
+                    //lblBack5.Visible = false;
+                    //lblBack6.Visible = false;
+                    index = 9;
+                    sectionBtns = true;             
+                }
+                else
+                { //prevent section buttons from drawing again if back button is selected
+                    if (!sectionBtns)
                     {
-                        //if datagrid is not empty create a button for each row at cells[2] - "Name"
-                        if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[15].Value as string)))
-
-                            //offer only one button where SectionName field has two rows with the same value
-                            dataGridView1.AllowUserToAddRows = true;
-                        if (!(this.dataGridView1.Rows[i].Cells[15].Value as string == this.dataGridView1.Rows[i + 1].Cells[15].Value as string))
+                        //loop through datagrid rows to create a button for each value of field "Section Name"                  
+                        for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                         {
+                            //if datagrid is not empty create a button for each row at cells[15] - "Section Name"
+                            if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[15].Value as string)))
+
+                                //offer only one button where SectionName field has more than one row with the same value
+                                dataGridView1.AllowUserToAddRows = true;
+                            if (!(this.dataGridView1.Rows[i].Cells[15].Value as string == this.dataGridView1.Rows[i + 1].Cells[15].Value as string))
                             {
-                                for (int j = 0; j < 1; j++)
                                 {
-                                    Button btn = new Button();
-                                    this.pnlPalletCard1.Controls.Add(btn);
-                                    btn.Top = A * 100;
-                                    btn.Height = 80;
-                                    btn.Width = 465;
-                                    btn.BackColor = Color.SteelBlue;
-                                    btn.Font = new Font("Microsoft Sans Serif", 14);
-                                    btn.ForeColor = Color.White;
-                                    btn.Left = 30;
-                                    btn.Text = this.dataGridView1.Rows[i].Cells[15].Value as string;
-                                    A = A + 1;
-                                    btn.Click += new System.EventHandler(this.expr3);
+                                    for (int j = 0; j < 1; j++)
+                                    {
+                                        Button btn = new Button();
+                                        this.pnlPalletCard1.Controls.Add(btn);
+                                        btn.Top = A * 100;
+                                        btn.Height = 80;
+                                        btn.Width = 465;
+                                        btn.BackColor = Color.SteelBlue;
+                                        btn.Font = new Font("Microsoft Sans Serif", 14);
+                                        btn.ForeColor = Color.White;
+                                        btn.Left = 30;
+                                        btn.Text = this.dataGridView1.Rows[i].Cells[15].Value as string;
+                                        A = A + 1;
+                                        btn.Click += new System.EventHandler(this.sectionNameSectionBtns);
+                                    }
                                 }
                             }
+                            dataGridView1.AllowUserToAddRows = false;
                         }
-                        dataGridView1.AllowUserToAddRows = false;
                     }
+                    sectionBtns = true;
                 }
-                sectionBtns = true;
             }
+            //************ ELSE USE EXRP1 FIELD
+            else
+            {
+                for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
+                {
+                    y = dataGridView1.Rows[i].Cells[11].Value.ToString();
+                }
+                if (x == y)
+                {
+                    pnlPalletCard3.BringToFront();
+                    string Expr1 = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                    string sig = dataGridView1.Rows[0].Cells[19].Value.ToString();
+                    lbl2.Text = Expr1;
+                    lbl2.Visible = true;
+                    lbl3.Text = "Sig " + sig;
+                    lbl3.Visible = true;
+                    //lblBack5.Visible = false;
+                    //lblBack6.Visible = false;
+                    index = 9;
+                    sectionBtns = true;
+                }
+                else
+                { //prevent section buttons from drawing again if back button is selected
+                    if (!sectionBtns)
+                    {
+                        //loop through datagrid rows to create a button for each value of field "Section Name"                  
+                        for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                        {
+                            //if datagrid is not empty create a button for each row at cells[15] - "Section Name"
+                            if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+
+                                //offer only one button where SectionName field has more than one row with the same value
+                                dataGridView1.AllowUserToAddRows = true;
+                            if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
+                            {
+                                {
+                                    for (int j = 0; j < 1; j++)
+                                    {
+                                        Button btn = new Button();
+                                        this.pnlPalletCard1.Controls.Add(btn);
+                                        btn.Top = A * 100;
+                                        btn.Height = 80;
+                                        btn.Width = 465;
+                                        btn.BackColor = Color.SteelBlue;
+                                        btn.Font = new Font("Microsoft Sans Serif", 14);
+                                        btn.ForeColor = Color.White;
+                                        btn.Left = 30;
+                                        btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
+                                        A = A + 1;
+                                        btn.Click += new System.EventHandler(this.expr1SectionBtns);
+                                    }
+                                }
+                            }
+                            dataGridView1.AllowUserToAddRows = false;
+                        }
+                    }
+                    sectionBtns = true;
+                }
+            }
+
         }
-        //Dynamic button click - Section buttons, Pallet Card work flow
-        private void expr3(object sender, EventArgs e)
+        //Dynamic button click - Section buttons, Section Name, Pallet Card work flow
+        private void sectionNameSectionBtns(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             pnlPalletCard2.BringToFront();
@@ -1148,14 +1213,9 @@ namespace PalletCard
             }
             catch (Exception) { }
 
-
-
-
-
             if (!sigBtns)
             {
                 //loop through datagrid rows to create a button for each value of field "PaperSectionNo"  
-
 
                 for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                 {
@@ -1179,15 +1239,7 @@ namespace PalletCard
                             }
                         }
                     }
-
                 }
-
-
-
-
-
-
-
                 //for (int i = 0; i <= this.dataGridView1.Rows.Count+1; i++)
                 //{
                 //    //if datagrid is not empty create a button for each row at cells[19] - "PaperSectionNo"
@@ -1216,6 +1268,53 @@ namespace PalletCard
                     //    }
                     //    dataGridView1.AllowUserToAddRows = false;
                     //}
+            }
+            sigBtns = true;
+        }
+
+        //Dynamic button click - Section buttons, Expr1, Pallet Card work flow
+        private void expr1SectionBtns(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            pnlPalletCard2.BringToFront();
+            lbl2.Visible = true;
+            lbl2.Text = btn.Text;
+            index = 9;
+
+            //filter datagridview1 with the button text choice
+            try
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 = '" + btn.Text + "' and JobNo like '%" + lblJobNo.Text + "%'";
+            }
+            catch (Exception) { }
+
+            if (!sigBtns)
+            {
+                //loop through datagrid rows to create a button for each value of field "PaperSectionNo"  
+
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                {
+                    var v = dataGridView1.Rows[i].Cells[19].Value;
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
+                        if (!(v == dataGridView1.Rows[i].Cells[19].Value))
+                        {
+                            for (int k = 0; k < 1; k++)
+                            {
+                                Button btnSig = new Button();
+                                this.flowLayoutPanel1.Controls.Add(btnSig);
+                                btnSig.Height = 70;
+                                btnSig.Width = 120;
+                                btnSig.BackColor = Color.SteelBlue;
+                                btnSig.Font = new Font("Microsoft Sans Serif", 14);
+                                btnSig.ForeColor = Color.White;
+                                btnSig.Left = 30;
+                                btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
+                                btnSig.Click += new System.EventHandler(this.sigButton);
+                            }
+                        }
+                    }
+                }                
             }
             sigBtns = true;
         }
