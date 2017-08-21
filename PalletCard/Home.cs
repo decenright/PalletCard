@@ -20,6 +20,7 @@ namespace PalletCard
         int A = 1;
         string jobNo;
         bool searchChanged;
+        DataTable operations;
 
         public Home()
         {
@@ -1063,8 +1064,6 @@ namespace PalletCard
 
         private void btnPalletCard_Click(object sender, EventArgs e)
         {
-            //pnlSignature.BringToFront();
-
             lbl1.Visible = true;
             lbl1.Text = "Pallet Card";
             pnlPalletCard1.BringToFront();
@@ -1093,8 +1092,6 @@ namespace PalletCard
                     lbl2.Visible = true;
                     lbl3.Text = "Sig " + sig;
                     lbl3.Visible = true;
-                    //lblBack5.Visible = false;
-                    //lblBack6.Visible = false;
                     index = 9;
                     sectionBtns = true;             
                 }
@@ -1152,8 +1149,6 @@ namespace PalletCard
                     lbl2.Visible = true;
                     lbl3.Text = "Sig " + sig;
                     lbl3.Visible = true;
-                    //lblBack5.Visible = false;
-                    //lblBack6.Visible = false;
                     index = 9;
                     sectionBtns = true;
                 }
@@ -1195,9 +1190,9 @@ namespace PalletCard
                     sectionBtns = true;
                 }
             }
-
         }
-        //Dynamic button click - Section buttons, Section Name, Pallet Card work flow
+
+        //Dynamic button click - Section buttons, SECTION NAME, Pallet Card work flow
         private void sectionNameSectionBtns(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -1215,14 +1210,12 @@ namespace PalletCard
 
             if (!sigBtns)
             {
-                //loop through datagrid rows to create a button for each value of field "PaperSectionNo"  
-
                 for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                 {
-                    var v = dataGridView1.Rows[i].Cells[19].Value;
-                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    for (int j = 0; j < 1; j++)
                     {
-                        if (!(v == dataGridView1.Rows[i].Cells[19].Value))
+                        dataGridView1.AllowUserToAddRows = true;
+                        if (!(this.dataGridView1.Rows[i].Cells[19].Value as string == this.dataGridView1.Rows[i + 1].Cells[19].Value as string))
                         {
                             for (int k = 0; k < 1; k++)
                             {
@@ -1231,48 +1224,21 @@ namespace PalletCard
                                 btnSig.Height = 70;
                                 btnSig.Width = 120;
                                 btnSig.BackColor = Color.SteelBlue;
-                                btnSig.Font = new Font("Microsoft Sans Serif", 14);
+                                btnSig.Font = new Font("Microsoft Sans Serif", 20);
                                 btnSig.ForeColor = Color.White;
-                                btnSig.Left = 30;
                                 btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
+                                btnSig.TextAlign = ContentAlignment.MiddleCenter;
                                 btnSig.Click += new System.EventHandler(this.sigButton);
                             }
                         }
                     }
+                    dataGridView1.AllowUserToAddRows = false;
                 }
-                //for (int i = 0; i <= this.dataGridView1.Rows.Count+1; i++)
-                //{
-                //    //if datagrid is not empty create a button for each row at cells[19] - "PaperSectionNo"
-                //    //if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[19].Value as string)))
-
-
-                    //    int rowCount = dataGridView1.Rows.Count +1;
-                    //    dataGridView1.AllowUserToAddRows = true;
-
-                    //    dataGridView1.Rows[rowCount].Cells[19].Value = 0;
-                    //    if (!(this.dataGridView1.Rows[i].Cells[19].Value == this.dataGridView1.Rows[i + 1].Cells[19].Value))
-                    //    {                      
-                    //            for (int j = 0; j < 1; j++)
-                    //        {
-                    //            Button btnSig = new Button();
-                    //            this.flowLayoutPanel1.Controls.Add(btnSig);
-                    //            btnSig.Height = 70;
-                    //            btnSig.Width = 120;
-                    //            btnSig.BackColor = Color.SteelBlue;
-                    //            btnSig.Font = new Font("Microsoft Sans Serif", 14);
-                    //            btnSig.ForeColor = Color.White;
-                    //            btnSig.Left = 30;
-                    //            btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
-                    //            btnSig.Click += new System.EventHandler(this.DynamicSigBtn);                        
-                    //        }
-                    //    }
-                    //    dataGridView1.AllowUserToAddRows = false;
-                    //}
             }
             sigBtns = true;
         }
 
-        //Dynamic button click - Section buttons, Expr1, Pallet Card work flow
+        //Dynamic button click - Section buttons, EXPR1, Pallet Card work flow
         private void expr1SectionBtns(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -1295,9 +1261,10 @@ namespace PalletCard
                 for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                 {
                     var v = dataGridView1.Rows[i].Cells[19].Value;
-                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    for (int j = 0; j < 1; j++)
                     {
-                        if (!(v == dataGridView1.Rows[i].Cells[19].Value))
+                        dataGridView1.AllowUserToAddRows = true;
+                        if (!(this.dataGridView1.Rows[i].Cells[19].Value as string == this.dataGridView1.Rows[i + 1].Cells[19].Value as string))
                         {
                             for (int k = 0; k < 1; k++)
                             {
@@ -1306,13 +1273,14 @@ namespace PalletCard
                                 btnSig.Height = 70;
                                 btnSig.Width = 120;
                                 btnSig.BackColor = Color.SteelBlue;
-                                btnSig.Font = new Font("Microsoft Sans Serif", 14);
+                                btnSig.Font = new Font("Microsoft Sans Serif", 20);
                                 btnSig.ForeColor = Color.White;
-                                btnSig.Left = 30;
                                 btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
+                                btnSig.TextAlign = ContentAlignment.MiddleCenter;
                                 btnSig.Click += new System.EventHandler(this.sigButton);
                             }
                         }
+                        dataGridView1.AllowUserToAddRows = false;
                     }
                 }                
             }
@@ -1477,6 +1445,63 @@ namespace PalletCard
         {
             tbxSheetsAffectedBadSection.Enabled = false;
             btnWholePalletBadSection.Enabled = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.AllowUserToAddRows = true;
+
+
+            ((DataTable)dataGridView1.DataSource).Rows.Add(new object[] { "", "6", "", "0", "0", "0", "0", "0", "0", "0", "0", "", "0", "", "0", "", "", "", "", "5000", "0", "0", "", "", "false", "false", "0" });
+            dataGridView1.Refresh();
+
+
+            //DataTable dt = dataGridView1.DataSource as DataTable;
+            //DataRow newRow = dt.NewRow();
+
+            //// add the column same as specified in DataTable and set the value
+            //newRow["JobNo"] = "1";
+            //newRow["ResourceID"] = "6";
+            //newRow["Name"] = "";
+            //newRow["ID"] = "1";
+            //newRow["EstimatePartID"] = "1";
+            //newRow["MetallicInksBack"] = "1";
+            //newRow["MetallicInksfront"] = "1";
+            //newRow["ProcessInksBack"] = "1";
+            //newRow["ProcessInksFront"] = "1";
+            //newRow["SpotInksBack"] = "1";
+            //newRow["SpotInksFront"] = "1";
+            //newRow["Expr1"] = "1";
+            //newRow["NumberUp"] = "1";
+            //newRow["WorkingSize"] = "1";
+            //newRow["JobGanged"] = "1";
+            //newRow["SectionName"] = "1";
+            //newRow["Description"] = "1";
+            //newRow["Code"] = "1";
+            //newRow["JobDesc"] = "1";
+            //newRow["PaperSectionNo"] = "1";
+            //newRow["HeightMM"] = "1";
+            //newRow["InvoiceCustomerName"] = "1";
+            //newRow["Ref7"] = "1";
+            //newRow["JobCompleted"] = "false";
+            //newRow["JobCancelled"] = "false";
+            //newRow["QtyRequired"] = "1";
+
+            //// add the row in DataTable which is bound as DataSource for Grid
+            //dt.Rows.Add(newRow);
+
+
+
+
+            //this.dataGridView1.AllowUserToAddRows = true;
+            //DataTable dt = dataGridView1.DataSource as DataTable;
+            ////Create the new row
+            //DataRow row = dt.NewRow();
+            ////Populate the row with data
+            ////Add the row to data table
+            //dt.Rows.Add(new object[] { "", "0", "", "0", "0", "0", "0", "0", "0", "0", "0", "", "0", "", "0", "", "", "", "", "5000", "0", "0", "", "", "false", "false", "0" });
+            //dataGridView1.Refresh();
+            //this.dataGridView1.AllowUserToAddRows = false;
         }
     }
 }
