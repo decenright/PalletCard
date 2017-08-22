@@ -268,6 +268,19 @@ namespace PalletCard
                 badSectionLbls = false;
                 index = 11;
             }
+            else if (index == 13)
+            {
+                pnlPalletCard5.BringToFront();
+                lbl7.Visible = false;
+                index = 12;
+            }
+            else if (index == 14)
+            {
+                pnlPalletCard4.BringToFront();
+                lbl6.Visible = false;
+                lbl7.Visible = false;
+                index = 13;
+            }
 
         }
 
@@ -1233,7 +1246,7 @@ namespace PalletCard
                                 btnSig.BackColor = Color.SteelBlue;
                                 btnSig.Font = new Font("Microsoft Sans Serif", 20);
                                 btnSig.ForeColor = Color.White;
-                                btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
+                                btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value as string;
                                 btnSig.TextAlign = ContentAlignment.MiddleCenter;
                                 btnSig.Click += new System.EventHandler(this.sigButton);
                             }
@@ -1282,7 +1295,7 @@ namespace PalletCard
                                 btnSig.BackColor = Color.SteelBlue;
                                 btnSig.Font = new Font("Microsoft Sans Serif", 20);
                                 btnSig.ForeColor = Color.White;
-                                btnSig.Text = "Sig " + this.dataGridView1.Rows[i].Cells[19].Value as string;
+                                btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value as string;
                                 btnSig.TextAlign = ContentAlignment.MiddleCenter;
                                 btnSig.Click += new System.EventHandler(this.sigButton);
                             }
@@ -1301,13 +1314,14 @@ namespace PalletCard
             Button btn = sender as Button;
             pnlPalletCard3.BringToFront();
             lbl3.Visible = true;
-            lbl3.Text = btn.Text;
+            lbl3.Text = "         Sig " + btn.Text;
+            lbl3.TextAlign = ContentAlignment.MiddleCenter;
             index = 10;
 
             //filter datagridview1 with the button text choice
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "PaperSectionNo like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "SectionName like '%" + lbl2.Text + "%'  and PaperSectionNo = " + btn.Text.Trim() + " and JobNo like '%" + lblJobNo.Text + "%'";
             }
             catch (Exception) { }
         }
@@ -1357,9 +1371,6 @@ namespace PalletCard
             {
                 MessageBox.Show("Please enter a valid number");
             }
-
-
-
         }
 
         private void btnPalletHeightSheetCountPalletCard_Click(object sender, EventArgs e)
@@ -1369,23 +1380,21 @@ namespace PalletCard
             index = 11;
             if (!string.IsNullOrEmpty(tbxPalletHeightPalletCard.Text) && !string.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
             {
-                //lbl4.Text = tbxPalletHeightPalletCard.Text;
-                lbl4.Text = tbxPalletHeightPalletCard.Text;
+                lbl4.Text = tbxPalletHeightPalletCard.Text + " mm";
                 lbl4.Visible = true;
-                //lbl5.Text = lblSheetCountPalletCard.Text;
-                lbl5.Text = tbxSheetCountPalletCard.Text;
+                lbl5.Text = tbxSheetCountPalletCard.Text + " sheets";
                 lbl5.Visible = true;
             }
             else if (!string.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
             {
-                lbl4.Text = tbxSheetCountPalletCard.Text;
+                lbl4.Text = tbxSheetCountPalletCard.Text + " sheets";
                 lbl4.Visible = true;
                 lbl5.Text = lblPheightPalletCard.Text;
                 lbl5.Visible = true;
             }
             else if (!string.IsNullOrEmpty(tbxPalletHeightPalletCard.Text))
             {
-                lbl4.Text = tbxPalletHeightPalletCard.Text;
+                lbl4.Text = tbxPalletHeightPalletCard.Text + " mm";
                 lbl4.Visible = true;
                 lbl5.Text = lblSheetCountPalletCard.Text;
                 lbl5.Visible = true;
@@ -1449,9 +1458,22 @@ namespace PalletCard
             btnWholePalletBadSection.Enabled = false;
         }
 
-        private void btnExtraInformationPalletCard_Click(object sender, EventArgs e)
+        private void btnBadSectionOK_Click(object sender, EventArgs e)
         {
             pnlPalletCard6.BringToFront();
+            lbl7.Text = "Pallet Short";
+            lbl7.Visible = true;
+            index = 13;
+        }
+
+        private void btnExtraInformationPalletCard_Click(object sender, EventArgs e)
+        {
+            pnlPalletCard7.BringToFront();
+            lbl6.Text = "Bad Section";
+            lbl6.Visible = true;
+            lbl7.Text = "Pallet Short";
+            lbl7.Visible = true;
+            index = 14;
         }
     }
 }
