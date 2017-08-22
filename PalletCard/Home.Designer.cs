@@ -128,9 +128,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pnlPalletCard5 = new System.Windows.Forms.Panel();
             this.btnBadSectionOK = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.lblNumberUpQty = new System.Windows.Forms.Label();
+            this.lblNumberUp = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnWholePalletBadSection = new System.Windows.Forms.Button();
             this.tbxSheetsAffectedBadSection = new System.Windows.Forms.TextBox();
@@ -143,7 +142,12 @@
             this.lbl8 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.lblBack10 = new System.Windows.Forms.Label();
+            this.pnlPalletCard6 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -157,6 +161,7 @@
             this.pnlPalletCard3.SuspendLayout();
             this.pnlPalletCard4.SuspendLayout();
             this.pnlPalletCard5.SuspendLayout();
+            this.pnlPalletCard6.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -306,7 +311,6 @@
             // 
             // pnlHome1
             // 
-            this.pnlHome1.Controls.Add(this.button1);
             this.pnlHome1.Controls.Add(this.btnRejectPaper);
             this.pnlHome1.Controls.Add(this.btnBackupVarnish);
             this.pnlHome1.Controls.Add(this.btnReturnPaper);
@@ -1207,6 +1211,7 @@
             this.btnExtraInformationPalletCard.TabIndex = 15;
             this.btnExtraInformationPalletCard.Text = "OK";
             this.btnExtraInformationPalletCard.UseVisualStyleBackColor = true;
+            this.btnExtraInformationPalletCard.Click += new System.EventHandler(this.btnExtraInformationPalletCard_Click);
             // 
             // label12
             // 
@@ -1253,9 +1258,8 @@
             // pnlPalletCard5
             // 
             this.pnlPalletCard5.Controls.Add(this.btnBadSectionOK);
-            this.pnlPalletCard5.Controls.Add(this.label18);
-            this.pnlPalletCard5.Controls.Add(this.label17);
-            this.pnlPalletCard5.Controls.Add(this.label16);
+            this.pnlPalletCard5.Controls.Add(this.lblNumberUpQty);
+            this.pnlPalletCard5.Controls.Add(this.lblNumberUp);
             this.pnlPalletCard5.Controls.Add(this.flowLayoutPanel2);
             this.pnlPalletCard5.Controls.Add(this.btnWholePalletBadSection);
             this.pnlPalletCard5.Controls.Add(this.tbxSheetsAffectedBadSection);
@@ -1276,41 +1280,31 @@
             this.btnBadSectionOK.Text = "OK";
             this.btnBadSectionOK.UseVisualStyleBackColor = true;
             // 
-            // label18
+            // lblNumberUpQty
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(350, 303);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(78, 24);
-            this.label18.TabIndex = 15;
-            this.label18.Text = "Quantity";
+            this.lblNumberUpQty.AutoSize = true;
+            this.lblNumberUpQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumberUpQty.Location = new System.Drawing.Point(284, 428);
+            this.lblNumberUpQty.Name = "lblNumberUpQty";
+            this.lblNumberUpQty.Size = new System.Drawing.Size(78, 24);
+            this.lblNumberUpQty.TabIndex = 15;
+            this.lblNumberUpQty.Text = "Quantity";
             // 
-            // label17
+            // lblNumberUp
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(189, 303);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(108, 24);
-            this.label17.TabIndex = 14;
-            this.label17.Text = "Number Up";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(59, 303);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(115, 24);
-            this.label16.TabIndex = 13;
-            this.label16.Text = "Job Number";
+            this.lblNumberUp.AutoSize = true;
+            this.lblNumberUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumberUp.Location = new System.Drawing.Point(127, 428);
+            this.lblNumberUp.Name = "lblNumberUp";
+            this.lblNumberUp.Size = new System.Drawing.Size(108, 24);
+            this.lblNumberUp.TabIndex = 14;
+            this.lblNumberUp.Text = "Number Up";
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(51, 330);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(118, 454);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(452, 430);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(312, 306);
             this.flowLayoutPanel2.TabIndex = 12;
             // 
             // btnWholePalletBadSection
@@ -1318,7 +1312,7 @@
             this.btnWholePalletBadSection.BackColor = System.Drawing.Color.SteelBlue;
             this.btnWholePalletBadSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWholePalletBadSection.ForeColor = System.Drawing.Color.White;
-            this.btnWholePalletBadSection.Location = new System.Drawing.Point(34, 184);
+            this.btnWholePalletBadSection.Location = new System.Drawing.Point(33, 252);
             this.btnWholePalletBadSection.Name = "btnWholePalletBadSection";
             this.btnWholePalletBadSection.Size = new System.Drawing.Size(465, 80);
             this.btnWholePalletBadSection.TabIndex = 11;
@@ -1330,7 +1324,7 @@
             // 
             this.tbxSheetsAffectedBadSection.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxSheetsAffectedBadSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSheetsAffectedBadSection.Location = new System.Drawing.Point(126, 110);
+            this.tbxSheetsAffectedBadSection.Location = new System.Drawing.Point(126, 142);
             this.tbxSheetsAffectedBadSection.Multiline = true;
             this.tbxSheetsAffectedBadSection.Name = "tbxSheetsAffectedBadSection";
             this.tbxSheetsAffectedBadSection.Size = new System.Drawing.Size(275, 59);
@@ -1341,7 +1335,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(140, 70);
+            this.label15.Location = new System.Drawing.Point(140, 102);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(241, 37);
             this.label15.TabIndex = 9;
@@ -1461,15 +1455,73 @@
             this.lblBack10.TabIndex = 45;
             this.lblBack10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pnlPalletCard6
+            // 
+            this.pnlPalletCard6.Controls.Add(this.button4);
+            this.pnlPalletCard6.Controls.Add(this.button3);
+            this.pnlPalletCard6.Controls.Add(this.button2);
+            this.pnlPalletCard6.Controls.Add(this.button1);
+            this.pnlPalletCard6.Controls.Add(this.label19);
+            this.pnlPalletCard6.Location = new System.Drawing.Point(205, 5);
+            this.pnlPalletCard6.Name = "pnlPalletCard6";
+            this.pnlPalletCard6.Size = new System.Drawing.Size(528, 828);
+            this.pnlPalletCard6.TabIndex = 46;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(118, 39);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(303, 31);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Is This Pallet Finished";
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(214, 48);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(231, 545);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 37);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 62);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.SteelBlue;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(36, 130);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(465, 80);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Backup Required";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.SteelBlue;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(41, 267);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(465, 80);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "Varnish Required";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.SteelBlue;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(36, 406);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(465, 80);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "Finished";
+            this.button4.UseVisualStyleBackColor = false;
             // 
             // Home
             // 
@@ -1477,18 +1529,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1053);
-            this.Controls.Add(this.pnlHome1);
             this.Controls.Add(this.pnlPalletCard3);
             this.Controls.Add(this.pnlPalletCard5);
             this.Controls.Add(this.pnlPalletCard4);
+            this.Controls.Add(this.pnlPalletCard6);
+            this.Controls.Add(this.pnlPalletCard2);
+            this.Controls.Add(this.pnlPalletCard1);
+            this.Controls.Add(this.pnlHome1);
             this.Controls.Add(this.lbl7);
             this.Controls.Add(this.lblBack9);
             this.Controls.Add(this.lbl6);
             this.Controls.Add(this.lblBack8);
             this.Controls.Add(this.lbl5);
             this.Controls.Add(this.lblBack7);
-            this.Controls.Add(this.pnlPalletCard2);
-            this.Controls.Add(this.pnlPalletCard1);
             this.Controls.Add(this.pnlRejectPaper2);
             this.Controls.Add(this.pnlReturnPaper1);
             this.Controls.Add(this.pnlSignature);
@@ -1540,6 +1593,8 @@
             this.pnlPalletCard4.PerformLayout();
             this.pnlPalletCard5.ResumeLayout(false);
             this.pnlPalletCard5.PerformLayout();
+            this.pnlPalletCard6.ResumeLayout(false);
+            this.pnlPalletCard6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1651,14 +1706,18 @@
         private System.Windows.Forms.TextBox tbxSheetsAffectedBadSection;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblNumberUpQty;
+        private System.Windows.Forms.Label lblNumberUp;
         private System.Windows.Forms.Button btnBadSectionOK;
         private System.Windows.Forms.Label lbl8;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblBack10;
+        private System.Windows.Forms.Panel pnlPalletCard6;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label19;
     }
 }
 

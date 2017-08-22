@@ -406,6 +406,10 @@ namespace PalletCard
             this.ActiveControl = tbxSearchBox;
             badSectionLbls = false;
             pnlPalletCard1.Controls.Clear();
+            tbxPalletHeightPalletCard.Clear();
+            tbxSheetCountPalletCard.Clear();
+            lblSheetCountPalletCard.Text = "";
+            lblPheightPalletCard.Text = "";
             index = 0;
         }
 
@@ -1092,6 +1096,9 @@ namespace PalletCard
                     lbl2.Visible = true;
                     lbl3.Text = "Sig " + sig;
                     lbl3.Visible = true;
+                    //lbl3.AutoSize = false; 
+                    //lbl3.TextAlign = ContentAlignment.MiddleCenter;
+                    //lbl3.Dock = DockStyle.None;
                     index = 9;
                     sectionBtns = true;             
                 }
@@ -1360,11 +1367,13 @@ namespace PalletCard
             pnlPalletCard4.BringToFront();
             this.ActiveControl = tbxExtraInfoComment;
             index = 11;
-            if (!string.IsNullOrEmpty(tbxPalletHeightPalletCard.Text))
+            if (!string.IsNullOrEmpty(tbxPalletHeightPalletCard.Text) && !string.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
             {
+                //lbl4.Text = tbxPalletHeightPalletCard.Text;
                 lbl4.Text = tbxPalletHeightPalletCard.Text;
                 lbl4.Visible = true;
-                lbl5.Text = lblSheetCountPalletCard.Text;
+                //lbl5.Text = lblSheetCountPalletCard.Text;
+                lbl5.Text = tbxSheetCountPalletCard.Text;
                 lbl5.Visible = true;
             }
             else if (!string.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
@@ -1374,14 +1383,13 @@ namespace PalletCard
                 lbl5.Text = lblPheightPalletCard.Text;
                 lbl5.Visible = true;
             }
-            else 
+            else if (!string.IsNullOrEmpty(tbxPalletHeightPalletCard.Text))
             {
                 lbl4.Text = tbxPalletHeightPalletCard.Text;
                 lbl4.Visible = true;
                 lbl5.Text = lblSheetCountPalletCard.Text;
                 lbl5.Visible = true;
             }
-
         }
 
         private void btnMarkBad_Click(object sender, EventArgs e)
@@ -1390,50 +1398,44 @@ namespace PalletCard
             pnlPalletCard5.BringToFront();
             this.ActiveControl = tbxSheetsAffectedBadSection;
             index = 12;
-            lbl4.Text = lblSheetCountPalletCard.Text;
-            lbl4.Visible = true;
-            lbl5.Text = lblPheightPalletCard.Text;
-            lbl5.Visible = true;
             lbl6.Text = "Bad Section";
             lbl6.Visible = true;
 
-            if(!badSectionLbls)
+            lblNumberUp.Visible = false;
+            lblNumberUpQty.Visible = false;
+            int numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
+            if (numberUp > 1)
             { 
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    Label lbl1 = new Label();
-                    this.flowLayoutPanel2.Controls.Add(lbl1);
-                    lbl1.Height = 60;
-                    lbl1.Width = 120;
-                    lbl1.BackColor = Color.Tan;
-                    lbl1.Font = new Font("Microsoft Sans Serif", 14);
-                    lbl1.TextAlign = ContentAlignment.MiddleCenter;
-                    lbl1.ForeColor = Color.White;
-                    lbl1.Left = 20;
-                    lbl1.Text = this.dataGridView1.Rows[i].Cells[0].Value as string;                   
+                if (!badSectionLbls)
+                { 
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        lblNumberUp.Visible = true;
+                        lblNumberUpQty.Visible = true;
 
-                    Label lbl2 = new Label();
-                    this.flowLayoutPanel2.Controls.Add(lbl2);
-                    lbl2.Height = 60;
-                    lbl2.Width = 120;
-                    lbl2.BackColor = Color.Tan;
-                    lbl2.Font = new Font("Microsoft Sans Serif", 14);
-                    lbl2.TextAlign = ContentAlignment.MiddleCenter;
-                    lbl2.ForeColor = Color.White;
-                    lbl2.Left = 50;
-                    lbl2.Text = this.dataGridView1.Rows[i].Cells[12].Value.ToString();
+                        Label lbl1 = new Label();
+                        this.flowLayoutPanel2.Controls.Add(lbl1);
+                        lbl1.Height = 60;
+                        lbl1.Width = 120;
+                        lbl1.BackColor = Color.Tan;
+                        lbl1.Font = new Font("Microsoft Sans Serif", 14);
+                        lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                        lbl1.ForeColor = Color.White;
+                        lbl1.Left = 50;
+                        lbl1.Text = this.dataGridView1.Rows[i].Cells[12].Value.ToString();
 
-                    TextBox textBox1 = new TextBox();
-                    this.flowLayoutPanel2.Controls.Add(textBox1);
-                    textBox1.Height = 55;
-                    textBox1.Width = 170;
-                    textBox1.Multiline = true;
-                    textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
-                    textBox1.TextAlign = HorizontalAlignment.Center;
-                    textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
+                        TextBox textBox1 = new TextBox();
+                        this.flowLayoutPanel2.Controls.Add(textBox1);
+                        textBox1.Height = 55;
+                        textBox1.Width = 170;
+                        textBox1.Multiline = true;
+                        textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
+                        textBox1.TextAlign = HorizontalAlignment.Center;
+                        textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
+                    }
                 }
+                badSectionLbls = true;
             }
-            badSectionLbls = true;
         }
 
         private void btnWholePalletBadSection_Click(object sender, EventArgs e)
@@ -1447,61 +1449,9 @@ namespace PalletCard
             btnWholePalletBadSection.Enabled = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnExtraInformationPalletCard_Click(object sender, EventArgs e)
         {
-            dataGridView1.AllowUserToAddRows = true;
-
-
-            ((DataTable)dataGridView1.DataSource).Rows.Add(new object[] { "", "6", "", "0", "0", "0", "0", "0", "0", "0", "0", "", "0", "", "0", "", "", "", "", "5000", "0", "0", "", "", "false", "false", "0" });
-            dataGridView1.Refresh();
-
-
-            //DataTable dt = dataGridView1.DataSource as DataTable;
-            //DataRow newRow = dt.NewRow();
-
-            //// add the column same as specified in DataTable and set the value
-            //newRow["JobNo"] = "1";
-            //newRow["ResourceID"] = "6";
-            //newRow["Name"] = "";
-            //newRow["ID"] = "1";
-            //newRow["EstimatePartID"] = "1";
-            //newRow["MetallicInksBack"] = "1";
-            //newRow["MetallicInksfront"] = "1";
-            //newRow["ProcessInksBack"] = "1";
-            //newRow["ProcessInksFront"] = "1";
-            //newRow["SpotInksBack"] = "1";
-            //newRow["SpotInksFront"] = "1";
-            //newRow["Expr1"] = "1";
-            //newRow["NumberUp"] = "1";
-            //newRow["WorkingSize"] = "1";
-            //newRow["JobGanged"] = "1";
-            //newRow["SectionName"] = "1";
-            //newRow["Description"] = "1";
-            //newRow["Code"] = "1";
-            //newRow["JobDesc"] = "1";
-            //newRow["PaperSectionNo"] = "1";
-            //newRow["HeightMM"] = "1";
-            //newRow["InvoiceCustomerName"] = "1";
-            //newRow["Ref7"] = "1";
-            //newRow["JobCompleted"] = "false";
-            //newRow["JobCancelled"] = "false";
-            //newRow["QtyRequired"] = "1";
-
-            //// add the row in DataTable which is bound as DataSource for Grid
-            //dt.Rows.Add(newRow);
-
-
-
-
-            //this.dataGridView1.AllowUserToAddRows = true;
-            //DataTable dt = dataGridView1.DataSource as DataTable;
-            ////Create the new row
-            //DataRow row = dt.NewRow();
-            ////Populate the row with data
-            ////Add the row to data table
-            //dt.Rows.Add(new object[] { "", "0", "", "0", "0", "0", "0", "0", "0", "0", "0", "", "0", "", "0", "", "", "", "", "5000", "0", "0", "", "", "false", "false", "0" });
-            //dataGridView1.Refresh();
-            //this.dataGridView1.AllowUserToAddRows = false;
+            pnlPalletCard6.BringToFront();
         }
     }
 }
