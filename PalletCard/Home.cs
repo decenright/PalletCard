@@ -409,6 +409,8 @@ namespace PalletCard
             lbl3.Visible = false;
             lbl4.Visible = false;
             lbl5.Visible = false;
+            lbl6.Visible = false;
+            lbl7.Visible = false;
             lblPheight.Text = "";
             tbxSearchBox.Text = "";
             tbxSearchBox.Focus();
@@ -1374,31 +1376,40 @@ namespace PalletCard
         }
 
         private void btnPalletHeightSheetCountPalletCard_Click(object sender, EventArgs e)
-        {
-            pnlPalletCard4.BringToFront();
-            this.ActiveControl = tbxExtraInfoComment;
-            index = 11;
-            if (!string.IsNullOrEmpty(tbxPalletHeightPalletCard.Text) && !string.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
+        {            
+                if (!string.IsNullOrEmpty(tbxPalletHeightPalletCard.Text) && !string.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
+                {
+                    lbl4.Text = tbxPalletHeightPalletCard.Text + " mm";
+                    lbl4.Visible = true;
+                    lbl5.Text = tbxSheetCountPalletCard.Text + " sheets";
+                    lbl5.Visible = true;
+                }
+                else if (!string.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
+                {
+                    lbl4.Text = tbxSheetCountPalletCard.Text + " sheets";
+                    lbl4.Visible = true;
+                    lbl5.Text = lblPheightPalletCard.Text;
+                    lbl5.Visible = true;
+                }
+                else if (!string.IsNullOrEmpty(tbxPalletHeightPalletCard.Text))
+                {
+                    lbl4.Text = tbxPalletHeightPalletCard.Text + " mm";
+                    lbl4.Visible = true;
+                    lbl5.Text = lblSheetCountPalletCard.Text;
+                    lbl5.Visible = true;
+                }
+
+
+            if (lbl4.Visible == false)
             {
-                lbl4.Text = tbxPalletHeightPalletCard.Text + " mm";
-                lbl4.Visible = true;
-                lbl5.Text = tbxSheetCountPalletCard.Text + " sheets";
-                lbl5.Visible = true;
+                MessageBox.Show("please enter a value");
             }
-            else if (!string.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
-            {
-                lbl4.Text = tbxSheetCountPalletCard.Text + " sheets";
-                lbl4.Visible = true;
-                lbl5.Text = lblPheightPalletCard.Text;
-                lbl5.Visible = true;
-            }
-            else if (!string.IsNullOrEmpty(tbxPalletHeightPalletCard.Text))
-            {
-                lbl4.Text = tbxPalletHeightPalletCard.Text + " mm";
-                lbl4.Visible = true;
-                lbl5.Text = lblSheetCountPalletCard.Text;
-                lbl5.Visible = true;
-            }
+            else
+                { 
+                pnlPalletCard4.BringToFront();
+                this.ActiveControl = tbxExtraInfoComment;
+                index = 11;
+                }
         }
 
         private void btnMarkBad_Click(object sender, EventArgs e)
