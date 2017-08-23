@@ -1283,7 +1283,7 @@ namespace PalletCard
                                             btnSig.ForeColor = Color.White;
                                             btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value as string;
                                             btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                                            btnSig.Click += new System.EventHandler(this.sigButton);
+                                            btnSig.Click += new System.EventHandler(this.sigButtonSectionName);
                                         }
                                     }
                                 }
@@ -1360,7 +1360,7 @@ namespace PalletCard
                                             btnSig.ForeColor = Color.White;
                                             btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value as string;
                                             btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                                            btnSig.Click += new System.EventHandler(this.sigButton);
+                                            btnSig.Click += new System.EventHandler(this.sigButtonExpr1);
                                         }
                                     }
                                     dataGridView1.AllowUserToAddRows = false;
@@ -1372,15 +1372,13 @@ namespace PalletCard
               }
         }
 
-
-        //Dynamic button click - Sig buttons, Pallet Card work flow
-        private void sigButton(object sender, EventArgs e)
+//Dynamic button click - Sig buttons, Pallet Card work flow
+        private void sigButtonSectionName(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             pnlPalletCard3.BringToFront();
             lbl3.Visible = true;
             lbl3.Text = "         Sig " + btn.Text;
-            lbl3.TextAlign = ContentAlignment.MiddleCenter;
             index = 10;
 
             //filter datagridview1 with the button text choice
@@ -1391,7 +1389,24 @@ namespace PalletCard
             catch (Exception) { }
         }
 
-        // Pallet Height textBox calculation for Pallet Card
+//Dynamic button click - Sig buttons EXPR1, Pallet Card work flow
+        private void sigButtonExpr1(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            pnlPalletCard3.BringToFront();
+            lbl3.Visible = true;
+            lbl3.Text = "         Sig " + btn.Text;
+            index = 10;
+
+            //filter datagridview1 with the button text choice
+            try
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + lbl2.Text + "%'  and PaperSectionNo = " + btn.Text.Trim() + " and JobNo like '%" + lblJobNo.Text + "%'";
+            }
+            catch (Exception) { }
+        }
+
+// Pallet Height textBox calculation for Pallet Card
         private void tbxPalletHeightPalletCard_TextChanged(object sender, EventArgs e)
         {
             try
@@ -1550,6 +1565,16 @@ namespace PalletCard
             index = 14;
         }
 
-
+        private void btnPalletFinished_Click(object sender, EventArgs e)
+        {
+            if(Convert.ToInt32(this.dataGridView1.Rows[0].Cells[19].Value) == 1)
+            {
+                MessageBox.Show("PaperSectionNo = 1");
+            }
+            else
+            {
+                pnlPalletCardPrint.BringToFront();
+            }
+        }
     }
 }
