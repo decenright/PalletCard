@@ -587,7 +587,7 @@ namespace PalletCard
                     p2 = Convert.ToInt32(this.dataGridView1.Rows[0].Cells[20].Value);
                     double result = Math.Ceiling (p1 / (p2/1000)) ;
                     string r1 = Convert.ToString(result);
-                    lblPheight.Text = (r1 + " sheets");
+                    lblPheight.Text = (r1 + " Sheets");
                 }
             }
             catch
@@ -1420,7 +1420,7 @@ namespace PalletCard
                     p2 = Convert.ToInt32(this.dataGridView1.Rows[0].Cells[20].Value);
                     double result = Math.Ceiling(p1 / (p2 / 1000));
                     string r1 = Convert.ToString(result);
-                    lblSheetCountPalletCard.Text = (r1 + " sheets");
+                    lblSheetCountPalletCard.Text = (r1 + " Sheets");
 
                 }
             }
@@ -1459,12 +1459,12 @@ namespace PalletCard
                 {
                     lbl4.Text = tbxPalletHeightPalletCard.Text + " mm";
                     lbl4.Visible = true;
-                    lbl5.Text = tbxSheetCountPalletCard.Text + " sheets";
+                    lbl5.Text = tbxSheetCountPalletCard.Text + " Sheets";
                     lbl5.Visible = true;
                 }
                 else if (!string.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
                 {
-                    lbl4.Text = tbxSheetCountPalletCard.Text + " sheets";
+                    lbl4.Text = tbxSheetCountPalletCard.Text + " Sheets";
                     lbl4.Visible = true;
                     lbl5.Text = lblPheightPalletCard.Text;
                     lbl5.Visible = true;
@@ -1574,6 +1574,19 @@ namespace PalletCard
             else
             {
                 pnlPalletCardPrint.BringToFront();
+                //lblPC_JobNo.Text = lblJobNo.Text;
+                //lblPC_JobNo.Visible = true;
+                //lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+                //lblPC_Customer.Visible = true;
+                //lblPC_SheetQty.Text = lbl4.Text;
+                //lblPC_SheetQty.Visible = true;
+                //lblPC_Sig.Text = dataGridView1.Rows[0].Cells[19].Value as string;
+                //lblPC_Sig.Visible = true;
+                //lblPC_Press.Text = lblPress.Text;
+                //lblPC_Press.Visible = true;
+                //lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+                //lblPC_Date.Visible = true;
+                //lblPC_Note.Text = tbxExtraInfoComment.Text + tbxTextBoxBadSection.Text;
             }
         }
     }

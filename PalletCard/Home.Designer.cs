@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbxSearchBox = new System.Windows.Forms.TextBox();
@@ -128,6 +128,8 @@
             this.btnMarkBad = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.pnlPalletCard5 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.tbxTextBoxBadSection = new System.Windows.Forms.TextBox();
             this.btnBadSectionOK = new System.Windows.Forms.Button();
             this.lblNumberUpQty = new System.Windows.Forms.Label();
             this.lblNumberUp = new System.Windows.Forms.Label();
@@ -153,9 +155,20 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.pnlPalletCardPrint = new System.Windows.Forms.Panel();
+            this.lblPC_Note = new System.Windows.Forms.Label();
+            this.lblPC_Date = new System.Windows.Forms.Label();
+            this.lblPC_Press = new System.Windows.Forms.Label();
+            this.lblPC_PalletNumber = new System.Windows.Forms.Label();
+            this.lblPC_SectionName = new System.Windows.Forms.Label();
+            this.lblPC_Sig = new System.Windows.Forms.Label();
+            this.lblPC_LastPallet = new System.Windows.Forms.Label();
+            this.lblPC_SheetQty = new System.Windows.Forms.Label();
+            this.lblPC_Customer = new System.Windows.Forms.Label();
+            this.lblPC_PartBQty = new System.Windows.Forms.Label();
+            this.lblPC_PartAQty = new System.Windows.Forms.Label();
+            this.lblPC_IncompletePallet = new System.Windows.Forms.Label();
+            this.lblPC_JobNo = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -177,33 +190,33 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(4, 839);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(730, 147);
             this.dataGridView1.TabIndex = 0;
@@ -1279,7 +1292,7 @@
             // pnlPalletCard5
             // 
             this.pnlPalletCard5.Controls.Add(this.label21);
-            this.pnlPalletCard5.Controls.Add(this.textBox1);
+            this.pnlPalletCard5.Controls.Add(this.tbxTextBoxBadSection);
             this.pnlPalletCard5.Controls.Add(this.btnBadSectionOK);
             this.pnlPalletCard5.Controls.Add(this.lblNumberUpQty);
             this.pnlPalletCard5.Controls.Add(this.lblNumberUp);
@@ -1292,6 +1305,25 @@
             this.pnlPalletCard5.Name = "pnlPalletCard5";
             this.pnlPalletCard5.Size = new System.Drawing.Size(528, 828);
             this.pnlPalletCard5.TabIndex = 38;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(38, 331);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(173, 25);
+            this.label21.TabIndex = 18;
+            this.label21.Text = "Enter Comment";
+            // 
+            // tbxTextBoxBadSection
+            // 
+            this.tbxTextBoxBadSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxTextBoxBadSection.Location = new System.Drawing.Point(42, 360);
+            this.tbxTextBoxBadSection.Multiline = true;
+            this.tbxTextBoxBadSection.Name = "tbxTextBoxBadSection";
+            this.tbxTextBoxBadSection.Size = new System.Drawing.Size(455, 133);
+            this.tbxTextBoxBadSection.TabIndex = 17;
             // 
             // btnBadSectionOK
             // 
@@ -1583,40 +1615,184 @@
             // 
             // pnlPalletCardPrint
             // 
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_Note);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_Date);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_Press);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_PalletNumber);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_SectionName);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_Sig);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_LastPallet);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_SheetQty);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_Customer);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_PartBQty);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_PartAQty);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_IncompletePallet);
+            this.pnlPalletCardPrint.Controls.Add(this.lblPC_JobNo);
             this.pnlPalletCardPrint.Controls.Add(this.label18);
             this.pnlPalletCardPrint.Location = new System.Drawing.Point(205, 5);
             this.pnlPalletCardPrint.Name = "pnlPalletCardPrint";
             this.pnlPalletCardPrint.Size = new System.Drawing.Size(528, 828);
             this.pnlPalletCardPrint.TabIndex = 48;
+            this.pnlPalletCardPrint.Visible = false;
+            // 
+            // lblPC_Note
+            // 
+            this.lblPC_Note.AutoSize = true;
+            this.lblPC_Note.Location = new System.Drawing.Point(211, 694);
+            this.lblPC_Note.Name = "lblPC_Note";
+            this.lblPC_Note.Size = new System.Drawing.Size(60, 13);
+            this.lblPC_Note.TabIndex = 13;
+            this.lblPC_Note.Text = "lblPC_Note";
+            this.lblPC_Note.Visible = false;
+            // 
+            // lblPC_Date
+            // 
+            this.lblPC_Date.AutoSize = true;
+            this.lblPC_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_Date.Location = new System.Drawing.Point(211, 658);
+            this.lblPC_Date.Name = "lblPC_Date";
+            this.lblPC_Date.Size = new System.Drawing.Size(76, 16);
+            this.lblPC_Date.TabIndex = 12;
+            this.lblPC_Date.Text = "lblPC_Date";
+            this.lblPC_Date.Visible = false;
+            // 
+            // lblPC_Press
+            // 
+            this.lblPC_Press.AutoSize = true;
+            this.lblPC_Press.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_Press.Location = new System.Drawing.Point(211, 622);
+            this.lblPC_Press.Name = "lblPC_Press";
+            this.lblPC_Press.Size = new System.Drawing.Size(82, 16);
+            this.lblPC_Press.TabIndex = 11;
+            this.lblPC_Press.Text = "lblPC_Press";
+            this.lblPC_Press.Visible = false;
+            // 
+            // lblPC_PalletNumber
+            // 
+            this.lblPC_PalletNumber.AutoSize = true;
+            this.lblPC_PalletNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_PalletNumber.Location = new System.Drawing.Point(211, 579);
+            this.lblPC_PalletNumber.Name = "lblPC_PalletNumber";
+            this.lblPC_PalletNumber.Size = new System.Drawing.Size(129, 16);
+            this.lblPC_PalletNumber.TabIndex = 10;
+            this.lblPC_PalletNumber.Text = "lblPC_PalletNumber";
+            this.lblPC_PalletNumber.Visible = false;
+            // 
+            // lblPC_SectionName
+            // 
+            this.lblPC_SectionName.AutoSize = true;
+            this.lblPC_SectionName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_SectionName.Location = new System.Drawing.Point(211, 541);
+            this.lblPC_SectionName.Name = "lblPC_SectionName";
+            this.lblPC_SectionName.Size = new System.Drawing.Size(129, 16);
+            this.lblPC_SectionName.TabIndex = 9;
+            this.lblPC_SectionName.Text = "lblPC_SectionName";
+            this.lblPC_SectionName.Visible = false;
+            // 
+            // lblPC_Sig
+            // 
+            this.lblPC_Sig.AutoSize = true;
+            this.lblPC_Sig.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_Sig.Location = new System.Drawing.Point(154, 468);
+            this.lblPC_Sig.Name = "lblPC_Sig";
+            this.lblPC_Sig.Size = new System.Drawing.Size(143, 33);
+            this.lblPC_Sig.TabIndex = 8;
+            this.lblPC_Sig.Text = "lblPC_Sig";
+            this.lblPC_Sig.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_Sig.Visible = false;
+            // 
+            // lblPC_LastPallet
+            // 
+            this.lblPC_LastPallet.AutoSize = true;
+            this.lblPC_LastPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_LastPallet.Location = new System.Drawing.Point(152, 429);
+            this.lblPC_LastPallet.Name = "lblPC_LastPallet";
+            this.lblPC_LastPallet.Size = new System.Drawing.Size(229, 33);
+            this.lblPC_LastPallet.TabIndex = 7;
+            this.lblPC_LastPallet.Text = "lblPC_LastPallet";
+            this.lblPC_LastPallet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_LastPallet.Visible = false;
+            // 
+            // lblPC_SheetQty
+            // 
+            this.lblPC_SheetQty.AutoSize = true;
+            this.lblPC_SheetQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_SheetQty.Location = new System.Drawing.Point(151, 390);
+            this.lblPC_SheetQty.Name = "lblPC_SheetQty";
+            this.lblPC_SheetQty.Size = new System.Drawing.Size(222, 33);
+            this.lblPC_SheetQty.TabIndex = 6;
+            this.lblPC_SheetQty.Text = "lblPC_SheetQty";
+            this.lblPC_SheetQty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_SheetQty.Visible = false;
+            // 
+            // lblPC_Customer
+            // 
+            this.lblPC_Customer.AutoSize = true;
+            this.lblPC_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_Customer.Location = new System.Drawing.Point(151, 349);
+            this.lblPC_Customer.Name = "lblPC_Customer";
+            this.lblPC_Customer.Size = new System.Drawing.Size(228, 33);
+            this.lblPC_Customer.TabIndex = 5;
+            this.lblPC_Customer.Text = "lblPC_Customer";
+            this.lblPC_Customer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_Customer.Visible = false;
+            // 
+            // lblPC_PartBQty
+            // 
+            this.lblPC_PartBQty.AutoSize = true;
+            this.lblPC_PartBQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_PartBQty.Location = new System.Drawing.Point(151, 310);
+            this.lblPC_PartBQty.Name = "lblPC_PartBQty";
+            this.lblPC_PartBQty.Size = new System.Drawing.Size(219, 33);
+            this.lblPC_PartBQty.TabIndex = 4;
+            this.lblPC_PartBQty.Text = "lblPC_PartBQty";
+            this.lblPC_PartBQty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_PartBQty.Visible = false;
+            // 
+            // lblPC_PartAQty
+            // 
+            this.lblPC_PartAQty.AutoSize = true;
+            this.lblPC_PartAQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_PartAQty.Location = new System.Drawing.Point(152, 270);
+            this.lblPC_PartAQty.Name = "lblPC_PartAQty";
+            this.lblPC_PartAQty.Size = new System.Drawing.Size(219, 33);
+            this.lblPC_PartAQty.TabIndex = 3;
+            this.lblPC_PartAQty.Text = "lblPC_PartAQty";
+            this.lblPC_PartAQty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblPC_IncompletePallet
+            // 
+            this.lblPC_IncompletePallet.AutoSize = true;
+            this.lblPC_IncompletePallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_IncompletePallet.Location = new System.Drawing.Point(154, 233);
+            this.lblPC_IncompletePallet.Name = "lblPC_IncompletePallet";
+            this.lblPC_IncompletePallet.Size = new System.Drawing.Size(317, 33);
+            this.lblPC_IncompletePallet.TabIndex = 2;
+            this.lblPC_IncompletePallet.Text = "lblPC_IncompletePallet";
+            this.lblPC_IncompletePallet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_IncompletePallet.Visible = false;
+            // 
+            // lblPC_JobNo
+            // 
+            this.lblPC_JobNo.AutoSize = true;
+            this.lblPC_JobNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_JobNo.Location = new System.Drawing.Point(123, 166);
+            this.lblPC_JobNo.Name = "lblPC_JobNo";
+            this.lblPC_JobNo.Size = new System.Drawing.Size(304, 55);
+            this.lblPC_JobNo.TabIndex = 1;
+            this.lblPC_JobNo.Text = "lblPC_JobNo";
+            this.lblPC_JobNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_JobNo.Visible = false;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(92, 79);
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(84, 92);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(342, 60);
+            this.label18.Size = new System.Drawing.Size(364, 55);
             this.label18.TabIndex = 0;
-            this.label18.Text = "Pallet Card Print";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(38, 331);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(173, 25);
-            this.label21.TabIndex = 18;
-            this.label21.Text = "Enter Comment";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(42, 360);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(455, 133);
-            this.textBox1.TabIndex = 17;
+            this.label18.Text = "PALLET CARD";
             // 
             // Home
             // 
@@ -1624,10 +1800,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1053);
+            this.Controls.Add(this.pnlPalletCardPrint);
             this.Controls.Add(this.pnlPalletCard5);
             this.Controls.Add(this.pnlPalletCard4);
             this.Controls.Add(this.pnlPalletCard2);
-            this.Controls.Add(this.pnlPalletCardPrint);
             this.Controls.Add(this.pnlPalletCard7);
             this.Controls.Add(this.pnlPalletCard3);
             this.Controls.Add(this.pnlPalletCard6);
@@ -1827,7 +2003,20 @@
         private System.Windows.Forms.Panel pnlPalletCardPrint;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxTextBoxBadSection;
+        private System.Windows.Forms.Label lblPC_Note;
+        private System.Windows.Forms.Label lblPC_Date;
+        private System.Windows.Forms.Label lblPC_Press;
+        private System.Windows.Forms.Label lblPC_PalletNumber;
+        private System.Windows.Forms.Label lblPC_SectionName;
+        private System.Windows.Forms.Label lblPC_Sig;
+        private System.Windows.Forms.Label lblPC_LastPallet;
+        private System.Windows.Forms.Label lblPC_SheetQty;
+        private System.Windows.Forms.Label lblPC_Customer;
+        private System.Windows.Forms.Label lblPC_PartBQty;
+        private System.Windows.Forms.Label lblPC_PartAQty;
+        private System.Windows.Forms.Label lblPC_IncompletePallet;
+        private System.Windows.Forms.Label lblPC_JobNo;
     }
 }
 
