@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbxSearchBox = new System.Windows.Forms.TextBox();
@@ -170,6 +170,13 @@
             this.lblPC_IncompletePallet = new System.Windows.Forms.Label();
             this.lblPC_JobNo = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.pnlPalletCard8 = new System.Windows.Forms.Panel();
+            this.btnIsJobFinishedNo = new System.Windows.Forms.Button();
+            this.lblIsJobFinished = new System.Windows.Forms.Label();
+            this.lblIsSectionFinished = new System.Windows.Forms.Label();
+            this.btnIsSectionFinishedNo = new System.Windows.Forms.Button();
+            this.btnIsJobFinishedYes = new System.Windows.Forms.Button();
+            this.btnIsSectionFinishedYes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -186,38 +193,39 @@
             this.pnlPalletCard7.SuspendLayout();
             this.pnlPalletCard6.SuspendLayout();
             this.pnlPalletCardPrint.SuspendLayout();
+            this.pnlPalletCard8.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridView1.Location = new System.Drawing.Point(4, 839);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(730, 147);
             this.dataGridView1.TabIndex = 0;
@@ -1585,7 +1593,7 @@
             this.btnCancelPrintMore.BackColor = System.Drawing.Color.SteelBlue;
             this.btnCancelPrintMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelPrintMore.ForeColor = System.Drawing.Color.White;
-            this.btnCancelPrintMore.Location = new System.Drawing.Point(27, 492);
+            this.btnCancelPrintMore.Location = new System.Drawing.Point(26, 303);
             this.btnCancelPrintMore.Name = "btnCancelPrintMore";
             this.btnCancelPrintMore.Size = new System.Drawing.Size(465, 80);
             this.btnCancelPrintMore.TabIndex = 14;
@@ -1598,7 +1606,7 @@
             this.btnFinishPalletContinue.BackColor = System.Drawing.Color.SteelBlue;
             this.btnFinishPalletContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinishPalletContinue.ForeColor = System.Drawing.Color.White;
-            this.btnFinishPalletContinue.Location = new System.Drawing.Point(36, 332);
+            this.btnFinishPalletContinue.Location = new System.Drawing.Point(35, 143);
             this.btnFinishPalletContinue.Name = "btnFinishPalletContinue";
             this.btnFinishPalletContinue.Size = new System.Drawing.Size(465, 80);
             this.btnFinishPalletContinue.TabIndex = 13;
@@ -1813,15 +1821,104 @@
             this.label18.TabIndex = 0;
             this.label18.Text = "PALLET CARD";
             // 
+            // pnlPalletCard8
+            // 
+            this.pnlPalletCard8.Controls.Add(this.btnIsJobFinishedNo);
+            this.pnlPalletCard8.Controls.Add(this.lblIsJobFinished);
+            this.pnlPalletCard8.Controls.Add(this.lblIsSectionFinished);
+            this.pnlPalletCard8.Controls.Add(this.btnIsSectionFinishedNo);
+            this.pnlPalletCard8.Controls.Add(this.btnIsJobFinishedYes);
+            this.pnlPalletCard8.Controls.Add(this.btnIsSectionFinishedYes);
+            this.pnlPalletCard8.Location = new System.Drawing.Point(208, 5);
+            this.pnlPalletCard8.Name = "pnlPalletCard8";
+            this.pnlPalletCard8.Size = new System.Drawing.Size(528, 828);
+            this.pnlPalletCard8.TabIndex = 49;
+            // 
+            // btnIsJobFinishedNo
+            // 
+            this.btnIsJobFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnIsJobFinishedNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIsJobFinishedNo.ForeColor = System.Drawing.Color.White;
+            this.btnIsJobFinishedNo.Location = new System.Drawing.Point(279, 374);
+            this.btnIsJobFinishedNo.Name = "btnIsJobFinishedNo";
+            this.btnIsJobFinishedNo.Size = new System.Drawing.Size(212, 80);
+            this.btnIsJobFinishedNo.TabIndex = 18;
+            this.btnIsJobFinishedNo.Text = "No";
+            this.btnIsJobFinishedNo.UseVisualStyleBackColor = false;
+            this.btnIsJobFinishedNo.Visible = false;
+            this.btnIsJobFinishedNo.Click += new System.EventHandler(this.btnIsJobFinishedNo_Click);
+            // 
+            // lblIsJobFinished
+            // 
+            this.lblIsJobFinished.AutoSize = true;
+            this.lblIsJobFinished.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIsJobFinished.Location = new System.Drawing.Point(162, 317);
+            this.lblIsJobFinished.Name = "lblIsJobFinished";
+            this.lblIsJobFinished.Size = new System.Drawing.Size(219, 31);
+            this.lblIsJobFinished.TabIndex = 17;
+            this.lblIsJobFinished.Text = "Is Job Finished ?";
+            this.lblIsJobFinished.Visible = false;
+            // 
+            // lblIsSectionFinished
+            // 
+            this.lblIsSectionFinished.AutoSize = true;
+            this.lblIsSectionFinished.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIsSectionFinished.Location = new System.Drawing.Point(134, 74);
+            this.lblIsSectionFinished.Name = "lblIsSectionFinished";
+            this.lblIsSectionFinished.Size = new System.Drawing.Size(266, 31);
+            this.lblIsSectionFinished.TabIndex = 16;
+            this.lblIsSectionFinished.Text = "Is Section Finished ?";
+            // 
+            // btnIsSectionFinishedNo
+            // 
+            this.btnIsSectionFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnIsSectionFinishedNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIsSectionFinishedNo.ForeColor = System.Drawing.Color.White;
+            this.btnIsSectionFinishedNo.Location = new System.Drawing.Point(282, 134);
+            this.btnIsSectionFinishedNo.Name = "btnIsSectionFinishedNo";
+            this.btnIsSectionFinishedNo.Size = new System.Drawing.Size(212, 80);
+            this.btnIsSectionFinishedNo.TabIndex = 15;
+            this.btnIsSectionFinishedNo.Text = "No";
+            this.btnIsSectionFinishedNo.UseVisualStyleBackColor = false;
+            this.btnIsSectionFinishedNo.Click += new System.EventHandler(this.btnIsSectionFinishedNo_Click);
+            // 
+            // btnIsJobFinishedYes
+            // 
+            this.btnIsJobFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnIsJobFinishedYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIsJobFinishedYes.ForeColor = System.Drawing.Color.White;
+            this.btnIsJobFinishedYes.Location = new System.Drawing.Point(32, 374);
+            this.btnIsJobFinishedYes.Name = "btnIsJobFinishedYes";
+            this.btnIsJobFinishedYes.Size = new System.Drawing.Size(212, 80);
+            this.btnIsJobFinishedYes.TabIndex = 14;
+            this.btnIsJobFinishedYes.Text = "Yes";
+            this.btnIsJobFinishedYes.UseVisualStyleBackColor = false;
+            this.btnIsJobFinishedYes.Visible = false;
+            this.btnIsJobFinishedYes.Click += new System.EventHandler(this.btnIsJobFinishedYes_Click);
+            // 
+            // btnIsSectionFinishedYes
+            // 
+            this.btnIsSectionFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnIsSectionFinishedYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIsSectionFinishedYes.ForeColor = System.Drawing.Color.White;
+            this.btnIsSectionFinishedYes.Location = new System.Drawing.Point(32, 134);
+            this.btnIsSectionFinishedYes.Name = "btnIsSectionFinishedYes";
+            this.btnIsSectionFinishedYes.Size = new System.Drawing.Size(212, 80);
+            this.btnIsSectionFinishedYes.TabIndex = 13;
+            this.btnIsSectionFinishedYes.Text = "Yes";
+            this.btnIsSectionFinishedYes.UseVisualStyleBackColor = false;
+            this.btnIsSectionFinishedYes.Click += new System.EventHandler(this.btnIsSectionFinishedYes_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1053);
-            this.Controls.Add(this.pnlPalletCard5);
+            this.Controls.Add(this.pnlPalletCard8);
             this.Controls.Add(this.pnlPalletCard6);
             this.Controls.Add(this.pnlPalletCard7);
+            this.Controls.Add(this.pnlPalletCard5);
             this.Controls.Add(this.pnlPalletCardPrint);
             this.Controls.Add(this.pnlReturnPaper3);
             this.Controls.Add(this.pnlRejectPaper3);
@@ -1892,6 +1989,8 @@
             this.pnlPalletCard6.PerformLayout();
             this.pnlPalletCardPrint.ResumeLayout(false);
             this.pnlPalletCardPrint.PerformLayout();
+            this.pnlPalletCard8.ResumeLayout(false);
+            this.pnlPalletCard8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2037,6 +2136,13 @@
         private System.Windows.Forms.Label lblPC_IncompletePallet;
         private System.Windows.Forms.Label lblPC_JobNo;
         private System.Windows.Forms.Button btnPalletCardPrint;
+        private System.Windows.Forms.Panel pnlPalletCard8;
+        private System.Windows.Forms.Button btnIsJobFinishedYes;
+        private System.Windows.Forms.Button btnIsSectionFinishedYes;
+        private System.Windows.Forms.Label lblIsJobFinished;
+        private System.Windows.Forms.Label lblIsSectionFinished;
+        private System.Windows.Forms.Button btnIsSectionFinishedNo;
+        private System.Windows.Forms.Button btnIsJobFinishedNo;
     }
 }
 

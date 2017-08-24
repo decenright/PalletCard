@@ -20,7 +20,6 @@ namespace PalletCard
         int A = 1;
         string jobNo;
         bool searchChanged;
-        DataTable operations;
 
         public Home()
         {
@@ -297,7 +296,23 @@ namespace PalletCard
                 pnlPalletCard7.BringToFront();
                 index = 14;
             }
-
+            else if (index == 17)
+            {
+                pnlPalletCard8.BringToFront();
+                lblIsJobFinished.Visible = false;
+                btnIsJobFinishedYes.Visible = false;
+                btnIsJobFinishedNo.Visible = false;
+                btnIsSectionFinishedYes.Enabled = true;
+                btnIsSectionFinishedNo.Enabled = true;
+                btnIsSectionFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
+                btnIsSectionFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
+                index = 16;
+            }
+            //else if (index == 18)
+            //{
+            //    pnlPalletCard8.BringToFront();
+            //    //index = 14;
+            //}
         }
 
 
@@ -1585,7 +1600,38 @@ namespace PalletCard
             index = 14;
         }
 
+        private void btnFinishPalletContinue_Click(object sender, EventArgs e)
+        {
+            pnlPalletCard7.BringToFront();
+            index = 15;
+        }
+
         private void btnPalletFinished_Click(object sender, EventArgs e)
+        {
+            pnlPalletCard8.BringToFront();
+            index = 16;
+        }
+
+        private void btnCancelPrintMore_Click(object sender, EventArgs e)
+        {
+            Cancel();
+            pnlHome0.BringToFront();
+            index = 0;
+        }
+
+        private void btnIsSectionFinishedYes_Click(object sender, EventArgs e)
+        {
+            lblIsJobFinished.Visible = true;
+            btnIsJobFinishedYes.Visible = true;
+            btnIsJobFinishedNo.Visible = true;
+            btnIsSectionFinishedYes.Enabled = false;
+            btnIsSectionFinishedYes.BackColor = System.Drawing.Color.Silver;
+            btnIsSectionFinishedNo.Enabled = false;
+            btnIsSectionFinishedNo.BackColor = System.Drawing.Color.Silver;
+            index = 17;
+        }
+
+        private void btnIsSectionFinishedNo_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt32(this.dataGridView1.Rows[0].Cells[19].Value) == 1)
             {
@@ -1608,7 +1654,7 @@ namespace PalletCard
                 lblPC_Date.Visible = true;
                 lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
                 lblPC_Note.Visible = true;
-                index = 16;
+                index = 17;
             }
         }
 
@@ -1663,17 +1709,14 @@ namespace PalletCard
             e.Graphics.DrawImage(img, p);
         }
 
-        private void btnFinishPalletContinue_Click(object sender, EventArgs e)
+        private void btnIsJobFinishedNo_Click(object sender, EventArgs e)
         {
-            pnlPalletCard7.BringToFront();
-            index = 15;
+
         }
 
-        private void btnCancelPrintMore_Click(object sender, EventArgs e)
+        private void btnIsJobFinishedYes_Click(object sender, EventArgs e)
         {
-            Cancel();
-            pnlHome0.BringToFront();
-            index = 0;
+
         }
     }
 }
