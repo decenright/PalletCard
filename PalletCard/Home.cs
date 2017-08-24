@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Data.SqlClient;
 using System.Drawing.Imaging;
+using System.Text.RegularExpressions;
 
 namespace PalletCard
 {
@@ -1716,7 +1717,13 @@ namespace PalletCard
 
         private void btnIsJobFinishedYes_Click(object sender, EventArgs e)
         {
-
+            var required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
+            var r = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            if ( r < required)
+            {
+                pnlPalletCard6.BringToFront();
+                lblPalletDidNotMakeQty.Text = (lblJobNo + " has " + r + " insufficient sheets");
+            }
         }
     }
 }
