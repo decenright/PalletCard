@@ -1379,6 +1379,7 @@ namespace PalletCard
             pnlPalletCard3.BringToFront();
             lbl3.Visible = true;
             lbl3.Text = "         Sig " + btn.Text;
+            tbxPalletHeightPalletCard.Focus();
             index = 10;
 
             //filter datagridview1 with the button text choice
@@ -1396,6 +1397,7 @@ namespace PalletCard
             pnlPalletCard3.BringToFront();
             lbl3.Visible = true;
             lbl3.Text = "         Sig " + btn.Text;
+            tbxPalletHeightPalletCard.Focus();
             index = 10;
 
             //filter datagridview1 with the button text choice
@@ -1590,5 +1592,58 @@ namespace PalletCard
                 lblPC_Note.Visible = true;
             }
         }
+
+        private void btnPalletCardPrint_Click(object sender, EventArgs e)
+        {
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(PrintImagePalletCard);
+            btnPalletCardPrint.Visible = false;
+            pd.Print();
+            btnPalletCardPrint.Visible = true;
+
+            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
+            //SqlConnection conDatabase = new SqlConnection(constring);
+            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            //SqlDataReader myReader;
+            //try
+            //{
+            //    conDatabase.Open();
+            //    myReader = cmdDatabase.ExecuteReader();
+            //    while (myReader.Read())
+            //    {
+
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            pnlHome0.BringToFront();
+            lblJobNo.Visible = false;
+            lblPress.Visible = false;
+            lbl1.Visible = false;
+            lbl2.Visible = false;
+            lbl3.Visible = false;
+            lbl4.Visible = false;
+            btnBack.Visible = false;
+            btnCancel.Visible = false;
+            Cancel();
+        }
+
+        void PrintImagePalletCard(object o, PrintPageEventArgs e)
+        {
+            int x = SystemInformation.WorkingArea.X;
+            int y = SystemInformation.WorkingArea.Y;
+            int width = this.Width;
+            int height = this.Height;
+            Rectangle bounds = new Rectangle(x, y, width, height);
+            Bitmap img = new Bitmap(width, height);
+            pnlPalletCardPrint.DrawToBitmap(img, bounds);
+            Point p = new Point(100, 100);
+            e.Graphics.DrawImage(img, p);
+        }
+
+
     }
 }
