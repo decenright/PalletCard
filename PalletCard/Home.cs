@@ -228,6 +228,7 @@ namespace PalletCard
                 lblSheetCountPalletCard.Text = "";
                 tbxSheetCountPalletCard.Text = "";
                 lblPheightPalletCard.Text = "";
+                btnBack.Visible = true;
                 index = 9;
                 // if no sig buttons go straight back to Choose Section screen
                 if (flowLayoutPanel1.Controls.Count == 0)
@@ -272,6 +273,9 @@ namespace PalletCard
             {
                 pnlPalletCard5.BringToFront();
                 lbl7.Visible = false;
+                lbl6.Visible = false;
+                lblNumberUp.Visible = false;
+                lblNumberUpQty.Visible = false;
                 index = 12;
             }
             else if (index == 14)
@@ -280,6 +284,18 @@ namespace PalletCard
                 lbl6.Visible = false;
                 lbl7.Visible = false;
                 index = 13;
+            }
+            else if (index == 15)
+            {
+                pnlPalletCard6.BringToFront();
+                lbl6.Visible = false;
+                lbl7.Visible = false;
+                index = 12;
+            }
+            else if (index == 16)
+            {
+                pnlPalletCard7.BringToFront();
+                index = 14;
             }
 
         }
@@ -1552,6 +1568,8 @@ namespace PalletCard
         private void btnBadSectionOK_Click(object sender, EventArgs e)
         {
             pnlPalletCard6.BringToFront();
+            lbl6.Text = "Bad Section";
+            lbl6.Visible = true;
             lbl7.Text = "Pallet Short";
             lbl7.Visible = true;
             index = 13;
@@ -1590,6 +1608,7 @@ namespace PalletCard
                 lblPC_Date.Visible = true;
                 lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
                 lblPC_Note.Visible = true;
+                index = 16;
             }
         }
 
@@ -1644,6 +1663,17 @@ namespace PalletCard
             e.Graphics.DrawImage(img, p);
         }
 
+        private void btnFinishPalletContinue_Click(object sender, EventArgs e)
+        {
+            pnlPalletCard7.BringToFront();
+            index = 15;
+        }
 
+        private void btnCancelPrintMore_Click(object sender, EventArgs e)
+        {
+            Cancel();
+            pnlHome0.BringToFront();
+            index = 0;
+        }
     }
 }
