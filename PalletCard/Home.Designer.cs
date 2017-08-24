@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbxSearchBox = new System.Windows.Forms.TextBox();
@@ -169,6 +169,7 @@
             this.lblPC_IncompletePallet = new System.Windows.Forms.Label();
             this.lblPC_JobNo = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -190,33 +191,33 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridView1.Location = new System.Drawing.Point(4, 839);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(730, 147);
             this.dataGridView1.TabIndex = 0;
@@ -1615,6 +1616,7 @@
             // 
             // pnlPalletCardPrint
             // 
+            this.pnlPalletCardPrint.Controls.Add(this.button1);
             this.pnlPalletCardPrint.Controls.Add(this.lblPC_Note);
             this.pnlPalletCardPrint.Controls.Add(this.lblPC_Date);
             this.pnlPalletCardPrint.Controls.Add(this.lblPC_Press);
@@ -1633,14 +1635,14 @@
             this.pnlPalletCardPrint.Name = "pnlPalletCardPrint";
             this.pnlPalletCardPrint.Size = new System.Drawing.Size(528, 828);
             this.pnlPalletCardPrint.TabIndex = 48;
-            this.pnlPalletCardPrint.Visible = false;
             // 
             // lblPC_Note
             // 
             this.lblPC_Note.AutoSize = true;
-            this.lblPC_Note.Location = new System.Drawing.Point(211, 694);
+            this.lblPC_Note.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_Note.Location = new System.Drawing.Point(113, 783);
             this.lblPC_Note.Name = "lblPC_Note";
-            this.lblPC_Note.Size = new System.Drawing.Size(60, 13);
+            this.lblPC_Note.Size = new System.Drawing.Size(104, 24);
             this.lblPC_Note.TabIndex = 13;
             this.lblPC_Note.Text = "lblPC_Note";
             this.lblPC_Note.Visible = false;
@@ -1648,10 +1650,10 @@
             // lblPC_Date
             // 
             this.lblPC_Date.AutoSize = true;
-            this.lblPC_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_Date.Location = new System.Drawing.Point(211, 658);
+            this.lblPC_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_Date.Location = new System.Drawing.Point(113, 757);
             this.lblPC_Date.Name = "lblPC_Date";
-            this.lblPC_Date.Size = new System.Drawing.Size(76, 16);
+            this.lblPC_Date.Size = new System.Drawing.Size(102, 24);
             this.lblPC_Date.TabIndex = 12;
             this.lblPC_Date.Text = "lblPC_Date";
             this.lblPC_Date.Visible = false;
@@ -1659,10 +1661,10 @@
             // lblPC_Press
             // 
             this.lblPC_Press.AutoSize = true;
-            this.lblPC_Press.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_Press.Location = new System.Drawing.Point(211, 622);
+            this.lblPC_Press.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_Press.Location = new System.Drawing.Point(112, 730);
             this.lblPC_Press.Name = "lblPC_Press";
-            this.lblPC_Press.Size = new System.Drawing.Size(82, 16);
+            this.lblPC_Press.Size = new System.Drawing.Size(111, 24);
             this.lblPC_Press.TabIndex = 11;
             this.lblPC_Press.Text = "lblPC_Press";
             this.lblPC_Press.Visible = false;
@@ -1670,10 +1672,10 @@
             // lblPC_PalletNumber
             // 
             this.lblPC_PalletNumber.AutoSize = true;
-            this.lblPC_PalletNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_PalletNumber.Location = new System.Drawing.Point(211, 579);
+            this.lblPC_PalletNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_PalletNumber.Location = new System.Drawing.Point(112, 704);
             this.lblPC_PalletNumber.Name = "lblPC_PalletNumber";
-            this.lblPC_PalletNumber.Size = new System.Drawing.Size(129, 16);
+            this.lblPC_PalletNumber.Size = new System.Drawing.Size(178, 24);
             this.lblPC_PalletNumber.TabIndex = 10;
             this.lblPC_PalletNumber.Text = "lblPC_PalletNumber";
             this.lblPC_PalletNumber.Visible = false;
@@ -1681,10 +1683,10 @@
             // lblPC_SectionName
             // 
             this.lblPC_SectionName.AutoSize = true;
-            this.lblPC_SectionName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_SectionName.Location = new System.Drawing.Point(211, 541);
+            this.lblPC_SectionName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_SectionName.Location = new System.Drawing.Point(112, 677);
             this.lblPC_SectionName.Name = "lblPC_SectionName";
-            this.lblPC_SectionName.Size = new System.Drawing.Size(129, 16);
+            this.lblPC_SectionName.Size = new System.Drawing.Size(178, 24);
             this.lblPC_SectionName.TabIndex = 9;
             this.lblPC_SectionName.Text = "lblPC_SectionName";
             this.lblPC_SectionName.Visible = false;
@@ -1692,10 +1694,10 @@
             // lblPC_Sig
             // 
             this.lblPC_Sig.AutoSize = true;
-            this.lblPC_Sig.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_Sig.Location = new System.Drawing.Point(154, 468);
+            this.lblPC_Sig.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_Sig.Location = new System.Drawing.Point(110, 599);
             this.lblPC_Sig.Name = "lblPC_Sig";
-            this.lblPC_Sig.Size = new System.Drawing.Size(143, 33);
+            this.lblPC_Sig.Size = new System.Drawing.Size(181, 42);
             this.lblPC_Sig.TabIndex = 8;
             this.lblPC_Sig.Text = "lblPC_Sig";
             this.lblPC_Sig.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1704,10 +1706,10 @@
             // lblPC_LastPallet
             // 
             this.lblPC_LastPallet.AutoSize = true;
-            this.lblPC_LastPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_LastPallet.Location = new System.Drawing.Point(152, 429);
+            this.lblPC_LastPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_LastPallet.Location = new System.Drawing.Point(108, 541);
             this.lblPC_LastPallet.Name = "lblPC_LastPallet";
-            this.lblPC_LastPallet.Size = new System.Drawing.Size(229, 33);
+            this.lblPC_LastPallet.Size = new System.Drawing.Size(291, 42);
             this.lblPC_LastPallet.TabIndex = 7;
             this.lblPC_LastPallet.Text = "lblPC_LastPallet";
             this.lblPC_LastPallet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1716,10 +1718,10 @@
             // lblPC_SheetQty
             // 
             this.lblPC_SheetQty.AutoSize = true;
-            this.lblPC_SheetQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_SheetQty.Location = new System.Drawing.Point(151, 390);
+            this.lblPC_SheetQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_SheetQty.Location = new System.Drawing.Point(107, 486);
             this.lblPC_SheetQty.Name = "lblPC_SheetQty";
-            this.lblPC_SheetQty.Size = new System.Drawing.Size(222, 33);
+            this.lblPC_SheetQty.Size = new System.Drawing.Size(283, 42);
             this.lblPC_SheetQty.TabIndex = 6;
             this.lblPC_SheetQty.Text = "lblPC_SheetQty";
             this.lblPC_SheetQty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1728,10 +1730,10 @@
             // lblPC_Customer
             // 
             this.lblPC_Customer.AutoSize = true;
-            this.lblPC_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_Customer.Location = new System.Drawing.Point(151, 349);
+            this.lblPC_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_Customer.Location = new System.Drawing.Point(107, 431);
             this.lblPC_Customer.Name = "lblPC_Customer";
-            this.lblPC_Customer.Size = new System.Drawing.Size(228, 33);
+            this.lblPC_Customer.Size = new System.Drawing.Size(288, 42);
             this.lblPC_Customer.TabIndex = 5;
             this.lblPC_Customer.Text = "lblPC_Customer";
             this.lblPC_Customer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1740,10 +1742,10 @@
             // lblPC_PartBQty
             // 
             this.lblPC_PartBQty.AutoSize = true;
-            this.lblPC_PartBQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_PartBQty.Location = new System.Drawing.Point(151, 310);
+            this.lblPC_PartBQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_PartBQty.Location = new System.Drawing.Point(107, 375);
             this.lblPC_PartBQty.Name = "lblPC_PartBQty";
-            this.lblPC_PartBQty.Size = new System.Drawing.Size(219, 33);
+            this.lblPC_PartBQty.Size = new System.Drawing.Size(278, 42);
             this.lblPC_PartBQty.TabIndex = 4;
             this.lblPC_PartBQty.Text = "lblPC_PartBQty";
             this.lblPC_PartBQty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1752,21 +1754,22 @@
             // lblPC_PartAQty
             // 
             this.lblPC_PartAQty.AutoSize = true;
-            this.lblPC_PartAQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_PartAQty.Location = new System.Drawing.Point(152, 270);
+            this.lblPC_PartAQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_PartAQty.Location = new System.Drawing.Point(108, 320);
             this.lblPC_PartAQty.Name = "lblPC_PartAQty";
-            this.lblPC_PartAQty.Size = new System.Drawing.Size(219, 33);
+            this.lblPC_PartAQty.Size = new System.Drawing.Size(278, 42);
             this.lblPC_PartAQty.TabIndex = 3;
             this.lblPC_PartAQty.Text = "lblPC_PartAQty";
             this.lblPC_PartAQty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_PartAQty.Visible = false;
             // 
             // lblPC_IncompletePallet
             // 
             this.lblPC_IncompletePallet.AutoSize = true;
-            this.lblPC_IncompletePallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_IncompletePallet.Location = new System.Drawing.Point(154, 233);
+            this.lblPC_IncompletePallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_IncompletePallet.Location = new System.Drawing.Point(108, 262);
             this.lblPC_IncompletePallet.Name = "lblPC_IncompletePallet";
-            this.lblPC_IncompletePallet.Size = new System.Drawing.Size(317, 33);
+            this.lblPC_IncompletePallet.Size = new System.Drawing.Size(401, 42);
             this.lblPC_IncompletePallet.TabIndex = 2;
             this.lblPC_IncompletePallet.Text = "lblPC_IncompletePallet";
             this.lblPC_IncompletePallet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1775,10 +1778,10 @@
             // lblPC_JobNo
             // 
             this.lblPC_JobNo.AutoSize = true;
-            this.lblPC_JobNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_JobNo.Location = new System.Drawing.Point(123, 166);
+            this.lblPC_JobNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 44.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_JobNo.Location = new System.Drawing.Point(98, 177);
             this.lblPC_JobNo.Name = "lblPC_JobNo";
-            this.lblPC_JobNo.Size = new System.Drawing.Size(304, 55);
+            this.lblPC_JobNo.Size = new System.Drawing.Size(386, 67);
             this.lblPC_JobNo.TabIndex = 1;
             this.lblPC_JobNo.Text = "lblPC_JobNo";
             this.lblPC_JobNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1787,12 +1790,25 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(84, 92);
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(103, 117);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(364, 55);
+            this.label18.Size = new System.Drawing.Size(263, 39);
             this.label18.TabIndex = 0;
             this.label18.Text = "PALLET CARD";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(67, 11);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(404, 80);
+            this.button1.TabIndex = 14;
+            this.button1.TabStop = false;
+            this.button1.Text = "Print";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // Home
             // 
@@ -2017,6 +2033,7 @@
         private System.Windows.Forms.Label lblPC_PartAQty;
         private System.Windows.Forms.Label lblPC_IncompletePallet;
         private System.Windows.Forms.Label lblPC_JobNo;
+        private System.Windows.Forms.Button button1;
     }
 }
 

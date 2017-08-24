@@ -1567,26 +1567,27 @@ namespace PalletCard
 
         private void btnPalletFinished_Click(object sender, EventArgs e)
         {
-            if(Convert.ToInt32(this.dataGridView1.Rows[0].Cells[19].Value) == 1)
+            if (Convert.ToInt32(this.dataGridView1.Rows[0].Cells[19].Value) == 1)
             {
                 MessageBox.Show("PaperSectionNo = 1");
             }
-            else
+            else if (Convert.ToInt32(this.dataGridView1.Rows[0].Cells[19].Value) > 1)
             {
                 pnlPalletCardPrint.BringToFront();
-                //lblPC_JobNo.Text = lblJobNo.Text;
-                //lblPC_JobNo.Visible = true;
-                //lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-                //lblPC_Customer.Visible = true;
-                //lblPC_SheetQty.Text = lbl4.Text;
-                //lblPC_SheetQty.Visible = true;
-                //lblPC_Sig.Text = dataGridView1.Rows[0].Cells[19].Value as string;
-                //lblPC_Sig.Visible = true;
-                //lblPC_Press.Text = lblPress.Text;
-                //lblPC_Press.Visible = true;
-                //lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-                //lblPC_Date.Visible = true;
-                //lblPC_Note.Text = tbxExtraInfoComment.Text + tbxTextBoxBadSection.Text;
+                lblPC_JobNo.Text = lblJobNo.Text;
+                lblPC_JobNo.Visible = true;
+                lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+                lblPC_Customer.Visible = true;
+                lblPC_SheetQty.Text = lbl5.Text;
+                lblPC_SheetQty.Visible = true;
+                lblPC_Sig.Text = "Sig " + dataGridView1.Rows[0].Cells[19].Value as string;
+                lblPC_Sig.Visible = true;
+                lblPC_Press.Text = "Press - " + lblPress.Text;
+                lblPC_Press.Visible = true;
+                lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+                lblPC_Date.Visible = true;
+                lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+                lblPC_Note.Visible = true;
             }
         }
     }
