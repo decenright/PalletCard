@@ -23,6 +23,10 @@ namespace PalletCard
         int A = 1;
         string jobNo;
         bool searchChanged;
+        int required;
+        int produced;
+        int shortBy;
+        int overBy;
 
         public Home()
         {
@@ -458,6 +462,8 @@ namespace PalletCard
             btnIsJobFinishedNo.Visible = false;
             btnIsJobFinishedYes.Visible = false;
             lblIsJobFinished.Visible = false;
+            backupRequired = false;
+            varnishRequired = false;
             index = 0;
         }
 
@@ -1580,9 +1586,12 @@ namespace PalletCard
             btnWholePalletBadSection.Enabled = false;
         }
 
+        int sheetsAffectedBadSection;
+
         private void btnBadSectionOK_Click(object sender, EventArgs e)
         {
             pnlPalletCard4.BringToFront();
+            sheetsAffectedBadSection = Convert.ToInt32(tbxSheetsAffectedBadSection.Text);
             lbl6.Text = "Bad Section";
             lbl6.Visible = true;
             index = 11;
@@ -1724,10 +1733,10 @@ namespace PalletCard
 
         private void btnIsJobFinishedYes_Click(object sender, EventArgs e)
         {
-            var required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
-            var produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
-            var shortBy = required - produced;
-            var overBy = produced - required;
+            required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
+            produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
+            shortBy = required - produced;
+            overBy = produced - required;
 
             if(! backupRequired || !varnishRequired)
             { 
@@ -1769,6 +1778,7 @@ namespace PalletCard
         private void btnBackupRequired_Click(object sender, EventArgs e)
         {
             backupRequired = true;
+            MessageBox.Show("true");
         }
 
         private void btnVarnishRequired_Click(object sender, EventArgs e)
