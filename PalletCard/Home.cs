@@ -18,6 +18,8 @@ namespace PalletCard
         bool sectionBtns;
         bool sigBtns;
         bool badSectionLbls;
+        bool backupRequired;
+        bool varnishRequired;
         int A = 1;
         string jobNo;
         bool searchChanged;
@@ -281,23 +283,15 @@ namespace PalletCard
             else if (index == 14)
             {
                 pnlPalletCard4.BringToFront();
-                lbl6.Visible = false;
-                lbl7.Visible = false;
                 index = 13;
             }
+
             else if (index == 15)
-            {
-                pnlPalletCard6.BringToFront();
-                lbl6.Visible = false;
-                lbl7.Visible = false;
-                index = 12;
-            }
-            else if (index == 16)
             {
                 pnlPalletCard7.BringToFront();
                 index = 14;
             }
-            else if (index == 17)
+            else if (index == 16)
             {
                 pnlPalletCard8.BringToFront();
                 lblIsJobFinished.Visible = false;
@@ -307,7 +301,7 @@ namespace PalletCard
                 btnIsSectionFinishedNo.Enabled = true;
                 btnIsSectionFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
                 btnIsSectionFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
-                index = 16;
+                index = 15;
             }
             //else if (index == 18)
             //{
@@ -457,6 +451,13 @@ namespace PalletCard
             tbxSheetCountPalletCard.Clear();
             lblSheetCountPalletCard.Text = "";
             lblPheightPalletCard.Text = "";
+            btnIsSectionFinishedYes.Enabled = true;
+            btnIsSectionFinishedNo.Enabled = true;
+            btnIsSectionFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
+            btnIsSectionFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
+            btnIsJobFinishedNo.Visible = false;
+            btnIsJobFinishedYes.Visible = false;
+            lblIsJobFinished.Visible = false;
             index = 0;
         }
 
@@ -1530,8 +1531,6 @@ namespace PalletCard
             pnlPalletCard5.BringToFront();
             this.ActiveControl = tbxSheetsAffectedBadSection;
             index = 12;
-            lbl6.Text = "Bad Section";
-            lbl6.Visible = true;
 
             lblNumberUp.Visible = false;
             lblNumberUpQty.Visible = false;
@@ -1584,29 +1583,41 @@ namespace PalletCard
         private void btnBadSectionOK_Click(object sender, EventArgs e)
         {
             pnlPalletCard4.BringToFront();
+            lbl6.Text = "Bad Section";
+            lbl6.Visible = true;
             index = 11;
         }
 
         private void btnExtraInformationPalletCard_Click(object sender, EventArgs e)
         {
             pnlPalletCard7.BringToFront();
-            lbl6.Text = "Bad Section";
-            lbl6.Visible = true;
-            lbl7.Text = "Pallet Short";
-            lbl7.Visible = true;
             index = 14;
         }
 
         private void btnFinishPalletContinue_Click(object sender, EventArgs e)
         {
             pnlPalletCardPrint.BringToFront();
-            //index = 15;
+            pnlPalletCardPrint.BringToFront();
+            lblPC_JobNo.Text = lblJobNo.Text;
+            lblPC_JobNo.Visible = true;
+            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            lblPC_Customer.Visible = true;
+            lblPC_SheetQty.Text = lbl5.Text;
+            lblPC_SheetQty.Visible = true;
+            lblPC_Sig.Text = "Sig " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Visible = true;
+            lblPC_Press.Text = "Press - " + lblPress.Text;
+            lblPC_Press.Visible = true;
+            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            lblPC_Date.Visible = true;
+            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            lblPC_Note.Visible = true;
         }
 
         private void btnPalletFinished_Click(object sender, EventArgs e)
         {
             pnlPalletCard8.BringToFront();
-            index = 16;
+            index = 15;
         }
 
         private void btnCancelPrintMore_Click(object sender, EventArgs e)
@@ -1625,7 +1636,7 @@ namespace PalletCard
             btnIsSectionFinishedYes.BackColor = System.Drawing.Color.Silver;
             btnIsSectionFinishedNo.Enabled = false;
             btnIsSectionFinishedNo.BackColor = System.Drawing.Color.Silver;
-            index = 17;
+            index = 16;
         }
 
         private void btnIsSectionFinishedNo_Click(object sender, EventArgs e)
@@ -1651,7 +1662,7 @@ namespace PalletCard
                 lblPC_Date.Visible = true;
                 lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
                 lblPC_Note.Visible = true;
-                index = 17;
+                index = 16;
             }
         }
 
@@ -1718,17 +1729,21 @@ namespace PalletCard
             var shortBy = required - produced;
             var overBy = produced - required;
 
-            if (produced < required)
-            {
-                pnlPalletCard6.BringToFront();
-                lblPalletDidNotMakeQty.Text = lblJobNo.Text + " has " + shortBy + " insufficient sheets";
+            if(! backupRequired || !varnishRequired)
+            { 
+                if (produced < required)
+                {
+                    pnlPalletCard6.BringToFront();
+                    lblPalletDidNotMakeQty.Text = lblJobNo.Text + " has " + shortBy + " insufficient sheets";
+                    lbl7.Text = "Pallet Short";
+                }
+                else if(produced > required)
+                {
+                    pnlPalletCard9.BringToFront();
+                    lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
+                    lbl7.Text = "Pallet Over";
+                }
             }
-            else if(produced > required)
-            {
-                pnlPalletCard9.BringToFront();
-                lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
-            }
-
         }
 
         private void btnPalletOver_Click(object sender, EventArgs e)
@@ -1748,7 +1763,17 @@ namespace PalletCard
             lblPC_Date.Visible = true;
             lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
             lblPC_Note.Visible = true;
-            index = 17;
+            index = 16;
+        }
+
+        private void btnBackupRequired_Click(object sender, EventArgs e)
+        {
+            backupRequired = true;
+        }
+
+        private void btnVarnishRequired_Click(object sender, EventArgs e)
+        {
+            varnishRequired = true;
         }
     }
 }

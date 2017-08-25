@@ -147,8 +147,8 @@
             this.lblBack10 = new System.Windows.Forms.Label();
             this.pnlPalletCard7 = new System.Windows.Forms.Panel();
             this.btnPalletFinished = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnVarnishRequired = new System.Windows.Forms.Button();
+            this.btnBackupRequired = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.pnlPalletCard6 = new System.Windows.Forms.Panel();
             this.lblPalletDidNotMakeQty = new System.Windows.Forms.Label();
@@ -1529,8 +1529,8 @@
             // pnlPalletCard7
             // 
             this.pnlPalletCard7.Controls.Add(this.btnPalletFinished);
-            this.pnlPalletCard7.Controls.Add(this.button3);
-            this.pnlPalletCard7.Controls.Add(this.button2);
+            this.pnlPalletCard7.Controls.Add(this.btnVarnishRequired);
+            this.pnlPalletCard7.Controls.Add(this.btnBackupRequired);
             this.pnlPalletCard7.Controls.Add(this.label19);
             this.pnlPalletCard7.Location = new System.Drawing.Point(205, 5);
             this.pnlPalletCard7.Name = "pnlPalletCard7";
@@ -1550,29 +1550,31 @@
             this.btnPalletFinished.UseVisualStyleBackColor = false;
             this.btnPalletFinished.Click += new System.EventHandler(this.btnPalletFinished_Click);
             // 
-            // button3
+            // btnVarnishRequired
             // 
-            this.button3.BackColor = System.Drawing.Color.SteelBlue;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(41, 267);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(465, 80);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Varnish Required";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnVarnishRequired.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnVarnishRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVarnishRequired.ForeColor = System.Drawing.Color.White;
+            this.btnVarnishRequired.Location = new System.Drawing.Point(41, 267);
+            this.btnVarnishRequired.Name = "btnVarnishRequired";
+            this.btnVarnishRequired.Size = new System.Drawing.Size(465, 80);
+            this.btnVarnishRequired.TabIndex = 13;
+            this.btnVarnishRequired.Text = "Varnish Required";
+            this.btnVarnishRequired.UseVisualStyleBackColor = false;
+            this.btnVarnishRequired.Click += new System.EventHandler(this.btnVarnishRequired_Click);
             // 
-            // button2
+            // btnBackupRequired
             // 
-            this.button2.BackColor = System.Drawing.Color.SteelBlue;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(36, 130);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(465, 80);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Backup Required";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnBackupRequired.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnBackupRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackupRequired.ForeColor = System.Drawing.Color.White;
+            this.btnBackupRequired.Location = new System.Drawing.Point(36, 130);
+            this.btnBackupRequired.Name = "btnBackupRequired";
+            this.btnBackupRequired.Size = new System.Drawing.Size(465, 80);
+            this.btnBackupRequired.TabIndex = 12;
+            this.btnBackupRequired.Text = "Backup Required";
+            this.btnBackupRequired.UseVisualStyleBackColor = false;
+            this.btnBackupRequired.Click += new System.EventHandler(this.btnBackupRequired_Click);
             // 
             // label19
             // 
@@ -1975,16 +1977,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1053);
-            this.Controls.Add(this.pnlPalletCardPrint);
-            this.Controls.Add(this.pnlPalletCard3);
-            this.Controls.Add(this.pnlPalletCard5);
             this.Controls.Add(this.pnlPalletCard6);
-            this.Controls.Add(this.pnlPalletCard9);
             this.Controls.Add(this.pnlPalletCard8);
             this.Controls.Add(this.pnlPalletCard7);
+            this.Controls.Add(this.pnlPalletCardPrint);
+            this.Controls.Add(this.pnlPalletCard5);
+            this.Controls.Add(this.pnlPalletCard4);
+            this.Controls.Add(this.pnlPalletCard3);
+            this.Controls.Add(this.pnlPalletCard9);
             this.Controls.Add(this.pnlReturnPaper3);
             this.Controls.Add(this.pnlRejectPaper3);
-            this.Controls.Add(this.pnlPalletCard4);
             this.Controls.Add(this.pnlPalletCard2);
             this.Controls.Add(this.pnlPalletCard1);
             this.Controls.Add(this.pnlHome1);
@@ -2173,8 +2175,8 @@
         private System.Windows.Forms.Label lblBack10;
         private System.Windows.Forms.Panel pnlPalletCard7;
         private System.Windows.Forms.Button btnPalletFinished;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnVarnishRequired;
+        private System.Windows.Forms.Button btnBackupRequired;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel pnlPalletCard6;
         private System.Windows.Forms.Button btnCancelPrintMore;
