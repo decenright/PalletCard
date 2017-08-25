@@ -1498,10 +1498,10 @@ namespace PalletCard
                 }
                 else if (!string.IsNullOrEmpty(tbxSheetCountPalletCard.Text))
                 {
-                    lbl4.Text = tbxSheetCountPalletCard.Text + " Sheets";
-                    lbl4.Visible = true;
-                    lbl5.Text = lblPheightPalletCard.Text;
+                    lbl5.Text = tbxSheetCountPalletCard.Text + " Sheets";
                     lbl5.Visible = true;
+                    lbl4.Text = lblPheightPalletCard.Text;
+                    lbl4.Visible = true;
                 }
                 else if (!string.IsNullOrEmpty(tbxPalletHeightPalletCard.Text))
                 {
@@ -1583,12 +1583,8 @@ namespace PalletCard
 
         private void btnBadSectionOK_Click(object sender, EventArgs e)
         {
-            pnlPalletCard6.BringToFront();
-            lbl6.Text = "Bad Section";
-            lbl6.Visible = true;
-            lbl7.Text = "Pallet Short";
-            lbl7.Visible = true;
-            index = 13;
+            pnlPalletCard4.BringToFront();
+            index = 11;
         }
 
         private void btnExtraInformationPalletCard_Click(object sender, EventArgs e)
@@ -1603,8 +1599,8 @@ namespace PalletCard
 
         private void btnFinishPalletContinue_Click(object sender, EventArgs e)
         {
-            pnlPalletCard7.BringToFront();
-            index = 15;
+            pnlPalletCardPrint.BringToFront();
+            //index = 15;
         }
 
         private void btnPalletFinished_Click(object sender, EventArgs e)
@@ -1718,12 +1714,41 @@ namespace PalletCard
         private void btnIsJobFinishedYes_Click(object sender, EventArgs e)
         {
             var required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
-            var r = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
-            if ( r < required)
+            var produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            var shortBy = required - produced;
+            var overBy = produced - required;
+
+            if (produced < required)
             {
                 pnlPalletCard6.BringToFront();
-                lblPalletDidNotMakeQty.Text = (lblJobNo + " has " + r + " insufficient sheets");
+                lblPalletDidNotMakeQty.Text = lblJobNo.Text + " has " + shortBy + " insufficient sheets";
             }
+            else if(produced > required)
+            {
+                pnlPalletCard9.BringToFront();
+                lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
+            }
+
+        }
+
+        private void btnPalletOver_Click(object sender, EventArgs e)
+        {
+            pnlPalletCardPrint.BringToFront();
+            lblPC_JobNo.Text = lblJobNo.Text;
+            lblPC_JobNo.Visible = true;
+            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            lblPC_Customer.Visible = true;
+            lblPC_SheetQty.Text = lbl5.Text;
+            lblPC_SheetQty.Visible = true;
+            lblPC_Sig.Text = "Sig " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Visible = true;
+            lblPC_Press.Text = "Press - " + lblPress.Text;
+            lblPC_Press.Visible = true;
+            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            lblPC_Date.Visible = true;
+            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            lblPC_Note.Visible = true;
+            index = 17;
         }
     }
 }
