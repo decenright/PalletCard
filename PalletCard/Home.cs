@@ -282,11 +282,14 @@ namespace PalletCard
                 lbl6.Visible = false;
                 lblNumberUp.Visible = false;
                 lblNumberUpQty.Visible = false;
+                tbxSheetsAffectedBadSection.Text = "";
+                tbxTextBoxBadSection.Text = "";
                 index = 12;
             }
             else if (index == 14)
             {
                 pnlPalletCard4.BringToFront();
+                tbxExtraInfoComment.Text = "";
                 index = 13;
             }
 
@@ -1152,7 +1155,7 @@ namespace PalletCard
                     string sig = dataGridView1.Rows[0].Cells[19].Value.ToString();
                     lbl2.Text = sectionName;
                     lbl2.Visible = true;
-                    lbl3.Text = "Sig " + sig;
+                    lbl3.Text = "Sheet " + sig;
                     lbl3.Visible = true;
                     index = 9;
                     sectionBtns = true;             
@@ -1214,7 +1217,7 @@ namespace PalletCard
                         string sig = dataGridView1.Rows[0].Cells[19].Value.ToString();
                         lbl2.Text = Expr1;
                         lbl2.Visible = true;
-                        lbl3.Text = "Sig " + sig;
+                        lbl3.Text = "Sheet " + sig;
                         lbl3.Visible = true;
                         index = 9;
                         sectionBtns = true;
@@ -1295,7 +1298,7 @@ namespace PalletCard
                     string sig = dataGridView1.Rows[0].Cells[19].Value.ToString();
                     lbl2.Text = Expr1;
                     lbl2.Visible = true;
-                    lbl3.Text = "Sig " + sig;
+                    lbl3.Text = "Sheet " + sig;
                     lbl3.Visible = true;
                     index = 10;
                     sectionBtns = true;
@@ -1369,7 +1372,7 @@ namespace PalletCard
                     string sig = dataGridView1.Rows[0].Cells[19].Value.ToString();
                     lbl2.Text = Expr1;
                     lbl2.Visible = true;
-                    lbl3.Text = "Sig " + sig;
+                    lbl3.Text = "Sheet " + sig;
                     lbl3.Visible = true;
                     index = 10;
                     sectionBtns = true;
@@ -1417,7 +1420,7 @@ namespace PalletCard
             Button btn = sender as Button;
             pnlPalletCard3.BringToFront();
             lbl3.Visible = true;
-            lbl3.Text = "         Sig " + btn.Text;
+            lbl3.Text = "       Sheet " + btn.Text;
             tbxPalletHeightPalletCard.Focus();
             index = 10;
 
@@ -1435,7 +1438,7 @@ namespace PalletCard
             Button btn = sender as Button;
             pnlPalletCard3.BringToFront();
             lbl3.Visible = true;
-            lbl3.Text = "         Sig " + btn.Text;
+            lbl3.Text = "       Sheet " + btn.Text;
             tbxPalletHeightPalletCard.Focus();
             index = 10;
 
@@ -1590,11 +1593,18 @@ namespace PalletCard
 
         private void btnBadSectionOK_Click(object sender, EventArgs e)
         {
-            pnlPalletCard4.BringToFront();
-            sheetsAffectedBadSection = Convert.ToInt32(tbxSheetsAffectedBadSection.Text);
-            lbl6.Text = "Bad Section";
-            lbl6.Visible = true;
-            index = 11;
+            if (tbxSheetsAffectedBadSection.Text == "")
+            {
+                MessageBox.Show("Please enter a value in Sheets Affected box");
+            }
+            else
+            {
+                pnlPalletCard8.BringToFront();
+                sheetsAffectedBadSection = Convert.ToInt32(tbxSheetsAffectedBadSection.Text);
+                lbl6.Text = "Bad Section";
+                lbl6.Visible = true;
+                index = 13;
+            }
         }
 
         private void btnExtraInformationPalletCard_Click(object sender, EventArgs e)
@@ -1613,7 +1623,7 @@ namespace PalletCard
             lblPC_Customer.Visible = true;
             lblPC_SheetQty.Text = lbl5.Text;
             lblPC_SheetQty.Visible = true;
-            lblPC_Sig.Text = "Sig " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
             lblPC_Sig.Visible = true;
             lblPC_Press.Text = "Press - " + lblPress.Text;
             lblPC_Press.Visible = true;
@@ -1663,7 +1673,7 @@ namespace PalletCard
                 lblPC_Customer.Visible = true;
                 lblPC_SheetQty.Text = lbl5.Text;
                 lblPC_SheetQty.Visible = true;
-                lblPC_Sig.Text = "Sig " + dataGridView1.Rows[0].Cells[19].Value as string;
+                lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
                 lblPC_Sig.Visible = true;
                 lblPC_Press.Text = "Press - " + lblPress.Text;
                 lblPC_Press.Visible = true;
@@ -1764,7 +1774,7 @@ namespace PalletCard
             lblPC_Customer.Visible = true;
             lblPC_SheetQty.Text = lbl5.Text;
             lblPC_SheetQty.Visible = true;
-            lblPC_Sig.Text = "Sig " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
             lblPC_Sig.Visible = true;
             lblPC_Press.Text = "Press - " + lblPress.Text;
             lblPC_Press.Visible = true;
@@ -1777,13 +1787,42 @@ namespace PalletCard
 
         private void btnBackupRequired_Click(object sender, EventArgs e)
         {
-            backupRequired = true;
-            MessageBox.Show("true");
+            pnlPalletCardPrint.BringToFront();
+            lblPC_JobNo.Text = lblJobNo.Text;
+            lblPC_JobNo.Visible = true;
+            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            lblPC_Customer.Visible = true;
+            lblPC_SheetQty.Text = lbl5.Text;
+            lblPC_SheetQty.Visible = true;
+            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Visible = true;
+            lblPC_Press.Text = "Press - " + lblPress.Text;
+            lblPC_Press.Visible = true;
+            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            lblPC_Date.Visible = true;
+            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            lblPC_Note.Visible = true;
+            index = 16;
         }
 
         private void btnVarnishRequired_Click(object sender, EventArgs e)
         {
-            varnishRequired = true;
+            pnlPalletCardPrint.BringToFront();
+            lblPC_JobNo.Text = lblJobNo.Text;
+            lblPC_JobNo.Visible = true;
+            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            lblPC_Customer.Visible = true;
+            lblPC_SheetQty.Text = lbl5.Text;
+            lblPC_SheetQty.Visible = true;
+            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Visible = true;
+            lblPC_Press.Text = "Press - " + lblPress.Text;
+            lblPC_Press.Visible = true;
+            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            lblPC_Date.Visible = true;
+            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            lblPC_Note.Visible = true;
+            index = 16;
         }
     }
 }
