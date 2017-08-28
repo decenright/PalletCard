@@ -304,10 +304,10 @@ namespace PalletCard
                 lblIsJobFinished.Visible = false;
                 btnIsJobFinishedYes.Visible = false;
                 btnIsJobFinishedNo.Visible = false;
-                btnIsSectionFinishedYes.Enabled = true;
-                btnIsSectionFinishedNo.Enabled = true;
-                btnIsSectionFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
-                btnIsSectionFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
+                btnIsSheetFinishedYes.Enabled = true;
+                btnIsSheetFinishedNo.Enabled = true;
+                btnIsSheetFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
+                btnIsSheetFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
                 index = 15;
             }
             //else if (index == 18)
@@ -458,15 +458,15 @@ namespace PalletCard
             tbxSheetCountPalletCard.Clear();
             lblSheetCountPalletCard.Text = "";
             lblPheightPalletCard.Text = "";
-            btnIsSectionFinishedYes.Enabled = true;
-            btnIsSectionFinishedNo.Enabled = true;
-            btnIsSectionFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
-            btnIsSectionFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
-            btnIsJobFinishedNo.Visible = false;
-            btnIsJobFinishedYes.Visible = false;
-            lblIsJobFinished.Visible = false;
+            //btnIsSheetFinishedYes.Enabled = true;
+            //btnIsSheetFinishedNo.Enabled = true;
+            //btnIsSheetFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
+            //btnIsSheetFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
             backupRequired = false;
             varnishRequired = false;
+            tbxSheetsAffectedBadSection.Text = "";
+            tbxTextBoxBadSection.Text = "";
+            tbxExtraInfoComment.Text = "";
             index = 0;
         }
 
@@ -1636,6 +1636,14 @@ namespace PalletCard
         private void btnPalletFinished_Click(object sender, EventArgs e)
         {
             pnlPalletCard8.BringToFront();
+            if(dataGridView1.Rows.Count == 1)
+            {
+                pnlPalletCard9.BringToFront();
+            }
+            if(dataGridView1.Rows.Count >1)
+            {
+                pnlPalletCard8.BringToFront();
+            }
             index = 15;
         }
 
@@ -1646,55 +1654,12 @@ namespace PalletCard
             index = 0;
         }
 
-        private void btnIsSectionFinishedYes_Click(object sender, EventArgs e)
+        private void btnIsSheetFinishedYes_Click(object sender, EventArgs e)
         {
-            lblIsJobFinished.Visible = true;
-            btnIsJobFinishedYes.Visible = true;
-            btnIsJobFinishedNo.Visible = true;
-            btnIsSectionFinishedYes.Enabled = false;
-            btnIsSectionFinishedYes.BackColor = System.Drawing.Color.Silver;
-            btnIsSectionFinishedNo.Enabled = false;
-            btnIsSectionFinishedNo.BackColor = System.Drawing.Color.Silver;
             index = 16;
-        }
-
-        private void btnIsSectionFinishedNo_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(this.dataGridView1.Rows[0].Cells[19].Value) == 1)
-            {
-                MessageBox.Show("PaperSectionNo = 1");
-            }
-            else if (Convert.ToInt32(this.dataGridView1.Rows[0].Cells[19].Value) > 1)
-            {
-                pnlPalletCardPrint.BringToFront();
-                lblPC_JobNo.Text = lblJobNo.Text;
-                lblPC_JobNo.Visible = true;
-                lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-                lblPC_Customer.Visible = true;
-                lblPC_SheetQty.Text = lbl5.Text;
-                lblPC_SheetQty.Visible = true;
-                lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
-                lblPC_Sig.Visible = true;
-                lblPC_Press.Text = "Press - " + lblPress.Text;
-                lblPC_Press.Visible = true;
-                lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-                lblPC_Date.Visible = true;
-                lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-                lblPC_Note.Visible = true;
-                index = 16;
-            }
-        }
-
-        private void btnPalletCardPrint_Click(object sender, EventArgs e)
-        {
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(PrintImagePalletCard);
-            btnPalletCardPrint.Visible = false;
-            pd.Print();
-            btnPalletCardPrint.Visible = true;
 
             //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
+            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lblPrint3.Text + "');";
             //SqlConnection conDatabase = new SqlConnection(constring);
             //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             //SqlDataReader myReader;
@@ -1711,6 +1676,36 @@ namespace PalletCard
             //{
             //    MessageBox.Show(ex.Message);
             //}
+        }
+
+        private void btnIsSheetFinishedNo_Click(object sender, EventArgs e)
+        {
+                pnlPalletCardPrint.BringToFront();
+                lblPC_JobNo.Text = lblJobNo.Text;
+                lblPC_JobNo.Visible = true;
+                lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+                lblPC_Customer.Visible = true;
+                lblPC_SheetQty.Text = lbl5.Text;
+                lblPC_SheetQty.Visible = true;
+                lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+                lblPC_Sig.Visible = true;
+                lblPC_Press.Text = "Press - " + lblPress.Text;
+                lblPC_Press.Visible = true;
+                lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+                lblPC_Date.Visible = true;
+                lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+                lblPC_Note.Visible = true;
+                index = 16;
+        }
+
+        private void btnPalletCardPrint_Click(object sender, EventArgs e)
+        {
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(PrintImagePalletCard);
+            btnPalletCardPrint.Visible = false;
+            pd.Print();
+            btnPalletCardPrint.Visible = true;
+
             pnlHome0.BringToFront();
             lblJobNo.Visible = false;
             lblPress.Visible = false;
@@ -1737,8 +1732,26 @@ namespace PalletCard
         }
 
         private void btnIsJobFinishedNo_Click(object sender, EventArgs e)
-        {
+        {   
+            //SAVE TO DATABASE
+            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
+            //SqlConnection conDatabase = new SqlConnection(constring);
+            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            //SqlDataReader myReader;
+            //try
+            //{
+            //    conDatabase.Open();
+            //    myReader = cmdDatabase.ExecuteReader();
+            //    while (myReader.Read())
+            //    {
 
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void btnIsJobFinishedYes_Click(object sender, EventArgs e)
@@ -1758,11 +1771,31 @@ namespace PalletCard
                 }
                 else if(produced > required)
                 {
-                    pnlPalletCard9.BringToFront();
+                    pnlPalletCard10.BringToFront();
                     lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
                     lbl7.Text = "Pallet Over";
                 }
             }
+
+            //SAVE TO DATABASE
+            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
+            //SqlConnection conDatabase = new SqlConnection(constring);
+            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            //SqlDataReader myReader;
+            //try
+            //{
+            //    conDatabase.Open();
+            //    myReader = cmdDatabase.ExecuteReader();
+            //    while (myReader.Read())
+            //    {
+
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void btnPalletOver_Click(object sender, EventArgs e)
