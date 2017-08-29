@@ -27,7 +27,7 @@ namespace PalletCard
         int produced;
         int shortBy;
         int overBy;
-
+        DateTime CurrentDate= DateTime.Now;
         public Home()
         {
             InitializeComponent();
@@ -646,8 +646,8 @@ namespace PalletCard
             pd.Print();
             btnPrint.Visible = true;
 
-            DateTime CurrentDate = DateTime.Now;
-            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            //DateTime CurrentDate = DateTime.Now;
+            //string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
             string Query = "insert into Log (Routine, JobNo, ResourceID, Expr1, WorkingSize, SheetQty, Description, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','" + this.lbl3.Text + "','" + CurrentDate + "');";
@@ -1680,7 +1680,7 @@ namespace PalletCard
                 index = 16;
 
             //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lblPrint3.Text + "');";
+            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, SheetQty, Comment) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lblPrint3.Text + "','" + this.tbxExtraInfoComment.Text + "');";
             //SqlConnection conDatabase = new SqlConnection(constring);
             //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             //SqlDataReader myReader;
@@ -1838,24 +1838,25 @@ namespace PalletCard
             lblPC_Note.Visible = true;
             index = 16;
             //SAVE TO DATABASE
-            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
-            //SqlConnection conDatabase = new SqlConnection(constring);
-            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            //SqlDataReader myReader;
-            //try
-            //{
-            //    conDatabase.Open();
-            //    myReader = cmdDatabase.ExecuteReader();
-            //    while (myReader.Read())
-            //    {
+            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "', '1','" + CurrentDate + "');";
+            SqlConnection conDatabase = new SqlConnection(constring);
+            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            SqlDataReader myReader;
+            try
+            {
+                conDatabase.Open();
+                myReader = cmdDatabase.ExecuteReader();
+                while (myReader.Read())
+                {
 
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}           
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnVarnishRequired_Click(object sender, EventArgs e)
