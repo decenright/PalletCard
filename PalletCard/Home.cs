@@ -27,9 +27,9 @@ namespace PalletCard
         int produced;
         int shortBy;
         int overBy;
+        int palletNumber;
         DateTime CurrentDate= DateTime.Now;
-        string palletNumber;
-
+      
         public Home()
         {
             InitializeComponent();
@@ -1653,24 +1653,6 @@ namespace PalletCard
 
         private void btnIsSheetFinishedNo_Click(object sender, EventArgs e)
         {
-            pnlPalletCardPrint.BringToFront();
-            lblPC_JobNo.Text = lblJobNo.Text;
-            lblPC_JobNo.Visible = true;
-            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-            lblPC_Customer.Visible = true;
-            lblPC_SheetQty.Text = lbl5.Text;
-            lblPC_SheetQty.Visible = true;
-            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
-            lblPC_Sig.Visible = true;
-            lblPC_Press.Text = "Press - " + lblPress.Text;
-            lblPC_Press.Visible = true;
-            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-            lblPC_Date.Visible = true;
-            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-            lblPC_Note.Visible = true;
-            index = 16;
-
-
             string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
             string CommandText = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
@@ -1697,52 +1679,73 @@ namespace PalletCard
                 dataGridView2.DataSource = palletCardLog;
             }
 
-
+            // If This job Number has not yet been recorded in the database
             if (dataGridView2.Rows.Count == 0)
             {
-                palletNumber = lblJobNo.Text + "1";
+                palletNumber = 1;
             }
+            // Otherwise check if any previous Pallet Numbers("Pallet Card" Routine entries) and record as the next sequential Pallet Number
             else
                 {
                     try
                     {
+                        // (There could be entries for this job Number but for Return or reject Paper)
                         ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "Routine like 'Pallet Card'";
                     }
                     catch (Exception) { }
 
-                    // if Routine field is empty
-                    if (dataGridView2.Rows[0].Cells[4].Value as string == "")
-                    {
-                        palletNumber = dataGridView2.Rows[0].Cells[3].Value + "1";
-                    }
-                    else
+                    // if PalletNumber field is empty
+                        if (dataGridView2.Rows[0].Cells[4].Value as string == "")
                         {
-                            for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
-                            {
-                                palletNumber = dataGridView2.Rows[i].Cells[3].Value + "1";
-                            }
+                            palletNumber = 1;
                         }
+                        else
+                            {
+                                for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
+                                {
+                                    palletNumber = (int)dataGridView2.Rows[i].Cells[4].Value + 1;
+                                }
+                            }
                 }
 
 
 
-            ////SAVE TO DATABASE
-            //string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, PalletNumber, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + palletNumber + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "');";
-            //SqlConnection conDatabase = new SqlConnection(constring);
-            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            //SqlDataReader myReader;
-            //try
-            //{
-            //    conDatabase.Open();
-            //    myReader = cmdDatabase.ExecuteReader();
-            //    conDatabase.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            //SAVE TO DATABASE
+            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            string Query = "insert into Log (Routine, JobNo, PalletNumber, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + palletNumber + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "');";
+            SqlConnection conDatabase = new SqlConnection(constring);
+            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            SqlDataReader myReader;
+            try
+            {
+                conDatabase.Open();
+                myReader = cmdDatabase.ExecuteReader();
+                conDatabase.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            pnlPalletCardPrint.BringToFront();
+            lblPC_JobNo.Text = lblJobNo.Text;
+            lblPC_JobNo.Visible = true;
+            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            lblPC_Customer.Visible = true;
+            lblPC_SheetQty.Text = lbl5.Text;
+            lblPC_SheetQty.Visible = true;
+            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Visible = true;
+            lblPC_Press.Text = "Press - " + lblPress.Text;
+            lblPC_Press.Visible = true;
+            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            lblPC_Date.Visible = true;
+            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            lblPC_Note.Visible = true;
+            lblPC_PalletNumber.Text = palletNumber.ToString();
+            lblPC_PalletNumber.Visible = true;
+            index = 16;
         }
 
         private void btnPalletCardPrint_Click(object sender, EventArgs e)
