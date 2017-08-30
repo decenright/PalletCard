@@ -28,6 +28,8 @@ namespace PalletCard
         int shortBy;
         int overBy;
         DateTime CurrentDate= DateTime.Now;
+        string palletNumber;
+
         public Home()
         {
             InitializeComponent();
@@ -646,9 +648,7 @@ namespace PalletCard
             pd.Print();
             btnPrint.Visible = true;
 
-            //DateTime CurrentDate = DateTime.Now;
-            //string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
-
+            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
             string Query = "insert into Log (Routine, JobNo, ResourceID, Expr1, WorkingSize, SheetQty, Description, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','" + this.lbl3.Text + "','" + CurrentDate + "');";
             SqlConnection conDatabase = new SqlConnection(constring);
@@ -658,10 +658,7 @@ namespace PalletCard
             {
                 conDatabase.Open();
                 myReader = cmdDatabase.ExecuteReader();
-                while (myReader.Read())
-                {
-
-                }
+                conDatabase.Close();
             }
             catch (Exception ex)
             {
@@ -853,12 +850,9 @@ namespace PalletCard
             //SqlDataReader myReader;
             //try
             //{
-            //    conDatabase.Open();
-            //    myReader = cmdDatabase.ExecuteReader();
-            //    while (myReader.Read())
-            //    {
-
-            //    }
+            //   conDatabase.Open();
+            //   myReader = cmdDatabase.ExecuteReader();
+            //   conDatabase.Close();
             //}
             //catch (Exception ex)
             //{
@@ -1102,12 +1096,9 @@ namespace PalletCard
 
             //try
             //{
-            //    conDatabase.Open();
-            //    myReader = cmdDatabase.ExecuteReader();
-            //    while (myReader.Read())
-            //    {
-
-            //    }
+            //   conDatabase.Open();
+            //   myReader = cmdDatabase.ExecuteReader();
+            //   conDatabase.Close();
             //}
             //catch (Exception ex)
             //{
@@ -1662,25 +1653,83 @@ namespace PalletCard
 
         private void btnIsSheetFinishedNo_Click(object sender, EventArgs e)
         {
-                pnlPalletCardPrint.BringToFront();
-                lblPC_JobNo.Text = lblJobNo.Text;
-                lblPC_JobNo.Visible = true;
-                lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-                lblPC_Customer.Visible = true;
-                lblPC_SheetQty.Text = lbl5.Text;
-                lblPC_SheetQty.Visible = true;
-                lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
-                lblPC_Sig.Visible = true;
-                lblPC_Press.Text = "Press - " + lblPress.Text;
-                lblPC_Press.Visible = true;
-                lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-                lblPC_Date.Visible = true;
-                lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-                lblPC_Note.Visible = true;
-                index = 16;
+            pnlPalletCardPrint.BringToFront();
+            lblPC_JobNo.Text = lblJobNo.Text;
+            lblPC_JobNo.Visible = true;
+            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            lblPC_Customer.Visible = true;
+            lblPC_SheetQty.Text = lbl5.Text;
+            lblPC_SheetQty.Visible = true;
+            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Visible = true;
+            lblPC_Press.Text = "Press - " + lblPress.Text;
+            lblPC_Press.Visible = true;
+            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            lblPC_Date.Visible = true;
+            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            lblPC_Note.Visible = true;
+            index = 16;
 
+
+            string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
+            string CommandText = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
+            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+            myAdapter.SelectCommand = myCommand;
+            DataSet palletCardData = new DataSet();
+            try
+            {
+                myConnection.Open();
+                myAdapter.Fill(palletCardData);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            using (DataTable palletCardLog = new DataTable())
+            {
+                myAdapter.Fill(palletCardLog);
+                dataGridView2.DataSource = palletCardLog;
+            }
+
+
+            if (dataGridView2.Rows.Count == 0)
+            {
+                palletNumber = lblJobNo.Text + "1";
+            }
+            else
+                {
+                    try
+                    {
+                        ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "Routine like 'Pallet Card'";
+                    }
+                    catch (Exception) { }
+
+                    // if Routine field is empty
+                    if (dataGridView2.Rows[0].Cells[4].Value as string == "")
+                    {
+                        palletNumber = dataGridView2.Rows[0].Cells[3].Value + "1";
+                    }
+                    else
+                        {
+                            for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
+                            {
+                                palletNumber = dataGridView2.Rows[i].Cells[3].Value + "1";
+                            }
+                        }
+                }
+
+
+
+            ////SAVE TO DATABASE
+            //string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, SheetQty, Comment) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lblPrint3.Text + "','" + this.tbxExtraInfoComment.Text + "');";
+            //string Query = "insert into Log (Routine, JobNo, PalletNumber, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + palletNumber + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "');";
             //SqlConnection conDatabase = new SqlConnection(constring);
             //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             //SqlDataReader myReader;
@@ -1688,10 +1737,7 @@ namespace PalletCard
             //{
             //    conDatabase.Open();
             //    myReader = cmdDatabase.ExecuteReader();
-            //    while (myReader.Read())
-            //    {
-
-            //    }
+            //    conDatabase.Close();
             //}
             //catch (Exception ex)
             //{
@@ -1742,12 +1788,9 @@ namespace PalletCard
             //SqlDataReader myReader;
             //try
             //{
-            //    conDatabase.Open();
-            //    myReader = cmdDatabase.ExecuteReader();
-            //    while (myReader.Read())
-            //    {
-
-            //    }
+            //  conDatabase.Open();
+            //  myReader = cmdDatabase.ExecuteReader();
+            //  conDatabase.Close();
             //}
             //catch (Exception ex)
             //{
@@ -1786,12 +1829,9 @@ namespace PalletCard
             //SqlDataReader myReader;
             //try
             //{
-            //    conDatabase.Open();
-            //    myReader = cmdDatabase.ExecuteReader();
-            //    while (myReader.Read())
-            //    {
-
-            //    }
+            //  conDatabase.Open();
+            //  myReader = cmdDatabase.ExecuteReader();
+            //  conDatabase.Close();
             //}
             //catch (Exception ex)
             //{
@@ -1840,7 +1880,7 @@ namespace PalletCard
             //SAVE TO DATABASE
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "', '1','" + CurrentDate + "');";
+            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             SqlDataReader myReader;
@@ -1878,24 +1918,25 @@ namespace PalletCard
             lblPC_Note.Visible = true;
             index = 16;
             //SAVE TO DATABASE
-            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "');";
-            //SqlConnection conDatabase = new SqlConnection(constring);
-            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            //SqlDataReader myReader;
-            //try
-            //{
-            //    conDatabase.Open();
-            //    myReader = cmdDatabase.ExecuteReader();
-            //    while (myReader.Read())
-            //    {
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
+            SqlConnection conDatabase = new SqlConnection(constring);
+            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            SqlDataReader myReader;
+            try
+            {
+                conDatabase.Open();
+                myReader = cmdDatabase.ExecuteReader();
+                //while (myReader.Read())
+                //{
+                //}
+                conDatabase.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
