@@ -8,6 +8,8 @@ using System.Drawing.Printing;
 using System.Data.SqlClient;
 using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace PalletCard
 {
@@ -1728,6 +1730,28 @@ namespace PalletCard
                 MessageBox.Show(ex.Message);
             }
 
+
+            string barCode = lblJobNo.Text + palletNumber;
+            Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
+
+            using (Graphics graphics = Graphics.FromImage(bitMap))
+            {
+                Font oFont = new Font("IDAutomationHC39M", 16);
+                PointF point = new PointF(2f, 2f);
+                SolidBrush blackBrush = new SolidBrush(Color.Black);
+                SolidBrush whiteBrush = new SolidBrush(Color.White);
+                graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
+                graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
+            }
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bitMap.Save(ms, ImageFormat.Png);
+                pictureBox1.Image = bitMap;
+                pictureBox1.Height = bitMap.Height;
+                pictureBox1.Width = bitMap.Width;
+            }
+
+
             pnlPalletCardPrint.BringToFront();
             lblPC_JobNo.Text = lblJobNo.Text;
             lblPC_JobNo.Visible = true;
@@ -1743,7 +1767,7 @@ namespace PalletCard
             lblPC_Date.Visible = true;
             lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
             lblPC_Note.Visible = true;
-            lblPC_PalletNumber.Text = palletNumber.ToString();
+            lblPC_PalletNumber.Text = "Pallet No " + palletNumber.ToString();
             lblPC_PalletNumber.Visible = true;
             index = 16;
         }
