@@ -9,7 +9,6 @@ using System.Data.SqlClient;
 using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
 using System.IO;
-using System.Drawing.Imaging;
 
 namespace PalletCard
 {
@@ -325,7 +324,7 @@ namespace PalletCard
 
         private void Home_Load(object sender, EventArgs e)
         {
-            string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+            string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
             string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
@@ -413,7 +412,7 @@ namespace PalletCard
 
         private void Cancel()
         {
-            string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+            string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
             string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
@@ -1011,7 +1010,7 @@ namespace PalletCard
         private void getAutoNumber()
         {
 
-            //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+            //string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
             //string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
             //OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             //OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
@@ -1732,9 +1731,9 @@ namespace PalletCard
             }
 
 
-            string barCode = lblJobNo.Text + palletNumber;
+            //string barCode = lblJobNo.Text + palletNumber;
+            string barCode = dataGridView2.Rows[0].Cells[0].Value.ToString();
             Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
-
             using (Graphics graphics = Graphics.FromImage(bitMap))
             {
                 Font oFont = new Font("IDAutomationHC39M", 16);
@@ -1760,8 +1759,7 @@ namespace PalletCard
             lblPC_Customer.Visible = true;
             lblPC_SheetQty.Text = lbl5.Text;
             lblPC_SheetQty.Visible = true;
-            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
-            lblPC_Sig.Visible = true;
+
             lblPC_Press.Text = "Press - " + lblPress.Text;
             lblPC_Press.Visible = true;
             lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
@@ -1770,6 +1768,8 @@ namespace PalletCard
             lblPC_Note.Visible = true;
             lblPC_PalletNumber.Text = "Pallet No " + palletNumber.ToString();
             lblPC_PalletNumber.Visible = true;
+            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Visible = true;
             index = 16;
         }
 
