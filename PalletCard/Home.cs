@@ -304,9 +304,9 @@ namespace PalletCard
             else if (index == 16)
             {
                 pnlPalletCard8.BringToFront();
-                lblIsJobFinished.Visible = false;
-                btnIsJobFinishedYes.Visible = false;
-                btnIsJobFinishedNo.Visible = false;
+                lblIsPartFinished.Visible = false;
+                btnIsPartFinishedYes.Visible = false;
+                btnIsPartFinishedNo.Visible = false;
                 btnIsSheetFinishedYes.Enabled = true;
                 btnIsSectionFinishedNo.Enabled = true;
                 btnIsSheetFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
@@ -1631,16 +1631,14 @@ namespace PalletCard
             {
                 if  (Convert.ToInt32(dataGridView1.Rows[i].Cells[19].Value) > 1)
                     {
-                    pnlPalletCard8.BringToFront();
-                    break;
+                        pnlPalletCard8.BringToFront();
+                        break;
                     }
                 else
                     {
                         pnlPalletCard9.BringToFront();
                     }
             }
-
-
             index = 15;
         }
 
@@ -1651,8 +1649,106 @@ namespace PalletCard
             index = 0;
         }
 
-        private void btnIsSheetFinishedYes_Click(object sender, EventArgs e)
+        private void btnBackupRequired_Click(object sender, EventArgs e)
         {
+            pnlPalletCardPrint.BringToFront();
+            lblPC_JobNo.Text = lblJobNo.Text;
+            lblPC_JobNo.Visible = true;
+            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            lblPC_Customer.Visible = true;
+            lblPC_SheetQty.Text = lbl5.Text;
+            lblPC_SheetQty.Visible = true;
+            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Visible = true;
+            lblPC_Press.Text = "Press - " + lblPress.Text;
+            lblPC_Press.Visible = true;
+            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            lblPC_Date.Visible = true;
+            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            lblPC_Note.Visible = true;
+            index = 16;
+            //SAVE TO DATABASE
+            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
+            SqlConnection conDatabase = new SqlConnection(constring);
+            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            SqlDataReader myReader;
+            try
+            {
+                conDatabase.Open();
+                myReader = cmdDatabase.ExecuteReader();
+                while (myReader.Read())
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnVarnishRequired_Click(object sender, EventArgs e)
+        {
+            pnlPalletCardPrint.BringToFront();
+            lblPC_JobNo.Text = lblJobNo.Text;
+            lblPC_JobNo.Visible = true;
+            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            lblPC_Customer.Visible = true;
+            lblPC_SheetQty.Text = lbl5.Text;
+            lblPC_SheetQty.Visible = true;
+            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Visible = true;
+            lblPC_Press.Text = "Press - " + lblPress.Text;
+            lblPC_Press.Visible = true;
+            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            lblPC_Date.Visible = true;
+            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            lblPC_Note.Visible = true;
+            index = 16;
+            //SAVE TO DATABASE
+            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
+            SqlConnection conDatabase = new SqlConnection(constring);
+            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            SqlDataReader myReader;
+            try
+            {
+                conDatabase.Open();
+                myReader = cmdDatabase.ExecuteReader();
+                //while (myReader.Read())
+                //{
+                //}
+                conDatabase.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnIsSectionFinishedYes_Click(object sender, EventArgs e)
+        {
+            //SAVE TO DATABASE
+            CurrentDate = DateTime.Now;
+            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+            string Query = "insert into Log (Routine, JobNo, PalletNumber, Barcode, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, LastPallet) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + palletNumber + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "-" + palletNumber + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + "True" + "');";
+            SqlConnection conDatabase = new SqlConnection(constring);
+            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+            SqlDataReader myReader;
+            try
+            {
+                conDatabase.Open();
+                myReader = cmdDatabase.ExecuteReader();
+                conDatabase.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             index = 16;
             pnlPalletCard9.BringToFront();
         }
@@ -1811,7 +1907,7 @@ namespace PalletCard
             e.Graphics.DrawImage(img, p);
         }
 
-        private void btnIsJobFinishedNo_Click(object sender, EventArgs e)
+        private void btnIsPartFinishedNo_Click(object sender, EventArgs e)
         {
             //SAVE TO DATABASE
             //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
@@ -1831,22 +1927,22 @@ namespace PalletCard
             //}
         }
 
-        private void btnIsJobFinishedYes_Click(object sender, EventArgs e)
+        private void btnIsPartFinishedYes_Click(object sender, EventArgs e)
         {
             required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
             produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
             shortBy = required - produced;
             overBy = produced - required;
 
-            if(! backupRequired || !varnishRequired)
-            { 
+            if (!backupRequired || !varnishRequired)
+            {
                 if (produced < required)
                 {
                     pnlPalletCard6.BringToFront();
                     lblPalletDidNotMakeQty.Text = lblJobNo.Text + " has " + shortBy + " insufficient sheets";
                     lbl7.Text = "Pallet Short";
                 }
-                else if(produced > required)
+                else if (produced > required)
                 {
                     pnlPalletCard10.BringToFront();
                     lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
@@ -1892,84 +1988,6 @@ namespace PalletCard
             index = 16;
         }
 
-        private void btnBackupRequired_Click(object sender, EventArgs e)
-        {
-            pnlPalletCardPrint.BringToFront();
-            lblPC_JobNo.Text = lblJobNo.Text;
-            lblPC_JobNo.Visible = true;
-            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-            lblPC_Customer.Visible = true;
-            lblPC_SheetQty.Text = lbl5.Text;
-            lblPC_SheetQty.Visible = true;
-            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
-            lblPC_Sig.Visible = true;
-            lblPC_Press.Text = "Press - " + lblPress.Text;
-            lblPC_Press.Visible = true;
-            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-            lblPC_Date.Visible = true;
-            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-            lblPC_Note.Visible = true;
-            index = 16;
-            //SAVE TO DATABASE
-            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
-            SqlConnection conDatabase = new SqlConnection(constring);
-            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            SqlDataReader myReader;
-            try
-            {
-                conDatabase.Open();
-                myReader = cmdDatabase.ExecuteReader();
-                while (myReader.Read())
-                {
 
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnVarnishRequired_Click(object sender, EventArgs e)
-        {
-            pnlPalletCardPrint.BringToFront();
-            lblPC_JobNo.Text = lblJobNo.Text;
-            lblPC_JobNo.Visible = true;
-            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-            lblPC_Customer.Visible = true;
-            lblPC_SheetQty.Text = lbl5.Text;
-            lblPC_SheetQty.Visible = true;
-            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
-            lblPC_Sig.Visible = true;
-            lblPC_Press.Text = "Press - " + lblPress.Text;
-            lblPC_Press.Visible = true;
-            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-            lblPC_Date.Visible = true;
-            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-            lblPC_Note.Visible = true;
-            index = 16;
-            //SAVE TO DATABASE
-            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
-            SqlConnection conDatabase = new SqlConnection(constring);
-            SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            SqlDataReader myReader;
-            try
-            {
-                conDatabase.Open();
-                myReader = cmdDatabase.ExecuteReader();
-                //while (myReader.Read())
-                //{
-                //}
-                conDatabase.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
     }
 }
