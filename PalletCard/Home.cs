@@ -308,9 +308,9 @@ namespace PalletCard
                 btnIsJobFinishedYes.Visible = false;
                 btnIsJobFinishedNo.Visible = false;
                 btnIsSheetFinishedYes.Enabled = true;
-                btnIsSheetFinishedNo.Enabled = true;
+                btnIsSectionFinishedNo.Enabled = true;
                 btnIsSheetFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
-                btnIsSheetFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
+                btnIsSectionFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
                 index = 15;
             }
             //else if (index == 18)
@@ -1627,15 +1627,20 @@ namespace PalletCard
 
         private void btnPalletFinished_Click(object sender, EventArgs e)
         {
-            pnlPalletCard8.BringToFront();
-            if(dataGridView1.Rows.Count == 1)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                pnlPalletCard9.BringToFront();
+                if  (Convert.ToInt32(dataGridView1.Rows[i].Cells[19].Value) > 1)
+                    {
+                    pnlPalletCard8.BringToFront();
+                    break;
+                    }
+                else
+                    {
+                        pnlPalletCard9.BringToFront();
+                    }
             }
-            if(dataGridView1.Rows.Count >1)
-            {
-                pnlPalletCard8.BringToFront();
-            }
+
+
             index = 15;
         }
 
@@ -1652,7 +1657,7 @@ namespace PalletCard
             pnlPalletCard9.BringToFront();
         }
 
-        private void btnIsSheetFinishedNo_Click(object sender, EventArgs e)
+        private void btnIsSectionFinishedNo_Click(object sender, EventArgs e)
         {
             string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
             string CommandText = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
