@@ -2035,10 +2035,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1045);
+            this.Controls.Add(this.pnlPalletCard2);
+            this.Controls.Add(this.pnlPalletCard7);
             this.Controls.Add(this.pnlPalletCard9);
             this.Controls.Add(this.pnlPalletCard8);
             this.Controls.Add(this.pnlPalletCardPrint);
-            this.Controls.Add(this.pnlPalletCard7);
             this.Controls.Add(this.pnlHome1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.pnlPalletCard4);
@@ -2046,7 +2047,6 @@
             this.Controls.Add(this.pnlPalletCard6);
             this.Controls.Add(this.pnlPalletCard3);
             this.Controls.Add(this.pnlPalletCard5);
-            this.Controls.Add(this.pnlPalletCard2);
             this.Controls.Add(this.pnlReturnPaper3);
             this.Controls.Add(this.pnlPalletCard1);
             this.Controls.Add(this.lbl7);

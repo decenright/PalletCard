@@ -1304,7 +1304,7 @@ namespace PalletCard
                                 for (int j = 0; j < 1; j++)
                                 {
                                     dataGridView1.AllowUserToAddRows = true;
-                                    if (!(this.dataGridView1.Rows[i].Cells[19].Value as string == this.dataGridView1.Rows[i + 1].Cells[19].Value as string))
+                                    if (!(this.dataGridView1.Rows[i].Cells[19].Value  == this.dataGridView1.Rows[i + 1].Cells[19].Value ))
                                     {
                                         for (int k = 0; k < 1; k++)
                                         {
@@ -1315,9 +1315,9 @@ namespace PalletCard
                                             btnSig.BackColor = Color.SteelBlue;
                                             btnSig.Font = new Font("Microsoft Sans Serif", 20);
                                             btnSig.ForeColor = Color.White;
-                                            btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value as string;
+                                            btnSig.Text = dataGridView1.Rows[i].Cells[19].Value.ToString();
                                             btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                                            btnSig.Click += new System.EventHandler(this.sigButtonSectionName);
+                                            btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
                                         }
                                     }
                                 }
@@ -1381,7 +1381,7 @@ namespace PalletCard
                                 for (int j = 0; j < 1; j++)
                                 {
                                     dataGridView1.AllowUserToAddRows = true;
-                                    if (!(this.dataGridView1.Rows[i].Cells[19].Value as string == this.dataGridView1.Rows[i + 1].Cells[19].Value as string))
+                                    if (!(this.dataGridView1.Rows[i].Cells[19].Value == this.dataGridView1.Rows[i + 1].Cells[19].Value))
                                     {
                                         for (int k = 0; k < 1; k++)
                                         {
@@ -1392,9 +1392,9 @@ namespace PalletCard
                                             btnSig.BackColor = Color.SteelBlue;
                                             btnSig.Font = new Font("Microsoft Sans Serif", 20);
                                             btnSig.ForeColor = Color.White;
-                                            btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value as string;
+                                            btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value.ToString();
                                             btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                                            btnSig.Click += new System.EventHandler(this.sigButtonExpr1);
+                                            btnSig.Click += new System.EventHandler(this.sectionButtonExpr1);
                                         }
                                     }
                                     dataGridView1.AllowUserToAddRows = false;
@@ -1407,12 +1407,12 @@ namespace PalletCard
         }
 
 //Dynamic button click - Sig buttons, Pallet Card work flow
-        private void sigButtonSectionName(object sender, EventArgs e)
+        private void sectionButtonSectionName(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             pnlPalletCard3.BringToFront();
             lbl3.Visible = true;
-            lbl3.Text = "       Sheet " + btn.Text;
+            lbl3.Text = "Sheet " + btn.Text;
             tbxPalletHeightPalletCard.Focus();
             index = 10;
 
@@ -1425,12 +1425,12 @@ namespace PalletCard
         }
 
 //Dynamic button click - Sig buttons EXPR1, Pallet Card work flow
-        private void sigButtonExpr1(object sender, EventArgs e)
+        private void sectionButtonExpr1(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             pnlPalletCard3.BringToFront();
             lbl3.Visible = true;
-            lbl3.Text = "       Sheet " + btn.Text;
+            lbl3.Text = "Sheet " + btn.Text;
             tbxPalletHeightPalletCard.Focus();
             index = 10;
 
@@ -1810,8 +1810,6 @@ namespace PalletCard
                             }
                 }
 
-
-
             //SAVE TO DATABASE
             CurrentDate = DateTime.Now;
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
@@ -1909,22 +1907,32 @@ namespace PalletCard
 
         private void btnIsPartFinishedNo_Click(object sender, EventArgs e)
         {
-            //SAVE TO DATABASE
-            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, LastPallet) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','"1"');";
-            //SqlConnection conDatabase = new SqlConnection(constring);
-            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            //SqlDataReader myReader;
-            //try
-            //{
-            //  conDatabase.Open();
-            //  myReader = cmdDatabase.ExecuteReader();
-            //  conDatabase.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                if (Convert.ToInt32(dataGridView1.Rows[i].Cells[19].Value) == 1)
+                {
+                    pnlPalletCardPrint.BringToFront();
+                }
+
+
+                //SAVE TO DATABASE
+                //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+                //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, LastPallet) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','"1"');";
+                //SqlConnection conDatabase = new SqlConnection(constring);
+                //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+                //SqlDataReader myReader;
+                //try
+                //{
+                //  conDatabase.Open();
+                //  myReader = cmdDatabase.ExecuteReader();
+                //  conDatabase.Close();
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message);
+                //}
+            }
         }
 
         private void btnIsPartFinishedYes_Click(object sender, EventArgs e)
