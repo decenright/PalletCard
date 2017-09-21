@@ -1374,7 +1374,7 @@ namespace PalletCard
 
                 else {
                     if (!sigBtns)
-                        {
+                        {                           
                             for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                             {
                                 for (int j = 0; j < 1; j++)
@@ -1386,19 +1386,22 @@ namespace PalletCard
                                         {
                                             Button btnSig = new Button();
                                             this.flowLayoutPanel1.Controls.Add(btnSig);
+                                            btnSig.Text = dataGridView1.Rows[i].Cells[19].Value.ToString();
+                                            if (DisableSectionButtons.Contains(btnSig.Text))
+                                            {
+                                                btnSig.BackColor = Color.Silver;
+                                                btnSig.Enabled = false;
+                                            }
+                                            else
+                                            {
+                                                btnSig.BackColor = Color.SteelBlue;
+                                            }
                                             btnSig.Height = 70;
-                                            btnSig.Width = 120;
-                                            btnSig.BackColor = Color.SteelBlue;
+                                            btnSig.Width = 120;                                           
                                             btnSig.Font = new Font("Microsoft Sans Serif", 20);
                                             btnSig.ForeColor = Color.White;
-                                            btnSig.Text = dataGridView1.Rows[i].Cells[19].Value.ToString();
                                             btnSig.TextAlign = ContentAlignment.MiddleCenter;
                                             btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
-                                            if(DisableSectionButtons.Contains(btnSig.Text))
-                                            {
-                                            btnSig.BackColor = Color.Silver;
-                                            btnSig.Enabled = false;
-                                            }
                                         }
                                     }
                                 }
@@ -1493,8 +1496,7 @@ namespace PalletCard
                 else { 
                     if (!sigBtns)
                         {
-                            //loop through datagrid rows to create a button for each value of field "PaperSectionNo"  
-
+                        //loop through datagrid rows to create a button for each value of field "PaperSectionNo"  
                             for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                             {
                                 var v = dataGridView1.Rows[i].Cells[19].Value;
@@ -1507,19 +1509,22 @@ namespace PalletCard
                                         {
                                             Button btnSig = new Button();
                                             this.flowLayoutPanel1.Controls.Add(btnSig);
-                                            btnSig.Height = 70;
-                                            btnSig.Width = 120;
-                                            btnSig.BackColor = Color.SteelBlue;
-                                            btnSig.Font = new Font("Microsoft Sans Serif", 20);
-                                            btnSig.ForeColor = Color.White;
                                             btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value.ToString();
-                                            btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                                            btnSig.Click += new System.EventHandler(this.sectionButtonExpr1);
                                             if (DisableSectionButtons.Contains(btnSig.Text))
                                             {
                                                 btnSig.BackColor = Color.Silver;
                                                 btnSig.Enabled = false;
                                             }
+                                            else
+                                            {
+                                                btnSig.BackColor = Color.SteelBlue;
+                                            }
+                                            btnSig.Height = 70;
+                                            btnSig.Width = 120;
+                                            btnSig.Font = new Font("Microsoft Sans Serif", 20);
+                                            btnSig.ForeColor = Color.White;
+                                            btnSig.TextAlign = ContentAlignment.MiddleCenter;
+                                            btnSig.Click += new System.EventHandler(this.sectionButtonExpr1);
                                         }
                                     }
                                     dataGridView1.AllowUserToAddRows = false;
@@ -2001,12 +2006,16 @@ namespace PalletCard
                     lbl7.Text = "Pallet Over";
                     // Disable the Section button
                     DisableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
+                    removeFlowLayoutBtns();
+                    sigBtns = false;
                 }
                 else if (produced > required || produced < (required * 115 / 100))
                 {
                     pnlSignature.BringToFront();
                     // Disable the Section button
                     DisableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
+                    removeFlowLayoutBtns();
+                    sigBtns = false;
                 }
             }
             index = 16;
