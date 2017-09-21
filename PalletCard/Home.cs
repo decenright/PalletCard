@@ -1362,9 +1362,8 @@ namespace PalletCard
                 if (x == y)
                 {
                     pnlPalletCard3.BringToFront();
-                    string Expr1 = dataGridView1.Rows[0].Cells[11].Value.ToString();
                     string sig = dataGridView1.Rows[0].Cells[19].Value.ToString();
-                    lbl2.Text = Expr1;
+                    lbl2.Text = dataGridView1.Rows[0].Cells[15].Value.ToString();
                     lbl2.Visible = true;
                     lbl3.Text = "Sheet " + sig;
                     lbl3.Visible = true;
@@ -1483,9 +1482,8 @@ namespace PalletCard
                 if (x == y)
                 {
                     pnlPalletCard3.BringToFront();
-                    string Expr1 = dataGridView1.Rows[0].Cells[11].Value.ToString();
                     string sig = dataGridView1.Rows[0].Cells[19].Value.ToString();
-                    lbl2.Text = Expr1;
+                    lbl2.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
                     lbl2.Visible = true;
                     lbl3.Text = "Sheet " + sig;
                     lbl3.Visible = true;
