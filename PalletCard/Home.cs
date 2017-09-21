@@ -16,7 +16,7 @@ namespace PalletCard
     public partial class Home : Form
     {
         List<Panel> listPanel = new List<Panel>();
-        List<string> sectionButtons = new List<string>();
+        List<string> DisableSectionButtons = new List<string>();
         int index;
         bool sectionBtns;
         bool sigBtns;
@@ -1052,39 +1052,113 @@ namespace PalletCard
 
         private void btnQATravellerBlurb_Click(object sender, EventArgs e)
         {
+            // Requery the data to refresh dataGridView2 with the newly added PalletNumber and barCode
+            string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
+            string CommandText = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
+            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+            myAdapter.SelectCommand = myCommand;
+            DataSet palletCardData1 = new DataSet();
+            try
+            {
+                myConnection.Open();
+                myAdapter.Fill(palletCardData1);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            using (DataTable palletCardLog = new DataTable())
+            {
+                myAdapter.Fill(palletCardLog);
+                dataGridView2.DataSource = palletCardLog;
+            }
+
+            this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
+            string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
+            Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
+            using (Graphics graphics = Graphics.FromImage(bitMap))
+            {
+                Font oFont = new Font("IDAutomationHC39M", 16);
+                PointF point = new PointF(2f, 2f);
+                SolidBrush blackBrush = new SolidBrush(Color.Black);
+                SolidBrush whiteBrush = new SolidBrush(Color.White);
+                graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
+                graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
+            }
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bitMap.Save(ms, ImageFormat.Png);
+                pictureBox1.Image = bitMap;
+                pictureBox1.Height = bitMap.Height;
+                pictureBox1.Width = bitMap.Width;
+            }
+
+            pnlPalletCardPrint.BringToFront();
+            lblPC_JobNo.Text = lblJobNo.Text;
+            lblPC_JobNo.Visible = true;
+            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            lblPC_Customer.Visible = true;
+            lblPC_SheetQty.Text = lbl5.Text;
+            lblPC_SheetQty.Visible = true;
+            lblPC_Press.Text = "Press - " + lblPress.Text;
+            lblPC_Press.Visible = true;
+            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            lblPC_Date.Visible = true;
+            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            lblPC_Note.Visible = true;
+            lblPC_PalletNumber.Text = "Pallet No " + PalletNumber.ToString();
+            lblPC_PalletNumber.Visible = true;
+            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Visible = true;
+            index = 16;
+
             //PrintDocument pd = new PrintDocument();
             //pd.PrintPage += new PrintPageEventHandler(PrintSignature);
             //btnPrint.Visible = false;
             ////pd.Print();
             //btnPrint.Visible = true;
 
-            getAutoNumber();
-
-            DateTime CurrentDate = DateTime.Now;
-            string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            //getAutoNumber();
 
 
-            string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
 
-            Bitmap bitmap = DrawControlToBitmap(SignaturePanel);
-            bitmap.Save("c://Temp//" + this.autoNum + ".jpg", ImageFormat.Jpeg);
-            System.Diagnostics.Process.Start("c://Temp//"+ this.autoNum + ".jpg");
-          
-            using (SqlConnection cs = new SqlConnection(constring))
-            {
-                try
-                {
-                    SqlCommand cmd = new SqlCommand("insert Log(Signature, Timestamp1) values('" + this.autoNum + "','" + CurrentDate + "')", cs);                  
-                    cs.Open();
-                    cmd.ExecuteNonQuery();
-                    cs.Close();
-                    this.autoNum = this.autoNum + 1;
-                }
-                catch (Exception err)
-                {
-                    MessageBox.Show(err.Message);
-                }
-            }
+
+
+            //DateTime CurrentDate = DateTime.Now;
+            //string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+
+            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+
+            //Bitmap bitmap = DrawControlToBitmap(SignaturePanel);
+            //bitmap.Save("c://Temp//" + this.autoNum + ".jpg", ImageFormat.Jpeg);
+            //System.Diagnostics.Process.Start("c://Temp//"+ this.autoNum + ".jpg");
+
+            //using (SqlConnection cs = new SqlConnection(constring))
+            //{
+            //    try
+            //    {
+            //        SqlCommand cmd = new SqlCommand("insert Log(Signature, Timestamp1) values('" + this.autoNum + "','" + CurrentDate + "')", cs);                  
+            //        cs.Open();
+            //        cmd.ExecuteNonQuery();
+            //        cs.Close();
+            //        this.autoNum = this.autoNum + 1;
+            //    }
+            //    catch (Exception err)
+            //    {
+            //        MessageBox.Show(err.Message);
+            //    }
+            //}
+
+
+
+
 
             //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
             //string Query = "insert into Log (SignatureByte) values(@SignatureByte);";
@@ -1320,9 +1394,10 @@ namespace PalletCard
                                             btnSig.Text = dataGridView1.Rows[i].Cells[19].Value.ToString();
                                             btnSig.TextAlign = ContentAlignment.MiddleCenter;
                                             btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
-                                            if(sectionButtons.Contains(btnSig.Text))
+                                            if(DisableSectionButtons.Contains(btnSig.Text))
                                             {
                                             btnSig.BackColor = Color.Silver;
+                                            btnSig.Enabled = false;
                                             }
                                         }
                                     }
@@ -1440,6 +1515,11 @@ namespace PalletCard
                                             btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value.ToString();
                                             btnSig.TextAlign = ContentAlignment.MiddleCenter;
                                             btnSig.Click += new System.EventHandler(this.sectionButtonExpr1);
+                                            if (DisableSectionButtons.Contains(btnSig.Text))
+                                            {
+                                                btnSig.BackColor = Color.Silver;
+                                                btnSig.Enabled = false;
+                                            }
                                         }
                                     }
                                     dataGridView1.AllowUserToAddRows = false;
@@ -1451,7 +1531,7 @@ namespace PalletCard
               }
         }
 
-//Dynamic button click - Section buttons, Pallet Card work flow
+//Dynamic button click - Section buttons SectionName, Pallet Card work flow
         private void sectionButtonSectionName(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -1589,7 +1669,6 @@ namespace PalletCard
                     {
                         lblNumberUp.Visible = true;
                         lblNumberUpQty.Visible = true;
-
                         Label lbl1 = new Label();
                         this.flowLayoutPanel2.Controls.Add(lbl1);
                         lbl1.Height = 60;
@@ -1600,7 +1679,6 @@ namespace PalletCard
                         lbl1.ForeColor = Color.White;
                         lbl1.Left = 50;
                         lbl1.Text = this.dataGridView1.Rows[i].Cells[12].Value.ToString();
-
                         TextBox textBox1 = new TextBox();
                         this.flowLayoutPanel2.Controls.Add(textBox1);
                         textBox1.Height = 55;
@@ -1786,9 +1864,6 @@ namespace PalletCard
             {
                 conDatabase.Open();
                 myReader = cmdDatabase.ExecuteReader();
-                //while (myReader.Read())
-                //{
-                //}
                 conDatabase.Close();
             }
             catch (Exception ex)
@@ -1848,10 +1923,8 @@ namespace PalletCard
                 }
                 else
                 {
-                    for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
-                    {
-                        PalletNumber = (int)dataGridView2.Rows[i].Cells[4].Value + 1;
-                    }
+                    this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
+                    PalletNumber = (int)dataGridView2.Rows[0].Cells[4].Value + 1;
                 }
             }
 
@@ -1880,10 +1953,26 @@ namespace PalletCard
             dataGridView2.AllowUserToAddRows = false;
 
             // Add to sectionButtons list in order to grey out the buttons for the next Section selection
-            foreach (DataGridViewRow item in dataGridView1.Rows)
-            {
-                sectionButtons.Add(item.Cells[19].Value.ToString());
-            }
+            //foreach (DataGridViewRow item in dataGridView1.Rows)
+            //{
+            //    sectionButtons.Add(item.Cells[19].Value.ToString());
+            //}
+
+
+            // Add to sectionButtons list in order to grey out the buttons for the next Section selection
+            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            //{
+            //    sectionButtons.Add(Convert.ToString(dataGridView1.Rows[i].Cells[19].Value));
+            //    MessageBox.Show(sectionButtons.ToString());
+            //}
+
+
+            //foreach (DataGridViewRow row in dataGridView1.Rows)
+            //{
+            //    sectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
+            //}
+
+
 
             // Get the quantities produced from the previous pallet cards
             int sumProduced = 0;
@@ -1910,10 +1999,14 @@ namespace PalletCard
                     pnlPalletCard10.BringToFront();
                     lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
                     lbl7.Text = "Pallet Over";
+                    // Disable the Section button
+                    DisableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                 }
                 else if (produced > required || produced < (required * 115 / 100))
                 {
                     pnlSignature.BringToFront();
+                    // Disable the Section button
+                    DisableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                 }
             }
             index = 16;
@@ -1969,7 +2062,6 @@ namespace PalletCard
                         }
                         else
                             {
-
                                 this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
                                 PalletNumber = (int)dataGridView2.Rows[0].Cells[4].Value + 1;
                             }
