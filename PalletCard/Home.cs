@@ -1986,7 +1986,7 @@ namespace PalletCard
                         }
                     }
                   // Send email notification
-                        MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + "has " + shortBy + " insufficient sheets");
+                         MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + "- has " + shortBy + " insufficient sheets");
                         SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                         client.Port = 25;
                         //client.Credentials = new System.Net.NetworkCredential("declan.enright@colorman.ie", "NorthWall11");
@@ -2005,7 +2005,7 @@ namespace PalletCard
                     sigBtns = false;
 
                     // Send email notification
-                    MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + "has " + shortBy + " insufficient sheets");
+                    MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " - is over by" + overBy);                  
                     SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                     client.Port = 25;
                     //client.Credentials = new System.Net.NetworkCredential("declan.enright@colorman.ie", "NorthWall11");
@@ -2025,9 +2025,9 @@ namespace PalletCard
                     for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
                     { 
                             if (Convert.ToInt32(dataGridView2.Rows[i].Cells[7].Value) != 1)
-                        {
-                            MessageBox.Show("Section ", dataGridView2.Rows[i].Cells[8].Value.ToString() + " is not complete");
-                        }
+                            {
+                                MessageBox.Show("Section " + dataGridView2.Rows[i].Cells[8].Value.ToString() + " is not complete");
+                            }
                     }
                 }
             }
