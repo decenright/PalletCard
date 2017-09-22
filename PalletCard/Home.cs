@@ -10,6 +10,8 @@ using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.ComponentModel;
+using System.Net.Mail;
+using System.Net;
 
 namespace PalletCard
 {
@@ -1983,6 +1985,14 @@ namespace PalletCard
                             MessageBox.Show("Section " + dataGridView2.Rows[i].Cells[8].Value.ToString() + " is not complete");
                         }
                     }
+                  // Send email notification
+                        MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + "has " + shortBy + " insufficient sheets");
+                        SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+                        client.Port = 25;
+                        //client.Credentials = new System.Net.NetworkCredential("declan.enright@colorman.ie", "NorthWall11");
+                        client.EnableSsl = false;
+                        client.Send(mail);
+                        MessageBox.Show("Mail Sent!", "Success", MessageBoxButtons.OK);                 
                 }
                 else if (produced > (required * 115 / 100))
                 {
@@ -1993,6 +2003,15 @@ namespace PalletCard
                     DisableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                     removeFlowLayoutBtns();
                     sigBtns = false;
+
+                    // Send email notification
+                    MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + "has " + shortBy + " insufficient sheets");
+                    SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+                    client.Port = 25;
+                    //client.Credentials = new System.Net.NetworkCredential("declan.enright@colorman.ie", "NorthWall11");
+                    client.EnableSsl = false;
+                    client.Send(mail);
+                    MessageBox.Show("Mail Sent!", "Success", MessageBoxButtons.OK);
                 }
                 else if (produced > required || produced < (required * 115 / 100))
                 {
@@ -2280,6 +2299,45 @@ namespace PalletCard
             //lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
             //lblPC_Note.Visible = true;
             //index = 16;
+        }
+
+
+
+
+        public static void CreateTestMessage3()
+        {
+            MailAddress to = new MailAddress("declan.enright@colorman.ie");
+            MailAddress from = new MailAddress("declan.enright@colorman.ie");
+            MailMessage message = new MailMessage(from, to);
+            message.Subject = "Using the new SMTP client.";
+            message.Body = @"Using this new feature, you can send an e-mail message from an application very easily.";
+            // Use the application or machine configuration to get the  
+            // host, port, and credentials.
+
+           
+
+            SmtpClient client = new SmtpClient();
+            Console.WriteLine("Sending an e-mail message to {0} at {1} by using the SMTP host={2}.",
+                to.User, to.Host, client.Host);
+            try
+            {
+                client.Send(message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception caught in CreateTestMessage3(): {0}", ex.ToString());
+            }
+        }
+
+
+        private void SendEmail1()
+        { MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "The pallet is Short");
+            SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+            client.Port = 25;
+            //client.Credentials = new System.Net.NetworkCredential("declan.enright@colorman.ie", "NorthWall11");
+            client.EnableSsl = false;        
+            client.Send(mail);
+            MessageBox.Show("Mail Sent!", "Success", MessageBoxButtons.OK);
         }
 
 
