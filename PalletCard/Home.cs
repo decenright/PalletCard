@@ -11,14 +11,16 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.ComponentModel;
 using System.Net.Mail;
-using System.Net;
+using System.Linq;
 
 namespace PalletCard
 {
     public partial class Home : Form
     {
         List<Panel> listPanel = new List<Panel>();
-        List<string> DisableSectionButtons = new List<string>();
+        List<string> disableSectionButtons = new List<string>();
+        List<string> allSections = new List<string>();
+        List<string> completedSections = new List<string>();
         int index;
         bool sectionBtns;
         bool sigBtns;
@@ -32,6 +34,7 @@ namespace PalletCard
         int produced;
         int shortBy;
         int overBy;
+        int oversCalc;
         int PalletNumber;
         DateTime CurrentDate= DateTime.Now;
       
@@ -317,7 +320,7 @@ namespace PalletCard
                 btnIsSectionFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
                 index = 15;
             }
-            //else if (index == 18)
+            //else if (index == 17)
             //{
             //    pnlPalletCard8.BringToFront();
             //    //index = 14;
@@ -1263,6 +1266,9 @@ namespace PalletCard
                                 }
                             }
                             dataGridView1.AllowUserToAddRows = false;
+
+                            // get all the section numbers in a list for later
+                            allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
                         }
                     }
                     sectionBtns = true;
@@ -1325,7 +1331,9 @@ namespace PalletCard
                                         }
                                     }
                                     dataGridView1.AllowUserToAddRows = false;
-                                }
+                                // get all the section numbers in a list for later
+                                allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
+                            }
                             }
                             sectionBtns = true;
                         }
@@ -1388,7 +1396,7 @@ namespace PalletCard
                                             Button btnSig = new Button();
                                             this.flowLayoutPanel1.Controls.Add(btnSig);
                                             btnSig.Text = dataGridView1.Rows[i].Cells[19].Value.ToString();
-                                            if (DisableSectionButtons.Contains(btnSig.Text))
+                                            if (disableSectionButtons.Contains(btnSig.Text))
                                             {
                                                 btnSig.BackColor = Color.Silver;
                                                 btnSig.Enabled = false;
@@ -1510,7 +1518,7 @@ namespace PalletCard
                                             Button btnSig = new Button();
                                             this.flowLayoutPanel1.Controls.Add(btnSig);
                                             btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value.ToString();
-                                            if (DisableSectionButtons.Contains(btnSig.Text))
+                                            if (disableSectionButtons.Contains(btnSig.Text))
                                             {
                                                 btnSig.BackColor = Color.Silver;
                                                 btnSig.Enabled = false;
@@ -1735,6 +1743,11 @@ namespace PalletCard
 
         private void btnFinishPalletContinue_Click(object sender, EventArgs e)
         {
+            // Disable the Section button
+            disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
+            removeFlowLayoutBtns();
+            sigBtns = false;
+
             this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
             string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value + 1));
             Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
@@ -1790,6 +1803,14 @@ namespace PalletCard
             //        }
             //}
             pnlPalletCard8.BringToFront();
+            if (dataGridView1.Rows[0].Cells[15].Value.ToString() == "")
+            {
+                lblIsSectionFinished.Text = "Is " + dataGridView1.Rows[0].Cells[11].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " finished ?";
+            }
+            else
+            {
+                lblIsSectionFinished.Text = "Is " + dataGridView1.Rows[0].Cells[15].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " finished ?";
+            }
             index = 15;
         }
 
@@ -1967,40 +1988,89 @@ namespace PalletCard
             required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
             produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection + sumProduced;
             shortBy = required - produced;
-            overBy = produced - (required * 115/100);
+            overBy = produced - required;
+
+            if (produced - (required * 110 / 100) < 50)
+            {
+                oversCalc = required + 50;
+            }
+            else
+            {
+                oversCalc = produced - (required * 110 / 100);
+            }
 
             if (!backupRequired || !varnishRequired)
             {
                 if (produced < required)
                 {
                     pnlPalletCard6.BringToFront();
-                    lblPalletDidNotMakeQty.Text = lblJobNo.Text + " has " + shortBy + " insufficient sheets";
+                    lblPalletDidNotMakeQty.Text = "Job " + lblJobNo.Text + " Sheet " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " has " + shortBy + " insufficient sheets";
                     lbl7.Text = "Pallet Short";
+                    lblFinishedPallets.Visible = false;
 
                     // Check if 1 finished pallet for each section - if not provide a warning message listing the remaing pallets to finish
+
+
+
+                    //for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
+                    //{
+                    //    allSections.Add(dataGridView2.Rows[i].Cells[19].Value.ToString());
+                    //}
+
+
                     for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
                     {
-                        if (Convert.ToInt32(dataGridView2.Rows[i].Cells[7].Value) != 1)
+                        if(Convert.ToInt32(dataGridView2.Rows[i].Cells[8].Value) != 1)
                         {
-                            MessageBox.Show("Section " + dataGridView2.Rows[i].Cells[8].Value.ToString() + " is not complete");
-                        }
+                            completedSections.Add(dataGridView2.Rows[i].Cells[7].Value.ToString());
+                        }                   
                     }
-                  // Send email notification
-                         MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + "- has " + shortBy + " insufficient sheets");
+
+
+
+                        List<string> sectionsNoLastFlag = new List<string>();
+                    foreach (string s in disableSectionButtons)
+                    {
+                        if (!allSections.Contains(s))
+                            sectionsNoLastFlag.Add(s);
+                    }
+
+                    foreach (string s in sectionsNoLastFlag)
+                    {
+                        lblFinishedPallets.Text = "Section " + s + " is not complete" + "\r\n";
+                    }
+
+
+                    //for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
+                    //{
+                    //    if (Convert.ToInt32(dataGridView2.Rows[i].Cells[7].Value) != 1)
+                    //    {
+                    //        lblFinishedPallets.Visible = true;
+                    //        lblFinishedPallets.Text = "Section " + dataGridView2.Rows[i].Cells[8].Value.ToString() + " is not complete" + "\r\n";
+                    //        for (int j = 0; j < this.dataGridView1.Rows.Count; j++)
+                    //        {
+                    //            if (!DisableSectionButtons.Contains(dataGridView2.Rows[i].Cells[7].Value.ToString()))
+                    //            {
+                    //                lblFinishedPallets.Text = "Section " + dataGridView1.Rows[j].Cells[8].Value.ToString() + " is not complete" + "\r\n";
+                    //            }
+                    //        }
+                    //    }
+                    //}
+
+                    // Send email notification
+                    MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + "- has " + shortBy + " insufficient sheets");
                         SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                         client.Port = 25;
-                        //client.Credentials = new System.Net.NetworkCredential("declan.enright@colorman.ie", "NorthWall11");
                         client.EnableSsl = false;
-                        client.Send(mail);
-                        MessageBox.Show("Mail Sent!", "Success", MessageBoxButtons.OK);                 
+                        client.Send(mail);               
                 }
-                else if (produced > (required * 115 / 100))
+                else if (produced > oversCalc)
                 {
                     pnlPalletCard10.BringToFront();
                     lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
                     lbl7.Text = "Pallet Over";
                     // Disable the Section button
-                    DisableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
+                    disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                     removeFlowLayoutBtns();
                     sigBtns = false;
 
@@ -2008,16 +2078,14 @@ namespace PalletCard
                     MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " - is over by" + overBy);                  
                     SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                     client.Port = 25;
-                    //client.Credentials = new System.Net.NetworkCredential("declan.enright@colorman.ie", "NorthWall11");
                     client.EnableSsl = false;
                     client.Send(mail);
-                    MessageBox.Show("Mail Sent!", "Success", MessageBoxButtons.OK);
                 }
-                else if (produced > required || produced < (required * 115 / 100))
+                else if (produced > required & produced < oversCalc)
                 {
                     pnlSignature.BringToFront();
                     // Disable the Section button
-                    DisableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
+                    disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                     removeFlowLayoutBtns();
                     sigBtns = false;
 
