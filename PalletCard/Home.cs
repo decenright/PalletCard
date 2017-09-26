@@ -1818,6 +1818,32 @@ namespace PalletCard
         {
             Cancel();
             pnlHome0.BringToFront();
+            string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
+            string CommandText = "DELETE FROM Log where JobNo = '" + lblJobNo.Text + "' and PalletNumber = PalletNumber";
+            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+            myAdapter.SelectCommand = myCommand;
+            DataSet palletCardData = new DataSet();
+            try
+            {
+                myConnection.Open();
+                myAdapter.Fill(palletCardData);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
+            finally
+            {
+                myConnection.Close();
+            }
+            using (DataTable palletCardLog = new DataTable())
+            {
+                myAdapter.Fill(palletCardLog);
+                dataGridView2.DataSource = palletCardLog;
+            }
             index = 0;
         }
 
@@ -2052,7 +2078,10 @@ namespace PalletCard
 
                     lblFinishedPallets.Visible = true;
                     lblFinishedPallets.Text = "";
-                    lblWarning.Visible = true;
+                    if (sectionsNoLastFlag.Count > 0)
+                    {
+                        lblWarning.Visible = true;
+                    }                      
                     foreach (string s in sectionsNoLastFlag)
                     {                    
                         lblFinishedPallets.Text += "Section " + s + " is not complete" + "\r\n";
