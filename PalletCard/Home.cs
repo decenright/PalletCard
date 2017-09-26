@@ -1266,12 +1266,9 @@ namespace PalletCard
                                 }
                             }
                             dataGridView1.AllowUserToAddRows = false;
-
-                            // get all the section numbers in a list for later
-                            allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
                         }
                     }
-                    sectionBtns = true;
+                    sectionBtns = true;                   
                 }
             }
             //************ ELSE USE EXPR1 FIELD
@@ -1331,9 +1328,8 @@ namespace PalletCard
                                         }
                                     }
                                     dataGridView1.AllowUserToAddRows = false;
-                                // get all the section numbers in a list for later
-                                allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
-                            }
+
+                                }
                             }
                             sectionBtns = true;
                         }
@@ -1415,9 +1411,11 @@ namespace PalletCard
                                     }
                                 }
                                 dataGridView1.AllowUserToAddRows = false;
+                                // get all the section numbers in a list for later
+                                allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
                             }
                         }
-                    sigBtns = true;
+                        sigBtns = true;
                     }
 
 
@@ -1536,6 +1534,8 @@ namespace PalletCard
                                         }
                                     }
                                     dataGridView1.AllowUserToAddRows = false;
+                                    // get all the section numbers in a list for later
+                                    allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
                                 }
                             }
                         }
@@ -1978,6 +1978,31 @@ namespace PalletCard
 
             dataGridView2.AllowUserToAddRows = false;
 
+            OdbcConnection myConnection1 = new OdbcConnection(ConnectionString);
+            OdbcCommand myCommand1 = new OdbcCommand(CommandText, myConnection1);
+            OdbcDataAdapter myAdapter1 = new OdbcDataAdapter();
+            myAdapter1.SelectCommand = myCommand1;
+            DataSet palletCardData1 = new DataSet();
+            try
+            {
+                myConnection.Open();
+                myAdapter.Fill(palletCardData1);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
+            finally
+            {
+                myConnection1.Close();
+            }
+            using (DataTable palletCardLog1 = new DataTable())
+            {
+                myAdapter1.Fill(palletCardLog1);
+                dataGridView2.DataSource = palletCardLog1;
+            }
+
             // Get the quantities produced from the previous pallet cards
             int sumProduced = 0;
             for (int i = 0; i < dataGridView2.Rows.Count; i++)
@@ -2009,53 +2034,29 @@ namespace PalletCard
                     lblFinishedPallets.Visible = false;
 
                     // Check if 1 finished pallet for each section - if not provide a warning message listing the remaing pallets to finish
-
-
-
-                    //for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
-                    //{
-                    //    allSections.Add(dataGridView2.Rows[i].Cells[19].Value.ToString());
-                    //}
-
-
                     for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
                     {
-                        if(Convert.ToInt32(dataGridView2.Rows[i].Cells[8].Value) != 1)
+                        if(Convert.ToInt32(dataGridView2.Rows[i].Cells[7].Value) == 1)
                         {
-                            completedSections.Add(dataGridView2.Rows[i].Cells[7].Value.ToString());
+                            completedSections.Add(dataGridView2.Rows[i].Cells[8].Value.ToString());
                         }                   
                     }
 
-
-
                         List<string> sectionsNoLastFlag = new List<string>();
-                    foreach (string s in disableSectionButtons)
+                    foreach (string s in allSections)
                     {
-                        if (!allSections.Contains(s))
+                        if (!completedSections.Contains(s))
                             sectionsNoLastFlag.Add(s);
                     }
 
+                    lblFinishedPallets.Visible = true;
+                    lblFinishedPallets.Text = "";
+                    lblWarning.Visible = true;
                     foreach (string s in sectionsNoLastFlag)
-                    {
-                        lblFinishedPallets.Text = "Section " + s + " is not complete" + "\r\n";
+                    {                    
+                        lblFinishedPallets.Text += "Section " + s + " is not complete" + "\r\n";
                     }
 
-
-                    //for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
-                    //{
-                    //    if (Convert.ToInt32(dataGridView2.Rows[i].Cells[7].Value) != 1)
-                    //    {
-                    //        lblFinishedPallets.Visible = true;
-                    //        lblFinishedPallets.Text = "Section " + dataGridView2.Rows[i].Cells[8].Value.ToString() + " is not complete" + "\r\n";
-                    //        for (int j = 0; j < this.dataGridView1.Rows.Count; j++)
-                    //        {
-                    //            if (!DisableSectionButtons.Contains(dataGridView2.Rows[i].Cells[7].Value.ToString()))
-                    //            {
-                    //                lblFinishedPallets.Text = "Section " + dataGridView1.Rows[j].Cells[8].Value.ToString() + " is not complete" + "\r\n";
-                    //            }
-                    //        }
-                    //    }
-                    //}
 
                     // Send email notification
                     MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + "- has " + shortBy + " insufficient sheets");
