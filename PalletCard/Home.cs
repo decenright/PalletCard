@@ -617,6 +617,8 @@ namespace PalletCard
         {
             pnlReturnPaper3.BringToFront();
             lblPrint1.Text = dataGridView1.Rows[0].Cells[16].Value.ToString();
+            lblPrint1.MaximumSize = new Size(450, 220);
+            lblPrint1.AutoSize = true;
             lblPrint2.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
             lblPrint3.Text = lblPheight.Text;
             lblPrint4.Text = "Press - XL106";
@@ -840,6 +842,8 @@ namespace PalletCard
             lblPrint12.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
             lblPrint13.Text = tbxOtherReason.Text;
             lblPrint14.Text = this.dataGridView1.Rows[0].Cells[17].Value.ToString();
+            lblPrint14.MaximumSize = new Size(450, 220);
+            lblPrint14.AutoSize = true;
             index = 7;
         }
 
