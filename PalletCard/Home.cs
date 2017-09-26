@@ -1749,7 +1749,7 @@ namespace PalletCard
             sigBtns = false;
 
             this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
-            string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value + 1));
+            string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
             Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
             using (Graphics graphics = Graphics.FromImage(bitMap))
             {
@@ -1976,7 +1976,19 @@ namespace PalletCard
                 MessageBox.Show(ex.Message);
             }
 
-            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToAddRows = false;            
+
+            // Get the quantities produced from the previous pallet cards
+            int sumProduced = 0;
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            {
+                sumProduced += Convert.ToInt32(dataGridView2.Rows[i].Cells[9].Value);
+            }
+
+            required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
+            produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection + sumProduced;
+            shortBy = required - produced;
+            overBy = produced - required;
 
             OdbcConnection myConnection1 = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand1 = new OdbcCommand(CommandText, myConnection1);
@@ -2003,18 +2015,7 @@ namespace PalletCard
                 dataGridView2.DataSource = palletCardLog1;
             }
 
-            // Get the quantities produced from the previous pallet cards
-            int sumProduced = 0;
-            for (int i = 0; i < dataGridView2.Rows.Count; i++)
-            {
-                sumProduced += Convert.ToInt32(dataGridView2.Rows[i].Cells[9].Value);
-            }
-
-            required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
-            produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection + sumProduced;
-            shortBy = required - produced;
-            overBy = produced - required;
-
+            // Over Produced/Under produced Logic
             if (produced - (required * 110 / 100) < 50)
             {
                 oversCalc = required + 50;
@@ -2057,7 +2058,6 @@ namespace PalletCard
                         lblFinishedPallets.Text += "Section " + s + " is not complete" + "\r\n";
                     }
 
-
                     // Send email notification
                     MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + "- has " + shortBy + " insufficient sheets");
                         SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
@@ -2075,8 +2075,32 @@ namespace PalletCard
                     removeFlowLayoutBtns();
                     sigBtns = false;
 
+                    // Check if 1 finished pallet for each section - if not provide a warning message listing the remaing pallets to finish
+                    for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
+                    {
+                        if (Convert.ToInt32(dataGridView2.Rows[i].Cells[7].Value) == 1)
+                        {
+                            completedSections.Add(dataGridView2.Rows[i].Cells[8].Value.ToString());
+                        }
+                    }
+
+                    List<string> sectionsNoLastFlag = new List<string>();
+                    foreach (string s in allSections)
+                    {
+                        if (!completedSections.Contains(s))
+                            sectionsNoLastFlag.Add(s);
+                    }
+
+                    lblFinishedPallets.Visible = true;
+                    lblFinishedPallets.Text = "";
+                    lblWarning.Visible = true;
+                    foreach (string s in sectionsNoLastFlag)
+                    {
+                        lblFinishedPallets.Text += "Section " + s + " is not complete" + "\r\n";
+                    }
+
                     // Send email notification
-                    MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " - is over by" + overBy);                  
+                    MailMessage mail = new MailMessage("PalletOver@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " - is over by " + overBy);                  
                     SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                     client.Port = 25;
                     client.EnableSsl = false;
@@ -2092,11 +2116,26 @@ namespace PalletCard
 
                     // Check if 1 finished pallet for each section - if not provide a warning message listing the remaing pallets to finish
                     for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
-                    { 
-                            if (Convert.ToInt32(dataGridView2.Rows[i].Cells[7].Value) != 1)
-                            {
-                                MessageBox.Show("Section " + dataGridView2.Rows[i].Cells[8].Value.ToString() + " is not complete");
-                            }
+                    {
+                        if (Convert.ToInt32(dataGridView2.Rows[i].Cells[7].Value) == 1)
+                        {
+                            completedSections.Add(dataGridView2.Rows[i].Cells[8].Value.ToString());
+                        }
+                    }
+
+                    List<string> sectionsNoLastFlag = new List<string>();
+                    foreach (string s in allSections)
+                    {
+                        if (!completedSections.Contains(s))
+                            sectionsNoLastFlag.Add(s);
+                    }
+
+                    lblFinishedPallets.Visible = true;
+                    lblFinishedPallets.Text = "";
+                    lblWarning.Visible = true;
+                    foreach (string s in sectionsNoLastFlag)
+                    {
+                        lblFinishedPallets.Text += "Section " + s + " is not complete" + "\r\n";
                     }
                 }
             }
