@@ -308,23 +308,23 @@ namespace PalletCard
                 pnlPalletCard7.BringToFront();
                 index = 14;
             }
+
             else if (index == 16)
             {
                 pnlPalletCard8.BringToFront();
-                lblIsPartFinished.Visible = false;
-                btnIsPartFinishedYes.Visible = false;
-                btnIsPartFinishedNo.Visible = false;
+                index = 15;
+            }
+
+            else if (index == 17)
+            {
+                pnlPalletCard8.BringToFront();
                 btnIsSheetFinishedYes.Enabled = true;
                 btnIsSectionFinishedNo.Enabled = true;
                 btnIsSheetFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
                 btnIsSectionFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
                 index = 15;
             }
-            //else if (index == 17)
-            //{
-            //    pnlPalletCard8.BringToFront();
-            //    //index = 14;
-            //}
+
         }
 
 
@@ -1125,7 +1125,8 @@ namespace PalletCard
             lblPC_PalletNumber.Visible = true;
             lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
             lblPC_Sig.Visible = true;
-            index = 16;
+            btnCancel.Visible = false;
+            index = 17;
 
             //PrintDocument pd = new PrintDocument();
             //pd.PrintPage += new PrintPageEventHandler(PrintSignature);
@@ -1751,45 +1752,8 @@ namespace PalletCard
             disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
             removeFlowLayoutBtns();
             sigBtns = false;
-
-            this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
-            string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
-            Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
-            using (Graphics graphics = Graphics.FromImage(bitMap))
-            {
-                Font oFont = new Font("IDAutomationHC39M", 16);
-                PointF point = new PointF(2f, 2f);
-                SolidBrush blackBrush = new SolidBrush(Color.Black);
-                SolidBrush whiteBrush = new SolidBrush(Color.White);
-                graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
-                graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
-            }
-            using (MemoryStream ms = new MemoryStream())
-            {
-                bitMap.Save(ms, ImageFormat.Png);
-                pictureBox1.Image = bitMap;
-                pictureBox1.Height = bitMap.Height;
-                pictureBox1.Width = bitMap.Width;
-            }
-
-            pnlPalletCardPrint.BringToFront();
-            lblPC_JobNo.Text = lblJobNo.Text;
-            lblPC_JobNo.Visible = true;
-            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-            lblPC_Customer.Visible = true;
-            lblPC_SheetQty.Text = lbl5.Text;
-            lblPC_SheetQty.Visible = true;
-            lblPC_Press.Text = "Press - " + lblPress.Text;
-            lblPC_Press.Visible = true;
-            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-            lblPC_Date.Visible = true;
-            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-            lblPC_Note.Visible = true;
-            lblPC_PalletNumber.Text = "Pallet No " + PalletNumber.ToString();
-            lblPC_PalletNumber.Visible = true;
-            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
-            lblPC_Sig.Visible = true;
-            index = 16;
+            pnlSignature.BringToFront();
+            btnCancel.Visible = false;
         }
 
         private void btnPalletFinished_Click(object sender, EventArgs e)
@@ -1868,7 +1832,7 @@ namespace PalletCard
             lblPC_Date.Visible = true;
             lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
             lblPC_Note.Visible = true;
-            index = 16;
+            index = 17;
             //SAVE TO DATABASE
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
@@ -1908,7 +1872,7 @@ namespace PalletCard
             lblPC_Date.Visible = true;
             lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
             lblPC_Note.Visible = true;
-            index = 16;
+            index = 17;
             //SAVE TO DATABASE
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
@@ -2045,14 +2009,15 @@ namespace PalletCard
                 dataGridView2.DataSource = palletCardLog1;
             }
 
-            // Over Produced/Under produced Logic
-            if (produced - (required * 110 / 100) < 50)
+            // OVER PRODUCED/UNDER PRODUCED LOGIC
+
+            if (produced - (required * 105 / 100) < 50)
             {
                 oversCalc = required + 50;
             }
             else
             {
-                oversCalc = produced - (required * 110 / 100);
+                oversCalc = required +  (produced - (required * 105 / 100));
             }
 
             if (!backupRequired || !varnishRequired)
@@ -2060,6 +2025,7 @@ namespace PalletCard
                 if (produced < required)
                 {
                     pnlPalletCard6.BringToFront();
+                    btnBack.Visible = false;
                     lblPalletDidNotMakeQty.Text = "Job " + lblJobNo.Text + " Sheet " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " has " + shortBy + " insufficient sheets";
                     lbl7.Text = "Pallet Short";
                     lblFinishedPallets.Visible = false;
@@ -2096,11 +2062,13 @@ namespace PalletCard
                         SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                         client.Port = 25;
                         client.EnableSsl = false;
-                        client.Send(mail);               
+                        client.Send(mail);                                                     
                 }
+
                 else if (produced > oversCalc)
                 {
-                    pnlPalletCard10.BringToFront();
+                    pnlPalletCard9.BringToFront();
+                    btnBack.Visible = false;
                     lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
                     lbl7.Text = "Pallet Over";
                     // Disable the Section button
@@ -2124,24 +2092,26 @@ namespace PalletCard
                             sectionsNoLastFlag.Add(s);
                     }
 
-                    lblFinishedPallets.Visible = true;
-                    lblFinishedPallets.Text = "";
-                    lblWarning.Visible = true;
+                    lblFinishedPalletsOver.Visible = true;
+                    lblFinishedPalletsOver.Text = "";
+                    lblWarningOver.Visible = true;
                     foreach (string s in sectionsNoLastFlag)
                     {
-                        lblFinishedPallets.Text += "Section " + s + " is not complete" + "\r\n";
+                        lblFinishedPalletsOver.Text += "Section " + s + " is not complete" + "\r\n";
                     }
 
                     // Send email notification
-                    MailMessage mail = new MailMessage("PalletOver@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " - is over by " + overBy);                  
+                    MailMessage mail = new MailMessage("PalletOver@colorman.ie", "declan.enright@colorman.ie", "Pallet Over", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " - is over by " + overBy);                  
                     SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                     client.Port = 25;
                     client.EnableSsl = false;
                     client.Send(mail);
+                    index = 16;
                 }
                 else if (produced > required & produced < oversCalc)
                 {
                     pnlSignature.BringToFront();
+                    btnBack.Visible = false;
                     // Disable the Section button
                     disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                     removeFlowLayoutBtns();
@@ -2298,6 +2268,7 @@ namespace PalletCard
             }
 
             pnlPalletCardPrint.BringToFront();
+            btnBack.Visible = false;
             lblPC_JobNo.Text = lblJobNo.Text;
             lblPC_JobNo.Visible = true;
             lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
@@ -2314,7 +2285,7 @@ namespace PalletCard
             lblPC_PalletNumber.Visible = true;
             lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
             lblPC_Sig.Visible = true;
-            index = 16;
+            index = 17;
         }
 
         private void btnPalletCardPrint_Click(object sender, EventArgs e)
@@ -2350,76 +2321,76 @@ namespace PalletCard
             e.Graphics.DrawImage(img, p);
         }
 
-        private void btnIsPartFinishedNo_Click(object sender, EventArgs e)
-        {
+        //private void btnIsPartFinishedNo_Click(object sender, EventArgs e)
+        //{
 
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                if (Convert.ToInt32(dataGridView1.Rows[i].Cells[19].Value) == 1)
-                {
-                    pnlPalletCardPrint.BringToFront();
-                }
+        //    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+        //    {
+        //        if (Convert.ToInt32(dataGridView1.Rows[i].Cells[19].Value) == 1)
+        //        {
+        //            pnlPalletCardPrint.BringToFront();
+        //        }
 
 
-                //SAVE TO DATABASE
-                //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-                //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, LastPallet) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','"1"');";
-                //SqlConnection conDatabase = new SqlConnection(constring);
-                //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-                //SqlDataReader myReader;
-                //try
-                //{
-                //  conDatabase.Open();
-                //  myReader = cmdDatabase.ExecuteReader();
-                //  conDatabase.Close();
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-            }
-        }
+        //        //SAVE TO DATABASE
+        //        //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+        //        //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, LastPallet) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','"1"');";
+        //        //SqlConnection conDatabase = new SqlConnection(constring);
+        //        //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+        //        //SqlDataReader myReader;
+        //        //try
+        //        //{
+        //        //  conDatabase.Open();
+        //        //  myReader = cmdDatabase.ExecuteReader();
+        //        //  conDatabase.Close();
+        //        //}
+        //        //catch (Exception ex)
+        //        //{
+        //        //    MessageBox.Show(ex.Message);
+        //        //}
+        //    }
+        //}
 
-        private void btnIsPartFinishedYes_Click(object sender, EventArgs e)
-        {
-            required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
-            produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
-            shortBy = required - produced;
-            overBy = produced - required;
+        //private void btnIsPartFinishedYes_Click(object sender, EventArgs e)
+        //{
+        //    required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
+        //    produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
+        //    shortBy = required - produced;
+        //    overBy = produced - required;
 
-            if (!backupRequired || !varnishRequired)
-            {
-                if (produced < required)
-                {
-                    pnlPalletCard6.BringToFront();
-                    lblPalletDidNotMakeQty.Text = lblJobNo.Text + " has " + shortBy + " insufficient sheets";
-                    lbl7.Text = "Pallet Short";
-                }
-                else if (produced > required)
-                {
-                    pnlPalletCard10.BringToFront();
-                    lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
-                    lbl7.Text = "Pallet Over";
-                }
-            }
+        //    if (!backupRequired || !varnishRequired)
+        //    {
+        //        if (produced < required)
+        //        {
+        //            pnlPalletCard6.BringToFront();
+        //            lblPalletDidNotMakeQty.Text = lblJobNo.Text + " has " + shortBy + " insufficient sheets";
+        //            lbl7.Text = "Pallet Short";
+        //        }
+        //        else if (produced > required)
+        //        {
+        //            pnlPalletCard9.BringToFront();
+        //            lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
+        //            lbl7.Text = "Pallet Over";
+        //        }
+        //    }
 
-            //SAVE TO DATABASE
-            //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, LastPallet) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','"1"');";
-            //SqlConnection conDatabase = new SqlConnection(constring);
-            //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-            //SqlDataReader myReader;
-            //try
-            //{
-            //  conDatabase.Open();
-            //  myReader = cmdDatabase.ExecuteReader();
-            //  conDatabase.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-        }
+        //    //SAVE TO DATABASE
+        //    //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+        //    //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, LastPallet) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','"1"');";
+        //    //SqlConnection conDatabase = new SqlConnection(constring);
+        //    //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+        //    //SqlDataReader myReader;
+        //    //try
+        //    //{
+        //    //  conDatabase.Open();
+        //    //  myReader = cmdDatabase.ExecuteReader();
+        //    //  conDatabase.Close();
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    MessageBox.Show(ex.Message);
+        //    //}
+        //}
 
         private void btnPalletOver_Click(object sender, EventArgs e)
         {
@@ -2439,47 +2410,47 @@ namespace PalletCard
             //lblPC_Date.Visible = true;
             //lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
             //lblPC_Note.Visible = true;
-            //index = 16;
+            //index = 17;
         }
 
 
 
 
-        public static void CreateTestMessage3()
-        {
-            MailAddress to = new MailAddress("declan.enright@colorman.ie");
-            MailAddress from = new MailAddress("declan.enright@colorman.ie");
-            MailMessage message = new MailMessage(from, to);
-            message.Subject = "Using the new SMTP client.";
-            message.Body = @"Using this new feature, you can send an e-mail message from an application very easily.";
-            // Use the application or machine configuration to get the  
-            // host, port, and credentials.
+        //public static void CreateTestMessage3()
+        //{
+        //    MailAddress to = new MailAddress("declan.enright@colorman.ie");
+        //    MailAddress from = new MailAddress("declan.enright@colorman.ie");
+        //    MailMessage message = new MailMessage(from, to);
+        //    message.Subject = "Using the new SMTP client.";
+        //    message.Body = @"Using this new feature, you can send an e-mail message from an application very easily.";
+        //    // Use the application or machine configuration to get the  
+        //    // host, port, and credentials.
 
            
 
-            SmtpClient client = new SmtpClient();
-            Console.WriteLine("Sending an e-mail message to {0} at {1} by using the SMTP host={2}.",
-                to.User, to.Host, client.Host);
-            try
-            {
-                client.Send(message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception caught in CreateTestMessage3(): {0}", ex.ToString());
-            }
-        }
+        //    SmtpClient client = new SmtpClient();
+        //    Console.WriteLine("Sending an e-mail message to {0} at {1} by using the SMTP host={2}.",
+        //        to.User, to.Host, client.Host);
+        //    try
+        //    {
+        //        client.Send(message);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Exception caught in CreateTestMessage3(): {0}", ex.ToString());
+        //    }
+        //}
 
 
-        private void SendEmail1()
-        { MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "The pallet is Short");
-            SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
-            client.Port = 25;
-            //client.Credentials = new System.Net.NetworkCredential("declan.enright@colorman.ie", "NorthWall11");
-            client.EnableSsl = false;        
-            client.Send(mail);
-            MessageBox.Show("Mail Sent!", "Success", MessageBoxButtons.OK);
-        }
+        //private void SendEmail1()
+        //{ MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "The pallet is Short");
+        //    SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+        //    client.Port = 25;
+        //    //client.Credentials = new System.Net.NetworkCredential("declan.enright@colorman.ie", "NorthWall11");
+        //    client.EnableSsl = false;        
+        //    client.Send(mail);
+        //    MessageBox.Show("Mail Sent!", "Success", MessageBoxButtons.OK);
+        //}
 
 
     }
