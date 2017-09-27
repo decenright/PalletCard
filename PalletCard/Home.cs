@@ -1976,7 +1976,11 @@ namespace PalletCard
             int sumProduced = 0;
             for (int i = 0; i < dataGridView2.Rows.Count; i++)
             {
-                sumProduced += Convert.ToInt32(dataGridView2.Rows[i].Cells[9].Value);
+                // Sum up only PaperSectionNo's associated with this section not all PaperSectionNo's
+                if (Convert.ToInt32(dataGridView2.Rows[i].Cells[8].Value) == Convert.ToInt32(dataGridView1.Rows[0].Cells[19].Value))
+                {
+                    sumProduced += Convert.ToInt32(dataGridView2.Rows[i].Cells[9].Value);
+                }
             }
 
             required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
