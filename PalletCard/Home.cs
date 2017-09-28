@@ -2015,18 +2015,29 @@ namespace PalletCard
 
             // OVER PRODUCED/UNDER PRODUCED LOGIC
 
-            if (produced - (required * 105 / 100) < 50)
-            {
+
+            if (produced > required & produced < (required * 105 / 100))
+                {
+                oversCalc = (required * 105 / 100);
+                }
+            else 
+                {
                 oversCalc = required + 50;
-            }
-            else
-            {
-                oversCalc = required +  (produced - (required * 105 / 100));
-            }
+                }
+
+
+            //if (produced - (required * 105 / 100) < 50)
+            //{
+            //    oversCalc = required + 50;
+            //}
+            //else
+            //{
+            //    oversCalc = required +  (produced - (required * 105 / 100));
+            //}
 
             if (!backupRequired || !varnishRequired)
             {
-                if (produced < required)
+                if (produced <= required)
                 {
                     pnlPalletCard6.BringToFront();
                     btnBack.Visible = false;
@@ -2112,7 +2123,7 @@ namespace PalletCard
                     client.Send(mail);
                     index = 16;
                 }
-                else if (produced > required & produced < oversCalc)
+                else if (produced <= oversCalc)
                 {
                     pnlSignature.BringToFront();
                     btnBack.Visible = false;
