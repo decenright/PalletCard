@@ -318,9 +318,9 @@ namespace PalletCard
             else if (index == 17)
             {
                 pnlPalletCard8.BringToFront();
-                btnIsSheetFinishedYes.Enabled = true;
+                btnIsSectionFinishedYes.Enabled = true;
                 btnIsSectionFinishedNo.Enabled = true;
-                btnIsSheetFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
+                btnIsSectionFinishedYes.BackColor = System.Drawing.Color.SteelBlue;
                 btnIsSectionFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
                 index = 15;
             }
@@ -1758,28 +1758,25 @@ namespace PalletCard
 
         private void btnPalletFinished_Click(object sender, EventArgs e)
         {
-            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            //{
-            //    if  (Convert.ToInt32(dataGridView1.Rows[i].Cells[19].Value) > 1)
-            //        {
-            //            pnlPalletCard8.BringToFront();
-            //            break;
-            //        }
-            //    else
-            //        {
-            //            pnlPalletCard9.BringToFront();
-            //        }
-            //}
             pnlPalletCard8.BringToFront();
-            if (dataGridView1.Rows[0].Cells[15].Value.ToString() == "")
+
+            if(dataGridView2.Rows.Count != 0)
             {
-                lblIsSectionFinished.Text = "Is " + dataGridView1.Rows[0].Cells[11].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " finished ?";
+                btnIsSectionFinishedYes_Click(btnIsSectionFinishedYes, EventArgs.Empty);
+                index = 15;
             }
             else
-            {
-                lblIsSectionFinished.Text = "Is " + dataGridView1.Rows[0].Cells[15].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " finished ?";
+            { 
+                if (dataGridView1.Rows[0].Cells[15].Value.ToString() == "")
+                {
+                    lblIsSectionFinished.Text = "Is " + dataGridView1.Rows[0].Cells[11].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " finished ?";
+                }
+                else
+                {
+                    lblIsSectionFinished.Text = "Is " + dataGridView1.Rows[0].Cells[15].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " finished ?";
+                }
+                index = 15;
             }
-            index = 15;
         }
 
         private void btnCancelPrintMore_Click(object sender, EventArgs e)
@@ -1838,7 +1835,7 @@ namespace PalletCard
             //SAVE TO DATABASE
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, PaperSectionNo, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
+            string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '0','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             SqlDataReader myReader;
@@ -1880,7 +1877,7 @@ namespace PalletCard
             //SAVE TO DATABASE
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, PaperSectionNo, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
+            string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '0','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             SqlDataReader myReader;
@@ -1974,19 +1971,22 @@ namespace PalletCard
                 MessageBox.Show(ex.Message);
             }
 
-            dataGridView2.AllowUserToAddRows = false;            
+            dataGridView2.AllowUserToAddRows = false;
 
             // Get the quantities produced from the previous pallet cards
             int sumProduced = 0;
-            for (int i = 0; i < dataGridView2.Rows.Count; i++)
-            {
-                // Sum up only PaperSectionNo's associated with this section not all PaperSectionNo's
-                if (Convert.ToInt32(dataGridView2.Rows[i].Cells[8].Value) == Convert.ToInt32(dataGridView1.Rows[0].Cells[19].Value))
+            // ignore if the value has been retrieved by scan
+            if (Convert.ToInt32(dataGridView2.Rows[0].Cells[6].Value) != 1)
+            {           
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
                 {
-                    sumProduced += Convert.ToInt32(dataGridView2.Rows[i].Cells[9].Value);
+                    // Sum up only PaperSectionNo's associated with this section not all PaperSectionNo's
+                    if (Convert.ToInt32(dataGridView2.Rows[i].Cells[8].Value) == Convert.ToInt32(dataGridView1.Rows[0].Cells[19].Value))
+                    {
+                        sumProduced += Convert.ToInt32(dataGridView2.Rows[i].Cells[9].Value);
+                    }
                 }
             }
-
             required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
             produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection + sumProduced;
             shortBy = required - produced;
@@ -2065,7 +2065,7 @@ namespace PalletCard
                     }
 
                     // Send email notification
-                    MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + "- has " + shortBy + " insufficient sheets");
+                    MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + "- has " + shortBy + " insufficient sheets");
                         SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                         client.Port = 25;
                         client.EnableSsl = false;
@@ -2108,7 +2108,7 @@ namespace PalletCard
                     }
 
                     // Send email notification
-                    MailMessage mail = new MailMessage("PalletOver@colorman.ie", "declan.enright@colorman.ie", "Pallet Over", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " - is over by " + overBy);                  
+                    MailMessage mail = new MailMessage("PalletOver@colorman.ie", "declan.enright@colorman.ie", "Pallet Over", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + " - is over by " + overBy);                  
                     SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                     client.Port = 25;
                     client.EnableSsl = false;
@@ -2292,7 +2292,7 @@ namespace PalletCard
             lblPC_Note.Visible = true;
             lblPC_PalletNumber.Text = "Pallet No " + PalletNumber.ToString();
             lblPC_PalletNumber.Visible = true;
-            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+            lblPC_Sig.Text = "Sheet " + dataGridView2.Rows[0].Cells[9].Value as string;
             lblPC_Sig.Visible = true;
             index = 17;
         }
@@ -2365,6 +2365,13 @@ namespace PalletCard
                     dataGridView2.DataSource = palletCardLog;
                 }
                 pnlPalletCard3.BringToFront();
+
+
+                lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
+                lblJobNo.Visible = true;
+                lbl1.Text = "PalletCard Card";
+                lbl1.Visible = true;
+
             }
         }
 
