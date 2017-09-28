@@ -1822,6 +1822,8 @@ namespace PalletCard
             lblPC_JobNo.Visible = true;
             lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
             lblPC_Customer.Visible = true;
+            lblPC_Customer.MaximumSize = new Size(450, 220);
+            lblPC_Customer.AutoSize = true;
             lblPC_SheetQty.Text = lbl5.Text;
             lblPC_SheetQty.Visible = true;
             lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
@@ -1862,6 +1864,8 @@ namespace PalletCard
             lblPC_JobNo.Visible = true;
             lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
             lblPC_Customer.Visible = true;
+            lblPC_Customer.MaximumSize = new Size(450, 220);
+            lblPC_Customer.AutoSize = true;
             lblPC_SheetQty.Text = lbl5.Text;
             lblPC_SheetQty.Visible = true;
             lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
@@ -1955,7 +1959,7 @@ namespace PalletCard
 
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, LastPallet, Produced) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + "1" + "','" + produced + "');";
+            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, LastPallet, Produced) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + "1" + "','" + produced + "');";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             SqlDataReader myReader;
@@ -2014,9 +2018,7 @@ namespace PalletCard
             }
 
             // OVER PRODUCED/UNDER PRODUCED LOGIC
-
-
-            if (produced > required & produced < (required * 105 / 100))
+            if ((required * 105 / 100) > required + 50)
                 {
                 oversCalc = (required * 105 / 100);
                 }
@@ -2024,16 +2026,6 @@ namespace PalletCard
                 {
                 oversCalc = required + 50;
                 }
-
-
-            //if (produced - (required * 105 / 100) < 50)
-            //{
-            //    oversCalc = required + 50;
-            //}
-            //else
-            //{
-            //    oversCalc = required +  (produced - (required * 105 / 100));
-            //}
 
             if (!backupRequired || !varnishRequired)
             {
@@ -2222,7 +2214,7 @@ namespace PalletCard
             var rowCount = dataGridView2.Rows.Count -1;
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, Produced) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value  + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + produced + "');";
+            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, Produced) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value  + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + produced + "');";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             SqlDataReader myReader;
@@ -2288,6 +2280,8 @@ namespace PalletCard
             lblPC_JobNo.Visible = true;
             lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
             lblPC_Customer.Visible = true;
+            lblPC_Customer.MaximumSize = new Size(450, 220);
+            lblPC_Customer.AutoSize = true;
             lblPC_SheetQty.Text = lbl5.Text;
             lblPC_SheetQty.Visible = true;
             lblPC_Press.Text = "Press - " + lblPress.Text;
@@ -2310,7 +2304,6 @@ namespace PalletCard
             btnPalletCardPrint.Visible = false;
             pd.Print();
             btnPalletCardPrint.Visible = true;
-
             pnlHome0.BringToFront();
             lblJobNo.Visible = false;
             lblPress.Visible = false;
@@ -2335,137 +2328,50 @@ namespace PalletCard
             Point p = new Point(100, 100);
             e.Graphics.DrawImage(img, p);
         }
-
-        //private void btnIsPartFinishedNo_Click(object sender, EventArgs e)
-        //{
-
-        //    for (int i = 0; i < dataGridView1.Rows.Count; i++)
-        //    {
-        //        if (Convert.ToInt32(dataGridView1.Rows[i].Cells[19].Value) == 1)
-        //        {
-        //            pnlPalletCardPrint.BringToFront();
-        //        }
-
-
-        //        //SAVE TO DATABASE
-        //        //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-        //        //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, LastPallet) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','"1"');";
-        //        //SqlConnection conDatabase = new SqlConnection(constring);
-        //        //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-        //        //SqlDataReader myReader;
-        //        //try
-        //        //{
-        //        //  conDatabase.Open();
-        //        //  myReader = cmdDatabase.ExecuteReader();
-        //        //  conDatabase.Close();
-        //        //}
-        //        //catch (Exception ex)
-        //        //{
-        //        //    MessageBox.Show(ex.Message);
-        //        //}
-        //    }
-        //}
-
-        //private void btnIsPartFinishedYes_Click(object sender, EventArgs e)
-        //{
-        //    required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
-        //    produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
-        //    shortBy = required - produced;
-        //    overBy = produced - required;
-
-        //    if (!backupRequired || !varnishRequired)
-        //    {
-        //        if (produced < required)
-        //        {
-        //            pnlPalletCard6.BringToFront();
-        //            lblPalletDidNotMakeQty.Text = lblJobNo.Text + " has " + shortBy + " insufficient sheets";
-        //            lbl7.Text = "Pallet Short";
-        //        }
-        //        else if (produced > required)
-        //        {
-        //            pnlPalletCard9.BringToFront();
-        //            lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
-        //            lbl7.Text = "Pallet Over";
-        //        }
-        //    }
-
-        //    //SAVE TO DATABASE
-        //    //string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-        //    //string Query = "insert into Log (Routine, JobNo, ResourceID, Description, WorkingSize, SheetQty, LastPallet) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[1].Value + "','" + this.lbl2.Text + "','" + this.lbl4.Text + "','" + this.lblPrint3.Text + "','"1"');";
-        //    //SqlConnection conDatabase = new SqlConnection(constring);
-        //    //SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-        //    //SqlDataReader myReader;
-        //    //try
-        //    //{
-        //    //  conDatabase.Open();
-        //    //  myReader = cmdDatabase.ExecuteReader();
-        //    //  conDatabase.Close();
-        //    //}
-        //    //catch (Exception ex)
-        //    //{
-        //    //    MessageBox.Show(ex.Message);
-        //    //}
-        //}
-
+     
         private void btnPalletOver_Click(object sender, EventArgs e)
         {
             pnlSignature.BringToFront();
-            //pnlPalletCardPrint.BringToFront();
-            //lblPC_JobNo.Text = lblJobNo.Text;
-            //lblPC_JobNo.Visible = true;
-            //lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-            //lblPC_Customer.Visible = true;
-            //lblPC_SheetQty.Text = lbl5.Text;
-            //lblPC_SheetQty.Visible = true;
-            //lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
-            //lblPC_Sig.Visible = true;
-            //lblPC_Press.Text = "Press - " + lblPress.Text;
-            //lblPC_Press.Visible = true;
-            //lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-            //lblPC_Date.Visible = true;
-            //lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-            //lblPC_Note.Visible = true;
-            //index = 17;
+        }
+
+        private void tbxFinishPallet_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //MessageBox.Show(tbxFinishPallet.Text.ToString());
+                string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
+                string CommandText = "SELECT * FROM Log where AutoNum = '" + tbxFinishPallet.Text + "'";
+                OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+                OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+                OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+                myAdapter.SelectCommand = myCommand;
+                DataSet palletCardData = new DataSet();
+                try
+                {
+                    myConnection.Open();
+                    myAdapter.Fill(palletCardData);
+                }
+                catch (Exception ex)
+                {
+                    throw (ex);
+                }
+                finally
+                {
+                    myConnection.Close();
+                }
+                using (DataTable palletCardLog = new DataTable())
+                {
+                    myAdapter.Fill(palletCardLog);
+                    dataGridView2.DataSource = palletCardLog;
+                }
+                pnlPalletCard3.BringToFront();
+            }
         }
 
 
 
 
-        //public static void CreateTestMessage3()
-        //{
-        //    MailAddress to = new MailAddress("declan.enright@colorman.ie");
-        //    MailAddress from = new MailAddress("declan.enright@colorman.ie");
-        //    MailMessage message = new MailMessage(from, to);
-        //    message.Subject = "Using the new SMTP client.";
-        //    message.Body = @"Using this new feature, you can send an e-mail message from an application very easily.";
-        //    // Use the application or machine configuration to get the  
-        //    // host, port, and credentials.
 
-           
-
-        //    SmtpClient client = new SmtpClient();
-        //    Console.WriteLine("Sending an e-mail message to {0} at {1} by using the SMTP host={2}.",
-        //        to.User, to.Host, client.Host);
-        //    try
-        //    {
-        //        client.Send(message);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine("Exception caught in CreateTestMessage3(): {0}", ex.ToString());
-        //    }
-        //}
-
-
-        //private void SendEmail1()
-        //{ MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "The pallet is Short");
-        //    SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
-        //    client.Port = 25;
-        //    //client.Credentials = new System.Net.NetworkCredential("declan.enright@colorman.ie", "NorthWall11");
-        //    client.EnableSsl = false;        
-        //    client.Send(mail);
-        //    MessageBox.Show("Mail Sent!", "Success", MessageBoxButtons.OK);
-        //}
 
 
     }
