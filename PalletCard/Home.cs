@@ -479,6 +479,7 @@ namespace PalletCard
             tbxSheetsAffectedBadSection.Text = "";
             tbxTextBoxBadSection.Text = "";
             tbxExtraInfoComment.Text = "";
+            lblPC_IncompletePallet.Visible = false;
             index = 0;
         }
 
@@ -2091,6 +2092,7 @@ namespace PalletCard
             // Get the quantities produced from the previous pallet cards
             int sumProduced = 0;
             // ignore if the value has been retrieved by scan
+            this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             if (Convert.ToInt32(dataGridView2.Rows[0].Cells[6].Value) != 0)
             {
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
@@ -2102,7 +2104,7 @@ namespace PalletCard
                     }
                 }
             }
-            required = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
+            required = Convert.ToInt32(lbl7.Text);
             produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection + sumProduced;
             shortBy = required - produced;
             overBy = produced - required;
@@ -2481,9 +2483,9 @@ namespace PalletCard
                 lbl2.Visible = true;
                 lbl3.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value.ToString();
                 lbl3.Visible = true;
-                // Working Size
+                // WorkingSize
                 lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
-                // Qty Required
+                // QtyRequired
                 lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
             }
         }
