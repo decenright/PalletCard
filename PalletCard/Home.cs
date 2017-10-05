@@ -367,16 +367,18 @@ namespace PalletCard
 
                 foreach (DataRow dr in operations.Rows)
                 {
-                        concatenatedTable.Rows.Add(dr.ItemArray);
+                    concatenatedTable.Rows.Add(dr.ItemArray);
                 }
 
-                for (int i = 0; i < concatenatedTable.Rows.Count -1; i++)
+                for (int i = 0; i < concatenatedTable.Rows.Count - 1; i++)
                     if (concatenatedTable.Rows[i][30].ToString() == concatenatedTable.Rows[i + 1][30].ToString())
                     {
                         concatenatedTable.Rows[i][31] = 0;
                     }
                     else
                         concatenatedTable.Rows[i][31] = 1;
+                        concatenatedTable.Rows[concatenatedTable.Rows.Count -1][31] = 1;
+
 
                 dataGridView1.DataSource = concatenatedTable;
             }
@@ -402,8 +404,8 @@ namespace PalletCard
         {
             {
                 try
-                {
-                    ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%' and filter = '1'", tbxSearchBox.Text.Trim().Replace("'", "''"));
+                {   
+                    ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%' and filter = '1' ", tbxSearchBox.Text.Trim().Replace("'", "''"));
                     lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                     lblJobNo.Visible = true;
                     //int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
@@ -488,6 +490,7 @@ namespace PalletCard
                     }
                     else
                         concatenatedTable.Rows[i][31] = 1;
+                        concatenatedTable.Rows[concatenatedTable.Rows.Count - 1][31] = 1;
 
                 dataGridView1.DataSource = concatenatedTable;
             }
