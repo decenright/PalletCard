@@ -329,8 +329,6 @@ namespace PalletCard
 
         }
 
-
-
         private void Home_Load(object sender, EventArgs e)
         {
             string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
@@ -353,11 +351,37 @@ namespace PalletCard
             {
                 myConnection.Close();
             }
+
             using (DataTable operations = new DataTable())
             {
                 myAdapter.Fill(operations);
-                dataGridView1.DataSource = operations;
+                //dataGridView1.DataSource = operations;
+
+                // New table to hold concatenated values - if duplicate line filter column = 0. Non duplicate lines filter column = 1. 
+                // Search function includes a filter on 1 to return only the 1's
+                DataTable concatenatedTable = new DataTable();
+                concatenatedTable = operations.Clone();
+                concatenatedTable.Columns.Add("Concat");
+                concatenatedTable.Columns.Add("Filter");
+                concatenatedTable.Columns["Concat"].Expression = "JobNo+ ',' + PrintMethod + ',' + PaperSectionID";
+
+                foreach (DataRow dr in operations.Rows)
+                {
+                        concatenatedTable.Rows.Add(dr.ItemArray);
+                }
+
+                for (int i = 0; i < concatenatedTable.Rows.Count -1; i++)
+                    if (concatenatedTable.Rows[i][30].ToString() == concatenatedTable.Rows[i + 1][30].ToString())
+                    {
+                        concatenatedTable.Rows[i][31] = 0;
+                    }
+                    else
+                        concatenatedTable.Rows[i][31] = 1;
+
+                dataGridView1.DataSource = concatenatedTable;
             }
+
+
             listPanel.Add(pnlHome0);
             listPanel.Add(pnlHome1);
             listPanel.Add(pnlReturnPaper1);
@@ -379,7 +403,7 @@ namespace PalletCard
             {
                 try
                 {
-                    ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%'", tbxSearchBox.Text.Trim().Replace("'", "''"));
+                    ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%' and filter = '1'", tbxSearchBox.Text.Trim().Replace("'", "''"));
                     lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                     lblJobNo.Visible = true;
                     //int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
@@ -444,7 +468,28 @@ namespace PalletCard
             using (DataTable operations = new DataTable())
             {
                 myAdapter.Fill(operations);
-                dataGridView1.DataSource = operations;
+                // New table to hold concatenated values - if duplicate line filter column = 0. Non duplicate lines filter column = 1. 
+                // Search function includes a filter on 1 to return only the 1's
+                DataTable concatenatedTable = new DataTable();
+                concatenatedTable = operations.Clone();
+                concatenatedTable.Columns.Add("Concat");
+                concatenatedTable.Columns.Add("Filter");
+                concatenatedTable.Columns["Concat"].Expression = "JobNo+ ',' + PrintMethod + ',' + PaperSectionID";
+
+                foreach (DataRow dr in operations.Rows)
+                {
+                    concatenatedTable.Rows.Add(dr.ItemArray);
+                }
+
+                for (int i = 0; i < concatenatedTable.Rows.Count - 1; i++)
+                    if (concatenatedTable.Rows[i][30].ToString() == concatenatedTable.Rows[i + 1][30].ToString())
+                    {
+                        concatenatedTable.Rows[i][31] = 0;
+                    }
+                    else
+                        concatenatedTable.Rows[i][31] = 1;
+
+                dataGridView1.DataSource = concatenatedTable;
             }
             pnlHome0.BringToFront();
             lblJobNo.Visible = false;
@@ -1614,9 +1659,33 @@ namespace PalletCard
             this.ActiveControl = tbxSheetsAffectedBadSection;
             index = 12;
 
+            // NumberUp
+            //lbl8.Text = dataGridView1.Rows[0].Cells[12].Value.ToString();
+            //if (lbl8.Text == "1")
+            //{
+            //    btnWholePalletBadSection.Visible = false;
+            //}
+
+            // Hide "Whole Pallet" Button if NumberUp = 1 (will depend on wheteher it is a complete or incomplete i.e scanned line)
+            int numberUp;
+            if (dataGridView2.Rows.Count == 0)
+                {
+                    if (dataGridView1.Rows[0].Cells[12].Value.ToString() == "1")
+                    {
+                        btnWholePalletBadSection.Visible = false;
+                    }
+                    numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
+            }
+            else
+                    if (dataGridView2.Rows[0].Cells[21].Value.ToString() == "1")
+                    {
+                        btnWholePalletBadSection.Visible = false;
+                    }
+                    numberUp = Convert.ToInt32(dataGridView2.Rows[0].Cells[21].Value);
+
             lblNumberUp.Visible = false;
             lblNumberUpQty.Visible = false;
-            int numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
+            //int numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
             if (numberUp > 1)
             { 
                 if (!badSectionLbls)
@@ -1650,9 +1719,10 @@ namespace PalletCard
         }
 
         private void btnWholePalletBadSection_Click(object sender, EventArgs e)
-        {          
-                flowLayoutPanel2.Enabled = false;          
-        }
+        {
+                flowLayoutPanel2.Enabled = false;
+        }  
+            
 
         private void markBadTextBoxQty(Object sender, EventArgs e)
         {
@@ -1714,9 +1784,9 @@ namespace PalletCard
                     lblIsSectionFinished.Text = "Is " + dataGridView1.Rows[0].Cells[15].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " finished ?";
                 }
 
-                // Working Size
+                // WorkingSize
                 lbl6.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-                // Qty Required
+                // QtyRequired
                 lbl7.Text = dataGridView1.Rows[0].Cells[26].Value.ToString();
 
                 index = 15;

@@ -1443,7 +1443,7 @@
             this.btnWholePalletBadSection.BackColor = System.Drawing.Color.SteelBlue;
             this.btnWholePalletBadSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWholePalletBadSection.ForeColor = System.Drawing.Color.White;
-            this.btnWholePalletBadSection.Location = new System.Drawing.Point(33, 211);
+            this.btnWholePalletBadSection.Location = new System.Drawing.Point(33, 218);
             this.btnWholePalletBadSection.Name = "btnWholePalletBadSection";
             this.btnWholePalletBadSection.Size = new System.Drawing.Size(465, 80);
             this.btnWholePalletBadSection.TabIndex = 11;
@@ -1455,7 +1455,7 @@
             // 
             this.tbxSheetsAffectedBadSection.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxSheetsAffectedBadSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSheetsAffectedBadSection.Location = new System.Drawing.Point(126, 113);
+            this.tbxSheetsAffectedBadSection.Location = new System.Drawing.Point(126, 123);
             this.tbxSheetsAffectedBadSection.Multiline = true;
             this.tbxSheetsAffectedBadSection.Name = "tbxSheetsAffectedBadSection";
             this.tbxSheetsAffectedBadSection.Size = new System.Drawing.Size(275, 59);
@@ -1466,7 +1466,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(180, 84);
+            this.label15.Location = new System.Drawing.Point(180, 94);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(179, 25);
             this.label15.TabIndex = 9;
@@ -1476,7 +1476,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Tahoma", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(166, 14);
+            this.label14.Location = new System.Drawing.Point(166, 30);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(204, 33);
             this.label14.TabIndex = 0;
@@ -2087,6 +2087,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1045);
+            this.Controls.Add(this.pnlPalletCard5);
             this.Controls.Add(this.pnlPalletCard9);
             this.Controls.Add(this.pnlPalletCard6);
             this.Controls.Add(this.pnlSignature);
@@ -2095,7 +2096,6 @@
             this.Controls.Add(this.pnlPalletCard7);
             this.Controls.Add(this.pnlPalletCard4);
             this.Controls.Add(this.pnlPalletCardPrint);
-            this.Controls.Add(this.pnlPalletCard5);
             this.Controls.Add(this.pnlReturnPaper3);
             this.Controls.Add(this.pnlRejectPaper3);
             this.Controls.Add(this.pnlPalletCard3);
