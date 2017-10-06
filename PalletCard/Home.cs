@@ -39,6 +39,7 @@ namespace PalletCard
         int PalletNumber;
         int PaperSectionNo;
         int numberUp;
+        int qtyRequired;
         DateTime CurrentDate= DateTime.Now;
       
         public Home()
@@ -1677,9 +1678,10 @@ namespace PalletCard
                         btnWholePalletBadSection.Visible = false;
                         numberUp = Convert.ToInt32(dataGridView2.Rows[0].Cells[21].Value);
                     }
-                    
-            // where Prod_Job = '" + lblJobNo.Text + "'
 
+            qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
+
+            // APP_PALLETGANGPRO QUERY
             //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
             //string CommandText = "SELECT * FROM app_PalletGangPro";
             //OdbcConnection myConnection = new OdbcConnection(ConnectionString);
@@ -1721,6 +1723,7 @@ namespace PalletCard
             //        dataGridView3.DataSource = concatenatedTable;
             //}
 
+            // APP_PALLETGANGCLASSIC QUERY
             string ConnectionString1 = Convert.ToString("Dsn=TharTest;uid=tharuser");
             string CommandText1 = "SELECT * FROM app_PalletGangClassic where Prod_Job = '" + lblJobNo.Text + "'";
             OdbcConnection myConnection1 = new OdbcConnection(ConnectionString1);
@@ -1754,6 +1757,11 @@ namespace PalletCard
                 concatenatedTable1.Columns.Add("Prod_qty_Produced");
                 concatenatedTable1.Columns.Add("Qty_Short");
                 concatenatedTable1.Columns.Add("Percentage_Short");
+                //concatenatedTable1.Columns["Prod_qty_required"].Expression = " '" + qtyRequired + "'  ";
+                concatenatedTable1.Columns["Prod_qty_required"].Expression = " '" + qtyRequired + "'  ";
+                concatenatedTable1.Columns["Sheets Affected"].Expression = tbxSheetsAffectedBadSection.Text;
+                //concatenatedTable1.Columns["Prod_qty_required"].Expression = dataGridView1.Rows[0].Cells[12].Value.Substring(dataGridView1.Rows[0].Cells[12].Value.LastIndexOf('-') + 1);
+
 
                 foreach (DataRow dr in gangPro.Rows)
                 {
@@ -1765,7 +1773,13 @@ namespace PalletCard
             lblNumberUp.Visible = false;
             lblNumberUpQty.Visible = false;
 
-            if(Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
+
+            
+
+
+
+            // if JobGanged = 0 (Main Table)
+            if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
             { 
                 //int numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
                 if (numberUp > 1)
@@ -1804,13 +1818,12 @@ namespace PalletCard
                             textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
                             textBox1.TextAlign = HorizontalAlignment.Center;
                             textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
-                            textBox1.Location = new Point(5, 5);
                         }
                     }
                     badSectionLbls = true;
                 }
             }
-            // PALLET_GANG_CLASSIC
+            //if JobGanged = 1 (PALLET_GANG_CLASSIC Table)
             else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 1)
             {
                 //int numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
@@ -1884,7 +1897,7 @@ namespace PalletCard
                 sheetsAffectedBadSection = Convert.ToInt32(tbxSheetsAffectedBadSection.Text);
                 //lbl6.Text = "Bad Section";
                 //lbl6.Visible = true;
-                index = 13;
+                index = 13;                
             }
         }
 
