@@ -38,6 +38,7 @@ namespace PalletCard
         int oversCalc;
         int PalletNumber;
         int PaperSectionNo;
+        int numberUp;
         DateTime CurrentDate= DateTime.Now;
       
         public Home()
@@ -530,7 +531,6 @@ namespace PalletCard
             lblPC_IncompletePallet.Visible = false;
             index = 0;
         }
-
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -1662,15 +1662,7 @@ namespace PalletCard
             this.ActiveControl = tbxSheetsAffectedBadSection;
             index = 12;
 
-            // NumberUp
-            //lbl8.Text = dataGridView1.Rows[0].Cells[12].Value.ToString();
-            //if (lbl8.Text == "1")
-            //{
-            //    btnWholePalletBadSection.Visible = false;
-            //}
-
             // Hide "Whole Pallet" Button if NumberUp = 1 (will depend on wheteher it is a complete or incomplete i.e scanned line)
-            int numberUp;
             if (dataGridView2.Rows.Count == 0)
                 {
                     if (dataGridView1.Rows[0].Cells[12].Value.ToString() == "1")
@@ -1683,42 +1675,187 @@ namespace PalletCard
                     if (dataGridView2.Rows[0].Cells[21].Value.ToString() == "1")
                     {
                         btnWholePalletBadSection.Visible = false;
+                        numberUp = Convert.ToInt32(dataGridView2.Rows[0].Cells[21].Value);
                     }
-                    numberUp = Convert.ToInt32(dataGridView2.Rows[0].Cells[21].Value);
+                    
+            // where Prod_Job = '" + lblJobNo.Text + "'
+
+            //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+            //string CommandText = "SELECT * FROM app_PalletGangPro";
+            //OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            //OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+            //OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+            //myAdapter.SelectCommand = myCommand;
+            //DataSet tharData = new DataSet();
+            //try
+            //{
+            //    myConnection.Open();
+            //    myAdapter.Fill(tharData);
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw (ex);
+            //}
+            //finally
+            //{
+            //    myConnection.Close();
+            //}
+
+            //using (DataTable gangPro = new DataTable())
+            //{
+            //    myAdapter.Fill(gangPro);
+            //    DataTable concatenatedTable = new DataTable();
+            //    concatenatedTable = gangPro.Clone();
+            //    concatenatedTable.Columns.Add("Prod_qty_required");
+            //    concatenatedTable.Columns.Add("NumberUp-Bad");
+            //    concatenatedTable.Columns.Add("Sheets Affected");
+            //    concatenatedTable.Columns.Add("Sheets unaffected");
+            //    concatenatedTable.Columns.Add("Prod_qty_Produced");
+            //    concatenatedTable.Columns.Add("Qty_Short");
+            //    concatenatedTable.Columns.Add("Percentage_Short");
+
+            //    foreach (DataRow dr in gangPro.Rows)
+            //    {
+            //        concatenatedTable.Rows.Add(dr.ItemArray);
+            //    }
+            //        dataGridView3.DataSource = concatenatedTable;
+            //}
+
+            string ConnectionString1 = Convert.ToString("Dsn=TharTest;uid=tharuser");
+            string CommandText1 = "SELECT * FROM app_PalletGangClassic where Prod_Job = '" + lblJobNo.Text + "'";
+            OdbcConnection myConnection1 = new OdbcConnection(ConnectionString1);
+            OdbcCommand myCommand1 = new OdbcCommand(CommandText1, myConnection1);
+            OdbcDataAdapter myAdapter1 = new OdbcDataAdapter();
+            myAdapter1.SelectCommand = myCommand1;
+            DataSet tharData1 = new DataSet();
+            try
+            {
+                myConnection1.Open();
+                myAdapter1.Fill(tharData1);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                myConnection1.Close();
+            }
+
+            using (DataTable gangPro = new DataTable())
+            {
+                myAdapter1.Fill(gangPro);
+                DataTable concatenatedTable1 = new DataTable();
+                concatenatedTable1 = gangPro.Clone();
+                concatenatedTable1.Columns.Add("Prod_qty_required");
+                concatenatedTable1.Columns.Add("NumberUp-Bad");
+                concatenatedTable1.Columns.Add("Sheets Affected");
+                concatenatedTable1.Columns.Add("Sheets unaffected");
+                concatenatedTable1.Columns.Add("Prod_qty_Produced");
+                concatenatedTable1.Columns.Add("Qty_Short");
+                concatenatedTable1.Columns.Add("Percentage_Short");
+
+                foreach (DataRow dr in gangPro.Rows)
+                {
+                    concatenatedTable1.Rows.Add(dr.ItemArray);
+                }
+                dataGridView4.DataSource = concatenatedTable1;
+            }
 
             lblNumberUp.Visible = false;
             lblNumberUpQty.Visible = false;
-            //int numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
-            if (numberUp > 1)
+
+            if(Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
             { 
-                if (!badSectionLbls)
-                { 
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                //int numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
+                if (numberUp > 1)
+                {
+                    if (!badSectionLbls)
                     {
-                        lblNumberUp.Visible = true;
-                        lblNumberUpQty.Visible = true;
-                        Label lbl1 = new Label();
-                        this.flowLayoutPanel2.Controls.Add(lbl1);
-                        lbl1.Height = 60;
-                        lbl1.Width = 120;
-                        lbl1.BackColor = Color.Tan;
-                        lbl1.Font = new Font("Microsoft Sans Serif", 20);
-                        lbl1.TextAlign = ContentAlignment.MiddleCenter;
-                        lbl1.ForeColor = Color.White;
-                        lbl1.Left = 50;
-                        lbl1.Text = this.dataGridView1.Rows[i].Cells[12].Value.ToString();
-                        TextBox textBox1 = new TextBox();
-                        this.flowLayoutPanel2.Controls.Add(textBox1);
-                        textBox1.Height = 55;
-                        textBox1.Width = 170;
-                        textBox1.Multiline = true;
-                        textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
-                        textBox1.TextAlign = HorizontalAlignment.Center;
-                        textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
+                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        {
+                            lblNumberUp.Visible = true;
+                            lblNumberUpQty.Visible = true;
+                            Label lbl1 = new Label();
+                            this.flowLayoutPanel2.Controls.Add(lbl1);
+                            lbl1.Height = 40;
+                            lbl1.Width = 200;
+                            lbl1.BackColor = Color.Tan;
+                            lbl1.Font = new Font("Microsoft Sans Serif", 20);
+                            lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl1.ForeColor = Color.White;
+                            lbl1.Left = 50;
+                            lbl1.Text = "";
+                            Label lbl2 = new Label();
+                            this.flowLayoutPanel2.Controls.Add(lbl2);
+                            lbl2.Height = 40;
+                            lbl2.Width = 100;
+                            lbl2.BackColor = Color.Tan;
+                            lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                            lbl2.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl2.ForeColor = Color.White;
+                            lbl2.Left = 40;
+                            lbl2.Text = this.dataGridView1.Rows[i].Cells[12].Value.ToString();
+                            TextBox textBox1 = new TextBox();
+                            this.flowLayoutPanel2.Controls.Add(textBox1);
+                            textBox1.Height = 40;
+                            textBox1.Width = 150;
+                            textBox1.Multiline = true;
+                            textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
+                            textBox1.TextAlign = HorizontalAlignment.Center;
+                            textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
+                            textBox1.Location = new Point(5, 5);
+                        }
                     }
+                    badSectionLbls = true;
                 }
-                badSectionLbls = true;
             }
+            // PALLET_GANG_CLASSIC
+            else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 1)
+            {
+                //int numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
+                if (numberUp > 1)
+                {
+                    if (!badSectionLbls)
+                    {
+                        for (int i = 0; i < dataGridView4.Rows.Count; i++)
+                        {
+                            lblNumberUp.Visible = true;
+                            lblNumberUpQty.Visible = true;
+                            Label lbl1 = new Label();
+                            this.flowLayoutPanel2.Controls.Add(lbl1);
+                            lbl1.Height = 40;
+                            lbl1.Width = 200;
+                            lbl1.BackColor = Color.Tan;
+                            lbl1.Font = new Font("Microsoft Sans Serif", 20);
+                            lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl1.ForeColor = Color.White;
+                            lbl1.Left = 40;
+                            lbl1.Text = this.dataGridView4.Rows[i].Cells[3].Value.ToString();
+                            Label lbl2 = new Label();
+                            this.flowLayoutPanel2.Controls.Add(lbl2);
+                            lbl2.Height = 40;
+                            lbl2.Width = 100;
+                            lbl2.BackColor = Color.Tan;
+                            lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                            lbl2.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl2.ForeColor = Color.White;
+                            lbl2.Left = 40;
+                            lbl2.Text = numberUp.ToString();
+                            TextBox textBox1 = new TextBox();
+                            this.flowLayoutPanel2.Controls.Add(textBox1);
+                            textBox1.Height = 40;
+                            textBox1.Width = 150;
+                            textBox1.Multiline = true;
+                            textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
+                            textBox1.TextAlign = HorizontalAlignment.Center;
+                            textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
+                        }
+                    }
+                    badSectionLbls = true;
+                }
+            }
+
         }
 
         private void btnWholePalletBadSection_Click(object sender, EventArgs e)
@@ -2386,7 +2523,7 @@ namespace PalletCard
             var rowCount = dataGridView2.Rows.Count -1;
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, Produced) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value  + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "','" + resourceID + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + produced + "');";
+            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, Produced, Unfinished) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value  + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "','" + resourceID + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + produced + "', '0');";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             SqlDataReader myReader;
@@ -2466,6 +2603,7 @@ namespace PalletCard
             lblPC_PalletNumber.Visible = true;
             lblPC_Sig.Text = "Sheet " + dataGridView2.Rows[0].Cells[9].Value as string;
             lblPC_Sig.Visible = true;
+            btnCancel.Visible = false;
             index = 17;
         }
 
