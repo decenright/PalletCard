@@ -1656,6 +1656,126 @@ namespace PalletCard
                 }
         }
 
+        // GANGPRO QUERY
+        private void queryGangpro()
+        {
+            string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
+            string CommandText = "SELECT * FROM app_PalletGangPro";
+            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+            myAdapter.SelectCommand = myCommand;
+            DataSet tharData = new DataSet();
+            try
+            {
+                myConnection.Open();
+                myAdapter.Fill(tharData);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            qtyRequired = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            using (DataTable gangPro = new DataTable())
+            {
+                myAdapter.Fill(gangPro);
+                DataTable gangProTable = new DataTable();
+                gangProTable = gangPro.Clone();
+                gangProTable.Columns.Add("QtyRequired");
+                gangProTable.Columns.Add("Prod_qty_required");
+                gangProTable.Columns.Add("NumberUp-Bad");
+                gangProTable.Columns.Add("Sheets Affected");
+                gangProTable.Columns.Add("Sheets unaffected");
+                gangProTable.Columns.Add("Prod_qty_Produced");
+                gangProTable.Columns.Add("Qty_Short");
+                gangProTable.Columns.Add("Percentage_Short");
+
+                gangProTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "'  ";
+                //gangProTable.Columns["Prod_qty_required"].Expression = int.Parse(dt.Rows[0][0].ToString());
+                //gangProTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp";
+                gangProTable.Columns["Sheets Affected"].Expression = tbxSheetsAffectedBadSection.Text;
+
+                foreach (DataRow dr in gangPro.Rows)
+                {
+                    gangProTable.Rows.Add(dr.ItemArray);
+                }
+                dataGridView3.DataSource = gangProTable;
+            }
+        }
+
+        // GANGCLASSIC QUERY
+        private void queryGangClassic()
+        {
+            string ConnectionString1 = Convert.ToString("Dsn=TharTest;uid=tharuser");
+            string CommandText1 = "SELECT * FROM app_PalletGangClassic where Prod_Job = '" + lblJobNo.Text + "'";
+            OdbcConnection myConnection1 = new OdbcConnection(ConnectionString1);
+            OdbcCommand myCommand1 = new OdbcCommand(CommandText1, myConnection1);
+            OdbcDataAdapter myAdapter1 = new OdbcDataAdapter();
+            myAdapter1.SelectCommand = myCommand1;
+            DataSet tharData1 = new DataSet();
+            try
+            {
+                myConnection1.Open();
+                myAdapter1.Fill(tharData1);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                myConnection1.Close();
+            }
+
+            qtyRequired = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            using (DataTable gangClassic = new DataTable())
+            {
+                myAdapter1.Fill(gangClassic);
+                DataTable gangClassicTable = new DataTable();
+                gangClassicTable = gangClassic.Clone();
+                gangClassicTable.Columns.Add("QtyRequired", typeof(int));
+                gangClassicTable.Columns.Add("NumberUp");
+                gangClassicTable.Columns.Add("NumberUp1", typeof(int));
+                gangClassicTable.Columns.Add("Prod_qty_required");
+                gangClassicTable.Columns.Add("NumberUp-Bad");
+                gangClassicTable.Columns.Add("Sheets Affected");
+                gangClassicTable.Columns.Add("Sheets unaffected");
+                gangClassicTable.Columns.Add("Prod_qty_Produced");
+                gangClassicTable.Columns.Add("Qty_Short");
+                gangClassicTable.Columns.Add("Percentage_Short");
+
+                gangClassicTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "'  ";
+                for (int i = 0; i < gangClassic.Rows.Count; i++)
+                {
+                    var str = gangClassic.Rows[i][3].ToString();
+                    gangClassicTable.Columns["NumberUp"].Expression = " '" + Regex.Match(str, @"(\d+)[^-]*$") + "'  ";
+                    gangClassicTable.Columns["NumberUp1"].Expression =  gangClassicTable.Columns["NumberUp"].Expression;
+
+                }
+                gangClassicTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp1";
+                gangClassicTable.Columns["Sheets Affected"].Expression = tbxSheetsAffectedBadSection.Text;
+                //concatenatedTable1.Columns["Prod_qty_required"].Expression = dataGridView1.Rows[0].Cells[12].Value.Substring(dataGridView1.Rows[0].Cells[12].Value.LastIndexOf('-') + 1);
+
+
+                foreach (DataRow dr in gangClassic.Rows)
+                {
+                    gangClassicTable.Rows.Add(dr.ItemArray);
+                }
+                dataGridView4.DataSource = gangClassicTable;
+            }
+        }
+
+        private void tbxSheetsAffectedBadSection_TextChanged(object sender, EventArgs e)
+        {
+            queryGangpro();
+            queryGangClassic();
+        }
+
         private void btnMarkBad_Click(object sender, EventArgs e)
         {
             this.flowLayoutPanel2.Controls.Clear();
@@ -1681,103 +1801,13 @@ namespace PalletCard
 
             qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
 
-            // APP_PALLETGANGPRO QUERY
-            //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-            //string CommandText = "SELECT * FROM app_PalletGangPro";
-            //OdbcConnection myConnection = new OdbcConnection(ConnectionString);
-            //OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-            //OdbcDataAdapter myAdapter = new OdbcDataAdapter();
-            //myAdapter.SelectCommand = myCommand;
-            //DataSet tharData = new DataSet();
-            //try
-            //{
-            //    myConnection.Open();
-            //    myAdapter.Fill(tharData);
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw (ex);
-            //}
-            //finally
-            //{
-            //    myConnection.Close();
-            //}
-
-            //using (DataTable gangPro = new DataTable())
-            //{
-            //    myAdapter.Fill(gangPro);
-            //    DataTable concatenatedTable = new DataTable();
-            //    concatenatedTable = gangPro.Clone();
-            //    concatenatedTable.Columns.Add("Prod_qty_required");
-            //    concatenatedTable.Columns.Add("NumberUp-Bad");
-            //    concatenatedTable.Columns.Add("Sheets Affected");
-            //    concatenatedTable.Columns.Add("Sheets unaffected");
-            //    concatenatedTable.Columns.Add("Prod_qty_Produced");
-            //    concatenatedTable.Columns.Add("Qty_Short");
-            //    concatenatedTable.Columns.Add("Percentage_Short");
-
-            //    foreach (DataRow dr in gangPro.Rows)
-            //    {
-            //        concatenatedTable.Rows.Add(dr.ItemArray);
-            //    }
-            //        dataGridView3.DataSource = concatenatedTable;
-            //}
-
-            // APP_PALLETGANGCLASSIC QUERY
-            string ConnectionString1 = Convert.ToString("Dsn=TharTest;uid=tharuser");
-            string CommandText1 = "SELECT * FROM app_PalletGangClassic where Prod_Job = '" + lblJobNo.Text + "'";
-            OdbcConnection myConnection1 = new OdbcConnection(ConnectionString1);
-            OdbcCommand myCommand1 = new OdbcCommand(CommandText1, myConnection1);
-            OdbcDataAdapter myAdapter1 = new OdbcDataAdapter();
-            myAdapter1.SelectCommand = myCommand1;
-            DataSet tharData1 = new DataSet();
-            try
-            {
-                myConnection1.Open();
-                myAdapter1.Fill(tharData1);
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-            finally
-            {
-                myConnection1.Close();
-            }
-
-            using (DataTable gangPro = new DataTable())
-            {
-                myAdapter1.Fill(gangPro);
-                DataTable concatenatedTable1 = new DataTable();
-                concatenatedTable1 = gangPro.Clone();
-                concatenatedTable1.Columns.Add("Prod_qty_required");
-                concatenatedTable1.Columns.Add("NumberUp-Bad");
-                concatenatedTable1.Columns.Add("Sheets Affected");
-                concatenatedTable1.Columns.Add("Sheets unaffected");
-                concatenatedTable1.Columns.Add("Prod_qty_Produced");
-                concatenatedTable1.Columns.Add("Qty_Short");
-                concatenatedTable1.Columns.Add("Percentage_Short");
-                //concatenatedTable1.Columns["Prod_qty_required"].Expression = " '" + qtyRequired + "'  ";
-                concatenatedTable1.Columns["Prod_qty_required"].Expression = " '" + qtyRequired + "'  ";
-                concatenatedTable1.Columns["Sheets Affected"].Expression = tbxSheetsAffectedBadSection.Text;
-                //concatenatedTable1.Columns["Prod_qty_required"].Expression = dataGridView1.Rows[0].Cells[12].Value.Substring(dataGridView1.Rows[0].Cells[12].Value.LastIndexOf('-') + 1);
-
-
-                foreach (DataRow dr in gangPro.Rows)
-                {
-                    concatenatedTable1.Rows.Add(dr.ItemArray);
-                }
-                dataGridView4.DataSource = concatenatedTable1;
-            }
+            queryGangpro();
+            queryGangClassic();
 
             lblNumberUp.Visible = false;
             lblNumberUpQty.Visible = false;
 
-
-            
-
-
-
+           
             // if JobGanged = 0 (Main Table)
             if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
             { 
@@ -1812,12 +1842,13 @@ namespace PalletCard
                             lbl2.Text = this.dataGridView1.Rows[i].Cells[12].Value.ToString();
                             TextBox textBox1 = new TextBox();
                             this.flowLayoutPanel2.Controls.Add(textBox1);
-                            textBox1.Height = 40;
+                            textBox1.Height = 35;
+                            textBox1.AutoSize = false;
                             textBox1.Width = 150;
-                            textBox1.Multiline = true;
+                            textBox1.Multiline = false;
                             textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
                             textBox1.TextAlign = HorizontalAlignment.Center;
-                            textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
+                            textBox1.TextChanged += new System.EventHandler(markBadTextBoxQty);
                         }
                     }
                     badSectionLbls = true;
@@ -1857,9 +1888,10 @@ namespace PalletCard
                             lbl2.Text = numberUp.ToString();
                             TextBox textBox1 = new TextBox();
                             this.flowLayoutPanel2.Controls.Add(textBox1);
-                            textBox1.Height = 40;
+                            textBox1.Height = 35;
+                            textBox1.AutoSize = false;
                             textBox1.Width = 150;
-                            textBox1.Multiline = true;
+                            textBox1.Multiline = false;
                             textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
                             textBox1.TextAlign = HorizontalAlignment.Center;
                             textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
