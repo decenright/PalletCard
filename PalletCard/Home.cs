@@ -21,6 +21,8 @@ namespace PalletCard
         List<string> disableSectionButtons = new List<string>();
         List<string> allSections = new List<string>();
         List<string> completedSections = new List<string>();
+        List<string> numberUpList = new List<string>(0);
+        //string[] Ar = new string[2];
         int resourceID = 6;
         int index;
         bool sectionBtns;
@@ -40,6 +42,9 @@ namespace PalletCard
         int PaperSectionNo;
         int numberUp;
         int qtyRequired;
+        int badTextQty;
+        string stockCode;
+        int row;
         DateTime CurrentDate= DateTime.Now;
       
         public Home()
@@ -1687,6 +1692,7 @@ namespace PalletCard
                 DataTable gangProTable = new DataTable();
                 gangProTable = gangPro.Clone();
                 gangProTable.Columns.Add("QtyRequired");
+                gangProTable.Columns.Add("NumberUp1");
                 gangProTable.Columns.Add("Prod_qty_required");
                 gangProTable.Columns.Add("NumberUp-Bad");
                 gangProTable.Columns.Add("Sheets Affected");
@@ -1696,8 +1702,12 @@ namespace PalletCard
                 gangProTable.Columns.Add("Percentage_Short");
 
                 gangProTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "'  ";
-                //gangProTable.Columns["Prod_qty_required"].Expression = int.Parse(dt.Rows[0][0].ToString());
-                //gangProTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp";
+                for (int i = 0; i < gangProTable.Rows.Count; i++)
+                {
+                    gangProTable.Columns["NumberUp1"].Expression = gangProTable.Columns["NumberUp"].Expression;
+                }
+                gangProTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "'  ";
+                gangProTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp1";
                 gangProTable.Columns["Sheets Affected"].Expression = tbxSheetsAffectedBadSection.Text;
 
                 foreach (DataRow dr in gangPro.Rows)
@@ -1736,30 +1746,61 @@ namespace PalletCard
             using (DataTable gangClassic = new DataTable())
             {
                 myAdapter1.Fill(gangClassic);
+                gangClassic.Columns.Add("QtyRequired");
+                gangClassic.Columns.Add("NumberUp");
+                gangClassic.Columns.Add("NumberUp1");
+                gangClassic.Columns.Add("Prod_qty_required");
+                gangClassic.Columns.Add("NumberUp-Bad");
+                gangClassic.Columns.Add("Sheets Affected");
+                gangClassic.Columns.Add("Sheets unaffected");
+                gangClassic.Columns.Add("Prod_qty_Produced");
+                gangClassic.Columns.Add("Qty_Short");
+                gangClassic.Columns.Add("Percentage_Short");
+
+
                 DataTable gangClassicTable = new DataTable();
                 gangClassicTable = gangClassic.Clone();
-                gangClassicTable.Columns.Add("QtyRequired", typeof(int));
-                gangClassicTable.Columns.Add("NumberUp");
-                gangClassicTable.Columns.Add("NumberUp1", typeof(int));
-                gangClassicTable.Columns.Add("Prod_qty_required");
-                gangClassicTable.Columns.Add("NumberUp-Bad");
-                gangClassicTable.Columns.Add("Sheets Affected");
-                gangClassicTable.Columns.Add("Sheets unaffected");
-                gangClassicTable.Columns.Add("Prod_qty_Produced");
-                gangClassicTable.Columns.Add("Qty_Short");
-                gangClassicTable.Columns.Add("Percentage_Short");
+                //gangClassicTable.Columns.Add("QtyRequired", typeof(int));
+                //gangClassicTable.Columns.Add("NumberUp");
+                //gangClassicTable.Columns.Add("NumberUp1", typeof(int));
+                //gangClassicTable.Columns.Add("Prod_qty_required");
+                //gangClassicTable.Columns.Add("NumberUp-Bad");
+                //gangClassicTable.Columns.Add("Sheets Affected");
+                //gangClassicTable.Columns.Add("Sheets unaffected");
+                //gangClassicTable.Columns.Add("Prod_qty_Produced");
+                //gangClassicTable.Columns.Add("Qty_Short");
+                //gangClassicTable.Columns.Add("Percentage_Short");
+
 
                 gangClassicTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "'  ";
                 for (int i = 0; i < gangClassic.Rows.Count; i++)
                 {
                     var str = gangClassic.Rows[i][3].ToString();
                     gangClassicTable.Columns["NumberUp"].Expression = " '" + Regex.Match(str, @"(\d+)[^-]*$") + "'  ";
-                    gangClassicTable.Columns["NumberUp1"].Expression =  gangClassicTable.Columns["NumberUp"].Expression;
-
+                    gangClassicTable.Columns["NumberUp1"].Expression = gangClassicTable.Columns["NumberUp"].Expression;
                 }
-                gangClassicTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp1";
+                //gangClassicTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp1";
                 gangClassicTable.Columns["Sheets Affected"].Expression = tbxSheetsAffectedBadSection.Text;
-                //concatenatedTable1.Columns["Prod_qty_required"].Expression = dataGridView1.Rows[0].Cells[12].Value.Substring(dataGridView1.Rows[0].Cells[12].Value.LastIndexOf('-') + 1);
+
+                //string[] Ar = new string[2];
+                //for (int i = 0; i < gangClassic.Rows.Count; i++)
+                //{
+                //    if (gangClassic.Rows[i][3].ToString() == stockCode)
+                //    {
+                //        numberUpList[i] = badTextQty.ToString();
+                //    }
+                //    else numberUpList[i] = gangClassic.Rows[i][12].ToString();
+                //}
+
+                if (numberUpList.Count != 0)
+                {
+                    for (int i = 0; i < gangClassic.Rows.Count; i++)
+                    {
+
+                            gangClassic.Rows[i][12] = numberUpList[i];
+
+                    }
+                }
 
 
                 foreach (DataRow dr in gangClassic.Rows)
@@ -1769,6 +1810,31 @@ namespace PalletCard
                 dataGridView4.DataSource = gangClassicTable;
             }
         }
+
+        //private void saveClassic()
+        //{
+        //    //SAVE TO DATABASE
+        //    produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+        //    string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+        //    string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
+        //    string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '1', '" + produced + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "','" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
+        //    SqlConnection conDatabase = new SqlConnection(constring);
+        //    SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
+        //    SqlDataReader myReader;
+        //    try
+        //    {
+        //        conDatabase.Open();
+        //        myReader = cmdDatabase.ExecuteReader();
+        //        while (myReader.Read())
+        //        {
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
         private void tbxSheetsAffectedBadSection_TextChanged(object sender, EventArgs e)
         {
@@ -1811,7 +1877,6 @@ namespace PalletCard
             // if JobGanged = 0 (Main Table)
             if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
             { 
-                //int numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
                 if (numberUp > 1)
                 {
                     if (!badSectionLbls)
@@ -1839,14 +1904,14 @@ namespace PalletCard
                             lbl2.TextAlign = ContentAlignment.MiddleCenter;
                             lbl2.ForeColor = Color.White;
                             lbl2.Left = 40;
-                            lbl2.Text = this.dataGridView1.Rows[i].Cells[12].Value.ToString();
+                            lbl2.Text = this.dataGridView3.Rows[i].Cells[3].Value.ToString();
                             TextBox textBox1 = new TextBox();
                             this.flowLayoutPanel2.Controls.Add(textBox1);
                             textBox1.Height = 35;
                             textBox1.AutoSize = false;
                             textBox1.Width = 150;
                             textBox1.Multiline = false;
-                            textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
+                            textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
                             textBox1.TextAlign = HorizontalAlignment.Center;
                             textBox1.TextChanged += new System.EventHandler(markBadTextBoxQty);
                         }
@@ -1857,7 +1922,6 @@ namespace PalletCard
             //if JobGanged = 1 (PALLET_GANG_CLASSIC Table)
             else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 1)
             {
-                //int numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
                 if (numberUp > 1)
                 {
                     if (!badSectionLbls)
@@ -1885,16 +1949,18 @@ namespace PalletCard
                             lbl2.TextAlign = ContentAlignment.MiddleCenter;
                             lbl2.ForeColor = Color.White;
                             lbl2.Left = 40;
-                            lbl2.Text = numberUp.ToString();
+                            lbl2.Text = this.dataGridView4.Rows[i].Cells[9].Value.ToString();
                             TextBox textBox1 = new TextBox();
                             this.flowLayoutPanel2.Controls.Add(textBox1);
                             textBox1.Height = 35;
                             textBox1.AutoSize = false;
                             textBox1.Width = 150;
                             textBox1.Multiline = false;
-                            textBox1.Font = new Font(textBox1.Font.FontFamily, 36);
+                            textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
                             textBox1.TextAlign = HorizontalAlignment.Center;
+                            textBox1.Tag = i;
                             textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
+                            numberUpList.Insert(i, "0");
                         }
                     }
                     badSectionLbls = true;
@@ -1906,13 +1972,23 @@ namespace PalletCard
         private void btnWholePalletBadSection_Click(object sender, EventArgs e)
         {
                 flowLayoutPanel2.Enabled = false;
-        }  
-            
+        }
 
         private void markBadTextBoxQty(Object sender, EventArgs e)
         {
             tbxSheetsAffectedBadSection.Enabled = false;
             btnWholePalletBadSection.Enabled = false;
+            badTextQty = Convert.ToInt32(((TextBox)sender).Text);
+            row = (int)((TextBox)sender).Tag;
+
+            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+                if (row == i)
+                {
+                    numberUpList[i] = badTextQty.ToString();
+                }
+              
+            queryGangpro();
+            queryGangClassic();
         }
 
         int sheetsAffectedBadSection;
