@@ -11,7 +11,6 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.ComponentModel;
 using System.Net.Mail;
-using System.Linq;
 
 namespace PalletCard
 {
@@ -42,8 +41,8 @@ namespace PalletCard
         int PaperSectionNo;
         int numberUp;
         int qtyRequired;
-        int badTextQty;
-        string stockCode;
+        int sheetsProduced;
+        string badTextQty;
         int row;
         DateTime CurrentDate= DateTime.Now;
       
@@ -1685,7 +1684,8 @@ namespace PalletCard
                 myConnection.Close();
             }
 
-            qtyRequired = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            sheetsProduced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
             using (DataTable gangPro = new DataTable())
             {
                 myAdapter.Fill(gangPro);
@@ -1706,7 +1706,7 @@ namespace PalletCard
                 {
                     gangProTable.Columns["NumberUp1"].Expression = gangProTable.Columns["NumberUp"].Expression;
                 }
-                gangProTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "'  ";
+                gangProTable.Columns["Qty_Short"].Expression = " '" + sheetsProduced + "'  ";
                 gangProTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp1";
                 gangProTable.Columns["Sheets Affected"].Expression = tbxSheetsAffectedBadSection.Text;
 
@@ -1742,13 +1742,14 @@ namespace PalletCard
                 myConnection1.Close();
             }
 
-            qtyRequired = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            sheetsProduced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
             using (DataTable gangClassic = new DataTable())
             {
                 myAdapter1.Fill(gangClassic);
-                gangClassic.Columns.Add("QtyRequired");
+                gangClassic.Columns.Add("QtyRequired", typeof(int));
                 gangClassic.Columns.Add("NumberUp");
-                gangClassic.Columns.Add("NumberUp1");
+                gangClassic.Columns.Add("NumberUp1", typeof(int));
                 gangClassic.Columns.Add("Prod_qty_required");
                 gangClassic.Columns.Add("NumberUp-Bad");
                 gangClassic.Columns.Add("Sheets Affected");
@@ -1779,29 +1780,16 @@ namespace PalletCard
                     gangClassicTable.Columns["NumberUp"].Expression = " '" + Regex.Match(str, @"(\d+)[^-]*$") + "'  ";
                     gangClassicTable.Columns["NumberUp1"].Expression = gangClassicTable.Columns["NumberUp"].Expression;
                 }
-                //gangClassicTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp1";
+                gangClassicTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp1";
                 gangClassicTable.Columns["Sheets Affected"].Expression = tbxSheetsAffectedBadSection.Text;
-
-                //string[] Ar = new string[2];
-                //for (int i = 0; i < gangClassic.Rows.Count; i++)
-                //{
-                //    if (gangClassic.Rows[i][3].ToString() == stockCode)
-                //    {
-                //        numberUpList[i] = badTextQty.ToString();
-                //    }
-                //    else numberUpList[i] = gangClassic.Rows[i][12].ToString();
-                //}
 
                 if (numberUpList.Count != 0)
                 {
                     for (int i = 0; i < gangClassic.Rows.Count; i++)
                     {
-
-                            gangClassic.Rows[i][12] = numberUpList[i];
-
+                       gangClassic.Rows[i][12] = numberUpList[i];
                     }
                 }
-
 
                 foreach (DataRow dr in gangClassic.Rows)
                 {
@@ -1810,31 +1798,6 @@ namespace PalletCard
                 dataGridView4.DataSource = gangClassicTable;
             }
         }
-
-        //private void saveClassic()
-        //{
-        //    //SAVE TO DATABASE
-        //    produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
-        //    string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
-        //    string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-        //    string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '1', '" + produced + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "','" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
-        //    SqlConnection conDatabase = new SqlConnection(constring);
-        //    SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
-        //    SqlDataReader myReader;
-        //    try
-        //    {
-        //        conDatabase.Open();
-        //        myReader = cmdDatabase.ExecuteReader();
-        //        while (myReader.Read())
-        //        {
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
 
         private void tbxSheetsAffectedBadSection_TextChanged(object sender, EventArgs e)
         {
@@ -1914,6 +1877,7 @@ namespace PalletCard
                             textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
                             textBox1.TextAlign = HorizontalAlignment.Center;
                             textBox1.TextChanged += new System.EventHandler(markBadTextBoxQty);
+                            numberUpList.Insert(i, "0");
                         }
                     }
                     badSectionLbls = true;
@@ -1976,9 +1940,9 @@ namespace PalletCard
 
         private void markBadTextBoxQty(Object sender, EventArgs e)
         {
-            tbxSheetsAffectedBadSection.Enabled = false;
+            //tbxSheetsAffectedBadSection.Enabled = false;
             btnWholePalletBadSection.Enabled = false;
-            badTextQty = Convert.ToInt32(((TextBox)sender).Text);
+            badTextQty = ((TextBox)sender).Text;
             row = (int)((TextBox)sender).Tag;
 
             for (int i = 0; i < dataGridView4.Rows.Count; i++)
