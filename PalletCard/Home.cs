@@ -1750,38 +1750,30 @@ namespace PalletCard
                 gangClassic.Columns.Add("QtyRequired", typeof(int));
                 gangClassic.Columns.Add("NumberUp");
                 gangClassic.Columns.Add("NumberUp1", typeof(int));
-                gangClassic.Columns.Add("Prod_qty_required");
-                gangClassic.Columns.Add("NumberUp-Bad");
-                gangClassic.Columns.Add("Sheets Affected");
-                gangClassic.Columns.Add("Sheets unaffected");
-                gangClassic.Columns.Add("Prod_qty_Produced");
-                gangClassic.Columns.Add("Qty_Short");
-                gangClassic.Columns.Add("Percentage_Short");
-
+                gangClassic.Columns.Add("ProdQtyRequired");
+                gangClassic.Columns.Add("NumberUpBad", typeof(int));
+                gangClassic.Columns.Add("SheetsAffected", typeof(int));
+                gangClassic.Columns.Add("SheetsUnaffected");
+                gangClassic.Columns.Add("SheetsProduced", typeof(int));
+                gangClassic.Columns.Add("QtyGoodProduced");
+                gangClassic.Columns.Add("QtyShort");
+                gangClassic.Columns.Add("PercentageShort");
 
                 DataTable gangClassicTable = new DataTable();
                 gangClassicTable = gangClassic.Clone();
-                //gangClassicTable.Columns.Add("QtyRequired", typeof(int));
-                //gangClassicTable.Columns.Add("NumberUp");
-                //gangClassicTable.Columns.Add("NumberUp1", typeof(int));
-                //gangClassicTable.Columns.Add("Prod_qty_required");
-                //gangClassicTable.Columns.Add("NumberUp-Bad");
-                //gangClassicTable.Columns.Add("Sheets Affected");
-                //gangClassicTable.Columns.Add("Sheets unaffected");
-                //gangClassicTable.Columns.Add("Prod_qty_Produced");
-                //gangClassicTable.Columns.Add("Qty_Short");
-                //gangClassicTable.Columns.Add("Percentage_Short");
 
-
-                gangClassicTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "'  ";
+                gangClassicTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "' ";
                 for (int i = 0; i < gangClassic.Rows.Count; i++)
                 {
                     var str = gangClassic.Rows[i][3].ToString();
                     gangClassicTable.Columns["NumberUp"].Expression = " '" + Regex.Match(str, @"(\d+)[^-]*$") + "'  ";
                     gangClassicTable.Columns["NumberUp1"].Expression = gangClassicTable.Columns["NumberUp"].Expression;
                 }
-                gangClassicTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp1";
-                gangClassicTable.Columns["Sheets Affected"].Expression = tbxSheetsAffectedBadSection.Text;
+                gangClassicTable.Columns["SheetsProduced"].Expression = " '" + sheetsProduced + "' ";
+                gangClassicTable.Columns["ProdQtyRequired"].Expression = "QtyRequired * NumberUp1";
+                gangClassicTable.Columns["SheetsAffected"].Expression = tbxSheetsAffectedBadSection.Text;
+                gangClassicTable.Columns["SheetsUnaffected"].Expression = "SheetsProduced - SheetsAffected";
+                gangClassicTable.Columns["QtyGoodProduced"].Expression = "SheetsAffected * NumberUp1 - NumberUpBad";
 
                 if (numberUpList.Count != 0)
                 {
