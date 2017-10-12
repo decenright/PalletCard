@@ -1752,7 +1752,6 @@ namespace PalletCard
                 gangClassic.Columns.Add("NumberUp2", typeof(int));
                 gangClassic.Columns.Add("ProdQtyRequired", typeof(int));
                 gangClassic.Columns.Add("NumberUpBad", typeof(int));
-                //gangClassic.Columns.Add("NumberUpBad1", typeof(int));
                 gangClassic.Columns.Add("SheetsAffected", typeof(int));
                 gangClassic.Columns.Add("SheetsUnaffected", typeof(int));
                 gangClassic.Columns.Add("SheetsProduced", typeof(int));
@@ -1769,15 +1768,14 @@ namespace PalletCard
                    var str = gangClassic.Rows[i][4].ToString();
                    gangClassic.Rows[i]["NumberUp"] = " '" + Regex.Match(str, @"(\d+)[^-]*$") + "'  ";
                    gangClassic.Rows[i]["NumberUp1"] = Regex.Replace(gangClassic.Rows[i]["NumberUp"].ToString(), "[^0-9.]", "");
-                   gangClassic.Rows[i]["NumberUp2"] = Convert.ToInt32(gangClassic.Rows[i]["NumberUp1"]);
-                   //gangClassic.Rows[i]["NumberUpBad1"] = gangClassic.Rows[i]["NumberUpBad"];                               
+                   gangClassic.Rows[i]["NumberUp2"] = Convert.ToInt32(gangClassic.Rows[i]["NumberUp1"]);                           
                 }
                 gangClassicTable.Columns["SheetsProduced"].Expression = " '" + sheetsProduced + "' ";
                 gangClassicTable.Columns["ProdQtyRequired"].Expression = "QtyRequired * NumberUp2";
                 gangClassicTable.Columns["SheetsAffected"].Expression = tbxSheetsAffectedBadSection.Text;
                 gangClassicTable.Columns["SheetsUnaffected"].Expression = "SheetsProduced - SheetsAffected";
                 gangClassicTable.Columns["QtyGoodProduced"].Expression = "(SheetsAffected * NumberUp2 - NumberUpBad) + (SheetsUnaffected * NumberUp2)";
-                gangClassicTable.Columns["QtyShort"].Expression = "ProdQtyRequired - QtyGoodProduced";
+                gangClassicTable.Columns["QtyShort"].Expression = "QtyGoodProduced - ProdQtyRequired";
                 gangClassicTable.Columns["PercentageShort"].Expression = "QtyShort / ProdQtyRequired * 100";
 
                 if (numberUpList.Count != 0)
@@ -1927,7 +1925,7 @@ namespace PalletCard
                     badSectionLbls = true;
                 }
             }
-
+            lbl7.Text = dataGridView4.Rows[0].Cells[8].Value.ToString();
         }
 
         private void btnWholePalletBadSection_Click(object sender, EventArgs e)
@@ -2383,7 +2381,7 @@ namespace PalletCard
             //}
 
             dataGridView2.Refresh();
-            dataGridView2.AllowUserToAddRows = false;
+            //dataGridView2.AllowUserToAddRows = false;
 
             // Get the quantities produced from the previous pallet cards
             int sumProduced = 0;
@@ -2393,6 +2391,7 @@ namespace PalletCard
             {
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
                 {
+                    dataGridView2.AllowUserToAddRows = false;
                     // Sum up only PaperSectionNo's associated with this section not all PaperSectionNo's
                     if (Convert.ToInt32(dataGridView2.Rows[i].Cells[8].Value) == PaperSectionNo)
                     {
@@ -2422,7 +2421,7 @@ namespace PalletCard
                     pnlPalletCard6.BringToFront();
                     btnBack.Visible = false;
                     lblPalletDidNotMakeQty.Text = "Job " + lblJobNo.Text + " Sheet " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " has " + shortBy + " insufficient sheets";
-                    lbl7.Text = "Pallet Short";
+                    //lbl7.Text = "Pallet Short";
                     lblFinishedPallets.Visible = false;
 
                     // Check if 1 finished pallet for each section - if not provide a warning message listing the remaing pallets to finish
@@ -2465,7 +2464,7 @@ namespace PalletCard
                     pnlPalletCard9.BringToFront();
                     btnBack.Visible = false;
                     lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
-                    lbl7.Text = "Pallet Over";
+                    //lbl7.Text = "Pallet Over";
                     // Disable the Section button
                     disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                     removeFlowLayoutBtns();
