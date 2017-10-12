@@ -21,7 +21,6 @@ namespace PalletCard
         List<string> allSections = new List<string>();
         List<string> completedSections = new List<string>();
         List<string> numberUpList = new List<string>(0);
-        //string[] Ar = new string[2];
         int resourceID = 6;
         int index;
         bool sectionBtns;
@@ -44,7 +43,6 @@ namespace PalletCard
         int sheetsProduced;
         string badTextQty;
         int row;
-        int i = 0;
         DateTime CurrentDate= DateTime.Now;
       
         public Home()
@@ -1754,6 +1752,7 @@ namespace PalletCard
                 gangClassic.Columns.Add("NumberUp2", typeof(int));
                 gangClassic.Columns.Add("ProdQtyRequired", typeof(int));
                 gangClassic.Columns.Add("NumberUpBad", typeof(int));
+                //gangClassic.Columns.Add("NumberUpBad1", typeof(int));
                 gangClassic.Columns.Add("SheetsAffected", typeof(int));
                 gangClassic.Columns.Add("SheetsUnaffected", typeof(int));
                 gangClassic.Columns.Add("SheetsProduced", typeof(int));
@@ -1765,15 +1764,14 @@ namespace PalletCard
                 gangClassicTable = gangClassic.Clone();
 
                 gangClassicTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "' ";
-
                 for (int i = 0; i < gangClassic.Rows.Count; i++)
                 {
                    var str = gangClassic.Rows[i][4].ToString();
-                   gangClassic.Rows[i][9] = " '" + Regex.Match(str, @"(\d+)[^-]*$") + "'  ";
-                   gangClassic.Rows[i][10] = Regex.Replace(gangClassic.Rows[i][9].ToString(), "[^0-9.]", "");
-                   gangClassic.Rows[i][11] = Convert.ToInt32(gangClassic.Rows[i][10]);
+                   gangClassic.Rows[i]["NumberUp"] = " '" + Regex.Match(str, @"(\d+)[^-]*$") + "'  ";
+                   gangClassic.Rows[i]["NumberUp1"] = Regex.Replace(gangClassic.Rows[i]["NumberUp"].ToString(), "[^0-9.]", "");
+                   gangClassic.Rows[i]["NumberUp2"] = Convert.ToInt32(gangClassic.Rows[i]["NumberUp1"]);
+                   //gangClassic.Rows[i]["NumberUpBad1"] = gangClassic.Rows[i]["NumberUpBad"];                               
                 }
-
                 gangClassicTable.Columns["SheetsProduced"].Expression = " '" + sheetsProduced + "' ";
                 gangClassicTable.Columns["ProdQtyRequired"].Expression = "QtyRequired * NumberUp2";
                 gangClassicTable.Columns["SheetsAffected"].Expression = tbxSheetsAffectedBadSection.Text;
@@ -1786,7 +1784,7 @@ namespace PalletCard
                 {
                     for (int i = 0; i < gangClassic.Rows.Count; i++)
                     {
-                       gangClassic.Rows[i][13] = numberUpList[i];
+                            gangClassic.Rows[i][13] = numberUpList[i];                      
                     }
                 }
 
@@ -1912,7 +1910,7 @@ namespace PalletCard
                             lbl2.TextAlign = ContentAlignment.MiddleCenter;
                             lbl2.ForeColor = Color.White;
                             lbl2.Left = 40;
-                            lbl2.Text = this.dataGridView4.Rows[i].Cells[9].Value.ToString();
+                            lbl2.Text = this.dataGridView4.Rows[i].Cells[11].Value.ToString();
                             TextBox textBox1 = new TextBox();
                             this.flowLayoutPanel2.Controls.Add(textBox1);
                             textBox1.Height = 35;
@@ -1939,10 +1937,14 @@ namespace PalletCard
 
         private void markBadTextBoxQty(Object sender, EventArgs e)
         {
-            //tbxSheetsAffectedBadSection.Enabled = false;
             btnWholePalletBadSection.Enabled = false;
             badTextQty = ((TextBox)sender).Text;
             row = (int)((TextBox)sender).Tag;
+
+            if (badTextQty == "")
+            {
+                badTextQty = "0";
+            }
 
             for (int i = 0; i < dataGridView4.Rows.Count; i++)
                 if (row == i)
