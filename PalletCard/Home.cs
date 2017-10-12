@@ -1765,34 +1765,14 @@ namespace PalletCard
                 gangClassicTable = gangClassic.Clone();
 
                 gangClassicTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "' ";
-                //for (int i = 0; i < gangClassic.Rows.Count; i++)
-                //{
-                //    var str = gangClassic.Rows[i][4].ToString();
-                //    gangClassicTable.Columns["NumberUp"].Expression = " '" + Regex.Match(str, @"(\d+)[^-]*$") + "'  ";
-                //    gangClassicTable.Columns["NumberUp1"].Expression = gangClassicTable.Columns["NumberUp"].Expression;
-                //}
 
                 for (int i = 0; i < gangClassic.Rows.Count; i++)
                 {
-                    var str = gangClassic.Rows[i][4].ToString();
-                    gangClassicTable.Columns["NumberUp"].Expression = " '" + Regex.Match(str, @"(\d+)[^-]*$") + "'  ";
-                    gangClassicTable.Columns["NumberUp1"].Expression = Regex.Replace(gangClassicTable.Columns["NumberUp"].Expression, "[^0-9.]", "");
-                    gangClassicTable.Columns["NumberUp2"].Expression = gangClassicTable.Columns["NumberUp1"].Expression;
+                   var str = gangClassic.Rows[i][4].ToString();
+                   gangClassic.Rows[i][9] = " '" + Regex.Match(str, @"(\d+)[^-]*$") + "'  ";
+                   gangClassic.Rows[i][10] = Regex.Replace(gangClassic.Rows[i][9].ToString(), "[^0-9.]", "");
+                   gangClassic.Rows[i][11] = Convert.ToInt32(gangClassic.Rows[i][10]);
                 }
-
-
-                //foreach (DataRow dr in gangClassic.Rows)
-                //{
-                //    //var str = gangClassic.Columns[4].ToString();
-                //    var str = gangClassic.Rows[i][4].ToString();
-                //    //String str = gangClassic.Columns[4].ToString();
-                //    gangClassicTable.Columns["NumberUp"].Expression = " '" + Regex.Match(str, @"(\d+)[^-]*$") + "'  ";
-                //    gangClassicTable.Columns["NumberUp1"].Expression = Regex.Replace(gangClassicTable.Columns["NumberUp"].Expression, "[^0-9.]", "");
-                //    gangClassicTable.Columns["NumberUp2"].Expression = gangClassicTable.Columns["NumberUp1"].Expression;
-                //    i = i + 1;
-                //}
-
-
 
                 gangClassicTable.Columns["SheetsProduced"].Expression = " '" + sheetsProduced + "' ";
                 gangClassicTable.Columns["ProdQtyRequired"].Expression = "QtyRequired * NumberUp2";
