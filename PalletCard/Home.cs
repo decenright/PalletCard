@@ -42,7 +42,8 @@ namespace PalletCard
         int qtyRequired;
         int sheetsProduced;
         string badTextQty;
-        int row;
+        int numberUpBadRow;
+        string autoNum = "0";
         DateTime CurrentDate= DateTime.Now;
       
         public Home()
@@ -1064,58 +1065,27 @@ namespace PalletCard
             ClearSignaturePanel();
         }
 
-        private static Bitmap DrawControlToBitmap(Control control)
-        {
-            Bitmap bitmap = new Bitmap(control.Width, control.Height);
-            Graphics graphics = Graphics.FromImage(bitmap);
-            Rectangle rect = control.RectangleToScreen(control.ClientRectangle);
-            graphics.CopyFromScreen(rect.Location, Point.Empty, control.Size);
-            return bitmap;
-        }
-
-        //private void getAutoNumber()
+        //private static Bitmap DrawControlToBitmap(Control control)
         //{
-
-        //    //string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
-        //    //string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
-        //    //OdbcConnection myConnection = new OdbcConnection(ConnectionString);
-        //    //OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-
-
-        //    string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-        //    using (SqlConnection cs = new SqlConnection(constring))
-        //    {
-        //        try
-        //        {
-        //            string query = "SELECT MAX(AutoNum) FROM Log";
-        //            //SqlCommand comSelect = new SqlCommand(query, constring);
-        //            //int autoNum = (int)comSelect.ExecuteScalar();
-
-
-        //            //SqlCommand cmd = new SqlCommand("SELECT MAX(AutoNum) FROM Log");
-        //            //cs.Open();
-        //            //int autoNum = (int)cmd.ExecuteScalar() +1;
-        //            //cmd.Connection = constring;
-        //            //cs.Close();
-
-
-        //            //SqlCommand cmd = new SqlCommand("SELECT TOP 1 Signature FROM Log ORDER BY Signature DESC");
-        //            //cs.Open();
-        //            //cmd.ExecuteNonQuery();
-        //            //cs.Close();
-
-
-        //        }
-        //        catch (Exception err)
-        //        {
-        //            MessageBox.Show(err.Message);
-        //        }
-        //    }
+        //    Bitmap bitmap = new Bitmap(control.Width, control.Height);
+        //    Graphics graphics = Graphics.FromImage(bitmap);
+        //    Rectangle rect = control.RectangleToScreen(control.ClientRectangle);
+        //    graphics.CopyFromScreen(rect.Location, Point.Empty, control.Size);
+        //    return bitmap;
         //}
-        //int autoNum;
+
+        public void SaveSignatureImageToFile()
+        {
+            Bitmap bmp = new Bitmap(this.SignaturePanel.Width, this.SignaturePanel.Height);
+            Graphics graphics = Graphics.FromImage(bmp);
+            Rectangle rect = SignaturePanel.RectangleToScreen(SignaturePanel.ClientRectangle);
+            graphics.CopyFromScreen(rect.Location, Point.Empty, SignaturePanel.Size);
+            bmp.Save("C:/Temp/Signatures/ " + autoNum + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+        }
 
         private void btnQATravellerBlurb_Click(object sender, EventArgs e)
         {
+            SaveSignatureImageToFile();
             // Requery the data to refresh dataGridView2 with the newly added PalletNumber and barCode
             string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
             string CommandText = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
@@ -1774,9 +1744,9 @@ namespace PalletCard
                 gangClassicTable.Columns["ProdQtyRequired"].Expression = "QtyRequired * NumberUp2";
                 gangClassicTable.Columns["SheetsAffected"].Expression = tbxSheetsAffectedBadSection.Text;
                 gangClassicTable.Columns["SheetsUnaffected"].Expression = "SheetsProduced - SheetsAffected";
-                gangClassicTable.Columns["QtyGoodProduced"].Expression = "(SheetsAffected * NumberUp2 - NumberUpBad) + (SheetsUnaffected * NumberUp2)";
+                gangClassicTable.Columns["QtyGoodProduced"].Expression = "(SheetsAffected * (NumberUp2 - NumberUpBad)) + (SheetsUnaffected * NumberUp2)";
                 gangClassicTable.Columns["QtyShort"].Expression = "QtyGoodProduced - ProdQtyRequired";
-                gangClassicTable.Columns["PercentageShort"].Expression = "QtyShort / ProdQtyRequired * 100";
+                gangClassicTable.Columns["PercentageShort"].Expression = "QtyShort / ProdQtyRequired";
 
                 if (numberUpList.Count != 0)
                 {
@@ -1830,8 +1800,8 @@ namespace PalletCard
 
             lblNumberUp.Visible = false;
             lblNumberUpQty.Visible = false;
+            lblStockCode.Visible = false;
 
-           
             // if JobGanged = 0 (Main Table)
             if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
             { 
@@ -1925,7 +1895,10 @@ namespace PalletCard
                     badSectionLbls = true;
                 }
             }
-            lbl7.Text = dataGridView4.Rows[0].Cells[8].Value.ToString();
+            if (dataGridView4.RowCount != 0)
+            {
+                lbl7.Text = dataGridView4.Rows[0].Cells[8].Value.ToString();
+            }
         }
 
         private void btnWholePalletBadSection_Click(object sender, EventArgs e)
@@ -1937,7 +1910,7 @@ namespace PalletCard
         {
             btnWholePalletBadSection.Enabled = false;
             badTextQty = ((TextBox)sender).Text;
-            row = (int)((TextBox)sender).Tag;
+            numberUpBadRow = (int)((TextBox)sender).Tag;
 
             if (badTextQty == "")
             {
@@ -1945,7 +1918,7 @@ namespace PalletCard
             }
 
             for (int i = 0; i < dataGridView4.Rows.Count; i++)
-                if (row == i)
+                if (numberUpBadRow == i)
                 {
                     numberUpList[i] = badTextQty.ToString();
                 }
@@ -2542,7 +2515,7 @@ namespace PalletCard
                     //}
                 }
             }
-
+            autoNum = dataGridView2.Rows[0].Cells[0].Value.ToString();
             index = 16;
         }
 
