@@ -20,8 +20,9 @@ namespace PalletCard
         List<string> disableSectionButtons = new List<string>();
         List<string> allSections = new List<string>();
         List<string> completedSections = new List<string>();
-        List<string> numberUpList = new List<string>(0);
+        List<string> numberBadList = new List<string>(0);
         List<string> sheetsAffectedList = new List<string>(0);
+        List<int> wholePalletList = new List<int>(0);
         int resourceID = 6;
         int index;
         bool sectionBtns;
@@ -42,11 +43,12 @@ namespace PalletCard
         int numberUp;
         int qtyRequired;
         int sheetsProduced;
-        string badTextQty;
+        string badQty;
         string sheetsAffected;
-        int numberUpBadRow;
+        int gangRow;
         int sheetsAffectedBadSection;
         string autoNum;
+        string wholePallet;
         DateTime CurrentDate= DateTime.Now;
       
         public Home()
@@ -1751,12 +1753,13 @@ namespace PalletCard
                 gangClassicTable.Columns["QtyShort"].Expression = "QtyGoodProduced - ProdQtyRequired";
                 gangClassicTable.Columns["PercentageShort"].Expression = "QtyShort / ProdQtyRequired";
 
-                if (numberUpList.Count != 0)
+                if (numberBadList.Count != 0)
                 {
                     for (int i = 0; i < gangClassic.Rows.Count; i++)
                     {
-                        gangClassic.Rows[i][13] = numberUpList[i];
+                        gangClassic.Rows[i][13] = numberBadList[i];
                         gangClassic.Rows[i][14] = sheetsAffectedList[i];
+                        gangClassic.Rows[i][14] = wholePalletList[i];
                     }
                 }
 
@@ -1856,8 +1859,8 @@ namespace PalletCard
                             textBox1.Multiline = false;
                             textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
                             textBox1.TextAlign = HorizontalAlignment.Center;
-                            textBox1.TextChanged += new System.EventHandler(markBadTextBoxQty);
-                            numberUpList.Insert(i, "0");
+                            textBox1.TextChanged += new System.EventHandler(gangNumberUpBad);
+                            numberBadList.Insert(i, "0");
                         }
                     }
                     badSectionLbls = true;
@@ -1918,7 +1921,7 @@ namespace PalletCard
                             textBox1.TextAlign = HorizontalAlignment.Center;
                             textBox1.Margin = new Padding(0, 0, 0, 0);
                             textBox1.Tag = i;
-                            textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
+                            textBox1.TextChanged += new System.EventHandler(this.gangNumberUpBad);
                             TextBox textBox2 = new TextBox();
                             this.flowLayoutPanel2.Controls.Add(textBox2);
                             textBox2.Height = 40;
@@ -1939,8 +1942,11 @@ namespace PalletCard
                             btn1.Font = new Font(textBox1.Font.FontFamily, 9);
                             btn1.Text = "Whole Pallet";
                             btn1.Margin = new Padding(0, 0, 0, 0);
-                            numberUpList.Insert(i, "0");
+                            btn1.Tag = i;
+                            btn1.Click += new System.EventHandler(this.gangWholePallet);
+                            numberBadList.Insert(i, "0");
                             sheetsAffectedList.Insert(i, "0");
+                            wholePalletList.Insert(i, 0);
                         }
                     }
                     badSectionLbls = true;
@@ -1973,21 +1979,21 @@ namespace PalletCard
                 flowLayoutPanel2.Enabled = false;
         }
 
-        private void markBadTextBoxQty(Object sender, EventArgs e)
+        private void gangNumberUpBad(Object sender, EventArgs e)
         {
             btnWholePalletBadSection.Enabled = false;
-            badTextQty = ((TextBox)sender).Text;
-            numberUpBadRow = (int)((TextBox)sender).Tag;
+            badQty = ((TextBox)sender).Text;
+            gangRow = (int)((TextBox)sender).Tag;
 
-            if (badTextQty == "")
+            if (badQty == "")
             {
-                badTextQty = "0";
+                badQty = "0";
             }
 
             for (int i = 0; i < dataGridView4.Rows.Count; i++)
-                if (numberUpBadRow == i)
+                if (gangRow == i)
                 {
-                    numberUpList[i] = badTextQty.ToString();
+                    numberBadList[i] = badQty.ToString();
                 }
               
             queryGangpro();
@@ -1998,7 +2004,7 @@ namespace PalletCard
         {
             btnWholePalletBadSection.Enabled = false;
             sheetsAffected = ((TextBox)sender).Text;
-            numberUpBadRow = (int)((TextBox)sender).Tag;
+            gangRow = (int)((TextBox)sender).Tag;
 
             if (sheetsAffected == "")
             {
@@ -2006,11 +2012,37 @@ namespace PalletCard
             }
 
             for (int i = 0; i < dataGridView4.Rows.Count; i++)
-                if (numberUpBadRow == i)
+                if (gangRow == i)
                 {
                     sheetsAffectedList[i] = sheetsAffected.ToString();
                 }
 
+
+            queryGangpro();
+            queryGangClassic();
+        }
+
+        private void gangWholePallet(Object sender, EventArgs e)
+        {
+            btnWholePalletBadSection.Enabled = false;
+
+            //wholePallet = ((Button)sender).Text;
+            gangRow = (int)((Button)sender).Tag;
+
+            //if (wholePallet == "")
+            //{
+            //    wholePallet = "0";
+            //}
+
+
+
+            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+                if (gangRow == i)
+                {
+                    wholePalletList[i] = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+                }
+
+            //wholePallet = Convert.ToInt32(dataGridView4.Rows[0].Cells[16].Value);
             queryGangpro();
             queryGangClassic();
         }
