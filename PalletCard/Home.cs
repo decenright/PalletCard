@@ -21,6 +21,7 @@ namespace PalletCard
         List<string> allSections = new List<string>();
         List<string> completedSections = new List<string>();
         List<string> numberUpList = new List<string>(0);
+        List<string> sheetsAffectedList = new List<string>(0);
         int resourceID = 6;
         int index;
         bool sectionBtns;
@@ -42,8 +43,10 @@ namespace PalletCard
         int qtyRequired;
         int sheetsProduced;
         string badTextQty;
+        string sheetsAffected;
         int numberUpBadRow;
-        string autoNum = "0";
+        int sheetsAffectedBadSection;
+        string autoNum;
         DateTime CurrentDate= DateTime.Now;
       
         public Home()
@@ -1752,7 +1755,8 @@ namespace PalletCard
                 {
                     for (int i = 0; i < gangClassic.Rows.Count; i++)
                     {
-                            gangClassic.Rows[i][13] = numberUpList[i];                      
+                        gangClassic.Rows[i][13] = numberUpList[i];
+                        gangClassic.Rows[i][14] = sheetsAffectedList[i];
                     }
                 }
 
@@ -1761,6 +1765,17 @@ namespace PalletCard
                     gangClassicTable.Rows.Add(dr.ItemArray);
                 }
                 dataGridView4.DataSource = gangClassicTable;
+
+
+                //decimal maxPercentageShort = decimal.MinValue;
+                //foreach (DataRow dr in gangClassicTable.Rows)
+                //{
+                //    decimal percentageShort = dr.Field<decimal>("PercentageShort");
+                //    maxPercentageShort = Math.Max(maxPercentageShort, percentageShort);
+                //}
+                //MessageBox.Show(maxPercentageShort.ToString());
+
+
             }
         }
 
@@ -1859,37 +1874,73 @@ namespace PalletCard
                         {
                             lblNumberUp.Visible = true;
                             lblNumberUpQty.Visible = true;
+                            lblStockCode.Visible = true;
+                            flowLayoutPanel2.HorizontalScroll.Visible = false;
                             Label lbl1 = new Label();
                             this.flowLayoutPanel2.Controls.Add(lbl1);
-                            lbl1.Height = 40;
-                            lbl1.Width = 200;
-                            lbl1.BackColor = Color.Tan;
-                            lbl1.Font = new Font("Microsoft Sans Serif", 20);
-                            lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl1.Height = 35;
+                            lbl1.Width = 430;
+                            lbl1.BackColor = Color.Gray;
+                            lbl1.Font = new Font("Microsoft Sans Serif", 12);
+                            lbl1.TextAlign = ContentAlignment.MiddleLeft;
                             lbl1.ForeColor = Color.White;
                             lbl1.Left = 40;
                             lbl1.Text = this.dataGridView4.Rows[i].Cells[3].Value.ToString();
                             Label lbl2 = new Label();
                             this.flowLayoutPanel2.Controls.Add(lbl2);
                             lbl2.Height = 40;
-                            lbl2.Width = 100;
-                            lbl2.BackColor = Color.Tan;
+                            lbl2.Width = 120;
+                            lbl2.BackColor = Color.Silver;
                             lbl2.Font = new Font("Microsoft Sans Serif", 20);
-                            lbl2.TextAlign = ContentAlignment.MiddleCenter;
-                            lbl2.ForeColor = Color.White;
+                            lbl2.TextAlign = ContentAlignment.MiddleLeft;
+                            lbl2.ForeColor = Color.Black;
+                            lbl2.Margin = new Padding(0, 0, 0, 0);
                             lbl2.Left = 40;
-                            lbl2.Text = this.dataGridView4.Rows[i].Cells[11].Value.ToString();
+                            lbl2.Text = this.dataGridView4.Rows[i].Cells[1].Value.ToString();
+                            Label lbl3 = new Label();
+                            this.flowLayoutPanel2.Controls.Add(lbl3);
+                            lbl3.Height = 40;
+                            lbl3.Width = 108;
+                            lbl3.BackColor = Color.Silver;
+                            lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                            lbl3.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl3.ForeColor = Color.Black;
+                            lbl3.Margin = new Padding(0, 0, 0, 0);
+                            lbl3.Left = 40;
+                            lbl3.Text = this.dataGridView4.Rows[i].Cells[11].Value.ToString();
                             TextBox textBox1 = new TextBox();
                             this.flowLayoutPanel2.Controls.Add(textBox1);
-                            textBox1.Height = 35;
+                            textBox1.Height = 40;
                             textBox1.AutoSize = false;
-                            textBox1.Width = 150;
+                            textBox1.Width = 70;
                             textBox1.Multiline = false;
                             textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
                             textBox1.TextAlign = HorizontalAlignment.Center;
+                            textBox1.Margin = new Padding(0, 0, 0, 0);
                             textBox1.Tag = i;
                             textBox1.TextChanged += new System.EventHandler(this.markBadTextBoxQty);
+                            TextBox textBox2 = new TextBox();
+                            this.flowLayoutPanel2.Controls.Add(textBox2);
+                            textBox2.Height = 40;
+                            textBox2.AutoSize = false;
+                            textBox2.Width = 85;
+                            textBox2.Multiline = false;
+                            textBox2.Font = new Font(textBox1.Font.FontFamily, 20);
+                            textBox2.TextAlign = HorizontalAlignment.Center;
+                            textBox2.Margin = new Padding(0, 0, 0, 0);
+                            textBox2.Tag = i;
+                            textBox2.TextChanged += new System.EventHandler(gangSheetsAffected);
+                            Button btn1 = new Button();
+                            flowLayoutPanel2.Controls.Add(btn1);
+                            btn1.Height = 40;
+                            btn1.Width = 73;
+                            btn1.BackColor = Color.SteelBlue;
+                            btn1.ForeColor = Color.White;
+                            btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                            btn1.Text = "Whole Pallet";
+                            btn1.Margin = new Padding(0, 0, 0, 0);
                             numberUpList.Insert(i, "0");
+                            sheetsAffectedList.Insert(i, "0");
                         }
                     }
                     badSectionLbls = true;
@@ -1899,6 +1950,22 @@ namespace PalletCard
             {
                 lbl7.Text = dataGridView4.Rows[0].Cells[8].Value.ToString();
             }
+        }
+
+        private void btnScrollDown_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel2.AutoScrollPosition =
+            new Point(0, flowLayoutPanel2.VerticalScroll.Value +
+                 flowLayoutPanel2.VerticalScroll.SmallChange * 7);
+            //btnScrollDown.Text = char.ConvertFromUtf32(0x2193);
+        }
+
+        private void btnScrollUp_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel2.AutoScrollPosition =
+            new Point(0, flowLayoutPanel2.VerticalScroll.Value +
+            flowLayoutPanel2.VerticalScroll.SmallChange * -7);
+            //btnScrollUp.Text = char.ConvertFromUtf32(0x2191);
         }
 
         private void btnWholePalletBadSection_Click(object sender, EventArgs e)
@@ -1927,7 +1994,26 @@ namespace PalletCard
             queryGangClassic();
         }
 
-        int sheetsAffectedBadSection;
+        private void gangSheetsAffected(Object sender, EventArgs e)
+        {
+            btnWholePalletBadSection.Enabled = false;
+            sheetsAffected = ((TextBox)sender).Text;
+            numberUpBadRow = (int)((TextBox)sender).Tag;
+
+            if (sheetsAffected == "")
+            {
+                sheetsAffected = "0";
+            }
+
+            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+                if (numberUpBadRow == i)
+                {
+                    sheetsAffectedList[i] = sheetsAffected.ToString();
+                }
+
+            queryGangpro();
+            queryGangClassic();
+        }
 
         private void btnBadSectionOK_Click(object sender, EventArgs e)
         {
