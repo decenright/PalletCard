@@ -137,7 +137,7 @@
             this.btnScrollUp = new System.Windows.Forms.Button();
             this.btnScrollDown = new System.Windows.Forms.Button();
             this.lblSheetsAffected = new System.Windows.Forms.Label();
-            this.lblNumberUpQty = new System.Windows.Forms.Label();
+            this.lblNumberUpBadQty = new System.Windows.Forms.Label();
             this.lblNumberUp = new System.Windows.Forms.Label();
             this.lblStockCode = new System.Windows.Forms.Label();
             this.pnlBadSectionGangHeader = new System.Windows.Forms.Panel();
@@ -1366,7 +1366,7 @@
             this.pnlPalletCard5.Controls.Add(this.btnScrollUp);
             this.pnlPalletCard5.Controls.Add(this.btnScrollDown);
             this.pnlPalletCard5.Controls.Add(this.lblSheetsAffected);
-            this.pnlPalletCard5.Controls.Add(this.lblNumberUpQty);
+            this.pnlPalletCard5.Controls.Add(this.lblNumberUpBadQty);
             this.pnlPalletCard5.Controls.Add(this.lblNumberUp);
             this.pnlPalletCard5.Controls.Add(this.lblStockCode);
             this.pnlPalletCard5.Controls.Add(this.pnlBadSectionGangHeader);
@@ -1419,17 +1419,17 @@
             this.lblSheetsAffected.TabIndex = 22;
             this.lblSheetsAffected.Text = "Affected";
             // 
-            // lblNumberUpQty
+            // lblNumberUpBadQty
             // 
-            this.lblNumberUpQty.AutoSize = true;
-            this.lblNumberUpQty.BackColor = System.Drawing.Color.DarkCyan;
-            this.lblNumberUpQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumberUpQty.ForeColor = System.Drawing.Color.White;
-            this.lblNumberUpQty.Location = new System.Drawing.Point(252, 526);
-            this.lblNumberUpQty.Name = "lblNumberUpQty";
-            this.lblNumberUpQty.Size = new System.Drawing.Size(36, 16);
-            this.lblNumberUpQty.TabIndex = 15;
-            this.lblNumberUpQty.Text = "Bad";
+            this.lblNumberUpBadQty.AutoSize = true;
+            this.lblNumberUpBadQty.BackColor = System.Drawing.Color.DarkCyan;
+            this.lblNumberUpBadQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumberUpBadQty.ForeColor = System.Drawing.Color.White;
+            this.lblNumberUpBadQty.Location = new System.Drawing.Point(252, 526);
+            this.lblNumberUpBadQty.Name = "lblNumberUpBadQty";
+            this.lblNumberUpBadQty.Size = new System.Drawing.Size(36, 16);
+            this.lblNumberUpBadQty.TabIndex = 15;
+            this.lblNumberUpBadQty.Text = "Bad";
             // 
             // lblNumberUp
             // 
@@ -2170,10 +2170,10 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1045);
             this.Controls.Add(this.pnlPalletCard5);
+            this.Controls.Add(this.pnlPalletCard4);
             this.Controls.Add(this.pnlSignature);
             this.Controls.Add(this.pnlPalletCard9);
             this.Controls.Add(this.pnlPalletCard6);
-            this.Controls.Add(this.pnlPalletCard4);
             this.Controls.Add(this.pnlPalletCard3);
             this.Controls.Add(this.pnlHome0);
             this.Controls.Add(this.pnlPalletCard8);
@@ -2364,7 +2364,7 @@
         private System.Windows.Forms.TextBox tbxSheetsAffectedBadSection;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Label lblNumberUpQty;
+        private System.Windows.Forms.Label lblNumberUpBadQty;
         private System.Windows.Forms.Label lblNumberUp;
         private System.Windows.Forms.Button btnBadSectionOK;
         private System.Windows.Forms.Label lbl8;
