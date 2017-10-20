@@ -50,7 +50,9 @@ namespace PalletCard
         string autoNum;
         int gangWholePalletButtonPressed;
         DateTime CurrentDate= DateTime.Now;
-      
+        decimal maxPercentageShort;
+
+
         public Home()
         {
             InitializeComponent();
@@ -1776,19 +1778,36 @@ namespace PalletCard
                 //decimal maxPercentageShort = decimal.MinValue;
                 //foreach (DataRow dr in gangClassicTable.Rows)
                 //{
-                //    decimal percentageShort = dr.Field<decimal>("PercentageShort");
-                //    maxPercentageShort = Math.Max(maxPercentageShort, percentageShort);
+                //    if (dataGridView4.Rows[0].Cells[19].Value.ToString() != "")
+                //    {
+                //        decimal percentageShort = dr.Field<decimal>("PercentageShort");
+                //        maxPercentageShort = Math.Max(maxPercentageShort, percentageShort);
+                //    }
                 //}
                 //MessageBox.Show(maxPercentageShort.ToString());
 
 
+                // Find Number Short to return to the man flow
+                    if (dataGridView4.Rows[0].Cells[19].Value.ToString() != "")
+                    {
+                    this.dataGridView4.Sort(this.dataGridView4.Columns[19], ListSortDirection.Descending);
+                    maxPercentageShort = Convert.ToDecimal(dataGridView4.Rows[0].Cells[19].Value);                    
+                    }
+
+                sheetsAffectedBadSection = Convert.ToInt32((qtyRequired * (1 + maxPercentageShort)) - sheetsProduced);
+                MessageBox.Show(sheetsAffectedBadSection.ToString());
+
+                if (sheetsAffectedBadSection < 0)
+                {
+                    sheetsAffectedBadSection = 0;
+                }
             }
         }
 
         private void tbxSheetsAffectedBadSection_TextChanged(object sender, EventArgs e)
         {
-            queryGangpro();
-            queryGangClassic();
+            sheetsAffectedBadSection = Convert.ToInt32(tbxSheetsAffectedBadSection.Text);
+            lbl7.Text = dataGridView1.Rows[0].Cells[26].Value.ToString();
         }
 
         private void btnMarkBad_Click(object sender, EventArgs e)
@@ -1804,6 +1823,14 @@ namespace PalletCard
                     if (dataGridView1.Rows[0].Cells[12].Value.ToString() == "1")
                     {
                         btnWholePalletBadSection.Visible = false;
+                        pnlBadSectionGangHeader.Visible = false;
+                        lblStockCode.Visible = false;
+                        lblNumberUp.Visible = false;
+                        lblNumberUpBadQty.Visible = false;
+                        lblSheetsAffected.Visible = false;
+                        flowLayoutPanel2.Visible = false;
+                        btnScrollUp.Visible = false;
+                        btnScrollDown.Visible = false;
                     }
                     numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
             }
@@ -1811,189 +1838,201 @@ namespace PalletCard
                     if (dataGridView2.Rows[0].Cells[21].Value.ToString() == "1")
                     {
                         btnWholePalletBadSection.Visible = false;
+                        pnlBadSectionGangHeader.Visible = false;
+                        lblStockCode.Visible = false;
+                        lblNumberUp.Visible = false;
+                        lblNumberUpBadQty.Visible = false;
+                        lblSheetsAffected.Visible = false;
+                        flowLayoutPanel2.Visible = false;
+                        btnScrollUp.Visible = false;
+                        btnScrollDown.Visible = false;
                         numberUp = Convert.ToInt32(dataGridView2.Rows[0].Cells[21].Value);
                     }
 
             qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
 
-            queryGangpro();
-            queryGangClassic();
 
-            lblNumberUp.Visible = false;
-            lblNumberUpBadQty.Visible = false;
-            lblStockCode.Visible = false;
-
-            // if JobGanged = 0 (Main Table)
-            if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
-            { 
-                if (numberUp > 1)
-                {
-                    if (!badSectionLbls)
-                    {
-                        //for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                        //                         lblNumberUp.Visible = true;
-                        //    lblNumberUpQty.Visible = true;
-                        //    lblStockCode.Visible = true;
-                        //    flowLayoutPanel2.HorizontalScroll.Visible = false;
-                        //    Label lbl1 = new Label();
-                        //    this.flowLayoutPanel2.Controls.Add(lbl1);
-                        //    lbl1.Height = 35;
-                        //    lbl1.Width = 430;
-                        //    lbl1.BackColor = Color.Gray;
-                        //    lbl1.Font = new Font("Microsoft Sans Serif", 12);
-                        //    lbl1.TextAlign = ContentAlignment.MiddleLeft;
-                        //    lbl1.ForeColor = Color.White;
-                        //    lbl1.Left = 40;
-                        //    lbl1.Text = this.dataGridView4.Rows[i].Cells[3].Value.ToString();
-                        //    Label lbl2 = new Label();
-                        //    this.flowLayoutPanel2.Controls.Add(lbl2);
-                        //    lbl2.Height = 40;
-                        //    lbl2.Width = 120;
-                        //    lbl2.BackColor = Color.Silver;
-                        //    lbl2.Font = new Font("Microsoft Sans Serif", 20);
-                        //    lbl2.TextAlign = ContentAlignment.MiddleLeft;
-                        //    lbl2.ForeColor = Color.Black;
-                        //    lbl2.Margin = new Padding(0, 0, 0, 0);
-                        //    lbl2.Left = 40;
-                        //    lbl2.Text = this.dataGridView4.Rows[i].Cells[1].Value.ToString();
-                        //    Label lbl3 = new Label();
-                        //    this.flowLayoutPanel2.Controls.Add(lbl3);
-                        //    lbl3.Height = 40;
-                        //    lbl3.Width = 108;
-                        //    lbl3.BackColor = Color.Silver;
-                        //    lbl3.Font = new Font("Microsoft Sans Serif", 20);
-                        //    lbl3.TextAlign = ContentAlignment.MiddleCenter;
-                        //    lbl3.ForeColor = Color.Black;
-                        //    lbl3.Margin = new Padding(0, 0, 0, 0);
-                        //    lbl3.Left = 40;
-                        //    lbl3.Text = this.dataGridView4.Rows[i].Cells[11].Value.ToString();
-                        //    TextBox textBox1 = new TextBox();
-                        //    this.flowLayoutPanel2.Controls.Add(textBox1);
-                        //    textBox1.Height = 40;
-                        //    textBox1.AutoSize = false;
-                        //    textBox1.Width = 70;
-                        //    textBox1.Multiline = false;
-                        //    textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
-                        //    textBox1.TextAlign = HorizontalAlignment.Center;
-                        //    textBox1.Margin = new Padding(0, 0, 0, 0);
-                        //    textBox1.Tag = i;
-                        //    textBox1.TextChanged += new System.EventHandler(this.gangNumberUpBad);
-                        //    TextBox textBox2 = new TextBox();
-                        //    this.flowLayoutPanel2.Controls.Add(textBox2);
-                        //    textBox2.Height = 40;
-                        //    textBox2.AutoSize = false;
-                        //    textBox2.Width = 85;
-                        //    textBox2.Multiline = false;
-                        //    textBox2.Font = new Font(textBox1.Font.FontFamily, 20);
-                        //    textBox2.TextAlign = HorizontalAlignment.Center;
-                        //    textBox2.Margin = new Padding(0, 0, 0, 0);
-                        //    textBox2.Tag = i;
-                        //    textBox2.TextChanged += new System.EventHandler(gangSheetsAffected);
-                        //    Button btn1 = new Button();
-                        //    flowLayoutPanel2.Controls.Add(btn1);
-                        //    btn1.Height = 40;
-                        //    btn1.Width = 73;
-                        //    btn1.BackColor = Color.SteelBlue;
-                        //    btn1.ForeColor = Color.White;
-                        //    btn1.Font = new Font(textBox1.Font.FontFamily, 9);
-                        //    btn1.Text = "Whole Pallet";
-                        //    btn1.Margin = new Padding(0, 0, 0, 0);
-                        //    btn1.Tag = i;
-                        //    btn1.Click += new System.EventHandler(this.gangWholePallet);
-                        //    numberBadList.Insert(i, "0");
-                        //    sheetsAffectedList.Insert(i, "0");
-                        //    wholePalletList.Insert(i, 0);rt(i, 0);
-                        //}
-                    }
-                    badSectionLbls = true;
-                }
-            }
-            //if JobGanged = 1 (PALLET_GANG_CLASSIC Table)
-            else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 1)
+            if (numberUp != 1)
             {
-                if (numberUp > 1)
+                tbxSheetsAffectedBadSection.Visible = false;
+                lblSheets_Affected.Visible = false;
+                btnWholePalletBadSection.Visible = false;
+                queryGangpro();
+                queryGangClassic();
+
+                // if JobGanged = 0 (Main Table)
+                if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
                 {
-                    if (!badSectionLbls)
+                    if (numberUp > 1)
                     {
-                        for (int i = 0; i < dataGridView4.Rows.Count; i++)
+                        if (!badSectionLbls)
                         {
-                            lblNumberUp.Visible = true;
-                            lblNumberUpBadQty.Visible = true;
-                            lblStockCode.Visible = true;
-                            flowLayoutPanel2.HorizontalScroll.Visible = false;
-                            Label lbl1 = new Label();
-                            this.flowLayoutPanel2.Controls.Add(lbl1);
-                            lbl1.Height = 35;
-                            lbl1.Width = 430;
-                            lbl1.BackColor = Color.Gray;
-                            lbl1.Font = new Font("Microsoft Sans Serif", 12);
-                            lbl1.TextAlign = ContentAlignment.MiddleLeft;
-                            lbl1.ForeColor = Color.White;
-                            lbl1.Left = 40;
-                            lbl1.Text = this.dataGridView4.Rows[i].Cells[3].Value.ToString();
-                            Label lbl2 = new Label();
-                            this.flowLayoutPanel2.Controls.Add(lbl2);
-                            lbl2.Height = 40;
-                            lbl2.Width = 120;
-                            lbl2.BackColor = Color.Silver;
-                            lbl2.Font = new Font("Microsoft Sans Serif", 20);
-                            lbl2.TextAlign = ContentAlignment.MiddleLeft;
-                            lbl2.ForeColor = Color.Black;
-                            lbl2.Margin = new Padding(0, 0, 0, 0);
-                            lbl2.Left = 40;
-                            lbl2.Text = this.dataGridView4.Rows[i].Cells[1].Value.ToString();
-                            Label lbl3 = new Label();
-                            this.flowLayoutPanel2.Controls.Add(lbl3);
-                            lbl3.Height = 40;
-                            lbl3.Width = 108;
-                            lbl3.BackColor = Color.Silver;
-                            lbl3.Font = new Font("Microsoft Sans Serif", 20);
-                            lbl3.TextAlign = ContentAlignment.MiddleCenter;
-                            lbl3.ForeColor = Color.Black;
-                            lbl3.Margin = new Padding(0, 0, 0, 0);
-                            lbl3.Left = 40;
-                            lbl3.Text = this.dataGridView4.Rows[i].Cells[11].Value.ToString();
-                            TextBox textBox1 = new TextBox();
-                            this.flowLayoutPanel2.Controls.Add(textBox1);
-                            textBox1.Height = 40;
-                            textBox1.AutoSize = false;
-                            textBox1.Width = 70;
-                            textBox1.Multiline = false;
-                            textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
-                            textBox1.TextAlign = HorizontalAlignment.Center;
-                            textBox1.Margin = new Padding(0, 0, 0, 0);
-                            textBox1.Tag = i;
-                            textBox1.TextChanged += new System.EventHandler(this.gangNumberUpBad);
-                            TextBox textBox2 = new TextBox();
-                            this.flowLayoutPanel2.Controls.Add(textBox2);
-                            textBox2.Height = 40;
-                            textBox2.AutoSize = false;
-                            textBox2.Width = 85;
-                            textBox2.Multiline = false;
-                            textBox2.Font = new Font(textBox1.Font.FontFamily, 20);
-                            textBox2.TextAlign = HorizontalAlignment.Center;
-                            textBox2.Margin = new Padding(0, 0, 0, 0);
-                            textBox2.Tag = i;
-                            textBox2.TextChanged += new System.EventHandler(gangSheetsAffected);
-                            Button btn1 = new Button();
-                            flowLayoutPanel2.Controls.Add(btn1);
-                            btn1.Height = 40;
-                            btn1.Width = 73;
-                            btn1.BackColor = Color.SteelBlue;
-                            btn1.ForeColor = Color.White;
-                            btn1.Font = new Font(textBox1.Font.FontFamily, 9);
-                            btn1.Text = "Whole Pallet";
-                            btn1.Margin = new Padding(0, 0, 0, 0);
-                            btn1.Tag = i;
-                            btn1.Click += new System.EventHandler(this.gangWholePallet);
-                            numberBadList.Insert(i, "0");
-                            sheetsAffectedList.Insert(i, "0");
-                            wholePalletList.Insert(i, 0);
+                            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                            //                         lblNumberUp.Visible = true;
+                            //    lblNumberUpQty.Visible = true;
+                            //    lblStockCode.Visible = true;
+                            //    flowLayoutPanel2.HorizontalScroll.Visible = false;
+                            //    Label lbl1 = new Label();
+                            //    this.flowLayoutPanel2.Controls.Add(lbl1);
+                            //    lbl1.Height = 35;
+                            //    lbl1.Width = 430;
+                            //    lbl1.BackColor = Color.Gray;
+                            //    lbl1.Font = new Font("Microsoft Sans Serif", 12);
+                            //    lbl1.TextAlign = ContentAlignment.MiddleLeft;
+                            //    lbl1.ForeColor = Color.White;
+                            //    lbl1.Left = 40;
+                            //    lbl1.Text = this.dataGridView4.Rows[i].Cells[3].Value.ToString();
+                            //    Label lbl2 = new Label();
+                            //    this.flowLayoutPanel2.Controls.Add(lbl2);
+                            //    lbl2.Height = 40;
+                            //    lbl2.Width = 120;
+                            //    lbl2.BackColor = Color.Silver;
+                            //    lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                            //    lbl2.TextAlign = ContentAlignment.MiddleLeft;
+                            //    lbl2.ForeColor = Color.Black;
+                            //    lbl2.Margin = new Padding(0, 0, 0, 0);
+                            //    lbl2.Left = 40;
+                            //    lbl2.Text = this.dataGridView4.Rows[i].Cells[1].Value.ToString();
+                            //    Label lbl3 = new Label();
+                            //    this.flowLayoutPanel2.Controls.Add(lbl3);
+                            //    lbl3.Height = 40;
+                            //    lbl3.Width = 108;
+                            //    lbl3.BackColor = Color.Silver;
+                            //    lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                            //    lbl3.TextAlign = ContentAlignment.MiddleCenter;
+                            //    lbl3.ForeColor = Color.Black;
+                            //    lbl3.Margin = new Padding(0, 0, 0, 0);
+                            //    lbl3.Left = 40;
+                            //    lbl3.Text = this.dataGridView4.Rows[i].Cells[11].Value.ToString();
+                            //    TextBox textBox1 = new TextBox();
+                            //    this.flowLayoutPanel2.Controls.Add(textBox1);
+                            //    textBox1.Height = 40;
+                            //    textBox1.AutoSize = false;
+                            //    textBox1.Width = 70;
+                            //    textBox1.Multiline = false;
+                            //    textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
+                            //    textBox1.TextAlign = HorizontalAlignment.Center;
+                            //    textBox1.Margin = new Padding(0, 0, 0, 0);
+                            //    textBox1.Tag = i;
+                            //    textBox1.TextChanged += new System.EventHandler(this.gangNumberUpBad);
+                            //    TextBox textBox2 = new TextBox();
+                            //    this.flowLayoutPanel2.Controls.Add(textBox2);
+                            //    textBox2.Height = 40;
+                            //    textBox2.AutoSize = false;
+                            //    textBox2.Width = 85;
+                            //    textBox2.Multiline = false;
+                            //    textBox2.Font = new Font(textBox1.Font.FontFamily, 20);
+                            //    textBox2.TextAlign = HorizontalAlignment.Center;
+                            //    textBox2.Margin = new Padding(0, 0, 0, 0);
+                            //    textBox2.Tag = i;
+                            //    textBox2.TextChanged += new System.EventHandler(gangSheetsAffected);
+                            //    Button btn1 = new Button();
+                            //    flowLayoutPanel2.Controls.Add(btn1);
+                            //    btn1.Height = 40;
+                            //    btn1.Width = 73;
+                            //    btn1.BackColor = Color.SteelBlue;
+                            //    btn1.ForeColor = Color.White;
+                            //    btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                            //    btn1.Text = "Whole Pallet";
+                            //    btn1.Margin = new Padding(0, 0, 0, 0);
+                            //    btn1.Tag = i;
+                            //    btn1.Click += new System.EventHandler(this.gangWholePallet);
+                            //    numberBadList.Insert(i, "0");
+                            //    sheetsAffectedList.Insert(i, "0");
+                            //    wholePalletList.Insert(i, 0);rt(i, 0);
+                            //}
                         }
+                        badSectionLbls = true;
                     }
-                    badSectionLbls = true;
+                }
+                //if JobGanged = 1 (PALLET_GANG_CLASSIC Table)
+                else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 1)
+                {
+                    if (numberUp > 1)
+                    {
+                        if (!badSectionLbls)
+                        {
+                            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+                            {
+                                lblNumberUp.Visible = true;
+                                lblNumberUpBadQty.Visible = true;
+                                lblStockCode.Visible = true;
+                                flowLayoutPanel2.HorizontalScroll.Visible = false;
+                                Label lbl1 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl1);
+                                lbl1.Height = 35;
+                                lbl1.Width = 430;
+                                lbl1.BackColor = Color.Gray;
+                                lbl1.Font = new Font("Microsoft Sans Serif", 12);
+                                lbl1.TextAlign = ContentAlignment.MiddleLeft;
+                                lbl1.ForeColor = Color.White;
+                                lbl1.Left = 40;
+                                lbl1.Text = this.dataGridView4.Rows[i].Cells[3].Value.ToString();
+                                Label lbl2 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl2);
+                                lbl2.Height = 40;
+                                lbl2.Width = 120;
+                                lbl2.BackColor = Color.Silver;
+                                lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl2.TextAlign = ContentAlignment.MiddleLeft;
+                                lbl2.ForeColor = Color.Black;
+                                lbl2.Margin = new Padding(0, 0, 0, 0);
+                                lbl2.Left = 40;
+                                lbl2.Text = this.dataGridView4.Rows[i].Cells[1].Value.ToString();
+                                Label lbl3 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl3);
+                                lbl3.Height = 40;
+                                lbl3.Width = 108;
+                                lbl3.BackColor = Color.Silver;
+                                lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl3.TextAlign = ContentAlignment.MiddleCenter;
+                                lbl3.ForeColor = Color.Black;
+                                lbl3.Margin = new Padding(0, 0, 0, 0);
+                                lbl3.Left = 40;
+                                lbl3.Text = this.dataGridView4.Rows[i].Cells[11].Value.ToString();
+                                TextBox textBox1 = new TextBox();
+                                this.flowLayoutPanel2.Controls.Add(textBox1);
+                                textBox1.Height = 40;
+                                textBox1.AutoSize = false;
+                                textBox1.Width = 70;
+                                textBox1.Multiline = false;
+                                textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
+                                textBox1.TextAlign = HorizontalAlignment.Center;
+                                textBox1.Margin = new Padding(0, 0, 0, 0);
+                                textBox1.Tag = i;
+                                textBox1.TextChanged += new System.EventHandler(this.gangNumberUpBad);
+                                TextBox textBox2 = new TextBox();
+                                this.flowLayoutPanel2.Controls.Add(textBox2);
+                                textBox2.Height = 40;
+                                textBox2.AutoSize = false;
+                                textBox2.Width = 85;
+                                textBox2.Multiline = false;
+                                textBox2.Font = new Font(textBox1.Font.FontFamily, 20);
+                                textBox2.TextAlign = HorizontalAlignment.Center;
+                                textBox2.Margin = new Padding(0, 0, 0, 0);
+                                textBox2.Tag = i;
+                                textBox2.TextChanged += new System.EventHandler(gangSheetsAffected);
+                                Button btn1 = new Button();
+                                flowLayoutPanel2.Controls.Add(btn1);
+                                btn1.Height = 40;
+                                btn1.Width = 73;
+                                btn1.BackColor = Color.SteelBlue;
+                                btn1.ForeColor = Color.White;
+                                btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                                btn1.Text = "Whole Pallet";
+                                btn1.Margin = new Padding(0, 0, 0, 0);
+                                btn1.Tag = i;
+                                btn1.Click += new System.EventHandler(this.gangWholePallet);
+                                numberBadList.Insert(i, "0");
+                                sheetsAffectedList.Insert(i, "0");
+                                wholePalletList.Insert(i, 0);
+                            }
+                        }
+                        badSectionLbls = true;
+                    }
                 }
             }
+            
             if (dataGridView4.RowCount != 0)
             {
                 lbl7.Text = dataGridView4.Rows[0].Cells[8].Value.ToString();
@@ -2088,9 +2127,6 @@ namespace PalletCard
             else
             {
                 pnlPalletCard8.BringToFront();
-                sheetsAffectedBadSection = Convert.ToInt32(tbxSheetsAffectedBadSection.Text);
-                //lbl6.Text = "Bad Section";
-                //lbl6.Visible = true;
                 index = 13;                
             }
         }
@@ -2909,6 +2945,9 @@ namespace PalletCard
             }
         }
 
+        private void lblNumberUp_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
