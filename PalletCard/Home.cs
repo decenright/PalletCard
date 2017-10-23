@@ -339,7 +339,27 @@ namespace PalletCard
                 btnIsSectionFinishedNo.BackColor = System.Drawing.Color.SteelBlue;
                 index = 15;
             }
-
+            else if (index == 18)
+            {
+                pnlNotification1.BringToFront();
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                index = 2;
+                // if no section buttons go straight back to Choose Action screen
+                if (pnlNotification1.Controls.Count == 0)
+                {
+                    pnlHome1.BringToFront();
+                    lbl1.Visible = false;
+                    lbl2.Visible = false;
+                    lbl3.Visible = false;
+                    lbl4.Visible = false;
+                    lbl3.Visible = false;
+                    lbl4.Visible = false;
+                    btnBack.Visible = false;
+                    index = 1;
+                }
+            }
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -441,6 +461,7 @@ namespace PalletCard
                 if (searchChanged == true)
                 {
                     pnlReturnPaper1.Controls.Clear();
+                    pnlNotification1.Controls.Clear();
                 }
                 //reset dynamic buttons origin
                 A = 1;
@@ -2948,6 +2969,144 @@ namespace PalletCard
         private void lblNumberUp_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+
+
+        // NOTIFICATION PANEL
+        private void btnNotificationPanel_Click(object sender, EventArgs e)
+        {
+            lbl1.Visible = true;
+            lbl1.Text = "Notification Panel";
+            pnlNotification1.BringToFront();
+            index = 2;
+            jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            btnBack.Visible = true;
+
+            //loop through datagridview to see if each value of field "Expr1" is the same
+            //(If only one datagridview row or rows are all the same then go straight to pallet height - else create dynamic buttons)
+            string x;
+            string y;
+            x = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            y = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
+            {
+                y = dataGridView1.Rows[i].Cells[11].Value.ToString();
+            }
+            if (x == y)
+            {
+                pnlNotification2.BringToFront();
+                string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                lbl2.Text = d;
+                lbl2.Visible = true;
+                lbl3.Visible = true;
+                lbl3.Text = this.dataGridView1.Rows[0].Cells[16].Value as string;
+                lbl4.Visible = true;
+                lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+                index = 3;
+                sectionBtns = true;
+                this.ActiveControl = tbxPalletHeight;
+            }
+            else
+            { //prevent section buttons from drawing again if back button is selected
+                if (!sectionBtns)
+                {
+                    //loop through datagrid rows to create a button for each value of field "Expr1"                  
+                    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                    {
+                        //if datagrid is not empty create a button for each row at cells[11] - "Expr1"
+                        if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+
+                            //offer only one button where Expr1 field has two rows with the same value
+                            dataGridView1.AllowUserToAddRows = true;
+                        if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
+                        {
+                            {
+                                for (int j = 0; j < 1; j++)
+                                {
+                                    Button btn = new Button();
+                                    pnlNotification1.Controls.Add(btn);
+                                    btn.Top = A * 100;
+                                    btn.Height = 80;
+                                    btn.Width = 465;
+                                    btn.BackColor = Color.SteelBlue;
+                                    btn.Font = new Font("Microsoft Sans Serif", 14);
+                                    btn.ForeColor = Color.White;
+                                    btn.Left = 30;
+                                    btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
+                                    A = A + 1;
+                                    btn.Click += new System.EventHandler(this.notification);
+                                }
+                            }
+                            dataGridView1.AllowUserToAddRows = false;
+                        }
+                    }
+                }
+                sectionBtns = true;
+            }
+        }
+
+        //Dynamic button click - Section buttons, Return Paper work flow
+        private void notification(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            pnlNotification2.BringToFront();
+
+            //filter datagridview1 with the button text choice
+            try
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
+            }
+            catch (Exception) { }
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                string val = dataGridView1.Rows[i].Cells[11].Value.ToString();
+                if (btn.Text == val)
+                {
+                    lbl4.Text = dataGridView1.Rows[i].Cells[13].Value.ToString();
+                    lbl3.Text = dataGridView1.Rows[i].Cells[16].Value.ToString();
+                }
+            }
+            lbl4.Visible = true;
+            lbl3.Visible = true;
+            lbl2.Visible = true;
+            lbl2.Text = btn.Text;
+            index = 18;
+        }
+
+        private void btnWaitingPlates_Click(object sender, EventArgs e)
+        {
+            // Send email notification
+            MailMessage mail = new MailMessage("WaitingPlates@colorman.ie", "declan.enright@colorman.ie", "Waiting for Plates", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates");
+            SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+            client.Port = 25;
+            client.EnableSsl = false;
+            client.Send(mail);
+            MessageBox.Show("Email Notification Sent");
+        }
+
+        private void btnWaitingPaper_Click(object sender, EventArgs e)
+        {
+            // Send email notification
+            MailMessage mail = new MailMessage("WaitingPaper@colorman.ie", "declan.enright@colorman.ie", "Waiting for Paper", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for paper");
+            SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+            client.Port = 25;
+            client.EnableSsl = false;
+            client.Send(mail);
+            MessageBox.Show("Email Notification Sent");
+        }
+
+        private void btnJobLifted_Click(object sender, EventArgs e)
+        {
+            // Send email notification
+            MailMessage mail = new MailMessage("JobLifted@colorman.ie", "declan.enright@colorman.ie", "Job Lifted", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - Job is lifted");
+            SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+            client.Port = 25;
+            client.EnableSsl = false;
+            client.Send(mail);
+            MessageBox.Show("Email Notification Sent");
         }
     }
 }
