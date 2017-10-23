@@ -3079,7 +3079,21 @@ namespace PalletCard
         private void btnWaitingPlates_Click(object sender, EventArgs e)
         {
             // Send email notification
-            MailMessage mail = new MailMessage("WaitingPlates@colorman.ie", "declan.enright@colorman.ie", "Waiting for Plates", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates");
+            //MailMessage mail = new MailMessage("WaitingPlates@colorman.ie", "declan.enright@colorman.ie", "Waiting for Plates", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates");
+            //SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+            //client.Port = 25;
+            //client.EnableSsl = false;
+            //client.Send(mail);
+            //MessageBox.Show("Email Notification Sent");
+
+            MailMessage mail = new MailMessage();
+            string from = "WaitingPlates@colorman.ie";
+            mail.From = new MailAddress(from);
+            mail.To.Add("declan.enright@colorman.ie");
+            //mail.To.Add("prepress@colorman.ie");
+            //mail.To.Add("production@colorman.ie");
+            mail.Subject = "Waiting for Plates";
+            mail.Body = "Waiting for Plates" + "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates";
             SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
             client.Port = 25;
             client.EnableSsl = false;
