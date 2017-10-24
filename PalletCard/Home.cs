@@ -1756,6 +1756,9 @@ namespace PalletCard
                 gangClassic.Columns.Add("QtyGoodProduced", typeof(int));
                 gangClassic.Columns.Add("QtyShort", typeof(int));
                 gangClassic.Columns.Add("PercentageShort", typeof(decimal));
+                gangClassic.Columns.Add("PercentageShort1", typeof(string));
+                gangClassic.Columns.Add("PercentageShort2", typeof(decimal));
+                gangClassic.Columns.Add("PercentageShort3");
 
                 DataTable gangClassicTable = new DataTable();
                 gangClassicTable = gangClassic.Clone();
@@ -1775,6 +1778,9 @@ namespace PalletCard
                 gangClassicTable.Columns["QtyGoodProduced"].Expression = "(SheetsAffected * (NumberUp2 - NumberUpBad)) + (SheetsUnaffected * NumberUp2)";
                 gangClassicTable.Columns["QtyShort"].Expression = "QtyGoodProduced - ProdQtyRequired";
                 gangClassicTable.Columns["PercentageShort"].Expression = "QtyShort / ProdQtyRequired";
+                gangClassicTable.Columns["PercentageShort1"].Expression = "-1.0";
+                gangClassicTable.Columns["PercentageShort2"].Expression = "PercentageShort1";
+                gangClassicTable.Columns["PercentageShort3"].Expression = "PercentageShort * PercentageShort2";
 
                 if (numberBadList.Count != 0)
                 {
@@ -1796,24 +1802,15 @@ namespace PalletCard
                 dataGridView4.DataSource = gangClassicTable;
 
 
-                //decimal maxPercentageShort = decimal.MinValue;
-                //foreach (DataRow dr in gangClassicTable.Rows)
-                //{
-                //    if (dataGridView4.Rows[0].Cells[19].Value.ToString() != "")
-                //    {
-                //        decimal percentageShort = dr.Field<decimal>("PercentageShort");
-                //        maxPercentageShort = Math.Max(maxPercentageShort, percentageShort);
-                //    }
-                //}
-                //MessageBox.Show(maxPercentageShort.ToString());
 
-
-                // Find Number Short to return to the man flow
-                    if (dataGridView4.Rows[0].Cells[19].Value.ToString() != "")
+                // Find Number Short to return to the main flow
+                    if (dataGridView4.Rows[0].Cells[22].Value.ToString() != "")
                     {
-                    this.dataGridView4.Sort(this.dataGridView4.Columns[19], ListSortDirection.Descending);
-                    maxPercentageShort = Convert.ToDecimal(dataGridView4.Rows[0].Cells[19].Value);                    
+                    this.dataGridView4.Sort(this.dataGridView4.Columns[22], ListSortDirection.Descending);
+                    maxPercentageShort = Convert.ToDecimal(dataGridView4.Rows[0].Cells[22].Value);                    
                     }
+
+
 
                 sheetsAffectedBadSection = Convert.ToInt32((qtyRequired * (1 + maxPercentageShort)) - sheetsProduced);
                 MessageBox.Show(sheetsAffectedBadSection.ToString());
@@ -2141,15 +2138,18 @@ namespace PalletCard
 
         private void btnBadSectionOK_Click(object sender, EventArgs e)
         {
-            if (tbxSheetsAffectedBadSection.Text == "")
-            {
-                MessageBox.Show("Please enter a value in Sheets Affected box");
-            }
-            else
-            {
-                pnlPalletCard8.BringToFront();
-                index = 13;                
-            }
+            //if (tbxSheetsAffectedBadSection.Text == "")
+            //{
+            //    MessageBox.Show("Please enter a value in Sheets Affected box");
+            //}
+            //else
+            //{
+            //    pnlPalletCard8.BringToFront();
+            //    index = 13;                
+            //}
+            pnlPalletCard8.BringToFront();
+            index = 13;   
+
         }
 
         private void btnExtraInformationPalletCard_Click(object sender, EventArgs e)
@@ -3122,5 +3122,9 @@ namespace PalletCard
             client.Send(mail);
             MessageBox.Show("Email Notification Sent");
         }
+
+
+
+
     }
 }
