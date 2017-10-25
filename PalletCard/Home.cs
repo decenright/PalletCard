@@ -298,6 +298,7 @@ namespace PalletCard
                 tbxSheetsAffectedBadSection.Text = "";
                 btnWholePalletBadSection.Enabled = true;
                 badSectionLbls = false;
+                btnBadSectionOK.Visible = false;
                 index = 11;
             }
             else if (index == 13)
@@ -1803,22 +1804,31 @@ namespace PalletCard
 
 
 
-                // Find Number Short to return to the main flow
-                    if (dataGridView4.Rows[0].Cells[22].Value.ToString() != "")
+                // Find Qty bad to return to the main flow
+                if (dataGridView4.Rows[0].Cells[22].Value.ToString() != "")
                     {
                     this.dataGridView4.Sort(this.dataGridView4.Columns[22], ListSortDirection.Descending);
                     maxPercentageShort = Convert.ToDecimal(dataGridView4.Rows[0].Cells[22].Value);                    
                     }
 
-
-
                 sheetsAffectedBadSection = Convert.ToInt32((qtyRequired * (1 + maxPercentageShort)) - sheetsProduced);
-                MessageBox.Show(sheetsAffectedBadSection.ToString());
+                //MessageBox.Show(sheetsAffectedBadSection.ToString());
 
+                // make sure it doesn't return a negative number
                 if (sheetsAffectedBadSection < 0)
                 {
                     sheetsAffectedBadSection = 0;
                 }
+
+                // Dont show OK button if Number Up(cell 13) and Sheets affected(cell 14) are empty for gang Classic
+                for (int i = 0; i < gangClassic.Rows.Count; i++)
+                {
+                    if (dataGridView4.Rows[i].Cells[13].Value.ToString() != "" & dataGridView4.Rows[i].Cells[13].Value.ToString() != "0" & dataGridView4.Rows[i].Cells[14].Value.ToString() != "" & dataGridView4.Rows[i].Cells[14].Value.ToString() != "0")
+                    {
+                        btnBadSectionOK.Visible = true;
+                    }
+                }
+
             }
         }
 
@@ -1833,6 +1843,7 @@ namespace PalletCard
             this.flowLayoutPanel2.Controls.Clear();
             pnlPalletCard5.BringToFront();
             this.ActiveControl = tbxSheetsAffectedBadSection;
+            btnBadSectionOK.Visible = false;
             index = 12;
 
             // Hide "Whole Pallet" Button if NumberUp = 1 (will depend on wheteher it is a complete or incomplete i.e scanned line)
@@ -1877,7 +1888,7 @@ namespace PalletCard
                 btnWholePalletBadSection.Visible = false;
                 queryGangpro();
                 queryGangClassic();
-
+               
                 // if JobGanged = 0 (Main Table)
                 if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
                 {
@@ -2138,15 +2149,14 @@ namespace PalletCard
 
         private void btnBadSectionOK_Click(object sender, EventArgs e)
         {
-            //if (tbxSheetsAffectedBadSection.Text == "")
-            //{
-            //    MessageBox.Show("Please enter a value in Sheets Affected box");
-            //}
-            //else
-            //{
-            //    pnlPalletCard8.BringToFront();
-            //    index = 13;                
-            //}
+            if(tbxSheetsAffectedBadSection.Visible == true)
+            {
+                if (tbxSheetsAffectedBadSection.Text == "")
+                {
+                    MessageBox.Show("Please enter a value in Sheets Affected box");
+                }
+            }
+ 
             pnlPalletCard8.BringToFront();
             index = 13;   
 
