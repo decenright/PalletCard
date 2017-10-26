@@ -51,7 +51,7 @@ namespace PalletCard
         int gangWholePalletButtonPressed;
         DateTime CurrentDate= DateTime.Now;
         decimal maxPercentageShort;
-        string qtyBad;
+        int notGangedWholePalletValue;
 
 
         public Home()
@@ -1832,8 +1832,7 @@ namespace PalletCard
 
         private void notGanged()
         {
-            sheetsAffectedBadSection = Convert.ToInt32((qtyRequired * (1 + maxPercentageShort)) - sheetsProduced);
-            //MessageBox.Show(sheetsAffectedBadSection.ToString());
+            sheetsAffectedBadSection = Convert.ToInt32(sheetsAffected);
 
             // make sure it doesn't return a negative number
             if (sheetsAffectedBadSection < 0)
@@ -1841,34 +1840,20 @@ namespace PalletCard
                 sheetsAffectedBadSection = 0;
             }
 
-            // Dont show OK button if Number Up(cell 13) and Sheets affected(cell 14) are empty for DataGridview1
+            if (gangWholePalletButtonPressed == 1 )
+            {
+                sheetsAffectedBadSection = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            }
 
-                //if (flowLayoutPanel2.Controls(tb1) = "")
-                //if (dataGridView4.Rows[i].Cells[13].Value.ToString() != "" & dataGridView4.Rows[i].Cells[13].Value.ToString() != "0" & dataGridView4.Rows[i].Cells[14].Value.ToString() != "" & dataGridView4.Rows[i].Cells[14].Value.ToString() != "0")
-                //{
-                //    btnBadSectionOK.Visible = true;
-                //}
+            MessageBox.Show(sheetsAffectedBadSection.ToString());
 
             foreach (Control c in flowLayoutPanel2.Controls)
             {
-                //if (c.Name.StartsWith("textBox1").ToString() != "" & c.Name.StartsWith("textBox2").ToString() != "")
-                //{
-                //    btnBadSectionOK.Visible = true;
-                //}
 
-                //if (c is TextBox)
-                //{
-                //    TextBox txt = (TextBox)flowLayoutPanel2.FindControl("textBox1");
-                //    string str1 = txt.Text;
-                //}
-
-
-                if (badQty != null & qtyBad != "0" & sheetsAffected != null & sheetsAffected != "0")
+                if (badQty != null & badQty != "0" & sheetsAffected != null & sheetsAffected != "0")
                 {
                     btnBadSectionOK.Visible = true;
                 }
-
-
             }
 
         }
@@ -2137,20 +2122,33 @@ namespace PalletCard
             flowLayoutPanel2.VerticalScroll.SmallChange * -7);
         }
 
-        //private void btnWholePalletBadSection_Click(object sender, EventArgs e)
-        //{
-        //        flowLayoutPanel2.Enabled = false;
-        //}
-
         private void notGangedNumberUpBad(Object sender, EventArgs e)
         {
-            //add a variable to keep the textbox content
-            qtyBad = (sender as TextBox).Text;
+            // variable to keep the textbox content
             badQty = ((TextBox)sender).Text;
             if (badQty == "")
             {
                 badQty = "0";
             }
+            notGanged();
+        }
+
+        private void notgangedSheetsAffected(Object sender, EventArgs e)
+        {
+            gangWholePalletButtonPressed = 0;
+            sheetsAffected = ((TextBox)sender).Text;
+
+            if (sheetsAffected == "")
+            {
+                sheetsAffected = "0";
+            }
+            notGanged();
+        }
+
+        private void notGangedWholePallet(Object sender, EventArgs e)
+        {
+            gangWholePalletButtonPressed = 1;
+            notGangedWholePalletValue = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
             notGanged();
         }
 
@@ -2173,18 +2171,6 @@ namespace PalletCard
             queryGangClassic();
         }
 
-        private void notgangedSheetsAffected(Object sender, EventArgs e)
-        {
-            gangWholePalletButtonPressed = 0;
-            sheetsAffected = ((TextBox)sender).Text;
- 
-            if (sheetsAffected == "")
-            {
-                sheetsAffected = "0";
-            }
-            notGanged();
-        }
-
         private void gangClassicSheetsAffected(Object sender, EventArgs e)
         {
             gangWholePalletButtonPressed = 0;
@@ -2203,19 +2189,6 @@ namespace PalletCard
                 }
             //queryGangpro();
             queryGangClassic();
-        }
-
-        private void notGangedWholePallet(Object sender, EventArgs e)
-        {
-            //btnWholePalletBadSection.Enabled = false;
-            //gangRow = (int)((Button)sender).Tag;
-            //gangWholePalletButtonPressed = 1;
-            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            //    if (gangRow == i)
-            //    {
-            //        wholePalletList[i] = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
-            //    }
-            notGanged();
         }
 
         private void gangClassicWholePallet(Object sender, EventArgs e)
