@@ -1690,29 +1690,82 @@ namespace PalletCard
                 DataTable gangProTable = new DataTable();
                 gangProTable = gangPro.Clone();
                 gangProTable.Columns.Add("QtyRequired");
-                gangProTable.Columns.Add("NumberUp1");
                 gangProTable.Columns.Add("Prod_qty_required");
                 gangProTable.Columns.Add("NumberUp-Bad");
                 gangProTable.Columns.Add("Sheets Affected");
                 gangProTable.Columns.Add("Sheets unaffected");
-                gangProTable.Columns.Add("Prod_qty_Produced");
+                gangPro.Columns.Add("SheetsProduced", typeof(int));
+                gangPro.Columns.Add("QtyGoodProduced", typeof(int));
                 gangProTable.Columns.Add("Qty_Short");
-                gangProTable.Columns.Add("Percentage_Short");
+                gangPro.Columns.Add("PercentageShort", typeof(decimal));
+                gangPro.Columns.Add("PercentageShort1", typeof(string));
+                gangPro.Columns.Add("PercentageShort2", typeof(decimal));
+                gangPro.Columns.Add("PercentageShort3");
 
                 gangProTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "'  ";
-                for (int i = 0; i < gangProTable.Rows.Count; i++)
-                {
-                    gangProTable.Columns["NumberUp1"].Expression = gangProTable.Columns["NumberUp"].Expression;
-                }
+                gangProTable.Columns["SheetsProduced"].Expression = " '" + sheetsProduced + "' ";
                 gangProTable.Columns["Qty_Short"].Expression = " '" + sheetsProduced + "'  ";
-                gangProTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp1";
-                gangProTable.Columns["Sheets Affected"].Expression = tbxSheetsAffectedBadSection.Text;
+                gangProTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp";
+                gangProTable.Columns["SheetsAffected"].Expression = tbxSheetsAffectedBadSection.Text;
+                gangProTable.Columns["SheetsUnaffected"].Expression = "SheetsProduced - SheetsAffected";
+                gangProTable.Columns["QtyGoodProduced"].Expression = "(SheetsAffected * (NumberUp2 - NumberUpBad)) + (SheetsUnaffected * NumberUp2)";
+                gangProTable.Columns["QtyShort"].Expression = "QtyGoodProduced - ProdQtyRequired";
+                gangProTable.Columns["PercentageShort1"].Expression = "-1.0";
+                gangProTable.Columns["PercentageShort2"].Expression = "PercentageShort1";
+                gangProTable.Columns["PercentageShort3"].Expression = "PercentageShort * PercentageShort2";
+
+
+                if (numberBadList.Count != 0)
+                {
+                    for (int i = 0; i < gangPro.Rows.Count; i++)
+                    {
+                        gangPro.Rows[i][13] = numberBadList[i];
+                        gangPro.Rows[i][14] = sheetsAffectedList[i];
+                        if (gangWholePalletButtonPressed == 1)
+                        {
+                            gangPro.Rows[i][14] = wholePalletList[i];
+                        }
+                    }
+                }
+
+
 
                 foreach (DataRow dr in gangPro.Rows)
                 {
                     gangProTable.Rows.Add(dr.ItemArray);
                 }
                 dataGridView3.DataSource = gangProTable;
+
+
+
+
+                // Find Qty bad to return to the main flow
+                if (dataGridView3.Rows[0].Cells[22].Value.ToString() != "")
+                {
+                    this.dataGridView3.Sort(this.dataGridView4.Columns[22], ListSortDirection.Descending);
+                    maxPercentageShort = Convert.ToDecimal(dataGridView3.Rows[0].Cells[22].Value);
+                }
+
+                sheetsAffectedBadSection = Convert.ToInt32((qtyRequired * (1 + maxPercentageShort)) - sheetsProduced);
+                //MessageBox.Show(sheetsAffectedBadSection.ToString());
+
+                // make sure it doesn't return a negative number
+                if (sheetsAffectedBadSection < 0)
+                {
+                    sheetsAffectedBadSection = 0;
+                }
+
+                // Dont show OK button if Number Up(cell 13) and Sheets affected(cell 14) are empty for gang Classic
+                for (int i = 0; i < gangPro.Rows.Count; i++)
+                {
+                    if (dataGridView3.Rows[i].Cells[13].Value.ToString() != "" & dataGridView3.Rows[i].Cells[13].Value.ToString() != "0" & dataGridView3.Rows[i].Cells[14].Value.ToString() != "" & dataGridView3.Rows[i].Cells[14].Value.ToString() != "0")
+                    {
+                        btnBadSectionOK.Visible = true;
+                    }
+                }
+
+
+
             }
         }
 
