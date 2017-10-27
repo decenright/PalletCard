@@ -52,7 +52,7 @@ namespace PalletCard
         DateTime CurrentDate= DateTime.Now;
         decimal maxPercentageShort;
         int notGangedWholePalletValue;
-        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
 
         public Home()
         {
@@ -1687,29 +1687,30 @@ namespace PalletCard
             using (DataTable gangPro = new DataTable())
             {
                 myAdapter.Fill(gangPro);
-                DataTable gangProTable = new DataTable();
-                gangProTable = gangPro.Clone();
-                gangProTable.Columns.Add("QtyRequired");
-                gangProTable.Columns.Add("Prod_qty_required");
-                gangProTable.Columns.Add("NumberUp-Bad");
-                gangProTable.Columns.Add("Sheets Affected");
-                gangProTable.Columns.Add("Sheets unaffected");
+                gangPro.Columns.Add("QtyRequired", typeof(int));
+                gangPro.Columns.Add("ProdQtyRequired", typeof(int));
+                gangPro.Columns.Add("NumberUpBad", typeof(int));
+                gangPro.Columns.Add("SheetsAffected", typeof(int));
+                gangPro.Columns.Add("SheetsUnaffected", typeof(int));
                 gangPro.Columns.Add("SheetsProduced", typeof(int));
                 gangPro.Columns.Add("QtyGoodProduced", typeof(int));
-                gangProTable.Columns.Add("Qty_Short");
+                gangPro.Columns.Add("QtyShort", typeof(int));
                 gangPro.Columns.Add("PercentageShort", typeof(decimal));
                 gangPro.Columns.Add("PercentageShort1", typeof(string));
                 gangPro.Columns.Add("PercentageShort2", typeof(decimal));
                 gangPro.Columns.Add("PercentageShort3");
 
+                DataTable gangProTable = new DataTable();
+                gangProTable = gangPro.Clone();
                 gangProTable.Columns["QtyRequired"].Expression = " '" + qtyRequired + "'  ";
                 gangProTable.Columns["SheetsProduced"].Expression = " '" + sheetsProduced + "' ";
-                gangProTable.Columns["Qty_Short"].Expression = " '" + sheetsProduced + "'  ";
-                gangProTable.Columns["Prod_qty_required"].Expression = "QtyRequired * NumberUp";
+                gangProTable.Columns["QtyShort"].Expression = " '" + sheetsProduced + "'  ";
+                gangProTable.Columns["ProdQtyRequired"].Expression = "QtyRequired * NumberUp";
                 gangProTable.Columns["SheetsAffected"].Expression = tbxSheetsAffectedBadSection.Text;
                 gangProTable.Columns["SheetsUnaffected"].Expression = "SheetsProduced - SheetsAffected";
-                gangProTable.Columns["QtyGoodProduced"].Expression = "(SheetsAffected * (NumberUp2 - NumberUpBad)) + (SheetsUnaffected * NumberUp2)";
+                gangProTable.Columns["QtyGoodProduced"].Expression = "(SheetsAffected * (NumberUp - NumberUpBad)) + (SheetsUnaffected * NumberUp)";
                 gangProTable.Columns["QtyShort"].Expression = "QtyGoodProduced - ProdQtyRequired";
+                gangProTable.Columns["PercentageShort"].Expression = "QtyShort / ProdQtyRequired";
                 gangProTable.Columns["PercentageShort1"].Expression = "-1.0";
                 gangProTable.Columns["PercentageShort2"].Expression = "PercentageShort1";
                 gangProTable.Columns["PercentageShort3"].Expression = "PercentageShort * PercentageShort2";
@@ -1719,11 +1720,11 @@ namespace PalletCard
                 {
                     for (int i = 0; i < gangPro.Rows.Count; i++)
                     {
-                        gangPro.Rows[i][13] = numberBadList[i];
-                        gangPro.Rows[i][14] = sheetsAffectedList[i];
+                        gangPro.Rows[i][10] = numberBadList[i];
+                        gangPro.Rows[i][11] = sheetsAffectedList[i];
                         if (gangWholePalletButtonPressed == 1)
                         {
-                            gangPro.Rows[i][14] = wholePalletList[i];
+                            gangPro.Rows[i][11] = wholePalletList[i];
                         }
                     }
                 }
@@ -1740,10 +1741,10 @@ namespace PalletCard
 
 
                 // Find Qty bad to return to the main flow
-                if (dataGridView3.Rows[0].Cells[22].Value.ToString() != "")
+                if (dataGridView3.Rows[0].Cells[19].Value.ToString() != "")
                 {
-                    this.dataGridView3.Sort(this.dataGridView4.Columns[22], ListSortDirection.Descending);
-                    maxPercentageShort = Convert.ToDecimal(dataGridView3.Rows[0].Cells[22].Value);
+                    this.dataGridView3.Sort(this.dataGridView3.Columns[19], ListSortDirection.Descending);
+                    maxPercentageShort = Convert.ToDecimal(dataGridView3.Rows[0].Cells[19].Value);
                 }
 
                 sheetsAffectedBadSection = Convert.ToInt32((qtyRequired * (1 + maxPercentageShort)) - sheetsProduced);
@@ -1755,10 +1756,10 @@ namespace PalletCard
                     sheetsAffectedBadSection = 0;
                 }
 
-                // Dont show OK button if Number Up(cell 13) and Sheets affected(cell 14) are empty for gang Classic
+                // Dont show OK button if Number Up(cell 10) and Sheets affected(cell 11) are empty for gang Classic
                 for (int i = 0; i < gangPro.Rows.Count; i++)
                 {
-                    if (dataGridView3.Rows[i].Cells[13].Value.ToString() != "" & dataGridView3.Rows[i].Cells[13].Value.ToString() != "0" & dataGridView3.Rows[i].Cells[14].Value.ToString() != "" & dataGridView3.Rows[i].Cells[14].Value.ToString() != "0")
+                    if (dataGridView3.Rows[i].Cells[10].Value.ToString() != "" & dataGridView3.Rows[i].Cells[10].Value.ToString() != "0" & dataGridView3.Rows[i].Cells[11].Value.ToString() != "" & dataGridView3.Rows[i].Cells[11].Value.ToString() != "0")
                     {
                         btnBadSectionOK.Visible = true;
                     }
@@ -2170,11 +2171,11 @@ namespace PalletCard
                 //if JobGanged = 3 (PALLET_GANG_CLASSIC Table)
                 else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 3)
                 {
-                    if (numberUp > 1)
-                    {
+                    //if (numberUp > 1)
+                    //{
                         if (!badSectionLbls)
                         {
-                            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+                            for (int i = 0; i < dataGridView3.Rows.Count; i++)
                             {
                                 lblStockCode.Text = "Stock Code/\r\nJob Number";
                                 lblStockCode.Visible = true;
@@ -2195,8 +2196,8 @@ namespace PalletCard
                                 lbl1.TextAlign = ContentAlignment.MiddleLeft;
                                 lbl1.ForeColor = Color.White;
                                 lbl1.Left = 40;
-                                lbl1.Text = this.dataGridView4.Rows[i].Cells[3].Value.ToString();
-                                Label lbl2 = new Label();
+                            lbl1.Text = this.dataGridView3.Rows[i].Cells[4].Value.ToString();
+                            Label lbl2 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl2);
                                 lbl2.Height = 40;
                                 lbl2.Width = 120;
@@ -2206,8 +2207,8 @@ namespace PalletCard
                                 lbl2.ForeColor = Color.Black;
                                 lbl2.Margin = new Padding(0, 0, 0, 0);
                                 lbl2.Left = 40;
-                                lbl2.Text = this.dataGridView4.Rows[i].Cells[1].Value.ToString();
-                                Label lbl3 = new Label();
+                            lbl2.Text = this.dataGridView3.Rows[i].Cells[1].Value.ToString();
+                            Label lbl3 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl3);
                                 lbl3.Height = 40;
                                 lbl3.Width = 108;
@@ -2217,8 +2218,8 @@ namespace PalletCard
                                 lbl3.ForeColor = Color.Black;
                                 lbl3.Margin = new Padding(0, 0, 0, 0);
                                 lbl3.Left = 40;
-                                lbl3.Text = this.dataGridView4.Rows[i].Cells[11].Value.ToString();
-                                TextBox textBox1 = new TextBox();
+                            lbl3.Text = this.dataGridView3.Rows[i].Cells[3].Value.ToString();
+                            TextBox textBox1 = new TextBox();
                                 this.flowLayoutPanel2.Controls.Add(textBox1);
                                 textBox1.Height = 40;
                                 textBox1.AutoSize = false;
@@ -2228,7 +2229,7 @@ namespace PalletCard
                                 textBox1.TextAlign = HorizontalAlignment.Center;
                                 textBox1.Margin = new Padding(0, 0, 0, 0);
                                 textBox1.Tag = i;
-                                textBox1.TextChanged += new System.EventHandler(this.gangClassicNumberUpBad);
+                                textBox1.TextChanged += new System.EventHandler(this.gangProNumberUpBad);
                                 TextBox textBox2 = new TextBox();
                                 this.flowLayoutPanel2.Controls.Add(textBox2);
                                 textBox2.Height = 40;
@@ -2239,7 +2240,7 @@ namespace PalletCard
                                 textBox2.TextAlign = HorizontalAlignment.Center;
                                 textBox2.Margin = new Padding(0, 0, 0, 0);
                                 textBox2.Tag = i;
-                                textBox2.TextChanged += new System.EventHandler(gangClassicSheetsAffected);
+                                textBox2.TextChanged += new System.EventHandler(gangProSheetsAffected);
                                 Button btn1 = new Button();
                                 flowLayoutPanel2.Controls.Add(btn1);
                                 btn1.Height = 40;
@@ -2250,14 +2251,14 @@ namespace PalletCard
                                 btn1.Text = "Whole Pallet";
                                 btn1.Margin = new Padding(0, 0, 0, 0);
                                 btn1.Tag = i;
-                                btn1.Click += new System.EventHandler(this.gangClassicWholePallet);
+                                btn1.Click += new System.EventHandler(this.gangProWholePallet);
                                 numberBadList.Insert(i, "0");
                                 sheetsAffectedList.Insert(i, "0");
                                 wholePalletList.Insert(i, 0);
                             }
                         }
                         badSectionLbls = true;
-                    }
+                    //}
                 }
 
 
@@ -2340,7 +2341,6 @@ namespace PalletCard
                 {
                     numberBadList[i] = badQty.ToString();
                 }            
-            //queryGangpro();
             queryGangClassic();
         }
 
@@ -2360,7 +2360,6 @@ namespace PalletCard
                 {
                     sheetsAffectedList[i] = sheetsAffected.ToString();
                 }
-            //queryGangpro();
             queryGangClassic();
         }
 
@@ -2373,7 +2372,6 @@ namespace PalletCard
                 {
                     wholePalletList[i] = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
                 }
-            //queryGangpro();
             queryGangClassic();
         }
 
@@ -2392,7 +2390,7 @@ namespace PalletCard
                 badQty = "0";
             }
 
-            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+            for (int i = 0; i < dataGridView3.Rows.Count; i++)
                 if (gangRow == i)
                 {
                     numberBadList[i] = badQty.ToString();
@@ -2411,7 +2409,7 @@ namespace PalletCard
                 sheetsAffected = "0";
             }
 
-            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+            for (int i = 0; i < dataGridView3.Rows.Count; i++)
                 if (gangRow == i)
                 {
                     sheetsAffectedList[i] = sheetsAffected.ToString();
@@ -2423,7 +2421,7 @@ namespace PalletCard
         {
             gangRow = (int)((Button)sender).Tag;
             gangWholePalletButtonPressed = 1;
-            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+            for (int i = 0; i < dataGridView3.Rows.Count; i++)
                 if (gangRow == i)
                 {
                     wholePalletList[i] = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
