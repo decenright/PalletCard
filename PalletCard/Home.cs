@@ -1684,6 +1684,27 @@ namespace PalletCard
 
             sheetsProduced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
             qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
+
+            // if no value in NumberUp column parse it from Section Name or Expr1 - This regex finds continuous digits before "up"
+            if (dataGridView1.Rows[0].Cells[11].Value.ToString().Contains("up "))
+            {
+                String text = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                foreach (Match match in Regex.Matches(text, @"(\d+)up "))
+                {
+                    MessageBox.Show(match.Groups[1].Value);
+                    numberUp = Convert.ToInt32(match.Groups[1].Value);
+                }
+            }
+            else
+            {
+                String text1 = dataGridView1.Rows[0].Cells[15].Value.ToString();
+                foreach (Match match in Regex.Matches(text1, @"(\d+)up "))
+                {
+                    MessageBox.Show(match.Groups[1].Value);
+                    numberUp = Convert.ToInt32(match.Groups[1].Value);
+                }
+            }
+
             using (DataTable gangPro = new DataTable())
             {
                 myAdapter.Fill(gangPro);
@@ -1729,16 +1750,11 @@ namespace PalletCard
                     }
                 }
 
-
-
                 foreach (DataRow dr in gangPro.Rows)
                 {
                     gangProTable.Rows.Add(dr.ItemArray);
                 }
                 dataGridView3.DataSource = gangProTable;
-
-
-
 
                 // Find Qty bad to return to the main flow
                 if (dataGridView3.Rows[0].Cells[19].Value.ToString() != "")
@@ -1764,9 +1780,6 @@ namespace PalletCard
                         btnBadSectionOK.Visible = true;
                     }
                 }
-
-
-
             }
         }
 
@@ -1796,6 +1809,27 @@ namespace PalletCard
 
             sheetsProduced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
             qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
+
+            // if no value in NumberUp column parse it from Section Name or Expr1 - This regex finds continuous digits before "up"
+            if (dataGridView1.Rows[0].Cells[11].Value.ToString().Contains("up "))
+            {
+                String text = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                foreach (Match match in Regex.Matches(text, @"(\d+)up "))
+                {
+                    MessageBox.Show(match.Groups[1].Value);
+                    numberUp = Convert.ToInt32(match.Groups[1].Value);
+                }
+            }
+            else
+            {
+                String text1 = dataGridView1.Rows[0].Cells[15].Value.ToString();
+                foreach (Match match in Regex.Matches(text1, @"(\d+)up "))
+                {
+                    MessageBox.Show(match.Groups[1].Value);
+                    numberUp = Convert.ToInt32(match.Groups[1].Value);
+                }
+            }
+
             using (DataTable gangClassic = new DataTable())
             {
                 myAdapter1.Fill(gangClassic);
@@ -1985,6 +2019,27 @@ namespace PalletCard
                 // if JobGanged = 0 (Main Table)
                 if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
                 {
+                    // if no value in NumberUp column parse it from Section Name or Expr1 - This regex finds continuous digits before "up"
+                    if (dataGridView1.Rows[0].Cells[11].Value.ToString().Contains("up "))
+                    {
+                        String text = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                        foreach (Match match in Regex.Matches(text, @"(\d+)up "))
+                        {
+                            MessageBox.Show(match.Groups[1].Value);
+                            numberUp = Convert.ToInt32(match.Groups[1].Value);
+                        }
+                    }
+                    else
+                    {
+                        String text1 = dataGridView1.Rows[0].Cells[15].Value.ToString();
+                        foreach (Match match in Regex.Matches(text1, @"(\d+)up "))
+                        {
+                            MessageBox.Show(match.Groups[1].Value);
+                            numberUp = Convert.ToInt32(match.Groups[1].Value);
+                        }
+                    }
+
+                
                     if (numberUp > 1)
                     {
                         if (!badSectionLbls)
@@ -2028,6 +2083,10 @@ namespace PalletCard
                                 lbl3.Margin = new Padding(0, 0, 0, 0);
                                 lbl3.Left = 40;
                                 lbl3.Text = this.dataGridView1.Rows[tb2].Cells[12].Value.ToString();
+                                if (dataGridView1.Rows[tb2].Cells[12].Value.ToString() == "0")
+                                {
+                                    lbl3.Text = numberUp.ToString();
+                                }
                                 TextBox textBox1 = new TextBox();
                                 this.flowLayoutPanel2.Controls.Add(textBox1);
                                 textBox1.Height = 40;
@@ -2069,6 +2128,8 @@ namespace PalletCard
                         badSectionLbls = true;
                     }
                 }
+
+
                 //if JobGanged = 1 (PALLET_GANG_CLASSIC Table)
                 else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 1)
                 {
