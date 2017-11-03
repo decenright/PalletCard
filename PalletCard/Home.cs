@@ -77,6 +77,7 @@ namespace PalletCard
                 lbl4.Visible = false;
                 tbxPalletHeight.Text = "";
                 lblPheight.Text = "";
+                Cancel();
                 index = 0;
             }
             else if (index == 2)
@@ -563,6 +564,8 @@ namespace PalletCard
             tbxExtraInfoComment.Text = "";
             lblPC_IncompletePallet.Visible = false;
             numberUp = 0;
+            flowLayoutPanel2.Visible = true;
+            pnlBadSectionGangHeader.Visible = true;
             index = 0;
         }
 
@@ -1964,6 +1967,7 @@ namespace PalletCard
             pnlPalletCard5.BringToFront();
             this.ActiveControl = tbxSheetsAffectedBadSection;
             tbxSheetsAffectedBadSection.Visible = true;
+            lblSheets_Affected.Visible = true;
             btnBadSectionOK.Visible = false;
             index = 12;
 
@@ -3478,6 +3482,7 @@ namespace PalletCard
             client.EnableSsl = false;
             client.Send(mail);
             MessageBox.Show("Email Notification Sent");
+            pnlHome0.BringToFront();
         }
 
         private void btnWaitingPaper_Click(object sender, EventArgs e)
@@ -3489,6 +3494,7 @@ namespace PalletCard
             client.EnableSsl = false;
             client.Send(mail);
             MessageBox.Show("Email Notification Sent");
+            pnlHome0.BringToFront();
         }
 
         private void btnJobLifted_Click(object sender, EventArgs e)
@@ -3500,6 +3506,7 @@ namespace PalletCard
             client.EnableSsl = false;
             client.Send(mail);
             MessageBox.Show("Email Notification Sent");
+            pnlHome0.BringToFront();
         }
 
 
