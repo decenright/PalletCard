@@ -1031,8 +1031,6 @@ namespace PalletCard
         Signature signature = new Signature();
         private object tb1;
 
-        //String fileName = @"signature.xml";
-
         private void SignaturePanel_MouseMove(object sender, MouseEventArgs e)
         {
             if (IsCapturing)
@@ -1690,26 +1688,6 @@ namespace PalletCard
             sheetsProduced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
             qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
 
-            // if no value in NumberUp column parse it from Section Name or Expr1 - This regex finds continuous digits before "up"
-            //if (dataGridView1.Rows[0].Cells[11].Value.ToString().Contains("up "))
-            //{
-            //    String text = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            //    foreach (Match match in Regex.Matches(text, @"(\d+)up "))
-            //    {
-            //        MessageBox.Show(match.Groups[1].Value);
-            //        numberUp = Convert.ToInt32(match.Groups[1].Value);
-            //    }
-            //}
-            //else
-            //{
-            //    String text1 = dataGridView1.Rows[0].Cells[15].Value.ToString();
-            //    foreach (Match match in Regex.Matches(text1, @"(\d+)up "))
-            //    {
-            //        MessageBox.Show(match.Groups[1].Value);
-            //        numberUp = Convert.ToInt32(match.Groups[1].Value);
-            //    }
-            //}
-
             using (DataTable gangPro = new DataTable())
             {
                 myAdapter.Fill(gangPro);
@@ -1761,7 +1739,7 @@ namespace PalletCard
                 }
                 dataGridView3.DataSource = gangProTable;
 
-                // Find Qty bad to return to the main flow
+                // Find Qty bad to return to the main flow (sheetsAffectedBadSection)
                 if (dataGridView3.Rows[0].Cells[19].Value.ToString() != "")
                 {
                     this.dataGridView3.Sort(this.dataGridView3.Columns[19], ListSortDirection.Descending);
@@ -1769,7 +1747,6 @@ namespace PalletCard
                 }
 
                 sheetsAffectedBadSection = Convert.ToInt32((qtyRequired * (1 + maxPercentageShort)) - sheetsProduced);
-                //MessageBox.Show(sheetsAffectedBadSection.ToString());
 
                 // make sure it doesn't return a negative number
                 if (sheetsAffectedBadSection < 0)
@@ -1814,26 +1791,6 @@ namespace PalletCard
 
             sheetsProduced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
             qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
-
-            // if no value in NumberUp column parse it from Section Name or Expr1 - This regex finds continuous digits before "up"
-            //if (dataGridView1.Rows[0].Cells[11].Value.ToString().Contains("up "))
-            //{
-            //    String text = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            //    foreach (Match match in Regex.Matches(text, @"(\d+)up "))
-            //    {
-            //        MessageBox.Show(match.Groups[1].Value);
-            //        numberUp = Convert.ToInt32(match.Groups[1].Value);
-            //    }
-            //}
-            //else
-            //{
-            //    String text1 = dataGridView1.Rows[0].Cells[15].Value.ToString();
-            //    foreach (Match match in Regex.Matches(text1, @"(\d+)up "))
-            //    {
-            //        MessageBox.Show(match.Groups[1].Value);
-            //        numberUp = Convert.ToInt32(match.Groups[1].Value);
-            //    }
-            //}
 
             using (DataTable gangClassic = new DataTable())
             {
@@ -1895,7 +1852,7 @@ namespace PalletCard
                 }
                 dataGridView4.DataSource = gangClassicTable;
 
-                // Find Qty bad to return to the main flow
+                // Find Qty bad to return to the main flow (sheetsAffectedBadSection)
                 if (dataGridView4.Rows[0].Cells[22].Value.ToString() != "")
                     {
                     this.dataGridView4.Sort(this.dataGridView4.Columns[22], ListSortDirection.Descending);
@@ -1903,7 +1860,6 @@ namespace PalletCard
                     }
 
                 sheetsAffectedBadSection = Convert.ToInt32((qtyRequired * (1 + maxPercentageShort)) - sheetsProduced);
-                //MessageBox.Show(sheetsAffectedBadSection.ToString());
 
                 // make sure it doesn't return a negative number
                 if (sheetsAffectedBadSection < 0)
@@ -1926,7 +1882,8 @@ namespace PalletCard
         // NOT GANGED ROUTINE
         private void notGanged()
         {
-            sheetsAffectedBadSection = Convert.ToInt32(sheetsAffected);
+            var calc = Convert.ToDecimal(sheetsAffected) * (Convert.ToDecimal(badQty) / Convert.ToDecimal(numberUp));
+            sheetsAffectedBadSection = Convert.ToInt32(calc);
 
             // make sure it doesn't return a negative number
             if (sheetsAffectedBadSection < 0)
@@ -2097,7 +2054,7 @@ namespace PalletCard
                                 lblNumberUp.Visible = true;
                                 lblNumberUp.Text = "Number\r\nUp";
                                 lblNumberUpBadQty.Visible = true;
-                                lblNumberUpBadQty.Text = "Quantity\r\nBad";
+                                lblNumberUpBadQty.Text = "Bad\r\nStations";
                                 lblSheetsAffected.Visible = true;
                                 lblSheetsAffected.Text = "Sheets\r\nAffected";
                                 flowLayoutPanel2.HorizontalScroll.Visible = false;
@@ -2187,7 +2144,7 @@ namespace PalletCard
                                 lblNumberUp.Visible = true;
                                 lblNumberUp.Text = "Number\r\nUp";
                                 lblNumberUpBadQty.Visible = true;
-                                lblNumberUpBadQty.Text = "Quantity\r\nBad";
+                                lblNumberUpBadQty.Text = "Bad\r\nStations";
                                 lblSheetsAffected.Visible = true;
                                 lblSheetsAffected.Text = "Sheets\r\nAffected";
                                 flowLayoutPanel2.HorizontalScroll.Visible = false;
@@ -2284,7 +2241,7 @@ namespace PalletCard
                                 lblNumberUp.Visible = true;
                                 lblNumberUp.Text = "Number\r\nUp";
                                 lblNumberUpBadQty.Visible = true;
-                                lblNumberUpBadQty.Text = "Quantity\r\nBad";
+                                lblNumberUpBadQty.Text = "Bad\r\nStations";
                                 lblSheetsAffected.Visible = true;
                                 lblSheetsAffected.Text = "Sheets\r\nAffected";
                                 flowLayoutPanel2.HorizontalScroll.Visible = false;
