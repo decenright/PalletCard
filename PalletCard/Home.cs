@@ -2045,7 +2045,7 @@ namespace PalletCard
                     //{
                         if (!badSectionLbls)
                         {
-                            for (int tb2 = 0; tb2 < dataGridView1.Rows.Count; tb2++)
+                            for (int i = 0; i < dataGridView1.Rows.Count; i++)
                             {
                                 btnScrollUp.Visible = false;
                                 btnScrollDown.Visible = false;
@@ -2072,7 +2072,7 @@ namespace PalletCard
                                 lbl2.ForeColor = Color.Black;
                                 lbl2.Margin = new Padding(0, 0, 0, 0);
                                 lbl2.Left = 40;
-                                lbl2.Text = this.dataGridView1.Rows[tb2].Cells[0].Value.ToString();
+                                lbl2.Text = this.dataGridView1.Rows[i].Cells[0].Value.ToString();
                                 Label lbl3 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl3);
                                 lbl3.Height = 40;
@@ -2083,8 +2083,8 @@ namespace PalletCard
                                 lbl3.ForeColor = Color.Black;
                                 lbl3.Margin = new Padding(0, 0, 0, 0);
                                 lbl3.Left = 40;
-                                lbl3.Text = this.dataGridView1.Rows[tb2].Cells[12].Value.ToString();
-                                if (dataGridView1.Rows[tb2].Cells[12].Value.ToString() == "0")
+                                lbl3.Text = this.dataGridView1.Rows[i].Cells[12].Value.ToString();
+                                if (dataGridView1.Rows[i].Cells[12].Value.ToString() == "0")
                                 {
                                     lbl3.Text = numberUp.ToString();
                                 }
@@ -2097,7 +2097,6 @@ namespace PalletCard
                                 textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
                                 textBox1.TextAlign = HorizontalAlignment.Center;
                                 textBox1.Margin = new Padding(0, 0, 0, 0);
-                                //textBox1.Tag = tb1;
                                 textBox1.TextChanged += new System.EventHandler(this.notGangedNumberUpBad);
                                 TextBox textBox2 = new TextBox();
                                 this.flowLayoutPanel2.Controls.Add(textBox2);
@@ -2108,7 +2107,6 @@ namespace PalletCard
                                 textBox2.Font = new Font(textBox2.Font.FontFamily, 20);
                                 textBox2.TextAlign = HorizontalAlignment.Center;
                                 textBox2.Margin = new Padding(0, 0, 0, 0);
-                                //textBox2.Tag = tb2;
                                 textBox2.TextChanged += new System.EventHandler(notgangedSheetsAffected);
                                 Button btn1 = new Button();
                                 flowLayoutPanel2.Controls.Add(btn1);
@@ -2119,11 +2117,8 @@ namespace PalletCard
                                 btn1.Font = new Font(textBox1.Font.FontFamily, 9);
                                 btn1.Text = "Whole Pallet";
                                 btn1.Margin = new Padding(0, 0, 0, 0);
-                                btn1.Tag = tb2;
+                                btn1.Tag = i;
                                 btn1.Click += new System.EventHandler(notGangedWholePallet);
-                                //numberBadList.Insert(tb2, "0");
-                                //sheetsAffectedList.Insert(tb2, "0");
-                                //wholePalletList.Insert(tb2, 0);
                             }
                         }
                         badSectionLbls = true;
