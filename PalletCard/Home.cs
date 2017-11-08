@@ -1936,7 +1936,8 @@ namespace PalletCard
 
 
 
-            // Hide Gang Panel (FlowLayoutPanel2) if NumberUp = 1 (Value will be from DataGridview1 or DataGridView2 depending on wheteher it is a complete or incomplete i.e scanned line)
+// Hide Gang Panel (FlowLayoutPanel2) if NumberUp = 1 (Value will be from DataGridview1 or DataGridView2 depending on wheteher it is a Regular or incomplete i.e Scanned line)
+// Else Show Gang Classic, Gang Pro or Not Ganged Multi Up
 
             #region Regular Line
             if (dataGridView2.Rows.Count == 0)
@@ -1980,8 +1981,6 @@ namespace PalletCard
                     }
                 }
 
-
-
                 qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
 
                 // IF NUMBER UP != 1 SHOW GANG PANEL AND HIDE SHEETS AFFECTED BOX
@@ -2006,8 +2005,6 @@ namespace PalletCard
                     // if JobGanged = 0 (Main Table)
                     if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
                     {
-                        //if (numberUp > 1)
-                        //{
                         if (!badSectionLbls)
                         {
                             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -2087,14 +2084,11 @@ namespace PalletCard
                             }
                         }
                         badSectionLbls = true;
-                        //}
                     }
 
                     //if JobGanged = 1 (PALLET_GANG_CLASSIC Table)
                     else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 1)
                     {
-                        //if (numberUp > 1)
-                        //{
                         if (!badSectionLbls)
                         {
                             for (int i = 0; i < dataGridView4.Rows.Count; i++)
@@ -2184,14 +2178,11 @@ namespace PalletCard
                             }
                         }
                         badSectionLbls = true;
-                        //}
                     }
 
                     //if JobGanged = 3 (PALLET_GANG_CLASSIC Table)
                     else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 3)
                     {
-                        //if (numberUp > 1)
-                        //{
                         if (!badSectionLbls)
                         {
                             for (int i = 0; i < dataGridView3.Rows.Count; i++)
@@ -2281,7 +2272,6 @@ namespace PalletCard
                             }
                         }
                         badSectionLbls = true;
-                        //}
                     }
                 }
             }
@@ -2329,9 +2319,6 @@ namespace PalletCard
                         }
                     }
                 }
-
-
-
 
                 qtyRequired = Convert.ToInt32(dataGridView2.Rows[0].Cells[34].Value);
 
@@ -2626,10 +2613,6 @@ namespace PalletCard
                         badSectionLbls = true;
                     }
                 }
-
-
-
-
             }
 
             #endregion
