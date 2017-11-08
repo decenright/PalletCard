@@ -1937,118 +1937,77 @@ namespace PalletCard
 
 
             // Hide Gang Panel (FlowLayoutPanel2) if NumberUp = 1 (Value will be from DataGridview1 or DataGridView2 depending on wheteher it is a complete or incomplete i.e scanned line)
+
+            #region Regular Line
             if (dataGridView2.Rows.Count == 0)
-                {
-                //DATAGRIDVIEW1
-                    if (dataGridView1.Rows[0].Cells[12].Value.ToString() == "1")
-                    {
-                        pnlBadSectionGangHeader.Visible = false;
-                        lblStockCode.Visible = false;
-                        lblNumberUp.Visible = false;
-                        lblNumberUpBadQty.Visible = false;
-                        lblSheetsAffected.Visible = false;
-                        flowLayoutPanel2.Visible = false;
-                        btnScrollUp.Visible = false;
-                        btnScrollDown.Visible = false;
-                    }
-                    // if not equal to 1 then NumberUp =:
-                    numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
-
-                        //if NumberUp field and JobGanged Field = 0
-                        if (numberUp == 0 & Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
-                        {
-                            // Parse the NumberUp value from Section Name or Expr1 - This regex finds continuous digits before "up"
-                            if (dataGridView1.Rows[0].Cells[11].Value.ToString().Contains("up "))
-                            {
-                                String text = dataGridView1.Rows[0].Cells[11].Value.ToString();
-                                foreach (Match match in Regex.Matches(text, @"(\d+)up "))
-                                {
-                                    //MessageBox.Show(match.Groups[1].Value);
-                                    numberUp = Convert.ToInt32(match.Groups[1].Value);
-                                }
-                            }
-                            else
-                            {
-                                String text1 = dataGridView1.Rows[0].Cells[15].Value.ToString();
-                                foreach (Match match in Regex.Matches(text1, @"(\d+)up "))
-                                {
-                                    //MessageBox.Show(match.Groups[1].Value);
-                                    numberUp = Convert.ToInt32(match.Groups[1].Value);
-                                }
-                            }
-                        }
-
-
-                }
-            else
-                //DATAGRIDVIEW2
-                    if (dataGridView2.Rows[0].Cells[21].Value.ToString() == "1")
-                    {
-                        pnlBadSectionGangHeader.Visible = false;
-                        lblStockCode.Visible = false;
-                        lblNumberUp.Visible = false;
-                        lblNumberUpBadQty.Visible = false;
-                        lblSheetsAffected.Visible = false;
-
-                        flowLayoutPanel2.Visible = false;
-                        btnScrollUp.Visible = false;
-                        btnScrollDown.Visible = false;
-                        numberUp = Convert.ToInt32(dataGridView2.Rows[0].Cells[21].Value);
-
-                        //if NumberUp field and JobGanged Field = 0
-                        if (numberUp == 0 & Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
-                        {
-                            // Parse the NumberUp value from Section Name or Expr1 - This regex finds continuous digits before "up"
-                            if (dataGridView1.Rows[0].Cells[11].Value.ToString().Contains("up "))
-                            {
-                                String text = dataGridView1.Rows[0].Cells[11].Value.ToString();
-                                foreach (Match match in Regex.Matches(text, @"(\d+)up "))
-                                {
-                                    //MessageBox.Show(match.Groups[1].Value);
-                                    numberUp = Convert.ToInt32(match.Groups[1].Value);
-                                }
-                            }
-                            else
-                            {
-                                String text1 = dataGridView1.Rows[0].Cells[15].Value.ToString();
-                                foreach (Match match in Regex.Matches(text1, @"(\d+)up "))
-                                {
-                                    //MessageBox.Show(match.Groups[1].Value);
-                                    numberUp = Convert.ToInt32(match.Groups[1].Value);
-                                }
-                            }
-                        }
-
-
-
-                    }
-
-            qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
-
-            // IF NUMBER UP != 1 SHOW GANG PANEL AND HIDE SHEETS AFFECTED BOX
-            if (numberUp != 1)
             {
-                tbxSheetsAffectedBadSection.Visible = false;
-                lblSheets_Affected.Visible = false;
-
-                // Filter for Ganged jobs
-                if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) != 0 & Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) != 2 )
+                //DATAGRIDVIEW1
+                if (dataGridView1.Rows[0].Cells[12].Value.ToString() == "1")
                 {
-                    if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 1)
+                    pnlBadSectionGangHeader.Visible = false;
+                    lblStockCode.Visible = false;
+                    lblNumberUp.Visible = false;
+                    lblNumberUpBadQty.Visible = false;
+                    lblSheetsAffected.Visible = false;
+                    flowLayoutPanel2.Visible = false;
+                    btnScrollUp.Visible = false;
+                    btnScrollDown.Visible = false;
+                }
+                // if not equal to 1 then NumberUp =:
+                numberUp = Convert.ToInt32(dataGridView1.Rows[0].Cells[12].Value);
+
+                //if NumberUp field and JobGanged Field = 0
+                if (numberUp == 0 & Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
+                {
+                    // Parse the NumberUp value from Section Name or Expr1 - This regex finds continuous digits before "up"
+                    if (dataGridView1.Rows[0].Cells[11].Value.ToString().Contains("up "))
                     {
-                        queryGangClassic();
+                        String text = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                        foreach (Match match in Regex.Matches(text, @"(\d+)up "))
+                        {
+                            //MessageBox.Show(match.Groups[1].Value);
+                            numberUp = Convert.ToInt32(match.Groups[1].Value);
+                        }
                     }
-                    if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 3)
+                    else
                     {
-                        queryGangpro();
+                        String text1 = dataGridView1.Rows[0].Cells[15].Value.ToString();
+                        foreach (Match match in Regex.Matches(text1, @"(\d+)up "))
+                        {
+                            //MessageBox.Show(match.Groups[1].Value);
+                            numberUp = Convert.ToInt32(match.Groups[1].Value);
+                        }
                     }
                 }
 
-                // if JobGanged = 0 (Main Table)
-                if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
-                {             
-                    //if (numberUp > 1)
-                    //{
+
+
+                qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
+
+                // IF NUMBER UP != 1 SHOW GANG PANEL AND HIDE SHEETS AFFECTED BOX
+                if (numberUp != 1)
+                {
+                    tbxSheetsAffectedBadSection.Visible = false;
+                    lblSheets_Affected.Visible = false;
+
+                    // Filter for Ganged jobs
+                    if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) != 0 & Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) != 2)
+                    {
+                        if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 1)
+                        {
+                            queryGangClassic();
+                        }
+                        if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 3)
+                        {
+                            queryGangpro();
+                        }
+                    }
+
+                    // if JobGanged = 0 (Main Table)
+                    if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
+                    {
+                        //if (numberUp > 1)
+                        //{
                         if (!badSectionLbls)
                         {
                             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -2067,7 +2026,7 @@ namespace PalletCard
                                 Label lbl1 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl1);
                                 lbl1.Height = 0;
-                                lbl1.Width = 430;                     
+                                lbl1.Width = 430;
                                 Label lbl2 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl2);
                                 lbl2.Height = 40;
@@ -2128,14 +2087,14 @@ namespace PalletCard
                             }
                         }
                         badSectionLbls = true;
-                    //}
-                }
+                        //}
+                    }
 
-                //if JobGanged = 1 (PALLET_GANG_CLASSIC Table)
-                else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 1)
-                {
-                    //if (numberUp > 1)
-                    //{
+                    //if JobGanged = 1 (PALLET_GANG_CLASSIC Table)
+                    else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 1)
+                    {
+                        //if (numberUp > 1)
+                        //{
                         if (!badSectionLbls)
                         {
                             for (int i = 0; i < dataGridView4.Rows.Count; i++)
@@ -2225,14 +2184,14 @@ namespace PalletCard
                             }
                         }
                         badSectionLbls = true;
-                    //}
-                }
+                        //}
+                    }
 
-                //if JobGanged = 3 (PALLET_GANG_CLASSIC Table)
-                else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 3)
-                {
-                    //if (numberUp > 1)
-                    //{
+                    //if JobGanged = 3 (PALLET_GANG_CLASSIC Table)
+                    else if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 3)
+                    {
+                        //if (numberUp > 1)
+                        //{
                         if (!badSectionLbls)
                         {
                             for (int i = 0; i < dataGridView3.Rows.Count; i++)
@@ -2322,11 +2281,359 @@ namespace PalletCard
                             }
                         }
                         badSectionLbls = true;
-                    //}
+                        //}
+                    }
+                }
+            }
+            #endregion
+
+            #region Scanned Line
+            else if (dataGridView2.Rows.Count != 0)
+            {
+                //DATAGRIDVIEW2
+                if (dataGridView2.Rows[0].Cells[21].Value.ToString() == "1")
+                {
+                    pnlBadSectionGangHeader.Visible = false;
+                    lblStockCode.Visible = false;
+                    lblNumberUp.Visible = false;
+                    lblNumberUpBadQty.Visible = false;
+                    lblSheetsAffected.Visible = false;
+
+                    flowLayoutPanel2.Visible = false;
+                    btnScrollUp.Visible = false;
+                    btnScrollDown.Visible = false;
+                }
+                // if not equal to 1 then NumberUp =:
+                numberUp = Convert.ToInt32(dataGridView2.Rows[0].Cells[21].Value);
+
+                //if NumberUp field and JobGanged Field = 0
+                if (numberUp == 0 & Convert.ToInt32(dataGridView2.Rows[0].Cells[23].Value) == 0)
+                {
+                    // Parse the NumberUp value from Section Name or Expr1 - This regex finds continuous digits before "up"
+                    if (dataGridView2.Rows[0].Cells[20].Value.ToString().Contains("up "))
+                    {
+                        String text = dataGridView2.Rows[0].Cells[20].Value.ToString();
+                        foreach (Match match in Regex.Matches(text, @"(\d+)up "))
+                        {
+                            //MessageBox.Show(match.Groups[1].Value);
+                            numberUp = Convert.ToInt32(match.Groups[1].Value);
+                        }
+                    }
+                    else
+                    {
+                        String text1 = dataGridView2.Rows[0].Cells[24].Value.ToString();
+                        foreach (Match match in Regex.Matches(text1, @"(\d+)up "))
+                        {
+                            //MessageBox.Show(match.Groups[1].Value);
+                            numberUp = Convert.ToInt32(match.Groups[1].Value);
+                        }
+                    }
                 }
 
+
+
+
+                qtyRequired = Convert.ToInt32(dataGridView2.Rows[0].Cells[34].Value);
+
+                // IF NUMBER UP != 1 SHOW GANG PANEL AND HIDE SHEETS AFFECTED BOX
+                if (numberUp != 1)
+                {
+                    tbxSheetsAffectedBadSection.Visible = false;
+                    lblSheets_Affected.Visible = false;
+
+                    // Filter for Ganged jobs
+                    if (Convert.ToInt32(dataGridView2.Rows[0].Cells[23].Value) != 0 & Convert.ToInt32(dataGridView2.Rows[0].Cells[23].Value) != 2)
+                    {
+                        if (Convert.ToInt32(dataGridView2.Rows[0].Cells[23].Value) == 1)
+                        {
+                            queryGangClassic();
+                        }
+                        if (Convert.ToInt32(dataGridView2.Rows[0].Cells[23].Value) == 3)
+                        {
+                            queryGangpro();
+                        }
+                    }
+
+                    // if JobGanged = 0 (Main Table)
+                    if (Convert.ToInt32(dataGridView2.Rows[0].Cells[23].Value) == 0)
+                    {
+                        if (!badSectionLbls)
+                        {
+                            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                            {
+                                btnScrollUp.Visible = false;
+                                btnScrollDown.Visible = false;
+                                lblStockCode.Text = "Job\r\nNumber";
+                                lblStockCode.Visible = true;
+                                lblNumberUp.Visible = true;
+                                lblNumberUp.Text = "Number\r\nUp";
+                                lblNumberUpBadQty.Visible = true;
+                                lblNumberUpBadQty.Text = "Bad\r\nStations";
+                                lblSheetsAffected.Visible = true;
+                                lblSheetsAffected.Text = "Sheets\r\nAffected";
+                                flowLayoutPanel2.HorizontalScroll.Visible = false;
+                                Label lbl1 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl1);
+                                lbl1.Height = 0;
+                                lbl1.Width = 430;
+                                Label lbl2 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl2);
+                                lbl2.Height = 40;
+                                lbl2.Width = 120;
+                                lbl2.BackColor = Color.Silver;
+                                lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl2.TextAlign = ContentAlignment.MiddleLeft;
+                                lbl2.ForeColor = Color.Black;
+                                lbl2.Margin = new Padding(0, 0, 0, 0);
+                                lbl2.Left = 40;
+                                lbl2.Text = this.dataGridView2.Rows[i].Cells[3].Value.ToString();
+                                Label lbl3 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl3);
+                                lbl3.Height = 40;
+                                lbl3.Width = 108;
+                                lbl3.BackColor = Color.Silver;
+                                lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl3.TextAlign = ContentAlignment.MiddleCenter;
+                                lbl3.ForeColor = Color.Black;
+                                lbl3.Margin = new Padding(0, 0, 0, 0);
+                                lbl3.Left = 40;
+                                lbl3.Text = this.dataGridView2.Rows[i].Cells[21].Value.ToString();
+                                if (dataGridView2.Rows[i].Cells[21].Value.ToString() == "0")
+                                {
+                                    lbl3.Text = numberUp.ToString();
+                                }
+                                TextBox textBox1 = new TextBox();
+                                this.flowLayoutPanel2.Controls.Add(textBox1);
+                                textBox1.Height = 40;
+                                textBox1.AutoSize = false;
+                                textBox1.Width = 70;
+                                textBox1.Multiline = false;
+                                textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
+                                textBox1.TextAlign = HorizontalAlignment.Center;
+                                textBox1.Margin = new Padding(0, 0, 0, 0);
+                                textBox1.TextChanged += new System.EventHandler(this.notGangedNumberUpBad);
+                                TextBox textBox2 = new TextBox();
+                                this.flowLayoutPanel2.Controls.Add(textBox2);
+                                textBox2.Height = 40;
+                                textBox2.AutoSize = false;
+                                textBox2.Width = 85;
+                                textBox2.Multiline = false;
+                                textBox2.Font = new Font(textBox2.Font.FontFamily, 20);
+                                textBox2.TextAlign = HorizontalAlignment.Center;
+                                textBox2.Margin = new Padding(0, 0, 0, 0);
+                                textBox2.TextChanged += new System.EventHandler(notgangedSheetsAffected);
+                                Button btn1 = new Button();
+                                flowLayoutPanel2.Controls.Add(btn1);
+                                btn1.Height = 40;
+                                btn1.Width = 90;
+                                btn1.BackColor = Color.SteelBlue;
+                                btn1.ForeColor = Color.White;
+                                btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                                btn1.Text = "Whole Pallet";
+                                btn1.Margin = new Padding(0, 0, 0, 0);
+                                btn1.Tag = i;
+                                btn1.Click += new System.EventHandler(notGangedWholePallet);
+                            }
+                        }
+                        badSectionLbls = true;
+                    }
+
+                    //if JobGanged = 1 (PALLET_GANG_CLASSIC Table)
+                    else if (Convert.ToInt32(dataGridView2.Rows[0].Cells[23].Value) == 1)
+                    {
+                        if (!badSectionLbls)
+                        {
+                            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+                            {
+                                lblStockCode.Text = "Stock Code/\r\nJob Number";
+                                lblStockCode.Visible = true;
+                                lblNumberUp.Visible = true;
+                                lblNumberUp.Text = "Number\r\nUp";
+                                lblNumberUpBadQty.Visible = true;
+                                lblNumberUpBadQty.Text = "Bad\r\nStations";
+                                lblSheetsAffected.Visible = true;
+                                lblSheetsAffected.Text = "Sheets\r\nAffected";
+                                flowLayoutPanel2.HorizontalScroll.Visible = false;
+                                flowLayoutPanel2.VerticalScroll.Visible = false;
+                                Label lbl1 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl1);
+                                lbl1.Height = 35;
+                                lbl1.Width = 430;
+                                lbl1.BackColor = Color.Gray;
+                                lbl1.Font = new Font("Microsoft Sans Serif", 12);
+                                lbl1.TextAlign = ContentAlignment.MiddleLeft;
+                                lbl1.ForeColor = Color.White;
+                                lbl1.Left = 40;
+                                lbl1.Text = this.dataGridView4.Rows[i].Cells[3].Value.ToString();
+                                Label lbl2 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl2);
+                                lbl2.Height = 40;
+                                lbl2.Width = 120;
+                                lbl2.BackColor = Color.Silver;
+                                lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl2.TextAlign = ContentAlignment.MiddleLeft;
+                                lbl2.ForeColor = Color.Black;
+                                lbl2.Margin = new Padding(0, 0, 0, 0);
+                                lbl2.Left = 40;
+                                lbl2.Text = this.dataGridView4.Rows[i].Cells[1].Value.ToString();
+                                Label lbl3 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl3);
+                                lbl3.Height = 40;
+                                lbl3.Width = 108;
+                                lbl3.BackColor = Color.Silver;
+                                lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl3.TextAlign = ContentAlignment.MiddleCenter;
+                                lbl3.ForeColor = Color.Black;
+                                lbl3.Margin = new Padding(0, 0, 0, 0);
+                                lbl3.Left = 40;
+                                lbl3.Text = this.dataGridView4.Rows[i].Cells[11].Value.ToString();
+                                if (dataGridView4.Rows[i].Cells[12].Value.ToString() == "0")
+                                {
+                                    lbl3.Text = numberUp.ToString();
+                                }
+                                TextBox textBox1 = new TextBox();
+                                this.flowLayoutPanel2.Controls.Add(textBox1);
+                                textBox1.Height = 40;
+                                textBox1.AutoSize = false;
+                                textBox1.Width = 70;
+                                textBox1.Multiline = false;
+                                textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
+                                textBox1.TextAlign = HorizontalAlignment.Center;
+                                textBox1.Margin = new Padding(0, 0, 0, 0);
+                                textBox1.Tag = i;
+                                textBox1.TextChanged += new System.EventHandler(this.gangClassicNumberUpBad);
+                                TextBox textBox2 = new TextBox();
+                                this.flowLayoutPanel2.Controls.Add(textBox2);
+                                textBox2.Height = 40;
+                                textBox2.AutoSize = false;
+                                textBox2.Width = 85;
+                                textBox2.Multiline = false;
+                                textBox2.Font = new Font(textBox2.Font.FontFamily, 20);
+                                textBox2.TextAlign = HorizontalAlignment.Center;
+                                textBox2.Margin = new Padding(0, 0, 0, 0);
+                                textBox2.Tag = i;
+                                textBox2.TextChanged += new System.EventHandler(gangClassicSheetsAffected);
+                                Button btn1 = new Button();
+                                flowLayoutPanel2.Controls.Add(btn1);
+                                btn1.Height = 40;
+                                btn1.Width = 73;
+                                btn1.BackColor = Color.SteelBlue;
+                                btn1.ForeColor = Color.White;
+                                btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                                btn1.Text = "Whole Pallet";
+                                btn1.Margin = new Padding(0, 0, 0, 0);
+                                btn1.Tag = i;
+                                btn1.Click += new System.EventHandler(this.gangClassicWholePallet);
+                                numberBadList.Insert(i, "0");
+                                sheetsAffectedList.Insert(i, "0");
+                                wholePalletList.Insert(i, 0);
+                            }
+                        }
+                        badSectionLbls = true;
+                    }
+
+                    //if JobGanged = 3 (PALLET_GANG_CLASSIC Table)
+                    else if (Convert.ToInt32(dataGridView2.Rows[0].Cells[23].Value) == 3)
+                    {
+                        if (!badSectionLbls)
+                        {
+                            for (int i = 0; i < dataGridView3.Rows.Count; i++)
+                            {
+                                lblStockCode.Text = "Stock Code/\r\nJob Number";
+                                lblStockCode.Visible = true;
+                                lblNumberUp.Visible = true;
+                                lblNumberUp.Text = "Number\r\nUp";
+                                lblNumberUpBadQty.Visible = true;
+                                lblNumberUpBadQty.Text = "Bad\r\nStations";
+                                lblSheetsAffected.Visible = true;
+                                lblSheetsAffected.Text = "Sheets\r\nAffected";
+                                flowLayoutPanel2.HorizontalScroll.Visible = false;
+                                flowLayoutPanel2.VerticalScroll.Visible = false;
+                                Label lbl1 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl1);
+                                lbl1.Height = 35;
+                                lbl1.Width = 430;
+                                lbl1.BackColor = Color.Gray;
+                                lbl1.Font = new Font("Microsoft Sans Serif", 12);
+                                lbl1.TextAlign = ContentAlignment.MiddleLeft;
+                                lbl1.ForeColor = Color.White;
+                                lbl1.Left = 40;
+                                lbl1.Text = this.dataGridView3.Rows[i].Cells[4].Value.ToString();
+                                Label lbl2 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl2);
+                                lbl2.Height = 40;
+                                lbl2.Width = 120;
+                                lbl2.BackColor = Color.Silver;
+                                lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl2.TextAlign = ContentAlignment.MiddleLeft;
+                                lbl2.ForeColor = Color.Black;
+                                lbl2.Margin = new Padding(0, 0, 0, 0);
+                                lbl2.Left = 40;
+                                lbl2.Text = this.dataGridView3.Rows[i].Cells[1].Value.ToString();
+                                Label lbl3 = new Label();
+                                this.flowLayoutPanel2.Controls.Add(lbl3);
+                                lbl3.Height = 40;
+                                lbl3.Width = 108;
+                                lbl3.BackColor = Color.Silver;
+                                lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl3.TextAlign = ContentAlignment.MiddleCenter;
+                                lbl3.ForeColor = Color.Black;
+                                lbl3.Margin = new Padding(0, 0, 0, 0);
+                                lbl3.Left = 40;
+                                lbl3.Text = this.dataGridView3.Rows[i].Cells[3].Value.ToString();
+                                if (dataGridView3.Rows[i].Cells[12].Value.ToString() == "0")
+                                {
+                                    lbl3.Text = numberUp.ToString();
+                                }
+                                TextBox textBox1 = new TextBox();
+                                this.flowLayoutPanel2.Controls.Add(textBox1);
+                                textBox1.Height = 40;
+                                textBox1.AutoSize = false;
+                                textBox1.Width = 70;
+                                textBox1.Multiline = false;
+                                textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
+                                textBox1.TextAlign = HorizontalAlignment.Center;
+                                textBox1.Margin = new Padding(0, 0, 0, 0);
+                                textBox1.Tag = i;
+                                textBox1.TextChanged += new System.EventHandler(this.gangProNumberUpBad);
+                                TextBox textBox2 = new TextBox();
+                                this.flowLayoutPanel2.Controls.Add(textBox2);
+                                textBox2.Height = 40;
+                                textBox2.AutoSize = false;
+                                textBox2.Width = 85;
+                                textBox2.Multiline = false;
+                                textBox2.Font = new Font(textBox2.Font.FontFamily, 20);
+                                textBox2.TextAlign = HorizontalAlignment.Center;
+                                textBox2.Margin = new Padding(0, 0, 0, 0);
+                                textBox2.Tag = i;
+                                textBox2.TextChanged += new System.EventHandler(gangProSheetsAffected);
+                                Button btn1 = new Button();
+                                flowLayoutPanel2.Controls.Add(btn1);
+                                btn1.Height = 40;
+                                btn1.Width = 73;
+                                btn1.BackColor = Color.SteelBlue;
+                                btn1.ForeColor = Color.White;
+                                btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                                btn1.Text = "Whole Pallet";
+                                btn1.Margin = new Padding(0, 0, 0, 0);
+                                btn1.Tag = i;
+                                btn1.Click += new System.EventHandler(this.gangProWholePallet);
+                                numberBadList.Insert(i, "0");
+                                sheetsAffectedList.Insert(i, "0");
+                                wholePalletList.Insert(i, 0);
+                            }
+                        }
+                        badSectionLbls = true;
+                    }
+                }
+
+
+
+
             }
-            
+
+            #endregion
+
             if (dataGridView4.RowCount != 0)
             {
                 lbl7.Text = dataGridView4.Rows[0].Cells[8].Value.ToString();
