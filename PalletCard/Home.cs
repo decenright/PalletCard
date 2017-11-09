@@ -2791,12 +2791,50 @@ namespace PalletCard
 
         private void btnFinishPalletContinue_Click(object sender, EventArgs e)
         {
-            // Disable the Section button
-            disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
-            removeFlowLayoutBtns();
-            sigBtns = false;
-            pnlSignature.BringToFront();
-            btnCancel.Visible = false;
+
+            if (dataGridView2.RowCount == 0)
+            {
+                if (Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value) == 1781)
+                {
+                    pnlPalletCard10.BringToFront();
+                    // Disable the Section button
+                    disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
+                    removeFlowLayoutBtns();
+                    sigBtns = false;
+                    btnCancel.Visible = false;
+                }
+                else
+                {
+                    pnlSignature.BringToFront();
+                    // Disable the Section button
+                    disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
+                    removeFlowLayoutBtns();
+                    sigBtns = false;
+                    btnCancel.Visible = false;
+                }
+            }
+            else if (dataGridView2.RowCount != 0)
+            {
+                if (Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value) == 1781)
+                {
+                    pnlPalletCard10.BringToFront();
+                    // Disable the Section button
+                    disableSectionButtons.Add(Convert.ToString(dataGridView2.Rows[0].Cells[8].Value));
+                    removeFlowLayoutBtns();
+                    sigBtns = false;
+                    btnCancel.Visible = false;
+                }
+                else
+                {
+                    pnlSignature.BringToFront();
+                    // Disable the Section button
+                    disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
+                    removeFlowLayoutBtns();
+                    sigBtns = false;
+                    btnCancel.Visible = false;
+                }
+            }
+
         }
 
         private void btnPalletFinished_Click(object sender, EventArgs e)
@@ -2870,7 +2908,7 @@ namespace PalletCard
                 produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
                 string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
                 string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-                string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, Expr1, NumberUp, JobGanged, SectionName, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '1', '" + produced + "', '" + this.dataGridView1.Rows[0].Cells[11].Value + "', '" + this.dataGridView1.Rows[0].Cells[12].Value + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[15].Value + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "','" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
+                string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, Expr1, NumberUp, JobGanged, SectionName, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1, InvoiceCustomerCode) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '1', '" + produced + "', '" + this.dataGridView1.Rows[0].Cells[11].Value + "', '" + this.dataGridView1.Rows[0].Cells[12].Value + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[15].Value + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "','" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "', '" + this.dataGridView1.Rows[0].Cells[21].Value + "');";
                 SqlConnection conDatabase = new SqlConnection(constring);
                 SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
                 SqlDataReader myReader;
@@ -2923,7 +2961,7 @@ namespace PalletCard
                 produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
                 string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
                 string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-                string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, Expr1, NumberUp, JobGanged, SectionName, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView2.Rows[0].Cells[3].Value + "','" + this.dataGridView2.Rows[0].Cells[8].Value + "', '" + this.dataGridView2.Rows[0].Cells[4].Value + "', '" + produced + "', '" + this.dataGridView2.Rows[0].Cells[20].Value + "', '" + this.dataGridView2.Rows[0].Cells[21].Value + "', '" + this.dataGridView2.Rows[0].Cells[23].Value + "', '" + this.dataGridView2.Rows[0].Cells[24].Value + "', '" + this.dataGridView2.Rows[0].Cells[34].Value + "','" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView2.Rows[0].Cells[22].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
+                string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, Expr1, NumberUp, JobGanged, SectionName, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1, InvoiceCustomerCode) values('" + this.lbl1.Text + "','" + this.dataGridView2.Rows[0].Cells[3].Value + "','" + this.dataGridView2.Rows[0].Cells[8].Value + "', '" + this.dataGridView2.Rows[0].Cells[4].Value + "', '" + produced + "', '" + this.dataGridView2.Rows[0].Cells[20].Value + "', '" + this.dataGridView2.Rows[0].Cells[21].Value + "', '" + this.dataGridView2.Rows[0].Cells[23].Value + "', '" + this.dataGridView2.Rows[0].Cells[24].Value + "', '" + this.dataGridView2.Rows[0].Cells[34].Value + "','" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView2.Rows[0].Cells[22].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "', '" + this.dataGridView2.Rows[0].Cells[29].Value + "');";
                 SqlConnection conDatabase = new SqlConnection(constring);
                 SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
                 SqlDataReader myReader;
@@ -3024,7 +3062,7 @@ namespace PalletCard
                 produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
                 string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
                 string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-                string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, Expr1, NumberUp, JobGanged, SectionName, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '1', '" + produced + "', '" + this.dataGridView1.Rows[0].Cells[11].Value + "', '" + this.dataGridView1.Rows[0].Cells[12].Value + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[15].Value + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "', '" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
+                string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, Expr1, NumberUp, JobGanged, SectionName, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1, InvoiceCustomerCode) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '1', '" + produced + "', '" + this.dataGridView1.Rows[0].Cells[11].Value + "', '" + this.dataGridView1.Rows[0].Cells[12].Value + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[15].Value + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "', '" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "', '" + this.dataGridView1.Rows[0].Cells[21].Value + "');";
                 SqlConnection conDatabase = new SqlConnection(constring);
                 SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
                 SqlDataReader myReader;
@@ -3074,7 +3112,7 @@ namespace PalletCard
                 produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
                 string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
                 string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-                string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, Expr1, NumberUp, JobGanged, SectionName, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1) values('" + this.lbl1.Text + "','" + this.dataGridView2.Rows[0].Cells[3].Value + "','" + this.dataGridView2.Rows[0].Cells[8].Value + "', '" + this.dataGridView2.Rows[0].Cells[4].Value + "', '" + produced + "', '" + this.dataGridView2.Rows[0].Cells[20].Value + "', '" + this.dataGridView2.Rows[0].Cells[21].Value + "', '" + this.dataGridView2.Rows[0].Cells[23].Value + "', '" + this.dataGridView2.Rows[0].Cells[24].Value + "', '" + this.dataGridView2.Rows[0].Cells[34].Value + "', '" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView2.Rows[0].Cells[22].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "');";
+                string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, Expr1, NumberUp, JobGanged, SectionName, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1, InvoiceCustomerCode) values('" + this.lbl1.Text + "','" + this.dataGridView2.Rows[0].Cells[3].Value + "','" + this.dataGridView2.Rows[0].Cells[8].Value + "', '" + this.dataGridView2.Rows[0].Cells[4].Value + "', '" + produced + "', '" + this.dataGridView2.Rows[0].Cells[20].Value + "', '" + this.dataGridView2.Rows[0].Cells[21].Value + "', '" + this.dataGridView2.Rows[0].Cells[23].Value + "', '" + this.dataGridView2.Rows[0].Cells[24].Value + "', '" + this.dataGridView2.Rows[0].Cells[34].Value + "', '" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView2.Rows[0].Cells[22].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "', '" + this.dataGridView2.Rows[0].Cells[29].Value + "');";
                 SqlConnection conDatabase = new SqlConnection(constring);
                 SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
                 SqlDataReader myReader;
@@ -3253,19 +3291,23 @@ namespace PalletCard
                 else
                 {
                     this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
+                    if (dataGridView2.RowCount == 0)
+                        {
+                        PalletNumber = 0;
+                        }
                     PalletNumber = (int)dataGridView2.Rows[0].Cells[4].Value + 1;
                 }
             }
 
             //SAVE TO DATABASE
             CurrentDate = DateTime.Now;
-            dataGridView2.Refresh();
+            //dataGridView2.Refresh();
             produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
             PaperSectionNo = Convert.ToInt32(Regex.Replace(lbl3.Text, "[^0-9.]", ""));
 
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, PalletNumber, Unfinished, PaperSectionNo, NumberUp, JobGanged, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, LastPallet, Produced, Expr1, SectionName) values('" + this.lbl1.Text + "','" + lblJobNo.Text + "','" + PalletNumber + "', '0','" + PaperSectionNo + "', '" + this.dataGridView1.Rows[0].Cells[12].Value + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "','" + lbl7.Text + "','" + resourceID + "','" + lbl6.Text + "','" + lbl2.Text + "','" + lbl5.Text + "','" + tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + "1" + "','" + produced + "','" + lbl2.Text + "','" + lbl2.Text + "');";
+            string Query = "insert into Log (Routine, JobNo, PalletNumber, Unfinished, PaperSectionNo, NumberUp, JobGanged, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, LastPallet, Produced, Expr1, SectionName, InvoiceCustomerCode) values('" + this.lbl1.Text + "','" + lblJobNo.Text + "','" + PalletNumber + "', '0','" + PaperSectionNo + "', '" + this.dataGridView1.Rows[0].Cells[12].Value + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "','" + lbl7.Text + "','" + resourceID + "','" + lbl6.Text + "','" + lbl2.Text + "','" + lbl5.Text + "','" + tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + "1" + "','" + produced + "','" + lbl2.Text + "','" + lbl2.Text + "', '" + this.dataGridView1.Rows[0].Cells[21].Value + "' );";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             SqlDataReader myReader;
@@ -3308,8 +3350,9 @@ namespace PalletCard
             //    dataGridView2.DataSource = palletCardLog1;
             //}
 
-            dataGridView2.Refresh();
+            //dataGridView2.Refresh();
             //dataGridView2.AllowUserToAddRows = false;
+
 
             // Get the quantities produced from the previous pallet cards
             int sumProduced = 0;
@@ -3435,7 +3478,7 @@ namespace PalletCard
                 }
                 else if (produced <= oversCalc)
                 {
-                    pnlSignature.BringToFront();
+
                     btnBack.Visible = false;
                     // Disable the Section button
                     disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
@@ -3458,20 +3501,40 @@ namespace PalletCard
                             sectionsNoLastFlag.Add(s);
                     }
 
-                    //lblFinishedPallets.Visible = true;
-                    //lblFinishedPallets.Text = "";
-                    //foreach (string s in sectionsNoLastFlag)
-                    //{
-                    //    lblFinishedPallets.Text += "Section " + s + " is not complete" + "\r\n";
-                    //}
-                    //if (lblFinishedPallets.Text.Length > 0)
-                    //{
-                    //    lblWarning.Visible = true;
-                    //}
+                    if(dataGridView2.RowCount == 0)
+                    {
+                        if (Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value) == 1781)
+                        {
+                            pnlPalletCard10.BringToFront();
+                        }
+                        else
+                        {
+                            pnlSignature.BringToFront();
+                        }
+                    }
+                    if(dataGridView2.RowCount != 0)
+                    {
+                        if (Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value) == 1781)
+                        {
+                            pnlPalletCard10.BringToFront();
+                        }
+                        else
+                        {
+                            pnlSignature.BringToFront();
+                        }
+                    }
+
+                    
+
                 }
             }
             autoNum = dataGridView2.Rows[0].Cells[0].Value.ToString();
             index = 16;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pnlSignature.BringToFront();
         }
 
         private void btnIsSectionFinishedNo_Click(object sender, EventArgs e)
@@ -3536,7 +3599,7 @@ namespace PalletCard
             var rowCount = dataGridView2.Rows.Count -1;
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, NumberUp, JobGanged, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, Produced, Unfinished) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value  + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '" + this.dataGridView1.Rows[0].Cells[12].Value + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "','" + resourceID + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + produced + "', '0');";
+            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, NumberUp, JobGanged, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, Produced, Unfinished, InvoiceCustomerCode) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value  + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '" + this.dataGridView1.Rows[0].Cells[12].Value + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[26].Value + "','" + resourceID + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + produced + "', '0', '" + this.dataGridView1.Rows[0].Cells[21].Value + "');";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             SqlDataReader myReader;
@@ -3552,29 +3615,31 @@ namespace PalletCard
             }
 
             // Requery the data to refresh dataGridView2 with the newly added PalletNumber and barCode
-            OdbcConnection myConnection1 = new OdbcConnection(ConnectionString);
-            OdbcCommand myCommand1 = new OdbcCommand(CommandText, myConnection1);
-            OdbcDataAdapter myAdapter1 = new OdbcDataAdapter();
-            myAdapter1.SelectCommand = myCommand1;
-            DataSet palletCardData1 = new DataSet();
-            try
-            {
-                myConnection.Open();
-                myAdapter1.Fill(palletCardData1);
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-            using (DataTable palletCardLog = new DataTable())
-            {
-                myAdapter1.Fill(palletCardLog);
-                dataGridView2.DataSource = palletCardLog;
-            }
+            reQueryDataGridView2();
+
+            //OdbcConnection myConnection1 = new OdbcConnection(ConnectionString);
+            //OdbcCommand myCommand1 = new OdbcCommand(CommandText, myConnection1);
+            //OdbcDataAdapter myAdapter1 = new OdbcDataAdapter();
+            //myAdapter1.SelectCommand = myCommand1;
+            //DataSet palletCardData1 = new DataSet();
+            //try
+            //{
+            //    myConnection.Open();
+            //    myAdapter1.Fill(palletCardData1);
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw (ex);
+            //}
+            //finally
+            //{
+            //    myConnection.Close();
+            //}
+            //using (DataTable palletCardLog = new DataTable())
+            //{
+            //    myAdapter1.Fill(palletCardLog);
+            //    dataGridView2.DataSource = palletCardLog;
+            //}
 
             this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
             string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
@@ -3653,8 +3718,30 @@ namespace PalletCard
         }
      
         private void btnPalletOver_Click(object sender, EventArgs e)
-        {
-            pnlSignature.BringToFront();
+        {            
+            if (dataGridView2.RowCount == 0)
+            {
+                if (Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value) == 1781)
+                {
+                    pnlPalletCard10.BringToFront();
+                }
+                else
+                {
+                    pnlSignature.BringToFront();
+                }
+            }
+            else if (dataGridView2.RowCount != 0)
+            {
+                if (Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value) == 1781)
+                {
+                    pnlPalletCard10.BringToFront();
+                }
+                else
+                {
+                    pnlSignature.BringToFront();
+                }
+            }
+
         }
 
         private void tbxFinishPallet_KeyDown(object sender, KeyEventArgs e)
@@ -3764,11 +3851,6 @@ namespace PalletCard
             lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
             // QtyRequired
             lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
-        }
-
-        private void lblNumberUp_Click(object sender, EventArgs e)
-        {
-
         }
 
         #endregion
@@ -3929,6 +4011,7 @@ namespace PalletCard
             MessageBox.Show("Email Notification Sent");
             pnlHome0.BringToFront();
         }
+
 
 
         #endregion
