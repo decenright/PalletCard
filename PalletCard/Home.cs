@@ -993,7 +993,7 @@ namespace PalletCard
 //****************************************************************************************************
 //  SIGNATURE
 //****************************************************************************************************
-#region Signature
+#region Main Signature
         public class Line
         {
             public Line()
@@ -1035,7 +1035,7 @@ namespace PalletCard
         Pen pen = new Pen(Color.Black);
         Glyph glyph = null;
         Signature signature = new Signature();
-        private object tb1;
+        //private object tb1;
 
         private void SignaturePanel_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1196,11 +1196,101 @@ namespace PalletCard
 
         #endregion
 
+#region POSA Signature
 
-//****************************************************************************************************
-//  PALLET CARD
-//****************************************************************************************************
-#region PalletCard
+        private void SignaturePanelPosa_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (IsCapturing)
+            {
+                if (startPoint.IsEmpty && endPoint.IsEmpty)
+                {
+                    endPoint = e.Location;
+                }
+                else
+                {
+                    startPoint = endPoint;
+                    endPoint = e.Location;
+                    Line line = new Line(startPoint, endPoint);
+                    glyph.Lines.Add(line);
+                    DrawLinePosa(line);
+                }
+            }
+        }
+
+        private void SignaturePanelPosa_MouseUp(object sender, MouseEventArgs e)
+        {
+            IsCapturing = false;
+            signature.Glyphs.Add(glyph);
+            startPoint = new Point();
+            endPoint = new Point();
+        }
+
+        private void SignaturePanelPosa_MouseDown(object sender, MouseEventArgs e)
+        {
+            IsCapturing = true;
+            glyph = new Glyph();
+        }
+
+        private void DrawLinePosa(Line line)
+        {
+            using (Graphics graphic = this.SignaturePanelPosa.CreateGraphics())
+            {
+                graphic.DrawLine(pen, line.StartPoint, line.EndPoint);
+            }
+        }
+
+        private void DrawSignaturePosa()
+        {
+            foreach (Glyph glyph in signature.Glyphs)
+            {
+                foreach (Line line in glyph.Lines)
+                {
+                    DrawLinePosa(line);
+                }
+            }
+        }
+
+        private void ClearSignaturePanelPosa()
+        {
+            using (Graphics graphic = this.SignaturePanelPosa.CreateGraphics())
+            {
+                SolidBrush solidBrush = new SolidBrush(Color.Gainsboro);
+                graphic.FillRectangle(solidBrush, 0, 0, SignaturePanelPosa.Width, SignaturePanelPosa.Height);
+            }
+        }
+
+        private void ClearSignaturePosa_Click(object sender, EventArgs e)
+        {
+            ClearSignaturePanelPosa();
+        }
+
+        //private static Bitmap DrawControlToBitmap(Control control)
+        //{
+        //    Bitmap bitmap = new Bitmap(control.Width, control.Height);
+        //    Graphics graphics = Graphics.FromImage(bitmap);
+        //    Rectangle rect = control.RectangleToScreen(control.ClientRectangle);
+        //    graphics.CopyFromScreen(rect.Location, Point.Empty, control.Size);
+        //    return bitmap;
+        //}
+
+        public void SaveSignaturePosaImageToFile()
+        {
+            Bitmap bmp = new Bitmap(this.SignaturePanelPosa.Width, this.SignaturePanelPosa.Height);
+            Graphics graphics = Graphics.FromImage(bmp);
+            Rectangle rect = SignaturePanelPosa.RectangleToScreen(SignaturePanelPosa.ClientRectangle);
+            graphics.CopyFromScreen(rect.Location, Point.Empty, SignaturePanelPosa.Size);
+            bmp.Save("C:/Temp/Signatures/ " + autoNum + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+        }
+
+
+
+
+        #endregion
+
+
+        //**************************************************************************************************** //  PALLET CARD
+        //****************************************************************************************************
+        #region PalletCard
 
         private void btnPalletCard_Click(object sender, EventArgs e)
         {
@@ -3435,8 +3525,7 @@ namespace PalletCard
                     pnlPalletCard9.BringToFront();
                     btnBack.Visible = false;
                     lblPalletOverBySheets.Text = lblJobNo.Text + " is over by " + overBy;
-                    //lbl7.Text = "Pallet Over";
-                    // Disable the Section button
+                    // Disable the Section button so it can't be pressed again
                     disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                     removeFlowLayoutBtns();
                     sigBtns = false;
@@ -3480,7 +3569,7 @@ namespace PalletCard
                 {
 
                     btnBack.Visible = false;
-                    // Disable the Section button
+                    // Disable the Section button so it can't be pressed again
                     disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                     removeFlowLayoutBtns();
                     sigBtns = false;
@@ -4014,7 +4103,16 @@ namespace PalletCard
 
 
 
+
+
         #endregion
+
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            pnlPalletCard10.BringToFront();
+        }
 
 
     }
