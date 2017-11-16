@@ -1109,7 +1109,7 @@ namespace PalletCard
             Graphics graphics = Graphics.FromImage(bmp);
             Rectangle rect = SignaturePanel.RectangleToScreen(SignaturePanel.ClientRectangle);
             graphics.CopyFromScreen(rect.Location, Point.Empty, SignaturePanel.Size);
-            bmp.Save("C:/Temp/Signatures/ " + autoNum + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            bmp.Save("P:/PalletCard/Signatures/ " + autoNum + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
         }
 
         private void btnQATravellerBlurb_Click(object sender, EventArgs e)
@@ -1289,7 +1289,7 @@ namespace PalletCard
                     endPoint = e.Location;
                     Line line = new Line(startPoint, endPoint);
                     glyph.Lines.Add(line);
-                    DrawLinePosa(line);
+                    DrawLineMedicalPharma(line);
                 }
             }
         }
@@ -1310,7 +1310,7 @@ namespace PalletCard
 
         private void DrawLineMedicalPharma(Line line)
         {
-            using (Graphics graphic = this.SignaturePanelPosa.CreateGraphics())
+            using (Graphics graphic = this.SignaturePanelMedicalPharma.CreateGraphics())
             {
                 graphic.DrawLine(pen, line.StartPoint, line.EndPoint);
             }
@@ -1329,10 +1329,10 @@ namespace PalletCard
 
         private void ClearSignaturePanelMedicalPharma()
         {
-            using (Graphics graphic = this.SignaturePanelPosa.CreateGraphics())
+            using (Graphics graphic = this.SignaturePanelMedicalPharma.CreateGraphics())
             {
                 SolidBrush solidBrush = new SolidBrush(Color.Gainsboro);
-                graphic.FillRectangle(solidBrush, 0, 0, SignaturePanelPosa.Width, SignaturePanelPosa.Height);
+                graphic.FillRectangle(solidBrush, 0, 0, SignaturePanelMedicalPharma.Width, SignaturePanelMedicalPharma.Height);
             }
         }
 
@@ -3727,8 +3727,15 @@ namespace PalletCard
 
         private void btnSaveMedicalPharmaImage_Click(object sender, EventArgs e)
         {
-            SaveMedicalPharmaImageToFile();
-            pnlSignature.BringToFront();
+            if (tbxInkDetails.Text != "")
+            {
+                if (tbxPaperDetails.Text != "")
+                {
+                    SaveMedicalPharmaImageToFile();
+                    pnlSignature.BringToFront();
+                }
+            }
+            else MessageBox.Show("Please enter both Ink and Paper Details");
         }
 
         private void btnIsSectionFinishedNo_Click(object sender, EventArgs e)
