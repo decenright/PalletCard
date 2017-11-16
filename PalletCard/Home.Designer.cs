@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbxSearchBox = new System.Windows.Forms.TextBox();
             this.lblJobNo = new System.Windows.Forms.Label();
@@ -204,7 +204,7 @@
             this.btnWaitingPlates = new System.Windows.Forms.Button();
             this.pnlNotification1 = new System.Windows.Forms.Panel();
             this.pnlPalletCard10 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnClearSignaturePosa = new System.Windows.Forms.Button();
             this.SignaturePanelPosa = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox19 = new System.Windows.Forms.CheckBox();
@@ -261,9 +261,19 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lblSpecialCustomerA2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSavePosaImage = new System.Windows.Forms.Button();
             this.lblSpecialCustomerA1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.pnlPalletCard11 = new System.Windows.Forms.Panel();
+            this.btnClearSignatureMedicalPharma = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label45 = new System.Windows.Forms.Label();
+            this.btnSaveMedicalPharmaImage = new System.Windows.Forms.Button();
+            this.label46 = new System.Windows.Forms.Label();
+            this.tbxPaperDetails = new System.Windows.Forms.TextBox();
+            this.lblPaperDetails = new System.Windows.Forms.Label();
+            this.lblInkDetails = new System.Windows.Forms.Label();
+            this.tbxInkDetails = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -290,38 +300,39 @@
             this.pnlPalletCard10.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.pnlPalletCard11.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(4, 834);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(730, 100);
             this.dataGridView1.TabIndex = 0;
@@ -2193,33 +2204,33 @@
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.Location = new System.Drawing.Point(3, 937);
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(730, 78);
             this.dataGridView2.TabIndex = 52;
@@ -2293,7 +2304,7 @@
             // 
             // pnlPalletCard10
             // 
-            this.pnlPalletCard10.Controls.Add(this.button3);
+            this.pnlPalletCard10.Controls.Add(this.btnClearSignaturePosa);
             this.pnlPalletCard10.Controls.Add(this.SignaturePanelPosa);
             this.pnlPalletCard10.Controls.Add(this.panel1);
             this.pnlPalletCard10.Controls.Add(this.label15);
@@ -2310,23 +2321,23 @@
             this.pnlPalletCard10.Controls.Add(this.checkBox2);
             this.pnlPalletCard10.Controls.Add(this.checkBox1);
             this.pnlPalletCard10.Controls.Add(this.lblSpecialCustomerA2);
-            this.pnlPalletCard10.Controls.Add(this.button1);
+            this.pnlPalletCard10.Controls.Add(this.btnSavePosaImage);
             this.pnlPalletCard10.Controls.Add(this.lblSpecialCustomerA1);
             this.pnlPalletCard10.Location = new System.Drawing.Point(210, 3);
             this.pnlPalletCard10.Name = "pnlPalletCard10";
             this.pnlPalletCard10.Size = new System.Drawing.Size(528, 828);
             this.pnlPalletCard10.TabIndex = 55;
             // 
-            // button3
+            // btnClearSignaturePosa
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(420, 680);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(83, 46);
-            this.button3.TabIndex = 39;
-            this.button3.Text = "Clear";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.ClearSignaturePosa_Click);
+            this.btnClearSignaturePosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearSignaturePosa.Location = new System.Drawing.Point(420, 680);
+            this.btnClearSignaturePosa.Name = "btnClearSignaturePosa";
+            this.btnClearSignaturePosa.Size = new System.Drawing.Size(83, 46);
+            this.btnClearSignaturePosa.TabIndex = 39;
+            this.btnClearSignaturePosa.Text = "Clear";
+            this.btnClearSignaturePosa.UseVisualStyleBackColor = true;
+            this.btnClearSignaturePosa.Click += new System.EventHandler(this.ClearSignaturePosa_Click);
             // 
             // SignaturePanelPosa
             // 
@@ -2957,16 +2968,16 @@
             this.lblSpecialCustomerA2.TabIndex = 19;
             this.lblSpecialCustomerA2.Text = "Printers Checklist";
             // 
-            // button1
+            // btnSavePosaImage
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(208, 757);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 62);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSavePosaImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSavePosaImage.Location = new System.Drawing.Point(208, 757);
+            this.btnSavePosaImage.Name = "btnSavePosaImage";
+            this.btnSavePosaImage.Size = new System.Drawing.Size(88, 62);
+            this.btnSavePosaImage.TabIndex = 18;
+            this.btnSavePosaImage.Text = "OK";
+            this.btnSavePosaImage.UseVisualStyleBackColor = true;
+            this.btnSavePosaImage.Click += new System.EventHandler(this.btnSavePosaImage_Click);
             // 
             // lblSpecialCustomerA1
             // 
@@ -2988,12 +2999,117 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // pnlPalletCard11
+            // 
+            this.pnlPalletCard11.Controls.Add(this.lblInkDetails);
+            this.pnlPalletCard11.Controls.Add(this.tbxInkDetails);
+            this.pnlPalletCard11.Controls.Add(this.lblPaperDetails);
+            this.pnlPalletCard11.Controls.Add(this.tbxPaperDetails);
+            this.pnlPalletCard11.Controls.Add(this.btnClearSignatureMedicalPharma);
+            this.pnlPalletCard11.Controls.Add(this.panel3);
+            this.pnlPalletCard11.Controls.Add(this.label45);
+            this.pnlPalletCard11.Controls.Add(this.btnSaveMedicalPharmaImage);
+            this.pnlPalletCard11.Controls.Add(this.label46);
+            this.pnlPalletCard11.Location = new System.Drawing.Point(210, 3);
+            this.pnlPalletCard11.Name = "pnlPalletCard11";
+            this.pnlPalletCard11.Size = new System.Drawing.Size(528, 828);
+            this.pnlPalletCard11.TabIndex = 57;
+            // 
+            // btnClearSignatureMedicalPharma
+            // 
+            this.btnClearSignatureMedicalPharma.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearSignatureMedicalPharma.Location = new System.Drawing.Point(419, 679);
+            this.btnClearSignatureMedicalPharma.Name = "btnClearSignatureMedicalPharma";
+            this.btnClearSignatureMedicalPharma.Size = new System.Drawing.Size(83, 46);
+            this.btnClearSignatureMedicalPharma.TabIndex = 44;
+            this.btnClearSignatureMedicalPharma.Text = "Clear";
+            this.btnClearSignatureMedicalPharma.UseVisualStyleBackColor = true;
+            this.btnClearSignatureMedicalPharma.Click += new System.EventHandler(this.btnClearSignatureMedicalPharma_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel3.Location = new System.Drawing.Point(26, 667);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(371, 71);
+            this.panel3.TabIndex = 43;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(29, 641);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(90, 24);
+            this.label45.TabIndex = 42;
+            this.label45.Text = "Signature";
+            // 
+            // btnSaveMedicalPharmaImage
+            // 
+            this.btnSaveMedicalPharmaImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveMedicalPharmaImage.Location = new System.Drawing.Point(207, 756);
+            this.btnSaveMedicalPharmaImage.Name = "btnSaveMedicalPharmaImage";
+            this.btnSaveMedicalPharmaImage.Size = new System.Drawing.Size(88, 62);
+            this.btnSaveMedicalPharmaImage.TabIndex = 41;
+            this.btnSaveMedicalPharmaImage.Text = "OK";
+            this.btnSaveMedicalPharmaImage.UseVisualStyleBackColor = true;
+            this.btnSaveMedicalPharmaImage.Click += new System.EventHandler(this.btnSaveMedicalPharmaImage_Click);
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(58, 12);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(408, 31);
+            this.label46.TabIndex = 40;
+            this.label46.Text = "Medical/Pharma Batch Record";
+            // 
+            // tbxPaperDetails
+            // 
+            this.tbxPaperDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxPaperDetails.Location = new System.Drawing.Point(138, 200);
+            this.tbxPaperDetails.Multiline = true;
+            this.tbxPaperDetails.Name = "tbxPaperDetails";
+            this.tbxPaperDetails.Size = new System.Drawing.Size(249, 35);
+            this.tbxPaperDetails.TabIndex = 45;
+            // 
+            // lblPaperDetails
+            // 
+            this.lblPaperDetails.AutoSize = true;
+            this.lblPaperDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaperDetails.Location = new System.Drawing.Point(138, 176);
+            this.lblPaperDetails.Name = "lblPaperDetails";
+            this.lblPaperDetails.Size = new System.Drawing.Size(104, 20);
+            this.lblPaperDetails.TabIndex = 46;
+            this.lblPaperDetails.Text = "Paper Details";
+            // 
+            // lblInkDetails
+            // 
+            this.lblInkDetails.AutoSize = true;
+            this.lblInkDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInkDetails.Location = new System.Drawing.Point(140, 385);
+            this.lblInkDetails.Name = "lblInkDetails";
+            this.lblInkDetails.Size = new System.Drawing.Size(84, 20);
+            this.lblInkDetails.TabIndex = 48;
+            this.lblInkDetails.Text = "Ink Details";
+            // 
+            // tbxInkDetails
+            // 
+            this.tbxInkDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxInkDetails.Location = new System.Drawing.Point(140, 409);
+            this.tbxInkDetails.Multiline = true;
+            this.tbxInkDetails.Name = "tbxInkDetails";
+            this.tbxInkDetails.Size = new System.Drawing.Size(249, 35);
+            this.tbxInkDetails.TabIndex = 47;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(736, 1045);
+            this.Controls.Add(this.pnlPalletCard11);
             this.Controls.Add(this.pnlPalletCard10);
             this.Controls.Add(this.pnlSignature);
             this.Controls.Add(this.button2);
@@ -3091,6 +3207,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.pnlPalletCard11.ResumeLayout(false);
+            this.pnlPalletCard11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3268,7 +3386,7 @@
         private System.Windows.Forms.Panel pnlNotification1;
         private System.Windows.Forms.Panel pnlPalletCard10;
         private System.Windows.Forms.Label lblSpecialCustomerA1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSavePosaImage;
         private System.Windows.Forms.CheckBox checkBox9;
         private System.Windows.Forms.CheckBox checkBox10;
         private System.Windows.Forms.CheckBox checkBox11;
@@ -3325,8 +3443,18 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnClearSignaturePosa;
         private System.Windows.Forms.Panel SignaturePanelPosa;
+        private System.Windows.Forms.Panel pnlPalletCard11;
+        private System.Windows.Forms.Button btnClearSignatureMedicalPharma;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Button btnSaveMedicalPharmaImage;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label lblInkDetails;
+        private System.Windows.Forms.TextBox tbxInkDetails;
+        private System.Windows.Forms.Label lblPaperDetails;
+        private System.Windows.Forms.TextBox tbxPaperDetails;
     }
 }
 

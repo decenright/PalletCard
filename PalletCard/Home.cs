@@ -1103,15 +1103,6 @@ namespace PalletCard
             ClearSignaturePanel();
         }
 
-        //private static Bitmap DrawControlToBitmap(Control control)
-        //{
-        //    Bitmap bitmap = new Bitmap(control.Width, control.Height);
-        //    Graphics graphics = Graphics.FromImage(bitmap);
-        //    Rectangle rect = control.RectangleToScreen(control.ClientRectangle);
-        //    graphics.CopyFromScreen(rect.Location, Point.Empty, control.Size);
-        //    return bitmap;
-        //}
-
         public void SaveSignatureImageToFile()
         {
             Bitmap bmp = new Bitmap(this.SignaturePanel.Width, this.SignaturePanel.Height);
@@ -1264,22 +1255,17 @@ namespace PalletCard
             ClearSignaturePanelPosa();
         }
 
-        //private static Bitmap DrawControlToBitmap(Control control)
-        //{
-        //    Bitmap bitmap = new Bitmap(control.Width, control.Height);
-        //    Graphics graphics = Graphics.FromImage(bitmap);
-        //    Rectangle rect = control.RectangleToScreen(control.ClientRectangle);
-        //    graphics.CopyFromScreen(rect.Location, Point.Empty, control.Size);
-        //    return bitmap;
-        //}
-
-        public void SaveSignaturePosaImageToFile()
+        public void SavePosaImageToFile()
         {
-            Bitmap bmp = new Bitmap(this.SignaturePanelPosa.Width, this.SignaturePanelPosa.Height);
+            Bitmap bmp = new Bitmap(this.pnlPalletCard10.Width, this.pnlPalletCard10.Height);
             Graphics graphics = Graphics.FromImage(bmp);
-            Rectangle rect = SignaturePanelPosa.RectangleToScreen(SignaturePanelPosa.ClientRectangle);
-            graphics.CopyFromScreen(rect.Location, Point.Empty, SignaturePanelPosa.Size);
-            bmp.Save("C:/Temp/Signatures/ " + autoNum + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            Rectangle rect = pnlPalletCard10.RectangleToScreen(pnlPalletCard10.ClientRectangle);
+            graphics.CopyFromScreen(rect.Location, Point.Empty, pnlPalletCard10.Size);
+            var time = DateTime.Now.ToString("yyyyMMdd-HH-mm-ss");
+            var job = lblJobNo.Text.ToString();
+            string all = job + " - " + time;
+            bmp.Save("P:/PalletCard/BatchRecords/POSA/Job No " + all + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg); 
+
         }
 
 
@@ -1287,10 +1273,93 @@ namespace PalletCard
 
         #endregion
 
+#region MedicalPharma Signature
 
-        //**************************************************************************************************** //  PALLET CARD
-        //****************************************************************************************************
-        #region PalletCard
+        private void SignaturePanelMedicalPharma_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (IsCapturing)
+            {
+                if (startPoint.IsEmpty && endPoint.IsEmpty)
+                {
+                    endPoint = e.Location;
+                }
+                else
+                {
+                    startPoint = endPoint;
+                    endPoint = e.Location;
+                    Line line = new Line(startPoint, endPoint);
+                    glyph.Lines.Add(line);
+                    DrawLinePosa(line);
+                }
+            }
+        }
+
+        private void SignaturePanelMedicalPharma_MouseUp(object sender, MouseEventArgs e)
+        {
+            IsCapturing = false;
+            signature.Glyphs.Add(glyph);
+            startPoint = new Point();
+            endPoint = new Point();
+        }
+
+        private void SignaturePanelMedicalPharma_MouseDown(object sender, MouseEventArgs e)
+        {
+            IsCapturing = true;
+            glyph = new Glyph();
+        }
+
+        private void DrawLineMedicalPharma(Line line)
+        {
+            using (Graphics graphic = this.SignaturePanelPosa.CreateGraphics())
+            {
+                graphic.DrawLine(pen, line.StartPoint, line.EndPoint);
+            }
+        }
+
+        private void DrawSignatureMedicalPharma()
+        {
+            foreach (Glyph glyph in signature.Glyphs)
+            {
+                foreach (Line line in glyph.Lines)
+                {
+                    DrawLineMedicalPharma(line);
+                }
+            }
+        }
+
+        private void ClearSignaturePanelMedicalPharma()
+        {
+            using (Graphics graphic = this.SignaturePanelPosa.CreateGraphics())
+            {
+                SolidBrush solidBrush = new SolidBrush(Color.Gainsboro);
+                graphic.FillRectangle(solidBrush, 0, 0, SignaturePanelPosa.Width, SignaturePanelPosa.Height);
+            }
+        }
+
+        private void btnClearSignatureMedicalPharma_Click(object sender, EventArgs e)
+        {
+            ClearSignaturePanelMedicalPharma();
+        }
+
+        public void SaveMedicalPharmaImageToFile()
+        {
+            Bitmap bmp = new Bitmap(this.pnlPalletCard11.Width, this.pnlPalletCard11.Height);
+            Graphics graphics = Graphics.FromImage(bmp);
+            Rectangle rect = pnlPalletCard11.RectangleToScreen(pnlPalletCard11.ClientRectangle);
+            graphics.CopyFromScreen(rect.Location, Point.Empty, pnlPalletCard11.Size);
+            var time = DateTime.Now.ToString("yyyyMMdd-HH-mm-ss");
+            var job = lblJobNo.Text.ToString();
+            string all = job + " - " + time;
+            bmp.Save("P:/PalletCard/BatchRecords/MedicalPharma/Job No " + all + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+
+        }
+
+#endregion
+
+//**************************************************************************************************** 
+//  PALLET CARD
+//****************************************************************************************************
+#region PalletCard
 
         private void btnPalletCard_Click(object sender, EventArgs e)
         {
@@ -2884,9 +2953,19 @@ namespace PalletCard
 
             if (dataGridView2.RowCount == 0)
             {
-                if (Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value) == 1781)
+                int account = Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value);
+                if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
                 {
                     pnlPalletCard10.BringToFront();
+                    // Disable the Section button
+                    disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
+                    removeFlowLayoutBtns();
+                    sigBtns = false;
+                    btnCancel.Visible = false;
+                }
+                else if (account == 1854 || account == 1305 || account == 1337 || account == 1435 || account == 1263 || account == 1092 || account == 1385 || account == 1598 || account == 1686 || account == 1726 || account == 1921 || account == 1458)
+                {
+                    pnlPalletCard11.BringToFront();
                     // Disable the Section button
                     disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                     removeFlowLayoutBtns();
@@ -2905,9 +2984,19 @@ namespace PalletCard
             }
             else if (dataGridView2.RowCount != 0)
             {
-                if (Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value) == 1781)
+                int account = Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value);
+                if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
                 {
                     pnlPalletCard10.BringToFront();
+                    // Disable the Section button
+                    disableSectionButtons.Add(Convert.ToString(dataGridView2.Rows[0].Cells[8].Value));
+                    removeFlowLayoutBtns();
+                    sigBtns = false;
+                    btnCancel.Visible = false;
+                }
+                else if (account == 1854 || account == 1305 || account == 1337 || account == 1435 || account == 1263 || account == 1092 || account == 1385 || account == 1598 || account == 1686 || account == 1726 || account == 1921 || account == 1458)
+                {
+                    pnlPalletCard11.BringToFront();
                     // Disable the Section button
                     disableSectionButtons.Add(Convert.ToString(dataGridView2.Rows[0].Cells[8].Value));
                     removeFlowLayoutBtns();
@@ -3592,9 +3681,14 @@ namespace PalletCard
 
                     if(dataGridView2.RowCount == 0)
                     {
-                        if (Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value) == 1781)
+                        int account = Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value);
+                        if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
                         {
                             pnlPalletCard10.BringToFront();
+                        }
+                        else if (account == 1854 || account == 1305 || account == 1337 || account == 1435 || account == 1263 || account == 1092 || account == 1385 || account == 1598 || account == 1686 || account == 1726 || account == 1921 || account == 1458)
+                        {
+                            pnlPalletCard11.BringToFront();
                         }
                         else
                         {
@@ -3603,9 +3697,14 @@ namespace PalletCard
                     }
                     if(dataGridView2.RowCount != 0)
                     {
-                        if (Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value) == 1781)
+                        int account = Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value);
+                        if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
                         {
                             pnlPalletCard10.BringToFront();
+                        }
+                        else if (account == 1854 || account == 1305 || account == 1337 || account == 1435 || account == 1263 || account == 1092 || account == 1385 || account == 1598 || account == 1686 || account == 1726 || account == 1921 || account == 1458)
+                        {
+                            pnlPalletCard11.BringToFront();
                         }
                         else
                         {
@@ -3613,7 +3712,6 @@ namespace PalletCard
                         }
                     }
 
-                    
 
                 }
             }
@@ -3621,8 +3719,15 @@ namespace PalletCard
             index = 16;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSavePosaImage_Click(object sender, EventArgs e)
         {
+            SavePosaImageToFile();
+            pnlSignature.BringToFront();
+        }
+
+        private void btnSaveMedicalPharmaImage_Click(object sender, EventArgs e)
+        {
+            SaveMedicalPharmaImageToFile();
             pnlSignature.BringToFront();
         }
 
@@ -3805,14 +3910,19 @@ namespace PalletCard
             Point p = new Point(100, 100);
             e.Graphics.DrawImage(img, p);
         }
-     
+
         private void btnPalletOver_Click(object sender, EventArgs e)
         {            
             if (dataGridView2.RowCount == 0)
             {
-                if (Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value) == 1781)
+                int account = Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value);                    
+                if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
                 {
                     pnlPalletCard10.BringToFront();
+                }
+                else if (account == 1854 || account == 1305 || account == 1337 || account == 1435 || account == 1263 || account == 1092 || account == 1385 || account == 1598 || account == 1686 || account == 1726 || account == 1921 || account == 1458)
+                {
+                    pnlPalletCard11.BringToFront();
                 }
                 else
                 {
@@ -3821,9 +3931,14 @@ namespace PalletCard
             }
             else if (dataGridView2.RowCount != 0)
             {
-                if (Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value) == 1781)
+                int account = Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value);
+                if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
                 {
                     pnlPalletCard10.BringToFront();
+                }
+                else if (account == 1854 || account == 1305 || account == 1337 || account == 1435 || account == 1263 || account == 1092 || account == 1385 || account == 1598 || account == 1686 || account == 1726 || account == 1921 || account == 1458)
+                {
+                    pnlPalletCard11.BringToFront();
                 }
                 else
                 {
