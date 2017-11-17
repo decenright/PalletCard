@@ -12,12 +12,13 @@ using System.IO;
 using System.ComponentModel;
 using System.Net.Mail;
 
-#region Global
+
 
 namespace PalletCard
 {
     public partial class Home : Form
     {
+#region Global
         List<Panel> listPanel = new List<Panel>();
         List<string> disableSectionButtons = new List<string>();
         List<string> allSections = new List<string>();
@@ -597,6 +598,7 @@ namespace PalletCard
 
 #endregion
 
+
 //****************************************************************************************************
 //  RETURN PAPER WORKFLOW
 //****************************************************************************************************
@@ -792,7 +794,6 @@ namespace PalletCard
         }
 
 #endregion
-
 
 //****************************************************************************************************
 //  REJECT PAPER WORKFLOW
@@ -1265,13 +1266,12 @@ namespace PalletCard
             var job = lblJobNo.Text.ToString();
             string all = job + " - " + time;
             bmp.Save("P:/PalletCard/BatchRecords/POSA/Job No " + all + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg); 
-
         }
 
 
 
 
-        #endregion
+#endregion
 
 #region MedicalPharma Signature
 
@@ -3206,6 +3206,8 @@ namespace PalletCard
                 pictureBox1.Width = bitMap.Width;
             }
 
+            SavePalletCardBack();
+
             pnlPalletCardPrint.BringToFront();
             lblPC_IncompletePallet.Text = "INCOMPLETE";
             lblPC_IncompletePallet.Visible = true;
@@ -3230,6 +3232,49 @@ namespace PalletCard
             btnBack.Visible = false;
             btnCancel.Visible = false;
             index = 17;
+        }
+
+        public void SavePalletCardBack()
+        {
+            string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+            string CommandText = "SELECT * FROM app_PalletJobDocketHeader where JobNo = '" + lblJobNo.Text + "'";
+            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+            myAdapter.SelectCommand = myCommand;
+            DataSet tharData = new DataSet();
+            try
+            {
+                myConnection.Open();
+                myAdapter.Fill(tharData);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            using (DataTable jobDocketDetail = new DataTable())
+            {
+                myAdapter.Fill(jobDocketDetail);
+                //dataGridView2.DataSource = palletCardLog;
+                tbxBackDescription.Text = jobDocketDetail.Rows[0][2].ToString();
+                pnlPalletCardBack.BringToFront();
+            }
+            
+
+
+
+
+
+                Bitmap bmp = new Bitmap(this.pnlPalletCardBack.Width, this.pnlPalletCardBack.Height);
+            Graphics graphics = Graphics.FromImage(bmp);
+            Rectangle rect = pnlPalletCardBack.RectangleToScreen(pnlPalletCardBack.ClientRectangle);
+            graphics.CopyFromScreen(rect.Location, Point.Empty, pnlPalletCardBack.Size);
+            bmp.Save("C:/Temp/PalletCardBack/PalletCardBack.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
         }
 
         private void btnVarnishRequired_Click(object sender, EventArgs e)
@@ -4066,7 +4111,6 @@ namespace PalletCard
 
         #endregion
 
-
 //****************************************************************************************************
 //  NOTIFICATION PANEL
 //****************************************************************************************************
@@ -4236,6 +4280,9 @@ namespace PalletCard
             pnlPalletCard10.BringToFront();
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SavePalletCardBack();
+        }
     }
 }
