@@ -33,5 +33,16 @@ namespace PalletCard.Properties {
                 return ((string)(this["PalletCardConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=CMDB2;Initial Catalog=Thardata;Persist Security Info=True;User ID=tha" +
+            "ruser;TrustServerCertificate=True")]
+        public string ThardataConnectionString {
+            get {
+                return ((string)(this["ThardataConnectionString"]));
+            }
+        }
     }
 }

@@ -11,8 +11,8 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.ComponentModel;
 using System.Net.Mail;
-
-
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace PalletCard
 {
@@ -60,6 +60,7 @@ namespace PalletCard
         public Home()
         {
             InitializeComponent();
+
         }
        
         private void btnBack_Click(object sender, EventArgs e)
@@ -478,13 +479,32 @@ namespace PalletCard
         private void btnSearch_Click(object sender, EventArgs e)
         {
             Search();
+
+            ReportDocument cryRpt = new ReportDocument();
+            cryRpt.Load("S:\\Production Admin\\Declan Enright\\Crystal Reports Test\\CrystalReportsTest\\CrystalReportsTest\\CrystalReport1.rpt");
+
+            ParameterFieldDefinitions crParameterFieldDefinitions;
+            ParameterFieldDefinition crParameterFieldDefinition;
+            ParameterValues crParameterValues = new ParameterValues();
+            ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+
+            crParameterDiscreteValue.Value = lblJobNo.Text;
+            crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
+            crParameterFieldDefinition = crParameterFieldDefinitions["JobNo"];
+            crParameterValues = crParameterFieldDefinition.CurrentValues;
+
+            crParameterValues.Clear();
+            crParameterValues.Add(crParameterDiscreteValue);
+            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+
+            crystalReportViewer1.ReportSource = cryRpt;
+            crystalReportViewer1.Refresh();
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             searchChanged = true;
         }
-
 
         private void Cancel()
         {
@@ -1157,7 +1177,7 @@ namespace PalletCard
             }
             using (MemoryStream ms = new MemoryStream())
             {
-                bitMap.Save(ms, ImageFormat.Png);
+                bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                 pictureBox1.Image = bitMap;
                 pictureBox1.Height = bitMap.Height;
                 pictureBox1.Width = bitMap.Width;
@@ -3200,13 +3220,13 @@ namespace PalletCard
             }
             using (MemoryStream ms = new MemoryStream())
             {
-                bitMap.Save(ms, ImageFormat.Png);
+                bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                 pictureBox1.Image = bitMap;
                 pictureBox1.Height = bitMap.Height;
                 pictureBox1.Width = bitMap.Width;
             }
 
-            SavePalletCardBack();
+            //SavePalletCardBack();
 
             pnlPalletCardPrint.BringToFront();
             lblPC_IncompletePallet.Text = "INCOMPLETE";
@@ -3234,48 +3254,43 @@ namespace PalletCard
             index = 17;
         }
 
-        public void SavePalletCardBack()
-        {
-            string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-            string CommandText = "SELECT * FROM app_PalletJobDocketHeader where JobNo = '" + lblJobNo.Text + "'";
-            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
-            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
-            myAdapter.SelectCommand = myCommand;
-            DataSet tharData = new DataSet();
-            try
-            {
-                myConnection.Open();
-                myAdapter.Fill(tharData);
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-            finally
-            {
-                myConnection.Close();
-            }
+        //public void SavePalletCardBack()
+        //{
+        //    string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //    string CommandText = "SELECT * FROM app_PalletJobDocketHeader where JobNo = '" + lblJobNo.Text + "'";
+        //    OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+        //    OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+        //    OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+        //    myAdapter.SelectCommand = myCommand;
+        //    DataSet tharData = new DataSet();
+        //    try
+        //    {
+        //        myConnection.Open();
+        //        myAdapter.Fill(tharData);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw (ex);
+        //    }
+        //    finally
+        //    {
+        //        myConnection.Close();
+        //    }
 
-            using (DataTable jobDocketDetail = new DataTable())
-            {
-                myAdapter.Fill(jobDocketDetail);
-                //dataGridView2.DataSource = palletCardLog;
-                tbxBackDescription.Text = jobDocketDetail.Rows[0][2].ToString();
-                pnlPalletCardBack.BringToFront();
-            }
+        //    using (DataTable jobDocketDetail = new DataTable())
+        //    {
+        //        myAdapter.Fill(jobDocketDetail);
+        //        //dataGridView2.DataSource = palletCardLog;
+        //        tbxBackDescription.Text = jobDocketDetail.Rows[0][2].ToString();
+        //        pnlPalletCardBack.BringToFront();
+        //    }
             
-
-
-
-
-
-                Bitmap bmp = new Bitmap(this.pnlPalletCardBack.Width, this.pnlPalletCardBack.Height);
-            Graphics graphics = Graphics.FromImage(bmp);
-            Rectangle rect = pnlPalletCardBack.RectangleToScreen(pnlPalletCardBack.ClientRectangle);
-            graphics.CopyFromScreen(rect.Location, Point.Empty, pnlPalletCardBack.Size);
-            bmp.Save("C:/Temp/PalletCardBack/PalletCardBack.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-        }
+        //    Bitmap bmp = new Bitmap(this.pnlPalletCardBack.Width, this.pnlPalletCardBack.Height);
+        //    Graphics graphics = Graphics.FromImage(bmp);
+        //    Rectangle rect = pnlPalletCardBack.RectangleToScreen(pnlPalletCardBack.ClientRectangle);
+        //    graphics.CopyFromScreen(rect.Location, Point.Empty, pnlPalletCardBack.Size);
+        //    bmp.Save("C:/Temp/PalletCardBack/PalletCardBack.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+        //}
 
         private void btnVarnishRequired_Click(object sender, EventArgs e)
         {
@@ -3397,7 +3412,7 @@ namespace PalletCard
             }
             using (MemoryStream ms = new MemoryStream())
             {
-                bitMap.Save(ms, ImageFormat.Png);
+                bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                 pictureBox1.Image = bitMap;
                 pictureBox1.Height = bitMap.Height;
                 pictureBox1.Width = bitMap.Width;
@@ -3901,7 +3916,7 @@ namespace PalletCard
             }
             using (MemoryStream ms = new MemoryStream())
             {
-                bitMap.Save(ms, ImageFormat.Png);
+                bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                 pictureBox1.Image = bitMap;
                 pictureBox1.Height = bitMap.Height;
                 pictureBox1.Width = bitMap.Width;
@@ -4282,7 +4297,8 @@ namespace PalletCard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SavePalletCardBack();
+            //SavePalletCardBack();
+            pnlPalletCardBack.BringToFront();
         }
     }
 }
