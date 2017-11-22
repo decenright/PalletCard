@@ -13,6 +13,10 @@ using System.ComponentModel;
 using System.Net.Mail;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using RawPrint;
 
 namespace PalletCard
 {
@@ -60,7 +64,6 @@ namespace PalletCard
         public Home()
         {
             InitializeComponent();
-
         }
        
         private void btnBack_Click(object sender, EventArgs e)
@@ -680,7 +683,7 @@ namespace PalletCard
                                         btn.Height = 80;
                                         btn.Width = 465;
                                         btn.BackColor = Color.SteelBlue;
-                                        btn.Font = new Font("Microsoft Sans Serif", 14);
+                                        btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14);
                                         btn.ForeColor = Color.White;
                                         btn.Left = 30;                                     
                                         btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
@@ -806,7 +809,7 @@ namespace PalletCard
             int y = SystemInformation.WorkingArea.Y;
             int width = this.Width;
             int height = this.Height;
-            Rectangle bounds = new Rectangle(x, y, width, height);
+            System.Drawing.Rectangle bounds = new System.Drawing.Rectangle(x, y, width, height);
             Bitmap img = new Bitmap(width, height);
             pnlReturnPaper3.DrawToBitmap(img, bounds);
             Point p = new Point(100, 100);
@@ -873,7 +876,7 @@ namespace PalletCard
                                         btn.Height = 80;
                                         btn.Width = 465;
                                         btn.BackColor = Color.SteelBlue;
-                                        btn.Font = new Font("Microsoft Sans Serif", 14);
+                                        btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14);
                                         btn.ForeColor = Color.White;
                                         btn.Left = 30;
                                         btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
@@ -1002,7 +1005,7 @@ namespace PalletCard
             int y = SystemInformation.WorkingArea.Y;
             int width = this.Width;
             int height = this.Height;
-            Rectangle bounds = new Rectangle(x, y, width, height);
+            System.Drawing.Rectangle bounds = new System.Drawing.Rectangle(x, y, width, height);
             Bitmap img = new Bitmap(width, height);
             pnlRejectPaper3.DrawToBitmap(img, bounds);
             Point p = new Point(100, 100);
@@ -1128,7 +1131,7 @@ namespace PalletCard
         {
             Bitmap bmp = new Bitmap(this.SignaturePanel.Width, this.SignaturePanel.Height);
             Graphics graphics = Graphics.FromImage(bmp);
-            Rectangle rect = SignaturePanel.RectangleToScreen(SignaturePanel.ClientRectangle);
+            System.Drawing.Rectangle rect = SignaturePanel.RectangleToScreen(SignaturePanel.ClientRectangle);
             graphics.CopyFromScreen(rect.Location, Point.Empty, SignaturePanel.Size);
             bmp.Save("P:/PalletCard/Signatures/ " + autoNum + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
         }
@@ -1168,7 +1171,7 @@ namespace PalletCard
             Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
             using (Graphics graphics = Graphics.FromImage(bitMap))
             {
-                Font oFont = new Font("IDAutomationHC39M", 16);
+                System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
                 PointF point = new PointF(2f, 2f);
                 SolidBrush blackBrush = new SolidBrush(Color.Black);
                 SolidBrush whiteBrush = new SolidBrush(Color.White);
@@ -1280,7 +1283,7 @@ namespace PalletCard
         {
             Bitmap bmp = new Bitmap(this.pnlPalletCard10.Width, this.pnlPalletCard10.Height);
             Graphics graphics = Graphics.FromImage(bmp);
-            Rectangle rect = pnlPalletCard10.RectangleToScreen(pnlPalletCard10.ClientRectangle);
+            System.Drawing.Rectangle rect = pnlPalletCard10.RectangleToScreen(pnlPalletCard10.ClientRectangle);
             graphics.CopyFromScreen(rect.Location, Point.Empty, pnlPalletCard10.Size);
             var time = DateTime.Now.ToString("yyyyMMdd-HH-mm-ss");
             var job = lblJobNo.Text.ToString();
@@ -1365,7 +1368,7 @@ namespace PalletCard
         {
             Bitmap bmp = new Bitmap(this.pnlPalletCard11.Width, this.pnlPalletCard11.Height);
             Graphics graphics = Graphics.FromImage(bmp);
-            Rectangle rect = pnlPalletCard11.RectangleToScreen(pnlPalletCard11.ClientRectangle);
+            System.Drawing.Rectangle rect = pnlPalletCard11.RectangleToScreen(pnlPalletCard11.ClientRectangle);
             graphics.CopyFromScreen(rect.Location, Point.Empty, pnlPalletCard11.Size);
             var time = DateTime.Now.ToString("yyyyMMdd-HH-mm-ss");
             var job = lblJobNo.Text.ToString();
@@ -1397,6 +1400,7 @@ namespace PalletCard
             x = dataGridView1.Rows[0].Cells[15].Value.ToString();
             //initialize variable y with a value - this will change to Section Name value at row 1 once it enters the loop
             y = dataGridView1.Rows[0].Cells[15].Value.ToString();
+
             //***************Check if SectionName field is empty
             if (!(x == ""))
             { 
@@ -1441,7 +1445,7 @@ namespace PalletCard
                                         btn.Height = 80;
                                         btn.Width = 465;
                                         btn.BackColor = Color.SteelBlue;
-                                        btn.Font = new Font("Microsoft Sans Serif", 14);
+                                        btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14);
                                         btn.ForeColor = Color.White;
                                         btn.Left = 30;
                                         btn.Text = this.dataGridView1.Rows[i].Cells[15].Value as string;
@@ -1503,7 +1507,7 @@ namespace PalletCard
                                                 btn.Height = 80;
                                                 btn.Width = 465;
                                                 btn.BackColor = Color.SteelBlue;
-                                                btn.Font = new Font("Microsoft Sans Serif", 14);
+                                                btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14);
                                                 btn.ForeColor = Color.White;
                                                 btn.Left = 30;
                                                 btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
@@ -1588,7 +1592,7 @@ namespace PalletCard
                                             }
                                             btnSig.Height = 70;
                                             btnSig.Width = 120;                                           
-                                            btnSig.Font = new Font("Microsoft Sans Serif", 20);
+                                            btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                             btnSig.ForeColor = Color.White;
                                             btnSig.TextAlign = ContentAlignment.MiddleCenter;
                                             btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
@@ -1710,7 +1714,7 @@ namespace PalletCard
                                             }
                                             btnSig.Height = 70;
                                             btnSig.Width = 120;
-                                            btnSig.Font = new Font("Microsoft Sans Serif", 20);
+                                            btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                             btnSig.ForeColor = Color.White;
                                             btnSig.TextAlign = ContentAlignment.MiddleCenter;
                                             btnSig.Click += new System.EventHandler(this.sectionButtonExpr1);
@@ -2208,7 +2212,7 @@ namespace PalletCard
                                 lbl2.Height = 40;
                                 lbl2.Width = 120;
                                 lbl2.BackColor = Color.Silver;
-                                lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
                                 lbl2.ForeColor = Color.Black;
                                 lbl2.Margin = new Padding(0, 0, 0, 0);
@@ -2219,7 +2223,7 @@ namespace PalletCard
                                 lbl3.Height = 40;
                                 lbl3.Width = 108;
                                 lbl3.BackColor = Color.Silver;
-                                lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
                                 lbl3.ForeColor = Color.Black;
                                 lbl3.Margin = new Padding(0, 0, 0, 0);
@@ -2235,7 +2239,7 @@ namespace PalletCard
                                 textBox1.AutoSize = false;
                                 textBox1.Width = 70;
                                 textBox1.Multiline = false;
-                                textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
+                                textBox1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 20);
                                 textBox1.TextAlign = HorizontalAlignment.Center;
                                 textBox1.Margin = new Padding(0, 0, 0, 0);
                                 textBox1.TextChanged += new System.EventHandler(this.notGangedNumberUpBad);
@@ -2245,7 +2249,7 @@ namespace PalletCard
                                 textBox2.AutoSize = false;
                                 textBox2.Width = 85;
                                 textBox2.Multiline = false;
-                                textBox2.Font = new Font(textBox2.Font.FontFamily, 20);
+                                textBox2.Font = new System.Drawing.Font(textBox2.Font.FontFamily, 20);
                                 textBox2.TextAlign = HorizontalAlignment.Center;
                                 textBox2.Margin = new Padding(0, 0, 0, 0);
                                 textBox2.TextChanged += new System.EventHandler(notgangedSheetsAffected);
@@ -2255,7 +2259,7 @@ namespace PalletCard
                                 btn1.Width = 90;
                                 btn1.BackColor = Color.SteelBlue;
                                 btn1.ForeColor = Color.White;
-                                btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                                btn1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 9);
                                 btn1.Text = "Whole Pallet";
                                 btn1.Margin = new Padding(0, 0, 0, 0);
                                 btn1.Tag = i;
@@ -2287,7 +2291,7 @@ namespace PalletCard
                                 lbl1.Height = 35;
                                 lbl1.Width = 430;
                                 lbl1.BackColor = Color.Gray;
-                                lbl1.Font = new Font("Microsoft Sans Serif", 12);
+                                lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12);
                                 lbl1.TextAlign = ContentAlignment.MiddleLeft;
                                 lbl1.ForeColor = Color.White;
                                 lbl1.Left = 40;
@@ -2297,7 +2301,7 @@ namespace PalletCard
                                 lbl2.Height = 40;
                                 lbl2.Width = 120;
                                 lbl2.BackColor = Color.Silver;
-                                lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
                                 lbl2.ForeColor = Color.Black;
                                 lbl2.Margin = new Padding(0, 0, 0, 0);
@@ -2308,7 +2312,7 @@ namespace PalletCard
                                 lbl3.Height = 40;
                                 lbl3.Width = 108;
                                 lbl3.BackColor = Color.Silver;
-                                lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
                                 lbl3.ForeColor = Color.Black;
                                 lbl3.Margin = new Padding(0, 0, 0, 0);
@@ -2324,7 +2328,7 @@ namespace PalletCard
                                 textBox1.AutoSize = false;
                                 textBox1.Width = 70;
                                 textBox1.Multiline = false;
-                                textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
+                                textBox1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 20);
                                 textBox1.TextAlign = HorizontalAlignment.Center;
                                 textBox1.Margin = new Padding(0, 0, 0, 0);
                                 textBox1.Tag = i;
@@ -2335,7 +2339,7 @@ namespace PalletCard
                                 textBox2.AutoSize = false;
                                 textBox2.Width = 85;
                                 textBox2.Multiline = false;
-                                textBox2.Font = new Font(textBox2.Font.FontFamily, 20);
+                                textBox2.Font = new System.Drawing.Font(textBox2.Font.FontFamily, 20);
                                 textBox2.TextAlign = HorizontalAlignment.Center;
                                 textBox2.Margin = new Padding(0, 0, 0, 0);
                                 textBox2.Tag = i;
@@ -2346,7 +2350,7 @@ namespace PalletCard
                                 btn1.Width = 73;
                                 btn1.BackColor = Color.SteelBlue;
                                 btn1.ForeColor = Color.White;
-                                btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                                btn1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 9);
                                 btn1.Text = "Whole Pallet";
                                 btn1.Margin = new Padding(0, 0, 0, 0);
                                 btn1.Tag = i;
@@ -2381,7 +2385,7 @@ namespace PalletCard
                                 lbl1.Height = 35;
                                 lbl1.Width = 430;
                                 lbl1.BackColor = Color.Gray;
-                                lbl1.Font = new Font("Microsoft Sans Serif", 12);
+                                lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12);
                                 lbl1.TextAlign = ContentAlignment.MiddleLeft;
                                 lbl1.ForeColor = Color.White;
                                 lbl1.Left = 40;
@@ -2391,7 +2395,7 @@ namespace PalletCard
                                 lbl2.Height = 40;
                                 lbl2.Width = 120;
                                 lbl2.BackColor = Color.Silver;
-                                lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
                                 lbl2.ForeColor = Color.Black;
                                 lbl2.Margin = new Padding(0, 0, 0, 0);
@@ -2402,7 +2406,7 @@ namespace PalletCard
                                 lbl3.Height = 40;
                                 lbl3.Width = 108;
                                 lbl3.BackColor = Color.Silver;
-                                lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
                                 lbl3.ForeColor = Color.Black;
                                 lbl3.Margin = new Padding(0, 0, 0, 0);
@@ -2418,7 +2422,7 @@ namespace PalletCard
                                 textBox1.AutoSize = false;
                                 textBox1.Width = 70;
                                 textBox1.Multiline = false;
-                                textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
+                                textBox1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 20);
                                 textBox1.TextAlign = HorizontalAlignment.Center;
                                 textBox1.Margin = new Padding(0, 0, 0, 0);
                                 textBox1.Tag = i;
@@ -2429,7 +2433,7 @@ namespace PalletCard
                                 textBox2.AutoSize = false;
                                 textBox2.Width = 85;
                                 textBox2.Multiline = false;
-                                textBox2.Font = new Font(textBox2.Font.FontFamily, 20);
+                                textBox2.Font = new System.Drawing.Font(textBox2.Font.FontFamily, 20);
                                 textBox2.TextAlign = HorizontalAlignment.Center;
                                 textBox2.Margin = new Padding(0, 0, 0, 0);
                                 textBox2.Tag = i;
@@ -2440,7 +2444,7 @@ namespace PalletCard
                                 btn1.Width = 73;
                                 btn1.BackColor = Color.SteelBlue;
                                 btn1.ForeColor = Color.White;
-                                btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                                btn1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 9);
                                 btn1.Text = "Whole Pallet";
                                 btn1.Margin = new Padding(0, 0, 0, 0);
                                 btn1.Tag = i;
@@ -2547,7 +2551,7 @@ namespace PalletCard
                                 lbl2.Height = 40;
                                 lbl2.Width = 120;
                                 lbl2.BackColor = Color.Silver;
-                                lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
                                 lbl2.ForeColor = Color.Black;
                                 lbl2.Margin = new Padding(0, 0, 0, 0);
@@ -2558,7 +2562,7 @@ namespace PalletCard
                                 lbl3.Height = 40;
                                 lbl3.Width = 108;
                                 lbl3.BackColor = Color.Silver;
-                                lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
                                 lbl3.ForeColor = Color.Black;
                                 lbl3.Margin = new Padding(0, 0, 0, 0);
@@ -2574,7 +2578,7 @@ namespace PalletCard
                                 textBox1.AutoSize = false;
                                 textBox1.Width = 70;
                                 textBox1.Multiline = false;
-                                textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
+                                textBox1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 20);
                                 textBox1.TextAlign = HorizontalAlignment.Center;
                                 textBox1.Margin = new Padding(0, 0, 0, 0);
                                 textBox1.TextChanged += new System.EventHandler(this.notGangedNumberUpBad);
@@ -2584,7 +2588,7 @@ namespace PalletCard
                                 textBox2.AutoSize = false;
                                 textBox2.Width = 85;
                                 textBox2.Multiline = false;
-                                textBox2.Font = new Font(textBox2.Font.FontFamily, 20);
+                                textBox2.Font = new System.Drawing.Font(textBox2.Font.FontFamily, 20);
                                 textBox2.TextAlign = HorizontalAlignment.Center;
                                 textBox2.Margin = new Padding(0, 0, 0, 0);
                                 textBox2.TextChanged += new System.EventHandler(notgangedSheetsAffected);
@@ -2594,7 +2598,7 @@ namespace PalletCard
                                 btn1.Width = 90;
                                 btn1.BackColor = Color.SteelBlue;
                                 btn1.ForeColor = Color.White;
-                                btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                                btn1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 9);
                                 btn1.Text = "Whole Pallet";
                                 btn1.Margin = new Padding(0, 0, 0, 0);
                                 btn1.Tag = i;
@@ -2626,7 +2630,7 @@ namespace PalletCard
                                 lbl1.Height = 35;
                                 lbl1.Width = 430;
                                 lbl1.BackColor = Color.Gray;
-                                lbl1.Font = new Font("Microsoft Sans Serif", 12);
+                                lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12);
                                 lbl1.TextAlign = ContentAlignment.MiddleLeft;
                                 lbl1.ForeColor = Color.White;
                                 lbl1.Left = 40;
@@ -2636,7 +2640,7 @@ namespace PalletCard
                                 lbl2.Height = 40;
                                 lbl2.Width = 120;
                                 lbl2.BackColor = Color.Silver;
-                                lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
                                 lbl2.ForeColor = Color.Black;
                                 lbl2.Margin = new Padding(0, 0, 0, 0);
@@ -2647,7 +2651,7 @@ namespace PalletCard
                                 lbl3.Height = 40;
                                 lbl3.Width = 108;
                                 lbl3.BackColor = Color.Silver;
-                                lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
                                 lbl3.ForeColor = Color.Black;
                                 lbl3.Margin = new Padding(0, 0, 0, 0);
@@ -2663,7 +2667,7 @@ namespace PalletCard
                                 textBox1.AutoSize = false;
                                 textBox1.Width = 70;
                                 textBox1.Multiline = false;
-                                textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
+                                textBox1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 20);
                                 textBox1.TextAlign = HorizontalAlignment.Center;
                                 textBox1.Margin = new Padding(0, 0, 0, 0);
                                 textBox1.Tag = i;
@@ -2674,7 +2678,7 @@ namespace PalletCard
                                 textBox2.AutoSize = false;
                                 textBox2.Width = 85;
                                 textBox2.Multiline = false;
-                                textBox2.Font = new Font(textBox2.Font.FontFamily, 20);
+                                textBox2.Font = new System.Drawing.Font(textBox2.Font.FontFamily, 20);
                                 textBox2.TextAlign = HorizontalAlignment.Center;
                                 textBox2.Margin = new Padding(0, 0, 0, 0);
                                 textBox2.Tag = i;
@@ -2685,7 +2689,7 @@ namespace PalletCard
                                 btn1.Width = 73;
                                 btn1.BackColor = Color.SteelBlue;
                                 btn1.ForeColor = Color.White;
-                                btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                                btn1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 9);
                                 btn1.Text = "Whole Pallet";
                                 btn1.Margin = new Padding(0, 0, 0, 0);
                                 btn1.Tag = i;
@@ -2720,7 +2724,7 @@ namespace PalletCard
                                 lbl1.Height = 35;
                                 lbl1.Width = 430;
                                 lbl1.BackColor = Color.Gray;
-                                lbl1.Font = new Font("Microsoft Sans Serif", 12);
+                                lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12);
                                 lbl1.TextAlign = ContentAlignment.MiddleLeft;
                                 lbl1.ForeColor = Color.White;
                                 lbl1.Left = 40;
@@ -2730,7 +2734,7 @@ namespace PalletCard
                                 lbl2.Height = 40;
                                 lbl2.Width = 120;
                                 lbl2.BackColor = Color.Silver;
-                                lbl2.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
                                 lbl2.ForeColor = Color.Black;
                                 lbl2.Margin = new Padding(0, 0, 0, 0);
@@ -2741,7 +2745,7 @@ namespace PalletCard
                                 lbl3.Height = 40;
                                 lbl3.Width = 108;
                                 lbl3.BackColor = Color.Silver;
-                                lbl3.Font = new Font("Microsoft Sans Serif", 20);
+                                lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
                                 lbl3.ForeColor = Color.Black;
                                 lbl3.Margin = new Padding(0, 0, 0, 0);
@@ -2757,7 +2761,7 @@ namespace PalletCard
                                 textBox1.AutoSize = false;
                                 textBox1.Width = 70;
                                 textBox1.Multiline = false;
-                                textBox1.Font = new Font(textBox1.Font.FontFamily, 20);
+                                textBox1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 20);
                                 textBox1.TextAlign = HorizontalAlignment.Center;
                                 textBox1.Margin = new Padding(0, 0, 0, 0);
                                 textBox1.Tag = i;
@@ -2768,7 +2772,7 @@ namespace PalletCard
                                 textBox2.AutoSize = false;
                                 textBox2.Width = 85;
                                 textBox2.Multiline = false;
-                                textBox2.Font = new Font(textBox2.Font.FontFamily, 20);
+                                textBox2.Font = new System.Drawing.Font(textBox2.Font.FontFamily, 20);
                                 textBox2.TextAlign = HorizontalAlignment.Center;
                                 textBox2.Margin = new Padding(0, 0, 0, 0);
                                 textBox2.Tag = i;
@@ -2779,7 +2783,7 @@ namespace PalletCard
                                 btn1.Width = 73;
                                 btn1.BackColor = Color.SteelBlue;
                                 btn1.ForeColor = Color.White;
-                                btn1.Font = new Font(textBox1.Font.FontFamily, 9);
+                                btn1.Font = new System.Drawing.Font(textBox1.Font.FontFamily, 9);
                                 btn1.Text = "Whole Pallet";
                                 btn1.Margin = new Padding(0, 0, 0, 0);
                                 btn1.Tag = i;
@@ -3211,7 +3215,7 @@ namespace PalletCard
             Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
             using (Graphics graphics = Graphics.FromImage(bitMap))
             {
-                Font oFont = new Font("IDAutomationHC39M", 16);
+                System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
                 PointF point = new PointF(2f, 2f);
                 SolidBrush blackBrush = new SolidBrush(Color.Black);
                 SolidBrush whiteBrush = new SolidBrush(Color.White);
@@ -3403,7 +3407,7 @@ namespace PalletCard
             Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
             using (Graphics graphics = Graphics.FromImage(bitMap))
             {
-                Font oFont = new Font("IDAutomationHC39M", 16);
+                System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
                 PointF point = new PointF(2f, 2f);
                 SolidBrush blackBrush = new SolidBrush(Color.Black);
                 SolidBrush whiteBrush = new SolidBrush(Color.White);
@@ -3442,10 +3446,7 @@ namespace PalletCard
             btnBack.Visible = false;
             btnCancel.Visible = false;
             index = 17;
-
-
         }
-
 
         private void reQueryDataGridView2()
         {
@@ -3476,7 +3477,6 @@ namespace PalletCard
                 dataGridView2.DataSource = palletCardLog;
             }
         }
-
 
         private void btnIsSectionFinishedYes_Click(object sender, EventArgs e)
         {
@@ -3907,7 +3907,7 @@ namespace PalletCard
             Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
             using (Graphics graphics = Graphics.FromImage(bitMap))
             {
-                Font oFont = new Font("IDAutomationHC39M", 16);
+                System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
                 PointF point = new PointF(2f, 2f);
                 SolidBrush blackBrush = new SolidBrush(Color.Black);
                 SolidBrush whiteBrush = new SolidBrush(Color.White);
@@ -3946,37 +3946,145 @@ namespace PalletCard
             index = 17;
         }
 
+
         private void btnPalletCardPrint_Click(object sender, EventArgs e)
         {
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(PrintImagePalletCard);
-            btnPalletCardPrint.Visible = false;
-            pd.Print();
-            btnPalletCardPrint.Visible = true;
-            pnlHome0.BringToFront();
-            lblJobNo.Visible = false;
-            lblPress.Visible = false;
-            lbl1.Visible = false;
-            lbl2.Visible = false;
-            lbl3.Visible = false;
-            lbl4.Visible = false;
-            btnBack.Visible = false;
-            btnCancel.Visible = false;
-            Cancel();
+
+            PrintImagePalletCard();
+
+            // Absolute path to your PDF to print (with filename)
+            //string Filepath = @"C:\Temp\TempDE.pdf";
+            string Filepath = @"S:\Production Admin\Declan Enright\Pallet Card Project\Github\PalletCardApp\PalletCard\bin\Debug\TestDECombined.pdf";
+            
+            // The name of the PDF that will be printed (just to be shown in the print queue)
+            string Filename = "TestDECombined.pdf";
+            // The name of the printer that you want to use
+            // Note: Check step 1 from the B alternative to see how to list
+            // the names of all the available printers with C#
+            //string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+            string PrinterName = "ProC5100S";
+
+            // Create an instance of the Printer
+            IPrinter printer = new Printer();
+
+            // Print the file
+            printer.PrintRawFile(PrinterName, Filepath, Filename);
+
+
+
+
+            //PrintDocument pd = new PrintDocument();
+            //pd.PrintPage += new PrintPageEventHandler(PrintImagePalletCard);
+            //btnPalletCardPrint.Visible = false;
+            //pd.Print();
+
+            //btnPalletCardPrint.Visible = true;
+            //pnlHome0.BringToFront();
+            //lblJobNo.Visible = false;
+            //lblPress.Visible = false;
+            //lbl1.Visible = false;
+            //lbl2.Visible = false;
+            //lbl3.Visible = false;
+            //lbl4.Visible = false;
+            //btnBack.Visible = false;
+            //btnCancel.Visible = false;
+            //Cancel();
         }
 
-        void PrintImagePalletCard(object o, PrintPageEventArgs e)
+        void PrintImagePalletCard()
         {
-            int x = SystemInformation.WorkingArea.X;
-            int y = SystemInformation.WorkingArea.Y;
-            int width = this.Width;
-            int height = this.Height;
-            Rectangle bounds = new Rectangle(x, y, width, height);
-            Bitmap img = new Bitmap(width, height);
-            pnlPalletCardPrint.DrawToBitmap(img, bounds);
-            Point p = new Point(100, 100);
-            e.Graphics.DrawImage(img, p);
+
+            Bitmap bmpDrawing1;
+            System.Drawing.Rectangle rectBounds1;
+
+            try
+            {
+                // Create bitmap for paint storage
+                bmpDrawing1 = new Bitmap(pnlPalletCardBack.Width, pnlPalletCardBack.Height);
+
+                // Set the bounds of the bitmap
+                rectBounds1 = new System.Drawing.Rectangle(0, 0, bmpDrawing1.Width, bmpDrawing1.Height);
+
+                // Move drawing to bitmap
+                pnlPalletCardPrint.DrawToBitmap(bmpDrawing1, rectBounds1);
+
+                // Save the bitmap to file
+                bmpDrawing1.Save("c:\\Temp\\TestDE1.jpg", System.Drawing.Imaging.ImageFormat.Bmp);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error on saving. Message: " + e.Message);
+            }
+
+
+            Bitmap bmpDrawing2;
+            System.Drawing.Rectangle rectBounds2;
+
+            try
+            {
+                // Create bitmap for paint storage
+                bmpDrawing2 = new Bitmap(pnlPalletCardBack.Width, pnlPalletCardBack.Height);
+
+                // Set the bounds of the bitmap
+                rectBounds2 = new System.Drawing.Rectangle(0, 0, bmpDrawing2.Width, bmpDrawing2.Height);
+
+                // Move drawing to bitmap
+                pnlPalletCardBack.DrawToBitmap(bmpDrawing2, rectBounds2);
+
+                // Save the bitmap to file
+                bmpDrawing2.Save("c:\\Temp\\TestDE2.jpg", System.Drawing.Imaging.ImageFormat.Bmp);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error on saving. Message: " + e.Message);
+            }
+
+
+            Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("TestDECombined.pdf", FileMode.Create));
+            doc.Open();
+            iTextSharp.text.Image pic1 = iTextSharp.text.Image.GetInstance("C:\\Temp\\TestDE1.jpg");
+            iTextSharp.text.Image pic2 = iTextSharp.text.Image.GetInstance("C:\\Temp\\TestDE2.jpg");
+            doc.Add(pic1);
+            doc.Add(pic2);
+            doc.Close();
         }
+
+
+
+
+        //private void btnPalletCardPrint_Click(object sender, EventArgs e)
+        //{
+        //    PrintDocument pd = new PrintDocument();
+        //    pd.PrintPage += new PrintPageEventHandler(PrintImagePalletCard);
+        //    btnPalletCardPrint.Visible = false;
+        //    pd.Print();
+
+        //    btnPalletCardPrint.Visible = true;
+        //    pnlHome0.BringToFront();
+        //    lblJobNo.Visible = false;
+        //    lblPress.Visible = false;
+        //    lbl1.Visible = false;
+        //    lbl2.Visible = false;
+        //    lbl3.Visible = false;
+        //    lbl4.Visible = false;
+        //    btnBack.Visible = false;
+        //    btnCancel.Visible = false;
+        //    Cancel();
+        //}
+
+        //void PrintImagePalletCard(object o, PrintPageEventArgs e)
+        //{
+        //    int x = SystemInformation.WorkingArea.X;
+        //    int y = SystemInformation.WorkingArea.Y;
+        //    int width = this.Width;
+        //    int height = this.Height;
+        //    System.Drawing.Rectangle bounds = new System.Drawing.Rectangle(x, y, width, height);
+        //    Bitmap img = new Bitmap(width, height);
+        //    pnlPalletCardPrint.DrawToBitmap(img, bounds);
+        //    Point p = new Point(100, 100);
+        //    e.Graphics.DrawImage(img, p);
+        //}
 
         private void btnPalletOver_Click(object sender, EventArgs e)
         {            
@@ -4187,7 +4295,7 @@ namespace PalletCard
                                     btn.Height = 80;
                                     btn.Width = 465;
                                     btn.BackColor = Color.SteelBlue;
-                                    btn.Font = new Font("Microsoft Sans Serif", 14);
+                                    btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14);
                                     btn.ForeColor = Color.White;
                                     btn.Left = 30;
                                     btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
@@ -4300,5 +4408,7 @@ namespace PalletCard
             //SavePalletCardBack();
             pnlPalletCardBack.BringToFront();
         }
+
+
     }
 }
