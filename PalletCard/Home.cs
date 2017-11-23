@@ -18,6 +18,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using RawPrint;
 
+
 namespace PalletCard
 {
     public partial class Home : Form
@@ -424,7 +425,6 @@ namespace PalletCard
                         concatenatedTable.Rows[i][31] = 1;
                         concatenatedTable.Rows[concatenatedTable.Rows.Count -1][31] = 1;
 
-
                 dataGridView1.DataSource = concatenatedTable;
             }
 
@@ -477,12 +477,18 @@ namespace PalletCard
                 //reset dynamic buttons origin
                 A = 1;
                 btnBack.Visible = false;
+                btnPalletCardPrint.Visible = true;
             }
         }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             Search();
+            SaveCrystalReport();
+        }
 
+        private void SaveCrystalReport()
+        {
             ReportDocument cryRpt = new ReportDocument();
             cryRpt.Load("S:\\Production Admin\\Declan Enright\\Crystal Reports Test\\CrystalReportsTest\\CrystalReportsTest\\CrystalReport1.rpt");
 
@@ -3230,8 +3236,6 @@ namespace PalletCard
                 pictureBox1.Width = bitMap.Width;
             }
 
-            //SavePalletCardBack();
-
             pnlPalletCardPrint.BringToFront();
             lblPC_IncompletePallet.Text = "INCOMPLETE";
             lblPC_IncompletePallet.Visible = true;
@@ -3257,44 +3261,6 @@ namespace PalletCard
             btnCancel.Visible = false;
             index = 17;
         }
-
-        //public void SavePalletCardBack()
-        //{
-        //    string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //    string CommandText = "SELECT * FROM app_PalletJobDocketHeader where JobNo = '" + lblJobNo.Text + "'";
-        //    OdbcConnection myConnection = new OdbcConnection(ConnectionString);
-        //    OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-        //    OdbcDataAdapter myAdapter = new OdbcDataAdapter();
-        //    myAdapter.SelectCommand = myCommand;
-        //    DataSet tharData = new DataSet();
-        //    try
-        //    {
-        //        myConnection.Open();
-        //        myAdapter.Fill(tharData);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw (ex);
-        //    }
-        //    finally
-        //    {
-        //        myConnection.Close();
-        //    }
-
-        //    using (DataTable jobDocketDetail = new DataTable())
-        //    {
-        //        myAdapter.Fill(jobDocketDetail);
-        //        //dataGridView2.DataSource = palletCardLog;
-        //        tbxBackDescription.Text = jobDocketDetail.Rows[0][2].ToString();
-        //        pnlPalletCardBack.BringToFront();
-        //    }
-            
-        //    Bitmap bmp = new Bitmap(this.pnlPalletCardBack.Width, this.pnlPalletCardBack.Height);
-        //    Graphics graphics = Graphics.FromImage(bmp);
-        //    Rectangle rect = pnlPalletCardBack.RectangleToScreen(pnlPalletCardBack.ClientRectangle);
-        //    graphics.CopyFromScreen(rect.Location, Point.Empty, pnlPalletCardBack.Size);
-        //    bmp.Save("C:/Temp/PalletCardBack/PalletCardBack.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-        //}
 
         private void btnVarnishRequired_Click(object sender, EventArgs e)
         {
@@ -3946,32 +3912,24 @@ namespace PalletCard
             index = 17;
         }
 
-
         private void btnPalletCardPrint_Click(object sender, EventArgs e)
         {
-
+            btnPalletCardPrint.Visible = false;
             PrintImagePalletCard();
 
-            // Absolute path to your PDF to print (with filename)
-            //string Filepath = @"C:\Temp\TempDE.pdf";
+            // Absolute path to PDF to print (with filename)
             string Filepath = @"S:\Production Admin\Declan Enright\Pallet Card Project\Github\PalletCardApp\PalletCard\bin\Debug\TestDECombined.pdf";
             
             // The name of the PDF that will be printed (just to be shown in the print queue)
             string Filename = "TestDECombined.pdf";
             // The name of the printer that you want to use
-            // Note: Check step 1 from the B alternative to see how to list
-            // the names of all the available printers with C#
-            //string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-            string PrinterName = "ProC5100S";
+            string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+            //string PrinterName = "ProC5100S";
 
             // Create an instance of the Printer
             IPrinter printer = new Printer();
-
             // Print the file
             printer.PrintRawFile(PrinterName, Filepath, Filename);
-
-
-
 
             //PrintDocument pd = new PrintDocument();
             //pd.PrintPage += new PrintPageEventHandler(PrintImagePalletCard);
@@ -3993,21 +3951,16 @@ namespace PalletCard
 
         void PrintImagePalletCard()
         {
-
             Bitmap bmpDrawing1;
             System.Drawing.Rectangle rectBounds1;
-
             try
             {
-                // Create bitmap for paint storage
+                // Create bitmap for Pallet Card
                 bmpDrawing1 = new Bitmap(pnlPalletCardBack.Width, pnlPalletCardBack.Height);
-
                 // Set the bounds of the bitmap
                 rectBounds1 = new System.Drawing.Rectangle(0, 0, bmpDrawing1.Width, bmpDrawing1.Height);
-
                 // Move drawing to bitmap
                 pnlPalletCardPrint.DrawToBitmap(bmpDrawing1, rectBounds1);
-
                 // Save the bitmap to file
                 bmpDrawing1.Save("c:\\Temp\\TestDE1.jpg", System.Drawing.Imaging.ImageFormat.Bmp);
             }
@@ -4016,21 +3969,24 @@ namespace PalletCard
                 MessageBox.Show("Error on saving. Message: " + e.Message);
             }
 
+            //ReportDocument cryRpt = new ReportDocument();
+            ////cryRpt.Load(@"S:\C# Demos\Crystal Reports\CrystalReportDemo\CrystalReportDemo\CrystalReport1.rpt");
+            //cryRpt.Load(@"S:\Production Admin\Declan Enright\Pallet Card Project\Github\PalletCardApp\PalletCard\CrystalReport1.rpt");
+            //crystalReportViewer1.ReportSource = cryRpt;
+            //crystalReportViewer1.Refresh();
+            //cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\\Temp\\TestDE1.pdf");
+            //MessageBox.Show("Exported Successful");
 
             Bitmap bmpDrawing2;
             System.Drawing.Rectangle rectBounds2;
-
             try
             {
-                // Create bitmap for paint storage
+                // Create bitmap for Crystal Report
                 bmpDrawing2 = new Bitmap(pnlPalletCardBack.Width, pnlPalletCardBack.Height);
-
                 // Set the bounds of the bitmap
                 rectBounds2 = new System.Drawing.Rectangle(0, 0, bmpDrawing2.Width, bmpDrawing2.Height);
-
                 // Move drawing to bitmap
                 pnlPalletCardBack.DrawToBitmap(bmpDrawing2, rectBounds2);
-
                 // Save the bitmap to file
                 bmpDrawing2.Save("c:\\Temp\\TestDE2.jpg", System.Drawing.Imaging.ImageFormat.Bmp);
             }
@@ -4038,7 +3994,6 @@ namespace PalletCard
             {
                 MessageBox.Show("Error on saving. Message: " + e.Message);
             }
-
 
             Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
             PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("TestDECombined.pdf", FileMode.Create));
@@ -4049,9 +4004,6 @@ namespace PalletCard
             doc.Add(pic2);
             doc.Close();
         }
-
-
-
 
         //private void btnPalletCardPrint_Click(object sender, EventArgs e)
         //{
@@ -4120,7 +4072,6 @@ namespace PalletCard
                     pnlSignature.BringToFront();
                 }
             }
-
         }
 
         private void tbxFinishPallet_KeyDown(object sender, KeyEventArgs e)
@@ -4390,10 +4341,6 @@ namespace PalletCard
             pnlHome0.BringToFront();
         }
 
-
-
-
-
         #endregion
 
 
@@ -4405,10 +4352,158 @@ namespace PalletCard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //SavePalletCardBack();
             pnlPalletCardBack.BringToFront();
         }
 
+        private void Posa1Checked_Click(object sender, EventArgs e)
+        {
+            Posa1NotChecked.BringToFront();
+        }
 
+        private void Posa1NotChecked_Click(object sender, EventArgs e)
+        {
+            Posa1Checked.BringToFront();
+        }
+
+        private void Posa2Checked_Click(object sender, EventArgs e)
+        {
+            Posa2NotChecked.BringToFront();
+        }
+
+        private void Posa2NotChecked_Click(object sender, EventArgs e)
+        {
+            Posa2Checked.BringToFront();
+        }
+
+        private void Posa3Checked_Click(object sender, EventArgs e)
+        {
+            Posa3NotChecked.BringToFront();
+        }
+        private void Posa3NotChecked_Click(object sender, EventArgs e)
+        {
+            Posa3Checked.BringToFront();
+        }
+
+        private void Posa4Checked_Click(object sender, EventArgs e)
+        {
+            Posa4NotChecked.BringToFront();
+        }
+
+        private void Posa4NotChecked_Click(object sender, EventArgs e)
+        {
+            Posa4Checked.BringToFront();
+        }
+
+        private void Posa5Checked_Click(object sender, EventArgs e)
+        {
+            Posa5NotChecked.BringToFront();
+        }
+
+        private void Posa5NotChecked_Click(object sender, EventArgs e)
+        {
+            Posa5Checked.BringToFront();
+        }
+
+        private void Posa6Checked_Click(object sender, EventArgs e)
+        {
+            Posa6NotChecked.BringToFront();
+        }
+
+        private void Posa6NotChecked_Click(object sender, EventArgs e)
+        {
+            Posa6Checked.BringToFront();
+        }
+
+        private void Posa7Checked_Click(object sender, EventArgs e)
+        {
+            Posa7NotChecked.BringToFront();
+        }
+
+        private void Posa7NotChecked_Click(object sender, EventArgs e)
+        {
+            Posa7Checked.BringToFront();
+        }
+
+        private void Posa8Checked_Click(object sender, EventArgs e)
+        {
+            Posa8NotChecked.BringToFront();
+        }
+
+        private void Posa8NotChecked_Click(object sender, EventArgs e)
+        {
+            Posa8Checked.BringToFront();
+        }
+
+        private void Posa9Checked_Click(object sender, EventArgs e)
+        {
+            Posa9NotChecked.BringToFront();
+        }
+
+        private void Posa9NotChecked_Click(object sender, EventArgs e)
+        {
+            Posa9Checked.BringToFront();
+        }
+
+
+
+        private void PosaGripNotChecked_Click(object sender, EventArgs e)
+        {
+            PosaGripChecked.BringToFront();
+        }
+
+        private void PosaGripChecked_Click(object sender, EventArgs e)
+        {
+            PosaGripNotChecked.BringToFront();
+        }
+
+        private void PosaRegistrationChecked_Click(object sender, EventArgs e)
+        {
+            PosaRegistrationNotChecked.BringToFront();
+        }
+
+        private void PosaRegistrationNotChecked_Click(object sender, EventArgs e)
+        {
+            PosaRegistrationChecked.BringToFront();
+        }
+
+        private void PosaColourChecked_Click(object sender, EventArgs e)
+        {
+            PosaColourNotChecked.BringToFront();
+        }
+
+        private void PosaColourNotChecked_Click(object sender, EventArgs e)
+        {
+            PosaColourChecked.BringToFront();
+        }
+
+        private void PosaSTCRegisChecked_Click(object sender, EventArgs e)
+        {
+            PosaSTCRegisNotChecked.BringToFront();
+        }
+
+        private void PosaSTCRegisNotChecked_Click(object sender, EventArgs e)
+        {
+            PosaSTCRegisChecked.BringToFront();
+        }
+
+        private void PosaSTCGlossChecked_Click(object sender, EventArgs e)
+        {
+            PosaSTCGlossNotChecked.BringToFront();
+        }
+
+        private void PosaSTCGlossNotChecked_Click(object sender, EventArgs e)
+        {
+            PosaSTCGlossChecked.BringToFront();
+        }
+
+        private void PosaVisualDefectsChecked_Click(object sender, EventArgs e)
+        {
+            PosaVisualDefectsNotChecked.BringToFront();
+        }
+
+        private void PosaVisualDefectsNotChecked_Click(object sender, EventArgs e)
+        {
+            PosaVisualDefectsChecked.BringToFront();
+        }
     }
 }

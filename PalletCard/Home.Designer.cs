@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbxSearchBox = new System.Windows.Forms.TextBox();
             this.lblJobNo = new System.Windows.Forms.Label();
@@ -204,16 +204,38 @@
             this.btnWaitingPlates = new System.Windows.Forms.Button();
             this.pnlNotification1 = new System.Windows.Forms.Panel();
             this.pnlPalletCard10 = new System.Windows.Forms.Panel();
+            this.Posa9NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa8NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa7NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa6NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa5NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa4NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa3NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa2NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa9Checked = new System.Windows.Forms.PictureBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.Posa8Checked = new System.Windows.Forms.PictureBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.Posa7Checked = new System.Windows.Forms.PictureBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.Posa6Checked = new System.Windows.Forms.PictureBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.Posa5Checked = new System.Windows.Forms.PictureBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.Posa4Checked = new System.Windows.Forms.PictureBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.Posa3Checked = new System.Windows.Forms.PictureBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.Posa2Checked = new System.Windows.Forms.PictureBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.Posa1NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa1Checked = new System.Windows.Forms.PictureBox();
+            this.label47 = new System.Windows.Forms.Label();
             this.btnClearSignaturePosa = new System.Windows.Forms.Button();
             this.SignaturePanelPosa = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox19 = new System.Windows.Forms.CheckBox();
-            this.checkBox18 = new System.Windows.Forms.CheckBox();
-            this.checkBox17 = new System.Windows.Forms.CheckBox();
-            this.checkBox16 = new System.Windows.Forms.CheckBox();
-            this.checkBox15 = new System.Windows.Forms.CheckBox();
-            this.checkBox14 = new System.Windows.Forms.CheckBox();
-            this.checkBox13 = new System.Windows.Forms.CheckBox();
+            this.PosaGripNotChecked = new System.Windows.Forms.PictureBox();
+            this.PosaGripChecked = new System.Windows.Forms.PictureBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -239,7 +261,6 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label39 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -248,18 +269,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lblSpecialCustomerA2 = new System.Windows.Forms.Label();
             this.btnSavePosaImage = new System.Windows.Forms.Button();
             this.lblSpecialCustomerA1 = new System.Windows.Forms.Label();
@@ -279,6 +288,19 @@
             this.CrystalReport11 = new PalletCard.CrystalReport1();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlBackScreen = new System.Windows.Forms.Panel();
+            this.PosaRegistrationChecked = new System.Windows.Forms.PictureBox();
+            this.PosaColourChecked = new System.Windows.Forms.PictureBox();
+            this.PosaSTCRegisChecked = new System.Windows.Forms.PictureBox();
+            this.PosaSTCGlossChecked = new System.Windows.Forms.PictureBox();
+            this.PosaVisualDefectsChecked = new System.Windows.Forms.PictureBox();
+            this.PosaRegistrationNotChecked = new System.Windows.Forms.PictureBox();
+            this.PosaColourNotChecked = new System.Windows.Forms.PictureBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.PosaSTCRegisNotChecked = new System.Windows.Forms.PictureBox();
+            this.PosaSTCGlossNotChecked = new System.Windows.Forms.PictureBox();
+            this.PosaVisualDefectsNotChecked = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -303,45 +325,76 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.pnlNotification2.SuspendLayout();
             this.pnlPalletCard10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa9NotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa8NotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa7NotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa6NotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa5NotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa4NotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa3NotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa2NotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa9Checked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa8Checked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa7Checked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa6Checked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa5Checked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa4Checked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa3Checked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa2Checked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa1NotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa1Checked)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaGripNotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaGripChecked)).BeginInit();
             this.panel2.SuspendLayout();
             this.pnlPalletCard11.SuspendLayout();
             this.pnlPalletCardBack.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaRegistrationChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaColourChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaSTCRegisChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaSTCGlossChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaVisualDefectsChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaRegistrationNotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaColourNotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaSTCRegisNotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaSTCGlossNotChecked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaVisualDefectsNotChecked)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 834);
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dataGridView1.Location = new System.Drawing.Point(4, 870);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(730, 100);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.Visible = false;
             // 
             // tbxSearchBox
             // 
@@ -453,7 +506,7 @@
             this.pnlHome0.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlHome0.Location = new System.Drawing.Point(210, 3);
             this.pnlHome0.Name = "pnlHome0";
-            this.pnlHome0.Size = new System.Drawing.Size(528, 828);
+            this.pnlHome0.Size = new System.Drawing.Size(652, 796);
             this.pnlHome0.TabIndex = 18;
             // 
             // btnFinishPallet
@@ -1189,7 +1242,7 @@
             this.pnlSignature.Controls.Add(this.buttonClear);
             this.pnlSignature.Controls.Add(this.btnQATravellerBlurb);
             this.pnlSignature.Controls.Add(this.SignaturePanel);
-            this.pnlSignature.Location = new System.Drawing.Point(206, 4);
+            this.pnlSignature.Location = new System.Drawing.Point(206, 2);
             this.pnlSignature.Name = "pnlSignature";
             this.pnlSignature.Size = new System.Drawing.Size(528, 828);
             this.pnlSignature.TabIndex = 31;
@@ -1241,7 +1294,7 @@
             // 
             this.pnlPalletCard1.Location = new System.Drawing.Point(208, 5);
             this.pnlPalletCard1.Name = "pnlPalletCard1";
-            this.pnlPalletCard1.Size = new System.Drawing.Size(528, 828);
+            this.pnlPalletCard1.Size = new System.Drawing.Size(528, 865);
             this.pnlPalletCard1.TabIndex = 32;
             // 
             // pnlPalletCard3
@@ -1906,9 +1959,9 @@
             this.pnlPalletCardPrint.Controls.Add(this.lblPC_IncompletePallet);
             this.pnlPalletCardPrint.Controls.Add(this.lblPC_JobNo);
             this.pnlPalletCardPrint.Controls.Add(this.label18);
-            this.pnlPalletCardPrint.Location = new System.Drawing.Point(205, 5);
+            this.pnlPalletCardPrint.Location = new System.Drawing.Point(205, 2);
             this.pnlPalletCardPrint.Name = "pnlPalletCardPrint";
-            this.pnlPalletCardPrint.Size = new System.Drawing.Size(528, 828);
+            this.pnlPalletCardPrint.Size = new System.Drawing.Size(657, 831);
             this.pnlPalletCardPrint.TabIndex = 48;
             // 
             // btnPalletCardPrint
@@ -2210,36 +2263,37 @@
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle17;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 937);
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 973);
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(730, 78);
             this.dataGridView2.TabIndex = 52;
+            this.dataGridView2.Visible = false;
             // 
             // pnlNotification2
             // 
@@ -2310,34 +2364,337 @@
             // 
             // pnlPalletCard10
             // 
+            this.pnlPalletCard10.Controls.Add(this.Posa9NotChecked);
+            this.pnlPalletCard10.Controls.Add(this.Posa8NotChecked);
+            this.pnlPalletCard10.Controls.Add(this.Posa7NotChecked);
+            this.pnlPalletCard10.Controls.Add(this.Posa6NotChecked);
+            this.pnlPalletCard10.Controls.Add(this.Posa5NotChecked);
+            this.pnlPalletCard10.Controls.Add(this.Posa4NotChecked);
+            this.pnlPalletCard10.Controls.Add(this.Posa3NotChecked);
+            this.pnlPalletCard10.Controls.Add(this.Posa2NotChecked);
+            this.pnlPalletCard10.Controls.Add(this.Posa9Checked);
+            this.pnlPalletCard10.Controls.Add(this.label53);
+            this.pnlPalletCard10.Controls.Add(this.Posa8Checked);
+            this.pnlPalletCard10.Controls.Add(this.label54);
+            this.pnlPalletCard10.Controls.Add(this.Posa7Checked);
+            this.pnlPalletCard10.Controls.Add(this.label55);
+            this.pnlPalletCard10.Controls.Add(this.Posa6Checked);
+            this.pnlPalletCard10.Controls.Add(this.label50);
+            this.pnlPalletCard10.Controls.Add(this.Posa5Checked);
+            this.pnlPalletCard10.Controls.Add(this.label51);
+            this.pnlPalletCard10.Controls.Add(this.Posa4Checked);
+            this.pnlPalletCard10.Controls.Add(this.label52);
+            this.pnlPalletCard10.Controls.Add(this.Posa3Checked);
+            this.pnlPalletCard10.Controls.Add(this.label49);
+            this.pnlPalletCard10.Controls.Add(this.Posa2Checked);
+            this.pnlPalletCard10.Controls.Add(this.label48);
+            this.pnlPalletCard10.Controls.Add(this.Posa1NotChecked);
+            this.pnlPalletCard10.Controls.Add(this.Posa1Checked);
+            this.pnlPalletCard10.Controls.Add(this.label47);
             this.pnlPalletCard10.Controls.Add(this.btnClearSignaturePosa);
             this.pnlPalletCard10.Controls.Add(this.SignaturePanelPosa);
             this.pnlPalletCard10.Controls.Add(this.panel1);
             this.pnlPalletCard10.Controls.Add(this.label15);
-            this.pnlPalletCard10.Controls.Add(this.checkBox9);
-            this.pnlPalletCard10.Controls.Add(this.checkBox10);
-            this.pnlPalletCard10.Controls.Add(this.checkBox11);
-            this.pnlPalletCard10.Controls.Add(this.checkBox12);
-            this.pnlPalletCard10.Controls.Add(this.checkBox5);
-            this.pnlPalletCard10.Controls.Add(this.checkBox6);
-            this.pnlPalletCard10.Controls.Add(this.checkBox7);
-            this.pnlPalletCard10.Controls.Add(this.checkBox8);
-            this.pnlPalletCard10.Controls.Add(this.checkBox4);
-            this.pnlPalletCard10.Controls.Add(this.checkBox3);
-            this.pnlPalletCard10.Controls.Add(this.checkBox2);
-            this.pnlPalletCard10.Controls.Add(this.checkBox1);
             this.pnlPalletCard10.Controls.Add(this.lblSpecialCustomerA2);
             this.pnlPalletCard10.Controls.Add(this.btnSavePosaImage);
             this.pnlPalletCard10.Controls.Add(this.lblSpecialCustomerA1);
-            this.pnlPalletCard10.Location = new System.Drawing.Point(210, 3);
+            this.pnlPalletCard10.Location = new System.Drawing.Point(205, 3);
             this.pnlPalletCard10.Name = "pnlPalletCard10";
-            this.pnlPalletCard10.Size = new System.Drawing.Size(528, 828);
+            this.pnlPalletCard10.Size = new System.Drawing.Size(657, 867);
             this.pnlPalletCard10.TabIndex = 55;
+            // 
+            // Posa9NotChecked
+            // 
+            this.Posa9NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa9NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa9NotChecked.Location = new System.Drawing.Point(400, 218);
+            this.Posa9NotChecked.Name = "Posa9NotChecked";
+            this.Posa9NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa9NotChecked.TabIndex = 74;
+            this.Posa9NotChecked.TabStop = false;
+            this.Posa9NotChecked.Click += new System.EventHandler(this.Posa9NotChecked_Click);
+            // 
+            // Posa8NotChecked
+            // 
+            this.Posa8NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa8NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa8NotChecked.Location = new System.Drawing.Point(400, 158);
+            this.Posa8NotChecked.Name = "Posa8NotChecked";
+            this.Posa8NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa8NotChecked.TabIndex = 73;
+            this.Posa8NotChecked.TabStop = false;
+            this.Posa8NotChecked.Click += new System.EventHandler(this.Posa8NotChecked_Click);
+            // 
+            // Posa7NotChecked
+            // 
+            this.Posa7NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa7NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa7NotChecked.Location = new System.Drawing.Point(400, 98);
+            this.Posa7NotChecked.Name = "Posa7NotChecked";
+            this.Posa7NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa7NotChecked.TabIndex = 72;
+            this.Posa7NotChecked.TabStop = false;
+            this.Posa7NotChecked.Click += new System.EventHandler(this.Posa7NotChecked_Click);
+            // 
+            // Posa6NotChecked
+            // 
+            this.Posa6NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa6NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa6NotChecked.Location = new System.Drawing.Point(205, 218);
+            this.Posa6NotChecked.Name = "Posa6NotChecked";
+            this.Posa6NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa6NotChecked.TabIndex = 71;
+            this.Posa6NotChecked.TabStop = false;
+            this.Posa6NotChecked.Click += new System.EventHandler(this.Posa6NotChecked_Click);
+            // 
+            // Posa5NotChecked
+            // 
+            this.Posa5NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa5NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa5NotChecked.Location = new System.Drawing.Point(205, 158);
+            this.Posa5NotChecked.Name = "Posa5NotChecked";
+            this.Posa5NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa5NotChecked.TabIndex = 70;
+            this.Posa5NotChecked.TabStop = false;
+            this.Posa5NotChecked.Click += new System.EventHandler(this.Posa5NotChecked_Click);
+            // 
+            // Posa4NotChecked
+            // 
+            this.Posa4NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa4NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa4NotChecked.Location = new System.Drawing.Point(205, 98);
+            this.Posa4NotChecked.Name = "Posa4NotChecked";
+            this.Posa4NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa4NotChecked.TabIndex = 69;
+            this.Posa4NotChecked.TabStop = false;
+            this.Posa4NotChecked.Click += new System.EventHandler(this.Posa4NotChecked_Click);
+            // 
+            // Posa3NotChecked
+            // 
+            this.Posa3NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa3NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa3NotChecked.Location = new System.Drawing.Point(11, 218);
+            this.Posa3NotChecked.Name = "Posa3NotChecked";
+            this.Posa3NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa3NotChecked.TabIndex = 68;
+            this.Posa3NotChecked.TabStop = false;
+            this.Posa3NotChecked.Click += new System.EventHandler(this.Posa3NotChecked_Click);
+            // 
+            // Posa2NotChecked
+            // 
+            this.Posa2NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa2NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa2NotChecked.Location = new System.Drawing.Point(11, 158);
+            this.Posa2NotChecked.Name = "Posa2NotChecked";
+            this.Posa2NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa2NotChecked.TabIndex = 67;
+            this.Posa2NotChecked.TabStop = false;
+            this.Posa2NotChecked.Click += new System.EventHandler(this.Posa2NotChecked_Click);
+            // 
+            // Posa9Checked
+            // 
+            this.Posa9Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa9Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa9Checked.Location = new System.Drawing.Point(400, 218);
+            this.Posa9Checked.Name = "Posa9Checked";
+            this.Posa9Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa9Checked.TabIndex = 66;
+            this.Posa9Checked.TabStop = false;
+            this.Posa9Checked.Click += new System.EventHandler(this.Posa9Checked_Click);
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.Location = new System.Drawing.Point(445, 230);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(144, 20);
+            this.label53.TabIndex = 65;
+            this.label53.Text = "Image Registration";
+            // 
+            // Posa8Checked
+            // 
+            this.Posa8Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa8Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa8Checked.Location = new System.Drawing.Point(400, 158);
+            this.Posa8Checked.Name = "Posa8Checked";
+            this.Posa8Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa8Checked.TabIndex = 64;
+            this.Posa8Checked.TabStop = false;
+            this.Posa8Checked.Click += new System.EventHandler(this.Posa8Checked_Click);
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.Location = new System.Drawing.Point(447, 170);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(127, 20);
+            this.label54.TabIndex = 63;
+            this.label54.Text = "Waste Removed";
+            // 
+            // Posa7Checked
+            // 
+            this.Posa7Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa7Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa7Checked.Location = new System.Drawing.Point(400, 98);
+            this.Posa7Checked.Name = "Posa7Checked";
+            this.Posa7Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa7Checked.TabIndex = 62;
+            this.Posa7Checked.TabStop = false;
+            this.Posa7Checked.Click += new System.EventHandler(this.Posa7Checked_Click);
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.Location = new System.Drawing.Point(445, 110);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(131, 20);
+            this.label55.TabIndex = 61;
+            this.label55.Text = "Imposition Check";
+            // 
+            // Posa6Checked
+            // 
+            this.Posa6Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa6Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa6Checked.Location = new System.Drawing.Point(205, 218);
+            this.Posa6Checked.Name = "Posa6Checked";
+            this.Posa6Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa6Checked.TabIndex = 54;
+            this.Posa6Checked.TabStop = false;
+            this.Posa6Checked.Click += new System.EventHandler(this.Posa6Checked_Click);
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(250, 230);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(64, 20);
+            this.label50.TabIndex = 53;
+            this.label50.Text = "Retains";
+            // 
+            // Posa5Checked
+            // 
+            this.Posa5Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa5Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa5Checked.Location = new System.Drawing.Point(205, 158);
+            this.Posa5Checked.Name = "Posa5Checked";
+            this.Posa5Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa5Checked.TabIndex = 52;
+            this.Posa5Checked.TabStop = false;
+            this.Posa5Checked.Click += new System.EventHandler(this.Posa5Checked_Click);
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.Location = new System.Drawing.Point(250, 170);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(131, 20);
+            this.label51.TabIndex = 51;
+            this.label51.Text = "2 Sheet Detector";
+            // 
+            // Posa4Checked
+            // 
+            this.Posa4Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa4Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa4Checked.Location = new System.Drawing.Point(205, 98);
+            this.Posa4Checked.Name = "Posa4Checked";
+            this.Posa4Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa4Checked.TabIndex = 50;
+            this.Posa4Checked.TabStop = false;
+            this.Posa4Checked.Click += new System.EventHandler(this.Posa4Checked_Click);
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.Location = new System.Drawing.Point(250, 110);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(141, 20);
+            this.label52.TabIndex = 49;
+            this.label52.Text = "Varnish Vs Docket";
+            // 
+            // Posa3Checked
+            // 
+            this.Posa3Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa3Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa3Checked.Location = new System.Drawing.Point(11, 218);
+            this.Posa3Checked.Name = "Posa3Checked";
+            this.Posa3Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa3Checked.TabIndex = 48;
+            this.Posa3Checked.TabStop = false;
+            this.Posa3Checked.Click += new System.EventHandler(this.Posa3Checked_Click);
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.Location = new System.Drawing.Point(56, 230);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(100, 20);
+            this.label49.TabIndex = 47;
+            this.label49.Text = "Correct Cyrel";
+            // 
+            // Posa2Checked
+            // 
+            this.Posa2Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa2Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa2Checked.Location = new System.Drawing.Point(11, 158);
+            this.Posa2Checked.Name = "Posa2Checked";
+            this.Posa2Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa2Checked.TabIndex = 46;
+            this.Posa2Checked.TabStop = false;
+            this.Posa2Checked.Click += new System.EventHandler(this.Posa2Checked_Click);
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(56, 170);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(140, 20);
+            this.label48.TabIndex = 45;
+            this.label48.Text = "Pass Sheet Check";
+            // 
+            // Posa1NotChecked
+            // 
+            this.Posa1NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa1NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa1NotChecked.Location = new System.Drawing.Point(11, 98);
+            this.Posa1NotChecked.Name = "Posa1NotChecked";
+            this.Posa1NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa1NotChecked.TabIndex = 44;
+            this.Posa1NotChecked.TabStop = false;
+            this.Posa1NotChecked.Click += new System.EventHandler(this.Posa1NotChecked_Click);
+            // 
+            // Posa1Checked
+            // 
+            this.Posa1Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa1Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa1Checked.Location = new System.Drawing.Point(11, 98);
+            this.Posa1Checked.Name = "Posa1Checked";
+            this.Posa1Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa1Checked.TabIndex = 43;
+            this.Posa1Checked.TabStop = false;
+            this.Posa1Checked.Click += new System.EventHandler(this.Posa1Checked_Click);
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(56, 110);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(117, 20);
+            this.label47.TabIndex = 42;
+            this.label47.Text = "Inks Vs Docket";
             // 
             // btnClearSignaturePosa
             // 
             this.btnClearSignaturePosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearSignaturePosa.Location = new System.Drawing.Point(420, 680);
+            this.btnClearSignaturePosa.Location = new System.Drawing.Point(469, 707);
             this.btnClearSignaturePosa.Name = "btnClearSignaturePosa";
             this.btnClearSignaturePosa.Size = new System.Drawing.Size(83, 46);
             this.btnClearSignaturePosa.TabIndex = 39;
@@ -2348,9 +2705,9 @@
             // SignaturePanelPosa
             // 
             this.SignaturePanelPosa.BackColor = System.Drawing.Color.Gainsboro;
-            this.SignaturePanelPosa.Location = new System.Drawing.Point(27, 668);
+            this.SignaturePanelPosa.Location = new System.Drawing.Point(27, 708);
             this.SignaturePanelPosa.Name = "SignaturePanelPosa";
-            this.SignaturePanelPosa.Size = new System.Drawing.Size(371, 71);
+            this.SignaturePanelPosa.Size = new System.Drawing.Size(416, 85);
             this.SignaturePanelPosa.TabIndex = 37;
             this.SignaturePanelPosa.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelPosa_MouseDown);
             this.SignaturePanelPosa.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelPosa_MouseMove);
@@ -2359,16 +2716,20 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Controls.Add(this.checkBox19);
-            this.panel1.Controls.Add(this.checkBox18);
-            this.panel1.Controls.Add(this.checkBox17);
-            this.panel1.Controls.Add(this.checkBox16);
-            this.panel1.Controls.Add(this.checkBox15);
-            this.panel1.Controls.Add(this.checkBox14);
-            this.panel1.Controls.Add(this.checkBox13);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.PosaVisualDefectsNotChecked);
+            this.panel1.Controls.Add(this.PosaSTCGlossNotChecked);
+            this.panel1.Controls.Add(this.PosaSTCRegisNotChecked);
+            this.panel1.Controls.Add(this.textBox14);
+            this.panel1.Controls.Add(this.textBox13);
+            this.panel1.Controls.Add(this.textBox12);
+            this.panel1.Controls.Add(this.PosaColourNotChecked);
+            this.panel1.Controls.Add(this.PosaRegistrationNotChecked);
+            this.panel1.Controls.Add(this.PosaVisualDefectsChecked);
+            this.panel1.Controls.Add(this.PosaSTCGlossChecked);
+            this.panel1.Controls.Add(this.PosaSTCRegisChecked);
+            this.panel1.Controls.Add(this.PosaColourChecked);
+            this.panel1.Controls.Add(this.PosaRegistrationChecked);
+            this.panel1.Controls.Add(this.PosaGripNotChecked);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label28);
@@ -2377,73 +2738,36 @@
             this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.label23);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(27, 257);
+            this.panel1.Controls.Add(this.PosaGripChecked);
+            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Location = new System.Drawing.Point(16, 279);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(479, 369);
+            this.panel1.Size = new System.Drawing.Size(564, 399);
             this.panel1.TabIndex = 36;
             // 
-            // checkBox19
+            // PosaGripNotChecked
             // 
-            this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(441, 306);
-            this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(15, 14);
-            this.checkBox19.TabIndex = 55;
-            this.checkBox19.UseVisualStyleBackColor = true;
+            this.PosaGripNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaGripNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaGripNotChecked.Location = new System.Drawing.Point(430, 44);
+            this.PosaGripNotChecked.Name = "PosaGripNotChecked";
+            this.PosaGripNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaGripNotChecked.TabIndex = 75;
+            this.PosaGripNotChecked.TabStop = false;
+            this.PosaGripNotChecked.Click += new System.EventHandler(this.PosaGripNotChecked_Click);
             // 
-            // checkBox18
+            // PosaGripChecked
             // 
-            this.checkBox18.AutoSize = true;
-            this.checkBox18.Location = new System.Drawing.Point(441, 264);
-            this.checkBox18.Name = "checkBox18";
-            this.checkBox18.Size = new System.Drawing.Size(15, 14);
-            this.checkBox18.TabIndex = 54;
-            this.checkBox18.UseVisualStyleBackColor = true;
-            // 
-            // checkBox17
-            // 
-            this.checkBox17.AutoSize = true;
-            this.checkBox17.Location = new System.Drawing.Point(441, 228);
-            this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(15, 14);
-            this.checkBox17.TabIndex = 53;
-            this.checkBox17.UseVisualStyleBackColor = true;
-            // 
-            // checkBox16
-            // 
-            this.checkBox16.AutoSize = true;
-            this.checkBox16.Location = new System.Drawing.Point(441, 199);
-            this.checkBox16.Name = "checkBox16";
-            this.checkBox16.Size = new System.Drawing.Size(15, 14);
-            this.checkBox16.TabIndex = 52;
-            this.checkBox16.UseVisualStyleBackColor = true;
-            // 
-            // checkBox15
-            // 
-            this.checkBox15.AutoSize = true;
-            this.checkBox15.Location = new System.Drawing.Point(441, 159);
-            this.checkBox15.Name = "checkBox15";
-            this.checkBox15.Size = new System.Drawing.Size(15, 14);
-            this.checkBox15.TabIndex = 51;
-            this.checkBox15.UseVisualStyleBackColor = true;
-            // 
-            // checkBox14
-            // 
-            this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(441, 104);
-            this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(15, 14);
-            this.checkBox14.TabIndex = 50;
-            this.checkBox14.UseVisualStyleBackColor = true;
-            // 
-            // checkBox13
-            // 
-            this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(441, 57);
-            this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(15, 14);
-            this.checkBox13.TabIndex = 37;
-            this.checkBox13.UseVisualStyleBackColor = true;
+            this.PosaGripChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaGripChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaGripChecked.Location = new System.Drawing.Point(430, 44);
+            this.PosaGripChecked.Name = "PosaGripChecked";
+            this.PosaGripChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaGripChecked.TabIndex = 67;
+            this.PosaGripChecked.TabStop = false;
+            this.PosaGripChecked.Click += new System.EventHandler(this.PosaGripChecked_Click);
             // 
             // textBox5
             // 
@@ -2451,7 +2775,7 @@
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox5.Location = new System.Drawing.Point(314, 0);
+            this.textBox5.Location = new System.Drawing.Point(293, 0);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(99, 46);
@@ -2464,7 +2788,7 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox4.Location = new System.Drawing.Point(223, 0);
+            this.textBox4.Location = new System.Drawing.Point(209, 0);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(53, 46);
@@ -2477,7 +2801,7 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox3.Location = new System.Drawing.Point(109, 0);
+            this.textBox3.Location = new System.Drawing.Point(105, 0);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(99, 46);
@@ -2490,7 +2814,7 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox2.Location = new System.Drawing.Point(13, 297);
+            this.textBox2.Location = new System.Drawing.Point(13, 347);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(82, 46);
@@ -2503,7 +2827,7 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox1.Location = new System.Drawing.Point(13, 253);
+            this.textBox1.Location = new System.Drawing.Point(13, 303);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(82, 46);
@@ -2515,7 +2839,7 @@
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label28.Location = new System.Drawing.Point(8, 224);
+            this.label28.Location = new System.Drawing.Point(8, 255);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(89, 20);
             this.label28.TabIndex = 44;
@@ -2526,7 +2850,7 @@
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label27.Location = new System.Drawing.Point(8, 196);
+            this.label27.Location = new System.Drawing.Point(8, 203);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(91, 20);
             this.label27.TabIndex = 43;
@@ -2537,7 +2861,7 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label26.Location = new System.Drawing.Point(8, 150);
+            this.label26.Location = new System.Drawing.Point(8, 145);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(55, 20);
             this.label26.TabIndex = 42;
@@ -2548,7 +2872,7 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label24.Location = new System.Drawing.Point(8, 100);
+            this.label24.Location = new System.Drawing.Point(8, 95);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(95, 20);
             this.label24.TabIndex = 41;
@@ -2559,7 +2883,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label23.Location = new System.Drawing.Point(8, 52);
+            this.label23.Location = new System.Drawing.Point(8, 47);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(39, 20);
             this.label23.TabIndex = 40;
@@ -2571,7 +2895,6 @@
             this.panel2.Controls.Add(this.textBox11);
             this.panel2.Controls.Add(this.label44);
             this.panel2.Controls.Add(this.label43);
-            this.panel2.Controls.Add(this.label42);
             this.panel2.Controls.Add(this.label41);
             this.panel2.Controls.Add(this.label36);
             this.panel2.Controls.Add(this.label40);
@@ -2580,19 +2903,19 @@
             this.panel2.Controls.Add(this.textBox8);
             this.panel2.Controls.Add(this.label35);
             this.panel2.Controls.Add(this.label37);
-            this.panel2.Controls.Add(this.label38);
             this.panel2.Controls.Add(this.textBox7);
-            this.panel2.Controls.Add(this.label39);
             this.panel2.Controls.Add(this.label34);
             this.panel2.Controls.Add(this.label33);
             this.panel2.Controls.Add(this.label32);
-            this.panel2.Controls.Add(this.label31);
             this.panel2.Controls.Add(this.textBox6);
             this.panel2.Controls.Add(this.label30);
             this.panel2.Controls.Add(this.label29);
-            this.panel2.Location = new System.Drawing.Point(108, 49);
+            this.panel2.Controls.Add(this.label42);
+            this.panel2.Controls.Add(this.label38);
+            this.panel2.Controls.Add(this.label31);
+            this.panel2.Location = new System.Drawing.Point(102, 44);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(311, 320);
+            this.panel2.Size = new System.Drawing.Size(311, 356);
             this.panel2.TabIndex = 0;
             // 
             // textBox11
@@ -2601,7 +2924,7 @@
             this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox11.Location = new System.Drawing.Point(213, 253);
+            this.textBox11.Location = new System.Drawing.Point(195, 303);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(88, 46);
@@ -2612,7 +2935,7 @@
             // 
             this.label44.AutoSize = true;
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(209, 209);
+            this.label44.Location = new System.Drawing.Point(191, 259);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(92, 20);
             this.label44.TabIndex = 76;
@@ -2622,7 +2945,7 @@
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(209, 175);
+            this.label43.Location = new System.Drawing.Point(191, 206);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(99, 20);
             this.label43.TabIndex = 75;
@@ -2632,7 +2955,7 @@
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(209, 146);
+            this.label42.Location = new System.Drawing.Point(191, 158);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(92, 20);
             this.label42.TabIndex = 74;
@@ -2642,7 +2965,7 @@
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(209, 104);
+            this.label41.Location = new System.Drawing.Point(191, 99);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(83, 20);
             this.label41.TabIndex = 73;
@@ -2652,7 +2975,7 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(206, 51);
+            this.label36.Location = new System.Drawing.Point(188, 46);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(61, 20);
             this.label36.TabIndex = 72;
@@ -2662,7 +2985,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(206, 4);
+            this.label40.Location = new System.Drawing.Point(188, 2);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(81, 20);
             this.label40.TabIndex = 71;
@@ -2675,7 +2998,7 @@
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox10.Location = new System.Drawing.Point(116, 253);
+            this.textBox10.Location = new System.Drawing.Point(108, 303);
             this.textBox10.Multiline = true;
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(97, 46);
@@ -2688,7 +3011,7 @@
             this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox9.Location = new System.Drawing.Point(114, 53);
+            this.textBox9.Location = new System.Drawing.Point(106, 48);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(97, 46);
@@ -2701,7 +3024,7 @@
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox8.Location = new System.Drawing.Point(114, 2);
+            this.textBox8.Location = new System.Drawing.Point(106, 0);
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(97, 46);
@@ -2712,7 +3035,7 @@
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(112, 175);
+            this.label35.Location = new System.Drawing.Point(104, 206);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(74, 20);
             this.label35.TabIndex = 67;
@@ -2722,7 +3045,7 @@
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(111, 209);
+            this.label37.Location = new System.Drawing.Point(103, 259);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(53, 20);
             this.label37.TabIndex = 65;
@@ -2732,7 +3055,7 @@
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(113, 147);
+            this.label38.Location = new System.Drawing.Point(105, 159);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(62, 20);
             this.label38.TabIndex = 64;
@@ -2744,28 +3067,18 @@
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox7.Location = new System.Drawing.Point(115, 102);
+            this.textBox7.Location = new System.Drawing.Point(107, 97);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(97, 46);
             this.textBox7.TabIndex = 63;
             this.textBox7.Text = "Pass sheet +/-0.05";
             // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(111, 31);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(87, 20);
-            this.label39.TabIndex = 62;
-            this.label39.Text = "Front/Back";
-            // 
             // label34
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(4, 252);
+            this.label34.Location = new System.Drawing.Point(0, 302);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(83, 20);
             this.label34.TabIndex = 60;
@@ -2775,7 +3088,7 @@
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(4, 207);
+            this.label33.Location = new System.Drawing.Point(0, 257);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(95, 20);
             this.label33.TabIndex = 59;
@@ -2785,7 +3098,7 @@
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(4, 175);
+            this.label32.Location = new System.Drawing.Point(0, 206);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(52, 20);
             this.label32.TabIndex = 58;
@@ -2795,7 +3108,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(3, 147);
+            this.label31.Location = new System.Drawing.Point(-1, 159);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(95, 20);
             this.label31.TabIndex = 57;
@@ -2807,7 +3120,7 @@
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox6.Location = new System.Drawing.Point(8, 102);
+            this.textBox6.Location = new System.Drawing.Point(4, 97);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(97, 46);
@@ -2818,7 +3131,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(4, 51);
+            this.label30.Location = new System.Drawing.Point(0, 46);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(87, 20);
             this.label30.TabIndex = 38;
@@ -2828,7 +3141,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(4, 4);
+            this.label29.Location = new System.Drawing.Point(0, 2);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(39, 20);
             this.label29.TabIndex = 37;
@@ -2838,137 +3151,17 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(30, 642);
+            this.label15.Location = new System.Drawing.Point(30, 682);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(90, 24);
             this.label15.TabIndex = 33;
             this.label15.Text = "Signature";
             // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(391, 205);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(114, 17);
-            this.checkBox9.TabIndex = 32;
-            this.checkBox9.Text = "Image Registration";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // checkBox10
-            // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(276, 205);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(62, 17);
-            this.checkBox10.TabIndex = 31;
-            this.checkBox10.Text = "Retains";
-            this.checkBox10.UseVisualStyleBackColor = true;
-            // 
-            // checkBox11
-            // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(152, 205);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(120, 17);
-            this.checkBox11.TabIndex = 30;
-            this.checkBox11.Text = "Shrink/W Post Print";
-            this.checkBox11.UseVisualStyleBackColor = true;
-            // 
-            // checkBox12
-            // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(35, 205);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(86, 17);
-            this.checkBox12.TabIndex = 29;
-            this.checkBox12.Text = "Correct Cyrel";
-            this.checkBox12.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(391, 164);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(101, 17);
-            this.checkBox5.TabIndex = 28;
-            this.checkBox5.Text = "Waste removed";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(276, 164);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(109, 17);
-            this.checkBox6.TabIndex = 27;
-            this.checkBox6.Text = "PM Log Checked";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(152, 164);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(120, 17);
-            this.checkBox7.TabIndex = 26;
-            this.checkBox7.Text = "Free Unit B4 I-Deck";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(35, 164);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(114, 17);
-            this.checkBox8.TabIndex = 25;
-            this.checkBox8.Text = "Pass Sheet Check";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(391, 123);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(106, 17);
-            this.checkBox4.TabIndex = 24;
-            this.checkBox4.Text = "Imposition check";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(276, 123);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(105, 17);
-            this.checkBox3.TabIndex = 23;
-            this.checkBox3.Text = "2 Sheet detector";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(152, 123);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(114, 17);
-            this.checkBox2.TabIndex = 22;
-            this.checkBox2.Text = "Varnish Vs Docket";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(35, 123);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(99, 17);
-            this.checkBox1.TabIndex = 21;
-            this.checkBox1.Text = "Inks Vs Docket";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // lblSpecialCustomerA2
             // 
             this.lblSpecialCustomerA2.AutoSize = true;
             this.lblSpecialCustomerA2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpecialCustomerA2.Location = new System.Drawing.Point(184, 61);
+            this.lblSpecialCustomerA2.Location = new System.Drawing.Point(212, 61);
             this.lblSpecialCustomerA2.Name = "lblSpecialCustomerA2";
             this.lblSpecialCustomerA2.Size = new System.Drawing.Size(153, 24);
             this.lblSpecialCustomerA2.TabIndex = 19;
@@ -2977,7 +3170,7 @@
             // btnSavePosaImage
             // 
             this.btnSavePosaImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePosaImage.Location = new System.Drawing.Point(208, 757);
+            this.btnSavePosaImage.Location = new System.Drawing.Point(208, 802);
             this.btnSavePosaImage.Name = "btnSavePosaImage";
             this.btnSavePosaImage.Size = new System.Drawing.Size(88, 62);
             this.btnSavePosaImage.TabIndex = 18;
@@ -2989,7 +3182,7 @@
             // 
             this.lblSpecialCustomerA1.AutoSize = true;
             this.lblSpecialCustomerA1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpecialCustomerA1.Location = new System.Drawing.Point(128, 12);
+            this.lblSpecialCustomerA1.Location = new System.Drawing.Point(156, 12);
             this.lblSpecialCustomerA1.Name = "lblSpecialCustomerA1";
             this.lblSpecialCustomerA1.Size = new System.Drawing.Size(278, 31);
             this.lblSpecialCustomerA1.TabIndex = 0;
@@ -3117,7 +3310,7 @@
             this.pnlPalletCardBack.Controls.Add(this.crystalReportViewer1);
             this.pnlPalletCardBack.Location = new System.Drawing.Point(3, 2);
             this.pnlPalletCardBack.Name = "pnlPalletCardBack";
-            this.pnlPalletCardBack.Size = new System.Drawing.Size(735, 829);
+            this.pnlPalletCardBack.Size = new System.Drawing.Size(859, 1048);
             this.pnlPalletCardBack.TabIndex = 58;
             // 
             // crystalReportViewer1
@@ -3127,11 +3320,11 @@
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.DisplayStatusBar = false;
             this.crystalReportViewer1.DisplayToolbar = false;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(-31, -39);
+            this.crystalReportViewer1.Location = new System.Drawing.Point(-187, -70);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.ReportSource = this.CrystalReport11;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(784, 1081);
-            this.crystalReportViewer1.TabIndex = 4;
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1046, 1189);
+            this.crystalReportViewer1.TabIndex = 5;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // button1
@@ -3142,24 +3335,166 @@
             this.button1.TabIndex = 59;
             this.button1.Text = "Show back";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pnlBackScreen
             // 
-            this.pnlBackScreen.Location = new System.Drawing.Point(1, 29);
+            this.pnlBackScreen.Location = new System.Drawing.Point(1, 2);
             this.pnlBackScreen.Name = "pnlBackScreen";
-            this.pnlBackScreen.Size = new System.Drawing.Size(735, 908);
+            this.pnlBackScreen.Size = new System.Drawing.Size(861, 1058);
             this.pnlBackScreen.TabIndex = 60;
+            // 
+            // PosaRegistrationChecked
+            // 
+            this.PosaRegistrationChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaRegistrationChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaRegistrationChecked.Location = new System.Drawing.Point(430, 95);
+            this.PosaRegistrationChecked.Name = "PosaRegistrationChecked";
+            this.PosaRegistrationChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaRegistrationChecked.TabIndex = 76;
+            this.PosaRegistrationChecked.TabStop = false;
+            this.PosaRegistrationChecked.Click += new System.EventHandler(this.PosaRegistrationChecked_Click);
+            // 
+            // PosaColourChecked
+            // 
+            this.PosaColourChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaColourChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaColourChecked.Location = new System.Drawing.Point(430, 148);
+            this.PosaColourChecked.Name = "PosaColourChecked";
+            this.PosaColourChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaColourChecked.TabIndex = 77;
+            this.PosaColourChecked.TabStop = false;
+            this.PosaColourChecked.Click += new System.EventHandler(this.PosaColourChecked_Click);
+            // 
+            // PosaSTCRegisChecked
+            // 
+            this.PosaSTCRegisChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaSTCRegisChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaSTCRegisChecked.Location = new System.Drawing.Point(430, 252);
+            this.PosaSTCRegisChecked.Name = "PosaSTCRegisChecked";
+            this.PosaSTCRegisChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaSTCRegisChecked.TabIndex = 79;
+            this.PosaSTCRegisChecked.TabStop = false;
+            this.PosaSTCRegisChecked.Click += new System.EventHandler(this.PosaSTCRegisChecked_Click);
+            // 
+            // PosaSTCGlossChecked
+            // 
+            this.PosaSTCGlossChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaSTCGlossChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaSTCGlossChecked.Location = new System.Drawing.Point(430, 306);
+            this.PosaSTCGlossChecked.Name = "PosaSTCGlossChecked";
+            this.PosaSTCGlossChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaSTCGlossChecked.TabIndex = 80;
+            this.PosaSTCGlossChecked.TabStop = false;
+            this.PosaSTCGlossChecked.Click += new System.EventHandler(this.PosaSTCGlossChecked_Click);
+            // 
+            // PosaVisualDefectsChecked
+            // 
+            this.PosaVisualDefectsChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaVisualDefectsChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaVisualDefectsChecked.Location = new System.Drawing.Point(430, 358);
+            this.PosaVisualDefectsChecked.Name = "PosaVisualDefectsChecked";
+            this.PosaVisualDefectsChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaVisualDefectsChecked.TabIndex = 81;
+            this.PosaVisualDefectsChecked.TabStop = false;
+            this.PosaVisualDefectsChecked.Click += new System.EventHandler(this.PosaVisualDefectsChecked_Click);
+            // 
+            // PosaRegistrationNotChecked
+            // 
+            this.PosaRegistrationNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaRegistrationNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaRegistrationNotChecked.Location = new System.Drawing.Point(430, 95);
+            this.PosaRegistrationNotChecked.Name = "PosaRegistrationNotChecked";
+            this.PosaRegistrationNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaRegistrationNotChecked.TabIndex = 82;
+            this.PosaRegistrationNotChecked.TabStop = false;
+            this.PosaRegistrationNotChecked.Click += new System.EventHandler(this.PosaRegistrationNotChecked_Click);
+            // 
+            // PosaColourNotChecked
+            // 
+            this.PosaColourNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaColourNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaColourNotChecked.Location = new System.Drawing.Point(430, 148);
+            this.PosaColourNotChecked.Name = "PosaColourNotChecked";
+            this.PosaColourNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaColourNotChecked.TabIndex = 83;
+            this.PosaColourNotChecked.TabStop = false;
+            this.PosaColourNotChecked.Click += new System.EventHandler(this.PosaColourNotChecked_Click);
+            // 
+            // textBox12
+            // 
+            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox12.Location = new System.Drawing.Point(413, 201);
+            this.textBox12.Multiline = true;
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(50, 38);
+            this.textBox12.TabIndex = 84;
+            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox13.Location = new System.Drawing.Point(463, 201);
+            this.textBox13.Multiline = true;
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(50, 38);
+            this.textBox13.TabIndex = 85;
+            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox14
+            // 
+            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox14.Location = new System.Drawing.Point(513, 201);
+            this.textBox14.Multiline = true;
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(50, 38);
+            this.textBox14.TabIndex = 86;
+            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // PosaSTCRegisNotChecked
+            // 
+            this.PosaSTCRegisNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaSTCRegisNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaSTCRegisNotChecked.Location = new System.Drawing.Point(430, 252);
+            this.PosaSTCRegisNotChecked.Name = "PosaSTCRegisNotChecked";
+            this.PosaSTCRegisNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaSTCRegisNotChecked.TabIndex = 87;
+            this.PosaSTCRegisNotChecked.TabStop = false;
+            this.PosaSTCRegisNotChecked.Click += new System.EventHandler(this.PosaSTCRegisNotChecked_Click);
+            // 
+            // PosaSTCGlossNotChecked
+            // 
+            this.PosaSTCGlossNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaSTCGlossNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaSTCGlossNotChecked.Location = new System.Drawing.Point(430, 307);
+            this.PosaSTCGlossNotChecked.Name = "PosaSTCGlossNotChecked";
+            this.PosaSTCGlossNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaSTCGlossNotChecked.TabIndex = 88;
+            this.PosaSTCGlossNotChecked.TabStop = false;
+            this.PosaSTCGlossNotChecked.Click += new System.EventHandler(this.PosaSTCGlossNotChecked_Click);
+            // 
+            // PosaVisualDefectsNotChecked
+            // 
+            this.PosaVisualDefectsNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaVisualDefectsNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaVisualDefectsNotChecked.Location = new System.Drawing.Point(430, 358);
+            this.PosaVisualDefectsNotChecked.Name = "PosaVisualDefectsNotChecked";
+            this.PosaVisualDefectsNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaVisualDefectsNotChecked.TabIndex = 89;
+            this.PosaVisualDefectsNotChecked.TabStop = false;
+            this.PosaVisualDefectsNotChecked.Click += new System.EventHandler(this.PosaVisualDefectsNotChecked_Click);
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(736, 1045);
+            this.ClientSize = new System.Drawing.Size(850, 1053);
+            this.Controls.Add(this.pnlPalletCard10);
+            this.Controls.Add(this.pnlPalletCardPrint);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlPalletCard11);
-            this.Controls.Add(this.pnlPalletCard10);
             this.Controls.Add(this.pnlSignature);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pnlPalletCard9);
@@ -3175,7 +3510,6 @@
             this.Controls.Add(this.pnlPalletCard3);
             this.Controls.Add(this.pnlPalletCard8);
             this.Controls.Add(this.pnlPalletCard7);
-            this.Controls.Add(this.pnlPalletCardPrint);
             this.Controls.Add(this.pnlReturnPaper3);
             this.Controls.Add(this.pnlRejectPaper3);
             this.Controls.Add(this.dataGridView2);
@@ -3210,6 +3544,7 @@
             this.Controls.Add(this.pnlBackScreen);
             this.Controls.Add(this.pnlPalletCardBack);
             this.Name = "Home";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Pallet Card App XL106";
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -3254,13 +3589,43 @@
             this.pnlNotification2.PerformLayout();
             this.pnlPalletCard10.ResumeLayout(false);
             this.pnlPalletCard10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa9NotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa8NotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa7NotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa6NotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa5NotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa4NotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa3NotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa2NotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa9Checked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa8Checked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa7Checked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa6Checked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa5Checked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa4Checked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa3Checked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa2Checked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa1NotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posa1Checked)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaGripNotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaGripChecked)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pnlPalletCard11.ResumeLayout(false);
             this.pnlPalletCard11.PerformLayout();
             this.pnlPalletCardBack.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PosaRegistrationChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaColourChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaSTCRegisChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaSTCGlossChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaVisualDefectsChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaRegistrationNotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaColourNotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaSTCRegisNotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaSTCGlossNotChecked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosaVisualDefectsNotChecked)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3439,18 +3804,6 @@
         private System.Windows.Forms.Panel pnlPalletCard10;
         private System.Windows.Forms.Label lblSpecialCustomerA1;
         private System.Windows.Forms.Button btnSavePosaImage;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.CheckBox checkBox11;
-        private System.Windows.Forms.CheckBox checkBox12;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lblSpecialCustomerA2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button2;
@@ -3466,13 +3819,6 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.CheckBox checkBox19;
-        private System.Windows.Forms.CheckBox checkBox18;
-        private System.Windows.Forms.CheckBox checkBox17;
-        private System.Windows.Forms.CheckBox checkBox16;
-        private System.Windows.Forms.CheckBox checkBox15;
-        private System.Windows.Forms.CheckBox checkBox14;
-        private System.Windows.Forms.CheckBox checkBox13;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label43;
@@ -3487,7 +3833,6 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label32;
@@ -3509,9 +3854,51 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Panel pnlPalletCardBack;
         private System.Windows.Forms.Button button1;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private CrystalReport1 CrystalReport11;
         private System.Windows.Forms.Panel pnlBackScreen;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private System.Windows.Forms.PictureBox Posa1NotChecked;
+        private System.Windows.Forms.PictureBox Posa1Checked;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.PictureBox Posa6Checked;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.PictureBox Posa5Checked;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.PictureBox Posa4Checked;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.PictureBox Posa3Checked;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.PictureBox Posa2Checked;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.PictureBox Posa9Checked;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.PictureBox Posa8Checked;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.PictureBox Posa7Checked;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.PictureBox Posa2NotChecked;
+        private System.Windows.Forms.PictureBox Posa3NotChecked;
+        private System.Windows.Forms.PictureBox Posa4NotChecked;
+        private System.Windows.Forms.PictureBox Posa5NotChecked;
+        private System.Windows.Forms.PictureBox Posa6NotChecked;
+        private System.Windows.Forms.PictureBox Posa7NotChecked;
+        private System.Windows.Forms.PictureBox Posa8NotChecked;
+        private System.Windows.Forms.PictureBox Posa9NotChecked;
+        private System.Windows.Forms.PictureBox PosaGripChecked;
+        private System.Windows.Forms.PictureBox PosaGripNotChecked;
+        private System.Windows.Forms.PictureBox PosaVisualDefectsChecked;
+        private System.Windows.Forms.PictureBox PosaSTCGlossChecked;
+        private System.Windows.Forms.PictureBox PosaSTCRegisChecked;
+        private System.Windows.Forms.PictureBox PosaColourChecked;
+        private System.Windows.Forms.PictureBox PosaRegistrationChecked;
+        private System.Windows.Forms.PictureBox PosaRegistrationNotChecked;
+        private System.Windows.Forms.PictureBox PosaColourNotChecked;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.PictureBox PosaSTCRegisNotChecked;
+        private System.Windows.Forms.PictureBox PosaSTCGlossNotChecked;
+        private System.Windows.Forms.PictureBox PosaVisualDefectsNotChecked;
     }
 }
 
