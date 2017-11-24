@@ -3927,18 +3927,13 @@ namespace PalletCard
             // The name of the PDF that will be printed (just to be shown in the print queue)
             string Filename = "TestDECombined.pdf";
             // The name of the printer that you want to use
-            //string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-            string PrinterName = "ProC5100S";
+            string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+            //string PrinterName = "ProC5100S";
 
             // Create an instance of the Printer
             IPrinter printer = new Printer();
             // Print the file
             printer.PrintRawFile(PrinterName, Filepath, Filename);
-
-            //PrintDocument pd = new PrintDocument();
-            //pd.PrintPage += new PrintPageEventHandler(PrintImagePalletCard);
-            //btnPalletCardPrint.Visible = false;
-            //pd.Print();
 
             pnlHome0.BringToFront();
             lblJobNo.Visible = false;
@@ -3972,22 +3967,14 @@ namespace PalletCard
                 MessageBox.Show("Error on saving. Message: " + e.Message);
             }
 
-            //ReportDocument cryRpt = new ReportDocument();
-            ////cryRpt.Load(@"S:\C# Demos\Crystal Reports\CrystalReportDemo\CrystalReportDemo\CrystalReport1.rpt");
-            //cryRpt.Load(@"S:\Production Admin\Declan Enright\Pallet Card Project\Github\PalletCardApp\PalletCard\CrystalReport1.rpt");
-            //crystalReportViewer1.ReportSource = cryRpt;
-            //crystalReportViewer1.Refresh();
-            //cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\\Temp\\TestDE1.pdf");
-            //MessageBox.Show("Exported Successful");
-
             Bitmap bmpDrawing2;
             System.Drawing.Rectangle rectBounds2;
             try
             {
                 // Create bitmap for Crystal Report
-                bmpDrawing2 = new Bitmap(846, 1092);
+                bmpDrawing2 = new Bitmap(846, 1052);
                 // Set the bounds of the bitmap
-                rectBounds2 = new System.Drawing.Rectangle(0, 0, 846, 1062);
+                rectBounds2 = new System.Drawing.Rectangle(0, 0, 846, 1052);
                 // Move drawing to bitmap
                 pnlPalletCardBack.DrawToBitmap(bmpDrawing2, rectBounds2);
                 // Save the bitmap to file
@@ -4008,39 +3995,6 @@ namespace PalletCard
             doc.Add(pic2);
             doc.Close();
         }
-
-        //private void btnPalletCardPrint_Click(object sender, EventArgs e)
-        //{
-        //    PrintDocument pd = new PrintDocument();
-        //    pd.PrintPage += new PrintPageEventHandler(PrintImagePalletCard);
-        //    btnPalletCardPrint.Visible = false;
-        //    pd.Print();
-
-        //    btnPalletCardPrint.Visible = true;
-        //    pnlHome0.BringToFront();
-        //    lblJobNo.Visible = false;
-        //    lblPress.Visible = false;
-        //    lbl1.Visible = false;
-        //    lbl2.Visible = false;
-        //    lbl3.Visible = false;
-        //    lbl4.Visible = false;
-        //    btnBack.Visible = false;
-        //    btnCancel.Visible = false;
-        //    Cancel();
-        //}
-
-        //void PrintImagePalletCard(object o, PrintPageEventArgs e)
-        //{
-        //    int x = SystemInformation.WorkingArea.X;
-        //    int y = SystemInformation.WorkingArea.Y;
-        //    int width = this.Width;
-        //    int height = this.Height;
-        //    System.Drawing.Rectangle bounds = new System.Drawing.Rectangle(x, y, width, height);
-        //    Bitmap img = new Bitmap(width, height);
-        //    pnlPalletCardPrint.DrawToBitmap(img, bounds);
-        //    Point p = new Point(100, 100);
-        //    e.Graphics.DrawImage(img, p);
-        //}
 
         private void btnPalletOver_Click(object sender, EventArgs e)
         {            
