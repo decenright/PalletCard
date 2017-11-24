@@ -484,7 +484,6 @@ namespace PalletCard
         private void btnSearch_Click(object sender, EventArgs e)
         {
             Search();
-            SaveCrystalReport();
         }
 
         private void SaveCrystalReport()
@@ -3923,12 +3922,12 @@ namespace PalletCard
 
             // Absolute path to PDF to print (with filename)
             string Filepath = @"S:\Production Admin\Declan Enright\Pallet Card Project\Github\PalletCardApp\PalletCard\bin\Debug\TestDECombined.pdf";
-            
+
             // The name of the PDF that will be printed (just to be shown in the print queue)
             string Filename = "TestDECombined.pdf";
             // The name of the printer that you want to use
-            string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-            //string PrinterName = "ProC5100S";
+            //string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+            string PrinterName = "ProC5100S";
 
             // Create an instance of the Printer
             IPrinter printer = new Printer();
@@ -3949,6 +3948,7 @@ namespace PalletCard
 
         void PrintImagePalletCard()
         {
+            SaveCrystalReport();
             Bitmap bmpDrawing1;
             System.Drawing.Rectangle rectBounds1;
             try
@@ -3972,9 +3972,9 @@ namespace PalletCard
             try
             {
                 // Create bitmap for Crystal Report
-                bmpDrawing2 = new Bitmap(846, 1052);
+                bmpDrawing2 = new Bitmap(840, 1052);
                 // Set the bounds of the bitmap
-                rectBounds2 = new System.Drawing.Rectangle(0, 0, 846, 1052);
+                rectBounds2 = new System.Drawing.Rectangle(0, 0, 840, 1052);
                 // Move drawing to bitmap
                 pnlPalletCardBack.DrawToBitmap(bmpDrawing2, rectBounds2);
                 // Save the bitmap to file
@@ -3990,7 +3990,7 @@ namespace PalletCard
             doc.Open();
             iTextSharp.text.Image pic1 = iTextSharp.text.Image.GetInstance("C:\\Temp\\TestDE1.jpg");
             iTextSharp.text.Image pic2 = iTextSharp.text.Image.GetInstance("C:\\Temp\\TestDE2.jpg");
-            pic2.ScaleAbsolute(620f, 770f);
+            pic2.ScaleAbsolute(590f, 750f);
             doc.Add(pic1);
             doc.Add(pic2);
             doc.Close();
