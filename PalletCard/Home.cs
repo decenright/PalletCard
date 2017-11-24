@@ -3927,8 +3927,8 @@ namespace PalletCard
             // The name of the PDF that will be printed (just to be shown in the print queue)
             string Filename = "TestDECombined.pdf";
             // The name of the printer that you want to use
-            string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-            //string PrinterName = "ProC5100S";
+            //string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+            string PrinterName = "ProC5100S";
 
             // Create an instance of the Printer
             IPrinter printer = new Printer();
@@ -3940,17 +3940,16 @@ namespace PalletCard
             //btnPalletCardPrint.Visible = false;
             //pd.Print();
 
-            //btnPalletCardPrint.Visible = true;
-            //pnlHome0.BringToFront();
-            //lblJobNo.Visible = false;
-            //lblPress.Visible = false;
-            //lbl1.Visible = false;
-            //lbl2.Visible = false;
-            //lbl3.Visible = false;
-            //lbl4.Visible = false;
-            //btnBack.Visible = false;
-            //btnCancel.Visible = false;
-            //Cancel();
+            pnlHome0.BringToFront();
+            lblJobNo.Visible = false;
+            lblPress.Visible = false;
+            lbl1.Visible = false;
+            lbl2.Visible = false;
+            lbl3.Visible = false;
+            lbl4.Visible = false;
+            btnBack.Visible = false;
+            btnCancel.Visible = false;
+            Cancel();
         }
 
         void PrintImagePalletCard()
@@ -3986,9 +3985,9 @@ namespace PalletCard
             try
             {
                 // Create bitmap for Crystal Report
-                bmpDrawing2 = new Bitmap(pnlPalletCardBack.Width, pnlPalletCardBack.Height);
+                bmpDrawing2 = new Bitmap(846, 1092);
                 // Set the bounds of the bitmap
-                rectBounds2 = new System.Drawing.Rectangle(0, 0, bmpDrawing2.Width, bmpDrawing2.Height);
+                rectBounds2 = new System.Drawing.Rectangle(0, 0, 846, 1062);
                 // Move drawing to bitmap
                 pnlPalletCardBack.DrawToBitmap(bmpDrawing2, rectBounds2);
                 // Save the bitmap to file
@@ -3999,11 +3998,12 @@ namespace PalletCard
                 MessageBox.Show("Error on saving. Message: " + e.Message);
             }
 
-            Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
+            Document doc = new Document(iTextSharp.text.PageSize.A4, 0, 0, 0, 0);
             PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("TestDECombined.pdf", FileMode.Create));
             doc.Open();
             iTextSharp.text.Image pic1 = iTextSharp.text.Image.GetInstance("C:\\Temp\\TestDE1.jpg");
             iTextSharp.text.Image pic2 = iTextSharp.text.Image.GetInstance("C:\\Temp\\TestDE2.jpg");
+            pic2.ScaleAbsolute(620f, 770f);
             doc.Add(pic1);
             doc.Add(pic2);
             doc.Close();
