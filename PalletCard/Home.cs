@@ -2984,8 +2984,9 @@ namespace PalletCard
             if (dataGridView2.RowCount == 0)
             {
                 int account = Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value);
-                if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
-                {
+                //if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
+                if (account == 1720 || account == 1839)
+                    {
                     pnlPalletCard10.BringToFront();
                     // Disable the Section button
                     disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
@@ -3015,7 +3016,8 @@ namespace PalletCard
             else if (dataGridView2.RowCount != 0)
             {
                 int account = Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value);
-                if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
+                //if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
+                    if (account == 1720 || account == 1839)
                 {
                     pnlPalletCard10.BringToFront();
                     // Disable the Section button
@@ -3708,7 +3710,8 @@ namespace PalletCard
                     if(dataGridView2.RowCount == 0)
                     {
                         int account = Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value);
-                        if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
+                        //if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
+                            if (account == 1720 || account == 1839)
                         {
                             pnlPalletCard10.BringToFront();
                         }
@@ -3724,7 +3727,8 @@ namespace PalletCard
                     if(dataGridView2.RowCount != 0)
                     {
                         int account = Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value);
-                        if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
+                        //if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
+                            if (account == 1720 || account == 1839)
                         {
                             pnlPalletCard10.BringToFront();
                         }
@@ -4059,7 +4063,8 @@ namespace PalletCard
             else if (dataGridView2.RowCount != 0)
             {
                 int account = Convert.ToInt32(dataGridView2.Rows[0].Cells[29].Value);
-                if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
+                //if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)
+                    if (account == 1720 || account == 1839)
                 {
                     pnlPalletCard10.BringToFront();
                 }
@@ -4183,7 +4188,7 @@ namespace PalletCard
             lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
         }
 
-        #endregion
+#endregion
 
 //****************************************************************************************************
 //  NOTIFICATION PANEL
@@ -4343,7 +4348,7 @@ namespace PalletCard
 
         #endregion
 
-
+#region Posa Checkboxes
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -4505,5 +4510,7 @@ namespace PalletCard
         {
             PosaVisualDefectsChecked.BringToFront();
         }
+#endregion
+
     }
 }
