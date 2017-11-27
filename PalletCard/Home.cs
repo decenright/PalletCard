@@ -6,14 +6,12 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Data.SqlClient;
-using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.ComponentModel;
 using System.Net.Mail;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
-using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using RawPrint;
@@ -146,10 +144,6 @@ namespace PalletCard
                 lbl4.Visible = false;
                 btnBack.Visible = false;
                 tbxQtySheetsAffected.Text = "";
-                lblBack5.Visible = false;
-                lblBack6.Visible = false;
-                lblBack5.Visible = true;
-                lblBack6.Visible = true;
                 Search();
                 index = 1;
                 sectionBtns = false;
@@ -168,8 +162,6 @@ namespace PalletCard
                 ckbCigarRoll.Checked = false;
                 ckbPalletDamage.Checked = false;
                 ckbBladeLine.Checked = false;
-                lblBack5.Visible = false;
-                lblBack6.Visible = false;
                 index = 5;
                 // if no section buttons go straight back to Choose Action screen
                 if (pnlRejectPaper1.Controls.Count == 0)
@@ -219,10 +211,6 @@ namespace PalletCard
                 lbl3.Visible = false;
                 lbl4.Visible = false;
                 btnBack.Visible = false;
-                lblBack5.Visible = false;
-                lblBack6.Visible = false;
-                lblBack5.Visible = true;
-                lblBack6.Visible = true;
                 Search();
                 index = 1;
                 sectionBtns = false;
@@ -626,7 +614,6 @@ namespace PalletCard
 
 #endregion
 
-
 //****************************************************************************************************
 //  RETURN PAPER WORKFLOW
 //****************************************************************************************************
@@ -853,8 +840,6 @@ namespace PalletCard
                 string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 lbl2.Text = d;
                 lbl2.Visible = true;
-                lblBack5.Visible = false;
-                lblBack6.Visible = false;
                 index = 6;
                 sectionBtns = true;
             }
@@ -894,8 +879,6 @@ namespace PalletCard
                     }
                 }
                 sectionBtns = true;
-                lblBack5.Visible = false;
-                lblBack6.Visible = false;
             }
         }
 
@@ -2127,7 +2110,7 @@ namespace PalletCard
 // Hide Gang Panel (FlowLayoutPanel2) if NumberUp = 1 (Value will be from DataGridview1 or DataGridView2 depending on wheteher it is a Regular or incomplete i.e Scanned line)
 // Else Show Gang Classic, Gang Pro or Not Ganged Multi Up
 
-            #region Regular Line
+#region Regular Line
             if (dataGridView2.Rows.Count == 0)
             {
                 //DATAGRIDVIEW1
@@ -2463,9 +2446,9 @@ namespace PalletCard
                     }
                 }
             }
-            #endregion
+#endregion
 
-            #region Scanned Line
+#region Scanned Line
             else if (dataGridView2.Rows.Count != 0)
             {
                 //DATAGRIDVIEW2
@@ -2803,7 +2786,7 @@ namespace PalletCard
                 }
             }
 
-            #endregion
+#endregion
 
             if (dataGridView4.RowCount != 0)
             {
@@ -3365,10 +3348,6 @@ namespace PalletCard
                 }
             }
 
-
-
-
-
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
             Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
@@ -3436,7 +3415,7 @@ namespace PalletCard
 
             finally
             {
-                //myConnection.Close();
+                myConnection.Close();
             }
             using (DataTable palletCardLog = new DataTable())
             {
@@ -3507,7 +3486,6 @@ namespace PalletCard
 
             //SAVE TO DATABASE
             CurrentDate = DateTime.Now;
-            //dataGridView2.Refresh();
             produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
             PaperSectionNo = Convert.ToInt32(Regex.Replace(lbl3.Text, "[^0-9.]", ""));
 
@@ -3529,36 +3507,6 @@ namespace PalletCard
             }
 
             reQueryDataGridView2();
-
-            // Requery Log table to refresh datagridview2 with new line
-            //OdbcConnection myConnection1 = new OdbcConnection(ConnectionString);
-            //OdbcCommand myCommand1 = new OdbcCommand(CommandText, myConnection1);
-            //OdbcDataAdapter myAdapter1 = new OdbcDataAdapter();
-            //myAdapter1.SelectCommand = myCommand;
-            //DataSet palletCardData1 = new DataSet();
-            //try
-            //{
-            //    myConnection.Open();
-            //    myAdapter.Fill(palletCardData1);
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw (ex);
-            //}
-
-            //finally
-            //{
-            //    myConnection.Close();
-            //}
-            //using (DataTable palletCardLog1 = new DataTable())
-            //{
-            //    myAdapter.Fill(palletCardLog1);
-            //    dataGridView2.DataSource = palletCardLog1;
-            //}
-
-            //dataGridView2.Refresh();
-            //dataGridView2.AllowUserToAddRows = false;
-
 
             // Get the quantities produced from the previous pallet cards
             int sumProduced = 0;
@@ -3847,30 +3795,6 @@ namespace PalletCard
             // Requery the data to refresh dataGridView2 with the newly added PalletNumber and barCode
             reQueryDataGridView2();
 
-            //OdbcConnection myConnection1 = new OdbcConnection(ConnectionString);
-            //OdbcCommand myCommand1 = new OdbcCommand(CommandText, myConnection1);
-            //OdbcDataAdapter myAdapter1 = new OdbcDataAdapter();
-            //myAdapter1.SelectCommand = myCommand1;
-            //DataSet palletCardData1 = new DataSet();
-            //try
-            //{
-            //    myConnection.Open();
-            //    myAdapter1.Fill(palletCardData1);
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw (ex);
-            //}
-            //finally
-            //{
-            //    myConnection.Close();
-            //}
-            //using (DataTable palletCardLog = new DataTable())
-            //{
-            //    myAdapter1.Fill(palletCardLog);
-            //    dataGridView2.DataSource = palletCardLog;
-            //}
-
             this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
             string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
             Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
@@ -3921,10 +3845,10 @@ namespace PalletCard
             PrintImagePalletCard();
 
             // Absolute path to PDF to print (with filename)
-            string Filepath = @"S:\Production Admin\Declan Enright\Pallet Card Project\Github\PalletCardApp\PalletCard\bin\Debug\TestDECombined.pdf";
+            string Filepath = @"S:\Production Admin\Declan Enright\Pallet Card Project\Github\PalletCardApp\PalletCard\bin\Debug\frontBackCombined.pdf";
 
             // The name of the PDF that will be printed (just to be shown in the print queue)
-            string Filename = "TestDECombined.pdf";
+            string Filename = "frontBackCombined.pdf";
             // The name of the printer that you want to use
             //string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
             string PrinterName = "ProC5100S";
@@ -3960,7 +3884,7 @@ namespace PalletCard
                 // Move drawing to bitmap
                 pnlPalletCardPrint.DrawToBitmap(bmpDrawing1, rectBounds1);
                 // Save the bitmap to file
-                bmpDrawing1.Save("c:\\Temp\\TestDE1.jpg", System.Drawing.Imaging.ImageFormat.Bmp);
+                bmpDrawing1.Save("c:\\Temp\\front.jpg", System.Drawing.Imaging.ImageFormat.Bmp);
             }
             catch (Exception e)
             {
@@ -3978,7 +3902,7 @@ namespace PalletCard
                 // Move drawing to bitmap
                 pnlPalletCardBack.DrawToBitmap(bmpDrawing2, rectBounds2);
                 // Save the bitmap to file
-                bmpDrawing2.Save("c:\\Temp\\TestDE2.jpg", System.Drawing.Imaging.ImageFormat.Bmp);
+                bmpDrawing2.Save("c:\\Temp\\back.jpg", System.Drawing.Imaging.ImageFormat.Bmp);
             }
             catch (Exception e)
             {
@@ -3986,10 +3910,10 @@ namespace PalletCard
             }
 
             Document doc = new Document(iTextSharp.text.PageSize.A4, 0, 0, 0, 0);
-            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("TestDECombined.pdf", FileMode.Create));
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("frontBackCombined.pdf", FileMode.Create));
             doc.Open();
-            iTextSharp.text.Image pic1 = iTextSharp.text.Image.GetInstance("C:\\Temp\\TestDE1.jpg");
-            iTextSharp.text.Image pic2 = iTextSharp.text.Image.GetInstance("C:\\Temp\\TestDE2.jpg");
+            iTextSharp.text.Image pic1 = iTextSharp.text.Image.GetInstance("C:\\Temp\\front.jpg");
+            iTextSharp.text.Image pic2 = iTextSharp.text.Image.GetInstance("C:\\Temp\\back.jpg");
             pic2.ScaleAbsolute(590f, 750f);
             doc.Add(pic1);
             doc.Add(pic2);
@@ -4143,164 +4067,6 @@ namespace PalletCard
         }
 
 #endregion
-
-//****************************************************************************************************
-//  NOTIFICATION PANEL
-//****************************************************************************************************
-#region NotificationPanel
-
-        private void btnNotificationPanel_Click(object sender, EventArgs e)
-        {
-            lbl1.Visible = true;
-            lbl1.Text = "Notification Panel";
-            pnlNotification1.BringToFront();
-            index = 2;
-            jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
-            btnBack.Visible = true;
-
-            //loop through datagridview to see if each value of field "Expr1" is the same
-            //(If only one datagridview row or rows are all the same then go straight to pallet height - else create dynamic buttons)
-            string x;
-            string y;
-            x = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            y = dataGridView1.Rows[0].Cells[11].Value.ToString();
-            for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
-            {
-                y = dataGridView1.Rows[i].Cells[11].Value.ToString();
-            }
-            if (x == y)
-            {
-                pnlNotification2.BringToFront();
-                string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
-                lbl2.Text = d;
-                lbl2.Visible = true;
-                lbl3.Visible = true;
-                lbl3.Text = this.dataGridView1.Rows[0].Cells[16].Value as string;
-                lbl4.Visible = true;
-                lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-                index = 3;
-                sectionBtns = true;
-                this.ActiveControl = tbxPalletHeight;
-            }
-            else
-            { //prevent section buttons from drawing again if back button is selected
-                if (!sectionBtns)
-                {
-                    //loop through datagrid rows to create a button for each value of field "Expr1"                  
-                    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-                    {
-                        //if datagrid is not empty create a button for each row at cells[11] - "Expr1"
-                        if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
-
-                            //offer only one button where Expr1 field has two rows with the same value
-                            dataGridView1.AllowUserToAddRows = true;
-                        if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
-                        {
-                            {
-                                for (int j = 0; j < 1; j++)
-                                {
-                                    Button btn = new Button();
-                                    pnlNotification1.Controls.Add(btn);
-                                    btn.Top = A * 100;
-                                    btn.Height = 80;
-                                    btn.Width = 465;
-                                    btn.BackColor = Color.SteelBlue;
-                                    btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14);
-                                    btn.ForeColor = Color.White;
-                                    btn.Left = 30;
-                                    btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-                                    A = A + 1;
-                                    btn.Click += new System.EventHandler(this.notification);
-                                }
-                            }
-                            dataGridView1.AllowUserToAddRows = false;
-                        }
-                    }
-                }
-                sectionBtns = true;
-            }
-        }
-
-        //Dynamic button click - Section buttons, Return Paper work flow
-        private void notification(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            pnlNotification2.BringToFront();
-
-            //filter datagridview1 with the button text choice
-            try
-            {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
-            }
-            catch (Exception) { }
-
-            for (int i = 0; i < dataGridView1.RowCount; i++)
-            {
-                string val = dataGridView1.Rows[i].Cells[11].Value.ToString();
-                if (btn.Text == val)
-                {
-                    lbl4.Text = dataGridView1.Rows[i].Cells[13].Value.ToString();
-                    lbl3.Text = dataGridView1.Rows[i].Cells[16].Value.ToString();
-                }
-            }
-            lbl4.Visible = true;
-            lbl3.Visible = true;
-            lbl2.Visible = true;
-            lbl2.Text = btn.Text;
-            index = 18;
-        }
-
-        private void btnWaitingPlates_Click(object sender, EventArgs e)
-        {
-            // Send email notification
-            //MailMessage mail = new MailMessage("WaitingPlates@colorman.ie", "declan.enright@colorman.ie", "Waiting for Plates", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates");
-            //SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
-            //client.Port = 25;
-            //client.EnableSsl = false;
-            //client.Send(mail);
-            //MessageBox.Show("Email Notification Sent");
-
-            MailMessage mail = new MailMessage();
-            string from = "WaitingPlates@colorman.ie";
-            mail.From = new MailAddress(from);
-            mail.To.Add("declan.enright@colorman.ie");
-            //mail.To.Add("prepress@colorman.ie");
-            //mail.To.Add("production@colorman.ie");
-            mail.Subject = "Waiting for Plates";
-            mail.Body = "Waiting for Plates" + "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates";
-            SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
-            client.Port = 25;
-            client.EnableSsl = false;
-            client.Send(mail);
-            MessageBox.Show("Email Notification Sent");
-            pnlHome0.BringToFront();
-        }
-
-        private void btnWaitingPaper_Click(object sender, EventArgs e)
-        {
-            // Send email notification
-            MailMessage mail = new MailMessage("WaitingPaper@colorman.ie", "declan.enright@colorman.ie", "Waiting for Paper", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for paper");
-            SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
-            client.Port = 25;
-            client.EnableSsl = false;
-            client.Send(mail);
-            MessageBox.Show("Email Notification Sent");
-            pnlHome0.BringToFront();
-        }
-
-        private void btnJobLifted_Click(object sender, EventArgs e)
-        {
-            // Send email notification
-            MailMessage mail = new MailMessage("JobLifted@colorman.ie", "declan.enright@colorman.ie", "Job Lifted", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - Job is lifted");
-            SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
-            client.Port = 25;
-            client.EnableSsl = false;
-            client.Send(mail);
-            MessageBox.Show("Email Notification Sent");
-            pnlHome0.BringToFront();
-        }
-
-        #endregion
 
 #region Posa Checkboxes
 
@@ -4464,6 +4230,164 @@ namespace PalletCard
         {
             PosaVisualDefectsChecked.BringToFront();
         }
+#endregion
+
+//****************************************************************************************************
+//  NOTIFICATION PANEL
+//****************************************************************************************************
+#region NotificationPanel
+
+        private void btnNotificationPanel_Click(object sender, EventArgs e)
+        {
+            lbl1.Visible = true;
+            lbl1.Text = "Notification Panel";
+            pnlNotification1.BringToFront();
+            index = 2;
+            jobNo = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            btnBack.Visible = true;
+
+            //loop through datagridview to see if each value of field "Expr1" is the same
+            //(If only one datagridview row or rows are all the same then go straight to pallet height - else create dynamic buttons)
+            string x;
+            string y;
+            x = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            y = dataGridView1.Rows[0].Cells[11].Value.ToString();
+            for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
+            {
+                y = dataGridView1.Rows[i].Cells[11].Value.ToString();
+            }
+            if (x == y)
+            {
+                pnlNotification2.BringToFront();
+                string d = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                lbl2.Text = d;
+                lbl2.Visible = true;
+                lbl3.Visible = true;
+                lbl3.Text = this.dataGridView1.Rows[0].Cells[16].Value as string;
+                lbl4.Visible = true;
+                lbl4.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+                index = 3;
+                sectionBtns = true;
+                this.ActiveControl = tbxPalletHeight;
+            }
+            else
+            { //prevent section buttons from drawing again if back button is selected
+                if (!sectionBtns)
+                {
+                    //loop through datagrid rows to create a button for each value of field "Expr1"                  
+                    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                    {
+                        //if datagrid is not empty create a button for each row at cells[11] - "Expr1"
+                        if (!(string.IsNullOrEmpty(this.dataGridView1.Rows[i].Cells[11].Value as string)))
+
+                            //offer only one button where Expr1 field has two rows with the same value
+                            dataGridView1.AllowUserToAddRows = true;
+                        if (!(this.dataGridView1.Rows[i].Cells[11].Value as string == this.dataGridView1.Rows[i + 1].Cells[11].Value as string))
+                        {
+                            {
+                                for (int j = 0; j < 1; j++)
+                                {
+                                    Button btn = new Button();
+                                    pnlNotification1.Controls.Add(btn);
+                                    btn.Top = A * 100;
+                                    btn.Height = 80;
+                                    btn.Width = 465;
+                                    btn.BackColor = Color.SteelBlue;
+                                    btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14);
+                                    btn.ForeColor = Color.White;
+                                    btn.Left = 30;
+                                    btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
+                                    A = A + 1;
+                                    btn.Click += new System.EventHandler(this.notification);
+                                }
+                            }
+                            dataGridView1.AllowUserToAddRows = false;
+                        }
+                    }
+                }
+                sectionBtns = true;
+            }
+        }
+
+        //Dynamic button click - Section buttons, Return Paper work flow
+        private void notification(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            pnlNotification2.BringToFront();
+
+            //filter datagridview1 with the button text choice
+            try
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + btn.Text + "%' and JobNo like '%" + lblJobNo.Text + "%'";
+            }
+            catch (Exception) { }
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                string val = dataGridView1.Rows[i].Cells[11].Value.ToString();
+                if (btn.Text == val)
+                {
+                    lbl4.Text = dataGridView1.Rows[i].Cells[13].Value.ToString();
+                    lbl3.Text = dataGridView1.Rows[i].Cells[16].Value.ToString();
+                }
+            }
+            lbl4.Visible = true;
+            lbl3.Visible = true;
+            lbl2.Visible = true;
+            lbl2.Text = btn.Text;
+            index = 18;
+        }
+
+        private void btnWaitingPlates_Click(object sender, EventArgs e)
+        {
+            // Send email notification
+            //MailMessage mail = new MailMessage("WaitingPlates@colorman.ie", "declan.enright@colorman.ie", "Waiting for Plates", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates");
+            //SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+            //client.Port = 25;
+            //client.EnableSsl = false;
+            //client.Send(mail);
+            //MessageBox.Show("Email Notification Sent");
+
+            MailMessage mail = new MailMessage();
+            string from = "WaitingPlates@colorman.ie";
+            mail.From = new MailAddress(from);
+            mail.To.Add("declan.enright@colorman.ie");
+            //mail.To.Add("prepress@colorman.ie");
+            //mail.To.Add("production@colorman.ie");
+            mail.Subject = "Waiting for Plates";
+            mail.Body = "Waiting for Plates" + "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates";
+            SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+            client.Port = 25;
+            client.EnableSsl = false;
+            client.Send(mail);
+            MessageBox.Show("Email Notification Sent");
+            pnlHome0.BringToFront();
+        }
+
+        private void btnWaitingPaper_Click(object sender, EventArgs e)
+        {
+            // Send email notification
+            MailMessage mail = new MailMessage("WaitingPaper@colorman.ie", "declan.enright@colorman.ie", "Waiting for Paper", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for paper");
+            SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+            client.Port = 25;
+            client.EnableSsl = false;
+            client.Send(mail);
+            MessageBox.Show("Email Notification Sent");
+            pnlHome0.BringToFront();
+        }
+
+        private void btnJobLifted_Click(object sender, EventArgs e)
+        {
+            // Send email notification
+            MailMessage mail = new MailMessage("JobLifted@colorman.ie", "declan.enright@colorman.ie", "Job Lifted", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - Job is lifted");
+            SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+            client.Port = 25;
+            client.EnableSsl = false;
+            client.Send(mail);
+            MessageBox.Show("Email Notification Sent");
+            pnlHome0.BringToFront();
+        }
+
 #endregion
 
     }
