@@ -58,7 +58,7 @@ namespace PalletCard
         DateTime CurrentDate= DateTime.Now;
         decimal maxPercentageShort;
         int notGangedWholePalletValue;
-        string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
+        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
 
         public Home()
         {
@@ -405,15 +405,16 @@ namespace PalletCard
                 }
 
                 for (int i = 0; i < concatenatedTable.Rows.Count - 1; i++)
-                    if (concatenatedTable.Rows[i][30].ToString() == concatenatedTable.Rows[i + 1][30].ToString())
+                    if (concatenatedTable.Rows[i][31].ToString() == concatenatedTable.Rows[i + 1][31].ToString())
                     {
-                        concatenatedTable.Rows[i][31] = 0;
+                        concatenatedTable.Rows[i][32] = 0;
                     }
                     else
-                        concatenatedTable.Rows[i][31] = 1;
-                        concatenatedTable.Rows[concatenatedTable.Rows.Count -1][31] = 1;
+                        concatenatedTable.Rows[i][32] = 1;
+                        concatenatedTable.Rows[concatenatedTable.Rows.Count -1][32] = 1;
 
                 dataGridView1.DataSource = concatenatedTable;
+                dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Descending);
             }
 
 
@@ -3841,6 +3842,10 @@ namespace PalletCard
 
         private void btnPalletCardPrint_Click(object sender, EventArgs e)
         {
+            //foreach (string printerName in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+            //{
+            //    MessageBox.Show(printerName);
+            //}
             btnPalletCardPrint.Visible = false;
             PrintImagePalletCard();
 
@@ -3851,7 +3856,8 @@ namespace PalletCard
             string Filename = "frontBackCombined.pdf";
             // The name of the printer that you want to use
             //string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-            string PrinterName = "ProC5100S";
+            //string PrinterName = "ProC5100S";
+            string PrinterName = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
             // Create an instance of the Printer
             IPrinter printer = new Printer();

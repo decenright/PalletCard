@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbxSearchBox = new System.Windows.Forms.TextBox();
             this.lblJobNo = new System.Windows.Forms.Label();
@@ -305,6 +305,7 @@
             this.CrystalReport11 = new PalletCard.CrystalReport1();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlBackScreen = new System.Windows.Forms.Panel();
+            this.label58 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -369,42 +370,41 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridView1.Location = new System.Drawing.Point(4, 870);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(730, 100);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.Visible = false;
             // 
             // tbxSearchBox
             // 
             this.tbxSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSearchBox.Location = new System.Drawing.Point(22, 71);
+            this.tbxSearchBox.Location = new System.Drawing.Point(36, 128);
             this.tbxSearchBox.Multiline = true;
             this.tbxSearchBox.Name = "tbxSearchBox";
             this.tbxSearchBox.Size = new System.Drawing.Size(241, 71);
@@ -467,11 +467,11 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearch.Location = new System.Drawing.Point(297, 71);
+            this.btnSearch.Location = new System.Drawing.Point(316, 128);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(200, 71);
             this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "Find Job";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -504,6 +504,7 @@
             // 
             // pnlHome0
             // 
+            this.pnlHome0.Controls.Add(this.label58);
             this.pnlHome0.Controls.Add(this.btnFinishPallet);
             this.pnlHome0.Controls.Add(this.tbxFinishPallet);
             this.pnlHome0.Controls.Add(this.btnSearch);
@@ -520,9 +521,9 @@
             this.btnFinishPallet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFinishPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinishPallet.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnFinishPallet.Location = new System.Drawing.Point(309, 512);
+            this.btnFinishPallet.Location = new System.Drawing.Point(316, 531);
             this.btnFinishPallet.Name = "btnFinishPallet";
-            this.btnFinishPallet.Size = new System.Drawing.Size(180, 56);
+            this.btnFinishPallet.Size = new System.Drawing.Size(200, 71);
             this.btnFinishPallet.TabIndex = 4;
             this.btnFinishPallet.Text = "Finish Pallet";
             this.btnFinishPallet.UseVisualStyleBackColor = false;
@@ -531,10 +532,10 @@
             // tbxFinishPallet
             // 
             this.tbxFinishPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxFinishPallet.Location = new System.Drawing.Point(27, 520);
+            this.tbxFinishPallet.Location = new System.Drawing.Point(37, 531);
             this.tbxFinishPallet.Multiline = true;
             this.tbxFinishPallet.Name = "tbxFinishPallet";
-            this.tbxFinishPallet.Size = new System.Drawing.Size(236, 44);
+            this.tbxFinishPallet.Size = new System.Drawing.Size(241, 71);
             this.tbxFinishPallet.TabIndex = 3;
             this.tbxFinishPallet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbxFinishPallet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxFinishPallet_KeyDown);
@@ -547,7 +548,7 @@
             this.pnlHome1.Controls.Add(this.btnPalletCard);
             this.pnlHome1.Location = new System.Drawing.Point(207, 3);
             this.pnlHome1.Name = "pnlHome1";
-            this.pnlHome1.Size = new System.Drawing.Size(528, 867);
+            this.pnlHome1.Size = new System.Drawing.Size(643, 867);
             this.pnlHome1.TabIndex = 4;
             // 
             // btnRejectPaper
@@ -606,7 +607,7 @@
             // 
             this.pnlReturnPaper1.Location = new System.Drawing.Point(207, 4);
             this.pnlReturnPaper1.Name = "pnlReturnPaper1";
-            this.pnlReturnPaper1.Size = new System.Drawing.Size(528, 866);
+            this.pnlReturnPaper1.Size = new System.Drawing.Size(643, 866);
             this.pnlReturnPaper1.TabIndex = 8;
             // 
             // pnlReturnPaper2
@@ -618,7 +619,7 @@
             this.pnlReturnPaper2.Controls.Add(this.lblPalletHeight);
             this.pnlReturnPaper2.Location = new System.Drawing.Point(207, 4);
             this.pnlReturnPaper2.Name = "pnlReturnPaper2";
-            this.pnlReturnPaper2.Size = new System.Drawing.Size(528, 866);
+            this.pnlReturnPaper2.Size = new System.Drawing.Size(643, 866);
             this.pnlReturnPaper2.TabIndex = 1;
             // 
             // label7
@@ -657,7 +658,7 @@
             // 
             this.tbxPalletHeight.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxPalletHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPalletHeight.Location = new System.Drawing.Point(131, 136);
+            this.tbxPalletHeight.Location = new System.Drawing.Point(188, 136);
             this.tbxPalletHeight.Multiline = true;
             this.tbxPalletHeight.Name = "tbxPalletHeight";
             this.tbxPalletHeight.Size = new System.Drawing.Size(275, 59);
@@ -747,7 +748,7 @@
             this.pnlReturnPaper3.Controls.Add(this.lblPrint1);
             this.pnlReturnPaper3.Location = new System.Drawing.Point(204, 2);
             this.pnlReturnPaper3.Name = "pnlReturnPaper3";
-            this.pnlReturnPaper3.Size = new System.Drawing.Size(528, 868);
+            this.pnlReturnPaper3.Size = new System.Drawing.Size(646, 868);
             this.pnlReturnPaper3.TabIndex = 6;
             // 
             // label2
@@ -861,7 +862,7 @@
             this.pnlRejectPaper3.Controls.Add(this.label5);
             this.pnlRejectPaper3.Location = new System.Drawing.Point(204, 2);
             this.pnlRejectPaper3.Name = "pnlRejectPaper3";
-            this.pnlRejectPaper3.Size = new System.Drawing.Size(528, 868);
+            this.pnlRejectPaper3.Size = new System.Drawing.Size(646, 868);
             this.pnlRejectPaper3.TabIndex = 24;
             // 
             // lblPrint14
@@ -990,7 +991,7 @@
             this.pnlRejectPaper2.Controls.Add(this.label4);
             this.pnlRejectPaper2.Location = new System.Drawing.Point(208, 5);
             this.pnlRejectPaper2.Name = "pnlRejectPaper2";
-            this.pnlRejectPaper2.Size = new System.Drawing.Size(528, 862);
+            this.pnlRejectPaper2.Size = new System.Drawing.Size(642, 862);
             this.pnlRejectPaper2.TabIndex = 22;
             // 
             // label3
@@ -1130,7 +1131,7 @@
             this.pnlPalletCard2.Controls.Add(this.flowLayoutPanel1);
             this.pnlPalletCard2.Location = new System.Drawing.Point(208, 5);
             this.pnlPalletCard2.Name = "pnlPalletCard2";
-            this.pnlPalletCard2.Size = new System.Drawing.Size(528, 865);
+            this.pnlPalletCard2.Size = new System.Drawing.Size(642, 865);
             this.pnlPalletCard2.TabIndex = 33;
             // 
             // label17
@@ -1154,7 +1155,7 @@
             // 
             this.pnlRejectPaper1.Location = new System.Drawing.Point(208, 3);
             this.pnlRejectPaper1.Name = "pnlRejectPaper1";
-            this.pnlRejectPaper1.Size = new System.Drawing.Size(528, 864);
+            this.pnlRejectPaper1.Size = new System.Drawing.Size(642, 864);
             this.pnlRejectPaper1.TabIndex = 23;
             // 
             // lblBack1
@@ -1249,7 +1250,7 @@
             this.pnlSignature.Controls.Add(this.SignaturePanel);
             this.pnlSignature.Location = new System.Drawing.Point(206, 2);
             this.pnlSignature.Name = "pnlSignature";
-            this.pnlSignature.Size = new System.Drawing.Size(528, 868);
+            this.pnlSignature.Size = new System.Drawing.Size(644, 868);
             this.pnlSignature.TabIndex = 31;
             // 
             // label25
@@ -1299,7 +1300,7 @@
             // 
             this.pnlPalletCard1.Location = new System.Drawing.Point(208, 5);
             this.pnlPalletCard1.Name = "pnlPalletCard1";
-            this.pnlPalletCard1.Size = new System.Drawing.Size(528, 865);
+            this.pnlPalletCard1.Size = new System.Drawing.Size(642, 865);
             this.pnlPalletCard1.TabIndex = 32;
             // 
             // pnlPalletCard3
@@ -1315,7 +1316,7 @@
             this.pnlPalletCard3.Controls.Add(this.label11);
             this.pnlPalletCard3.Location = new System.Drawing.Point(205, 5);
             this.pnlPalletCard3.Name = "pnlPalletCard3";
-            this.pnlPalletCard3.Size = new System.Drawing.Size(528, 862);
+            this.pnlPalletCard3.Size = new System.Drawing.Size(648, 862);
             this.pnlPalletCard3.TabIndex = 34;
             // 
             // label8
@@ -1333,7 +1334,7 @@
             this.lblPheightPalletCard.BackColor = System.Drawing.Color.LightSlateGray;
             this.lblPheightPalletCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPheightPalletCard.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblPheightPalletCard.Location = new System.Drawing.Point(128, 523);
+            this.lblPheightPalletCard.Location = new System.Drawing.Point(130, 523);
             this.lblPheightPalletCard.Name = "lblPheightPalletCard";
             this.lblPheightPalletCard.Size = new System.Drawing.Size(275, 63);
             this.lblPheightPalletCard.TabIndex = 14;
@@ -1343,7 +1344,7 @@
             // 
             this.tbxSheetCountPalletCard.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxSheetCountPalletCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSheetCountPalletCard.Location = new System.Drawing.Point(128, 419);
+            this.tbxSheetCountPalletCard.Location = new System.Drawing.Point(130, 419);
             this.tbxSheetCountPalletCard.Name = "tbxSheetCountPalletCard";
             this.tbxSheetCountPalletCard.Size = new System.Drawing.Size(275, 38);
             this.tbxSheetCountPalletCard.TabIndex = 13;
@@ -1354,7 +1355,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(126, 482);
+            this.label13.Location = new System.Drawing.Point(130, 482);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(282, 37);
             this.label13.TabIndex = 12;
@@ -1386,7 +1387,7 @@
             this.lblSheetCountPalletCard.BackColor = System.Drawing.Color.LightSlateGray;
             this.lblSheetCountPalletCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSheetCountPalletCard.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblSheetCountPalletCard.Location = new System.Drawing.Point(133, 204);
+            this.lblSheetCountPalletCard.Location = new System.Drawing.Point(130, 204);
             this.lblSheetCountPalletCard.Name = "lblSheetCountPalletCard";
             this.lblSheetCountPalletCard.Size = new System.Drawing.Size(275, 63);
             this.lblSheetCountPalletCard.TabIndex = 9;
@@ -1396,7 +1397,7 @@
             // 
             this.tbxPalletHeightPalletCard.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxPalletHeightPalletCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPalletHeightPalletCard.Location = new System.Drawing.Point(133, 105);
+            this.tbxPalletHeightPalletCard.Location = new System.Drawing.Point(130, 105);
             this.tbxPalletHeightPalletCard.Name = "tbxPalletHeightPalletCard";
             this.tbxPalletHeightPalletCard.Size = new System.Drawing.Size(275, 38);
             this.tbxPalletHeightPalletCard.TabIndex = 8;
@@ -1452,7 +1453,7 @@
             this.pnlPalletCard4.Controls.Add(this.label10);
             this.pnlPalletCard4.Location = new System.Drawing.Point(208, 5);
             this.pnlPalletCard4.Name = "pnlPalletCard4";
-            this.pnlPalletCard4.Size = new System.Drawing.Size(528, 862);
+            this.pnlPalletCard4.Size = new System.Drawing.Size(642, 862);
             this.pnlPalletCard4.TabIndex = 37;
             // 
             // btnExtraInformationPalletCard
@@ -1528,7 +1529,7 @@
             this.pnlPalletCard5.Controls.Add(this.label14);
             this.pnlPalletCard5.Location = new System.Drawing.Point(207, 4);
             this.pnlPalletCard5.Name = "pnlPalletCard5";
-            this.pnlPalletCard5.Size = new System.Drawing.Size(528, 863);
+            this.pnlPalletCard5.Size = new System.Drawing.Size(643, 863);
             this.pnlPalletCard5.TabIndex = 38;
             // 
             // btnScrollUp
@@ -1672,7 +1673,7 @@
             // 
             this.tbxSheetsAffectedBadSection.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxSheetsAffectedBadSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSheetsAffectedBadSection.Location = new System.Drawing.Point(115, 207);
+            this.tbxSheetsAffectedBadSection.Location = new System.Drawing.Point(172, 207);
             this.tbxSheetsAffectedBadSection.Multiline = true;
             this.tbxSheetsAffectedBadSection.Name = "tbxSheetsAffectedBadSection";
             this.tbxSheetsAffectedBadSection.Size = new System.Drawing.Size(275, 40);
@@ -1812,7 +1813,7 @@
             this.pnlPalletCard7.Controls.Add(this.label19);
             this.pnlPalletCard7.Location = new System.Drawing.Point(205, 5);
             this.pnlPalletCard7.Name = "pnlPalletCard7";
-            this.pnlPalletCard7.Size = new System.Drawing.Size(528, 862);
+            this.pnlPalletCard7.Size = new System.Drawing.Size(645, 862);
             this.pnlPalletCard7.TabIndex = 46;
             // 
             // btnPalletFinished
@@ -1874,7 +1875,7 @@
             this.pnlPalletCard6.Controls.Add(this.label16);
             this.pnlPalletCard6.Location = new System.Drawing.Point(205, 5);
             this.pnlPalletCard6.Name = "pnlPalletCard6";
-            this.pnlPalletCard6.Size = new System.Drawing.Size(528, 862);
+            this.pnlPalletCard6.Size = new System.Drawing.Size(645, 862);
             this.pnlPalletCard6.TabIndex = 47;
             // 
             // lblWarning
@@ -2160,7 +2161,7 @@
             this.pnlPalletCard8.Controls.Add(this.btnIsSectionFinishedYes);
             this.pnlPalletCard8.Location = new System.Drawing.Point(208, 5);
             this.pnlPalletCard8.Name = "pnlPalletCard8";
-            this.pnlPalletCard8.Size = new System.Drawing.Size(528, 865);
+            this.pnlPalletCard8.Size = new System.Drawing.Size(642, 865);
             this.pnlPalletCard8.TabIndex = 49;
             // 
             // lblIsSectionFinished
@@ -2208,7 +2209,7 @@
             this.pnlPalletCard9.Controls.Add(this.lblPalletOverBySheets);
             this.pnlPalletCard9.Location = new System.Drawing.Point(205, 5);
             this.pnlPalletCard9.Name = "pnlPalletCard9";
-            this.pnlPalletCard9.Size = new System.Drawing.Size(528, 865);
+            this.pnlPalletCard9.Size = new System.Drawing.Size(645, 865);
             this.pnlPalletCard9.TabIndex = 50;
             // 
             // lblWarningOver
@@ -2268,37 +2269,36 @@
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle29;
             this.dataGridView2.Location = new System.Drawing.Point(3, 973);
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(730, 78);
             this.dataGridView2.TabIndex = 52;
-            this.dataGridView2.Visible = false;
             // 
             // pnlNotification2
             // 
@@ -2308,7 +2308,7 @@
             this.pnlNotification2.Controls.Add(this.btnWaitingPlates);
             this.pnlNotification2.Location = new System.Drawing.Point(207, 3);
             this.pnlNotification2.Name = "pnlNotification2";
-            this.pnlNotification2.Size = new System.Drawing.Size(528, 864);
+            this.pnlNotification2.Size = new System.Drawing.Size(643, 864);
             this.pnlNotification2.TabIndex = 53;
             // 
             // lblNotificationPanel
@@ -2364,7 +2364,7 @@
             // 
             this.pnlNotification1.Location = new System.Drawing.Point(206, 2);
             this.pnlNotification1.Name = "pnlNotification1";
-            this.pnlNotification1.Size = new System.Drawing.Size(528, 868);
+            this.pnlNotification1.Size = new System.Drawing.Size(644, 868);
             this.pnlNotification1.TabIndex = 54;
             // 
             // pnlPalletCard10
@@ -2406,7 +2406,7 @@
             this.pnlPalletCard10.Controls.Add(this.lblSpecialCustomerA1);
             this.pnlPalletCard10.Location = new System.Drawing.Point(205, 3);
             this.pnlPalletCard10.Name = "pnlPalletCard10";
-            this.pnlPalletCard10.Size = new System.Drawing.Size(657, 867);
+            this.pnlPalletCard10.Size = new System.Drawing.Size(648, 867);
             this.pnlPalletCard10.TabIndex = 55;
             // 
             // Posa9NotChecked
@@ -3402,7 +3402,7 @@
             this.pnlPalletCard11.Controls.Add(this.btnSaveMedicalPharmaImage);
             this.pnlPalletCard11.Location = new System.Drawing.Point(210, 3);
             this.pnlPalletCard11.Name = "pnlPalletCard11";
-            this.pnlPalletCard11.Size = new System.Drawing.Size(528, 864);
+            this.pnlPalletCard11.Size = new System.Drawing.Size(640, 864);
             this.pnlPalletCard11.TabIndex = 57;
             // 
             // label46
@@ -3533,15 +3533,27 @@
             // 
             this.pnlBackScreen.Location = new System.Drawing.Point(1, 2);
             this.pnlBackScreen.Name = "pnlBackScreen";
-            this.pnlBackScreen.Size = new System.Drawing.Size(861, 1058);
+            this.pnlBackScreen.Size = new System.Drawing.Size(852, 1058);
             this.pnlBackScreen.TabIndex = 60;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.Location = new System.Drawing.Point(85, 36);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(384, 25);
+            this.label58.TabIndex = 5;
+            this.label58.Text = "Enter Job Number or Pallet Number";
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(850, 1053);
+            this.ClientSize = new System.Drawing.Size(850, 1045);
+            this.Controls.Add(this.pnlHome0);
+            this.Controls.Add(this.pnlPalletCard3);
             this.Controls.Add(this.pnlPalletCard10);
             this.Controls.Add(this.pnlPalletCardPrint);
             this.Controls.Add(this.button1);
@@ -3550,7 +3562,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pnlPalletCard9);
             this.Controls.Add(this.pnlPalletCard6);
-            this.Controls.Add(this.pnlHome0);
             this.Controls.Add(this.pnlPalletCard5);
             this.Controls.Add(this.pnlPalletCard1);
             this.Controls.Add(this.pnlPalletCard2);
@@ -3558,7 +3569,6 @@
             this.Controls.Add(this.pnlNotification1);
             this.Controls.Add(this.pnlHome1);
             this.Controls.Add(this.pnlPalletCard4);
-            this.Controls.Add(this.pnlPalletCard3);
             this.Controls.Add(this.pnlPalletCard8);
             this.Controls.Add(this.pnlPalletCard7);
             this.Controls.Add(this.pnlReturnPaper3);
@@ -3956,6 +3966,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label58;
     }
 }
 
