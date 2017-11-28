@@ -1551,6 +1551,7 @@
             this.btnScrollUp.Size = new System.Drawing.Size(38, 38);
             this.btnScrollUp.TabIndex = 25;
             this.btnScrollUp.UseVisualStyleBackColor = true;
+            this.btnScrollUp.Visible = false;
             this.btnScrollUp.Click += new System.EventHandler(this.btnScrollUp_Click);
             // 
             // btnScrollDown
@@ -1562,6 +1563,7 @@
             this.btnScrollDown.Size = new System.Drawing.Size(38, 38);
             this.btnScrollDown.TabIndex = 24;
             this.btnScrollDown.UseVisualStyleBackColor = true;
+            this.btnScrollDown.Visible = false;
             this.btnScrollDown.Click += new System.EventHandler(this.btnScrollDown_Click);
             // 
             // lblSheetsAffected
@@ -1575,6 +1577,7 @@
             this.lblSheetsAffected.Size = new System.Drawing.Size(65, 16);
             this.lblSheetsAffected.TabIndex = 22;
             this.lblSheetsAffected.Text = "Affected";
+            this.lblSheetsAffected.Visible = false;
             // 
             // lblNumberUpBadQty
             // 
@@ -1587,6 +1590,7 @@
             this.lblNumberUpBadQty.Size = new System.Drawing.Size(36, 16);
             this.lblNumberUpBadQty.TabIndex = 15;
             this.lblNumberUpBadQty.Text = "Bad";
+            this.lblNumberUpBadQty.Visible = false;
             // 
             // lblNumberUp
             // 
@@ -1599,6 +1603,7 @@
             this.lblNumberUp.Size = new System.Drawing.Size(86, 16);
             this.lblNumberUp.TabIndex = 14;
             this.lblNumberUp.Text = "Number Up";
+            this.lblNumberUp.Visible = false;
             // 
             // lblStockCode
             // 
@@ -1611,6 +1616,7 @@
             this.lblStockCode.Size = new System.Drawing.Size(139, 16);
             this.lblStockCode.TabIndex = 21;
             this.lblStockCode.Text = "Stock Code/JobNo";
+            this.lblStockCode.Visible = false;
             // 
             // pnlBadSectionGangHeader
             // 
@@ -1619,6 +1625,7 @@
             this.pnlBadSectionGangHeader.Name = "pnlBadSectionGangHeader";
             this.pnlBadSectionGangHeader.Size = new System.Drawing.Size(473, 43);
             this.pnlBadSectionGangHeader.TabIndex = 23;
+            this.pnlBadSectionGangHeader.Visible = false;
             // 
             // dataGridView4
             // 
@@ -1678,6 +1685,7 @@
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(473, 235);
             this.flowLayoutPanel2.TabIndex = 12;
+            this.flowLayoutPanel2.Visible = false;
             // 
             // tbxSheetsAffectedBadSection
             // 

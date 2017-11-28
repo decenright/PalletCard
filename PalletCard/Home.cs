@@ -29,7 +29,7 @@ namespace PalletCard
         List<string> numberBadList = new List<string>(0);
         List<string> sheetsAffectedList = new List<string>(0);
         List<int> wholePalletList = new List<int>(0);
-        int resourceID = 1;
+        int resourceID = 6;
         int index;
         bool sectionBtns;
         bool sigBtns;
@@ -2171,6 +2171,17 @@ namespace PalletCard
                     tbxSheetsAffectedBadSection.Visible = false;
                     lblSheets_Affected.Visible = false;
 
+                    flowLayoutPanel2.Visible = true;
+                    btnScrollUp.Visible = true;
+                    btnScrollDown.Visible = true;
+                    pnlBadSectionGangHeader.Visible = true;
+                    lblStockCode.Visible = true;
+                    lblNumberUp.Visible = true;
+                    lblNumberUpBadQty.Visible = true;
+                    lblSheetsAffected.Visible = true;
+                    dataGridView4.Visible = true;
+                    dataGridView3.Visible = true;
+
                     // Filter for Ganged jobs
                     if (Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) != 0 & Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) != 2)
                     {
@@ -2456,14 +2467,6 @@ namespace PalletCard
                         badSectionLbls = true;
                     }                
                 }
-                //flowLayoutPanel2.Visible = false;
-                //btnScrollUp.Visible = false;
-                //btnScrollDown.Visible = false;
-                //pnlBadSectionGangHeader.Visible = false;
-                //lblStockCode.Visible = false;
-                //lblNumberUp.Visible = false;
-                //lblNumberUpBadQty.Visible = false;
-                //lblSheetsAffected.Visible = false;
             }
 #endregion
 
