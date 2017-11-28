@@ -29,7 +29,7 @@ namespace PalletCard
         List<string> numberBadList = new List<string>(0);
         List<string> sheetsAffectedList = new List<string>(0);
         List<int> wholePalletList = new List<int>(0);
-        int resourceID = 6;
+        int resourceID = 1;
         int index;
         bool sectionBtns;
         bool sigBtns;
@@ -59,6 +59,8 @@ namespace PalletCard
         decimal maxPercentageShort;
         int notGangedWholePalletValue;
         string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        string defaultEmail = "martin@colorman.ie";
+        //string defaultEmail = "declan.enright@colorman.ie";
 
         public Home()
         {
@@ -363,8 +365,15 @@ namespace PalletCard
             }
         }
 
+        private void Home_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //exit application when form is closed
+            Application.Exit();
+        }
+
         private void Home_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             //string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
             string CommandText = "SELECT * FROM app_PalletOperations where resourceID = '" + resourceID + "'";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
@@ -542,13 +551,13 @@ namespace PalletCard
                 }
 
                 for (int i = 0; i < concatenatedTable.Rows.Count - 1; i++)
-                    if (concatenatedTable.Rows[i][30].ToString() == concatenatedTable.Rows[i + 1][30].ToString())
+                    if (concatenatedTable.Rows[i][31].ToString() == concatenatedTable.Rows[i + 1][31].ToString())
                     {
-                        concatenatedTable.Rows[i][31] = 0;
+                        concatenatedTable.Rows[i][32] = 0;
                     }
                     else
-                        concatenatedTable.Rows[i][31] = 1;
-                        concatenatedTable.Rows[concatenatedTable.Rows.Count - 1][31] = 1;
+                        concatenatedTable.Rows[i][32] = 1;
+                        concatenatedTable.Rows[concatenatedTable.Rows.Count - 1][32] = 1;
 
                 dataGridView1.DataSource = concatenatedTable;
             }
@@ -2133,10 +2142,10 @@ namespace PalletCard
                 if (numberUp == 0 & Convert.ToInt32(dataGridView1.Rows[0].Cells[14].Value) == 0)
                 {
                     // Parse the NumberUp value from Section Name or Expr1 - This regex finds continuous digits before "up"
-                    if (dataGridView1.Rows[0].Cells[11].Value.ToString().Contains("up "))
+                    if (dataGridView1.Rows[0].Cells[11].Value.ToString().Contains("up"))
                     {
                         String text = dataGridView1.Rows[0].Cells[11].Value.ToString();
-                        foreach (Match match in Regex.Matches(text, @"(\d+)up "))
+                        foreach (Match match in Regex.Matches(text, @"(\d+)up"))
                         {
                             //MessageBox.Show(match.Groups[1].Value);
                             numberUp = Convert.ToInt32(match.Groups[1].Value);
@@ -2145,7 +2154,7 @@ namespace PalletCard
                     else
                     {
                         String text1 = dataGridView1.Rows[0].Cells[15].Value.ToString();
-                        foreach (Match match in Regex.Matches(text1, @"(\d+)up "))
+                        foreach (Match match in Regex.Matches(text1, @"(\d+)up"))
                         {
                             //MessageBox.Show(match.Groups[1].Value);
                             numberUp = Convert.ToInt32(match.Groups[1].Value);
@@ -2156,8 +2165,9 @@ namespace PalletCard
                 qtyRequired = Convert.ToInt32(dataGridView1.Rows[0].Cells[26].Value);
 
                 // IF NUMBER UP != 1 SHOW GANG PANEL AND HIDE SHEETS AFFECTED BOX
-                if (numberUp != 1)
-                {
+                //if (numberUp != 1)
+                    if (numberUp > 1)
+                    {
                     tbxSheetsAffectedBadSection.Visible = false;
                     lblSheets_Affected.Visible = false;
 
@@ -2444,8 +2454,16 @@ namespace PalletCard
                             }
                         }
                         badSectionLbls = true;
-                    }
+                    }                
                 }
+                //flowLayoutPanel2.Visible = false;
+                //btnScrollUp.Visible = false;
+                //btnScrollDown.Visible = false;
+                //pnlBadSectionGangHeader.Visible = false;
+                //lblStockCode.Visible = false;
+                //lblNumberUp.Visible = false;
+                //lblNumberUpBadQty.Visible = false;
+                //lblSheetsAffected.Visible = false;
             }
 #endregion
 
@@ -2472,10 +2490,10 @@ namespace PalletCard
                 if (numberUp == 0 & Convert.ToInt32(dataGridView2.Rows[0].Cells[23].Value) == 0)
                 {
                     // Parse the NumberUp value from Section Name or Expr1 - This regex finds continuous digits before "up"
-                    if (dataGridView2.Rows[0].Cells[20].Value.ToString().Contains("up "))
+                    if (dataGridView2.Rows[0].Cells[20].Value.ToString().Contains("up"))
                     {
                         String text = dataGridView2.Rows[0].Cells[20].Value.ToString();
-                        foreach (Match match in Regex.Matches(text, @"(\d+)up "))
+                        foreach (Match match in Regex.Matches(text, @"(\d+)up"))
                         {
                             //MessageBox.Show(match.Groups[1].Value);
                             numberUp = Convert.ToInt32(match.Groups[1].Value);
@@ -2484,7 +2502,7 @@ namespace PalletCard
                     else
                     {
                         String text1 = dataGridView2.Rows[0].Cells[24].Value.ToString();
-                        foreach (Match match in Regex.Matches(text1, @"(\d+)up "))
+                        foreach (Match match in Regex.Matches(text1, @"(\d+)up"))
                         {
                             //MessageBox.Show(match.Groups[1].Value);
                             numberUp = Convert.ToInt32(match.Groups[1].Value);
@@ -2495,7 +2513,8 @@ namespace PalletCard
                 qtyRequired = Convert.ToInt32(dataGridView2.Rows[0].Cells[34].Value);
 
                 // IF NUMBER UP != 1 SHOW GANG PANEL AND HIDE SHEETS AFFECTED BOX
-                if (numberUp != 1)
+                //if (numberUp != 1)
+                if (numberUp > 1)
                 {
                     tbxSheetsAffectedBadSection.Visible = false;
                     lblSheets_Affected.Visible = false;
@@ -3578,7 +3597,7 @@ namespace PalletCard
                     }
 
                     // Send email notification
-                    MailMessage mail = new MailMessage("PalletShort@colorman.ie", "declan.enright@colorman.ie", "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + "- has " + shortBy + " insufficient sheets");
+                    MailMessage mail = new MailMessage("PalletShort@colorman.ie", defaultEmail , "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + "- has " + shortBy + " insufficient sheets");
                     SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                     client.Port = 25;
                     client.EnableSsl = false;
@@ -3623,7 +3642,7 @@ namespace PalletCard
                     }
 
                     // Send email notification
-                    MailMessage mail = new MailMessage("PalletOver@colorman.ie", "declan.enright@colorman.ie", "Pallet Over", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + " - is over by " + overBy);
+                    MailMessage mail = new MailMessage("PalletOver@colorman.ie", defaultEmail , "Pallet Over", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + " - is over by " + overBy);
                     SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                     client.Port = 25;
                     client.EnableSsl = false;
@@ -4347,7 +4366,7 @@ namespace PalletCard
         private void btnWaitingPlates_Click(object sender, EventArgs e)
         {
             // Send email notification
-            //MailMessage mail = new MailMessage("WaitingPlates@colorman.ie", "declan.enright@colorman.ie", "Waiting for Plates", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates");
+            //MailMessage mail = new MailMessage("WaitingPlates@colorman.ie", defaultEmail , "Waiting for Plates", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates");
             //SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
             //client.Port = 25;
             //client.EnableSsl = false;
@@ -4357,7 +4376,7 @@ namespace PalletCard
             MailMessage mail = new MailMessage();
             string from = "WaitingPlates@colorman.ie";
             mail.From = new MailAddress(from);
-            mail.To.Add("declan.enright@colorman.ie");
+            mail.To.Add(defaultEmail);
             //mail.To.Add("prepress@colorman.ie");
             //mail.To.Add("production@colorman.ie");
             mail.Subject = "Waiting for Plates";
@@ -4373,7 +4392,7 @@ namespace PalletCard
         private void btnWaitingPaper_Click(object sender, EventArgs e)
         {
             // Send email notification
-            MailMessage mail = new MailMessage("WaitingPaper@colorman.ie", "declan.enright@colorman.ie", "Waiting for Paper", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for paper");
+            MailMessage mail = new MailMessage("WaitingPaper@colorman.ie", defaultEmail , "Waiting for Paper", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for paper");
             SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
             client.Port = 25;
             client.EnableSsl = false;
@@ -4385,7 +4404,7 @@ namespace PalletCard
         private void btnJobLifted_Click(object sender, EventArgs e)
         {
             // Send email notification
-            MailMessage mail = new MailMessage("JobLifted@colorman.ie", "declan.enright@colorman.ie", "Job Lifted", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - Job is lifted");
+            MailMessage mail = new MailMessage("JobLifted@colorman.ie", defaultEmail , "Job Lifted", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - Job is lifted");
             SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
             client.Port = 25;
             client.EnableSsl = false;
@@ -4394,7 +4413,8 @@ namespace PalletCard
             pnlHome0.BringToFront();
         }
 
-#endregion
+        #endregion
+
 
     }
 }
