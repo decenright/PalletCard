@@ -1380,7 +1380,7 @@ namespace PalletCard
 //**************************************************************************************************** 
 //  PALLET CARD
 //****************************************************************************************************
-#region PalletCard
+#region PalletCard Search
 
         private void btnPalletCard_Click(object sender, EventArgs e)
         {
@@ -1764,6 +1764,9 @@ namespace PalletCard
             }
             catch (Exception) { }
         }
+#endregion
+
+#region Pallet Height Sheet Count
 
 // Pallet Height textBox calculation for Pallet Card
         private void tbxPalletHeightPalletCard_TextChanged(object sender, EventArgs e)
@@ -1788,7 +1791,7 @@ namespace PalletCard
             }
         }
 
-        // Sheet Count textBox calculation for Pallet Card
+// Sheet Count textBox calculation for Pallet Card
         private void tbxSheetCountPalletCard_TextChanged(object sender, EventArgs e)
         {
             try
@@ -1847,8 +1850,12 @@ namespace PalletCard
                 index = 11;
                 }
         }
+#endregion
 
-        // GANGPRO ROUTINE
+#region Gang
+
+// GANGPRO ROUTINE
+
         private void queryGangpro()
         {
             //string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
@@ -2983,6 +2990,10 @@ namespace PalletCard
             index = 14;
         }
 
+        #endregion
+
+#region Finish Pallet or Cancel
+
         private void btnFinishPalletContinue_Click(object sender, EventArgs e)
         {
 
@@ -3114,7 +3125,9 @@ namespace PalletCard
             }
             index = 0;
         }
+#endregion
 
+#region Backup/Varnish
         private void btnBackupRequired_Click(object sender, EventArgs e)
         {
             // Regular line
@@ -3416,6 +3429,9 @@ namespace PalletCard
             btnCancel.Visible = false;
             index = 17;
         }
+#endregion
+
+#region Check Overs and Print
 
         private void reQueryDataGridView2()
         {
@@ -4093,7 +4109,6 @@ namespace PalletCard
             // QtyRequired
             lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
         }
-
 #endregion
 
 #region Posa Checkboxes
