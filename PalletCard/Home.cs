@@ -59,8 +59,8 @@ namespace PalletCard
         decimal maxPercentageShort;
         int notGangedWholePalletValue;
         string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        string defaultEmail = "martin@colorman.ie";
-        //string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultEmail = "martin@colorman.ie";
+        string defaultEmail = "declan.enright@colorman.ie";
 
         public Home()
         {
@@ -1766,11 +1766,141 @@ namespace PalletCard
             }
             catch (Exception) { }
         }
+
+        private void tbxFinishPallet_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
+                string CommandText = "SELECT * FROM Log where AutoNum = '" + tbxFinishPallet.Text + "'";
+                OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+                OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+                OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+                myAdapter.SelectCommand = myCommand;
+                DataSet palletCardData = new DataSet();
+                try
+                {
+                    myConnection.Open();
+                    myAdapter.Fill(palletCardData);
+                }
+                catch (Exception ex)
+                {
+                    throw (ex);
+                }
+                finally
+                {
+                    myConnection.Close();
+                }
+                using (DataTable palletCardLog = new DataTable())
+                {
+                    myAdapter.Fill(palletCardLog);
+                    dataGridView2.DataSource = palletCardLog;
+                }
+                pnlPalletCard3.BringToFront();
+
+                try
+                {
+                    if (dataGridView2.Rows[0].Cells[25].Value != null)
+                    {
+                        lbl2.Text = dataGridView2.Rows[0].Cells[25].Value.ToString();
+                    }
+                    else
+                    {
+                        lbl2.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Please enter a valid Job Number");
+                    pnlHome0.BringToFront();
+                    tbxFinishPallet.Text = "";
+                    return;
+                }
+
+                lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
+                lblJobNo.Visible = true;
+                lblPress.Text = "XL106";
+                lblPress.Visible = true;
+                lbl1.Text = "Pallet Card";
+                lbl1.Visible = true;
+                lbl2.Visible = true;
+                lbl3.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value.ToString();
+                lbl3.Visible = true;
+                // WorkingSize
+                lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
+                // QtyRequired
+                lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
+            }
+        }
+
+        private void btnFinishPallet_Click(object sender, EventArgs e)
+        {
+            string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
+            string CommandText = "SELECT * FROM Log where AutoNum = '" + tbxFinishPallet.Text + "'";
+            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+            myAdapter.SelectCommand = myCommand;
+            DataSet palletCardData = new DataSet();
+            try
+            {
+                myConnection.Open();
+                myAdapter.Fill(palletCardData);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            using (DataTable palletCardLog = new DataTable())
+            {
+                myAdapter.Fill(palletCardLog);
+                dataGridView2.DataSource = palletCardLog;
+            }
+            pnlPalletCard3.BringToFront();
+
+            try
+            {
+                if (dataGridView2.Rows[0].Cells[25].Value != null)
+                {
+                    lbl2.Text = dataGridView2.Rows[0].Cells[25].Value.ToString();
+                }
+                else
+                {
+                    lbl2.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please enter a valid Job Number");
+                pnlHome0.BringToFront();
+                tbxFinishPallet.Text = "";
+                return;
+            }
+
+            lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
+            lblJobNo.Visible = true;
+            lblPress.Text = "XL106";
+            lblPress.Visible = true;
+            lbl1.Text = "Pallet Card";
+            lbl1.Visible = true;
+            lbl2.Visible = true;
+            lbl3.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value.ToString();
+            lbl3.Visible = true;
+            // WorkingSize
+            lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
+            // QtyRequired
+            lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
+        }
+
 #endregion
 
 #region Pallet Height Sheet Count
 
-// Pallet Height textBox calculation for Pallet Card
+        // Pallet Height textBox calculation for Pallet Card
         private void tbxPalletHeightPalletCard_TextChanged(object sender, EventArgs e)
         {
             try
@@ -3063,7 +3193,6 @@ namespace PalletCard
                     btnCancel.Visible = false;
                 }
             }
-
         }
 
         private void btnPalletFinished_Click(object sender, EventArgs e)
@@ -3494,37 +3623,65 @@ namespace PalletCard
                 myAdapter.Fill(palletCardLog);
                 dataGridView2.DataSource = palletCardLog;
             }
-            // If This job Number has not yet been recorded in the database
-            if (dataGridView2.Rows.Count == 0)
-            {
-                PalletNumber = 1;
-                dataGridView2.AllowUserToAddRows = true;
-            }
-            // Otherwise check if any previous Pallet Numbers("Pallet Card" Routine entries) and record as the next sequential Pallet Number
-            else
-            {
-                try
-                {
-                    // (There could be entries for this job Number but for Return or reject Paper)
-                    ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "Routine like 'Pallet Card'";
-                }
-                catch (Exception) { }
 
-                // if PalletNumber field is empty
-                if (dataGridView2.Rows[0].Cells[4].Value as string == "")
+
+
+
+
+                // If This job Number has not yet been recorded in the database
+                if (dataGridView2.Rows.Count == 0)
                 {
                     PalletNumber = 1;
+                    dataGridView2.AllowUserToAddRows = true;
                 }
+                // Otherwise check if any previous Pallet Numbers("Pallet Card" Routine entries) and record as the next sequential Pallet Number
                 else
                 {
-                    this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
-                    if (dataGridView2.RowCount == 0)
+                    try
+                    {
+                        // (There could be entries for this job Number but for Return or reject Paper)
+                        ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "Routine like 'Pallet Card'";
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+                    // if PalletNumber field is empty
+                    if (dataGridView2.Rows[0].Cells[4].Value as string == "")
+                    {
+                        PalletNumber = 1;
+                    }
+
+                    // Do not increment PalletNumber for a scanned line
+                    else if(Convert.ToInt32(dataGridView2.Rows[0].Cells[6].Value) == 2 || Convert.ToInt32(dataGridView2.Rows[0].Cells[6].Value) == 1)
+                    {
+                        this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
+                        if (dataGridView2.RowCount == 0)
                         {
-                        PalletNumber = 0;
+                            PalletNumber = 0;
                         }
-                    PalletNumber = (int)dataGridView2.Rows[0].Cells[4].Value + 1;
+                        PalletNumber = (int)dataGridView2.Rows[0].Cells[4].Value;
+                    }
+
+                    // Increment PalletNumber for a non-scanned line
+                    else
+                    {
+                        this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
+                        if (dataGridView2.RowCount == 0)
+                        {
+                           PalletNumber = 0;
+                        }
+                        PalletNumber = (int)dataGridView2.Rows[0].Cells[4].Value + 1;
+                    }
                 }
-            }
+            
+
+                
+
+
+
+
+
 
             //SAVE TO DATABASE
             CurrentDate = DateTime.Now;
@@ -4003,135 +4160,7 @@ namespace PalletCard
                 }
             }
         }
-
-        private void tbxFinishPallet_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
-                string CommandText = "SELECT * FROM Log where AutoNum = '" + tbxFinishPallet.Text + "'";
-                OdbcConnection myConnection = new OdbcConnection(ConnectionString);
-                OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-                OdbcDataAdapter myAdapter = new OdbcDataAdapter();
-                myAdapter.SelectCommand = myCommand;
-                DataSet palletCardData = new DataSet();
-                try
-                {
-                    myConnection.Open();
-                    myAdapter.Fill(palletCardData);
-                }
-                catch (Exception ex)
-                {
-                    throw (ex);
-                }
-                finally
-                {
-                    myConnection.Close();
-                }
-                using (DataTable palletCardLog = new DataTable())
-                {
-                    myAdapter.Fill(palletCardLog);
-                    dataGridView2.DataSource = palletCardLog;
-                }
-                pnlPalletCard3.BringToFront();
-
-                try
-                {
-                    if (dataGridView2.Rows[0].Cells[25].Value != null)
-                    {
-                        lbl2.Text = dataGridView2.Rows[0].Cells[25].Value.ToString();
-                    }
-                    else
-                    {
-                        lbl2.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Please enter a valid Job Number");
-                    pnlHome0.BringToFront();
-                    tbxFinishPallet.Text = "";
-                    return;
-                }
-
-                lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
-                lblJobNo.Visible = true;
-                lblPress.Text = "XL106";
-                lblPress.Visible = true;
-                lbl1.Text = "Pallet Card";
-                lbl1.Visible = true;
-                lbl2.Visible = true;
-                lbl3.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value.ToString();
-                lbl3.Visible = true;
-                // WorkingSize
-                lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
-                // QtyRequired
-                lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
-            }
-        }
-
-        private void btnFinishPallet_Click(object sender, EventArgs e)
-        {
-            string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
-            string CommandText = "SELECT * FROM Log where AutoNum = '" + tbxFinishPallet.Text + "'";
-            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
-            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
-            myAdapter.SelectCommand = myCommand;
-            DataSet palletCardData = new DataSet();
-            try
-            {
-                myConnection.Open();
-                myAdapter.Fill(palletCardData);
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-            using (DataTable palletCardLog = new DataTable())
-            {
-                myAdapter.Fill(palletCardLog);
-                dataGridView2.DataSource = palletCardLog;
-            }
-            pnlPalletCard3.BringToFront();
-
-            try
-            { 
-                if (dataGridView2.Rows[0].Cells[25].Value != null)
-                {
-                    lbl2.Text = dataGridView2.Rows[0].Cells[25].Value.ToString();
-                }
-                else
-                {
-                    lbl2.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Please enter a valid Job Number");
-                pnlHome0.BringToFront();
-                tbxFinishPallet.Text = "";
-                return;
-            }
-
-            lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
-            lblJobNo.Visible = true;
-            lblPress.Text = "XL106";
-            lblPress.Visible = true;
-            lbl1.Text = "Pallet Card";
-            lbl1.Visible = true;
-            lbl2.Visible = true;
-            lbl3.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value.ToString();
-            lbl3.Visible = true;
-            // WorkingSize
-            lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
-            // QtyRequired
-            lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
-        }
+        
 #endregion
 
 #region Posa Checkboxes
