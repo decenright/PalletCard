@@ -365,6 +365,7 @@ namespace PalletCard
             }
         }
 
+        // This is for splash screen
         private void Home_FormClosed(object sender, FormClosedEventArgs e)
         {
             //exit application when form is closed
@@ -594,6 +595,7 @@ namespace PalletCard
             numberUp = 0;
             flowLayoutPanel2.Visible = true;
             pnlBadSectionGangHeader.Visible = true;
+            tbxFinishPallet.Text = "";
             index = 0;
         }
 
@@ -4033,13 +4035,23 @@ namespace PalletCard
                 }
                 pnlPalletCard3.BringToFront();
 
-                if (dataGridView2.Rows[0].Cells[25].Value != null)
+                try
                 {
-                    lbl2.Text = dataGridView2.Rows[0].Cells[25].Value.ToString();
+                    if (dataGridView2.Rows[0].Cells[25].Value != null)
+                    {
+                        lbl2.Text = dataGridView2.Rows[0].Cells[25].Value.ToString();
+                    }
+                    else
+                    {
+                        lbl2.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    lbl2.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
+                    MessageBox.Show("Please enter a valid Job Number");
+                    pnlHome0.BringToFront();
+                    tbxFinishPallet.Text = "";
+                    return;
                 }
 
                 lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
@@ -4087,13 +4099,23 @@ namespace PalletCard
             }
             pnlPalletCard3.BringToFront();
 
-            if (dataGridView2.Rows[0].Cells[25].Value != null)
-            {
-                lbl2.Text = dataGridView2.Rows[0].Cells[25].Value.ToString();
+            try
+            { 
+                if (dataGridView2.Rows[0].Cells[25].Value != null)
+                {
+                    lbl2.Text = dataGridView2.Rows[0].Cells[25].Value.ToString();
+                }
+                else
+                {
+                    lbl2.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
+                }
             }
-            else
+            catch (Exception)
             {
-                lbl2.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
+                MessageBox.Show("Please enter a valid Job Number");
+                pnlHome0.BringToFront();
+                tbxFinishPallet.Text = "";
+                return;
             }
 
             lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
