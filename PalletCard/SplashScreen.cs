@@ -40,6 +40,5 @@ namespace PalletCard
             //hide this form
             this.Hide();
         }
-
     }
 }

@@ -21,7 +21,19 @@ namespace PalletCard
 {
     public partial class Home : Form
     {
-#region Global
+        #region Global
+
+        // SETTINGS
+        int resourceID = 6;
+        string press = "XL106";
+        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "martin@colorman.ie";
+        string defaultEmail = "declan.enright@colorman.ie";
+        string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        //string defaultPrinter = "ProC5100S";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+
         List<Panel> listPanel = new List<Panel>();
         List<string> disableSectionButtons = new List<string>();
         List<string> allSections = new List<string>();
@@ -29,7 +41,6 @@ namespace PalletCard
         List<string> numberBadList = new List<string>(0);
         List<string> sheetsAffectedList = new List<string>(0);
         List<int> wholePalletList = new List<int>(0);
-        int resourceID = 6;
         int index;
         bool sectionBtns;
         bool sigBtns;
@@ -58,9 +69,7 @@ namespace PalletCard
         DateTime CurrentDate= DateTime.Now;
         decimal maxPercentageShort;
         int notGangedWholePalletValue;
-        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "martin@colorman.ie";
-        string defaultEmail = "declan.enright@colorman.ie";
+        Boolean signed = false;
 
         public Home()
         {
@@ -427,7 +436,6 @@ namespace PalletCard
                 dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Descending);
             }
 
-
             listPanel.Add(pnlHome0);
             listPanel.Add(pnlHome1);
             listPanel.Add(pnlReturnPaper1);
@@ -440,7 +448,7 @@ namespace PalletCard
             listPanel[4] = pnlReturnPaper3;
             listPanel[0].BringToFront();
             btnBack.Visible = false;
-            this.ActiveControl = tbxSearchBox;
+            //tbxSearchBox.Select();
         }
 
         private void Search()
@@ -454,7 +462,7 @@ namespace PalletCard
                     //int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
                     if (dataGridView1.Rows[0].Cells[0].Value != null)
                     {
-                        lblPress.Text = "XL106";
+                        lblPress.Text = press;
                         lblPress.Visible = true;
                         pnlHome1.BringToFront();
                     }
@@ -1059,7 +1067,6 @@ namespace PalletCard
         Pen pen = new Pen(Color.Black);
         Glyph glyph = null;
         Signature signature = new Signature();
-        //private object tb1;
 
         private void SignaturePanel_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1076,6 +1083,7 @@ namespace PalletCard
                     Line line = new Line(startPoint, endPoint);
                     glyph.Lines.Add(line);
                     DrawLine(line);
+                    signed = true;
                 }
             }
         }
@@ -1129,16 +1137,19 @@ namespace PalletCard
 
         public void SaveSignatureImageToFile()
         {
-            Bitmap bmp = new Bitmap(this.SignaturePanel.Width, this.SignaturePanel.Height);
-            Graphics graphics = Graphics.FromImage(bmp);
-            System.Drawing.Rectangle rect = SignaturePanel.RectangleToScreen(SignaturePanel.ClientRectangle);
-            graphics.CopyFromScreen(rect.Location, Point.Empty, SignaturePanel.Size);
-            bmp.Save("P:/PalletCard/Signatures/ " + autoNum + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                Bitmap bmp = new Bitmap(this.SignaturePanel.Width, this.SignaturePanel.Height);
+                Graphics graphics = Graphics.FromImage(bmp);
+                System.Drawing.Rectangle rect = SignaturePanel.RectangleToScreen(SignaturePanel.ClientRectangle);
+                graphics.CopyFromScreen(rect.Location, Point.Empty, SignaturePanel.Size);
+                bmp.Save("P:/PalletCard/Signatures/ " + autoNum + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
         }
 
         private void btnQATravellerBlurb_Click(object sender, EventArgs e)
         {
-            SaveSignatureImageToFile();
+            if (signed == true)
+            {
+                SaveSignatureImageToFile();
             // Requery the data to refresh dataGridView2 with the newly added PalletNumber and barCode
             string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
             string CommandText = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
@@ -1206,12 +1217,21 @@ namespace PalletCard
             lblPC_Sig.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value as string;
             lblPC_Sig.Visible = true;
             btnCancel.Visible = false;
+            signed = false;
             index = 17;
-        }
+
+            }
+                else
+                {
+                    MessageBox.Show("Please sign");
+                    pnlSignature.BringToFront();
+                    return;             
+                }
+        }       
 
         #endregion
 
-#region POSA Signature
+        #region POSA Signature
 
         private void SignaturePanelPosa_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1819,7 +1839,7 @@ namespace PalletCard
 
                 lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
                 lblJobNo.Visible = true;
-                lblPress.Text = "XL106";
+                lblPress.Text = press;
                 lblPress.Visible = true;
                 lbl1.Text = "Pallet Card";
                 lbl1.Visible = true;
@@ -1883,7 +1903,7 @@ namespace PalletCard
 
             lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
             lblJobNo.Visible = true;
-            lblPress.Text = "XL106";
+            lblPress.Text = press;
             lblPress.Visible = true;
             lbl1.Text = "Pallet Card";
             lbl1.Visible = true;
@@ -4040,6 +4060,7 @@ namespace PalletCard
 
         private void btnPalletCardPrint_Click(object sender, EventArgs e)
         {
+            // Test to List Local Printers
             //foreach (string printerName in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
             //{
             //    MessageBox.Show(printerName);
@@ -4053,9 +4074,7 @@ namespace PalletCard
             // The name of the PDF that will be printed (just to be shown in the print queue)
             string Filename = "frontBackCombined.pdf";
             // The name of the printer that you want to use
-            //string PrinterName = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-            //string PrinterName = "ProC5100S";
-            string PrinterName = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+            string PrinterName = defaultPrinter;
 
             // Create an instance of the Printer
             IPrinter printer = new Printer();
