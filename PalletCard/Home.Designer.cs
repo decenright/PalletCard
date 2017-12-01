@@ -303,9 +303,9 @@
             this.btnSaveMedicalPharmaImage = new System.Windows.Forms.Button();
             this.pnlPalletCardBack = new System.Windows.Forms.Panel();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.CrystalReport11 = new PalletCard.CrystalReport1();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlBackScreen = new System.Windows.Forms.Panel();
+            this.CrystalReport11 = new PalletCard.CrystalReport1();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -519,11 +519,11 @@
             // 
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label58.Location = new System.Drawing.Point(85, 36);
+            this.label58.Location = new System.Drawing.Point(155, 37);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(384, 25);
+            this.label58.Size = new System.Drawing.Size(236, 25);
             this.label58.TabIndex = 5;
-            this.label58.Text = "Enter Job Number or Pallet Number";
+            this.label58.Text = "Colorman Pallet Card";
             // 
             // btnFinishPallet
             // 
@@ -2466,7 +2466,7 @@
             this.panel3.Controls.Add(this.textBox3);
             this.panel3.Controls.Add(this.textBox4);
             this.panel3.Controls.Add(this.textBox5);
-            this.panel3.Location = new System.Drawing.Point(15, 255);
+            this.panel3.Location = new System.Drawing.Point(15, 276);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(564, 49);
             this.panel3.TabIndex = 93;
@@ -2477,7 +2477,7 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox3.Location = new System.Drawing.Point(105, 1);
+            this.textBox3.Location = new System.Drawing.Point(105, 22);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(99, 46);
@@ -2490,7 +2490,7 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox4.Location = new System.Drawing.Point(212, 1);
+            this.textBox4.Location = new System.Drawing.Point(212, 22);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(53, 46);
@@ -2503,7 +2503,7 @@
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox5.Location = new System.Drawing.Point(296, 1);
+            this.textBox5.Location = new System.Drawing.Point(296, 22);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(99, 46);
@@ -2774,15 +2774,17 @@
             this.btnClearSignaturePosa.TabIndex = 39;
             this.btnClearSignaturePosa.Text = "Clear";
             this.btnClearSignaturePosa.UseVisualStyleBackColor = true;
+            this.btnClearSignaturePosa.Visible = false;
             this.btnClearSignaturePosa.Click += new System.EventHandler(this.ClearSignaturePosa_Click);
             // 
             // SignaturePanelPosa
             // 
             this.SignaturePanelPosa.BackColor = System.Drawing.Color.Gainsboro;
-            this.SignaturePanelPosa.Location = new System.Drawing.Point(27, 694);
+            this.SignaturePanelPosa.Location = new System.Drawing.Point(27, 711);
             this.SignaturePanelPosa.Name = "SignaturePanelPosa";
-            this.SignaturePanelPosa.Size = new System.Drawing.Size(446, 99);
+            this.SignaturePanelPosa.Size = new System.Drawing.Size(446, 42);
             this.SignaturePanelPosa.TabIndex = 37;
+            this.SignaturePanelPosa.Visible = false;
             this.SignaturePanelPosa.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelPosa_MouseDown);
             this.SignaturePanelPosa.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelPosa_MouseMove);
             this.SignaturePanelPosa.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelPosa_MouseUp);
@@ -2816,7 +2818,7 @@
             this.panel1.Controls.Add(this.label23);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.PosaGripChecked);
-            this.panel1.Location = new System.Drawing.Point(15, 255);
+            this.panel1.Location = new System.Drawing.Point(15, 277);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(564, 408);
             this.panel1.TabIndex = 36;
@@ -3359,11 +3361,12 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(30, 669);
+            this.label15.Location = new System.Drawing.Point(31, 685);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(90, 24);
             this.label15.TabIndex = 33;
             this.label15.Text = "Signature";
+            this.label15.Visible = false;
             // 
             // lblSpecialCustomerA2
             // 
@@ -3378,7 +3381,7 @@
             // btnSavePosaImage
             // 
             this.btnSavePosaImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePosaImage.Location = new System.Drawing.Point(208, 802);
+            this.btnSavePosaImage.Location = new System.Drawing.Point(212, 756);
             this.btnSavePosaImage.Name = "btnSavePosaImage";
             this.btnSavePosaImage.Size = new System.Drawing.Size(88, 62);
             this.btnSavePosaImage.TabIndex = 18;
@@ -3529,9 +3532,9 @@
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.DisplayStatusBar = false;
             this.crystalReportViewer1.DisplayToolbar = false;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(-28, -40);
+            this.crystalReportViewer1.Location = new System.Drawing.Point(-21, -40);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.CrystalReport11;
+            this.crystalReportViewer1.ReportSource = "P:\\PalletCard\\Github\\PalletCardApp\\PalletCard\\CrystalReport1.rpt";
             this.crystalReportViewer1.Size = new System.Drawing.Size(818, 1189);
             this.crystalReportViewer1.TabIndex = 5;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
@@ -3560,12 +3563,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(850, 1045);
-            this.Controls.Add(this.pnlSignature);
+            this.Controls.Add(this.pnlPalletCard10);
             this.Controls.Add(this.pnlHome0);
+            this.Controls.Add(this.pnlSignature);
             this.Controls.Add(this.pnlPalletCardPrint);
             this.Controls.Add(this.pnlPalletCard5);
             this.Controls.Add(this.pnlPalletCard3);
-            this.Controls.Add(this.pnlPalletCard10);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlPalletCard11);
             this.Controls.Add(this.button2);
@@ -3614,7 +3617,7 @@
             this.Controls.Add(this.pnlPalletCardBack);
             this.Name = "Home";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "XL106";
+            this.Text = "XL106UV";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Home_FormClosed);
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -3976,6 +3979,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label58;
+        private CrystalReport1 CrystalReport12;
     }
 }
 

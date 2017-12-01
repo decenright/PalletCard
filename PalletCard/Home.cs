@@ -21,19 +21,50 @@ namespace PalletCard
 {
     public partial class Home : Form
     {
-        #region Global
 
-        // SETTINGS
+        #region Profiles
+
+        // Declan Testing
         int resourceID = 6;
         string press = "XL106";
         string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "martin@colorman.ie";
         string defaultEmail = "declan.enright@colorman.ie";
-        string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-        //string defaultPrinter = "ProC5100S";
+        string defaultPrinter = "ProC5100S";
+        //string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+        /// XL106
+        //int resourceID = 6;
+        //string press = "XL106";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "martin@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+        //// SM102
+        //int resourceID = 1;
+        //string press = "SM102";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "martin@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
 
+        //// XL106UV
+        //int resourceID = 67;
+        //string press = "XL106UV";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "martin@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+        /// XL758
+        //int resourceID = 68;
+        //string press = "XL758";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "martin@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+        #endregion
+
+#region Global
         List<Panel> listPanel = new List<Panel>();
         List<string> disableSectionButtons = new List<string>();
         List<string> allSections = new List<string>();
@@ -1138,11 +1169,14 @@ namespace PalletCard
         public void SaveSignatureImageToFile()
         {
 
-                Bitmap bmp = new Bitmap(this.SignaturePanel.Width, this.SignaturePanel.Height);
+                Bitmap bmp = new Bitmap(this.pnlSignature.Width, this.pnlSignature.Height);
                 Graphics graphics = Graphics.FromImage(bmp);
-                System.Drawing.Rectangle rect = SignaturePanel.RectangleToScreen(SignaturePanel.ClientRectangle);
-                graphics.CopyFromScreen(rect.Location, Point.Empty, SignaturePanel.Size);
-                bmp.Save("P:/PalletCard/Signatures/ " + autoNum + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                System.Drawing.Rectangle rect = pnlSignature.RectangleToScreen(pnlSignature.ClientRectangle);
+                graphics.CopyFromScreen(rect.Location, Point.Empty, pnlSignature.Size);
+                var time = DateTime.Now.ToString("yyyyMMdd-HH-mm-ss");
+                var job = lblJobNo.Text.ToString();
+                string all = job + " - " + PalletNumber + " - " + time;
+                bmp.Save("P:/PalletCard/Signatures/ " + all + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
         }
 
         private void btnQATravellerBlurb_Click(object sender, EventArgs e)
@@ -1231,7 +1265,7 @@ namespace PalletCard
 
         #endregion
 
-        #region POSA Signature
+#region POSA Signature
 
         private void SignaturePanelPosa_MouseMove(object sender, MouseEventArgs e)
         {
@@ -2261,7 +2295,7 @@ namespace PalletCard
                 sheetsAffectedBadSection = Convert.ToInt32(tbxSheetsAffectedBadSection.Text);
                 btnBadSectionOK.Visible = true;
             }          
-            lbl7.Text = dataGridView1.Rows[0].Cells[26].Value.ToString();
+            lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
         }
 
         private void btnMarkBad_Click(object sender, EventArgs e)
@@ -3238,7 +3272,7 @@ namespace PalletCard
                 // WorkingSize
                 lbl6.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
                 // QtyRequired
-                lbl7.Text = dataGridView1.Rows[0].Cells[26].Value.ToString();
+                lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
 
                 index = 15;
             }
@@ -3288,7 +3322,7 @@ namespace PalletCard
                 produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
                 string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
                 string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-                string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, Expr1, NumberUp, JobGanged, SectionName, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1, InvoiceCustomerCode) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '1', '" + produced + "', '" + this.dataGridView1.Rows[0].Cells[11].Value + "', '" + this.dataGridView1.Rows[0].Cells[12].Value + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[15].Value + "', '" + this.dataGridView1.Rows[0].Cells[25].Value + "','" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "', '" + this.dataGridView1.Rows[0].Cells[21].Value + "');";
+                string Query = "insert into Log (Routine, JobNo, PaperSectionNo, PalletNumber, Produced, Expr1, NumberUp, JobGanged, SectionName, QtyRequired, ResourceID, Description, WorkingSize, SheetQty, Comment, Unfinished, Timestamp1, InvoiceCustomerCode) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '2', '" + produced + "', '" + this.dataGridView1.Rows[0].Cells[11].Value + "', '" + this.dataGridView1.Rows[0].Cells[12].Value + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[15].Value + "', '" + this.dataGridView1.Rows[0].Cells[25].Value + "','" + resourceID + "','" + this.lbl2.Text + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','1','" + CurrentDate + "', '" + this.dataGridView1.Rows[0].Cells[21].Value + "');";
                 SqlConnection conDatabase = new SqlConnection(constring);
                 SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
                 SqlDataReader myReader;
@@ -3645,9 +3679,6 @@ namespace PalletCard
             }
 
 
-
-
-
                 // If This job Number has not yet been recorded in the database
                 if (dataGridView2.Rows.Count == 0)
                 {
@@ -3695,13 +3726,6 @@ namespace PalletCard
                     }
                 }
             
-
-                
-
-
-
-
-
 
             //SAVE TO DATABASE
             CurrentDate = DateTime.Now;
