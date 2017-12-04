@@ -398,7 +398,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(730, 100);
+            this.dataGridView1.Size = new System.Drawing.Size(730, 86);
             this.dataGridView1.TabIndex = 0;
             // 
             // tbxSearchBox
@@ -668,7 +668,7 @@
             // 
             this.tbxPalletHeight.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxPalletHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPalletHeight.Location = new System.Drawing.Point(188, 136);
+            this.tbxPalletHeight.Location = new System.Drawing.Point(130, 136);
             this.tbxPalletHeight.Multiline = true;
             this.tbxPalletHeight.Name = "tbxPalletHeight";
             this.tbxPalletHeight.Size = new System.Drawing.Size(275, 59);
@@ -2304,7 +2304,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 973);
+            this.dataGridView2.Location = new System.Drawing.Point(3, 958);
             this.dataGridView2.Name = "dataGridView2";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
@@ -2466,7 +2466,7 @@
             this.panel3.Controls.Add(this.textBox3);
             this.panel3.Controls.Add(this.textBox4);
             this.panel3.Controls.Add(this.textBox5);
-            this.panel3.Location = new System.Drawing.Point(15, 276);
+            this.panel3.Location = new System.Drawing.Point(15, 258);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(564, 49);
             this.panel3.TabIndex = 93;
@@ -2477,7 +2477,7 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox3.Location = new System.Drawing.Point(105, 22);
+            this.textBox3.Location = new System.Drawing.Point(105, 5);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(99, 46);
@@ -2490,7 +2490,7 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox4.Location = new System.Drawing.Point(212, 22);
+            this.textBox4.Location = new System.Drawing.Point(212, 5);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(53, 46);
@@ -2503,7 +2503,7 @@
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox5.Location = new System.Drawing.Point(296, 22);
+            this.textBox5.Location = new System.Drawing.Point(296, 5);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(99, 46);
@@ -2774,17 +2774,15 @@
             this.btnClearSignaturePosa.TabIndex = 39;
             this.btnClearSignaturePosa.Text = "Clear";
             this.btnClearSignaturePosa.UseVisualStyleBackColor = true;
-            this.btnClearSignaturePosa.Visible = false;
             this.btnClearSignaturePosa.Click += new System.EventHandler(this.ClearSignaturePosa_Click);
             // 
             // SignaturePanelPosa
             // 
             this.SignaturePanelPosa.BackColor = System.Drawing.Color.Gainsboro;
-            this.SignaturePanelPosa.Location = new System.Drawing.Point(27, 711);
+            this.SignaturePanelPosa.Location = new System.Drawing.Point(27, 697);
             this.SignaturePanelPosa.Name = "SignaturePanelPosa";
-            this.SignaturePanelPosa.Size = new System.Drawing.Size(446, 42);
+            this.SignaturePanelPosa.Size = new System.Drawing.Size(446, 92);
             this.SignaturePanelPosa.TabIndex = 37;
-            this.SignaturePanelPosa.Visible = false;
             this.SignaturePanelPosa.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelPosa_MouseDown);
             this.SignaturePanelPosa.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelPosa_MouseMove);
             this.SignaturePanelPosa.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelPosa_MouseUp);
@@ -2818,7 +2816,7 @@
             this.panel1.Controls.Add(this.label23);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.PosaGripChecked);
-            this.panel1.Location = new System.Drawing.Point(15, 277);
+            this.panel1.Location = new System.Drawing.Point(15, 259);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(564, 408);
             this.panel1.TabIndex = 36;
@@ -3361,12 +3359,11 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(31, 685);
+            this.label15.Location = new System.Drawing.Point(32, 674);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(90, 24);
             this.label15.TabIndex = 33;
             this.label15.Text = "Signature";
-            this.label15.Visible = false;
             // 
             // lblSpecialCustomerA2
             // 
@@ -3381,7 +3378,7 @@
             // btnSavePosaImage
             // 
             this.btnSavePosaImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePosaImage.Location = new System.Drawing.Point(212, 756);
+            this.btnSavePosaImage.Location = new System.Drawing.Point(212, 795);
             this.btnSavePosaImage.Name = "btnSavePosaImage";
             this.btnSavePosaImage.Size = new System.Drawing.Size(88, 62);
             this.btnSavePosaImage.TabIndex = 18;
@@ -3483,6 +3480,7 @@
             this.btnClearSignatureMedicalPharma.TabIndex = 44;
             this.btnClearSignatureMedicalPharma.Text = "Clear";
             this.btnClearSignatureMedicalPharma.UseVisualStyleBackColor = true;
+            this.btnClearSignatureMedicalPharma.Visible = false;
             this.btnClearSignatureMedicalPharma.Click += new System.EventHandler(this.btnClearSignatureMedicalPharma_Click);
             // 
             // SignaturePanelMedicalPharma
@@ -3492,6 +3490,7 @@
             this.SignaturePanelMedicalPharma.Name = "SignaturePanelMedicalPharma";
             this.SignaturePanelMedicalPharma.Size = new System.Drawing.Size(371, 146);
             this.SignaturePanelMedicalPharma.TabIndex = 43;
+            this.SignaturePanelMedicalPharma.Visible = false;
             this.SignaturePanelMedicalPharma.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelMedicalPharma_MouseDown);
             this.SignaturePanelMedicalPharma.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelMedicalPharma_MouseMove);
             this.SignaturePanelMedicalPharma.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelMedicalPharma_MouseUp);
@@ -3505,6 +3504,7 @@
             this.label45.Size = new System.Drawing.Size(90, 24);
             this.label45.TabIndex = 42;
             this.label45.Text = "Signature";
+            this.label45.Visible = false;
             // 
             // btnSaveMedicalPharmaImage
             // 
@@ -3563,14 +3563,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(850, 1045);
-            this.Controls.Add(this.pnlPalletCard10);
             this.Controls.Add(this.pnlHome0);
+            this.Controls.Add(this.pnlPalletCard11);
+            this.Controls.Add(this.pnlPalletCard7);
+            this.Controls.Add(this.pnlPalletCard10);
+            this.Controls.Add(this.pnlReturnPaper2);
             this.Controls.Add(this.pnlSignature);
             this.Controls.Add(this.pnlPalletCardPrint);
             this.Controls.Add(this.pnlPalletCard5);
             this.Controls.Add(this.pnlPalletCard3);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pnlPalletCard11);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pnlPalletCard9);
             this.Controls.Add(this.pnlPalletCard6);
@@ -3581,7 +3583,6 @@
             this.Controls.Add(this.pnlHome1);
             this.Controls.Add(this.pnlPalletCard4);
             this.Controls.Add(this.pnlPalletCard8);
-            this.Controls.Add(this.pnlPalletCard7);
             this.Controls.Add(this.pnlReturnPaper3);
             this.Controls.Add(this.pnlRejectPaper3);
             this.Controls.Add(this.dataGridView2);
@@ -3609,7 +3610,6 @@
             this.Controls.Add(this.lblBack2);
             this.Controls.Add(this.lblJobNo);
             this.Controls.Add(this.lblBack1);
-            this.Controls.Add(this.pnlReturnPaper2);
             this.Controls.Add(this.lbl8);
             this.Controls.Add(this.lblBack10);
             this.Controls.Add(this.label20);
@@ -3617,7 +3617,7 @@
             this.Controls.Add(this.pnlPalletCardBack);
             this.Name = "Home";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "XL106UV";
+            this.Text = "XL106";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Home_FormClosed);
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
