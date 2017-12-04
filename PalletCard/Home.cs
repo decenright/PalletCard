@@ -24,14 +24,14 @@ namespace PalletCard
 
         #region Profiles
 
-        // Declan Testing
-        int resourceID = 6;
-        string press = "XL106";
-        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        string defaultEmail = "declan.enright@colorman.ie";
-        string defaultPrinter = "ProC5100S";
-        //string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        //// Declan Testing
+        //int resourceID = 6;
+        //string press = "XL106";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultPrinter = "ProC5100S";
+        ////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        ////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// XL106
         //int resourceID = 6;
@@ -48,12 +48,12 @@ namespace PalletCard
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
 
-        //// XL106UV
-        //int resourceID = 67;
-        //string press = "XL106UV";
-        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "martin@colorman.ie";
-        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        // XL106UV
+        int resourceID = 67;
+        string press = "XL106UV";
+        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        string defaultEmail = "martin@colorman.ie";
+        string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         /// XL758
         //int resourceID = 68;
@@ -557,8 +557,7 @@ namespace PalletCard
 
         private void Cancel()
         {
-            //string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
-            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = 6";
+            string CommandText = "SELECT * FROM app_PalletOperations where resourceID = '" + resourceID + "'";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
             OdbcDataAdapter myAdapter = new OdbcDataAdapter();
@@ -603,6 +602,7 @@ namespace PalletCard
                         concatenatedTable.Rows[concatenatedTable.Rows.Count - 1][32] = 1;
 
                 dataGridView1.DataSource = concatenatedTable;
+                this.dataGridView1.Sort(this.dataGridView1.Columns["JobNo"], ListSortDirection.Ascending);
             }
             pnlHome0.BringToFront();
             lblJobNo.Visible = false;
