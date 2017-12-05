@@ -24,21 +24,21 @@ namespace PalletCard
 
         #region Profiles
 
-        //// Declan Testing
-        //int resourceID = 6;
-        //string press = "XL106";
-        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "declan.enright@colorman.ie";
-        //string defaultPrinter = "ProC5100S";
-        ////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-        ////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
-
-        // XL106
+        // Declan Testing
         int resourceID = 6;
         string press = "XL106";
         string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        string defaultEmail = "martin@colorman.ie";
-        string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        string defaultEmail = "declan.enright@colorman.ie";
+        string defaultPrinter = "ProC5100S";
+        ////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        ////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+        //// XL106
+        //int resourceID = 6;
+        //string press = "XL106";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "martin@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// SM102
         //int resourceID = 1;
@@ -46,6 +46,8 @@ namespace PalletCard
         //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
         //string defaultEmail = "martin@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+
 
 
         //// XL106UV
@@ -3277,11 +3279,11 @@ namespace PalletCard
             { 
                 if (dataGridView1.Rows[0].Cells[15].Value.ToString() == "")
                 {
-                    lblIsSectionFinished.Text = "Is " + dataGridView1.Rows[0].Cells[11].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " finished ?";
+                    lblIsSectionFinished.Text = dataGridView1.Rows[0].Cells[11].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString();
                 }
                 else
                 {
-                    lblIsSectionFinished.Text = "Is " + dataGridView1.Rows[0].Cells[15].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " finished ?";
+                    lblIsSectionFinished.Text = dataGridView1.Rows[0].Cells[15].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString();
                 }
 
                 // WorkingSize
@@ -3842,7 +3844,7 @@ namespace PalletCard
                     }
 
                     // Send email notification
-                    MailMessage mail = new MailMessage("PalletShort@colorman.ie", defaultEmail , "Pallet Short", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + "- has " + shortBy + " insufficient sheets");
+                    MailMessage mail = new MailMessage("Press@colorman.ie", defaultEmail , "Print Job Shortage", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + "- has " + shortBy + " insufficient sheets");
                     SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                     client.Port = 25;
                     client.EnableSsl = false;
@@ -3887,7 +3889,7 @@ namespace PalletCard
                     }
 
                     // Send email notification
-                    MailMessage mail = new MailMessage("PalletOver@colorman.ie", defaultEmail, "Pallet Over", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + " - is over by " + overBy);
+                    MailMessage mail = new MailMessage("Press@colorman.ie", defaultEmail, "Print Job Over", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + " - is over by " + overBy);
                     SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
                     client.Port = 25;
                     client.EnableSsl = false;
@@ -4564,7 +4566,7 @@ namespace PalletCard
         private void btnWaitingPlates_Click(object sender, EventArgs e)
         {
             // Send email notification
-            //MailMessage mail = new MailMessage("WaitingPlates@colorman.ie", defaultEmail , "Waiting for Plates", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates");
+            //MailMessage mail = new MailMessage("Press@colorman.ie", defaultEmail , "Waiting for Plates", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates");
             //SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
             //client.Port = 25;
             //client.EnableSsl = false;
@@ -4572,7 +4574,7 @@ namespace PalletCard
             //MessageBox.Show("Email Notification Sent");
 
             MailMessage mail = new MailMessage();
-            string from = "WaitingPlates@colorman.ie";
+            string from = "Press@colorman.ie";
             mail.From = new MailAddress(from);
             mail.To.Add(defaultEmail);
             //mail.To.Add("prepress@colorman.ie");
@@ -4590,7 +4592,7 @@ namespace PalletCard
         private void btnWaitingPaper_Click(object sender, EventArgs e)
         {
             // Send email notification
-            MailMessage mail = new MailMessage("WaitingPaper@colorman.ie", defaultEmail , "Waiting for Paper", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for paper");
+            MailMessage mail = new MailMessage("Press@colorman.ie", defaultEmail , "Waiting for Paper", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for paper");
             SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
             client.Port = 25;
             client.EnableSsl = false;
@@ -4602,7 +4604,7 @@ namespace PalletCard
         private void btnJobLifted_Click(object sender, EventArgs e)
         {
             // Send email notification
-            MailMessage mail = new MailMessage("JobLifted@colorman.ie", defaultEmail , "Job Lifted", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - Job is lifted");
+            MailMessage mail = new MailMessage("Press@colorman.ie", defaultEmail , "Job Lifted", "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - Job is lifted");
             SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
             client.Port = 25;
             client.EnableSsl = false;
