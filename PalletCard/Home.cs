@@ -33,12 +33,12 @@ namespace PalletCard
         ////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
         ////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
-        //// XL106
-        //int resourceID = 6;
-        //string press = "XL106";
-        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "martin@colorman.ie";
-        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        // XL106
+        int resourceID = 6;
+        string press = "XL106";
+        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        string defaultEmail = "martin@colorman.ie";
+        string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// SM102
         //int resourceID = 1;
@@ -48,12 +48,12 @@ namespace PalletCard
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
 
-        // XL106UV
-        int resourceID = 67;
-        string press = "XL106UV";
-        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        string defaultEmail = "martin@colorman.ie";
-        string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        //// XL106UV
+        //int resourceID = 67;
+        //string press = "XL106UV";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "martin@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         /// XL758
         //int resourceID = 68;
@@ -62,9 +62,9 @@ namespace PalletCard
         //string defaultEmail = "martin@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
-#endregion
+        #endregion
 
-#region Global
+        #region Global
         List<Panel> listPanel = new List<Panel>();
         List<string> disableSectionButtons = new List<string>();
         List<string> allSections = new List<string>();
@@ -3295,8 +3295,6 @@ namespace PalletCard
 
         private void btnCancelPrintMore_Click(object sender, EventArgs e)
         {
-            Cancel();
-            pnlHome0.BringToFront();
             string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
             string CommandText = "DELETE FROM Log where JobNo = '" + lblJobNo.Text + "' and PalletNumber = PalletNumber";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
@@ -3323,8 +3321,16 @@ namespace PalletCard
                 myAdapter.Fill(palletCardLog);
                 dataGridView2.DataSource = palletCardLog;
             }
-            index = 0;
+            index = 10;
+            lbl4.Visible = false;
+            lbl5.Visible = false;
+            tbxPalletHeightPalletCard.Text = "";
+            lblSheetCountPalletCard.Text = "";
+            tbxSheetCountPalletCard.Text = "";
+            lblPheightPalletCard.Text = "";
+            btnPalletCard_Click(btnPalletCard, EventArgs.Empty);
         }
+
 #endregion
 
 #region Backup/Varnish

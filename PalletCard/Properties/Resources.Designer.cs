@@ -63,6 +63,16 @@ namespace PalletCard.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AndrewDunneSignature {
+            get {
+                object obj = ResourceManager.GetObject("AndrewDunneSignature", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cbxChecked {
             get {
                 object obj = ResourceManager.GetObject("cbxChecked", resourceCulture);
