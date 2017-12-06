@@ -167,7 +167,6 @@
     <None Include="Resources\Colorman Logo.2015.RGB.300ppi.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Image1.jpg" />
     <None Include="Resources\AndrewDunneSignature.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
