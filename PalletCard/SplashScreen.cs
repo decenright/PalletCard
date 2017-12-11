@@ -20,7 +20,7 @@ namespace PalletCard
         //Use timer class
         Timer tmr;
 
-        private void SplashScreen_Load(object sender, EventArgs e)
+        public void SplashScreen_Load(object sender, EventArgs e)
         {
             tmr = new Timer();
             //set time interval 3 sec
@@ -40,5 +40,6 @@ namespace PalletCard
             //hide this form
             this.Hide();
         }
+
     }
 }

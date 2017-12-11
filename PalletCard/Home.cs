@@ -30,8 +30,8 @@ namespace PalletCard
         string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
         string defaultEmail = "declan.enright@colorman.ie";
         string defaultPrinter = "ProC5100S";
-        ////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-        ////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        //////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        //////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// XL106
         //int resourceID = 6;
@@ -407,12 +407,12 @@ namespace PalletCard
             }
         }
 
-        // This is for splash screen
-        private void Home_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //exit application when form is closed
-            Application.Exit();
-        }
+        //// This is for splash screen
+        //private void Home_FormClosed(object sender, FormClosedEventArgs e)
+        //{
+        //    //exit application when form is closed
+        //    Application.Exit();
+        //}
 
         private void Home_Load(object sender, EventArgs e)
         {
@@ -466,7 +466,10 @@ namespace PalletCard
                         concatenatedTable.Rows[concatenatedTable.Rows.Count -1][32] = 1;
 
                 dataGridView1.DataSource = concatenatedTable;
-                dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Descending);
+
+                // format StartOp to 24 hour time format and sort for earliest first
+                dataGridView1.Columns[30].DefaultCellStyle.Format = "MM/dd/yyyy HH:mm:ss";
+                dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Ascending);
             }
 
             listPanel.Add(pnlHome0);
@@ -481,7 +484,7 @@ namespace PalletCard
             listPanel[4] = pnlReturnPaper3;
             listPanel[0].BringToFront();
             btnBack.Visible = false;
-            //tbxSearchBox.Select();
+            tbxSearchBox.Focus();
         }
 
         private void Search()
@@ -1958,7 +1961,7 @@ namespace PalletCard
 
             if (dataGridView2.Rows.Count != 0)
             {
-                sig = dataGridView2.Rows[0].Cells[8].ToString();
+                sig = dataGridView2.Rows[0].Cells[8].Value.ToString();
             }
             lbl3.Text = "Sheet " + sig;
             lbl3.Visible = true;
@@ -3763,6 +3766,10 @@ namespace PalletCard
                         sumProduced += Convert.ToInt32(dataGridView2.Rows[i].Cells[9].Value);
                     }
                 }
+                if (Convert.ToInt32(dataGridView2.Rows[0].Cells[6].Value) == 2 || Convert.ToInt32(dataGridView2.Rows[0].Cells[6].Value) ==3)
+                {
+                    sumProduced = 0;
+                }
             }
 
             //SAVE TO DATABASE
@@ -4608,8 +4615,13 @@ namespace PalletCard
             pnlHome1.BringToFront();
         }
 
+
         #endregion
 
-
+        //Focus on Searchbox
+        public void Home_SetFocus(object sender, EventArgs e)
+        {
+            tbxSearchBox.Focus();
+        }
     }
 }

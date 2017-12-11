@@ -3623,10 +3623,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(850, 1045);
+            this.Controls.Add(this.pnlHome0);
             this.Controls.Add(this.pnlPalletCardPrint);
             this.Controls.Add(this.pnlSignature);
             this.Controls.Add(this.pnlPalletCard3);
-            this.Controls.Add(this.pnlHome0);
             this.Controls.Add(this.pnlHome1);
             this.Controls.Add(this.pnlPalletCard8);
             this.Controls.Add(this.pnlPalletCard6);
@@ -3678,7 +3678,6 @@
             this.Name = "Home";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "XL106";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Home_FormClosed);
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlHome0.ResumeLayout(false);
