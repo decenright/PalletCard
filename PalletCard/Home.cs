@@ -15,7 +15,7 @@ using CrystalDecisions.Shared;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using RawPrint;
-
+using System.Threading;
 
 namespace PalletCard
 {
@@ -107,9 +107,33 @@ namespace PalletCard
 
         public Home()
         {
+            Thread t = new Thread(new ThreadStart(Splash));
+            t.Start();
+
+            string str = string.Empty;
+            for (int i = 0; i < 50000; i++)
+            {
+                str += i.ToString();
+            }
+
+            t.Abort();
+
             InitializeComponent();
+
+            this.ActiveControl = textBox1;
         }
-       
+
+        void Splash()
+        {
+            SplashScreen.SplashForm frm = new SplashScreen.SplashForm();
+            frm.AppName = "";
+            frm.Icon = Properties.Resources.Logo;
+            frm.ShowIcon = true;
+            frm.ShowInTaskbar = true;
+            frm.BackgroundImage = Properties.Resources.Splash_Screen;
+            Application.Run(frm);
+        }
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             if (index == 0)
@@ -4273,9 +4297,8 @@ namespace PalletCard
             btnPalletCardPrint.Visible = false;
             PrintImagePalletCard();
 
-            // Absolute path to PDF to print (with filename)
-            string Filepath = AppDomain.CurrentDomain.BaseDirectory + "frontBackCombined.pdf";
-            //string Filepath = @"S:\Production Admin\Declan Enright\Pallet Card Project\Github\PalletCardApp\PalletCard\bin\Debug\frontBackCombined.pdf";
+            // Absolute path of PDF to print (with filename) - location = \bin\Debug\frontBackCombined.pdf
+            string Filepath = AppDomain.CurrentDomain.BaseDirectory + "frontBackCombined.pdf";           
 
             // The name of the PDF that will be printed (just to be shown in the print queue)
             string Filename = "frontBackCombined.pdf";
