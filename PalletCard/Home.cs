@@ -131,7 +131,22 @@ namespace PalletCard
             frm.ShowIcon = true;
             frm.ShowInTaskbar = true;
             frm.BackgroundImage = Properties.Resources.Splash_Screen;
-            Application.Run(frm);
+           
+            try
+            {
+                Application.Run(frm);
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Tap icon again");
+                throw (ex);
+            }
+            finally
+            {
+                frm.Close();
+            }
+
+
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -432,13 +447,6 @@ namespace PalletCard
             }
         }
 
-        //// This is for splash screen
-        //private void Home_FormClosed(object sender, FormClosedEventArgs e)
-        //{
-        //    //exit application when form is closed
-        //    Application.Exit();
-        //}
-
         private void Home_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
@@ -548,6 +556,40 @@ namespace PalletCard
                 btnPalletCardPrint.Visible = true;
             }
         }
+
+        //private void SearchSectionFinishedNo()
+        //{
+        //    {
+        //        try
+        //        {
+        //            ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%' and filter = '1' ", jobNo.Replace("'", "''"));
+        //            lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
+        //            lblJobNo.Visible = true;
+        //            //int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
+        //            if (dataGridView1.Rows[0].Cells[0].Value != null)
+        //            {
+        //                lblPress.Text = press;
+        //                lblPress.Visible = true;
+        //                pnlHome1.BringToFront();
+        //            }
+        //            else
+        //            {
+        //                lblPress.Visible = false;
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw (ex);
+        //        }
+        //        index = 1;
+
+        //        //reset dynamic buttons origin
+        //        A = 1;
+        //        btnPalletCardPrint.Visible = true;
+        //        lblJobNo.Visible = true;
+        //        lblPress.Visible = true;
+        //    }
+        //}
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -661,8 +703,6 @@ namespace PalletCard
             crParameterFieldDefinitions6 = cryRpt.DataDefinition.ParameterFields;
             crParameterFieldDefinition6 = crParameterFieldDefinitions6["Qty On Pallet"];
             crParameterValues6 = crParameterFieldDefinition6.CurrentValues;
-
-
 
 
             crParameterValues.Clear();
@@ -788,7 +828,8 @@ namespace PalletCard
             pnlBadSectionGangHeader.Visible = true;
             tbxFinishPallet.Text = "";
             lastPallet = 0;
-            index = 0;
+            lblPrinting.Visible = false;
+            pnlHome0.BringToFront();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -4311,7 +4352,7 @@ namespace PalletCard
             printer.PrintRawFile(PrinterName, Filepath, Filename);
 
             // if Is Section Finished No - return user to choose Action Screen
-            pnlHome0.BringToFront();
+            pnlHome1.BringToFront();
             lblJobNo.Visible = false;
             lblPress.Visible = false;
             lbl1.Visible = false;
@@ -4320,7 +4361,13 @@ namespace PalletCard
             lbl4.Visible = false;
             btnBack.Visible = false;
             btnCancel.Visible = false;
+            jobNo = lblJobNo.Text;
             Cancel();
+            tbxSearchBox.Text = jobNo;
+            Search();
+            //dataGridView2.Rows.Clear();
+            //dataGridView2.Refresh();
+            lblPrinting.Visible = true;
         }
 
         void PrintImagePalletCard()

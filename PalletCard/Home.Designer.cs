@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbxSearchBox = new System.Windows.Forms.TextBox();
             this.lblJobNo = new System.Windows.Forms.Label();
@@ -112,7 +112,6 @@
             this.lblBack6 = new System.Windows.Forms.Label();
             this.pnlSignature = new System.Windows.Forms.Panel();
             this.label61 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -139,8 +138,6 @@
             this.btnMarkBad = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.pnlPalletCard5 = new System.Windows.Forms.Panel();
-            this.btnScrollUp = new System.Windows.Forms.Button();
-            this.btnScrollDown = new System.Windows.Forms.Button();
             this.lblSheetsAffected = new System.Windows.Forms.Label();
             this.lblNumberUpBadQty = new System.Windows.Forms.Label();
             this.lblNumberUp = new System.Windows.Forms.Label();
@@ -176,20 +173,11 @@
             this.label16 = new System.Windows.Forms.Label();
             this.pnlPalletCardPrint = new System.Windows.Forms.Panel();
             this.btnPalletCardPrint = new System.Windows.Forms.Button();
-            this.lblPC_PalletNumber = new System.Windows.Forms.Label();
-            this.lblPC_JobDesc = new System.Windows.Forms.Label();
             this.lblPC_Note = new System.Windows.Forms.Label();
             this.lblPC_Date = new System.Windows.Forms.Label();
             this.lblPC_Press = new System.Windows.Forms.Label();
             this.lblPC_SectionName = new System.Windows.Forms.Label();
-            this.lblPC_Sig = new System.Windows.Forms.Label();
-            this.lblPC_LastPallet = new System.Windows.Forms.Label();
-            this.lblPC_SheetQty = new System.Windows.Forms.Label();
-            this.lblPC_Customer = new System.Windows.Forms.Label();
             this.lblPC_PartAQty = new System.Windows.Forms.Label();
-            this.lblPC_IncompletePallet = new System.Windows.Forms.Label();
-            this.lblPC_JobNo = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.pnlPalletCard8 = new System.Windows.Forms.Panel();
             this.lblIsSectionFinishedTitle = new System.Windows.Forms.Label();
             this.lblIsSectionFinished = new System.Windows.Forms.Label();
@@ -209,36 +197,18 @@
             this.btnWaitingPlates = new System.Windows.Forms.Button();
             this.pnlNotification1 = new System.Windows.Forms.Panel();
             this.pnlPalletCard10 = new System.Windows.Forms.Panel();
-            this.Posa9NotChecked = new System.Windows.Forms.PictureBox();
-            this.Posa8NotChecked = new System.Windows.Forms.PictureBox();
-            this.Posa7NotChecked = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.Posa6NotChecked = new System.Windows.Forms.PictureBox();
-            this.Posa5NotChecked = new System.Windows.Forms.PictureBox();
-            this.Posa4NotChecked = new System.Windows.Forms.PictureBox();
-            this.Posa3NotChecked = new System.Windows.Forms.PictureBox();
-            this.Posa2NotChecked = new System.Windows.Forms.PictureBox();
-            this.Posa9Checked = new System.Windows.Forms.PictureBox();
             this.label53 = new System.Windows.Forms.Label();
-            this.Posa8Checked = new System.Windows.Forms.PictureBox();
             this.label54 = new System.Windows.Forms.Label();
-            this.Posa7Checked = new System.Windows.Forms.PictureBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.Posa6Checked = new System.Windows.Forms.PictureBox();
             this.label50 = new System.Windows.Forms.Label();
-            this.Posa5Checked = new System.Windows.Forms.PictureBox();
             this.label51 = new System.Windows.Forms.Label();
-            this.Posa4Checked = new System.Windows.Forms.PictureBox();
             this.label52 = new System.Windows.Forms.Label();
-            this.Posa3Checked = new System.Windows.Forms.PictureBox();
             this.label49 = new System.Windows.Forms.Label();
-            this.Posa2Checked = new System.Windows.Forms.PictureBox();
             this.label48 = new System.Windows.Forms.Label();
-            this.Posa1NotChecked = new System.Windows.Forms.PictureBox();
-            this.Posa1Checked = new System.Windows.Forms.PictureBox();
             this.label47 = new System.Windows.Forms.Label();
             this.btnClearSignaturePosa = new System.Windows.Forms.Button();
             this.SignaturePanelPosa = new System.Windows.Forms.Panel();
@@ -246,20 +216,9 @@
             this.label57 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.PosaVisualDefectsNotChecked = new System.Windows.Forms.PictureBox();
-            this.PosaSTCGlossNotChecked = new System.Windows.Forms.PictureBox();
-            this.PosaSTCRegisNotChecked = new System.Windows.Forms.PictureBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
-            this.PosaColourNotChecked = new System.Windows.Forms.PictureBox();
-            this.PosaRegistrationNotChecked = new System.Windows.Forms.PictureBox();
-            this.PosaVisualDefectsChecked = new System.Windows.Forms.PictureBox();
-            this.PosaSTCGlossChecked = new System.Windows.Forms.PictureBox();
-            this.PosaSTCRegisChecked = new System.Windows.Forms.PictureBox();
-            this.PosaColourChecked = new System.Windows.Forms.PictureBox();
-            this.PosaRegistrationChecked = new System.Windows.Forms.PictureBox();
-            this.PosaGripNotChecked = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
@@ -289,7 +248,6 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.PosaGripChecked = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.lblSpecialCustomerA2 = new System.Windows.Forms.Label();
             this.btnSavePosaImage = new System.Windows.Forms.Button();
@@ -310,8 +268,52 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pnlBackScreen = new System.Windows.Forms.Panel();
             this.pnlPalletCardPrintCR = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.crystalReportViewer2 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Posa9NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa8NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa7NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa6NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa5NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa4NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa3NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa2NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa9Checked = new System.Windows.Forms.PictureBox();
+            this.Posa8Checked = new System.Windows.Forms.PictureBox();
+            this.Posa7Checked = new System.Windows.Forms.PictureBox();
+            this.Posa6Checked = new System.Windows.Forms.PictureBox();
+            this.Posa5Checked = new System.Windows.Forms.PictureBox();
+            this.Posa4Checked = new System.Windows.Forms.PictureBox();
+            this.Posa3Checked = new System.Windows.Forms.PictureBox();
+            this.Posa2Checked = new System.Windows.Forms.PictureBox();
+            this.Posa1NotChecked = new System.Windows.Forms.PictureBox();
+            this.Posa1Checked = new System.Windows.Forms.PictureBox();
+            this.PosaVisualDefectsNotChecked = new System.Windows.Forms.PictureBox();
+            this.PosaSTCGlossNotChecked = new System.Windows.Forms.PictureBox();
+            this.PosaSTCRegisNotChecked = new System.Windows.Forms.PictureBox();
+            this.PosaColourNotChecked = new System.Windows.Forms.PictureBox();
+            this.PosaRegistrationNotChecked = new System.Windows.Forms.PictureBox();
+            this.PosaVisualDefectsChecked = new System.Windows.Forms.PictureBox();
+            this.PosaSTCGlossChecked = new System.Windows.Forms.PictureBox();
+            this.PosaSTCRegisChecked = new System.Windows.Forms.PictureBox();
+            this.PosaColourChecked = new System.Windows.Forms.PictureBox();
+            this.PosaRegistrationChecked = new System.Windows.Forms.PictureBox();
+            this.PosaGripNotChecked = new System.Windows.Forms.PictureBox();
+            this.PosaGripChecked = new System.Windows.Forms.PictureBox();
+            this.btnScrollUp = new System.Windows.Forms.Button();
+            this.btnScrollDown = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblPC_Customer = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.lblPC_JobNo = new System.Windows.Forms.Label();
+            this.lblPC_IncompletePallet = new System.Windows.Forms.Label();
+            this.lblPC_SheetQty = new System.Windows.Forms.Label();
+            this.lblPC_LastPallet = new System.Windows.Forms.Label();
+            this.lblPC_Sig = new System.Windows.Forms.Label();
+            this.lblPC_JobDesc = new System.Windows.Forms.Label();
+            this.lblPC_PalletNumber = new System.Windows.Forms.Label();
+            this.pnlPrinting = new System.Windows.Forms.Panel();
+            this.lblPrinting = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -322,7 +324,6 @@
             this.groupBox1.SuspendLayout();
             this.pnlPalletCard2.SuspendLayout();
             this.pnlSignature.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlPalletCard3.SuspendLayout();
             this.pnlPalletCard4.SuspendLayout();
             this.pnlPalletCard5.SuspendLayout();
@@ -336,10 +337,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.pnlNotification2.SuspendLayout();
             this.pnlPalletCard10.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.pnlPalletCard11.SuspendLayout();
+            this.pnlPalletCardBack.SuspendLayout();
+            this.pnlPalletCardPrintCR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa9NotChecked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa8NotChecked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa7NotChecked)).BeginInit();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Posa6NotChecked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa5NotChecked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa4NotChecked)).BeginInit();
@@ -355,7 +362,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Posa2Checked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa1NotChecked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa1Checked)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PosaVisualDefectsNotChecked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosaSTCGlossNotChecked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosaSTCRegisNotChecked)).BeginInit();
@@ -367,44 +373,41 @@
             ((System.ComponentModel.ISupportInitialize)(this.PosaColourChecked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosaRegistrationChecked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosaGripNotChecked)).BeginInit();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PosaGripChecked)).BeginInit();
-            this.pnlPalletCard11.SuspendLayout();
-            this.pnlPalletCardBack.SuspendLayout();
-            this.pnlPalletCardPrintCR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlPrinting.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(4, 870);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(730, 86);
             this.dataGridView1.TabIndex = 0;
@@ -1285,15 +1288,6 @@
             this.label61.TabIndex = 22;
             this.label61.Text = "Press To Confirm";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::PalletCard.Properties.Resources.AndrewDunneSignature;
-            this.pictureBox2.Location = new System.Drawing.Point(368, 93);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(130, 46);
-            this.pictureBox2.TabIndex = 21;
-            this.pictureBox2.TabStop = false;
-            // 
             // label60
             // 
             this.label60.AutoSize = true;
@@ -1592,30 +1586,6 @@
             this.pnlPalletCard5.Name = "pnlPalletCard5";
             this.pnlPalletCard5.Size = new System.Drawing.Size(643, 863);
             this.pnlPalletCard5.TabIndex = 38;
-            // 
-            // btnScrollUp
-            // 
-            this.btnScrollUp.BackgroundImage = global::PalletCard.Properties.Resources.UpArrow;
-            this.btnScrollUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnScrollUp.Location = new System.Drawing.Point(489, 294);
-            this.btnScrollUp.Name = "btnScrollUp";
-            this.btnScrollUp.Size = new System.Drawing.Size(38, 38);
-            this.btnScrollUp.TabIndex = 25;
-            this.btnScrollUp.UseVisualStyleBackColor = true;
-            this.btnScrollUp.Visible = false;
-            this.btnScrollUp.Click += new System.EventHandler(this.btnScrollUp_Click);
-            // 
-            // btnScrollDown
-            // 
-            this.btnScrollDown.BackgroundImage = global::PalletCard.Properties.Resources.DownArrow;
-            this.btnScrollDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnScrollDown.Location = new System.Drawing.Point(489, 357);
-            this.btnScrollDown.Name = "btnScrollDown";
-            this.btnScrollDown.Size = new System.Drawing.Size(38, 38);
-            this.btnScrollDown.TabIndex = 24;
-            this.btnScrollDown.UseVisualStyleBackColor = true;
-            this.btnScrollDown.Visible = false;
-            this.btnScrollDown.Click += new System.EventHandler(this.btnScrollDown_Click);
             // 
             // lblSheetsAffected
             // 
@@ -2018,6 +1988,7 @@
             // 
             // pnlPalletCardPrint
             // 
+            this.pnlPalletCardPrint.Controls.Add(this.pnlPrinting);
             this.pnlPalletCardPrint.Controls.Add(this.btnPalletCardPrint);
             this.pnlPalletCardPrint.Controls.Add(this.lblPC_PalletNumber);
             this.pnlPalletCardPrint.Controls.Add(this.lblPC_JobDesc);
@@ -2051,30 +2022,6 @@
             this.btnPalletCardPrint.Text = "Print";
             this.btnPalletCardPrint.UseVisualStyleBackColor = false;
             this.btnPalletCardPrint.Click += new System.EventHandler(this.btnPalletCardPrint_Click);
-            // 
-            // lblPC_PalletNumber
-            // 
-            this.lblPC_PalletNumber.AutoSize = true;
-            this.lblPC_PalletNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_PalletNumber.Location = new System.Drawing.Point(50, 358);
-            this.lblPC_PalletNumber.Name = "lblPC_PalletNumber";
-            this.lblPC_PalletNumber.Size = new System.Drawing.Size(268, 42);
-            this.lblPC_PalletNumber.TabIndex = 17;
-            this.lblPC_PalletNumber.Text = "lblPC_PalletNo";
-            this.lblPC_PalletNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPC_PalletNumber.Visible = false;
-            // 
-            // lblPC_JobDesc
-            // 
-            this.lblPC_JobDesc.AutoSize = true;
-            this.lblPC_JobDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_JobDesc.Location = new System.Drawing.Point(44, 559);
-            this.lblPC_JobDesc.Name = "lblPC_JobDesc";
-            this.lblPC_JobDesc.Size = new System.Drawing.Size(274, 42);
-            this.lblPC_JobDesc.TabIndex = 16;
-            this.lblPC_JobDesc.Text = "lblPC_JobDesc";
-            this.lblPC_JobDesc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPC_JobDesc.Visible = false;
             // 
             // lblPC_Note
             // 
@@ -2120,54 +2067,6 @@
             this.lblPC_SectionName.Text = "lblPC_SectionName";
             this.lblPC_SectionName.Visible = false;
             // 
-            // lblPC_Sig
-            // 
-            this.lblPC_Sig.AutoSize = true;
-            this.lblPC_Sig.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_Sig.Location = new System.Drawing.Point(43, 401);
-            this.lblPC_Sig.Name = "lblPC_Sig";
-            this.lblPC_Sig.Size = new System.Drawing.Size(181, 42);
-            this.lblPC_Sig.TabIndex = 8;
-            this.lblPC_Sig.Text = "lblPC_Sig";
-            this.lblPC_Sig.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPC_Sig.Visible = false;
-            // 
-            // lblPC_LastPallet
-            // 
-            this.lblPC_LastPallet.AutoSize = true;
-            this.lblPC_LastPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_LastPallet.Location = new System.Drawing.Point(43, 453);
-            this.lblPC_LastPallet.Name = "lblPC_LastPallet";
-            this.lblPC_LastPallet.Size = new System.Drawing.Size(192, 42);
-            this.lblPC_LastPallet.TabIndex = 7;
-            this.lblPC_LastPallet.Text = "Last Pallet";
-            this.lblPC_LastPallet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPC_LastPallet.Visible = false;
-            // 
-            // lblPC_SheetQty
-            // 
-            this.lblPC_SheetQty.AutoSize = true;
-            this.lblPC_SheetQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_SheetQty.Location = new System.Drawing.Point(43, 504);
-            this.lblPC_SheetQty.Name = "lblPC_SheetQty";
-            this.lblPC_SheetQty.Size = new System.Drawing.Size(283, 42);
-            this.lblPC_SheetQty.TabIndex = 6;
-            this.lblPC_SheetQty.Text = "lblPC_SheetQty";
-            this.lblPC_SheetQty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPC_SheetQty.Visible = false;
-            // 
-            // lblPC_Customer
-            // 
-            this.lblPC_Customer.AutoSize = true;
-            this.lblPC_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_Customer.Location = new System.Drawing.Point(44, 611);
-            this.lblPC_Customer.Name = "lblPC_Customer";
-            this.lblPC_Customer.Size = new System.Drawing.Size(288, 42);
-            this.lblPC_Customer.TabIndex = 5;
-            this.lblPC_Customer.Text = "lblPC_Customer";
-            this.lblPC_Customer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPC_Customer.Visible = false;
-            // 
             // lblPC_PartAQty
             // 
             this.lblPC_PartAQty.AutoSize = true;
@@ -2179,41 +2078,6 @@
             this.lblPC_PartAQty.Text = "lblPC_PartAQty";
             this.lblPC_PartAQty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblPC_PartAQty.Visible = false;
-            // 
-            // lblPC_IncompletePallet
-            // 
-            this.lblPC_IncompletePallet.AutoSize = true;
-            this.lblPC_IncompletePallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_IncompletePallet.Location = new System.Drawing.Point(41, 212);
-            this.lblPC_IncompletePallet.Name = "lblPC_IncompletePallet";
-            this.lblPC_IncompletePallet.Size = new System.Drawing.Size(423, 42);
-            this.lblPC_IncompletePallet.TabIndex = 2;
-            this.lblPC_IncompletePallet.Text = "lblPC_IncompletePallet";
-            this.lblPC_IncompletePallet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPC_IncompletePallet.Visible = false;
-            // 
-            // lblPC_JobNo
-            // 
-            this.lblPC_JobNo.AutoSize = true;
-            this.lblPC_JobNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 44.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPC_JobNo.Location = new System.Drawing.Point(127, 275);
-            this.lblPC_JobNo.Name = "lblPC_JobNo";
-            this.lblPC_JobNo.Size = new System.Drawing.Size(386, 67);
-            this.lblPC_JobNo.TabIndex = 1;
-            this.lblPC_JobNo.Text = "lblPC_JobNo";
-            this.lblPC_JobNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPC_JobNo.Visible = false;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(39, 166);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(263, 39);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "PALLET CARD";
-            this.label18.Visible = false;
             // 
             // pnlPalletCard8
             // 
@@ -2341,33 +2205,33 @@
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.Location = new System.Drawing.Point(3, 958);
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(730, 78);
             this.dataGridView2.TabIndex = 52;
@@ -2481,39 +2345,6 @@
             this.pnlPalletCard10.Size = new System.Drawing.Size(648, 867);
             this.pnlPalletCard10.TabIndex = 55;
             // 
-            // Posa9NotChecked
-            // 
-            this.Posa9NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.Posa9NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa9NotChecked.Location = new System.Drawing.Point(400, 202);
-            this.Posa9NotChecked.Name = "Posa9NotChecked";
-            this.Posa9NotChecked.Size = new System.Drawing.Size(43, 40);
-            this.Posa9NotChecked.TabIndex = 74;
-            this.Posa9NotChecked.TabStop = false;
-            this.Posa9NotChecked.Click += new System.EventHandler(this.Posa9NotChecked_Click);
-            // 
-            // Posa8NotChecked
-            // 
-            this.Posa8NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.Posa8NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa8NotChecked.Location = new System.Drawing.Point(400, 142);
-            this.Posa8NotChecked.Name = "Posa8NotChecked";
-            this.Posa8NotChecked.Size = new System.Drawing.Size(43, 40);
-            this.Posa8NotChecked.TabIndex = 73;
-            this.Posa8NotChecked.TabStop = false;
-            this.Posa8NotChecked.Click += new System.EventHandler(this.Posa8NotChecked_Click);
-            // 
-            // Posa7NotChecked
-            // 
-            this.Posa7NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.Posa7NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa7NotChecked.Location = new System.Drawing.Point(400, 82);
-            this.Posa7NotChecked.Name = "Posa7NotChecked";
-            this.Posa7NotChecked.Size = new System.Drawing.Size(43, 40);
-            this.Posa7NotChecked.TabIndex = 72;
-            this.Posa7NotChecked.TabStop = false;
-            this.Posa7NotChecked.Click += new System.EventHandler(this.Posa7NotChecked_Click);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -2564,72 +2395,6 @@
             this.textBox5.TabIndex = 52;
             this.textBox5.Text = "Measurement Area Sheet";
             // 
-            // Posa6NotChecked
-            // 
-            this.Posa6NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.Posa6NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa6NotChecked.Location = new System.Drawing.Point(205, 202);
-            this.Posa6NotChecked.Name = "Posa6NotChecked";
-            this.Posa6NotChecked.Size = new System.Drawing.Size(43, 40);
-            this.Posa6NotChecked.TabIndex = 71;
-            this.Posa6NotChecked.TabStop = false;
-            this.Posa6NotChecked.Click += new System.EventHandler(this.Posa6NotChecked_Click);
-            // 
-            // Posa5NotChecked
-            // 
-            this.Posa5NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.Posa5NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa5NotChecked.Location = new System.Drawing.Point(205, 142);
-            this.Posa5NotChecked.Name = "Posa5NotChecked";
-            this.Posa5NotChecked.Size = new System.Drawing.Size(43, 40);
-            this.Posa5NotChecked.TabIndex = 70;
-            this.Posa5NotChecked.TabStop = false;
-            this.Posa5NotChecked.Click += new System.EventHandler(this.Posa5NotChecked_Click);
-            // 
-            // Posa4NotChecked
-            // 
-            this.Posa4NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.Posa4NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa4NotChecked.Location = new System.Drawing.Point(205, 82);
-            this.Posa4NotChecked.Name = "Posa4NotChecked";
-            this.Posa4NotChecked.Size = new System.Drawing.Size(43, 40);
-            this.Posa4NotChecked.TabIndex = 69;
-            this.Posa4NotChecked.TabStop = false;
-            this.Posa4NotChecked.Click += new System.EventHandler(this.Posa4NotChecked_Click);
-            // 
-            // Posa3NotChecked
-            // 
-            this.Posa3NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.Posa3NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa3NotChecked.Location = new System.Drawing.Point(11, 202);
-            this.Posa3NotChecked.Name = "Posa3NotChecked";
-            this.Posa3NotChecked.Size = new System.Drawing.Size(43, 40);
-            this.Posa3NotChecked.TabIndex = 68;
-            this.Posa3NotChecked.TabStop = false;
-            this.Posa3NotChecked.Click += new System.EventHandler(this.Posa3NotChecked_Click);
-            // 
-            // Posa2NotChecked
-            // 
-            this.Posa2NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.Posa2NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa2NotChecked.Location = new System.Drawing.Point(11, 142);
-            this.Posa2NotChecked.Name = "Posa2NotChecked";
-            this.Posa2NotChecked.Size = new System.Drawing.Size(43, 40);
-            this.Posa2NotChecked.TabIndex = 67;
-            this.Posa2NotChecked.TabStop = false;
-            this.Posa2NotChecked.Click += new System.EventHandler(this.Posa2NotChecked_Click);
-            // 
-            // Posa9Checked
-            // 
-            this.Posa9Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.Posa9Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa9Checked.Location = new System.Drawing.Point(400, 202);
-            this.Posa9Checked.Name = "Posa9Checked";
-            this.Posa9Checked.Size = new System.Drawing.Size(43, 40);
-            this.Posa9Checked.TabIndex = 66;
-            this.Posa9Checked.TabStop = false;
-            this.Posa9Checked.Click += new System.EventHandler(this.Posa9Checked_Click);
-            // 
             // label53
             // 
             this.label53.AutoSize = true;
@@ -2639,17 +2404,6 @@
             this.label53.Size = new System.Drawing.Size(144, 20);
             this.label53.TabIndex = 65;
             this.label53.Text = "Image Registration";
-            // 
-            // Posa8Checked
-            // 
-            this.Posa8Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.Posa8Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa8Checked.Location = new System.Drawing.Point(400, 142);
-            this.Posa8Checked.Name = "Posa8Checked";
-            this.Posa8Checked.Size = new System.Drawing.Size(43, 40);
-            this.Posa8Checked.TabIndex = 64;
-            this.Posa8Checked.TabStop = false;
-            this.Posa8Checked.Click += new System.EventHandler(this.Posa8Checked_Click);
             // 
             // label54
             // 
@@ -2661,17 +2415,6 @@
             this.label54.TabIndex = 63;
             this.label54.Text = "Waste Removed";
             // 
-            // Posa7Checked
-            // 
-            this.Posa7Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.Posa7Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa7Checked.Location = new System.Drawing.Point(400, 82);
-            this.Posa7Checked.Name = "Posa7Checked";
-            this.Posa7Checked.Size = new System.Drawing.Size(43, 40);
-            this.Posa7Checked.TabIndex = 62;
-            this.Posa7Checked.TabStop = false;
-            this.Posa7Checked.Click += new System.EventHandler(this.Posa7Checked_Click);
-            // 
             // label55
             // 
             this.label55.AutoSize = true;
@@ -2681,17 +2424,6 @@
             this.label55.Size = new System.Drawing.Size(131, 20);
             this.label55.TabIndex = 61;
             this.label55.Text = "Imposition Check";
-            // 
-            // Posa6Checked
-            // 
-            this.Posa6Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.Posa6Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa6Checked.Location = new System.Drawing.Point(205, 202);
-            this.Posa6Checked.Name = "Posa6Checked";
-            this.Posa6Checked.Size = new System.Drawing.Size(43, 40);
-            this.Posa6Checked.TabIndex = 54;
-            this.Posa6Checked.TabStop = false;
-            this.Posa6Checked.Click += new System.EventHandler(this.Posa6Checked_Click);
             // 
             // label50
             // 
@@ -2703,17 +2435,6 @@
             this.label50.TabIndex = 53;
             this.label50.Text = "Retains";
             // 
-            // Posa5Checked
-            // 
-            this.Posa5Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.Posa5Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa5Checked.Location = new System.Drawing.Point(205, 142);
-            this.Posa5Checked.Name = "Posa5Checked";
-            this.Posa5Checked.Size = new System.Drawing.Size(43, 40);
-            this.Posa5Checked.TabIndex = 52;
-            this.Posa5Checked.TabStop = false;
-            this.Posa5Checked.Click += new System.EventHandler(this.Posa5Checked_Click);
-            // 
             // label51
             // 
             this.label51.AutoSize = true;
@@ -2723,17 +2444,6 @@
             this.label51.Size = new System.Drawing.Size(131, 20);
             this.label51.TabIndex = 51;
             this.label51.Text = "2 Sheet Detector";
-            // 
-            // Posa4Checked
-            // 
-            this.Posa4Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.Posa4Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa4Checked.Location = new System.Drawing.Point(205, 82);
-            this.Posa4Checked.Name = "Posa4Checked";
-            this.Posa4Checked.Size = new System.Drawing.Size(43, 40);
-            this.Posa4Checked.TabIndex = 50;
-            this.Posa4Checked.TabStop = false;
-            this.Posa4Checked.Click += new System.EventHandler(this.Posa4Checked_Click);
             // 
             // label52
             // 
@@ -2745,17 +2455,6 @@
             this.label52.TabIndex = 49;
             this.label52.Text = "Varnish Vs Docket";
             // 
-            // Posa3Checked
-            // 
-            this.Posa3Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.Posa3Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa3Checked.Location = new System.Drawing.Point(11, 202);
-            this.Posa3Checked.Name = "Posa3Checked";
-            this.Posa3Checked.Size = new System.Drawing.Size(43, 40);
-            this.Posa3Checked.TabIndex = 48;
-            this.Posa3Checked.TabStop = false;
-            this.Posa3Checked.Click += new System.EventHandler(this.Posa3Checked_Click);
-            // 
             // label49
             // 
             this.label49.AutoSize = true;
@@ -2766,17 +2465,6 @@
             this.label49.TabIndex = 47;
             this.label49.Text = "Correct Cyrel";
             // 
-            // Posa2Checked
-            // 
-            this.Posa2Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.Posa2Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa2Checked.Location = new System.Drawing.Point(11, 142);
-            this.Posa2Checked.Name = "Posa2Checked";
-            this.Posa2Checked.Size = new System.Drawing.Size(43, 40);
-            this.Posa2Checked.TabIndex = 46;
-            this.Posa2Checked.TabStop = false;
-            this.Posa2Checked.Click += new System.EventHandler(this.Posa2Checked_Click);
-            // 
             // label48
             // 
             this.label48.AutoSize = true;
@@ -2786,28 +2474,6 @@
             this.label48.Size = new System.Drawing.Size(140, 20);
             this.label48.TabIndex = 45;
             this.label48.Text = "Pass Sheet Check";
-            // 
-            // Posa1NotChecked
-            // 
-            this.Posa1NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.Posa1NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa1NotChecked.Location = new System.Drawing.Point(11, 82);
-            this.Posa1NotChecked.Name = "Posa1NotChecked";
-            this.Posa1NotChecked.Size = new System.Drawing.Size(43, 40);
-            this.Posa1NotChecked.TabIndex = 44;
-            this.Posa1NotChecked.TabStop = false;
-            this.Posa1NotChecked.Click += new System.EventHandler(this.Posa1NotChecked_Click);
-            // 
-            // Posa1Checked
-            // 
-            this.Posa1Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.Posa1Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Posa1Checked.Location = new System.Drawing.Point(11, 82);
-            this.Posa1Checked.Name = "Posa1Checked";
-            this.Posa1Checked.Size = new System.Drawing.Size(43, 40);
-            this.Posa1Checked.TabIndex = 43;
-            this.Posa1Checked.TabStop = false;
-            this.Posa1Checked.Click += new System.EventHandler(this.Posa1Checked_Click);
             // 
             // label47
             // 
@@ -2908,39 +2574,6 @@
             this.label39.TabIndex = 90;
             this.label39.Text = "Start";
             // 
-            // PosaVisualDefectsNotChecked
-            // 
-            this.PosaVisualDefectsNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.PosaVisualDefectsNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaVisualDefectsNotChecked.Location = new System.Drawing.Point(466, 366);
-            this.PosaVisualDefectsNotChecked.Name = "PosaVisualDefectsNotChecked";
-            this.PosaVisualDefectsNotChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaVisualDefectsNotChecked.TabIndex = 89;
-            this.PosaVisualDefectsNotChecked.TabStop = false;
-            this.PosaVisualDefectsNotChecked.Click += new System.EventHandler(this.PosaVisualDefectsNotChecked_Click);
-            // 
-            // PosaSTCGlossNotChecked
-            // 
-            this.PosaSTCGlossNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.PosaSTCGlossNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaSTCGlossNotChecked.Location = new System.Drawing.Point(466, 314);
-            this.PosaSTCGlossNotChecked.Name = "PosaSTCGlossNotChecked";
-            this.PosaSTCGlossNotChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaSTCGlossNotChecked.TabIndex = 88;
-            this.PosaSTCGlossNotChecked.TabStop = false;
-            this.PosaSTCGlossNotChecked.Click += new System.EventHandler(this.PosaSTCGlossNotChecked_Click);
-            // 
-            // PosaSTCRegisNotChecked
-            // 
-            this.PosaSTCRegisNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.PosaSTCRegisNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaSTCRegisNotChecked.Location = new System.Drawing.Point(466, 260);
-            this.PosaSTCRegisNotChecked.Name = "PosaSTCRegisNotChecked";
-            this.PosaSTCRegisNotChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaSTCRegisNotChecked.TabIndex = 87;
-            this.PosaSTCRegisNotChecked.TabStop = false;
-            this.PosaSTCRegisNotChecked.Click += new System.EventHandler(this.PosaSTCRegisNotChecked_Click);
-            // 
             // textBox14
             // 
             this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2970,94 +2603,6 @@
             this.textBox12.Size = new System.Drawing.Size(50, 31);
             this.textBox12.TabIndex = 84;
             this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // PosaColourNotChecked
-            // 
-            this.PosaColourNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.PosaColourNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaColourNotChecked.Location = new System.Drawing.Point(466, 152);
-            this.PosaColourNotChecked.Name = "PosaColourNotChecked";
-            this.PosaColourNotChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaColourNotChecked.TabIndex = 83;
-            this.PosaColourNotChecked.TabStop = false;
-            this.PosaColourNotChecked.Click += new System.EventHandler(this.PosaColourNotChecked_Click);
-            // 
-            // PosaRegistrationNotChecked
-            // 
-            this.PosaRegistrationNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.PosaRegistrationNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaRegistrationNotChecked.Location = new System.Drawing.Point(466, 102);
-            this.PosaRegistrationNotChecked.Name = "PosaRegistrationNotChecked";
-            this.PosaRegistrationNotChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaRegistrationNotChecked.TabIndex = 82;
-            this.PosaRegistrationNotChecked.TabStop = false;
-            this.PosaRegistrationNotChecked.Click += new System.EventHandler(this.PosaRegistrationNotChecked_Click);
-            // 
-            // PosaVisualDefectsChecked
-            // 
-            this.PosaVisualDefectsChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.PosaVisualDefectsChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaVisualDefectsChecked.Location = new System.Drawing.Point(466, 366);
-            this.PosaVisualDefectsChecked.Name = "PosaVisualDefectsChecked";
-            this.PosaVisualDefectsChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaVisualDefectsChecked.TabIndex = 81;
-            this.PosaVisualDefectsChecked.TabStop = false;
-            this.PosaVisualDefectsChecked.Click += new System.EventHandler(this.PosaVisualDefectsChecked_Click);
-            // 
-            // PosaSTCGlossChecked
-            // 
-            this.PosaSTCGlossChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.PosaSTCGlossChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaSTCGlossChecked.Location = new System.Drawing.Point(466, 314);
-            this.PosaSTCGlossChecked.Name = "PosaSTCGlossChecked";
-            this.PosaSTCGlossChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaSTCGlossChecked.TabIndex = 80;
-            this.PosaSTCGlossChecked.TabStop = false;
-            this.PosaSTCGlossChecked.Click += new System.EventHandler(this.PosaSTCGlossChecked_Click);
-            // 
-            // PosaSTCRegisChecked
-            // 
-            this.PosaSTCRegisChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.PosaSTCRegisChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaSTCRegisChecked.Location = new System.Drawing.Point(466, 260);
-            this.PosaSTCRegisChecked.Name = "PosaSTCRegisChecked";
-            this.PosaSTCRegisChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaSTCRegisChecked.TabIndex = 79;
-            this.PosaSTCRegisChecked.TabStop = false;
-            this.PosaSTCRegisChecked.Click += new System.EventHandler(this.PosaSTCRegisChecked_Click);
-            // 
-            // PosaColourChecked
-            // 
-            this.PosaColourChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.PosaColourChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaColourChecked.Location = new System.Drawing.Point(466, 152);
-            this.PosaColourChecked.Name = "PosaColourChecked";
-            this.PosaColourChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaColourChecked.TabIndex = 77;
-            this.PosaColourChecked.TabStop = false;
-            this.PosaColourChecked.Click += new System.EventHandler(this.PosaColourChecked_Click);
-            // 
-            // PosaRegistrationChecked
-            // 
-            this.PosaRegistrationChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.PosaRegistrationChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaRegistrationChecked.Location = new System.Drawing.Point(466, 102);
-            this.PosaRegistrationChecked.Name = "PosaRegistrationChecked";
-            this.PosaRegistrationChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaRegistrationChecked.TabIndex = 76;
-            this.PosaRegistrationChecked.TabStop = false;
-            this.PosaRegistrationChecked.Click += new System.EventHandler(this.PosaRegistrationChecked_Click);
-            // 
-            // PosaGripNotChecked
-            // 
-            this.PosaGripNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
-            this.PosaGripNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaGripNotChecked.Location = new System.Drawing.Point(466, 51);
-            this.PosaGripNotChecked.Name = "PosaGripNotChecked";
-            this.PosaGripNotChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaGripNotChecked.TabIndex = 75;
-            this.PosaGripNotChecked.TabStop = false;
-            this.PosaGripNotChecked.Click += new System.EventHandler(this.PosaGripNotChecked_Click);
             // 
             // textBox2
             // 
@@ -3398,17 +2943,6 @@
             this.label31.TabIndex = 57;
             this.label31.Text = "Gloss Meter";
             // 
-            // PosaGripChecked
-            // 
-            this.PosaGripChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
-            this.PosaGripChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PosaGripChecked.Location = new System.Drawing.Point(466, 50);
-            this.PosaGripChecked.Name = "PosaGripChecked";
-            this.PosaGripChecked.Size = new System.Drawing.Size(43, 40);
-            this.PosaGripChecked.TabIndex = 67;
-            this.PosaGripChecked.TabStop = false;
-            this.PosaGripChecked.Click += new System.EventHandler(this.PosaGripChecked_Click);
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -3582,6 +3116,7 @@
             // crystalReportViewer1
             // 
             this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.DisplayBackgroundEdge = false;
             this.crystalReportViewer1.DisplayStatusBar = false;
@@ -3619,17 +3154,10 @@
             this.pnlPalletCardPrintCR.Size = new System.Drawing.Size(850, 1052);
             this.pnlPalletCardPrintCR.TabIndex = 61;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(295, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(171, 50);
-            this.pictureBox1.TabIndex = 25;
-            this.pictureBox1.TabStop = false;
-            // 
             // crystalReportViewer2
             // 
             this.crystalReportViewer2.ActiveViewIndex = -1;
+            this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer2.DisplayBackgroundEdge = false;
             this.crystalReportViewer2.DisplayStatusBar = false;
@@ -3639,6 +3167,503 @@
             this.crystalReportViewer2.Size = new System.Drawing.Size(873, 1101);
             this.crystalReportViewer2.TabIndex = 19;
             this.crystalReportViewer2.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::PalletCard.Properties.Resources.AndrewDunneSignature;
+            this.pictureBox2.Location = new System.Drawing.Point(368, 93);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(130, 46);
+            this.pictureBox2.TabIndex = 21;
+            this.pictureBox2.TabStop = false;
+            // 
+            // Posa9NotChecked
+            // 
+            this.Posa9NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa9NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa9NotChecked.Location = new System.Drawing.Point(400, 202);
+            this.Posa9NotChecked.Name = "Posa9NotChecked";
+            this.Posa9NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa9NotChecked.TabIndex = 74;
+            this.Posa9NotChecked.TabStop = false;
+            this.Posa9NotChecked.Click += new System.EventHandler(this.Posa9NotChecked_Click);
+            // 
+            // Posa8NotChecked
+            // 
+            this.Posa8NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa8NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa8NotChecked.Location = new System.Drawing.Point(400, 142);
+            this.Posa8NotChecked.Name = "Posa8NotChecked";
+            this.Posa8NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa8NotChecked.TabIndex = 73;
+            this.Posa8NotChecked.TabStop = false;
+            this.Posa8NotChecked.Click += new System.EventHandler(this.Posa8NotChecked_Click);
+            // 
+            // Posa7NotChecked
+            // 
+            this.Posa7NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa7NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa7NotChecked.Location = new System.Drawing.Point(400, 82);
+            this.Posa7NotChecked.Name = "Posa7NotChecked";
+            this.Posa7NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa7NotChecked.TabIndex = 72;
+            this.Posa7NotChecked.TabStop = false;
+            this.Posa7NotChecked.Click += new System.EventHandler(this.Posa7NotChecked_Click);
+            // 
+            // Posa6NotChecked
+            // 
+            this.Posa6NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa6NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa6NotChecked.Location = new System.Drawing.Point(205, 202);
+            this.Posa6NotChecked.Name = "Posa6NotChecked";
+            this.Posa6NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa6NotChecked.TabIndex = 71;
+            this.Posa6NotChecked.TabStop = false;
+            this.Posa6NotChecked.Click += new System.EventHandler(this.Posa6NotChecked_Click);
+            // 
+            // Posa5NotChecked
+            // 
+            this.Posa5NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa5NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa5NotChecked.Location = new System.Drawing.Point(205, 142);
+            this.Posa5NotChecked.Name = "Posa5NotChecked";
+            this.Posa5NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa5NotChecked.TabIndex = 70;
+            this.Posa5NotChecked.TabStop = false;
+            this.Posa5NotChecked.Click += new System.EventHandler(this.Posa5NotChecked_Click);
+            // 
+            // Posa4NotChecked
+            // 
+            this.Posa4NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa4NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa4NotChecked.Location = new System.Drawing.Point(205, 82);
+            this.Posa4NotChecked.Name = "Posa4NotChecked";
+            this.Posa4NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa4NotChecked.TabIndex = 69;
+            this.Posa4NotChecked.TabStop = false;
+            this.Posa4NotChecked.Click += new System.EventHandler(this.Posa4NotChecked_Click);
+            // 
+            // Posa3NotChecked
+            // 
+            this.Posa3NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa3NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa3NotChecked.Location = new System.Drawing.Point(11, 202);
+            this.Posa3NotChecked.Name = "Posa3NotChecked";
+            this.Posa3NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa3NotChecked.TabIndex = 68;
+            this.Posa3NotChecked.TabStop = false;
+            this.Posa3NotChecked.Click += new System.EventHandler(this.Posa3NotChecked_Click);
+            // 
+            // Posa2NotChecked
+            // 
+            this.Posa2NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa2NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa2NotChecked.Location = new System.Drawing.Point(11, 142);
+            this.Posa2NotChecked.Name = "Posa2NotChecked";
+            this.Posa2NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa2NotChecked.TabIndex = 67;
+            this.Posa2NotChecked.TabStop = false;
+            this.Posa2NotChecked.Click += new System.EventHandler(this.Posa2NotChecked_Click);
+            // 
+            // Posa9Checked
+            // 
+            this.Posa9Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa9Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa9Checked.Location = new System.Drawing.Point(400, 202);
+            this.Posa9Checked.Name = "Posa9Checked";
+            this.Posa9Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa9Checked.TabIndex = 66;
+            this.Posa9Checked.TabStop = false;
+            this.Posa9Checked.Click += new System.EventHandler(this.Posa9Checked_Click);
+            // 
+            // Posa8Checked
+            // 
+            this.Posa8Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa8Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa8Checked.Location = new System.Drawing.Point(400, 142);
+            this.Posa8Checked.Name = "Posa8Checked";
+            this.Posa8Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa8Checked.TabIndex = 64;
+            this.Posa8Checked.TabStop = false;
+            this.Posa8Checked.Click += new System.EventHandler(this.Posa8Checked_Click);
+            // 
+            // Posa7Checked
+            // 
+            this.Posa7Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa7Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa7Checked.Location = new System.Drawing.Point(400, 82);
+            this.Posa7Checked.Name = "Posa7Checked";
+            this.Posa7Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa7Checked.TabIndex = 62;
+            this.Posa7Checked.TabStop = false;
+            this.Posa7Checked.Click += new System.EventHandler(this.Posa7Checked_Click);
+            // 
+            // Posa6Checked
+            // 
+            this.Posa6Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa6Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa6Checked.Location = new System.Drawing.Point(205, 202);
+            this.Posa6Checked.Name = "Posa6Checked";
+            this.Posa6Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa6Checked.TabIndex = 54;
+            this.Posa6Checked.TabStop = false;
+            this.Posa6Checked.Click += new System.EventHandler(this.Posa6Checked_Click);
+            // 
+            // Posa5Checked
+            // 
+            this.Posa5Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa5Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa5Checked.Location = new System.Drawing.Point(205, 142);
+            this.Posa5Checked.Name = "Posa5Checked";
+            this.Posa5Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa5Checked.TabIndex = 52;
+            this.Posa5Checked.TabStop = false;
+            this.Posa5Checked.Click += new System.EventHandler(this.Posa5Checked_Click);
+            // 
+            // Posa4Checked
+            // 
+            this.Posa4Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa4Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa4Checked.Location = new System.Drawing.Point(205, 82);
+            this.Posa4Checked.Name = "Posa4Checked";
+            this.Posa4Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa4Checked.TabIndex = 50;
+            this.Posa4Checked.TabStop = false;
+            this.Posa4Checked.Click += new System.EventHandler(this.Posa4Checked_Click);
+            // 
+            // Posa3Checked
+            // 
+            this.Posa3Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa3Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa3Checked.Location = new System.Drawing.Point(11, 202);
+            this.Posa3Checked.Name = "Posa3Checked";
+            this.Posa3Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa3Checked.TabIndex = 48;
+            this.Posa3Checked.TabStop = false;
+            this.Posa3Checked.Click += new System.EventHandler(this.Posa3Checked_Click);
+            // 
+            // Posa2Checked
+            // 
+            this.Posa2Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa2Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa2Checked.Location = new System.Drawing.Point(11, 142);
+            this.Posa2Checked.Name = "Posa2Checked";
+            this.Posa2Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa2Checked.TabIndex = 46;
+            this.Posa2Checked.TabStop = false;
+            this.Posa2Checked.Click += new System.EventHandler(this.Posa2Checked_Click);
+            // 
+            // Posa1NotChecked
+            // 
+            this.Posa1NotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.Posa1NotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa1NotChecked.Location = new System.Drawing.Point(11, 82);
+            this.Posa1NotChecked.Name = "Posa1NotChecked";
+            this.Posa1NotChecked.Size = new System.Drawing.Size(43, 40);
+            this.Posa1NotChecked.TabIndex = 44;
+            this.Posa1NotChecked.TabStop = false;
+            this.Posa1NotChecked.Click += new System.EventHandler(this.Posa1NotChecked_Click);
+            // 
+            // Posa1Checked
+            // 
+            this.Posa1Checked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.Posa1Checked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Posa1Checked.Location = new System.Drawing.Point(11, 82);
+            this.Posa1Checked.Name = "Posa1Checked";
+            this.Posa1Checked.Size = new System.Drawing.Size(43, 40);
+            this.Posa1Checked.TabIndex = 43;
+            this.Posa1Checked.TabStop = false;
+            this.Posa1Checked.Click += new System.EventHandler(this.Posa1Checked_Click);
+            // 
+            // PosaVisualDefectsNotChecked
+            // 
+            this.PosaVisualDefectsNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaVisualDefectsNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaVisualDefectsNotChecked.Location = new System.Drawing.Point(466, 366);
+            this.PosaVisualDefectsNotChecked.Name = "PosaVisualDefectsNotChecked";
+            this.PosaVisualDefectsNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaVisualDefectsNotChecked.TabIndex = 89;
+            this.PosaVisualDefectsNotChecked.TabStop = false;
+            this.PosaVisualDefectsNotChecked.Click += new System.EventHandler(this.PosaVisualDefectsNotChecked_Click);
+            // 
+            // PosaSTCGlossNotChecked
+            // 
+            this.PosaSTCGlossNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaSTCGlossNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaSTCGlossNotChecked.Location = new System.Drawing.Point(466, 314);
+            this.PosaSTCGlossNotChecked.Name = "PosaSTCGlossNotChecked";
+            this.PosaSTCGlossNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaSTCGlossNotChecked.TabIndex = 88;
+            this.PosaSTCGlossNotChecked.TabStop = false;
+            this.PosaSTCGlossNotChecked.Click += new System.EventHandler(this.PosaSTCGlossNotChecked_Click);
+            // 
+            // PosaSTCRegisNotChecked
+            // 
+            this.PosaSTCRegisNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaSTCRegisNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaSTCRegisNotChecked.Location = new System.Drawing.Point(466, 260);
+            this.PosaSTCRegisNotChecked.Name = "PosaSTCRegisNotChecked";
+            this.PosaSTCRegisNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaSTCRegisNotChecked.TabIndex = 87;
+            this.PosaSTCRegisNotChecked.TabStop = false;
+            this.PosaSTCRegisNotChecked.Click += new System.EventHandler(this.PosaSTCRegisNotChecked_Click);
+            // 
+            // PosaColourNotChecked
+            // 
+            this.PosaColourNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaColourNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaColourNotChecked.Location = new System.Drawing.Point(466, 152);
+            this.PosaColourNotChecked.Name = "PosaColourNotChecked";
+            this.PosaColourNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaColourNotChecked.TabIndex = 83;
+            this.PosaColourNotChecked.TabStop = false;
+            this.PosaColourNotChecked.Click += new System.EventHandler(this.PosaColourNotChecked_Click);
+            // 
+            // PosaRegistrationNotChecked
+            // 
+            this.PosaRegistrationNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaRegistrationNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaRegistrationNotChecked.Location = new System.Drawing.Point(466, 102);
+            this.PosaRegistrationNotChecked.Name = "PosaRegistrationNotChecked";
+            this.PosaRegistrationNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaRegistrationNotChecked.TabIndex = 82;
+            this.PosaRegistrationNotChecked.TabStop = false;
+            this.PosaRegistrationNotChecked.Click += new System.EventHandler(this.PosaRegistrationNotChecked_Click);
+            // 
+            // PosaVisualDefectsChecked
+            // 
+            this.PosaVisualDefectsChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaVisualDefectsChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaVisualDefectsChecked.Location = new System.Drawing.Point(466, 366);
+            this.PosaVisualDefectsChecked.Name = "PosaVisualDefectsChecked";
+            this.PosaVisualDefectsChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaVisualDefectsChecked.TabIndex = 81;
+            this.PosaVisualDefectsChecked.TabStop = false;
+            this.PosaVisualDefectsChecked.Click += new System.EventHandler(this.PosaVisualDefectsChecked_Click);
+            // 
+            // PosaSTCGlossChecked
+            // 
+            this.PosaSTCGlossChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaSTCGlossChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaSTCGlossChecked.Location = new System.Drawing.Point(466, 314);
+            this.PosaSTCGlossChecked.Name = "PosaSTCGlossChecked";
+            this.PosaSTCGlossChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaSTCGlossChecked.TabIndex = 80;
+            this.PosaSTCGlossChecked.TabStop = false;
+            this.PosaSTCGlossChecked.Click += new System.EventHandler(this.PosaSTCGlossChecked_Click);
+            // 
+            // PosaSTCRegisChecked
+            // 
+            this.PosaSTCRegisChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaSTCRegisChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaSTCRegisChecked.Location = new System.Drawing.Point(466, 260);
+            this.PosaSTCRegisChecked.Name = "PosaSTCRegisChecked";
+            this.PosaSTCRegisChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaSTCRegisChecked.TabIndex = 79;
+            this.PosaSTCRegisChecked.TabStop = false;
+            this.PosaSTCRegisChecked.Click += new System.EventHandler(this.PosaSTCRegisChecked_Click);
+            // 
+            // PosaColourChecked
+            // 
+            this.PosaColourChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaColourChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaColourChecked.Location = new System.Drawing.Point(466, 152);
+            this.PosaColourChecked.Name = "PosaColourChecked";
+            this.PosaColourChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaColourChecked.TabIndex = 77;
+            this.PosaColourChecked.TabStop = false;
+            this.PosaColourChecked.Click += new System.EventHandler(this.PosaColourChecked_Click);
+            // 
+            // PosaRegistrationChecked
+            // 
+            this.PosaRegistrationChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaRegistrationChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaRegistrationChecked.Location = new System.Drawing.Point(466, 102);
+            this.PosaRegistrationChecked.Name = "PosaRegistrationChecked";
+            this.PosaRegistrationChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaRegistrationChecked.TabIndex = 76;
+            this.PosaRegistrationChecked.TabStop = false;
+            this.PosaRegistrationChecked.Click += new System.EventHandler(this.PosaRegistrationChecked_Click);
+            // 
+            // PosaGripNotChecked
+            // 
+            this.PosaGripNotChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxNotChecked;
+            this.PosaGripNotChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaGripNotChecked.Location = new System.Drawing.Point(466, 51);
+            this.PosaGripNotChecked.Name = "PosaGripNotChecked";
+            this.PosaGripNotChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaGripNotChecked.TabIndex = 75;
+            this.PosaGripNotChecked.TabStop = false;
+            this.PosaGripNotChecked.Click += new System.EventHandler(this.PosaGripNotChecked_Click);
+            // 
+            // PosaGripChecked
+            // 
+            this.PosaGripChecked.BackgroundImage = global::PalletCard.Properties.Resources.cbxChecked1;
+            this.PosaGripChecked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PosaGripChecked.Location = new System.Drawing.Point(466, 50);
+            this.PosaGripChecked.Name = "PosaGripChecked";
+            this.PosaGripChecked.Size = new System.Drawing.Size(43, 40);
+            this.PosaGripChecked.TabIndex = 67;
+            this.PosaGripChecked.TabStop = false;
+            this.PosaGripChecked.Click += new System.EventHandler(this.PosaGripChecked_Click);
+            // 
+            // btnScrollUp
+            // 
+            this.btnScrollUp.BackgroundImage = global::PalletCard.Properties.Resources.UpArrow;
+            this.btnScrollUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnScrollUp.Location = new System.Drawing.Point(489, 294);
+            this.btnScrollUp.Name = "btnScrollUp";
+            this.btnScrollUp.Size = new System.Drawing.Size(38, 38);
+            this.btnScrollUp.TabIndex = 25;
+            this.btnScrollUp.UseVisualStyleBackColor = true;
+            this.btnScrollUp.Visible = false;
+            this.btnScrollUp.Click += new System.EventHandler(this.btnScrollUp_Click);
+            // 
+            // btnScrollDown
+            // 
+            this.btnScrollDown.BackgroundImage = global::PalletCard.Properties.Resources.DownArrow;
+            this.btnScrollDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnScrollDown.Location = new System.Drawing.Point(489, 357);
+            this.btnScrollDown.Name = "btnScrollDown";
+            this.btnScrollDown.Size = new System.Drawing.Size(38, 38);
+            this.btnScrollDown.TabIndex = 24;
+            this.btnScrollDown.UseVisualStyleBackColor = true;
+            this.btnScrollDown.Visible = false;
+            this.btnScrollDown.Click += new System.EventHandler(this.btnScrollDown_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(295, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(171, 50);
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblPC_Customer
+            // 
+            this.lblPC_Customer.AutoSize = true;
+            this.lblPC_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_Customer.Location = new System.Drawing.Point(44, 611);
+            this.lblPC_Customer.Name = "lblPC_Customer";
+            this.lblPC_Customer.Size = new System.Drawing.Size(288, 42);
+            this.lblPC_Customer.TabIndex = 5;
+            this.lblPC_Customer.Text = "lblPC_Customer";
+            this.lblPC_Customer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_Customer.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(39, 166);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(263, 39);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "PALLET CARD";
+            this.label18.Visible = false;
+            // 
+            // lblPC_JobNo
+            // 
+            this.lblPC_JobNo.AutoSize = true;
+            this.lblPC_JobNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 44.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_JobNo.Location = new System.Drawing.Point(127, 275);
+            this.lblPC_JobNo.Name = "lblPC_JobNo";
+            this.lblPC_JobNo.Size = new System.Drawing.Size(386, 67);
+            this.lblPC_JobNo.TabIndex = 1;
+            this.lblPC_JobNo.Text = "lblPC_JobNo";
+            this.lblPC_JobNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_JobNo.Visible = false;
+            // 
+            // lblPC_IncompletePallet
+            // 
+            this.lblPC_IncompletePallet.AutoSize = true;
+            this.lblPC_IncompletePallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_IncompletePallet.Location = new System.Drawing.Point(41, 212);
+            this.lblPC_IncompletePallet.Name = "lblPC_IncompletePallet";
+            this.lblPC_IncompletePallet.Size = new System.Drawing.Size(423, 42);
+            this.lblPC_IncompletePallet.TabIndex = 2;
+            this.lblPC_IncompletePallet.Text = "lblPC_IncompletePallet";
+            this.lblPC_IncompletePallet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_IncompletePallet.Visible = false;
+            // 
+            // lblPC_SheetQty
+            // 
+            this.lblPC_SheetQty.AutoSize = true;
+            this.lblPC_SheetQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_SheetQty.Location = new System.Drawing.Point(43, 504);
+            this.lblPC_SheetQty.Name = "lblPC_SheetQty";
+            this.lblPC_SheetQty.Size = new System.Drawing.Size(283, 42);
+            this.lblPC_SheetQty.TabIndex = 6;
+            this.lblPC_SheetQty.Text = "lblPC_SheetQty";
+            this.lblPC_SheetQty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_SheetQty.Visible = false;
+            // 
+            // lblPC_LastPallet
+            // 
+            this.lblPC_LastPallet.AutoSize = true;
+            this.lblPC_LastPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_LastPallet.Location = new System.Drawing.Point(43, 453);
+            this.lblPC_LastPallet.Name = "lblPC_LastPallet";
+            this.lblPC_LastPallet.Size = new System.Drawing.Size(192, 42);
+            this.lblPC_LastPallet.TabIndex = 7;
+            this.lblPC_LastPallet.Text = "Last Pallet";
+            this.lblPC_LastPallet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_LastPallet.Visible = false;
+            // 
+            // lblPC_Sig
+            // 
+            this.lblPC_Sig.AutoSize = true;
+            this.lblPC_Sig.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_Sig.Location = new System.Drawing.Point(43, 401);
+            this.lblPC_Sig.Name = "lblPC_Sig";
+            this.lblPC_Sig.Size = new System.Drawing.Size(181, 42);
+            this.lblPC_Sig.TabIndex = 8;
+            this.lblPC_Sig.Text = "lblPC_Sig";
+            this.lblPC_Sig.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_Sig.Visible = false;
+            // 
+            // lblPC_JobDesc
+            // 
+            this.lblPC_JobDesc.AutoSize = true;
+            this.lblPC_JobDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_JobDesc.Location = new System.Drawing.Point(44, 559);
+            this.lblPC_JobDesc.Name = "lblPC_JobDesc";
+            this.lblPC_JobDesc.Size = new System.Drawing.Size(274, 42);
+            this.lblPC_JobDesc.TabIndex = 16;
+            this.lblPC_JobDesc.Text = "lblPC_JobDesc";
+            this.lblPC_JobDesc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_JobDesc.Visible = false;
+            // 
+            // lblPC_PalletNumber
+            // 
+            this.lblPC_PalletNumber.AutoSize = true;
+            this.lblPC_PalletNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPC_PalletNumber.Location = new System.Drawing.Point(50, 358);
+            this.lblPC_PalletNumber.Name = "lblPC_PalletNumber";
+            this.lblPC_PalletNumber.Size = new System.Drawing.Size(268, 42);
+            this.lblPC_PalletNumber.TabIndex = 17;
+            this.lblPC_PalletNumber.Text = "lblPC_PalletNo";
+            this.lblPC_PalletNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPC_PalletNumber.Visible = false;
+            // 
+            // pnlPrinting
+            // 
+            this.pnlPrinting.Controls.Add(this.lblPrinting);
+            this.pnlPrinting.Location = new System.Drawing.Point(30, 149);
+            this.pnlPrinting.Name = "pnlPrinting";
+            this.pnlPrinting.Size = new System.Drawing.Size(498, 679);
+            this.pnlPrinting.TabIndex = 18;
+            // 
+            // lblPrinting
+            // 
+            this.lblPrinting.AutoSize = true;
+            this.lblPrinting.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrinting.Location = new System.Drawing.Point(175, 220);
+            this.lblPrinting.Name = "lblPrinting";
+            this.lblPrinting.Size = new System.Drawing.Size(141, 31);
+            this.lblPrinting.TabIndex = 0;
+            this.lblPrinting.Text = "Printing...";
+            this.lblPrinting.Visible = false;
             // 
             // Home
             // 
@@ -3721,7 +3746,6 @@
             this.pnlPalletCard2.PerformLayout();
             this.pnlSignature.ResumeLayout(false);
             this.pnlSignature.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlPalletCard3.ResumeLayout(false);
             this.pnlPalletCard3.PerformLayout();
             this.pnlPalletCard4.ResumeLayout(false);
@@ -3745,11 +3769,20 @@
             this.pnlNotification2.PerformLayout();
             this.pnlPalletCard10.ResumeLayout(false);
             this.pnlPalletCard10.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.pnlPalletCard11.ResumeLayout(false);
+            this.pnlPalletCard11.PerformLayout();
+            this.pnlPalletCardBack.ResumeLayout(false);
+            this.pnlPalletCardPrintCR.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa9NotChecked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa8NotChecked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa7NotChecked)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Posa6NotChecked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa5NotChecked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa4NotChecked)).EndInit();
@@ -3765,8 +3798,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Posa2Checked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa1NotChecked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posa1Checked)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PosaVisualDefectsNotChecked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosaSTCGlossNotChecked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosaSTCRegisNotChecked)).EndInit();
@@ -3778,14 +3809,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.PosaColourChecked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosaRegistrationChecked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosaGripNotChecked)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PosaGripChecked)).EndInit();
-            this.pnlPalletCard11.ResumeLayout(false);
-            this.pnlPalletCard11.PerformLayout();
-            this.pnlPalletCardBack.ResumeLayout(false);
-            this.pnlPalletCardPrintCR.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlPrinting.ResumeLayout(false);
+            this.pnlPrinting.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3913,20 +3940,13 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel pnlPalletCardPrint;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox tbxTextBoxBadSection;
         private System.Windows.Forms.Label lblPC_Note;
         private System.Windows.Forms.Label lblPC_Date;
         private System.Windows.Forms.Label lblPC_Press;
         private System.Windows.Forms.Label lblPC_SectionName;
-        private System.Windows.Forms.Label lblPC_Sig;
-        private System.Windows.Forms.Label lblPC_LastPallet;
-        private System.Windows.Forms.Label lblPC_SheetQty;
-        private System.Windows.Forms.Label lblPC_Customer;
         private System.Windows.Forms.Label lblPC_PartAQty;
-        private System.Windows.Forms.Label lblPC_IncompletePallet;
-        private System.Windows.Forms.Label lblPC_JobNo;
         private System.Windows.Forms.Button btnPalletCardPrint;
         private System.Windows.Forms.Panel pnlPalletCard8;
         private System.Windows.Forms.Button btnIsSectionFinishedYes;
@@ -3937,9 +3957,7 @@
         private System.Windows.Forms.Label lblPalletOverBySheets;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button btnPalletOver;
-        private System.Windows.Forms.Label lblPC_JobDesc;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Label lblPC_PalletNumber;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label lblFinishedPallets;
         private System.Windows.Forms.Label lblWarning;
@@ -4070,6 +4088,17 @@
         private System.Windows.Forms.Panel pnlPalletCardPrintCR;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel pnlPrinting;
+        private System.Windows.Forms.Label lblPrinting;
+        private System.Windows.Forms.Label lblPC_PalletNumber;
+        private System.Windows.Forms.Label lblPC_JobDesc;
+        private System.Windows.Forms.Label lblPC_Sig;
+        private System.Windows.Forms.Label lblPC_LastPallet;
+        private System.Windows.Forms.Label lblPC_SheetQty;
+        private System.Windows.Forms.Label lblPC_Customer;
+        private System.Windows.Forms.Label lblPC_IncompletePallet;
+        private System.Windows.Forms.Label lblPC_JobNo;
+        private System.Windows.Forms.Label label18;
     }
 }
 
