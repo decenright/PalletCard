@@ -4330,6 +4330,7 @@ namespace PalletCard
 
         private void btnPalletCardPrint_Click(object sender, EventArgs e)
         {
+            lblPrinting.Visible = true;
             // Test to List Local Printers
             //foreach (string printerName in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
             //{
@@ -4365,9 +4366,6 @@ namespace PalletCard
             Cancel();
             tbxSearchBox.Text = jobNo;
             Search();
-            //dataGridView2.Rows.Clear();
-            //dataGridView2.Refresh();
-            lblPrinting.Visible = true;
         }
 
         void PrintImagePalletCard()
