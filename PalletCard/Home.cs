@@ -24,21 +24,21 @@ namespace PalletCard
 
         #region Profiles
 
-        //// Declan Testing
-        //int resourceID = 6;
-        //string press = "XL106";
-        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "declan.enright@colorman.ie";
-        //string defaultPrinter = "ProC5100S";
-        //////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-        //////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
-
-        // XL106
+        // Declan Testing
         int resourceID = 6;
         string press = "XL106";
         string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        string defaultEmail = "martin@colorman.ie";
-        string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        string defaultEmail = "declan.enright@colorman.ie";
+        string defaultPrinter = "ProC5100S";
+        ////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        ////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+        //// XL106
+        //int resourceID = 6;
+        //string press = "XL106";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "martin@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// SM102
         //int resourceID = 1;
@@ -546,6 +546,12 @@ namespace PalletCard
             listPanel[4] = pnlReturnPaper3;
             listPanel[0].BringToFront();
             btnBack.Visible = false;
+            tbxSearchBox.Focus();
+        }
+
+        //Focus on Searchbox
+        public void Home_SetFocus(object sender, EventArgs e)
+        {
             tbxSearchBox.Focus();
         }
 
@@ -2249,11 +2255,24 @@ namespace PalletCard
                 index = 11;
                 }
         }
-#endregion
 
-#region Gang
+        private void tbxSheetCountPalletCard_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnPalletHeightSheetCountPalletCard_Click(tbxPalletHeightPalletCard, new EventArgs());
+        }
 
-// GANGPRO ROUTINE
+        private void tbxPalletHeightPalletCard_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnPalletHeightSheetCountPalletCard_Click(tbxSheetCountPalletCard, new EventArgs());
+        }
+
+        #endregion
+
+        #region Gang
+
+        // GANGPRO ROUTINE
 
         private void queryGangpro()
         {
@@ -4821,10 +4840,6 @@ namespace PalletCard
 
         #endregion
 
-        //Focus on Searchbox
-        public void Home_SetFocus(object sender, EventArgs e)
-        {
-            tbxSearchBox.Focus();
-        }
+
     }
 }
