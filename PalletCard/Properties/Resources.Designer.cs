@@ -123,9 +123,39 @@ namespace PalletCard.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LogoThumb {
+            get {
+                object obj = ResourceManager.GetObject("LogoThumb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Splash_Screen {
             get {
                 object obj = ResourceManager.GetObject("Splash_Screen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Splash1 {
+            get {
+                object obj = ResourceManager.GetObject("Splash1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Splash11 {
+            get {
+                object obj = ResourceManager.GetObject("Splash11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

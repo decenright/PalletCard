@@ -24,21 +24,21 @@ namespace PalletCard
 
         #region Profiles
 
-        // Declan Testing
-        int resourceID = 6;
-        string press = "XL106";
-        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        string defaultEmail = "declan.enright@colorman.ie";
-        string defaultPrinter = "ProC5100S";
-        ////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-        ////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
-
-        //// XL106
+        //// Declan Testing
         //int resourceID = 6;
         //string press = "XL106";
         //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "martin@colorman.ie";
-        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        //string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultPrinter = "ProC5100S";
+        //////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        //////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+        // XL106
+        int resourceID = 6;
+        string press = "XL106";
+        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        string defaultEmail = "martin@colorman.ie";
+        string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// SM102
         //int resourceID = 1;
@@ -107,21 +107,38 @@ namespace PalletCard
 
         public Home()
         {
-            Thread t = new Thread(new ThreadStart(Splash));
-            t.Start();
+            //Thread t = new Thread(new ThreadStart(Splash));
+            //t.IsBackground = true;
+            //t.Start();
 
-            string str = string.Empty;
-            for (int i = 0; i < 50000; i++)
-            {
-                str += i.ToString();
-            }
+            //string str = string.Empty;
+            //for (int i = 0; i < 40000; i++)
+            //{
+            //    str += i.ToString();
+            //}
 
-            t.Abort();
+            //t.Abort();
+
+            //SplashScreen.SplashForm frm = new SplashScreen.SplashForm();
+            //frm.AppName = "";
+            //frm.Icon = Properties.Resources.Logo;
+            //frm.ShowIcon = true;
+            //frm.ShowInTaskbar = true;
+            //frm.BackgroundImage = Properties.Resources.Splash_Screen;
+            //Application.Run(frm);
+
+            Splash s = new Splash();
+            s.Show();
 
             InitializeComponent();
 
+            //frm.Close();
             this.ActiveControl = textBox1;
+            s.Close();
         }
+
+
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
         void Splash()
         {
@@ -131,22 +148,34 @@ namespace PalletCard
             frm.ShowIcon = true;
             frm.ShowInTaskbar = true;
             frm.BackgroundImage = Properties.Resources.Splash_Screen;
-           
-            try
-            {
-                Application.Run(frm);
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show("Tap icon again");
-                throw (ex);
-            }
-            finally
-            {
-                frm.Close();
-            }
+
+            timer.Interval = 5000;
+            timer.Tick += new EventHandler(timer_Tick);
 
 
+            if(timer.Interval < 5000)
+            { 
+            Application.Run(frm);          
+            }
+            frm.Close();
+
+            //try
+            //{
+            //    Application.Run(frm);
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw (ex);
+            //}
+            //finally
+            //{
+            //    frm.Close();
+            //}
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -542,7 +571,8 @@ namespace PalletCard
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Tap Cancel and search again");
+                    MessageBox.Show("The Job Number you entered is not on this Press");
+                    Cancel();
                 }
                 index = 1;
                 if (searchChanged == true)
@@ -556,40 +586,6 @@ namespace PalletCard
                 btnPalletCardPrint.Visible = true;
             }
         }
-
-        //private void SearchSectionFinishedNo()
-        //{
-        //    {
-        //        try
-        //        {
-        //            ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%' and filter = '1' ", jobNo.Replace("'", "''"));
-        //            lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
-        //            lblJobNo.Visible = true;
-        //            //int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
-        //            if (dataGridView1.Rows[0].Cells[0].Value != null)
-        //            {
-        //                lblPress.Text = press;
-        //                lblPress.Visible = true;
-        //                pnlHome1.BringToFront();
-        //            }
-        //            else
-        //            {
-        //                lblPress.Visible = false;
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw (ex);
-        //        }
-        //        index = 1;
-
-        //        //reset dynamic buttons origin
-        //        A = 1;
-        //        btnPalletCardPrint.Visible = true;
-        //        lblJobNo.Visible = true;
-        //        lblPress.Visible = true;
-        //    }
-        //}
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -829,6 +825,17 @@ namespace PalletCard
             tbxFinishPallet.Text = "";
             lastPallet = 0;
             lblPrinting.Visible = false;
+
+            // Reset Bad Section - flowLayoutPanel2
+            pnlBadSectionGangHeader.Visible = false;
+            lblStockCode.Visible = false;
+            lblNumberUp.Visible = false;
+            lblNumberUpBadQty.Visible = false;
+            lblSheetsAffected.Visible = false;
+            flowLayoutPanel2.Visible = false;
+            btnScrollUp.Visible = false;
+            btnScrollDown.Visible = false;
+
             pnlHome0.BringToFront();
         }
 
