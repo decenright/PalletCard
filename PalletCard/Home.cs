@@ -3554,7 +3554,7 @@ namespace PalletCard
             string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
             //string CommandText = "DELETE FROM Log where JobNo = '" + lblJobNo.Text + "' and PalletNumber = PalletNumber";
             //string CommandText = "Update Log set JobCancelled = 1 where JobNo = '" + lblJobNo.Text + "' ";
-            string CommandText = "Update Log set JobCancelled = 1 where AutoNum = '" + autoNum + "' ";
+            string CommandText = "Update Log set JobCancelled = 1, Unfinished = 1 where AutoNum = '" + autoNum + "' ";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
             OdbcDataAdapter myAdapter = new OdbcDataAdapter();
@@ -4025,13 +4025,15 @@ namespace PalletCard
             // ignore if the value has been retrieved by scan
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             PaperSectionNo = Convert.ToInt32(dataGridView2.Rows[0].Cells[8].Value);
+
+            // If not unfinished
             if (Convert.ToInt32(dataGridView2.Rows[0].Cells[6].Value) != 0)
             {
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
                 {
                     dataGridView2.AllowUserToAddRows = false;
-                    // Sum up only PaperSectionNo's associated with this section not all PaperSectionNo's
-                    if (Convert.ToInt32(dataGridView2.Rows[i].Cells[8].Value) == PaperSectionNo)
+                    // Sum up only PaperSectionNo's associated with this section not all PaperSectionNo's AND also not canceled
+                    if (Convert.ToInt32(dataGridView2.Rows[i].Cells[8].Value) == PaperSectionNo && Convert.ToInt32(dataGridView2.Rows[i].Cells[33].Value) != 1)
                     {
                         sumProduced += Convert.ToInt32(dataGridView2.Rows[i].Cells[9].Value);
                     }
