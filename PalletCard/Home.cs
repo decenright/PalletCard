@@ -1034,13 +1034,18 @@ namespace PalletCard
             try
             {
                 conDatabase.Open();
-                myReader = cmdDatabase.ExecuteReader();
-                conDatabase.Close();
+                myReader = cmdDatabase.ExecuteReader();              
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                conDatabase.Close();
+            }
+
+
             pnlHome0.BringToFront();
             lblJobNo.Visible = false;
             lblPress.Visible = false;
@@ -1227,12 +1232,16 @@ namespace PalletCard
             {
                 conDatabase.Open();
                 myReader = cmdDatabase.ExecuteReader();
-                conDatabase.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                conDatabase.Close();
+            }
+            
             pnlHome0.BringToFront();
             lblJobNo.Visible = false;
             lblPress.Visible = false;
@@ -3512,8 +3521,40 @@ namespace PalletCard
 
         private void btnCancelPrintMore_Click(object sender, EventArgs e)
         {
+            string ConnectionString1 = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
+            string CommandText1 = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
+            OdbcConnection myConnection1 = new OdbcConnection(ConnectionString1);
+            OdbcCommand myCommand1 = new OdbcCommand(CommandText1, myConnection1);
+            OdbcDataAdapter myAdapter1 = new OdbcDataAdapter();
+            myAdapter1.SelectCommand = myCommand1;
+            DataSet palletCardData1 = new DataSet();
+            try
+            {
+                myConnection1.Open();
+                myAdapter1.Fill(palletCardData1);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
+            finally
+            {
+                myConnection1.Close();
+            }
+            using (DataTable palletCardLog1 = new DataTable())
+            {
+                myAdapter1.Fill(palletCardLog1);
+                dataGridView2.DataSource = palletCardLog1;
+            }
+
+
+            this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
+            int autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
             string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
-            string CommandText = "DELETE FROM Log where JobNo = '" + lblJobNo.Text + "' and PalletNumber = PalletNumber";
+            //string CommandText = "DELETE FROM Log where JobNo = '" + lblJobNo.Text + "' and PalletNumber = PalletNumber";
+            //string CommandText = "Update Log set JobCancelled = 1 where JobNo = '" + lblJobNo.Text + "' ";
+            string CommandText = "Update Log set JobCancelled = 1 where AutoNum = '" + autoNum + "' ";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
             OdbcDataAdapter myAdapter = new OdbcDataAdapter();
@@ -3577,6 +3618,10 @@ namespace PalletCard
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    conDatabase.Close();
+                }
 
                 string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
                 string CommandText = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
@@ -3629,6 +3674,10 @@ namespace PalletCard
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conDatabase.Close();
                 }
 
                 string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
@@ -3723,11 +3772,14 @@ namespace PalletCard
                 {
                     conDatabase.Open();
                     myReader = cmdDatabase.ExecuteReader();
-                    conDatabase.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conDatabase.Close();
                 }
 
                 string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
@@ -3773,11 +3825,14 @@ namespace PalletCard
                 {
                     conDatabase.Open();
                     myReader = cmdDatabase.ExecuteReader();
-                    conDatabase.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conDatabase.Close();
                 }
 
                 string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
@@ -4004,11 +4059,14 @@ namespace PalletCard
             {
                 conDatabase.Open();
                 myReader = cmdDatabase.ExecuteReader();
-                conDatabase.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conDatabase.Close();
             }
 
             reQueryDataGridView2();
@@ -4202,7 +4260,7 @@ namespace PalletCard
                     SaveMedicalPharmaImageToFile();
                     pnlSignature.BringToFront();
 
-                    // add ink paper detail to the database by finding the already saved line and inseting the valuses
+                    // add ink paper detail to the database by finding the already saved line and inseting the values
                     string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
                     using (SqlConnection connection = new SqlConnection(constring))
                     using (SqlCommand command1 = connection.CreateCommand())
@@ -4218,12 +4276,18 @@ namespace PalletCard
                         command2.Parameters.AddWithValue("@jobNumber", lblJobNo.Text);
                         command2.Parameters.AddWithValue("@palletNumber", PalletNumber);
 
-                        connection.Open();
+                        try
+                        {
+                            connection.Open();
 
-                        command1.ExecuteNonQuery();
-                        command2.ExecuteNonQuery();
+                            command1.ExecuteNonQuery();
+                            command2.ExecuteNonQuery();
+                        }
+                        finally
+                        {
+                            connection.Close();
+                        }
 
-                        connection.Close();
                     }
                 }
             }
@@ -4300,11 +4364,14 @@ namespace PalletCard
             {
                 conDatabase.Open();
                 myReader = cmdDatabase.ExecuteReader();
-                conDatabase.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conDatabase.Close();
             }
 
             // Requery the data to refresh dataGridView2 with the newly added PalletNumber and barCode

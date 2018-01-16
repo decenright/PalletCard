@@ -178,6 +178,21 @@
   <ItemGroup>
     <None Include="Resources\Splash11.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DownArrow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DownArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DownArrow1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpArrow1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
