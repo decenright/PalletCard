@@ -1809,7 +1809,7 @@ namespace PalletCard
             //filter datagridview1 with the button text choice
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "SectionName = '" + btn.Text + "' and JobNo like '%" + lblJobNo.Text + "%'";
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "SectionName = '" + btn.Text + "' and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
             }
             catch (Exception) { }
 
