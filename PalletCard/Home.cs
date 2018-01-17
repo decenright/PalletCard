@@ -15,7 +15,6 @@ using CrystalDecisions.Shared;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using RawPrint;
-using System.Threading;
 
 namespace PalletCard
 {
@@ -479,7 +478,6 @@ namespace PalletCard
         private void Home_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-            //string ConnectionString = Convert.ToString("Dsn=TharTest;uid=tharuser");
             string CommandText = "SELECT * FROM app_PalletOperations where resourceID = '" + resourceID + "'";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
@@ -503,7 +501,6 @@ namespace PalletCard
             using (DataTable operations = new DataTable())
             {
                 myAdapter.Fill(operations);
-                //dataGridView1.DataSource = operations;
 
                 // New table to hold concatenated values - if is duplicate line filter then column = 0. Non duplicate lines filter column = 1. 
                 // Search function includes a filter on 1 to return only the 1's
@@ -560,7 +557,7 @@ namespace PalletCard
             {
                 try
                 {   
-                    ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%' and filter = '1' ", tbxSearchBox.Text.Trim().Replace("'", "''"));
+                    ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%' and Filter = 1 ", tbxSearchBox.Text.Trim().Replace("'", "''"));
                     lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                     lblJobNo.Visible = true;
                     //int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
@@ -794,7 +791,6 @@ namespace PalletCard
                 dataGridView1.DataSource = concatenatedTable;
                 this.dataGridView1.Sort(this.dataGridView1.Columns["JobNo"], ListSortDirection.Ascending);
             }
-
 
             lblJobNo.Visible = false;
             lblPress.Visible = false;
@@ -4026,7 +4022,7 @@ namespace PalletCard
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             PaperSectionNo = Convert.ToInt32(dataGridView2.Rows[0].Cells[8].Value);
 
-            // If not unfinished
+            // If not finished 
             if (Convert.ToInt32(dataGridView2.Rows[0].Cells[6].Value) != 0)
             {
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
