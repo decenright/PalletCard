@@ -103,6 +103,7 @@ namespace PalletCard
         string inkDetails = "";
         string sig;
         int lastPallet = 0;
+        int sumProduced;
 
         public Home()
         {
@@ -1813,6 +1814,8 @@ namespace PalletCard
             }
             catch (Exception) { }
 
+            lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
+
             string x;
             string y;
             //x = PaperSectionNo value at Row 0
@@ -1877,43 +1880,6 @@ namespace PalletCard
                         }
                         sigBtns = true;
                     }
-
-                //string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
-                //string CommandText = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
-                //OdbcConnection myConnection = new OdbcConnection(ConnectionString);
-                //OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-                //OdbcDataAdapter myAdapter = new OdbcDataAdapter();
-                //myAdapter.SelectCommand = myCommand;
-                //DataSet palletCardData = new DataSet();
-                //try
-                //{
-                //    myConnection.Open();
-                //    myAdapter.Fill(palletCardData);
-                //}
-                //catch (Exception ex)
-                //{
-                //    throw (ex);
-                //}
-                //finally
-                //{
-                //    myConnection.Close();
-                //}
-                //using (DataTable palletCardLog = new DataTable())
-                //{
-                //    myAdapter.Fill(palletCardLog);
-                //    dataGridView2.DataSource = palletCardLog;
-                //}
-
-                //for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
-                //{
-                //    if (Convert.ToByte(dataGridView2.Rows[i].Cells[7].Value) == 1)
-                //    {
-
-                //            //flowLayoutPanel1.Controls.Remove();
-
-                //    }
-                //}
-
             }
         }
 
@@ -1929,9 +1895,11 @@ namespace PalletCard
             //filter datagridview1 with the button text choice
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 = '" + btn.Text + "' and JobNo like '%" + lblJobNo.Text + "%'";
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 = '" + btn.Text + "' and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
             }
             catch (Exception) { }
+
+            lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
 
             string x;
             string y;
@@ -2015,9 +1983,11 @@ namespace PalletCard
             //filter datagridview1 with the button text choice
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "SectionName like '%" + lbl2.Text + "%'  and PaperSectionNo = " + btn.Text.Trim() + " and JobNo like '%" + lblJobNo.Text + "%'";
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "SectionName like '%" + lbl2.Text + "%'  and PaperSectionNo = " + btn.Text.Trim() + " and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
             }
             catch (Exception) { }
+
+            lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
         }
 
 //Dynamic button click - Section buttons EXPR1, Pallet Card work flow
@@ -2036,6 +2006,8 @@ namespace PalletCard
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + lbl2.Text + "%'  and PaperSectionNo = " + btn.Text.Trim() + " and JobNo like '%" + lblJobNo.Text + "%'";
             }
             catch (Exception) { }
+
+            lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
         }
 
         private void tbxFinishPallet_KeyDown(object sender, KeyEventArgs e)
@@ -4016,7 +3988,7 @@ namespace PalletCard
                     }
 
             // Get the quantities produced from the previous pallet cards
-            int sumProduced = 0;
+            sumProduced = 0;
 
             // ignore if the value has been retrieved by scan
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
@@ -4441,7 +4413,7 @@ namespace PalletCard
             // Create an instance of the Printer
             IPrinter printer = new Printer();
             // Print the file
-            printer.PrintRawFile(PrinterName, Filepath, Filename);
+            //printer.PrintRawFile(PrinterName, Filepath, Filename);
 
             // if Is Section Finished No - return user to choose Action Screen
             pnlHome1.BringToFront();
