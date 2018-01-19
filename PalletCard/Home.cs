@@ -526,16 +526,14 @@ namespace PalletCard
                         }
                         else
                             concatenatedTable.Rows[i][32] = 1;
-                    concatenatedTable.Rows[concatenatedTable.Rows.Count - 1][32] = 1;
+                            concatenatedTable.Rows[concatenatedTable.Rows.Count - 1][32] = 1;
 
-                    dataGridView1.DataSource = concatenatedTable;
+                            dataGridView1.DataSource = concatenatedTable;
 
-                    // format StartOp to 24 hour time format and sort for earliest first
-                    dataGridView1.Columns[30].DefaultCellStyle.Format = "MM/dd/yyyy HH:mm:ss";
-                    dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Ascending);
-
-                }
-                
+                            // format StartOp to 24 hour time format and sort for earliest first
+                            dataGridView1.Columns[30].DefaultCellStyle.Format = "MM/dd/yyyy HH:mm:ss";
+                            dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Ascending);
+                }              
             }
 
             listPanel.Add(pnlHome0);
