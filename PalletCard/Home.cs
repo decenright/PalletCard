@@ -503,33 +503,39 @@ namespace PalletCard
             {
                 myAdapter.Fill(operations);
 
-                // New table to hold concatenated values - if is duplicate line filter then column = 0. Non duplicate lines filter column = 1. 
-                // Search function includes a filter on 1 to return only the 1's
-                DataTable concatenatedTable = new DataTable();
-                concatenatedTable = operations.Clone();
-                concatenatedTable.Columns.Add("Concat");
-                concatenatedTable.Columns.Add("Filter");
-                concatenatedTable.Columns["Concat"].Expression = "JobNo+ ',' + PrintMethod + ',' + PaperSectionID";
+                // make sure the the Operations table contains records
+                if (operations.Rows.Count > 0) {
 
-                foreach (DataRow dr in operations.Rows)
-                {
-                    concatenatedTable.Rows.Add(dr.ItemArray);
-                }
+                    // New table to hold concatenated values - if is duplicate line filter then column = 0. Non duplicate lines filter column = 1. 
+                    // Search function includes a filter on 1 to return only the 1's
+                    DataTable concatenatedTable = new DataTable();
+                    concatenatedTable = operations.Clone();
+                    concatenatedTable.Columns.Add("Concat");
+                    concatenatedTable.Columns.Add("Filter");
+                    concatenatedTable.Columns["Concat"].Expression = "JobNo+ ',' + PrintMethod + ',' + PaperSectionID";
 
-                for (int i = 0; i < concatenatedTable.Rows.Count - 1; i++)
-                    if (concatenatedTable.Rows[i][31].ToString() == concatenatedTable.Rows[i + 1][31].ToString())
+                    foreach (DataRow dr in operations.Rows)
                     {
-                        concatenatedTable.Rows[i][32] = 0;
+                        concatenatedTable.Rows.Add(dr.ItemArray);
                     }
-                    else
-                        concatenatedTable.Rows[i][32] = 1;
-                        concatenatedTable.Rows[concatenatedTable.Rows.Count -1][32] = 1;
 
-                dataGridView1.DataSource = concatenatedTable;
+                    for (int i = 0; i < concatenatedTable.Rows.Count - 1; i++)
+                        if (concatenatedTable.Rows[i][31].ToString() == concatenatedTable.Rows[i + 1][31].ToString())
+                        {
+                            concatenatedTable.Rows[i][32] = 0;
+                        }
+                        else
+                            concatenatedTable.Rows[i][32] = 1;
+                    concatenatedTable.Rows[concatenatedTable.Rows.Count - 1][32] = 1;
 
-                // format StartOp to 24 hour time format and sort for earliest first
-                dataGridView1.Columns[30].DefaultCellStyle.Format = "MM/dd/yyyy HH:mm:ss";
-                dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Ascending);
+                    dataGridView1.DataSource = concatenatedTable;
+
+                    // format StartOp to 24 hour time format and sort for earliest first
+                    dataGridView1.Columns[30].DefaultCellStyle.Format = "MM/dd/yyyy HH:mm:ss";
+                    dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Ascending);
+
+                }
+                
             }
 
             listPanel.Add(pnlHome0);
@@ -838,7 +844,7 @@ namespace PalletCard
             flowLayoutPanel2.Visible = false;
             btnScrollUp.Visible = false;
             btnScrollDown.Visible = false;
-
+            sheetsAffectedBadSection = 0;
             pnlHome0.BringToFront();
         }
 
@@ -1798,7 +1804,7 @@ namespace PalletCard
              }
         }
 
-        //Dynamic button click - Section buttons, SECTION_NAME, Pallet Card work flow
+        //Dynamic button click - Part buttons, SECTION_NAME, Pallet Card work flow
         private void sectionNameSectionBtns(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -1883,7 +1889,7 @@ namespace PalletCard
             }
         }
 
-        //Dynamic button click - Section buttons, EXPR1, Pallet Card work flow
+        //Dynamic button click - Part buttons, EXPR1, Pallet Card work flow
         private void expr1SectionBtns(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -2003,7 +2009,7 @@ namespace PalletCard
             //filter datagridview1 with the button text choice
             try
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + lbl2.Text + "%'  and PaperSectionNo = " + btn.Text.Trim() + " and JobNo like '%" + lblJobNo.Text + "%'";
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "Expr1 like '%" + lbl2.Text + "%'  and PaperSectionNo = " + btn.Text.Trim() + " and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
             }
             catch (Exception) { }
 
@@ -2485,7 +2491,7 @@ namespace PalletCard
                 sheetsAffectedBadSection = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
             }
 
-            MessageBox.Show(sheetsAffectedBadSection.ToString());
+            //MessageBox.Show(sheetsAffectedBadSection.ToString());
 
             foreach (Control c in flowLayoutPanel2.Controls)
             {
@@ -2622,7 +2628,7 @@ namespace PalletCard
                                 Label lbl2 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl2);
                                 lbl2.Height = 40;
-                                lbl2.Width = 120;
+                                lbl2.Width = 150;
                                 lbl2.BackColor = Color.Silver;
                                 lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
@@ -2633,7 +2639,7 @@ namespace PalletCard
                                 Label lbl3 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl3);
                                 lbl3.Height = 40;
-                                lbl3.Width = 108;
+                                lbl3.Width = 78;
                                 lbl3.BackColor = Color.Silver;
                                 lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
@@ -2711,7 +2717,7 @@ namespace PalletCard
                                 Label lbl2 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl2);
                                 lbl2.Height = 40;
-                                lbl2.Width = 120;
+                                lbl2.Width = 150;
                                 lbl2.BackColor = Color.Silver;
                                 lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
@@ -2722,7 +2728,7 @@ namespace PalletCard
                                 Label lbl3 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl3);
                                 lbl3.Height = 40;
-                                lbl3.Width = 108;
+                                lbl3.Width = 78;
                                 lbl3.BackColor = Color.Silver;
                                 lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
@@ -2805,7 +2811,7 @@ namespace PalletCard
                                 Label lbl2 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl2);
                                 lbl2.Height = 40;
-                                lbl2.Width = 120;
+                                lbl2.Width = 150;
                                 lbl2.BackColor = Color.Silver;
                                 lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
@@ -2816,7 +2822,7 @@ namespace PalletCard
                                 Label lbl3 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl3);
                                 lbl3.Height = 40;
-                                lbl3.Width = 108;
+                                lbl3.Width = 78;
                                 lbl3.BackColor = Color.Silver;
                                 lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
@@ -2962,7 +2968,7 @@ namespace PalletCard
                                 Label lbl2 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl2);
                                 lbl2.Height = 40;
-                                lbl2.Width = 120;
+                                lbl2.Width = 150;
                                 lbl2.BackColor = Color.Silver;
                                 lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
@@ -2973,7 +2979,7 @@ namespace PalletCard
                                 Label lbl3 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl3);
                                 lbl3.Height = 40;
-                                lbl3.Width = 108;
+                                lbl3.Width = 78;
                                 lbl3.BackColor = Color.Silver;
                                 lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
@@ -3051,7 +3057,7 @@ namespace PalletCard
                                 Label lbl2 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl2);
                                 lbl2.Height = 40;
-                                lbl2.Width = 120;
+                                lbl2.Width = 150;
                                 lbl2.BackColor = Color.Silver;
                                 lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
@@ -3062,7 +3068,7 @@ namespace PalletCard
                                 Label lbl3 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl3);
                                 lbl3.Height = 40;
-                                lbl3.Width = 108;
+                                lbl3.Width = 78;
                                 lbl3.BackColor = Color.Silver;
                                 lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
@@ -3145,7 +3151,7 @@ namespace PalletCard
                                 Label lbl2 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl2);
                                 lbl2.Height = 40;
-                                lbl2.Width = 120;
+                                lbl2.Width = 150;
                                 lbl2.BackColor = Color.Silver;
                                 lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl2.TextAlign = ContentAlignment.MiddleLeft;
@@ -3156,7 +3162,7 @@ namespace PalletCard
                                 Label lbl3 = new Label();
                                 this.flowLayoutPanel2.Controls.Add(lbl3);
                                 lbl3.Height = 40;
-                                lbl3.Width = 108;
+                                lbl3.Width = 78;
                                 lbl3.BackColor = Color.Silver;
                                 lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
                                 lbl3.TextAlign = ContentAlignment.MiddleCenter;
@@ -3376,8 +3382,42 @@ namespace PalletCard
                 }
             }
             pnlPalletCard8.BringToFront();
-            index = 13;   
-        }
+            index = 13;
+
+
+
+
+
+
+
+
+            pnlPalletCard8.BringToFront();
+
+            if (dataGridView2.Rows.Count != 0)
+            {
+                btnIsSectionFinishedYes_Click(btnIsSectionFinishedYes, EventArgs.Empty);
+                index = 15;
+            }
+            else
+            {
+                if (dataGridView1.Rows[0].Cells[15].Value.ToString() == "")
+                {
+                    lblIsSectionFinished.Text = dataGridView1.Rows[0].Cells[11].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString();
+                }
+                else
+                {
+                    lblIsSectionFinished.Text = dataGridView1.Rows[0].Cells[15].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString();
+                }
+
+                // WorkingSize
+                lbl6.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+                // QtyRequired
+                lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
+
+            }
+
+
+            }
 
         private void btnExtraInformationPalletCard_Click(object sender, EventArgs e)
         {
@@ -3520,8 +3560,6 @@ namespace PalletCard
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             int autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
             string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
-            //string CommandText = "DELETE FROM Log where JobNo = '" + lblJobNo.Text + "' and PalletNumber = PalletNumber";
-            //string CommandText = "Update Log set JobCancelled = 1 where JobNo = '" + lblJobNo.Text + "' ";
             string CommandText = "Update Log set JobCancelled = 1, Unfinished = 1 where AutoNum = '" + autoNum + "' ";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
@@ -3555,6 +3593,7 @@ namespace PalletCard
             tbxSheetCountPalletCard.Text = "";
             lblPheightPalletCard.Text = "";
             btnPalletCard_Click(btnPalletCard, EventArgs.Empty);
+            badSectionLbls = false;
         }
 
 #endregion
@@ -4063,8 +4102,8 @@ namespace PalletCard
                     pnlPalletCard6.BringToFront();
                     btnBack.Visible = false;
                     lblPalletDidNotMakeQty.Text = "Job " + lblJobNo.Text + " Sheet " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " has " + shortBy + " insufficient sheets";
-                    //lbl7.Text = "Pallet Short";
-                    lblFinishedPallets.Visible = false;
+                    
+                    lblFinishedPalletsUnder.Visible = false;
 
                     // Check if 1 finished pallet for each section - if not provide a warning message listing the remaing pallets to finish
                     for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
@@ -4082,15 +4121,15 @@ namespace PalletCard
                             sectionsNoLastFlag.Add(s);
                     }
 
-                    lblFinishedPallets.Visible = true;
-                    lblFinishedPallets.Text = "";
+                    lblFinishedPalletsUnder.Visible = true;
+                    lblFinishedPalletsUnder.Text = "";
                     foreach (string s in sectionsNoLastFlag)
                     {
-                        lblFinishedPallets.Text += "Section " + s + " is not complete" + "\r\n";
+                        lblFinishedPalletsUnder.Text += "The pallet for Section " + s + " is not finished" + "\r\n";
                     }
-                    if (lblFinishedPallets.Text.Length > 0)
+                    if (lblFinishedPalletsUnder.Text.Length > 0)
                     {
-                        lblWarning.Visible = true;
+                        lblWarningUnder.Visible = true;
                     }
 
                     // Send email notification
@@ -4131,7 +4170,7 @@ namespace PalletCard
                     lblFinishedPalletsOver.Text = "";
                     foreach (string s in sectionsNoLastFlag)
                     {
-                        lblFinishedPalletsOver.Text += "Section " + s + " is not complete" + "\r\n";
+                        lblFinishedPalletsOver.Text += "The pallet for Section " + s + " is not finished" + "\r\n";
                     }
                     if (lblFinishedPalletsOver.Text.Length > 0)
                     {
@@ -4171,7 +4210,18 @@ namespace PalletCard
                             sectionsNoLastFlag.Add(s);
                     }
 
-                    if(dataGridView2.RowCount == 0)
+                    lblFinishedPallet.Visible = true;
+                    lblFinishedPallet.Text = "";
+                    foreach (string s in sectionsNoLastFlag)
+                    {
+                        lblFinishedPallet.Text += "The pallet for Section " + s + " is not finished" + "\r\n";
+                    }
+                    if (lblFinishedPallet.Text.Length > 0)
+                    {
+                        lblWarning.Visible = true;
+                    }
+
+                    if (dataGridView2.RowCount == 0)
                     {
                         int account = Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value);
                         //if (account == 1784 || account == 1781 || account == 1700 || account == 1795 || account == 1720 || account == 1839 || account == 1888)

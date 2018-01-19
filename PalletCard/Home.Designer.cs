@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbxSearchBox = new System.Windows.Forms.TextBox();
             this.lblJobNo = new System.Windows.Forms.Label();
@@ -168,8 +168,8 @@
             this.btnBackupRequired = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.pnlPalletCard6 = new System.Windows.Forms.Panel();
-            this.lblWarning = new System.Windows.Forms.Label();
-            this.lblFinishedPallets = new System.Windows.Forms.Label();
+            this.lblWarningUnder = new System.Windows.Forms.Label();
+            this.lblFinishedPalletsUnder = new System.Windows.Forms.Label();
             this.lblPalletDidNotMakeQty = new System.Windows.Forms.Label();
             this.btnCancelPrintMore = new System.Windows.Forms.Button();
             this.btnFinishPalletContinue = new System.Windows.Forms.Button();
@@ -193,6 +193,8 @@
             this.lblPC_JobNo = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.pnlPalletCard8 = new System.Windows.Forms.Panel();
+            this.lblWarning = new System.Windows.Forms.Label();
+            this.lblFinishedPallet = new System.Windows.Forms.Label();
             this.lblIsSectionFinishedTitle = new System.Windows.Forms.Label();
             this.lblIsSectionFinished = new System.Windows.Forms.Label();
             this.btnIsSectionFinishedNo = new System.Windows.Forms.Button();
@@ -386,35 +388,35 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle49;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle50;
             this.dataGridView1.Location = new System.Drawing.Point(4, 871);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle51.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(730, 124);
+            this.dataGridView1.Size = new System.Drawing.Size(834, 96);
             this.dataGridView1.TabIndex = 0;
             // 
             // tbxSearchBox
@@ -435,8 +437,7 @@
             this.lblJobNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblJobNo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblJobNo.Location = new System.Drawing.Point(4, 3);
-            this.lblJobNo.MaximumSize = new System.Drawing.Size(200, 62);
-            this.lblJobNo.MinimumSize = new System.Drawing.Size(200, 62);
+            this.lblJobNo.Margin = new System.Windows.Forms.Padding(0);
             this.lblJobNo.Name = "lblJobNo";
             this.lblJobNo.Padding = new System.Windows.Forms.Padding(5);
             this.lblJobNo.Size = new System.Drawing.Size(200, 62);
@@ -451,8 +452,7 @@
             this.lblPress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPress.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblPress.Location = new System.Drawing.Point(4, 67);
-            this.lblPress.MaximumSize = new System.Drawing.Size(200, 62);
-            this.lblPress.MinimumSize = new System.Drawing.Size(200, 62);
+            this.lblPress.Margin = new System.Windows.Forms.Padding(0);
             this.lblPress.Name = "lblPress";
             this.lblPress.Padding = new System.Windows.Forms.Padding(5);
             this.lblPress.Size = new System.Drawing.Size(200, 62);
@@ -467,8 +467,7 @@
             this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbl1.Location = new System.Drawing.Point(4, 131);
-            this.lbl1.MaximumSize = new System.Drawing.Size(200, 62);
-            this.lbl1.MinimumSize = new System.Drawing.Size(200, 62);
+            this.lbl1.Margin = new System.Windows.Forms.Padding(0);
             this.lbl1.Name = "lbl1";
             this.lbl1.Padding = new System.Windows.Forms.Padding(5);
             this.lbl1.Size = new System.Drawing.Size(200, 62);
@@ -497,8 +496,7 @@
             this.lbl4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbl4.Location = new System.Drawing.Point(4, 343);
-            this.lbl4.MaximumSize = new System.Drawing.Size(200, 62);
-            this.lbl4.MinimumSize = new System.Drawing.Size(200, 62);
+            this.lbl4.Margin = new System.Windows.Forms.Padding(0);
             this.lbl4.Name = "lbl4";
             this.lbl4.Padding = new System.Windows.Forms.Padding(5);
             this.lbl4.Size = new System.Drawing.Size(200, 62);
@@ -526,7 +524,7 @@
             this.pnlHome0.Controls.Add(this.btnSearch);
             this.pnlHome0.Controls.Add(this.tbxSearchBox);
             this.pnlHome0.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlHome0.Location = new System.Drawing.Point(210, 3);
+            this.pnlHome0.Location = new System.Drawing.Point(208, 3);
             this.pnlHome0.Name = "pnlHome0";
             this.pnlHome0.Size = new System.Drawing.Size(643, 864);
             this.pnlHome0.TabIndex = 18;
@@ -735,8 +733,7 @@
             this.lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl2.ForeColor = System.Drawing.Color.White;
             this.lbl2.Location = new System.Drawing.Point(4, 195);
-            this.lbl2.MaximumSize = new System.Drawing.Size(200, 82);
-            this.lbl2.MinimumSize = new System.Drawing.Size(200, 82);
+            this.lbl2.Margin = new System.Windows.Forms.Padding(0);
             this.lbl2.Multiline = true;
             this.lbl2.Name = "lbl2";
             this.lbl2.ReadOnly = true;
@@ -751,8 +748,7 @@
             this.lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbl3.Location = new System.Drawing.Point(4, 279);
-            this.lbl3.MaximumSize = new System.Drawing.Size(200, 62);
-            this.lbl3.MinimumSize = new System.Drawing.Size(200, 62);
+            this.lbl3.Margin = new System.Windows.Forms.Padding(0);
             this.lbl3.Name = "lbl3";
             this.lbl3.Padding = new System.Windows.Forms.Padding(5);
             this.lbl3.Size = new System.Drawing.Size(200, 62);
@@ -1505,8 +1501,7 @@
             this.lbl5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbl5.Location = new System.Drawing.Point(4, 407);
-            this.lbl5.MaximumSize = new System.Drawing.Size(200, 62);
-            this.lbl5.MinimumSize = new System.Drawing.Size(200, 62);
+            this.lbl5.Margin = new System.Windows.Forms.Padding(0);
             this.lbl5.Name = "lbl5";
             this.lbl5.Padding = new System.Windows.Forms.Padding(5);
             this.lbl5.Size = new System.Drawing.Size(200, 62);
@@ -1666,11 +1661,11 @@
             this.lblNumberUp.BackColor = System.Drawing.Color.DarkCyan;
             this.lblNumberUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumberUp.ForeColor = System.Drawing.Color.White;
-            this.lblNumberUp.Location = new System.Drawing.Point(157, 6);
+            this.lblNumberUp.Location = new System.Drawing.Point(166, 6);
             this.lblNumberUp.Name = "lblNumberUp";
-            this.lblNumberUp.Size = new System.Drawing.Size(82, 16);
+            this.lblNumberUp.Size = new System.Drawing.Size(59, 16);
             this.lblNumberUp.TabIndex = 23;
-            this.lblNumberUp.Text = "NumberUp";
+            this.lblNumberUp.Text = "NumUp";
             this.lblNumberUp.Visible = false;
             // 
             // lblStockCode
@@ -1784,8 +1779,7 @@
             this.lbl6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbl6.Location = new System.Drawing.Point(4, 471);
-            this.lbl6.MaximumSize = new System.Drawing.Size(200, 62);
-            this.lbl6.MinimumSize = new System.Drawing.Size(200, 62);
+            this.lbl6.Margin = new System.Windows.Forms.Padding(0);
             this.lbl6.Name = "lbl6";
             this.lbl6.Padding = new System.Windows.Forms.Padding(5);
             this.lbl6.Size = new System.Drawing.Size(200, 62);
@@ -1814,8 +1808,7 @@
             this.lbl7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbl7.Location = new System.Drawing.Point(4, 535);
-            this.lbl7.MaximumSize = new System.Drawing.Size(200, 62);
-            this.lbl7.MinimumSize = new System.Drawing.Size(200, 62);
+            this.lbl7.Margin = new System.Windows.Forms.Padding(0);
             this.lbl7.Name = "lbl7";
             this.lbl7.Padding = new System.Windows.Forms.Padding(5);
             this.lbl7.Size = new System.Drawing.Size(200, 62);
@@ -1844,8 +1837,7 @@
             this.lbl8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbl8.Location = new System.Drawing.Point(4, 599);
-            this.lbl8.MaximumSize = new System.Drawing.Size(200, 62);
-            this.lbl8.MinimumSize = new System.Drawing.Size(200, 62);
+            this.lbl8.Margin = new System.Windows.Forms.Padding(0);
             this.lbl8.Name = "lbl8";
             this.lbl8.Padding = new System.Windows.Forms.Padding(5);
             this.lbl8.Size = new System.Drawing.Size(200, 62);
@@ -1944,8 +1936,8 @@
             // 
             // pnlPalletCard6
             // 
-            this.pnlPalletCard6.Controls.Add(this.lblWarning);
-            this.pnlPalletCard6.Controls.Add(this.lblFinishedPallets);
+            this.pnlPalletCard6.Controls.Add(this.lblWarningUnder);
+            this.pnlPalletCard6.Controls.Add(this.lblFinishedPalletsUnder);
             this.pnlPalletCard6.Controls.Add(this.lblPalletDidNotMakeQty);
             this.pnlPalletCard6.Controls.Add(this.btnCancelPrintMore);
             this.pnlPalletCard6.Controls.Add(this.btnFinishPalletContinue);
@@ -1955,27 +1947,27 @@
             this.pnlPalletCard6.Size = new System.Drawing.Size(645, 862);
             this.pnlPalletCard6.TabIndex = 47;
             // 
-            // lblWarning
+            // lblWarningUnder
             // 
-            this.lblWarning.AutoSize = true;
-            this.lblWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWarning.ForeColor = System.Drawing.Color.Tomato;
-            this.lblWarning.Location = new System.Drawing.Point(33, 487);
-            this.lblWarning.Name = "lblWarning";
-            this.lblWarning.Size = new System.Drawing.Size(107, 24);
-            this.lblWarning.TabIndex = 17;
-            this.lblWarning.Text = "WARNING";
-            this.lblWarning.Visible = false;
+            this.lblWarningUnder.AutoSize = true;
+            this.lblWarningUnder.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWarningUnder.ForeColor = System.Drawing.Color.Tomato;
+            this.lblWarningUnder.Location = new System.Drawing.Point(33, 487);
+            this.lblWarningUnder.Name = "lblWarningUnder";
+            this.lblWarningUnder.Size = new System.Drawing.Size(125, 24);
+            this.lblWarningUnder.TabIndex = 17;
+            this.lblWarningUnder.Text = "Don\'t Forget";
+            this.lblWarningUnder.Visible = false;
             // 
-            // lblFinishedPallets
+            // lblFinishedPalletsUnder
             // 
-            this.lblFinishedPallets.AutoSize = true;
-            this.lblFinishedPallets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinishedPallets.Location = new System.Drawing.Point(37, 513);
-            this.lblFinishedPallets.Name = "lblFinishedPallets";
-            this.lblFinishedPallets.Size = new System.Drawing.Size(24, 20);
-            this.lblFinishedPallets.TabIndex = 16;
-            this.lblFinishedPallets.Text = "lbl";
+            this.lblFinishedPalletsUnder.AutoSize = true;
+            this.lblFinishedPalletsUnder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinishedPalletsUnder.Location = new System.Drawing.Point(34, 513);
+            this.lblFinishedPalletsUnder.Name = "lblFinishedPalletsUnder";
+            this.lblFinishedPalletsUnder.Size = new System.Drawing.Size(24, 20);
+            this.lblFinishedPalletsUnder.TabIndex = 16;
+            this.lblFinishedPalletsUnder.Text = "lbl";
             // 
             // lblPalletDidNotMakeQty
             // 
@@ -2245,6 +2237,8 @@
             // 
             // pnlPalletCard8
             // 
+            this.pnlPalletCard8.Controls.Add(this.lblWarning);
+            this.pnlPalletCard8.Controls.Add(this.lblFinishedPallet);
             this.pnlPalletCard8.Controls.Add(this.lblIsSectionFinishedTitle);
             this.pnlPalletCard8.Controls.Add(this.lblIsSectionFinished);
             this.pnlPalletCard8.Controls.Add(this.btnIsSectionFinishedNo);
@@ -2253,6 +2247,29 @@
             this.pnlPalletCard8.Name = "pnlPalletCard8";
             this.pnlPalletCard8.Size = new System.Drawing.Size(642, 865);
             this.pnlPalletCard8.TabIndex = 49;
+            // 
+            // lblWarning
+            // 
+            this.lblWarning.AutoSize = true;
+            this.lblWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWarning.ForeColor = System.Drawing.Color.Tomato;
+            this.lblWarning.Location = new System.Drawing.Point(39, 670);
+            this.lblWarning.Name = "lblWarning";
+            this.lblWarning.Size = new System.Drawing.Size(125, 24);
+            this.lblWarning.TabIndex = 19;
+            this.lblWarning.Text = "Don\'t Forget";
+            this.lblWarning.Visible = false;
+            // 
+            // lblFinishedPallet
+            // 
+            this.lblFinishedPallet.AutoSize = true;
+            this.lblFinishedPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinishedPallet.Location = new System.Drawing.Point(43, 696);
+            this.lblFinishedPallet.Name = "lblFinishedPallet";
+            this.lblFinishedPallet.Size = new System.Drawing.Size(24, 20);
+            this.lblFinishedPallet.TabIndex = 18;
+            this.lblFinishedPallet.Text = "lbl";
+            this.lblFinishedPallet.Visible = false;
             // 
             // lblIsSectionFinishedTitle
             // 
@@ -2319,16 +2336,16 @@
             this.lblWarningOver.ForeColor = System.Drawing.Color.Red;
             this.lblWarningOver.Location = new System.Drawing.Point(57, 512);
             this.lblWarningOver.Name = "lblWarningOver";
-            this.lblWarningOver.Size = new System.Drawing.Size(100, 24);
+            this.lblWarningOver.Size = new System.Drawing.Size(113, 24);
             this.lblWarningOver.TabIndex = 19;
-            this.lblWarningOver.Text = "WARNING";
+            this.lblWarningOver.Text = "Don\'t Forget";
             this.lblWarningOver.Visible = false;
             // 
             // lblFinishedPalletsOver
             // 
             this.lblFinishedPalletsOver.AutoSize = true;
             this.lblFinishedPalletsOver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinishedPalletsOver.Location = new System.Drawing.Point(61, 538);
+            this.lblFinishedPalletsOver.Location = new System.Drawing.Point(58, 538);
             this.lblFinishedPalletsOver.Name = "lblFinishedPalletsOver";
             this.lblFinishedPalletsOver.Size = new System.Drawing.Size(24, 20);
             this.lblFinishedPalletsOver.TabIndex = 18;
@@ -2369,35 +2386,35 @@
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle52.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle52;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 995);
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle53;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 967);
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle54;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(730, 41);
+            this.dataGridView2.Size = new System.Drawing.Size(834, 84);
             this.dataGridView2.TabIndex = 52;
             // 
             // pnlNotification2
@@ -3677,6 +3694,7 @@
             // crystalReportViewer2
             // 
             this.crystalReportViewer2.ActiveViewIndex = -1;
+            this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer2.DisplayBackgroundEdge = false;
             this.crystalReportViewer2.DisplayStatusBar = false;
@@ -3695,19 +3713,19 @@
             this.ClientSize = new System.Drawing.Size(850, 1045);
             this.Controls.Add(this.pnlHome0);
             this.Controls.Add(this.pnlPalletCard6);
-            this.Controls.Add(this.pnlPalletCard9);
+            this.Controls.Add(this.pnlPalletCard8);
+            this.Controls.Add(this.pnlPalletCard4);
             this.Controls.Add(this.pnlPalletCard5);
+            this.Controls.Add(this.pnlPalletCard7);
+            this.Controls.Add(this.pnlPalletCard9);
             this.Controls.Add(this.pnlPalletCardPrint);
             this.Controls.Add(this.pnlRejectPaper2);
             this.Controls.Add(this.pnlPalletCard3);
-            this.Controls.Add(this.pnlPalletCard4);
-            this.Controls.Add(this.pnlPalletCard8);
             this.Controls.Add(this.pnlSignature);
             this.Controls.Add(this.pnlHome1);
             this.Controls.Add(this.pnlPalletCard2);
             this.Controls.Add(this.pnlPalletCard1);
             this.Controls.Add(this.pnlPalletCard11);
-            this.Controls.Add(this.pnlPalletCard7);
             this.Controls.Add(this.pnlPalletCard10);
             this.Controls.Add(this.pnlReturnPaper2);
             this.Controls.Add(this.button1);
@@ -3983,8 +4001,8 @@
         private System.Windows.Forms.Button btnPalletOver;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label lblFinishedPallets;
-        private System.Windows.Forms.Label lblWarning;
+        private System.Windows.Forms.Label lblFinishedPalletsUnder;
+        private System.Windows.Forms.Label lblWarningUnder;
         private System.Windows.Forms.Label lblWarningOver;
         private System.Windows.Forms.Label lblFinishedPalletsOver;
         private System.Windows.Forms.TextBox tbxFinishPallet;
@@ -4127,6 +4145,8 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox btnScrollDown;
         private System.Windows.Forms.PictureBox btnScrollUp;
+        private System.Windows.Forms.Label lblWarning;
+        private System.Windows.Forms.Label lblFinishedPallet;
     }
 }
 
