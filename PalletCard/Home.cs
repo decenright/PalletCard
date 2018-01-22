@@ -594,6 +594,7 @@ namespace PalletCard
 
                 btnBack.Visible = false;
                 btnPalletCardPrint.Visible = true;
+                sectionFinishedClicked = false;
             }
         }
 
@@ -3760,6 +3761,7 @@ namespace PalletCard
             btnBack.Visible = false;
             btnCancel.Visible = false;
             btnPalletCardPrint.Visible = true;
+            sectionFinishedClicked = true;
             index = 17;
         }
 
@@ -3914,6 +3916,7 @@ namespace PalletCard
             lblPC_Note.Visible = true;
             btnBack.Visible = false;
             btnCancel.Visible = false;
+            sectionFinishedClicked = true;
             index = 17;
         }
 #endregion
@@ -4465,7 +4468,7 @@ namespace PalletCard
             // Create an instance of the Printer
             IPrinter printer = new Printer();
             // Print the file
-            //printer.PrintRawFile(PrinterName, Filepath, Filename);
+            printer.PrintRawFile(PrinterName, Filepath, Filename);
 
             // if Is Section Finished No - return user to choose Action Screen
             if (sectionFinishedClicked == false)
