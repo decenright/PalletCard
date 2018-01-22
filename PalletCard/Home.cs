@@ -23,21 +23,21 @@ namespace PalletCard
 
         #region Profiles
 
-        // Declan Testing
-        int resourceID = 6;
-        string press = "XL106";
-        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        string defaultEmail = "declan.enright@colorman.ie";
-        string defaultPrinter = "ProC5100S";
-        ////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-        ////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
-
-        //// XL106
+        //// Declan Testing
         //int resourceID = 6;
         //string press = "XL106";
         //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "martin@colorman.ie";
-        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        //string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultPrinter = "ProC5100S";
+        //////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        //////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+        // XL106
+        int resourceID = 6;
+        string press = "XL106";
+        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        string defaultEmail = "martin@colorman.ie";
+        string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// SM102
         //int resourceID = 1;
@@ -76,7 +76,7 @@ namespace PalletCard
         bool badSectionLbls;
         bool backupRequired;
         bool varnishRequired;
-        int A = 1;
+        int DynamicButtonsOrigin = 1;
         string jobNo;
         bool searchChanged;
         int required;
@@ -104,6 +104,7 @@ namespace PalletCard
         string sig;
         int lastPallet = 0;
         int sumProduced;
+        bool sectionFinishedClicked = false;
 
         public Home()
         {
@@ -536,17 +537,18 @@ namespace PalletCard
                 }              
             }
 
-            listPanel.Add(pnlHome0);
-            listPanel.Add(pnlHome1);
-            listPanel.Add(pnlReturnPaper1);
-            listPanel.Add(pnlReturnPaper2);
-            listPanel.Add(pnlReturnPaper3);
-            listPanel[0] = pnlHome0;
-            listPanel[1] = pnlHome1;
-            listPanel[2] = pnlReturnPaper1;
-            listPanel[3] = pnlReturnPaper2;
-            listPanel[4] = pnlReturnPaper3;
-            listPanel[0].BringToFront();
+            //listPanel.Add(pnlHome0);
+            //listPanel.Add(pnlHome1);
+            //listPanel.Add(pnlReturnPaper1);
+            //listPanel.Add(pnlReturnPaper2);
+            //listPanel.Add(pnlReturnPaper3);
+            //listPanel[0] = pnlHome0;
+            //listPanel[1] = pnlHome1;
+            //listPanel[2] = pnlReturnPaper1;
+            //listPanel[3] = pnlReturnPaper2;
+            //listPanel[4] = pnlReturnPaper3;
+            //listPanel[0].BringToFront();
+
             btnBack.Visible = false;
             tbxSearchBox.Focus();
         }
@@ -565,7 +567,6 @@ namespace PalletCard
                     ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%' and Filter = 1 ", tbxSearchBox.Text.Trim().Replace("'", "''"));
                     lblJobNo.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                     lblJobNo.Visible = true;
-                    //int resourceID = (int)dataGridView1.Rows[0].Cells[1].Value;
                     if (dataGridView1.Rows[0].Cells[0].Value != null)
                     {
                         lblPress.Text = press;
@@ -589,7 +590,8 @@ namespace PalletCard
                     pnlNotification1.Controls.Clear();
                 }
                 //reset dynamic buttons origin
-                A = 1;
+                DynamicButtonsOrigin = 1;
+
                 btnBack.Visible = false;
                 btnPalletCardPrint.Visible = true;
             }
@@ -832,6 +834,7 @@ namespace PalletCard
             tbxFinishPallet.Text = "";
             lastPallet = 0;
             lblPrinting.Visible = false;
+            sectionFinishedClicked = false;
 
             // Reset Bad Section - flowLayoutPanel2
             pnlBadSectionGangHeader.Visible = false;
@@ -930,7 +933,7 @@ namespace PalletCard
                                     { 
                                         Button btn = new Button();
                                         this.pnlReturnPaper1.Controls.Add(btn);
-                                        btn.Top = A * 100;
+                                        btn.Top = DynamicButtonsOrigin * 100;
                                         btn.Height = 80;
                                         btn.Width = 465;
                                         btn.BackColor = Color.SteelBlue;
@@ -938,7 +941,7 @@ namespace PalletCard
                                         btn.ForeColor = Color.White;
                                         btn.Left = 30;                                     
                                         btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-                                        A = A + 1;
+                                        DynamicButtonsOrigin = DynamicButtonsOrigin + 1;
                                         btn.Click += new System.EventHandler(this.expr1);
                                     }
                                 }
@@ -1126,7 +1129,7 @@ namespace PalletCard
                                     {
                                         Button btn = new Button();
                                         this.pnlRejectPaper1.Controls.Add(btn);
-                                        btn.Top = A * 100;
+                                        btn.Top = DynamicButtonsOrigin * 100;
                                         btn.Height = 80;
                                         btn.Width = 465;
                                         btn.BackColor = Color.SteelBlue;
@@ -1134,7 +1137,7 @@ namespace PalletCard
                                         btn.ForeColor = Color.White;
                                         btn.Left = 30;
                                         btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-                                        A = A + 1;
+                                        DynamicButtonsOrigin = DynamicButtonsOrigin + 1;
                                         btn.Click += new System.EventHandler(this.expr2);
                                     }
                                 }
@@ -1717,7 +1720,7 @@ namespace PalletCard
                                     {
                                         Button btn = new Button();
                                         this.pnlPalletCard1.Controls.Add(btn);
-                                        btn.Top = A * 100;
+                                        btn.Top = DynamicButtonsOrigin * 100;
                                         btn.Height = 80;
                                         btn.Width = 465;
                                         btn.BackColor = Color.SteelBlue;
@@ -1725,7 +1728,7 @@ namespace PalletCard
                                         btn.ForeColor = Color.White;
                                         btn.Left = 30;
                                         btn.Text = this.dataGridView1.Rows[i].Cells[15].Value as string;
-                                        A = A + 1;
+                                        DynamicButtonsOrigin = DynamicButtonsOrigin + 1;
                                         btn.Click += new System.EventHandler(this.sectionNameSectionBtns);
                                     }
                                 }
@@ -1779,7 +1782,7 @@ namespace PalletCard
                                             {
                                                 Button btn = new Button();
                                                 this.pnlPalletCard1.Controls.Add(btn);
-                                                btn.Top = A * 100;
+                                                btn.Top = DynamicButtonsOrigin * 100;
                                                 btn.Height = 80;
                                                 btn.Width = 465;
                                                 btn.BackColor = Color.SteelBlue;
@@ -1787,7 +1790,7 @@ namespace PalletCard
                                                 btn.ForeColor = Color.White;
                                                 btn.Left = 30;
                                                 btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-                                                A = A + 1;
+                                                DynamicButtonsOrigin = DynamicButtonsOrigin + 1;
                                                 btn.Click += new System.EventHandler(this.expr1SectionBtns);
                                             }
                                         }
@@ -4258,6 +4261,7 @@ namespace PalletCard
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             autoNum = Convert.ToString((int)dataGridView2.Rows[0].Cells[0].Value + 1);
             btnPalletCardPrint.Visible = true;
+            sectionFinishedClicked = true;
             index = 16;
         }
 
@@ -4464,19 +4468,36 @@ namespace PalletCard
             //printer.PrintRawFile(PrinterName, Filepath, Filename);
 
             // if Is Section Finished No - return user to choose Action Screen
-            pnlHome1.BringToFront();
-            lblJobNo.Visible = false;
-            lblPress.Visible = false;
-            lbl1.Visible = false;
-            lbl2.Visible = false;
-            lbl3.Visible = false;
-            lbl4.Visible = false;
-            btnBack.Visible = false;
-            btnCancel.Visible = false;
-            jobNo = lblJobNo.Text;
-            Cancel();
-            tbxSearchBox.Text = jobNo;
-            Search();
+            if (sectionFinishedClicked == false)
+            {
+                pnlHome1.BringToFront();
+                lblJobNo.Visible = false;
+                lblPress.Visible = false;
+                lbl1.Visible = false;
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                btnBack.Visible = false;
+                btnCancel.Visible = false;
+                jobNo = lblJobNo.Text;
+                Cancel();
+                tbxSearchBox.Text = jobNo;
+                Search();
+            }
+            else
+            {
+                pnlHome0.BringToFront();
+                lblJobNo.Visible = false;
+                lblPress.Visible = false;
+                lbl1.Visible = false;
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                btnBack.Visible = false;
+                btnCancel.Visible = false;
+                Cancel();
+            }
+
         }
 
         void PrintImagePalletCard()
@@ -4827,7 +4848,7 @@ namespace PalletCard
                                 {
                                     Button btn = new Button();
                                     pnlNotification1.Controls.Add(btn);
-                                    btn.Top = A * 100;
+                                    btn.Top = DynamicButtonsOrigin * 100;
                                     btn.Height = 80;
                                     btn.Width = 465;
                                     btn.BackColor = Color.SteelBlue;
@@ -4835,7 +4856,7 @@ namespace PalletCard
                                     btn.ForeColor = Color.White;
                                     btn.Left = 30;
                                     btn.Text = this.dataGridView1.Rows[i].Cells[11].Value as string;
-                                    A = A + 1;
+                                    DynamicButtonsOrigin = DynamicButtonsOrigin + 1;
                                     btn.Click += new System.EventHandler(this.notification);
                                 }
                             }
