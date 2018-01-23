@@ -23,21 +23,21 @@ namespace PalletCard
 
         #region Profiles
 
-        //// Declan Testing
-        //int resourceID = 6;
-        //string press = "XL106";
-        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "declan.enright@colorman.ie";
-        //string defaultPrinter = "ProC5100S";
-        //////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-        //////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
-
-        // XL106
+        // Declan Testing
         int resourceID = 6;
         string press = "XL106";
         string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        string defaultEmail = "martin@colorman.ie";
-        string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        string defaultEmail = "declan.enright@colorman.ie";
+        string defaultPrinter = "ProC5100S";
+        ////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        ////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+        //// XL106
+        //int resourceID = 6;
+        //string press = "XL106";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "martin@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// SM102
         //int resourceID = 1;
@@ -105,6 +105,7 @@ namespace PalletCard
         int lastPallet = 0;
         int sumProduced;
         bool sectionFinishedClicked = false;
+        string barCode;
 
         public Home()
         {
@@ -630,115 +631,134 @@ namespace PalletCard
         private void renderPalletCard()
         {
             ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load("P:\\Live Reports & Documents\\Reports\\Pallet Sheet.rpt");
 
-            // JobNo
+            cryRpt.Load("P:\\Live Reports & Documents\\Reports\\Pallet Card Front.rpt");
+
+            // AutoNum
             ParameterFieldDefinitions crParameterFieldDefinitions;
             ParameterFieldDefinition crParameterFieldDefinition;
             ParameterValues crParameterValues = new ParameterValues();
             ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
 
-            crParameterDiscreteValue.Value = lblJobNo.Text;
+            crParameterDiscreteValue.Value = Convert.ToInt32(autoNum);
             crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
-            crParameterFieldDefinition = crParameterFieldDefinitions["JobNo"];
+            crParameterFieldDefinition = crParameterFieldDefinitions["AutoNum"];
             crParameterValues = crParameterFieldDefinition.CurrentValues;
-
-
-
-            // Sig Number
-            ParameterFieldDefinitions crParameterFieldDefinitions1;
-            ParameterFieldDefinition crParameterFieldDefinition1;
-            ParameterValues crParameterValues1 = new ParameterValues();
-            ParameterDiscreteValue crParameterDiscreteValue1 = new ParameterDiscreteValue();
-
-            crParameterDiscreteValue1.Value = lblPC_Sig.Text;
-            crParameterFieldDefinitions1 = cryRpt.DataDefinition.ParameterFields;
-            crParameterFieldDefinition1 = crParameterFieldDefinitions1["Sig Number"];
-            crParameterValues1 = crParameterFieldDefinition1.CurrentValues;
-
-            // Pallet Number
-            ParameterFieldDefinitions crParameterFieldDefinitions2;
-            ParameterFieldDefinition crParameterFieldDefinition2;
-            ParameterValues crParameterValues2 = new ParameterValues();
-            ParameterDiscreteValue crParameterDiscreteValue2 = new ParameterDiscreteValue();
-
-            crParameterDiscreteValue2.Value = PalletNumber.ToString();
-            crParameterFieldDefinitions2 = cryRpt.DataDefinition.ParameterFields;
-            crParameterFieldDefinition2 = crParameterFieldDefinitions1["Pallet Number"];
-            crParameterValues2 = crParameterFieldDefinition2.CurrentValues;
-
-            // Total Pallets
-            ParameterFieldDefinitions crParameterFieldDefinitions3;
-            ParameterFieldDefinition crParameterFieldDefinition3;
-            ParameterValues crParameterValues3 = new ParameterValues();
-            ParameterDiscreteValue crParameterDiscreteValue3 = new ParameterDiscreteValue();
-
-            crParameterDiscreteValue3.Value = "";
-            crParameterFieldDefinitions3 = cryRpt.DataDefinition.ParameterFields;
-            crParameterFieldDefinition3 = crParameterFieldDefinitions1["Total Pallets"];
-            crParameterValues3 = crParameterFieldDefinition3.CurrentValues;
-
-            // Job Finished
-            ParameterFieldDefinitions crParameterFieldDefinitions4;
-            ParameterFieldDefinition crParameterFieldDefinition4;
-            ParameterValues crParameterValues4 = new ParameterValues();
-            ParameterDiscreteValue crParameterDiscreteValue4 = new ParameterDiscreteValue();
-
-            crParameterDiscreteValue4.Value = lastPallet;
-            crParameterFieldDefinitions4 = cryRpt.DataDefinition.ParameterFields;
-            crParameterFieldDefinition4 = crParameterFieldDefinitions4["Job Finished"];
-            crParameterValues4 = crParameterFieldDefinition4.CurrentValues;
-
-            // Press
-            ParameterFieldDefinitions crParameterFieldDefinitions5;
-            ParameterFieldDefinition crParameterFieldDefinition5;
-            ParameterValues crParameterValues5 = new ParameterValues();
-            ParameterDiscreteValue crParameterDiscreteValue5 = new ParameterDiscreteValue();
-
-            crParameterDiscreteValue5.Value = lblPC_Press.Text;
-            crParameterFieldDefinitions5 = cryRpt.DataDefinition.ParameterFields;
-            crParameterFieldDefinition5 = crParameterFieldDefinitions5["Press"];
-            crParameterValues5 = crParameterFieldDefinition5.CurrentValues;
-
-            // Qty On Pallet
-            ParameterFieldDefinitions crParameterFieldDefinitions6;
-            ParameterFieldDefinition crParameterFieldDefinition6;
-            ParameterValues crParameterValues6 = new ParameterValues();
-            ParameterDiscreteValue crParameterDiscreteValue6 = new ParameterDiscreteValue();
-
-            crParameterDiscreteValue6.Value = lbl5.Text;
-            crParameterFieldDefinitions6 = cryRpt.DataDefinition.ParameterFields;
-            crParameterFieldDefinition6 = crParameterFieldDefinitions6["Qty On Pallet"];
-            crParameterValues6 = crParameterFieldDefinition6.CurrentValues;
-
 
             crParameterValues.Clear();
             crParameterValues.Add(crParameterDiscreteValue);
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
 
-            crParameterValues1.Clear();
-            crParameterValues1.Add(crParameterDiscreteValue1);
-            crParameterFieldDefinition1.ApplyCurrentValues(crParameterValues1);
 
-            crParameterValues2.Clear();
-            crParameterValues2.Add(crParameterDiscreteValue2);
-            crParameterFieldDefinition2.ApplyCurrentValues(crParameterValues2);
+            //cryRpt.Load("P:\\Live Reports & Documents\\Reports\\Pallet Sheet.rpt");
 
-            crParameterValues3.Clear();
-            crParameterValues3.Add(crParameterDiscreteValue3);
-            crParameterFieldDefinition3.ApplyCurrentValues(crParameterValues3);
+            //// JobNo
+            //ParameterFieldDefinitions crParameterFieldDefinitions;
+            //ParameterFieldDefinition crParameterFieldDefinition;
+            //ParameterValues crParameterValues = new ParameterValues();
+            //ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
 
-            crParameterValues4.Clear();
-            crParameterValues4.Add(crParameterDiscreteValue4);
-            crParameterFieldDefinition4.ApplyCurrentValues(crParameterValues4);
+            //crParameterDiscreteValue.Value = lblJobNo.Text;
+            //crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
+            //crParameterFieldDefinition = crParameterFieldDefinitions["JobNo"];
+            //crParameterValues = crParameterFieldDefinition.CurrentValues;
 
-            crParameterValues5.Clear();
-            crParameterValues5.Add(crParameterDiscreteValue5);
-            crParameterFieldDefinition5.ApplyCurrentValues(crParameterValues5);
 
-            crParameterValues6.Clear();
-            crParameterValues6.Add(crParameterDiscreteValue6);
-            crParameterFieldDefinition6.ApplyCurrentValues(crParameterValues6);
+
+            //// Sig Number
+            //ParameterFieldDefinitions crParameterFieldDefinitions1;
+            //ParameterFieldDefinition crParameterFieldDefinition1;
+            //ParameterValues crParameterValues1 = new ParameterValues();
+            //ParameterDiscreteValue crParameterDiscreteValue1 = new ParameterDiscreteValue();
+
+            //crParameterDiscreteValue1.Value = lblPC_Sig.Text;
+            //crParameterFieldDefinitions1 = cryRpt.DataDefinition.ParameterFields;
+            //crParameterFieldDefinition1 = crParameterFieldDefinitions1["Sig Number"];
+            //crParameterValues1 = crParameterFieldDefinition1.CurrentValues;
+
+            //// Pallet Number
+            //ParameterFieldDefinitions crParameterFieldDefinitions2;
+            //ParameterFieldDefinition crParameterFieldDefinition2;
+            //ParameterValues crParameterValues2 = new ParameterValues();
+            //ParameterDiscreteValue crParameterDiscreteValue2 = new ParameterDiscreteValue();
+
+            //crParameterDiscreteValue2.Value = PalletNumber.ToString();
+            //crParameterFieldDefinitions2 = cryRpt.DataDefinition.ParameterFields;
+            //crParameterFieldDefinition2 = crParameterFieldDefinitions1["Pallet Number"];
+            //crParameterValues2 = crParameterFieldDefinition2.CurrentValues;
+
+            //// Total Pallets
+            //ParameterFieldDefinitions crParameterFieldDefinitions3;
+            //ParameterFieldDefinition crParameterFieldDefinition3;
+            //ParameterValues crParameterValues3 = new ParameterValues();
+            //ParameterDiscreteValue crParameterDiscreteValue3 = new ParameterDiscreteValue();
+
+            //crParameterDiscreteValue3.Value = "";
+            //crParameterFieldDefinitions3 = cryRpt.DataDefinition.ParameterFields;
+            //crParameterFieldDefinition3 = crParameterFieldDefinitions1["Total Pallets"];
+            //crParameterValues3 = crParameterFieldDefinition3.CurrentValues;
+
+            //// Job Finished
+            //ParameterFieldDefinitions crParameterFieldDefinitions4;
+            //ParameterFieldDefinition crParameterFieldDefinition4;
+            //ParameterValues crParameterValues4 = new ParameterValues();
+            //ParameterDiscreteValue crParameterDiscreteValue4 = new ParameterDiscreteValue();
+
+            //crParameterDiscreteValue4.Value = lastPallet;
+            //crParameterFieldDefinitions4 = cryRpt.DataDefinition.ParameterFields;
+            //crParameterFieldDefinition4 = crParameterFieldDefinitions4["Job Finished"];
+            //crParameterValues4 = crParameterFieldDefinition4.CurrentValues;
+
+            //// Press
+            //ParameterFieldDefinitions crParameterFieldDefinitions5;
+            //ParameterFieldDefinition crParameterFieldDefinition5;
+            //ParameterValues crParameterValues5 = new ParameterValues();
+            //ParameterDiscreteValue crParameterDiscreteValue5 = new ParameterDiscreteValue();
+
+            //crParameterDiscreteValue5.Value = lblPC_Press.Text;
+            //crParameterFieldDefinitions5 = cryRpt.DataDefinition.ParameterFields;
+            //crParameterFieldDefinition5 = crParameterFieldDefinitions5["Press"];
+            //crParameterValues5 = crParameterFieldDefinition5.CurrentValues;
+
+            //// Qty On Pallet
+            //ParameterFieldDefinitions crParameterFieldDefinitions6;
+            //ParameterFieldDefinition crParameterFieldDefinition6;
+            //ParameterValues crParameterValues6 = new ParameterValues();
+            //ParameterDiscreteValue crParameterDiscreteValue6 = new ParameterDiscreteValue();
+
+            //crParameterDiscreteValue6.Value = lbl5.Text;
+            //crParameterFieldDefinitions6 = cryRpt.DataDefinition.ParameterFields;
+            //crParameterFieldDefinition6 = crParameterFieldDefinitions6["Qty On Pallet"];
+            //crParameterValues6 = crParameterFieldDefinition6.CurrentValues;
+
+
+            //crParameterValues.Clear();
+            //crParameterValues.Add(crParameterDiscreteValue);
+            //crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+
+            //crParameterValues1.Clear();
+            //crParameterValues1.Add(crParameterDiscreteValue1);
+            //crParameterFieldDefinition1.ApplyCurrentValues(crParameterValues1);
+
+            //crParameterValues2.Clear();
+            //crParameterValues2.Add(crParameterDiscreteValue2);
+            //crParameterFieldDefinition2.ApplyCurrentValues(crParameterValues2);
+
+            //crParameterValues3.Clear();
+            //crParameterValues3.Add(crParameterDiscreteValue3);
+            //crParameterFieldDefinition3.ApplyCurrentValues(crParameterValues3);
+
+            //crParameterValues4.Clear();
+            //crParameterValues4.Add(crParameterDiscreteValue4);
+            //crParameterFieldDefinition4.ApplyCurrentValues(crParameterValues4);
+
+            //crParameterValues5.Clear();
+            //crParameterValues5.Add(crParameterDiscreteValue5);
+            //crParameterFieldDefinition5.ApplyCurrentValues(crParameterValues5);
+
+            //crParameterValues6.Clear();
+            //crParameterValues6.Add(crParameterDiscreteValue6);
+            //crParameterFieldDefinition6.ApplyCurrentValues(crParameterValues6);
 
 
             crystalReportViewer2.ReportSource = cryRpt;
@@ -1433,44 +1453,45 @@ namespace PalletCard
             }
 
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
-            string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
-            Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
-            using (Graphics graphics = Graphics.FromImage(bitMap))
-            {
-                System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
-                PointF point = new PointF(2f, 2f);
-                SolidBrush blackBrush = new SolidBrush(Color.Black);
-                SolidBrush whiteBrush = new SolidBrush(Color.White);
-                graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
-                graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
-            }
-            using (MemoryStream ms = new MemoryStream())
-            {
-                bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                pictureBox1.Image = bitMap;
-                pictureBox1.Height = bitMap.Height;
-                pictureBox1.Width = bitMap.Width;
-            }
+                autoNum = Convert.ToString(((int)dataGridView2.Rows[0].Cells[0].Value));
+              //string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
+            //Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
+            //using (Graphics graphics = Graphics.FromImage(bitMap))
+            //{
+            //    System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
+            //    PointF point = new PointF(2f, 2f);
+            //    SolidBrush blackBrush = new SolidBrush(Color.Black);
+            //    SolidBrush whiteBrush = new SolidBrush(Color.White);
+            //    graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
+            //    graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
+            //}
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            //    pictureBox1.Image = bitMap;
+            //    pictureBox1.Height = bitMap.Height;
+            //    pictureBox1.Width = bitMap.Width;
+            //}
 
             pnlPalletCardPrint.BringToFront();
-            lblPC_JobNo.Text = lblJobNo.Text;
-            lblPC_JobNo.Visible = true;
-            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-            lblPC_Customer.Visible = true;
-            lblPC_Customer.MaximumSize = new Size(450, 220);
-            lblPC_Customer.AutoSize = true;
-            lblPC_SheetQty.Text = lbl5.Text;
-            lblPC_SheetQty.Visible = true;
-            lblPC_Press.Text = lblPress.Text;
-            lblPC_Press.Visible = true;
-            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-            lblPC_Date.Visible = true;
-            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-            lblPC_Note.Visible = true;
-            lblPC_PalletNumber.Text = "Pallet No " + PalletNumber.ToString();
-            lblPC_PalletNumber.Visible = true;
-            lblPC_Sig.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value as string;
-            lblPC_Sig.Visible = true;
+            //lblPC_JobNo.Text = lblJobNo.Text;
+            //lblPC_JobNo.Visible = true;
+            //lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            //lblPC_Customer.Visible = true;
+            //lblPC_Customer.MaximumSize = new Size(450, 220);
+            //lblPC_Customer.AutoSize = true;
+            //lblPC_SheetQty.Text = lbl5.Text;
+            //lblPC_SheetQty.Visible = true;
+            //lblPC_Press.Text = lblPress.Text;
+            //lblPC_Press.Visible = true;
+            //lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            //lblPC_Date.Visible = true;
+            //lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            //lblPC_Note.Visible = true;
+            //lblPC_PalletNumber.Text = "Pallet No " + PalletNumber.ToString();
+            //lblPC_PalletNumber.Visible = true;
+            //lblPC_Sig.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value as string;
+            //lblPC_Sig.Visible = true;
             btnCancel.Visible = false;
             signed = false;
             index = 17;
@@ -4403,7 +4424,7 @@ namespace PalletCard
             reQueryDataGridView2();
 
             this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
-            string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
+            barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
             Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
             using (Graphics graphics = Graphics.FromImage(bitMap))
             {
