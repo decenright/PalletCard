@@ -3739,46 +3739,48 @@ namespace PalletCard
             }
 
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
-            string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
-            Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
-            using (Graphics graphics = Graphics.FromImage(bitMap))
-            {
-                System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
-                PointF point = new PointF(2f, 2f);
-                SolidBrush blackBrush = new SolidBrush(Color.Black);
-                SolidBrush whiteBrush = new SolidBrush(Color.White);
-                graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
-                graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
-            }
-            using (MemoryStream ms = new MemoryStream())
-            {
-                bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                pictureBox1.Image = bitMap;
-                pictureBox1.Height = bitMap.Height;
-                pictureBox1.Width = bitMap.Width;
-            }
+            //string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
+            string autoNum = Convert.ToString(((int)dataGridView2.Rows[0].Cells[0].Value));
+
+            //Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
+            //using (Graphics graphics = Graphics.FromImage(bitMap))
+            //{
+            //    System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
+            //    PointF point = new PointF(2f, 2f);
+            //    SolidBrush blackBrush = new SolidBrush(Color.Black);
+            //    SolidBrush whiteBrush = new SolidBrush(Color.White);
+            //    graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
+            //    graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
+            //}
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            //    pictureBox1.Image = bitMap;
+            //    pictureBox1.Height = bitMap.Height;
+            //    pictureBox1.Width = bitMap.Width;
+            //}
 
             pnlPalletCardPrint.BringToFront();
-            lblPC_IncompletePallet.Text = "INCOMPLETE";
-            lblPC_IncompletePallet.Visible = true;
-            lblPC_JobNo.Text = lblJobNo.Text;
-            lblPC_JobNo.Visible = true;
-            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-            lblPC_Customer.Visible = true;
-            lblPC_Customer.MaximumSize = new Size(450, 220);
-            lblPC_Customer.AutoSize = true;
-            lblPC_SheetQty.Text = lbl5.Text;
-            lblPC_SheetQty.Visible = true;
-            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
-            lblPC_Sig.Visible = true;
-            lblPC_PalletNumber.Text = "Pallet 1";
-            lblPC_PalletNumber.Visible = true;
-            lblPC_Press.Text = lblPress.Text;
-            lblPC_Press.Visible = true;
-            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-            lblPC_Date.Visible = true;
-            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-            lblPC_Note.Visible = true;
+            //lblPC_IncompletePallet.Text = "INCOMPLETE";
+            //lblPC_IncompletePallet.Visible = true;
+            //lblPC_JobNo.Text = lblJobNo.Text;
+            //lblPC_JobNo.Visible = true;
+            //lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            //lblPC_Customer.Visible = true;
+            //lblPC_Customer.MaximumSize = new Size(450, 220);
+            //lblPC_Customer.AutoSize = true;
+            //lblPC_SheetQty.Text = lbl5.Text;
+            //lblPC_SheetQty.Visible = true;
+            //lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+            //lblPC_Sig.Visible = true;
+            //lblPC_PalletNumber.Text = "Pallet 1";
+            //lblPC_PalletNumber.Visible = true;
+            //lblPC_Press.Text = lblPress.Text;
+            //lblPC_Press.Visible = true;
+            //lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            //lblPC_Date.Visible = true;
+            //lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            //lblPC_Note.Visible = true;
             btnBack.Visible = false;
             btnCancel.Visible = false;
             btnPalletCardPrint.Visible = true;
@@ -3895,46 +3897,49 @@ namespace PalletCard
             }
 
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
-            string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
-            Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
-            using (Graphics graphics = Graphics.FromImage(bitMap))
-            {
-                System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
-                PointF point = new PointF(2f, 2f);
-                SolidBrush blackBrush = new SolidBrush(Color.Black);
-                SolidBrush whiteBrush = new SolidBrush(Color.White);
-                graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
-                graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
-            }
-            using (MemoryStream ms = new MemoryStream())
-            {
-                bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                pictureBox1.Image = bitMap;
-                pictureBox1.Height = bitMap.Height;
-                pictureBox1.Width = bitMap.Width;
-            }
+            //string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
+            string autoNum = Convert.ToString(((int)dataGridView2.Rows[0].Cells[0].Value));
+
+
+            //Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
+            //using (Graphics graphics = Graphics.FromImage(bitMap))
+            //{
+            //    System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
+            //    PointF point = new PointF(2f, 2f);
+            //    SolidBrush blackBrush = new SolidBrush(Color.Black);
+            //    SolidBrush whiteBrush = new SolidBrush(Color.White);
+            //    graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
+            //    graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
+            //}
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            //    pictureBox1.Image = bitMap;
+            //    pictureBox1.Height = bitMap.Height;
+            //    pictureBox1.Width = bitMap.Width;
+            //}
 
             pnlPalletCardPrint.BringToFront();
-            lblPC_IncompletePallet.Text = "INCOMPLETE";
-            lblPC_IncompletePallet.Visible = true;
-            lblPC_JobNo.Text = lblJobNo.Text;
-            lblPC_JobNo.Visible = true;
-            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-            lblPC_Customer.Visible = true;
-            lblPC_Customer.MaximumSize = new Size(450, 220);
-            lblPC_Customer.AutoSize = true;
-            lblPC_SheetQty.Text = lbl5.Text;
-            lblPC_SheetQty.Visible = true;
-            lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
-            lblPC_Sig.Visible = true;
-            lblPC_PalletNumber.Text = "Pallet 1";
-            lblPC_PalletNumber.Visible = true;
-            lblPC_Press.Text = lblPress.Text;
-            lblPC_Press.Visible = true;
-            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-            lblPC_Date.Visible = true;
-            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-            lblPC_Note.Visible = true;
+            //lblPC_IncompletePallet.Text = "INCOMPLETE";
+            //lblPC_IncompletePallet.Visible = true;
+            //lblPC_JobNo.Text = lblJobNo.Text;
+            //lblPC_JobNo.Visible = true;
+            //lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            //lblPC_Customer.Visible = true;
+            //lblPC_Customer.MaximumSize = new Size(450, 220);
+            //lblPC_Customer.AutoSize = true;
+            //lblPC_SheetQty.Text = lbl5.Text;
+            //lblPC_SheetQty.Visible = true;
+            //lblPC_Sig.Text = "Sheet " + dataGridView1.Rows[0].Cells[19].Value as string;
+            //lblPC_Sig.Visible = true;
+            //lblPC_PalletNumber.Text = "Pallet 1";
+            //lblPC_PalletNumber.Visible = true;
+            //lblPC_Press.Text = lblPress.Text;
+            //lblPC_Press.Visible = true;
+            //lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            //lblPC_Date.Visible = true;
+            //lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            //lblPC_Note.Visible = true;
             btnBack.Visible = false;
             btnCancel.Visible = false;
             sectionFinishedClicked = true;
@@ -4283,7 +4288,8 @@ namespace PalletCard
                 }
             }
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
-            autoNum = Convert.ToString((int)dataGridView2.Rows[0].Cells[0].Value + 1);
+            //autoNum = Convert.ToString((int)dataGridView2.Rows[0].Cells[0].Value + 1);
+            autoNum = Convert.ToString((int)dataGridView2.Rows[0].Cells[0].Value);
             btnPalletCardPrint.Visible = true;
             sectionFinishedClicked = true;
             index = 16;
@@ -4423,46 +4429,48 @@ namespace PalletCard
             // Requery the data to refresh dataGridView2 with the newly added PalletNumber and barCode
             reQueryDataGridView2();
 
-            this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
-            barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
-            Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
-            using (Graphics graphics = Graphics.FromImage(bitMap))
-            {
-                System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
-                PointF point = new PointF(2f, 2f);
-                SolidBrush blackBrush = new SolidBrush(Color.Black);
-                SolidBrush whiteBrush = new SolidBrush(Color.White);
-                graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
-                graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
-            }
-            using (MemoryStream ms = new MemoryStream())
-            {
-                bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                pictureBox1.Image = bitMap;
-                pictureBox1.Height = bitMap.Height;
-                pictureBox1.Width = bitMap.Width;
-            }
+            //this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
+            //barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
+            //Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
+            //using (Graphics graphics = Graphics.FromImage(bitMap))
+            //{
+            //    System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
+            //    PointF point = new PointF(2f, 2f);
+            //    SolidBrush blackBrush = new SolidBrush(Color.Black);
+            //    SolidBrush whiteBrush = new SolidBrush(Color.White);
+            //    graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
+            //    graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
+            //}
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            //    pictureBox1.Image = bitMap;
+            //    pictureBox1.Height = bitMap.Height;
+            //    pictureBox1.Width = bitMap.Width;
+            //}
 
+            this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
+            autoNum = Convert.ToString((int)dataGridView2.Rows[0].Cells[0].Value);
             pnlPalletCardPrint.BringToFront();
             btnBack.Visible = false;
-            lblPC_JobNo.Text = lblJobNo.Text;
-            lblPC_JobNo.Visible = true;
-            lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-            lblPC_Customer.Visible = true;
-            lblPC_Customer.MaximumSize = new Size(450, 220);
-            lblPC_Customer.AutoSize = true;
-            lblPC_SheetQty.Text = lbl5.Text;
-            lblPC_SheetQty.Visible = true;
-            lblPC_Press.Text = lblPress.Text;
-            lblPC_Press.Visible = true;
-            lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-            lblPC_Date.Visible = true;
-            lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-            lblPC_Note.Visible = true;
-            lblPC_PalletNumber.Text = "Pallet No " + PalletNumber.ToString();
-            lblPC_PalletNumber.Visible = true;
-            lblPC_Sig.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value as string;
-            lblPC_Sig.Visible = true;
+            //lblPC_JobNo.Text = lblJobNo.Text;
+            //lblPC_JobNo.Visible = true;
+            //lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
+            //lblPC_Customer.Visible = true;
+            //lblPC_Customer.MaximumSize = new Size(450, 220);
+            //lblPC_Customer.AutoSize = true;
+            //lblPC_SheetQty.Text = lbl5.Text;
+            //lblPC_SheetQty.Visible = true;
+            //lblPC_Press.Text = lblPress.Text;
+            //lblPC_Press.Visible = true;
+            //lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
+            //lblPC_Date.Visible = true;
+            //lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
+            //lblPC_Note.Visible = true;
+            //lblPC_PalletNumber.Text = "Pallet No " + PalletNumber.ToString();
+            //lblPC_PalletNumber.Visible = true;
+            //lblPC_Sig.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value as string;
+            //lblPC_Sig.Visible = true;
             btnCancel.Visible = false;
             index = 17;
         }
@@ -4533,9 +4541,9 @@ namespace PalletCard
             try
             {
                 // Create bitmap for Pallet Card
-                bmpDrawing1 = new Bitmap(pnlPalletCardBack.Width, pnlPalletCardBack.Height);
+                bmpDrawing1 = new Bitmap(840, 1052);
                 // Set the bounds of the bitmap
-                rectBounds1 = new System.Drawing.Rectangle(0, 0, bmpDrawing1.Width, bmpDrawing1.Height);
+                rectBounds1 = new System.Drawing.Rectangle(0, 0, 840, 1052);
                 // Move drawing to bitmap
                 pnlPalletCardPrintCR.DrawToBitmap(bmpDrawing1, rectBounds1);
                 // Save the bitmap to file
@@ -4569,6 +4577,7 @@ namespace PalletCard
             doc.Open();
             iTextSharp.text.Image pic1 = iTextSharp.text.Image.GetInstance("C:\\Temp\\front.jpg");
             iTextSharp.text.Image pic2 = iTextSharp.text.Image.GetInstance("C:\\Temp\\back.jpg");
+            pic1.ScaleAbsolute(590f, 750f);
             pic2.ScaleAbsolute(590f, 750f);
             doc.Add(pic1);
             doc.Add(pic2);
