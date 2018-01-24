@@ -93,7 +93,7 @@ namespace PalletCard
         string sheetsAffected;
         int gangRow;
         int sheetsAffectedBadSection;
-        string autoNum;
+        int autoNum;
         int gangWholePalletButtonPressed;
         DateTime CurrentDate= DateTime.Now;
         decimal maxPercentageShort;
@@ -640,7 +640,7 @@ namespace PalletCard
             ParameterValues crParameterValues = new ParameterValues();
             ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
 
-            crParameterDiscreteValue.Value = Convert.ToInt32(autoNum);
+            crParameterDiscreteValue.Value = autoNum;
             crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
             crParameterFieldDefinition = crParameterFieldDefinitions["AutoNum"];
             crParameterValues = crParameterFieldDefinition.CurrentValues;
@@ -1453,8 +1453,8 @@ namespace PalletCard
             }
 
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
-                autoNum = Convert.ToString(((int)dataGridView2.Rows[0].Cells[0].Value));
-              //string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
+            autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
+            //string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
             //Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
             //using (Graphics graphics = Graphics.FromImage(bitMap))
             //{
@@ -3740,7 +3740,7 @@ namespace PalletCard
 
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             //string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
-            string autoNum = Convert.ToString(((int)dataGridView2.Rows[0].Cells[0].Value));
+            autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
 
             //Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
             //using (Graphics graphics = Graphics.FromImage(bitMap))
@@ -3898,7 +3898,7 @@ namespace PalletCard
 
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             //string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
-            string autoNum = Convert.ToString(((int)dataGridView2.Rows[0].Cells[0].Value));
+            autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
 
 
             //Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
@@ -4063,7 +4063,12 @@ namespace PalletCard
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             PaperSectionNo = Convert.ToInt32(dataGridView2.Rows[0].Cells[8].Value);
 
-            // If not finished 
+            // If unfinished: 
+            // (unfinished = 1, Backup required = 2, Varnish required = 3
+            // Finished = 0. If goes through routine only once with IsSectionFinishedYes chosen then unfinished is given a value of 0.
+            // IsSectionFinishedNo gives Unfinished a value of 1 to indicate that these lines need to sum up the qty Produced values.
+            // Also last time it goes through (IsSectionFinishedYes) Unfinished is given value of 0
+            // It wont sum up values where Unfinished = 0
             if (Convert.ToInt32(dataGridView2.Rows[0].Cells[6].Value) != 0)
             {
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
@@ -4089,7 +4094,7 @@ namespace PalletCard
 
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, PalletNumber, Unfinished, PaperSectionNo, NumberUp, JobGanged, JobDesc, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, LastPallet, Produced, Expr1, SectionName, InvoiceCustomerCode, InkBatch, PaperBatch) values('" + this.lbl1.Text + "','" + lblJobNo.Text + "','" + PalletNumber + "', '0','" + PaperSectionNo + "', '" + numberUp + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[18].Value + "', '" + lbl7.Text + "','" + resourceID + "','" + lbl6.Text + "','" + lbl2.Text + "','" + lbl5.Text + "','" + tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + lastPallet + "','" + produced + "','" + lbl2.Text + "','" + lbl2.Text + "', '" + this.dataGridView1.Rows[0].Cells[21].Value + "', '" + inkDetails + "', '" + paperDetails + "');";
+            string Query = "insert into Log (Routine, JobNo, PalletNumber, Unfinished, PaperSectionNo, NumberUp, JobGanged, JobDesc, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, LastPallet, Produced, Expr1, SectionName, InvoiceCustomerCode, InkBatch, PaperBatch) values('" + this.lbl1.Text + "','" + lblJobNo.Text + "','" + PalletNumber + "', '0','" + PaperSectionNo + "', '" + numberUp + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[18].Value + "', '" + lbl7.Text + "','" + resourceID + "','" + lbl6.Text + "','" + this.dataGridView1.Rows[0].Cells[16].Value + "','" + lbl5.Text + "','" + tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + lastPallet + "','" + produced + "','" + lbl2.Text + "','" + lbl2.Text + "', '" + this.dataGridView1.Rows[0].Cells[21].Value + "', '" + inkDetails + "', '" + paperDetails + "');";
             //string Query = "insert into Log (Routine, JobNo, PalletNumber, Unfinished, PaperSectionNo, NumberUp, JobGanged, JobDesc, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, LastPallet, Produced, Expr1, SectionName, InvoiceCustomerCode, InkBatch, PaperBatch) values('" + this.lbl1.Text + "','" + lblJobNo.Text + "','" + PalletNumber + "', '0','" + PaperSectionNo + "', '" + this.dataGridView1.Rows[0].Cells[12].Value + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[18].Value + "', '" + lbl7.Text + "','" + resourceID + "','" + lbl6.Text + "','" + lbl2.Text + "','" + lbl5.Text + "','" + tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + "1" + "','" + produced + "','" + lbl2.Text + "','" + lbl2.Text + "', '" + this.dataGridView1.Rows[0].Cells[21].Value + "', '" + paperDetails + "', '" + inkDetails + "');";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
@@ -4289,7 +4294,7 @@ namespace PalletCard
             }
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             //autoNum = Convert.ToString((int)dataGridView2.Rows[0].Cells[0].Value + 1);
-            autoNum = Convert.ToString((int)dataGridView2.Rows[0].Cells[0].Value);
+            autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
             btnPalletCardPrint.Visible = true;
             sectionFinishedClicked = true;
             index = 16;
@@ -4408,7 +4413,7 @@ namespace PalletCard
             var rowCount = dataGridView2.Rows.Count -1;
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, NumberUp, JobGanged, JobDesc, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, Produced, Unfinished, InvoiceCustomerCode, InkBatch, PaperBatch) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value  + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '" + numberUp + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[18].Value + "', '" + this.dataGridView1.Rows[0].Cells[25].Value + "','" + resourceID + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.lbl2.Text + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + produced + "', '1', '" + this.dataGridView1.Rows[0].Cells[21].Value + "', '" + inkDetails + "', '" + paperDetails + "');";
+            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, NumberUp, JobGanged, JobDesc, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, Produced, Unfinished, InvoiceCustomerCode, InkBatch, PaperBatch, Expr1, SectionName) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value  + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '" + numberUp + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[18].Value + "', '" + this.dataGridView1.Rows[0].Cells[25].Value + "','" + resourceID + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.dataGridView1.Rows[0].Cells[16].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + produced + "', '1', '" + this.dataGridView1.Rows[0].Cells[21].Value + "', '" + inkDetails + "', '" + paperDetails + "','" + lbl2.Text + "','" + lbl2.Text + "');";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             SqlDataReader myReader;
@@ -4450,7 +4455,7 @@ namespace PalletCard
             //}
 
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
-            autoNum = Convert.ToString((int)dataGridView2.Rows[0].Cells[0].Value);
+            autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
             pnlPalletCardPrint.BringToFront();
             btnBack.Visible = false;
             //lblPC_JobNo.Text = lblJobNo.Text;
@@ -4497,7 +4502,7 @@ namespace PalletCard
             // Create an instance of the Printer
             IPrinter printer = new Printer();
             // Print the file
-            printer.PrintRawFile(PrinterName, Filepath, Filename);
+            //printer.PrintRawFile(PrinterName, Filepath, Filename);
 
             // if Is Section Finished No - return user to choose Action Screen
             if (sectionFinishedClicked == false)
