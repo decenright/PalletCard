@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle97 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle98 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle99 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle100 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle101 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle102 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbxSearchBox = new System.Windows.Forms.TextBox();
             this.lblJobNo = new System.Windows.Forms.Label();
@@ -314,8 +314,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pnlBackScreen = new System.Windows.Forms.Panel();
             this.pnlPalletCardPrintCR = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.crystalReportViewer2 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlHome0.SuspendLayout();
             this.pnlHome1.SuspendLayout();
@@ -386,33 +386,33 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle97.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle97.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle97.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle97.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle97.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle97.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle97.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle97;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle98.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle98.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle98.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle98.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle98.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle98.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle98.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle98;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 871);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Location = new System.Drawing.Point(4, 834);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle99.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle99.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle99.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle99.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle99.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle99.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle99.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle99;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(834, 96);
             this.dataGridView1.TabIndex = 0;
@@ -524,7 +524,7 @@
             this.pnlHome0.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlHome0.Location = new System.Drawing.Point(208, 3);
             this.pnlHome0.Name = "pnlHome0";
-            this.pnlHome0.Size = new System.Drawing.Size(643, 864);
+            this.pnlHome0.Size = new System.Drawing.Size(643, 827);
             this.pnlHome0.TabIndex = 18;
             // 
             // label58
@@ -570,7 +570,7 @@
             this.pnlHome1.Controls.Add(this.btnPalletCard);
             this.pnlHome1.Location = new System.Drawing.Point(207, 3);
             this.pnlHome1.Name = "pnlHome1";
-            this.pnlHome1.Size = new System.Drawing.Size(643, 867);
+            this.pnlHome1.Size = new System.Drawing.Size(643, 827);
             this.pnlHome1.TabIndex = 4;
             // 
             // btnRejectPaper
@@ -629,7 +629,7 @@
             // 
             this.pnlReturnPaper1.Location = new System.Drawing.Point(207, 4);
             this.pnlReturnPaper1.Name = "pnlReturnPaper1";
-            this.pnlReturnPaper1.Size = new System.Drawing.Size(643, 866);
+            this.pnlReturnPaper1.Size = new System.Drawing.Size(643, 826);
             this.pnlReturnPaper1.TabIndex = 8;
             // 
             // pnlReturnPaper2
@@ -641,7 +641,7 @@
             this.pnlReturnPaper2.Controls.Add(this.lblPalletHeight);
             this.pnlReturnPaper2.Location = new System.Drawing.Point(207, 4);
             this.pnlReturnPaper2.Name = "pnlReturnPaper2";
-            this.pnlReturnPaper2.Size = new System.Drawing.Size(643, 866);
+            this.pnlReturnPaper2.Size = new System.Drawing.Size(643, 826);
             this.pnlReturnPaper2.TabIndex = 1;
             // 
             // label7
@@ -680,7 +680,7 @@
             // 
             this.tbxPalletHeight.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxPalletHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPalletHeight.Location = new System.Drawing.Point(130, 136);
+            this.tbxPalletHeight.Location = new System.Drawing.Point(130, 116);
             this.tbxPalletHeight.Multiline = true;
             this.tbxPalletHeight.Name = "tbxPalletHeight";
             this.tbxPalletHeight.Size = new System.Drawing.Size(275, 59);
@@ -768,7 +768,7 @@
             this.pnlReturnPaper3.Controls.Add(this.lblPrint1);
             this.pnlReturnPaper3.Location = new System.Drawing.Point(204, 2);
             this.pnlReturnPaper3.Name = "pnlReturnPaper3";
-            this.pnlReturnPaper3.Size = new System.Drawing.Size(646, 868);
+            this.pnlReturnPaper3.Size = new System.Drawing.Size(646, 828);
             this.pnlReturnPaper3.TabIndex = 6;
             // 
             // label2
@@ -882,7 +882,7 @@
             this.pnlRejectPaper3.Controls.Add(this.label5);
             this.pnlRejectPaper3.Location = new System.Drawing.Point(204, 2);
             this.pnlRejectPaper3.Name = "pnlRejectPaper3";
-            this.pnlRejectPaper3.Size = new System.Drawing.Size(646, 868);
+            this.pnlRejectPaper3.Size = new System.Drawing.Size(646, 827);
             this.pnlRejectPaper3.TabIndex = 24;
             // 
             // lblPrint14
@@ -1011,7 +1011,7 @@
             this.pnlRejectPaper2.Controls.Add(this.label4);
             this.pnlRejectPaper2.Location = new System.Drawing.Point(208, 5);
             this.pnlRejectPaper2.Name = "pnlRejectPaper2";
-            this.pnlRejectPaper2.Size = new System.Drawing.Size(642, 862);
+            this.pnlRejectPaper2.Size = new System.Drawing.Size(642, 825);
             this.pnlRejectPaper2.TabIndex = 22;
             // 
             // label3
@@ -1151,7 +1151,7 @@
             this.pnlPalletCard2.Controls.Add(this.flowLayoutPanel1);
             this.pnlPalletCard2.Location = new System.Drawing.Point(208, 5);
             this.pnlPalletCard2.Name = "pnlPalletCard2";
-            this.pnlPalletCard2.Size = new System.Drawing.Size(642, 865);
+            this.pnlPalletCard2.Size = new System.Drawing.Size(642, 825);
             this.pnlPalletCard2.TabIndex = 33;
             // 
             // label17
@@ -1175,7 +1175,7 @@
             // 
             this.pnlRejectPaper1.Location = new System.Drawing.Point(208, 3);
             this.pnlRejectPaper1.Name = "pnlRejectPaper1";
-            this.pnlRejectPaper1.Size = new System.Drawing.Size(642, 864);
+            this.pnlRejectPaper1.Size = new System.Drawing.Size(642, 826);
             this.pnlRejectPaper1.TabIndex = 23;
             // 
             // lblBack1
@@ -1274,7 +1274,7 @@
             this.pnlSignature.Controls.Add(this.SignaturePanel);
             this.pnlSignature.Location = new System.Drawing.Point(206, 2);
             this.pnlSignature.Name = "pnlSignature";
-            this.pnlSignature.Size = new System.Drawing.Size(644, 868);
+            this.pnlSignature.Size = new System.Drawing.Size(644, 828);
             this.pnlSignature.TabIndex = 31;
             // 
             // label61
@@ -1366,7 +1366,7 @@
             // 
             this.pnlPalletCard1.Location = new System.Drawing.Point(208, 5);
             this.pnlPalletCard1.Name = "pnlPalletCard1";
-            this.pnlPalletCard1.Size = new System.Drawing.Size(642, 865);
+            this.pnlPalletCard1.Size = new System.Drawing.Size(642, 825);
             this.pnlPalletCard1.TabIndex = 32;
             // 
             // pnlPalletCard3
@@ -1382,7 +1382,7 @@
             this.pnlPalletCard3.Controls.Add(this.label11);
             this.pnlPalletCard3.Location = new System.Drawing.Point(205, 3);
             this.pnlPalletCard3.Name = "pnlPalletCard3";
-            this.pnlPalletCard3.Size = new System.Drawing.Size(648, 862);
+            this.pnlPalletCard3.Size = new System.Drawing.Size(648, 827);
             this.pnlPalletCard3.TabIndex = 34;
             // 
             // label8
@@ -1410,7 +1410,7 @@
             // 
             this.tbxSheetCountPalletCard.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxSheetCountPalletCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSheetCountPalletCard.Location = new System.Drawing.Point(130, 419);
+            this.tbxSheetCountPalletCard.Location = new System.Drawing.Point(130, 401);
             this.tbxSheetCountPalletCard.Name = "tbxSheetCountPalletCard";
             this.tbxSheetCountPalletCard.Size = new System.Drawing.Size(275, 38);
             this.tbxSheetCountPalletCard.TabIndex = 13;
@@ -1464,7 +1464,7 @@
             // 
             this.tbxPalletHeightPalletCard.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxPalletHeightPalletCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPalletHeightPalletCard.Location = new System.Drawing.Point(130, 105);
+            this.tbxPalletHeightPalletCard.Location = new System.Drawing.Point(130, 87);
             this.tbxPalletHeightPalletCard.Name = "tbxPalletHeightPalletCard";
             this.tbxPalletHeightPalletCard.Size = new System.Drawing.Size(275, 38);
             this.tbxPalletHeightPalletCard.TabIndex = 8;
@@ -1520,7 +1520,7 @@
             this.pnlPalletCard4.Controls.Add(this.label10);
             this.pnlPalletCard4.Location = new System.Drawing.Point(208, 5);
             this.pnlPalletCard4.Name = "pnlPalletCard4";
-            this.pnlPalletCard4.Size = new System.Drawing.Size(642, 862);
+            this.pnlPalletCard4.Size = new System.Drawing.Size(642, 825);
             this.pnlPalletCard4.TabIndex = 37;
             // 
             // btnExtraInformationPalletCard
@@ -1592,7 +1592,7 @@
             this.pnlPalletCard5.Controls.Add(this.label14);
             this.pnlPalletCard5.Location = new System.Drawing.Point(207, 4);
             this.pnlPalletCard5.Name = "pnlPalletCard5";
-            this.pnlPalletCard5.Size = new System.Drawing.Size(643, 863);
+            this.pnlPalletCard5.Size = new System.Drawing.Size(643, 826);
             this.pnlPalletCard5.TabIndex = 38;
             // 
             // btnScrollUp
@@ -1604,6 +1604,7 @@
             this.btnScrollUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnScrollUp.TabIndex = 27;
             this.btnScrollUp.TabStop = false;
+            this.btnScrollUp.Visible = false;
             this.btnScrollUp.Click += new System.EventHandler(this.btnScrollUp_Click);
             // 
             // btnScrollDown
@@ -1615,6 +1616,7 @@
             this.btnScrollDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnScrollDown.TabIndex = 26;
             this.btnScrollDown.TabStop = false;
+            this.btnScrollDown.Visible = false;
             this.btnScrollDown.Click += new System.EventHandler(this.btnScrollDown_Click);
             // 
             // pnlBadSectionGangHeader
@@ -1746,7 +1748,7 @@
             // 
             this.tbxSheetsAffectedBadSection.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxSheetsAffectedBadSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSheetsAffectedBadSection.Location = new System.Drawing.Point(119, 197);
+            this.tbxSheetsAffectedBadSection.Location = new System.Drawing.Point(119, 194);
             this.tbxSheetsAffectedBadSection.Multiline = true;
             this.tbxSheetsAffectedBadSection.Name = "tbxSheetsAffectedBadSection";
             this.tbxSheetsAffectedBadSection.Size = new System.Drawing.Size(275, 40);
@@ -1883,7 +1885,7 @@
             this.pnlPalletCard7.Controls.Add(this.label19);
             this.pnlPalletCard7.Location = new System.Drawing.Point(205, 5);
             this.pnlPalletCard7.Name = "pnlPalletCard7";
-            this.pnlPalletCard7.Size = new System.Drawing.Size(645, 862);
+            this.pnlPalletCard7.Size = new System.Drawing.Size(645, 825);
             this.pnlPalletCard7.TabIndex = 46;
             // 
             // btnPalletFinished
@@ -1945,7 +1947,7 @@
             this.pnlPalletCard6.Controls.Add(this.label16);
             this.pnlPalletCard6.Location = new System.Drawing.Point(205, 5);
             this.pnlPalletCard6.Name = "pnlPalletCard6";
-            this.pnlPalletCard6.Size = new System.Drawing.Size(645, 862);
+            this.pnlPalletCard6.Size = new System.Drawing.Size(645, 825);
             this.pnlPalletCard6.TabIndex = 47;
             // 
             // lblWarningUnder
@@ -2037,7 +2039,7 @@
             this.pnlPalletCardPrint.Controls.Add(this.label18);
             this.pnlPalletCardPrint.Location = new System.Drawing.Point(209, 2);
             this.pnlPalletCardPrint.Name = "pnlPalletCardPrint";
-            this.pnlPalletCardPrint.Size = new System.Drawing.Size(647, 868);
+            this.pnlPalletCardPrint.Size = new System.Drawing.Size(647, 819);
             this.pnlPalletCardPrint.TabIndex = 48;
             // 
             // pnlPrinting
@@ -2246,7 +2248,7 @@
             this.pnlPalletCard8.Controls.Add(this.btnIsSectionFinishedYes);
             this.pnlPalletCard8.Location = new System.Drawing.Point(208, 5);
             this.pnlPalletCard8.Name = "pnlPalletCard8";
-            this.pnlPalletCard8.Size = new System.Drawing.Size(642, 865);
+            this.pnlPalletCard8.Size = new System.Drawing.Size(642, 825);
             this.pnlPalletCard8.TabIndex = 49;
             // 
             // lblWarning
@@ -2327,7 +2329,7 @@
             this.pnlPalletCard9.Controls.Add(this.lblPalletOverBySheets);
             this.pnlPalletCard9.Location = new System.Drawing.Point(205, 5);
             this.pnlPalletCard9.Name = "pnlPalletCard9";
-            this.pnlPalletCard9.Size = new System.Drawing.Size(645, 865);
+            this.pnlPalletCard9.Size = new System.Drawing.Size(645, 825);
             this.pnlPalletCard9.TabIndex = 50;
             // 
             // lblWarningOver
@@ -2387,35 +2389,35 @@
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
-            dataGridViewCellStyle100.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle100.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle100.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle100.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle100.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle100.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle100.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle100;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle101.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle101.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle101.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle101.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle101.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle101.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle101.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle101;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 967);
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 934);
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle102.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle102.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle102.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle102.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle102.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle102.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle102.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle102;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(834, 84);
+            this.dataGridView2.Size = new System.Drawing.Size(834, 59);
             this.dataGridView2.TabIndex = 52;
             // 
             // pnlNotification2
@@ -2426,7 +2428,7 @@
             this.pnlNotification2.Controls.Add(this.btnWaitingPlates);
             this.pnlNotification2.Location = new System.Drawing.Point(207, 3);
             this.pnlNotification2.Name = "pnlNotification2";
-            this.pnlNotification2.Size = new System.Drawing.Size(643, 864);
+            this.pnlNotification2.Size = new System.Drawing.Size(643, 827);
             this.pnlNotification2.TabIndex = 53;
             // 
             // lblNotificationPanel
@@ -2482,7 +2484,7 @@
             // 
             this.pnlNotification1.Location = new System.Drawing.Point(206, 2);
             this.pnlNotification1.Name = "pnlNotification1";
-            this.pnlNotification1.Size = new System.Drawing.Size(644, 868);
+            this.pnlNotification1.Size = new System.Drawing.Size(644, 828);
             this.pnlNotification1.TabIndex = 54;
             // 
             // pnlPalletCard10
@@ -2524,7 +2526,7 @@
             this.pnlPalletCard10.Controls.Add(this.lblSpecialCustomerA1);
             this.pnlPalletCard10.Location = new System.Drawing.Point(205, 3);
             this.pnlPalletCard10.Name = "pnlPalletCard10";
-            this.pnlPalletCard10.Size = new System.Drawing.Size(648, 867);
+            this.pnlPalletCard10.Size = new System.Drawing.Size(648, 835);
             this.pnlPalletCard10.TabIndex = 55;
             // 
             // Posa9NotChecked
@@ -2868,7 +2870,7 @@
             // btnClearSignaturePosa
             // 
             this.btnClearSignaturePosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearSignaturePosa.Location = new System.Drawing.Point(483, 707);
+            this.btnClearSignaturePosa.Location = new System.Drawing.Point(483, 700);
             this.btnClearSignaturePosa.Name = "btnClearSignaturePosa";
             this.btnClearSignaturePosa.Size = new System.Drawing.Size(83, 46);
             this.btnClearSignaturePosa.TabIndex = 39;
@@ -2879,9 +2881,9 @@
             // SignaturePanelPosa
             // 
             this.SignaturePanelPosa.BackColor = System.Drawing.Color.Gainsboro;
-            this.SignaturePanelPosa.Location = new System.Drawing.Point(27, 697);
+            this.SignaturePanelPosa.Location = new System.Drawing.Point(109, 674);
             this.SignaturePanelPosa.Name = "SignaturePanelPosa";
-            this.SignaturePanelPosa.Size = new System.Drawing.Size(446, 92);
+            this.SignaturePanelPosa.Size = new System.Drawing.Size(364, 92);
             this.SignaturePanelPosa.TabIndex = 37;
             this.SignaturePanelPosa.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelPosa_MouseDown);
             this.SignaturePanelPosa.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SignaturePanelPosa_MouseMove);
@@ -3459,7 +3461,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(32, 674);
+            this.label15.Location = new System.Drawing.Point(19, 711);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(90, 24);
             this.label15.TabIndex = 33;
@@ -3478,7 +3480,7 @@
             // btnSavePosaImage
             // 
             this.btnSavePosaImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePosaImage.Location = new System.Drawing.Point(212, 795);
+            this.btnSavePosaImage.Location = new System.Drawing.Point(242, 772);
             this.btnSavePosaImage.Name = "btnSavePosaImage";
             this.btnSavePosaImage.Size = new System.Drawing.Size(88, 62);
             this.btnSavePosaImage.TabIndex = 18;
@@ -3520,7 +3522,7 @@
             this.pnlPalletCard11.Controls.Add(this.btnSaveMedicalPharmaImage);
             this.pnlPalletCard11.Location = new System.Drawing.Point(210, 3);
             this.pnlPalletCard11.Name = "pnlPalletCard11";
-            this.pnlPalletCard11.Size = new System.Drawing.Size(640, 864);
+            this.pnlPalletCard11.Size = new System.Drawing.Size(640, 827);
             this.pnlPalletCard11.TabIndex = 57;
             // 
             // label46
@@ -3628,6 +3630,7 @@
             // crystalReportViewer1
             // 
             this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.DisplayBackgroundEdge = false;
             this.crystalReportViewer1.DisplayStatusBar = false;
@@ -3651,9 +3654,9 @@
             // 
             // pnlBackScreen
             // 
-            this.pnlBackScreen.Location = new System.Drawing.Point(1, 2);
+            this.pnlBackScreen.Location = new System.Drawing.Point(1, 3);
             this.pnlBackScreen.Name = "pnlBackScreen";
-            this.pnlBackScreen.Size = new System.Drawing.Size(852, 1058);
+            this.pnlBackScreen.Size = new System.Drawing.Size(852, 992);
             this.pnlBackScreen.TabIndex = 60;
             // 
             // pnlPalletCardPrintCR
@@ -3665,17 +3668,10 @@
             this.pnlPalletCardPrintCR.Size = new System.Drawing.Size(850, 1052);
             this.pnlPalletCardPrintCR.TabIndex = 61;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(639, 981);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(132, 50);
-            this.pictureBox1.TabIndex = 25;
-            this.pictureBox1.TabStop = false;
-            // 
             // crystalReportViewer2
             // 
             this.crystalReportViewer2.ActiveViewIndex = -1;
+            this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer2.DisplayBackgroundEdge = false;
             this.crystalReportViewer2.DisplayStatusBar = false;
@@ -3686,17 +3682,24 @@
             this.crystalReportViewer2.TabIndex = 26;
             this.crystalReportViewer2.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(639, 981);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(132, 50);
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(850, 1045);
+            this.ClientSize = new System.Drawing.Size(850, 994);
             this.Controls.Add(this.pnlHome0);
             this.Controls.Add(this.pnlPalletCard6);
             this.Controls.Add(this.pnlPalletCard8);
             this.Controls.Add(this.pnlPalletCard4);
-            this.Controls.Add(this.pnlPalletCard5);
             this.Controls.Add(this.pnlPalletCard7);
             this.Controls.Add(this.pnlPalletCard9);
             this.Controls.Add(this.pnlRejectPaper2);
@@ -3705,7 +3708,6 @@
             this.Controls.Add(this.pnlPalletCard2);
             this.Controls.Add(this.pnlPalletCard1);
             this.Controls.Add(this.pnlPalletCard11);
-            this.Controls.Add(this.pnlPalletCard10);
             this.Controls.Add(this.pnlReturnPaper2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
@@ -3741,10 +3743,12 @@
             this.Controls.Add(this.lblBack10);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.pnlBackScreen);
-            this.Controls.Add(this.pnlSignature);
             this.Controls.Add(this.pnlPalletCardPrint);
             this.Controls.Add(this.pnlPalletCardBack);
             this.Controls.Add(this.pnlPalletCardPrintCR);
+            this.Controls.Add(this.pnlPalletCard10);
+            this.Controls.Add(this.pnlPalletCard5);
+            this.Controls.Add(this.pnlSignature);
             this.Name = "Home";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "XL106";
