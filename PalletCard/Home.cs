@@ -15,6 +15,7 @@ using CrystalDecisions.Shared;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using RawPrint;
+using System.Linq;
 
 namespace PalletCard
 {
@@ -23,14 +24,14 @@ namespace PalletCard
 
         #region Profiles
 
-        // Declan Testing
-        int resourceID = 6;
-        string press = "XL106";
-        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        string defaultEmail = "declan.enright@colorman.ie";
-        string defaultPrinter = "ProC5100S";
-        ////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-        ////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        //// Declan Testing
+        //int resourceID = 6;
+        //string press = "XL106";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultPrinter = "ProC5100S";
+        //////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        //////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// XL106
         //int resourceID = 6;
@@ -43,15 +44,17 @@ namespace PalletCard
         //int resourceID = 1;
         //string press = "SM102";
         //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "martin@colorman.ie";
+        ////string defaultEmail = "martin@colorman.ie";
+        //string defaultEmail = "declan.enright@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
-        //// XL106UV
-        //int resourceID = 67;
-        //string press = "XL106UV";
-        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        // XL106UV
+        int resourceID = 67;
+        string press = "XL106UV";
+        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
         //string defaultEmail = "martin@colorman.ie";
-        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        string defaultEmail = "declan.enright@colorman.ie";
+        string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// XL758
         //int resourceID = 68;
@@ -105,6 +108,7 @@ namespace PalletCard
         int lastPallet = 0;
         int sumProduced;
         bool sectionFinishedClicked = false;
+        bool cancelPrintMoreClicked = false;
 
         public Home()
         {
@@ -3459,6 +3463,7 @@ namespace PalletCard
             lblPheightPalletCard.Text = "";
             btnPalletCard_Click(btnPalletCard, EventArgs.Empty);
             badSectionLbls = false;
+            cancelPrintMoreClicked = true;
         }
 
 #endregion
@@ -3857,6 +3862,12 @@ namespace PalletCard
                 }
             }
 
+            if (cancelPrintMoreClicked == true)
+            {
+                sheetsAffectedBadSection = 0;
+                cancelPrintMoreClicked = false;
+            }
+
             //SAVE TO DATABASE
             CurrentDate = DateTime.Now;
             produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
@@ -3974,7 +3985,10 @@ namespace PalletCard
 
                     lblFinishedPalletsOver.Visible = true;
                     lblFinishedPalletsOver.Text = "";
-                    foreach (string s in sectionsNoLastFlag)
+
+                    string[] unique = sectionsNoLastFlag.Distinct().ToArray();
+
+                    foreach ( string s in unique)
                     {
                         lblFinishedPalletsOver.Text += "The pallet for Section " + s + " is not finished" + "\r\n";
                     }
@@ -4116,7 +4130,6 @@ namespace PalletCard
                         {
                             connection.Close();
                         }
-
                     }
                 }
             }
@@ -4173,10 +4186,12 @@ namespace PalletCard
                         }
                         else
                             {
+                                dataGridView2.AllowUserToAddRows = true;
                                 this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
                                 PalletNumber = (int)dataGridView2.Rows[0].Cells[4].Value + 1;
                             }
-                }
+                                dataGridView2.AllowUserToAddRows = false;
+            }
 
             //SAVE TO DATABASE
             CurrentDate = DateTime.Now;
@@ -4185,7 +4200,7 @@ namespace PalletCard
             var rowCount = dataGridView2.Rows.Count -1;
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             string constring = "Data Source=APPSHARE01\\SQLEXPRESS01;Initial Catalog=PalletCard;Persist Security Info=True;User ID=PalletCardAdmin;password=Pa!!etCard01";
-            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, NumberUp, JobGanged, JobDesc, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, Produced, Unfinished, InvoiceCustomerCode, InkBatch, PaperBatch, Expr1, SectionName) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value  + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '" + numberUp + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[18].Value + "', '" + this.dataGridView1.Rows[0].Cells[25].Value + "','" + resourceID + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.dataGridView1.Rows[0].Cells[16].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + produced + "', '1', '" + this.dataGridView1.Rows[0].Cells[21].Value + "', '" + inkDetails + "', '" + paperDetails + "','" + lbl2.Text + "','" + lbl2.Text + "');";
+            string Query = "insert into Log (Routine, JobNo, PalletNumber, PaperSectionNo, NumberUp, JobGanged, JobDesc, QtyRequired, ResourceID, WorkingSize, Description, SheetQty, Comment, Timestamp1, Produced, Unfinished, InvoiceCustomerCode, InkBatch, PaperBatch, Expr1, SectionName, ID) values('" + this.lbl1.Text + "','" + this.dataGridView1.Rows[0].Cells[0].Value  + "','" + PalletNumber + "','" + this.dataGridView1.Rows[0].Cells[19].Value + "', '" + numberUp + "', '" + this.dataGridView1.Rows[0].Cells[14].Value + "', '" + this.dataGridView1.Rows[0].Cells[18].Value + "', '" + this.dataGridView1.Rows[0].Cells[25].Value + "','" + resourceID + "','" + this.dataGridView1.Rows[0].Cells[13].Value + "','" + this.dataGridView1.Rows[0].Cells[16].Value + "','" + this.lbl5.Text + "','" + this.tbxExtraInfoComment.Text + "','" + CurrentDate + "','" + produced + "', '1', '" + this.dataGridView1.Rows[0].Cells[21].Value + "', '" + inkDetails + "', '" + paperDetails + "','" + lbl2.Text + "','" + lbl2.Text + "', '" + this.dataGridView1.Rows[0].Cells[3].Value + "');";
             SqlConnection conDatabase = new SqlConnection(constring);
             SqlCommand cmdDatabase = new SqlCommand(Query, conDatabase);
             SqlDataReader myReader;
@@ -4206,48 +4221,10 @@ namespace PalletCard
             // Requery the data to refresh dataGridView2 with the newly added PalletNumber and barCode
             reQueryDataGridView2();
 
-            //this.dataGridView2.Sort(this.dataGridView2.Columns["PalletNumber"], ListSortDirection.Descending);
-            //barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
-            //Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
-            //using (Graphics graphics = Graphics.FromImage(bitMap))
-            //{
-            //    System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
-            //    PointF point = new PointF(2f, 2f);
-            //    SolidBrush blackBrush = new SolidBrush(Color.Black);
-            //    SolidBrush whiteBrush = new SolidBrush(Color.White);
-            //    graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
-            //    graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
-            //}
-            //using (MemoryStream ms = new MemoryStream())
-            //{
-            //    bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-            //    pictureBox1.Image = bitMap;
-            //    pictureBox1.Height = bitMap.Height;
-            //    pictureBox1.Width = bitMap.Width;
-            //}
-
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
             pnlPalletCardPrint.BringToFront();
             btnBack.Visible = false;
-            //lblPC_JobNo.Text = lblJobNo.Text;
-            //lblPC_JobNo.Visible = true;
-            //lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-            //lblPC_Customer.Visible = true;
-            //lblPC_Customer.MaximumSize = new Size(450, 220);
-            //lblPC_Customer.AutoSize = true;
-            //lblPC_SheetQty.Text = lbl5.Text;
-            //lblPC_SheetQty.Visible = true;
-            //lblPC_Press.Text = lblPress.Text;
-            //lblPC_Press.Visible = true;
-            //lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-            //lblPC_Date.Visible = true;
-            //lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-            //lblPC_Note.Visible = true;
-            //lblPC_PalletNumber.Text = "Pallet No " + PalletNumber.ToString();
-            //lblPC_PalletNumber.Visible = true;
-            //lblPC_Sig.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value as string;
-            //lblPC_Sig.Visible = true;
             btnCancel.Visible = false;
             index = 17;
         }
@@ -4273,40 +4250,96 @@ namespace PalletCard
 
             // Create an instance of the Printer
             IPrinter printer = new Printer();
+
             // Print the file
             //printer.PrintRawFile(PrinterName, Filepath, Filename);
 
-            // if Is Section Finished No - return user to choose Action Screen
+
+            // if Is Section Finished NO - return user to Pallet Height/Sheet count Screen
             if (sectionFinishedClicked == false)
             {
-                pnlHome1.BringToFront();
-                lblJobNo.Visible = false;
-                lblPress.Visible = false;
-                lbl1.Visible = false;
-                lbl2.Visible = false;
-                lbl3.Visible = false;
-                lbl4.Visible = false;
-                btnBack.Visible = false;
-                btnCancel.Visible = false;
-                jobNo = lblJobNo.Text;
-                Cancel();
-                tbxSearchBox.Text = jobNo;
-                Search();
+                sectionBtns = false;
+                btnPalletCard.PerformClick();
+                tbxSheetCountPalletCard.Text = "";
+                tbxPalletHeightPalletCard.Text = "";
+                dataGridView2.Columns.Clear();
+                lblPrinting.Visible = false;
+                tbxPaperDetails.Text = "";
+                tbxInkDetails.Text = "";
+                clearPosaPanel();
+                tbxSearchBox.Text = "";
             }
-            else
+            else if (sectionFinishedClicked == true)
             {
-                pnlHome0.BringToFront();
-                lblJobNo.Visible = false;
-                lblPress.Visible = false;
-                lbl1.Visible = false;
-                lbl2.Visible = false;
-                lbl3.Visible = false;
-                lbl4.Visible = false;
-                btnBack.Visible = false;
-                btnCancel.Visible = true;
-                Cancel();
+                sectionBtns = false;
+                tbxSearchBox.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
+                Search();
+
+                var distinctRows = (from DataGridViewRow row in dataGridView1.Rows
+                                    select row.Cells[19].Value
+                                    ).Distinct().Count();
+
+                if (distinctRows > 1)
+                {
+                    pnlHome1.BringToFront();
+                    lbl2.Visible = false;
+                    lbl3.Visible = false;
+                    lbl4.Visible = false;
+                    lbl5.Visible = false;
+                    btnBack.Visible = false;
+                    btnCancel.Visible = true;
+                    tbxSheetCountPalletCard.Text = "";
+                    tbxPalletHeightPalletCard.Text = "";
+                    sectionFinishedClicked = false;
+                    lblPrinting.Visible = false;
+                    tbxPaperDetails.Text = "";
+                    tbxInkDetails.Text = "";
+                    clearPosaPanel();
+                }
+                else 
+                {
+                    sectionBtns = false;
+                    tbxSearchBox.Text = "";
+                    Search();
+                    pnlHome0.BringToFront();
+                    lblJobNo.Visible = false;
+                    lblPress.Visible = false;
+                    lbl1.Visible = false;
+                    lbl2.Visible = false;
+                    lbl3.Visible = false;
+                    lbl4.Visible = false;
+                    lbl5.Visible = false;
+                    btnBack.Visible = false;
+                    btnCancel.Visible = true;
+                    lblPrinting.Visible = false;
+                    tbxSheetCountPalletCard.Text = "";
+                    tbxPalletHeightPalletCard.Text = "";
+                }
             }
             dataGridView2.Columns.Clear();
+        }
+
+        void clearPosaPanel()
+        {
+            Posa1NotChecked.BringToFront();
+            Posa2NotChecked.BringToFront();
+            Posa3NotChecked.BringToFront();
+            Posa4NotChecked.BringToFront();
+            Posa5NotChecked.BringToFront();
+            Posa6NotChecked.BringToFront();
+            Posa7NotChecked.BringToFront();
+            Posa8NotChecked.BringToFront();
+            Posa9NotChecked.BringToFront();
+            PosaGripNotChecked.BringToFront();
+            PosaRegistrationNotChecked.BringToFront();
+            PosaColourNotChecked.BringToFront();
+            PosaSTCRegisNotChecked.BringToFront();
+            PosaSTCGlossNotChecked.BringToFront();
+            PosaVisualDefectsNotChecked.BringToFront();
+            textBox12.Text = "";
+            textBox13.Text = "";
+            textBox14.Text = "";
+            btnClearSignaturePosa.PerformClick();
         }
 
         void PrintImagePalletCard()
