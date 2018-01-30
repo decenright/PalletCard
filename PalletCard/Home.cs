@@ -4349,6 +4349,7 @@ namespace PalletCard
                 tbxInkDetails.Text = "";
                 clearPosaPanel();
                 tbxSearchBox.Text = "";
+                badSectionLbls = false;
             }
             else if (sectionFinishedClicked == true)
             {
