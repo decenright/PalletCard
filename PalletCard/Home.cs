@@ -40,21 +40,21 @@ namespace PalletCard
         //string defaultEmail = "martin@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
-        //// SM102
-        //int resourceID = 1;
-        //string press = "SM102";
-        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        ////string defaultEmail = "martin@colorman.ie";
-        //string defaultEmail = "declan.enright@colorman.ie";
-        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
-
-        // XL106UV
-        int resourceID = 67;
-        string press = "XL106UV";
+        // SM102
+        int resourceID = 1;
+        string press = "SM102";
         string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
         //string defaultEmail = "martin@colorman.ie";
         string defaultEmail = "declan.enright@colorman.ie";
         string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+        //// XL106UV
+        //int resourceID = 67;
+        //string press = "XL106UV";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        ////string defaultEmail = "martin@colorman.ie";
+        //string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// XL758
         //int resourceID = 68;
@@ -1716,42 +1716,71 @@ namespace PalletCard
                 }
 
                 else {
-                    if (!sigBtns)
-                        {                           
-                            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                        if (!sigBtns)
+                        {
+                            //create a button for each value of field "PaperSectionNo"  
+                            DataTable data = (DataTable)(dataGridView1.DataSource);
+                            DataView view = new DataView(data);
+                            DataTable distinctValues = view.ToTable(true, "PaperSectionNo");
+
+                            foreach (DataRow row in distinctValues.Rows)
                             {
-                                for (int j = 0; j < 1; j++)
+                                Button btnSig = new Button();
+                                this.flowLayoutPanel1.Controls.Add(btnSig);
+                                btnSig.Text = row["PaperSectionNo"].ToString();
+                                if (disableSectionButtons.Contains(btnSig.Text))
                                 {
-                                    dataGridView1.AllowUserToAddRows = true;
-                                    if (!(this.dataGridView1.Rows[i].Cells[19].Value  == this.dataGridView1.Rows[i + 1].Cells[19].Value ))
-                                    {
-                                        for (int k = 0; k < 1; k++)
-                                        {
-                                            Button btnSig = new Button();
-                                            this.flowLayoutPanel1.Controls.Add(btnSig);
-                                            btnSig.Text = dataGridView1.Rows[i].Cells[19].Value.ToString();
-                                            if (disableSectionButtons.Contains(btnSig.Text))
-                                            {
-                                                btnSig.BackColor = Color.Silver;
-                                                btnSig.Enabled = false;
-                                            }
-                                            else
-                                            {
-                                                btnSig.BackColor = Color.SteelBlue;
-                                            }
-                                            btnSig.Height = 70;
-                                            btnSig.Width = 120;                                           
-                                            btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
-                                            btnSig.ForeColor = Color.White;
-                                            btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                                            btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
-                                        }
-                                    }
+                                    btnSig.BackColor = Color.Silver;
+                                    btnSig.Enabled = false;
                                 }
-                                dataGridView1.AllowUserToAddRows = false;
-                                // get all the section numbers in a list for later
-                                allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
+                                else
+                                {
+                                    btnSig.BackColor = Color.SteelBlue;
+                                }
+                                btnSig.Height = 70;
+                                btnSig.Width = 120;
+                                btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
+                                btnSig.ForeColor = Color.White;
+                                btnSig.TextAlign = ContentAlignment.MiddleCenter;
+                                btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
+                                //get all the section numbers in a list for later
+                                allSections.Add(row["PaperSectionNo"].ToString());
                             }
+
+                            //for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                            //    {
+                            //        for (int j = 0; j < 1; j++)
+                            //        {
+                            //            dataGridView1.AllowUserToAddRows = true;
+                            //            if (!(this.dataGridView1.Rows[i].Cells[19].Value  == this.dataGridView1.Rows[i + 1].Cells[19].Value ))
+                            //            {
+                            //                for (int k = 0; k < 1; k++)
+                            //                {
+                            //                    Button btnSig = new Button();
+                            //                    this.flowLayoutPanel1.Controls.Add(btnSig);
+                            //                    btnSig.Text = dataGridView1.Rows[i].Cells[19].Value.ToString();
+                            //                    if (disableSectionButtons.Contains(btnSig.Text))
+                            //                    {
+                            //                        btnSig.BackColor = Color.Silver;
+                            //                        btnSig.Enabled = false;
+                            //                    }
+                            //                    else
+                            //                    {
+                            //                        btnSig.BackColor = Color.SteelBlue;
+                            //                    }
+                            //                    btnSig.Height = 70;
+                            //                    btnSig.Width = 120;                                           
+                            //                    btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
+                            //                    btnSig.ForeColor = Color.White;
+                            //                    btnSig.TextAlign = ContentAlignment.MiddleCenter;
+                            //                    btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
+                            //                }
+                            //            }
+                            //        }
+                            //        dataGridView1.AllowUserToAddRows = false;
+                            //        // get all the section numbers in a list for later
+                            //        allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
+                            //    }
                         }
                         sigBtns = true;
                     }
@@ -1803,42 +1832,72 @@ namespace PalletCard
                 else { 
                     if (!sigBtns)
                         {
-                        //loop through datagrid rows to create a button for each value of field "PaperSectionNo"  
-                            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                            //create a button for each value of field "PaperSectionNo"  
+                            DataTable data = (DataTable)(dataGridView1.DataSource);
+                            DataView view = new DataView(data);
+                            DataTable distinctValues = view.ToTable(true, "PaperSectionNo");
+
+                            foreach (DataRow row in distinctValues.Rows)
                             {
-                                var v = dataGridView1.Rows[i].Cells[19].Value;
-                                for (int j = 0; j < 1; j++)
+                                Button btnSig = new Button();
+                                this.flowLayoutPanel1.Controls.Add(btnSig);
+                                btnSig.Text = row["PaperSectionNo"].ToString();
+                                if (disableSectionButtons.Contains(btnSig.Text))
                                 {
-                                    dataGridView1.AllowUserToAddRows = true;
-                                    if (!(this.dataGridView1.Rows[i].Cells[19].Value == this.dataGridView1.Rows[i + 1].Cells[19].Value))
-                                    {
-                                        for (int k = 0; k < 1; k++)
-                                        {
-                                            Button btnSig = new Button();
-                                            this.flowLayoutPanel1.Controls.Add(btnSig);
-                                            btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value.ToString();
-                                            if (disableSectionButtons.Contains(btnSig.Text))
-                                            {
-                                                btnSig.BackColor = Color.Silver;
-                                                btnSig.Enabled = false;
-                                            }
-                                            else
-                                            {
-                                                btnSig.BackColor = Color.SteelBlue;
-                                            }
-                                            btnSig.Height = 70;
-                                            btnSig.Width = 120;
-                                            btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
-                                            btnSig.ForeColor = Color.White;
-                                            btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                                            btnSig.Click += new System.EventHandler(this.sectionButtonExpr1);
-                                        }
-                                    }
-                                    dataGridView1.AllowUserToAddRows = false;
-                                    // get all the section numbers in a list for later
-                                    allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
+                                    btnSig.BackColor = Color.Silver;
+                                    btnSig.Enabled = false;
                                 }
+                                else
+                                {
+                                    btnSig.BackColor = Color.SteelBlue;
+                                }
+                                btnSig.Height = 70;
+                                btnSig.Width = 120;
+                                btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
+                                btnSig.ForeColor = Color.White;
+                                btnSig.TextAlign = ContentAlignment.MiddleCenter;
+                                btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
+                                //get all the section numbers in a list for later
+                                allSections.Add(row["PaperSectionNo"].ToString());
                             }
+
+
+                            ////loop through datagrid rows to create a button for each value of field "PaperSectionNo"  
+                            //    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                            //    {
+                            //        var v = dataGridView1.Rows[i].Cells[19].Value;
+                            //        for (int j = 0; j < 1; j++)
+                            //        {
+                            //            dataGridView1.AllowUserToAddRows = true;
+                            //            if (!(this.dataGridView1.Rows[i].Cells[19].Value == this.dataGridView1.Rows[i + 1].Cells[19].Value))
+                            //            {
+                            //                for (int k = 0; k < 1; k++)
+                            //                {
+                            //                    Button btnSig = new Button();
+                            //                    this.flowLayoutPanel1.Controls.Add(btnSig);
+                            //                    btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value.ToString();
+                            //                    if (disableSectionButtons.Contains(btnSig.Text))
+                            //                    {
+                            //                        btnSig.BackColor = Color.Silver;
+                            //                        btnSig.Enabled = false;
+                            //                    }
+                            //                    else
+                            //                    {
+                            //                        btnSig.BackColor = Color.SteelBlue;
+                            //                    }
+                            //                    btnSig.Height = 70;
+                            //                    btnSig.Width = 120;
+                            //                    btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
+                            //                    btnSig.ForeColor = Color.White;
+                            //                    btnSig.TextAlign = ContentAlignment.MiddleCenter;
+                            //                    btnSig.Click += new System.EventHandler(this.sectionButtonExpr1);
+                            //                }
+                            //            }
+                            //            dataGridView1.AllowUserToAddRows = false;
+                            //            // get all the section numbers in a list for later
+                            //            allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
+                            //        }
+                            //    }
                         }
                         sigBtns = true;
                     }
@@ -3253,7 +3312,11 @@ namespace PalletCard
             pnlPalletCard8.BringToFront();
             index = 13;
 
-
+            var previousValue = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            //sheetsAffectedBadSection = Convert.ToInt32(tbxSheetsAffectedBadSection.Text);
+            // update label with new qty
+            lbl5.Text = Convert.ToString(previousValue - sheetsAffectedBadSection);
+            btnBadSectionOK.Visible = true;
 
 
 
@@ -3870,7 +3933,8 @@ namespace PalletCard
 
             //SAVE TO DATABASE
             CurrentDate = DateTime.Now;
-            produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
+            //produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
+            produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
             PaperSectionNo = Convert.ToInt32(Regex.Replace(lbl3.Text, "[^0-9.]", ""));
             lastPallet = 1;
 
@@ -3898,7 +3962,8 @@ namespace PalletCard
             reQueryDataGridView2();
 
             required = Convert.ToInt32(lbl7.Text);
-            produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection + sumProduced;
+            //produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection + sumProduced;
+            produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) + sumProduced;
             shortBy = required - produced;
             overBy = produced - required;
 
@@ -3948,6 +4013,10 @@ namespace PalletCard
                     {
                         lblWarningUnder.Visible = true;
                     }
+                    else
+                    {
+                        lblWarning.Visible = false;
+                    }
 
                     // Send email notification
                     MailMessage mail = new MailMessage("Press@colorman.ie", defaultEmail , "Print Job Shortage", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + "- has " + shortBy + " insufficient sheets");
@@ -3996,6 +4065,10 @@ namespace PalletCard
                     {
                         lblWarningOver.Visible = true;
                     }
+                    else
+                    {
+                        lblWarning.Visible = false;
+                    }
 
                     // Send email notification
                     MailMessage mail = new MailMessage("Press@colorman.ie", defaultEmail, "Print Job Over", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + " - is over by " + overBy);
@@ -4026,7 +4099,7 @@ namespace PalletCard
                     List<string> sectionsNoLastFlag = new List<string>();
                     foreach (string s in allSections)
                     {
-                        if (!completedSections.Contains(s))
+                        if (!completedSections.Contains(s) && !completedSections.Contains(Regex.Replace(lbl3.Text, "[^0-9.]", "")) )
                             sectionsNoLastFlag.Add(s);
                     }
 
@@ -4040,7 +4113,11 @@ namespace PalletCard
                     {
                         lblWarning.Visible = true;
                     }
-
+                    else
+                    {
+                        lblWarning.Visible = false;
+                    }
+                        
                     if (dataGridView2.RowCount == 0)
                     {
                         int account = Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value);
@@ -4195,7 +4272,8 @@ namespace PalletCard
 
             //SAVE TO DATABASE
             CurrentDate = DateTime.Now;
-            produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
+            //produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", "")) - sheetsAffectedBadSection;
+            produced = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
             dataGridView2.Refresh();
             var rowCount = dataGridView2.Rows.Count -1;
             string sqlFormattedDate = CurrentDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
@@ -4264,6 +4342,9 @@ namespace PalletCard
                 tbxPalletHeightPalletCard.Text = "";
                 dataGridView2.Columns.Clear();
                 lblPrinting.Visible = false;
+                tbxExtraInfoComment.Text = "";
+                tbxTextBoxBadSection.Text = "";
+                tbxSheetsAffectedBadSection.Text = "";
                 tbxPaperDetails.Text = "";
                 tbxInkDetails.Text = "";
                 clearPosaPanel();
@@ -4292,6 +4373,9 @@ namespace PalletCard
                     tbxPalletHeightPalletCard.Text = "";
                     sectionFinishedClicked = false;
                     lblPrinting.Visible = false;
+                    tbxExtraInfoComment.Text = "";
+                    tbxTextBoxBadSection.Text = "";
+                    tbxSheetsAffectedBadSection.Text = "";
                     tbxPaperDetails.Text = "";
                     tbxInkDetails.Text = "";
                     clearPosaPanel();
@@ -4312,6 +4396,9 @@ namespace PalletCard
                     btnBack.Visible = false;
                     btnCancel.Visible = true;
                     lblPrinting.Visible = false;
+                    tbxExtraInfoComment.Text = "";
+                    tbxTextBoxBadSection.Text = "";
+                    tbxSheetsAffectedBadSection.Text = "";
                     tbxSheetCountPalletCard.Text = "";
                     tbxPalletHeightPalletCard.Text = "";
                 }
