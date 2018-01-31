@@ -517,8 +517,7 @@ namespace PalletCard
         }
 
         private void Search()
-        {
-            {
+        {            
                 try
                 {   
                     ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%' and Filter = 1 ", tbxSearchBox.Text.Trim().Replace("'", "''"));
@@ -552,7 +551,7 @@ namespace PalletCard
                 btnBack.Visible = false;
                 btnPalletCardPrint.Visible = true;
                 sectionFinishedClicked = false;
-            }
+                dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Ascending);            
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -1743,44 +1742,45 @@ namespace PalletCard
                                 btnSig.ForeColor = Color.White;
                                 btnSig.TextAlign = ContentAlignment.MiddleCenter;
                                 btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
-                                //get all the section numbers in a list for later
+                                //get all the section numbers in a list for later                           
                                 allSections.Add(row["PaperSectionNo"].ToString());
-                            }
+                                allSections = allSections.Distinct().ToList();
+                        }
 
-                            //for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-                            //    {
-                            //        for (int j = 0; j < 1; j++)
-                            //        {
-                            //            dataGridView1.AllowUserToAddRows = true;
-                            //            if (!(this.dataGridView1.Rows[i].Cells[19].Value  == this.dataGridView1.Rows[i + 1].Cells[19].Value ))
-                            //            {
-                            //                for (int k = 0; k < 1; k++)
-                            //                {
-                            //                    Button btnSig = new Button();
-                            //                    this.flowLayoutPanel1.Controls.Add(btnSig);
-                            //                    btnSig.Text = dataGridView1.Rows[i].Cells[19].Value.ToString();
-                            //                    if (disableSectionButtons.Contains(btnSig.Text))
-                            //                    {
-                            //                        btnSig.BackColor = Color.Silver;
-                            //                        btnSig.Enabled = false;
-                            //                    }
-                            //                    else
-                            //                    {
-                            //                        btnSig.BackColor = Color.SteelBlue;
-                            //                    }
-                            //                    btnSig.Height = 70;
-                            //                    btnSig.Width = 120;                                           
-                            //                    btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
-                            //                    btnSig.ForeColor = Color.White;
-                            //                    btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                            //                    btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
-                            //                }
-                            //            }
-                            //        }
-                            //        dataGridView1.AllowUserToAddRows = false;
-                            //        // get all the section numbers in a list for later
-                            //        allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
-                            //    }
+                        //for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                        //    {
+                        //        for (int j = 0; j < 1; j++)
+                        //        {
+                        //            dataGridView1.AllowUserToAddRows = true;
+                        //            if (!(this.dataGridView1.Rows[i].Cells[19].Value  == this.dataGridView1.Rows[i + 1].Cells[19].Value ))
+                        //            {
+                        //                for (int k = 0; k < 1; k++)
+                        //                {
+                        //                    Button btnSig = new Button();
+                        //                    this.flowLayoutPanel1.Controls.Add(btnSig);
+                        //                    btnSig.Text = dataGridView1.Rows[i].Cells[19].Value.ToString();
+                        //                    if (disableSectionButtons.Contains(btnSig.Text))
+                        //                    {
+                        //                        btnSig.BackColor = Color.Silver;
+                        //                        btnSig.Enabled = false;
+                        //                    }
+                        //                    else
+                        //                    {
+                        //                        btnSig.BackColor = Color.SteelBlue;
+                        //                    }
+                        //                    btnSig.Height = 70;
+                        //                    btnSig.Width = 120;                                           
+                        //                    btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
+                        //                    btnSig.ForeColor = Color.White;
+                        //                    btnSig.TextAlign = ContentAlignment.MiddleCenter;
+                        //                    btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
+                        //                }
+                        //            }
+                        //        }
+                        //        dataGridView1.AllowUserToAddRows = false;
+                        //        // get all the section numbers in a list for later
+                        //        allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
+                        //    }
                         }
                         sigBtns = true;
                     }
@@ -3199,6 +3199,8 @@ namespace PalletCard
         {
             gangWholePalletButtonPressed = 1;
             notGangedWholePalletValue = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            //tbxSheetsAffectedBadSection.Text = Regex.Replace(lbl5.Text, "[^0-9.]", "");
+            //badQty = Regex.Replace(lbl5.Text, "[^0-9.]", "");
             notGanged();
         }
 
@@ -3491,8 +3493,9 @@ namespace PalletCard
 
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             int autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
+            int rollBackPalletNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[4].Value) - 1;
             string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
-            string CommandText = "Update Log set JobCancelled = 1, Unfinished = 1 where AutoNum = '" + autoNum + "' ";
+            string CommandText = "Update Log set JobCancelled = 1, Unfinished = 1, PalletNumber = '" + rollBackPalletNum + "' where AutoNum = '" + autoNum + "' ";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
             OdbcDataAdapter myAdapter = new OdbcDataAdapter();
@@ -4333,7 +4336,7 @@ namespace PalletCard
             //printer.PrintRawFile(PrinterName, Filepath, Filename);
 
 
-            // if Is Section Finished NO - return user to Pallet Height/Sheet count Screen
+            // if Is Section Finished NO - return user to Pallet Height/Sheet Count Screen
             if (sectionFinishedClicked == false)
             {
                 sectionBtns = false;
