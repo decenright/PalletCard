@@ -4305,6 +4305,7 @@ namespace PalletCard
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
             autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
             pnlPalletCardPrint.BringToFront();
+            btnPalletCardPrint.Visible = true;
             btnBack.Visible = false;
             btnCancel.Visible = false;
             index = 17;
@@ -4353,6 +4354,7 @@ namespace PalletCard
                 clearPosaPanel();
                 tbxSearchBox.Text = "";
                 badSectionLbls = false;
+                lbl5.Text = "";
             }
             else if (sectionFinishedClicked == true)
             {
