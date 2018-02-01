@@ -110,6 +110,7 @@ namespace PalletCard
         bool sectionFinishedClicked = false;
         bool cancelPrintMoreClicked = false;
         string badStation;
+        bool isBackupVarnish = false;
 
         public Home()
         {
@@ -553,7 +554,7 @@ namespace PalletCard
                 btnPalletCardPrint.Visible = true;
                 sectionFinishedClicked = false;
                 dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Ascending);            
-        }
+        }       
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -2084,6 +2085,7 @@ namespace PalletCard
             }
             lbl3.Text = "Sheet " + sig;
             lbl3.Visible = true;
+            isBackupVarnish = true;
         }
 
 #endregion
@@ -4071,8 +4073,8 @@ namespace PalletCard
                             sectionsNoLastFlag.Add(s);
                     }
 
-                    lblFinishedPalletsOver.Visible = true;
-                    lblFinishedPalletsOver.Text = "";
+                    lblUnfinishedSection.Visible = true;
+                    lblUnfinishedSection.Text = "";
 
                     string[] unique = sectionsNoLastFlag.Distinct().ToArray();
 
@@ -4372,58 +4374,72 @@ namespace PalletCard
                 badSectionLbls = false;
                 lbl5.Text = "";
             }
+            // if Is Section Finished YES - return user to Choose Sigs or Home
+            // if multiple sigs return to choose Section
+            // if Backup/Varnish Complete return to Home
             else if (sectionFinishedClicked == true)
             {
                 sectionBtns = false;
-                tbxSearchBox.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
-                Search();
-
-                var distinctRows = (from DataGridViewRow row in dataGridView1.Rows
-                                    select row.Cells[19].Value
-                                    ).Distinct().Count();
-
-                if (distinctRows > 1)
+                
+                if (isBackupVarnish == true)
                 {
-                    pnlHome1.BringToFront();
-                    lbl2.Visible = false;
-                    lbl3.Visible = false;
-                    lbl4.Visible = false;
-                    lbl5.Visible = false;
-                    btnBack.Visible = false;
-                    btnCancel.Visible = true;
-                    tbxSheetCountPalletCard.Text = "";
-                    tbxPalletHeightPalletCard.Text = "";
-                    sectionFinishedClicked = false;
-                    lblPrinting.Visible = false;
-                    tbxExtraInfoComment.Text = "";
-                    tbxTextBoxBadSection.Text = "";
-                    tbxSheetsAffectedBadSection.Text = "";
-                    tbxPaperDetails.Text = "";
-                    tbxInkDetails.Text = "";
-                    clearPosaPanel();
-                }
-                else 
-                {
-                    sectionBtns = false;
                     tbxSearchBox.Text = "";
-                    Search();
-                    pnlHome0.BringToFront();
-                    lblJobNo.Visible = false;
-                    lblPress.Visible = false;
-                    lbl1.Visible = false;
-                    lbl2.Visible = false;
-                    lbl3.Visible = false;
-                    lbl4.Visible = false;
-                    lbl5.Visible = false;
-                    btnBack.Visible = false;
-                    btnCancel.Visible = true;
-                    lblPrinting.Visible = false;
-                    tbxExtraInfoComment.Text = "";
-                    tbxTextBoxBadSection.Text = "";
-                    tbxSheetsAffectedBadSection.Text = "";
-                    tbxSheetCountPalletCard.Text = "";
-                    tbxPalletHeightPalletCard.Text = "";
+                    Cancel();
+                    isBackupVarnish = false;
                 }
+                else if (isBackupVarnish == false)
+                {
+                    tbxSearchBox.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
+                    Search();
+                    var distinctRows = (from DataGridViewRow row in dataGridView1.Rows
+                                        select row.Cells[19].Value
+                                        ).Distinct().Count();
+
+                    if (distinctRows > 1)
+                    {
+                        pnlHome1.BringToFront();
+                        lbl2.Visible = false;
+                        lbl3.Visible = false;
+                        lbl4.Visible = false;
+                        lbl5.Visible = false;
+                        btnBack.Visible = false;
+                        btnCancel.Visible = true;
+                        tbxSheetCountPalletCard.Text = "";
+                        tbxPalletHeightPalletCard.Text = "";
+                        sectionFinishedClicked = false;
+                        lblPrinting.Visible = false;
+                        tbxExtraInfoComment.Text = "";
+                        tbxTextBoxBadSection.Text = "";
+                        tbxSheetsAffectedBadSection.Text = "";
+                        tbxPaperDetails.Text = "";
+                        tbxInkDetails.Text = "";
+                        clearPosaPanel();
+                    }
+                    else
+                    {
+                        sectionBtns = false;
+                        tbxSearchBox.Text = "";
+                        Search();
+                        pnlHome0.BringToFront();
+                        lblJobNo.Visible = false;
+                        lblPress.Visible = false;
+                        lbl1.Visible = false;
+                        lbl2.Visible = false;
+                        lbl3.Visible = false;
+                        lbl4.Visible = false;
+                        lbl5.Visible = false;
+                        btnBack.Visible = false;
+                        btnCancel.Visible = true;
+                        lblPrinting.Visible = false;
+                        tbxExtraInfoComment.Text = "";
+                        tbxTextBoxBadSection.Text = "";
+                        tbxSheetsAffectedBadSection.Text = "";
+                        tbxSheetCountPalletCard.Text = "";
+                        tbxPalletHeightPalletCard.Text = "";
+                    }
+                }
+
+                
             }
             dataGridView2.Columns.Clear();
         }
