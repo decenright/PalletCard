@@ -109,6 +109,7 @@ namespace PalletCard
         int sumProduced;
         bool sectionFinishedClicked = false;
         bool cancelPrintMoreClicked = false;
+        string badStation;
 
         public Home()
         {
@@ -1720,7 +1721,10 @@ namespace PalletCard
                             //create a button for each value of field "PaperSectionNo"  
                             DataTable data = (DataTable)(dataGridView1.DataSource);
                             DataView view = new DataView(data);
+                            view.RowFilter = "SectionName = '" + btn.Text + "' and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
+                            view.Sort = "PaperSectionNo";
                             DataTable distinctValues = view.ToTable(true, "PaperSectionNo");
+                        
 
                             foreach (DataRow row in distinctValues.Rows)
                             {
@@ -2414,16 +2418,16 @@ namespace PalletCard
                 sheetsAffectedBadSection = 0;
             }
 
-            if (gangWholePalletButtonPressed == 1 )
-            {
-                sheetsAffectedBadSection = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
-            }
+            //if (gangWholePalletButtonPressed == 1 )
+            //{
+            //    //sheetsAffectedBadSection = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            //    //lbl5.Text = sheetsAffectedBadSection.ToString();
+            //}
 
             //MessageBox.Show(sheetsAffectedBadSection.ToString());
 
             foreach (Control c in flowLayoutPanel2.Controls)
             {
-
                 if (badQty != null & badQty != "0" & sheetsAffected != null & sheetsAffected != "0")
                 {
                     btnBadSectionOK.Visible = true;
@@ -3198,10 +3202,20 @@ namespace PalletCard
         private void notGangedWholePallet(Object sender, EventArgs e)
         {
             gangWholePalletButtonPressed = 1;
-            notGangedWholePalletValue = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+            //notGangedWholePalletValue = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
             //tbxSheetsAffectedBadSection.Text = Regex.Replace(lbl5.Text, "[^0-9.]", "");
             //badQty = Regex.Replace(lbl5.Text, "[^0-9.]", "");
-            notGanged();
+
+
+            if (badStation == "")
+            {
+                MessageBox.Show("Please enter a value in the Bad Stations box");
+            }
+            else
+            {
+                sheetsAffected = Convert.ToString(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
+                notGanged();
+            }
         }
 
         private void gangClassicNumberUpBad(Object sender, EventArgs e)
