@@ -4374,8 +4374,9 @@ namespace PalletCard
                 badSectionLbls = false;
                 lbl5.Text = "";
             }
-            // if Is Section Finished YES - return user to Choose Sigs or Home
+            // if Is Section Finished YES - return user to Choose Section or Home
             // if multiple sigs return to choose Section
+            // if single sig return to Home
             // if Backup/Varnish Complete return to Home
             else if (sectionFinishedClicked == true)
             {
