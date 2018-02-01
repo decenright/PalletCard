@@ -52,8 +52,8 @@ namespace PalletCard
         //int resourceID = 67;
         //string press = "XL106UV";
         //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        ////string defaultEmail = "martin@colorman.ie";
-        //string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultEmail = "martin@colorman.ie";
+        ////string defaultEmail = "declan.enright@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// XL758
@@ -1839,6 +1839,8 @@ namespace PalletCard
                             //create a button for each value of field "PaperSectionNo"  
                             DataTable data = (DataTable)(dataGridView1.DataSource);
                             DataView view = new DataView(data);
+                            view.RowFilter = "SectionName = '" + btn.Text + "' and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
+                            view.Sort = "PaperSectionNo";
                             DataTable distinctValues = view.ToTable(true, "PaperSectionNo");
 
                             foreach (DataRow row in distinctValues.Rows)
@@ -4001,8 +4003,8 @@ namespace PalletCard
                     pnlPalletCard6.BringToFront();
                     btnBack.Visible = false;
                     lblPalletDidNotMakeQty.Text = "Job " + lblJobNo.Text + " Sheet " + dataGridView1.Rows[0].Cells[19].Value.ToString() + " has " + shortBy + " insufficient sheets";
-                    
-                    lblFinishedPalletsUnder.Visible = false;
+
+                    lblUnfinishedSection.Visible = false;
 
                     // Check if 1 finished pallet for each section - if not provide a warning message listing the remaing pallets to finish
                     for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
@@ -4020,15 +4022,15 @@ namespace PalletCard
                             sectionsNoLastFlag.Add(s);
                     }
 
-                    lblFinishedPalletsUnder.Visible = true;
-                    lblFinishedPalletsUnder.Text = "";
+                    lblUnfinishedSection.Visible = true;
+                    lblUnfinishedSection.Text = "";
                     foreach (string s in sectionsNoLastFlag)
                     {
-                        lblFinishedPalletsUnder.Text += "The pallet for Section " + s + " is not finished" + "\r\n";
+                        lblUnfinishedSection.Text += "The pallet for Section " + s + " is not finished" + "\r\n";
                     }
-                    if (lblFinishedPalletsUnder.Text.Length > 0)
+                    if (lblUnfinishedSection.Text.Length > 0)
                     {
-                        lblWarningUnder.Visible = true;
+                        lblWarning.Visible = true;
                     }
                     else
                     {
@@ -4076,11 +4078,11 @@ namespace PalletCard
 
                     foreach ( string s in unique)
                     {
-                        lblFinishedPalletsOver.Text += "The pallet for Section " + s + " is not finished" + "\r\n";
+                        lblUnfinishedSection.Text += "The pallet for Section " + s + " is not finished" + "\r\n";
                     }
-                    if (lblFinishedPalletsOver.Text.Length > 0)
+                    if (lblUnfinishedSection.Text.Length > 0)
                     {
-                        lblWarningOver.Visible = true;
+                        lblWarning.Visible = true;
                     }
                     else
                     {
@@ -4116,17 +4118,18 @@ namespace PalletCard
                     List<string> sectionsNoLastFlag = new List<string>();
                     foreach (string s in allSections)
                     {
-                        if (!completedSections.Contains(s) && !completedSections.Contains(Regex.Replace(lbl3.Text, "[^0-9.]", "")) )
+                        //if (!completedSections.Contains(s) && !completedSections.Contains(Regex.Replace(lbl3.Text, "[^0-9.]", "")) )
+                        if (!completedSections.Contains(s))
                             sectionsNoLastFlag.Add(s);
                     }
 
-                    lblFinishedPallet.Visible = true;
-                    lblFinishedPallet.Text = "";
+                    lblUnfinishedSection.Visible = true;
+                    lblUnfinishedSection.Text = "";
                     foreach (string s in sectionsNoLastFlag)
                     {
-                        lblFinishedPallet.Text += "The pallet for Section " + s + " is not finished" + "\r\n";
+                        lblUnfinishedSection.Text += "The pallet for Section " + s + " is not finished" + "\r\n";
                     }
-                    if (lblFinishedPallet.Text.Length > 0)
+                    if (lblUnfinishedSection.Text.Length > 0)
                     {
                         lblWarning.Visible = true;
                     }
@@ -4169,7 +4172,6 @@ namespace PalletCard
                             pnlSignature.BringToFront();
                         }
                     }
-                    disableSectionButtons.Clear();
                 }
             }
             this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
