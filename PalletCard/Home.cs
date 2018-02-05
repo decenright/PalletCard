@@ -1968,54 +1968,62 @@ namespace PalletCard
                 {
                     myConnection.Open();
                     myAdapter.Fill(palletCardData);
+
+                    using (DataTable palletCardLog = new DataTable())
+                    {
+                        myAdapter.Fill(palletCardLog);
+                        dataGridView2.DataSource = palletCardLog;
+                    }
+                    pnlPalletCard3.BringToFront();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Please enter a valid number");
+                    MessageBox.Show("Please enter a valid Job Number");
+                    Cancel();
                 }
                 finally
                 {
                     myConnection.Close();
                 }
-                using (DataTable palletCardLog = new DataTable())
-                {
-                    myAdapter.Fill(palletCardLog);
-                    dataGridView2.DataSource = palletCardLog;
-                }
-                pnlPalletCard3.BringToFront();
+                //using (DataTable palletCardLog = new DataTable())
+                //{
+                //    myAdapter.Fill(palletCardLog);
+                //    dataGridView2.DataSource = palletCardLog;
+                //}
+                //pnlPalletCard3.BringToFront();
 
-                try
-                {
-                    if (dataGridView2.Rows[0].Cells[24].Value != null)
-                    {
-                        lbl2.Text = dataGridView2.Rows[0].Cells[24].Value.ToString();
-                    }
-                    else
-                    {
-                        lbl2.Text = dataGridView2.Rows[0].Cells[20].Value.ToString();
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Please enter a valid Job Number");
-                    pnlHome0.BringToFront();
-                    tbxFinishPallet.Text = "";
-                    return;
-                }
 
-                lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
-                lblJobNo.Visible = true;
-                lblPress.Text = press;
-                lblPress.Visible = true;
-                lbl1.Text = "Pallet Card";
-                lbl1.Visible = true;
-                lbl2.Visible = true;
-                lbl3.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value.ToString();
-                lbl3.Visible = true;
-                // WorkingSize
-                lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
-                // QtyRequired
-                lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
+                if (dataGridView2.Rows.Count > 0)
+                {
+                    try
+                    {
+                        if (dataGridView2.Rows[0].Cells[24].Value != null)
+                        {
+                            lbl2.Text = dataGridView2.Rows[0].Cells[24].Value.ToString();
+                        }
+                        else
+                        {
+                            lbl2.Text = dataGridView2.Rows[0].Cells[20].Value.ToString();
+                        }
+                    }
+                    catch (Exception)
+                    {}
+
+                    lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
+                    lblJobNo.Visible = true;
+                    lblPress.Text = press;
+                    lblPress.Visible = true;
+                    lbl1.Text = "Pallet Card";
+                    lbl1.Visible = true;
+                    lbl2.Visible = true;
+                    lbl3.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value.ToString();
+                    lbl3.Visible = true;
+                    // WorkingSize
+                    lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
+                    // QtyRequired
+                    lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
+                    isBackupVarnish = true;
+                }
             }
         }
 
@@ -2032,62 +2040,54 @@ namespace PalletCard
             {
                 myConnection.Open();
                 myAdapter.Fill(palletCardData);
+                using (DataTable palletCardLog = new DataTable())
+                {
+                    myAdapter.Fill(palletCardLog);
+                    dataGridView2.DataSource = palletCardLog;
+                }
+                pnlPalletCard3.BringToFront();
             }
             catch (Exception)
             {
-                MessageBox.Show("Please enter a valid number (make sure there are no non numeric characters or spaces");
+                MessageBox.Show("Please enter a valid job Number");
+                Cancel();
             }
             finally
             {
                 myConnection.Close();
             }
-            using (DataTable palletCardLog = new DataTable())
-            {
-                myAdapter.Fill(palletCardLog);
-                dataGridView2.DataSource = palletCardLog;
-            }
-            pnlPalletCard3.BringToFront();
 
-            try
+            if (dataGridView2.Rows.Count > 0)
             {
-                if (dataGridView2.Rows[0].Cells[24].Value != null)
+                try
                 {
-                    lbl2.Text = dataGridView2.Rows[0].Cells[24].Value.ToString();
+                    if (dataGridView2.Rows[0].Cells[24].Value != null)
+                    {
+                        lbl2.Text = dataGridView2.Rows[0].Cells[24].Value.ToString();
+                    }
+                    else
+                    {
+                        lbl2.Text = dataGridView2.Rows[0].Cells[20].Value.ToString();
+                    }
                 }
-                else
-                {
-                    lbl2.Text = dataGridView2.Rows[0].Cells[20].Value.ToString();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Please enter a valid Job Number");
-                pnlHome0.BringToFront();
-                tbxFinishPallet.Text = "";
-                return;
-            }
+                catch (Exception)
+                {}
 
-            lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
-            lblJobNo.Visible = true;
-            lblPress.Text = press;
-            lblPress.Visible = true;
-            lbl1.Text = "Pallet Card";
-            lbl1.Visible = true;
-            lbl2.Visible = true;
-            lbl3.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value.ToString();
-            lbl3.Visible = true;
-            // WorkingSize
-            lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
-            // QtyRequired
-            lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
-
-            if (dataGridView2.Rows.Count != 0)
-            {
-                sig = dataGridView2.Rows[0].Cells[8].Value.ToString();
+                lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
+                lblJobNo.Visible = true;
+                lblPress.Text = press;
+                lblPress.Visible = true;
+                lbl1.Text = "Pallet Card";
+                lbl1.Visible = true;
+                lbl2.Visible = true;
+                lbl3.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value.ToString();
+                lbl3.Visible = true;
+                // WorkingSize
+                lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
+                // QtyRequired
+                lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
+                isBackupVarnish = true;
             }
-            lbl3.Text = "Sheet " + sig;
-            lbl3.Visible = true;
-            isBackupVarnish = true;
         }
 
 #endregion
@@ -3346,31 +3346,34 @@ namespace PalletCard
 
             //pnlPalletCard8.BringToFront();
 
-            if (dataGridView2.Rows.Count != 0)
-            {
-                btnIsSectionFinishedYes_Click(btnIsSectionFinishedYes, EventArgs.Empty);
-                index = 15;
-            }
-            else
-            {
-                if (dataGridView1.Rows[0].Cells[15].Value.ToString() == "")
-                {
-                    lblIsSectionFinished.Text = dataGridView1.Rows[0].Cells[11].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString();
-                }
-                else
-                {
-                    lblIsSectionFinished.Text = dataGridView1.Rows[0].Cells[15].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString();
-                }
+            //if (dataGridView2.Rows.Count != 0)
+            //{
+            //    btnIsSectionFinishedYes_Click(btnIsSectionFinishedYes, EventArgs.Empty);
+            //    index = 15;
+            //}
+            //else
+            //{
+            //    if (dataGridView1.Rows[0].Cells[15].Value.ToString() == "")
+            //    {
+            //        lblIsSectionFinished.Text = dataGridView1.Rows[0].Cells[11].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString();
+            //    }
+            //    else
+            //    {
+            //        lblIsSectionFinished.Text = dataGridView1.Rows[0].Cells[15].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString();
+            //    }
 
-                // WorkingSize
-                lbl6.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-                // QtyRequired
-                lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
+            //    // WorkingSize
+            //    lbl6.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+            //    // QtyRequired
+            //    lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
 
-            }
+            //}
 
-
-            }
+            // WorkingSize
+            lbl6.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
+            // QtyRequired
+            lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
+        }
 
         private void btnExtraInformationPalletCard_Click(object sender, EventArgs e)
         {
