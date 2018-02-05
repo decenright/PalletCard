@@ -24,14 +24,14 @@ namespace PalletCard
 
         #region Profiles
 
-        //// Declan Testing
-        //int resourceID = 6;
-        //string press = "XL106";
-        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "declan.enright@colorman.ie";
-        //string defaultPrinter = "ProC5100S";
-        //////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
-        //////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        // Declan Testing
+        int resourceID = 6;
+        string press = "XL106";
+        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        string defaultEmail = "declan.enright@colorman.ie";
+        string defaultPrinter = "ProC5100S";
+        ////////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        ////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// XL106
         //int resourceID = 6;
@@ -40,13 +40,13 @@ namespace PalletCard
         //string defaultEmail = "martin@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
-        // SM102
-        int resourceID = 1;
-        string press = "SM102";
-        string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "martin@colorman.ie";
-        string defaultEmail = "declan.enright@colorman.ie";
-        string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        //// SM102
+        //int resourceID = 1;
+        //string press = "SM102";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        ////string defaultEmail = "martin@colorman.ie";
+        //string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// XL106UV
         //int resourceID = 67;
@@ -370,6 +370,8 @@ namespace PalletCard
                 lblSheetCountPalletCard.Text = "";
                 tbxSheetCountPalletCard.Text = "";
                 lblPheightPalletCard.Text = "";
+                tbxBadSectionComment.Text = "";
+                tbxSheetsAffectedBadSection.Text = "";
                 index = 10;
             }
             else if (index == 12)
@@ -3328,8 +3330,8 @@ namespace PalletCard
                     MessageBox.Show("Please enter a value in Sheets Affected box");
                 }
             }
-            pnlPalletCard8.BringToFront();
-            index = 13;
+            pnlPalletCard4.BringToFront();
+            index = 11;
 
             var previousValue = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
             //sheetsAffectedBadSection = Convert.ToInt32(tbxSheetsAffectedBadSection.Text);
@@ -3342,7 +3344,7 @@ namespace PalletCard
 
 
 
-            pnlPalletCard8.BringToFront();
+            //pnlPalletCard8.BringToFront();
 
             if (dataGridView2.Rows.Count != 0)
             {
