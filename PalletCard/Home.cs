@@ -716,6 +716,7 @@ namespace PalletCard
             btnScrollUp.Visible = false;
             btnScrollDown.Visible = false;
             sheetsAffectedBadSection = 0;
+            dataGridView2.Columns.Clear();
             pnlHome0.BringToFront();
         }
 
@@ -1957,73 +1958,7 @@ namespace PalletCard
         {
             if (e.KeyCode == Keys.Enter)
             {
-                string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
-                string CommandText = "SELECT * FROM Log where AutoNum = '" + tbxFinishPallet.Text + "'";
-                OdbcConnection myConnection = new OdbcConnection(ConnectionString);
-                OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-                OdbcDataAdapter myAdapter = new OdbcDataAdapter();
-                myAdapter.SelectCommand = myCommand;
-                DataSet palletCardData = new DataSet();
-                try
-                {
-                    myConnection.Open();
-                    myAdapter.Fill(palletCardData);
-
-                    using (DataTable palletCardLog = new DataTable())
-                    {
-                        myAdapter.Fill(palletCardLog);
-                        dataGridView2.DataSource = palletCardLog;
-                    }
-                    pnlPalletCard3.BringToFront();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Please enter a valid Job Number");
-                    Cancel();
-                }
-                finally
-                {
-                    myConnection.Close();
-                }
-                //using (DataTable palletCardLog = new DataTable())
-                //{
-                //    myAdapter.Fill(palletCardLog);
-                //    dataGridView2.DataSource = palletCardLog;
-                //}
-                //pnlPalletCard3.BringToFront();
-
-
-                if (dataGridView2.Rows.Count > 0)
-                {
-                    try
-                    {
-                        if (dataGridView2.Rows[0].Cells[24].Value != null)
-                        {
-                            lbl2.Text = dataGridView2.Rows[0].Cells[24].Value.ToString();
-                        }
-                        else
-                        {
-                            lbl2.Text = dataGridView2.Rows[0].Cells[20].Value.ToString();
-                        }
-                    }
-                    catch (Exception)
-                    {}
-
-                    lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
-                    lblJobNo.Visible = true;
-                    lblPress.Text = press;
-                    lblPress.Visible = true;
-                    lbl1.Text = "Pallet Card";
-                    lbl1.Visible = true;
-                    lbl2.Visible = true;
-                    lbl3.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value.ToString();
-                    lbl3.Visible = true;
-                    // WorkingSize
-                    lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
-                    // QtyRequired
-                    lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
-                    isBackupVarnish = true;
-                }
+                btnFinishPallet.PerformClick();
             }
         }
 
@@ -2046,11 +1981,14 @@ namespace PalletCard
                     dataGridView2.DataSource = palletCardLog;
                 }
                 pnlPalletCard3.BringToFront();
+                
             }
             catch (Exception)
-            {
-                MessageBox.Show("Please enter a valid job Number");
-                Cancel();
+            {                
+                //MessageBox.Show("Please enter a valid Job Number");
+                //Cancel();
+                //tbxFinishPallet.Focus();
+                //pnlHome0.BringToFront();
             }
             finally
             {
@@ -2087,6 +2025,19 @@ namespace PalletCard
                 // QtyRequired
                 lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
                 isBackupVarnish = true;
+            }
+            if (lbl2.Visible == false)
+            {
+                MessageBox.Show("Please enter a valid Job Number");
+                Cancel();
+                tbxFinishPallet.Text = "";
+                tbxFinishPallet.Focus();
+                lblJobNo.Visible = false;
+                lblPress.Visible = false;
+                lbl1.Visible = false;
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                dataGridView2.Columns.Clear();
             }
         }
 
