@@ -123,7 +123,6 @@ namespace PalletCard
             s.Close();
         }
 
-
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
         void Splash()
@@ -515,6 +514,8 @@ namespace PalletCard
             }
             btnBack.Visible = false;
             tbxSearchBox.Focus();
+            btnMarkBad.Enabled = true;
+            btnMarkBad.BackColor = Color.SteelBlue;
         }
 
         //Focus on Searchbox
@@ -3644,6 +3645,8 @@ namespace PalletCard
             btnPalletCardPrint.Visible = true;
             sectionFinishedClicked = true;
             tbxSheetsAffectedBadSection.Visible = true;
+            btnMarkBad.Enabled = true;
+            btnMarkBad.BackColor = Color.SteelBlue;
             index = 17;
         }
 
@@ -3764,6 +3767,8 @@ namespace PalletCard
             btnCancel.Visible = false;
             sectionFinishedClicked = true;
             tbxSheetsAffectedBadSection.Visible = true;
+            btnMarkBad.Enabled = true;
+            btnMarkBad.BackColor = Color.SteelBlue;
             index = 17;
         }
 #endregion
@@ -4346,6 +4351,7 @@ namespace PalletCard
             //}
             btnPalletCardPrint.Visible = false;
             btnMarkBad.Enabled = true;
+            btnMarkBad.BackColor = Color.SteelBlue;
             PrintImagePalletCard();
 
             // Absolute path of PDF to print (with filename) - location = \bin\Debug\frontBackCombined.pdf
@@ -4379,6 +4385,7 @@ namespace PalletCard
                 tbxInkDetails.Text = "";
                 clearPosaPanel();
                 tbxSearchBox.Text = "";
+                tbxFinishPallet.Text = "";
                 badSectionLbls = false;
                 lbl5.Text = "";
             }
@@ -4428,6 +4435,7 @@ namespace PalletCard
                     {
                         sectionBtns = false;
                         tbxSearchBox.Text = "";
+                        tbxFinishPallet.Text = "";
                         Search();
                         pnlHome0.BringToFront();
                         lblJobNo.Visible = false;
@@ -4445,6 +4453,8 @@ namespace PalletCard
                         tbxSheetsAffectedBadSection.Text = "";
                         tbxSheetCountPalletCard.Text = "";
                         tbxPalletHeightPalletCard.Text = "";
+                        tbxPaperDetails.Text = "";
+                        tbxInkDetails.Text = "";
                     }
                 }              
             }
