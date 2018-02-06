@@ -373,6 +373,8 @@ namespace PalletCard
                 lblPheightPalletCard.Text = "";
                 tbxBadSectionComment.Text = "";
                 tbxSheetsAffectedBadSection.Text = "";
+                btnMarkBad.Enabled = true;
+                btnMarkBad.BackColor = Color.SteelBlue;
                 index = 10;
             }
             else if (index == 12)
@@ -2411,13 +2413,14 @@ namespace PalletCard
             lblSheets_Affected.Visible = true;
             btnBadSectionOK.Visible = false;
             index = 12;
+            btnMarkBad.Enabled = false;
+            btnMarkBad.BackColor = Color.Gray;
 
 
+            // Hide Gang Panel (FlowLayoutPanel2) if NumberUp = 1 (Value will be from DataGridview1 or DataGridView2 depending on wheteher it is a Regular or incomplete i.e Scanned line)
+            // Else Show Gang Classic, Gang Pro or Not Ganged Multi Up
 
-// Hide Gang Panel (FlowLayoutPanel2) if NumberUp = 1 (Value will be from DataGridview1 or DataGridView2 depending on wheteher it is a Regular or incomplete i.e Scanned line)
-// Else Show Gang Classic, Gang Pro or Not Ganged Multi Up
-
-#region Regular Line
+            #region Regular Line
             if (dataGridView2.Rows.Count == 0)
             {
                 //DATAGRIDVIEW1
@@ -4183,6 +4186,7 @@ namespace PalletCard
             btnPalletCardPrint.Visible = true;
             sectionFinishedClicked = true;
             dataGridView2.AllowUserToAddRows = false;
+            isBackupVarnish = false;
             index = 16;
         }
 
@@ -4341,6 +4345,7 @@ namespace PalletCard
             //    MessageBox.Show(printerName);
             //}
             btnPalletCardPrint.Visible = false;
+            btnMarkBad.Enabled = true;
             PrintImagePalletCard();
 
             // Absolute path of PDF to print (with filename) - location = \bin\Debug\frontBackCombined.pdf
