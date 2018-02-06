@@ -44,16 +44,16 @@ namespace PalletCard
         //int resourceID = 1;
         //string press = "SM102";
         //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        ////string defaultEmail = "martin@colorman.ie";
-        //string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultEmail = "martin@colorman.ie";
+        ////string defaultEmail = "declan.enright@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// XL106UV
         //int resourceID = 67;
         //string press = "XL106UV";
         //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        ////string defaultEmail = "martin@colorman.ie";
-        //string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultEmail = "martin@colorman.ie";
+        ////string defaultEmail = "declan.enright@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         //// XL758
@@ -167,6 +167,7 @@ namespace PalletCard
                 lbl2.Visible = false;
                 lbl3.Visible = false;
                 lbl4.Visible = false;
+                btnCancel.Visible = true;
                 tbxPalletHeight.Text = "";
                 lblPheight.Text = "";
                 Cancel();
@@ -3411,6 +3412,11 @@ namespace PalletCard
 
             if(dataGridView2.Rows.Count != 0)
             {
+                // WorkingSize
+                lbl6.Text = dataGridView2.Rows[0].Cells[22].Value.ToString();
+                // QtyRequired
+                lbl7.Text = dataGridView2.Rows[0].Cells[34].Value.ToString();
+
                 btnIsSectionFinishedYes_Click(btnIsSectionFinishedYes, EventArgs.Empty);
                 index = 15;
             }
@@ -3634,6 +3640,7 @@ namespace PalletCard
             btnCancel.Visible = false;
             btnPalletCardPrint.Visible = true;
             sectionFinishedClicked = true;
+            tbxSheetsAffectedBadSection.Visible = true;
             index = 17;
         }
 
@@ -3753,6 +3760,7 @@ namespace PalletCard
             btnBack.Visible = false;
             btnCancel.Visible = false;
             sectionFinishedClicked = true;
+            tbxSheetsAffectedBadSection.Visible = true;
             index = 17;
         }
 #endregion
@@ -4424,7 +4432,7 @@ namespace PalletCard
                         lbl3.Visible = false;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
-                        btnBack.Visible = false;
+                        btnBack.Visible = true;
                         btnCancel.Visible = true;
                         lblPrinting.Visible = false;
                         tbxExtraInfoComment.Text = "";
@@ -4433,9 +4441,7 @@ namespace PalletCard
                         tbxSheetCountPalletCard.Text = "";
                         tbxPalletHeightPalletCard.Text = "";
                     }
-                }
-
-                
+                }              
             }
             dataGridView2.Columns.Clear();
         }
