@@ -312,6 +312,7 @@
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlBackScreen = new System.Windows.Forms.Panel();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.pnlPalletCardPrintCR = new System.Windows.Forms.Panel();
             this.crystalReportViewer2 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -378,6 +379,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PosaGripChecked)).BeginInit();
             this.pnlPalletCard11.SuspendLayout();
             this.pnlPalletCardBack.SuspendLayout();
+            this.pnlBackScreen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.pnlPalletCardPrintCR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -3643,10 +3646,20 @@
             // 
             // pnlBackScreen
             // 
+            this.pnlBackScreen.Controls.Add(this.dataGridView5);
             this.pnlBackScreen.Location = new System.Drawing.Point(1, 3);
             this.pnlBackScreen.Name = "pnlBackScreen";
             this.pnlBackScreen.Size = new System.Drawing.Size(852, 992);
             this.pnlBackScreen.TabIndex = 60;
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.AllowUserToAddRows = false;
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Location = new System.Drawing.Point(596, 930);
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.Size = new System.Drawing.Size(240, 57);
+            this.dataGridView5.TabIndex = 6;
             // 
             // pnlPalletCardPrintCR
             // 
@@ -3740,7 +3753,7 @@
             this.Controls.Add(this.pnlPalletCard4);
             this.Name = "Home";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "XL106";
+            this.Text = "XL758";
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlHome0.ResumeLayout(false);
@@ -3829,6 +3842,8 @@
             this.pnlPalletCard11.ResumeLayout(false);
             this.pnlPalletCard11.PerformLayout();
             this.pnlPalletCardBack.ResumeLayout(false);
+            this.pnlBackScreen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             this.pnlPalletCardPrintCR.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -4118,6 +4133,7 @@
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer2;
         private System.Windows.Forms.Label lblWarning;
         private System.Windows.Forms.Label lblUnfinishedSection;
+        private System.Windows.Forms.DataGridView dataGridView5;
     }
 }
 
