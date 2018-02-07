@@ -405,9 +405,11 @@ namespace PalletCard
             }
             else if (index == 14)
             {
-                pnlPalletCard4.BringToFront();
+                pnlPalletCard3.BringToFront();
                 tbxExtraInfoComment.Text = "";
-                index = 13;
+                tbxPalletHeightPalletCard.Text = "";
+                tbxSheetCountPalletCard.Text = "";
+                index = 10;
             }
 
             else if (index == 15)
@@ -4199,7 +4201,7 @@ namespace PalletCard
             btnPalletCardPrint.Visible = true;
             sectionFinishedClicked = true;
             dataGridView2.AllowUserToAddRows = false;
-            //isBackupVarnishFromScan = false;
+            btnCancel.Visible = false;
             index = 16;
         }
 
@@ -4477,6 +4479,7 @@ namespace PalletCard
             }
             dataGridView2.Columns.Clear();
             isBackupVarnishFromScan = false;
+            btnCancel.Visible = true;
         }
 
         void clearPosaPanel()
