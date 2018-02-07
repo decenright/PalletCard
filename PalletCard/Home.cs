@@ -363,6 +363,7 @@ namespace PalletCard
             }
             else if (index == 11)
             {
+                badSectionLbls = false;
                 pnlPalletCard3.BringToFront();
                 lbl4.Visible = false;
                 lbl5.Visible = false;
@@ -709,6 +710,8 @@ namespace PalletCard
             sectionFinishedClicked = false;
             btnScrollUp.Visible = false;
             btnScrollDown.Visible = false;
+            btnMarkBad.Enabled = true;
+            btnMarkBad.BackColor = Color.SteelBlue;
 
             // Reset Bad Section - flowLayoutPanel2
             pnlBadSectionGangHeader.Visible = false;
