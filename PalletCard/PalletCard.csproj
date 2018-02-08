@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="connFinishPallet.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>

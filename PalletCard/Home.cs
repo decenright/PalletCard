@@ -1990,19 +1990,17 @@ namespace PalletCard
                     dataGridView2.DataSource = palletCardLog;
                 }
                 pnlPalletCard3.BringToFront();
-                
+
             }
-            catch (Exception)
-            {                
-                //MessageBox.Show("Please enter a valid Job Number");
-                //Cancel();
-                //tbxFinishPallet.Focus();
-                //pnlHome0.BringToFront();
+            catch (Exception ex1)
+            {
+                MessageBox.Show(ex1.Message);
             }
             finally
             {
                 myConnection.Close();
             }
+
 
             if (dataGridView2.Rows.Count > 0)
             {
@@ -2017,8 +2015,10 @@ namespace PalletCard
                         lbl2.Text = dataGridView2.Rows[0].Cells[20].Value.ToString();
                     }
                 }
-                catch (Exception)
-                {}
+                catch (Exception ex2)
+                {
+                    MessageBox.Show(ex2.Message);
+                }
 
                 lblJobNo.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
                 lblJobNo.Visible = true;
@@ -3941,6 +3941,17 @@ namespace PalletCard
             // IsSectionFinishedNo gives Unfinished a value of 1 to indicate that these lines need to sum up the qty Produced values.
             // Also last time it goes through (IsSectionFinishedYes) Unfinished is given value of 0
             // It wont sum up values where Unfinished = 0
+
+            // filter to current Section Name - there may be other Section Names with the same Paper Section Number
+            if (dataGridView2.Rows[0].Cells[15] == null)
+            {
+                ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "Expr1 like '%" + lbl2.Text + "%'";
+            }
+            else
+            {
+                ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "SectionName like '%" + lbl2.Text + "%'";
+            }
+
             if (Convert.ToInt32(dataGridView2.Rows[0].Cells[6].Value) != 0)
             {
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
@@ -4027,6 +4038,16 @@ namespace PalletCard
 
                     lblUnfinishedSection.Visible = false;
 
+                    // filter on Section Name
+                    if (dataGridView2.Rows[0].Cells[15] == null)
+                    {
+                        ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "Expr1 like '%" + lbl2.Text + "%'";
+                    }
+                    else
+                    {
+                        ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "SectionName like '%" + lbl2.Text + "%'";
+                    }
+
                     // Check if 1 finished pallet for each section - if not provide a warning message listing the remaing pallets to finish
                     for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
                     {
@@ -4075,6 +4096,16 @@ namespace PalletCard
                     disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                     removeFlowLayoutBtns();
                     sigBtns = false;
+
+                    // filter on Section Name
+                    if (dataGridView2.Rows[0].Cells[15] == null)
+                    {
+                        ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "Expr1 like '%" + lbl2.Text + "%'";
+                    }
+                    else
+                    {
+                        ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "SectionName like '%" + lbl2.Text + "%'";
+                    }
 
                     // Check if 1 finished pallet for each section - if not provide a warning message listing the remaing pallets to finish
                     for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
@@ -4126,6 +4157,16 @@ namespace PalletCard
                     disableSectionButtons.Add(Convert.ToString(dataGridView1.Rows[0].Cells[19].Value));
                     removeFlowLayoutBtns();
                     sigBtns = false;
+
+                    // filter on Section Name
+                    if (dataGridView2.Rows[0].Cells[15] == null)
+                    {
+                        ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "Expr1 like '%" + lbl2.Text + "%'";
+                    }
+                    else
+                    {
+                        ((DataTable)dataGridView2.DataSource).DefaultView.RowFilter = "SectionName like '%" + lbl2.Text + "%'";
+                    }
 
                     // Check if 1 finished pallet for each section - if not provide a warning message listing the remaing pallets to finish
                     for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
