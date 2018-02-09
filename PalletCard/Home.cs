@@ -40,21 +40,22 @@ namespace PalletCard
         //string defaultEmail = "martin@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
-        // SM102
-        int resourceID = 1;
-        string press = "SM102";
+        //// SM102
+        //int resourceID = 1;
+        //string press = "SM102";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        //string defaultEmail = "martin@colorman.ie";
+        ////string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
+        // XL106UV
+        int resourceID = 67;
+        string press = "XL106UV";
         string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
         //string defaultEmail = "martin@colorman.ie";
-        string defaultEmail = "declan.enright@colorman.ie";
-        string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
-
-        //// XL106UV
-        //int resourceID = 67;
-        //string press = "XL106UV";
-        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        ////string defaultEmail = "martin@colorman.ie";
-        //string defaultEmail = "declan.enright@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        string defaultEmail = "declan.enright@colorman.ie";
+        string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
 
         //// XL758
         //int resourceID = 68;
@@ -1284,77 +1285,39 @@ namespace PalletCard
             if (signed == true)
             {
                 SaveSignatureImageToFile();
-            // Requery the data to refresh dataGridView2 with the newly added PalletNumber and barCode
-            string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
-            string CommandText = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
-            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
-            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
-            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
-            myAdapter.SelectCommand = myCommand;
-            DataSet palletCardData = new DataSet();
-            try
-            {
-                myConnection.Open();
-                myAdapter.Fill(palletCardData);
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-            using (DataTable palletCardLog = new DataTable())
-            {
-                myAdapter.Fill(palletCardLog);
-                dataGridView2.DataSource = palletCardLog;
-            }
+                // Requery the data to refresh dataGridView2 with the newly added PalletNumber and barCode
+                string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
+                string CommandText = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
+                OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+                OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+                OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+                myAdapter.SelectCommand = myCommand;
+                DataSet palletCardData = new DataSet();
+                try
+                    {
+                        myConnection.Open();
+                        myAdapter.Fill(palletCardData);
+                    }
+                catch (Exception ex)
+                    {
+                        throw (ex);
+                    }
+                finally
+                    {
+                        myConnection.Close();
+                    }
+                using (DataTable palletCardLog = new DataTable())
+                    {
+                        myAdapter.Fill(palletCardLog);
+                        dataGridView2.DataSource = palletCardLog;
+                    }
 
-            this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
-            autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
-            //string barCode = Convert.ToString(((int)dataGridView2.Rows[0].Cells[5].Value));
-            //Bitmap bitMap = new Bitmap(barCode.Length * 40, 80);
-            //using (Graphics graphics = Graphics.FromImage(bitMap))
-            //{
-            //    System.Drawing.Font oFont = new System.Drawing.Font("IDAutomationHC39M", 16);
-            //    PointF point = new PointF(2f, 2f);
-            //    SolidBrush blackBrush = new SolidBrush(Color.Black);
-            //    SolidBrush whiteBrush = new SolidBrush(Color.White);
-            //    graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
-            //    graphics.DrawString("*" + barCode + "*", oFont, blackBrush, point);
-            //}
-            //using (MemoryStream ms = new MemoryStream())
-            //{
-            //    bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-            //    pictureBox1.Image = bitMap;
-            //    pictureBox1.Height = bitMap.Height;
-            //    pictureBox1.Width = bitMap.Width;
-            //}
-
-            pnlPalletCardPrint.BringToFront();
-            //lblPC_JobNo.Text = lblJobNo.Text;
-            //lblPC_JobNo.Visible = true;
-            //lblPC_Customer.Text = dataGridView1.Rows[0].Cells[22].Value as string;
-            //lblPC_Customer.Visible = true;
-            //lblPC_Customer.MaximumSize = new Size(450, 220);
-            //lblPC_Customer.AutoSize = true;
-            //lblPC_SheetQty.Text = lbl5.Text;
-            //lblPC_SheetQty.Visible = true;
-            //lblPC_Press.Text = lblPress.Text;
-            //lblPC_Press.Visible = true;
-            //lblPC_Date.Text = "Date - " + DateTime.Now.ToString("d/M/yyyy");
-            //lblPC_Date.Visible = true;
-            //lblPC_Note.Text = tbxExtraInfoComment.Text + " - " + tbxTextBoxBadSection.Text;
-            //lblPC_Note.Visible = true;
-            //lblPC_PalletNumber.Text = "Pallet No " + PalletNumber.ToString();
-            //lblPC_PalletNumber.Visible = true;
-            //lblPC_Sig.Text = "Sheet " + dataGridView2.Rows[0].Cells[8].Value as string;
-            //lblPC_Sig.Visible = true;
-            btnCancel.Visible = false;
-            signed = false;
-            index = 17;
-
+                this.dataGridView2.Sort(this.dataGridView2.Columns["AutoNum"], ListSortDirection.Descending);
+                autoNum = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
+                pnlPalletCardPrint.BringToFront();
+                btnCancel.Visible = false;
+                signed = false;
+                index = 17;
             }
                 else
                 {
@@ -1745,14 +1708,15 @@ namespace PalletCard
                                 this.flowLayoutPanel1.Controls.Add(btnSig);
                                 btnSig.Text = row["PaperSectionNo"].ToString();
                                 if (disableSectionButtons.Contains(btnSig.Text))
-                                {
-                                    btnSig.BackColor = Color.Silver;
-                                    btnSig.Enabled = false;
-                                }
+                                    {
+                                        btnSig.BackColor = Color.Silver;
+                                        btnSig.Enabled = false;
+                                    }
                                 else
-                                {
-                                    btnSig.BackColor = Color.SteelBlue;
-                                }
+                                    {
+                                        btnSig.BackColor = Color.SteelBlue;
+                                    }
+
                                 btnSig.Height = 70;
                                 btnSig.Width = 120;
                                 btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
@@ -1762,45 +1726,10 @@ namespace PalletCard
                                 //get all the section numbers in a list for later                           
                                 allSections.Add(row["PaperSectionNo"].ToString());
                                 allSections = allSections.Distinct().ToList();
-                        }
-
-                        //for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-                        //    {
-                        //        for (int j = 0; j < 1; j++)
-                        //        {
-                        //            dataGridView1.AllowUserToAddRows = true;
-                        //            if (!(this.dataGridView1.Rows[i].Cells[19].Value  == this.dataGridView1.Rows[i + 1].Cells[19].Value ))
-                        //            {
-                        //                for (int k = 0; k < 1; k++)
-                        //                {
-                        //                    Button btnSig = new Button();
-                        //                    this.flowLayoutPanel1.Controls.Add(btnSig);
-                        //                    btnSig.Text = dataGridView1.Rows[i].Cells[19].Value.ToString();
-                        //                    if (disableSectionButtons.Contains(btnSig.Text))
-                        //                    {
-                        //                        btnSig.BackColor = Color.Silver;
-                        //                        btnSig.Enabled = false;
-                        //                    }
-                        //                    else
-                        //                    {
-                        //                        btnSig.BackColor = Color.SteelBlue;
-                        //                    }
-                        //                    btnSig.Height = 70;
-                        //                    btnSig.Width = 120;                                           
-                        //                    btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
-                        //                    btnSig.ForeColor = Color.White;
-                        //                    btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                        //                    btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
-                        //                }
-                        //            }
-                        //        }
-                        //        dataGridView1.AllowUserToAddRows = false;
-                        //        // get all the section numbers in a list for later
-                        //        allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
-                        //    }
+                            }
                         }
                         sigBtns = true;
-                    }
+                     }
             }
         }
 
@@ -1862,14 +1791,15 @@ namespace PalletCard
                                 this.flowLayoutPanel1.Controls.Add(btnSig);
                                 btnSig.Text = row["PaperSectionNo"].ToString();
                                 if (disableSectionButtons.Contains(btnSig.Text))
-                                {
-                                    btnSig.BackColor = Color.Silver;
-                                    btnSig.Enabled = false;
-                                }
+                                    {
+                                        btnSig.BackColor = Color.Silver;
+                                        btnSig.Enabled = false;
+                                    }
                                 else
-                                {
-                                    btnSig.BackColor = Color.SteelBlue;
-                                }
+                                    {
+                                        btnSig.BackColor = Color.SteelBlue;
+                                    }
+
                                 btnSig.Height = 70;
                                 btnSig.Width = 120;
                                 btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
@@ -1879,44 +1809,6 @@ namespace PalletCard
                                 //get all the section numbers in a list for later
                                 allSections.Add(row["PaperSectionNo"].ToString());
                             }
-
-
-                            ////loop through datagrid rows to create a button for each value of field "PaperSectionNo"  
-                            //    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-                            //    {
-                            //        var v = dataGridView1.Rows[i].Cells[19].Value;
-                            //        for (int j = 0; j < 1; j++)
-                            //        {
-                            //            dataGridView1.AllowUserToAddRows = true;
-                            //            if (!(this.dataGridView1.Rows[i].Cells[19].Value == this.dataGridView1.Rows[i + 1].Cells[19].Value))
-                            //            {
-                            //                for (int k = 0; k < 1; k++)
-                            //                {
-                            //                    Button btnSig = new Button();
-                            //                    this.flowLayoutPanel1.Controls.Add(btnSig);
-                            //                    btnSig.Text = this.dataGridView1.Rows[i].Cells[19].Value.ToString();
-                            //                    if (disableSectionButtons.Contains(btnSig.Text))
-                            //                    {
-                            //                        btnSig.BackColor = Color.Silver;
-                            //                        btnSig.Enabled = false;
-                            //                    }
-                            //                    else
-                            //                    {
-                            //                        btnSig.BackColor = Color.SteelBlue;
-                            //                    }
-                            //                    btnSig.Height = 70;
-                            //                    btnSig.Width = 120;
-                            //                    btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
-                            //                    btnSig.ForeColor = Color.White;
-                            //                    btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                            //                    btnSig.Click += new System.EventHandler(this.sectionButtonExpr1);
-                            //                }
-                            //            }
-                            //            dataGridView1.AllowUserToAddRows = false;
-                            //            // get all the section numbers in a list for later
-                            //            allSections.Add(dataGridView1.Rows[i].Cells[19].Value.ToString());
-                            //        }
-                            //    }
                         }
                         sigBtns = true;
                     }
@@ -1974,7 +1866,7 @@ namespace PalletCard
         private void btnFinishPallet_Click(object sender, EventArgs e)
         {
             string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
-            string CommandText = "SELECT * FROM Log where AutoNum = '" + tbxFinishPallet.Text + "'";
+            string CommandText = "SELECT * FROM Log where AutoNum = '" + Convert.ToInt32(tbxFinishPallet.Text) + "'";
             OdbcConnection myConnection = new OdbcConnection(ConnectionString);
             OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
             OdbcDataAdapter myAdapter = new OdbcDataAdapter();
@@ -3168,10 +3060,6 @@ namespace PalletCard
         private void notGangedWholePallet(Object sender, EventArgs e)
         {
             gangWholePalletButtonPressed = 1;
-            //notGangedWholePalletValue = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
-            //tbxSheetsAffectedBadSection.Text = Regex.Replace(lbl5.Text, "[^0-9.]", "");
-            //badQty = Regex.Replace(lbl5.Text, "[^0-9.]", "");
-
 
             if (badStation == "")
             {
@@ -3295,40 +3183,9 @@ namespace PalletCard
             index = 11;
 
             var previousValue = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
-            //sheetsAffectedBadSection = Convert.ToInt32(tbxSheetsAffectedBadSection.Text);
             // update label with new qty
             lbl5.Text = Convert.ToString(previousValue - sheetsAffectedBadSection);
             btnBadSectionOK.Visible = true;
-
-
-
-
-
-
-            //pnlPalletCard8.BringToFront();
-
-            //if (dataGridView2.Rows.Count != 0)
-            //{
-            //    btnIsSectionFinishedYes_Click(btnIsSectionFinishedYes, EventArgs.Empty);
-            //    index = 15;
-            //}
-            //else
-            //{
-            //    if (dataGridView1.Rows[0].Cells[15].Value.ToString() == "")
-            //    {
-            //        lblIsSectionFinished.Text = dataGridView1.Rows[0].Cells[11].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString();
-            //    }
-            //    else
-            //    {
-            //        lblIsSectionFinished.Text = dataGridView1.Rows[0].Cells[15].Value.ToString() + "\r\n" + "Section " + dataGridView1.Rows[0].Cells[19].Value.ToString();
-            //    }
-
-            //    // WorkingSize
-            //    lbl6.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
-            //    // QtyRequired
-            //    lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
-
-            //}
 
             // WorkingSize
             lbl6.Text = dataGridView1.Rows[0].Cells[13].Value.ToString();
@@ -3342,7 +3199,7 @@ namespace PalletCard
             index = 14;
         }
 
-        #endregion
+#endregion
 
 #region Finish Pallet or Cancel
 
@@ -4395,11 +4252,13 @@ namespace PalletCard
         private void btnPalletCardPrint_Click(object sender, EventArgs e)
         {
             lblPrinting.Visible = true;
+
             // Test to List Local Printers
             //foreach (string printerName in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
             //{
             //    MessageBox.Show(printerName);
             //}
+
             btnPalletCardPrint.Visible = false;
             btnMarkBad.Enabled = true;
             btnMarkBad.BackColor = Color.SteelBlue;
@@ -4440,6 +4299,7 @@ namespace PalletCard
                 badSectionLbls = false;
                 lbl5.Text = "";
             }
+
             // if Is Section Finished YES - return user to Choose Section or Home
             // if multiple sigs return to choose Section
             // if single sig return to Home
@@ -4460,14 +4320,13 @@ namespace PalletCard
                     tbxPalletHeightPalletCard.Text = "";
                     tbxPaperDetails.Text = "";
                     tbxInkDetails.Text = "";
+                    clearPosaPanel();
                 }
                 else if (isBackupVarnishFromScan == false)
                 {
                     tbxSearchBox.Text = dataGridView2.Rows[0].Cells[3].Value.ToString();
                     Search();
-                    var distinctRowsPaperSectionNumber = (from DataGridViewRow row in dataGridView1.Rows
-                                        select row.Cells[19].Value
-                                        ).Distinct().Count();
+                    var distinctRowsPaperSectionNumber = (from DataGridViewRow row in dataGridView1.Rows select row.Cells[19].Value).Distinct().Count();
                     var distinctRowsSectionName = (from DataGridViewRow row in dataGridView1.Rows select row.Cells[15].Value).Distinct().Count();
                     var distinctRowsExpr1 = (from DataGridViewRow row in dataGridView1.Rows select row.Cells[11].Value).Distinct().Count();
 
@@ -4505,8 +4364,6 @@ namespace PalletCard
                         lbl3.Visible = false;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
-                        //btnBack.Visible = true;
-                        //btnCancel.Visible = true;
                         lblPrinting.Visible = false;
                         tbxExtraInfoComment.Text = "";
                         tbxBadSectionComment.Text = "";
@@ -4515,6 +4372,7 @@ namespace PalletCard
                         tbxPalletHeightPalletCard.Text = "";
                         tbxPaperDetails.Text = "";
                         tbxInkDetails.Text = "";
+                        clearPosaPanel();
                     }
                 }              
             }
@@ -4957,8 +4815,6 @@ namespace PalletCard
             string from = press + "@colorman.ie";
             mail.From = new MailAddress(from);
             mail.To.Add(defaultEmail);
-            //mail.To.Add("prepress@colorman.ie");
-            //mail.To.Add("production@colorman.ie");
             mail.Subject = "Waiting for Plates";
             mail.Body = "Waiting for Plates" + "Job Number " + lblJobNo.Text + " - Section " + dataGridView1.Rows[0].Cells[11].Value.ToString() + " - is waiting for plates";
             SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
@@ -4991,7 +4847,7 @@ namespace PalletCard
         }
 
 
-        #endregion
+#endregion
 
 
     }
