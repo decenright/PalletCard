@@ -44,8 +44,8 @@ namespace PalletCard
         //int resourceID = 1;
         //string press = "SM102";
         //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "martin@colorman.ie";
-        ////string defaultEmail = "declan.enright@colorman.ie";
+        ////string defaultEmail = "martin@colorman.ie";
+        //string defaultEmail = "declan.enright@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
         // XL106UV
