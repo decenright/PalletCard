@@ -4534,16 +4534,6 @@ namespace PalletCard
 
 #region Posa Checkboxes
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            pnlPalletCard10.BringToFront();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            pnlPalletCardBack.BringToFront();
-        }
-
         private void Posa1Checked_Click(object sender, EventArgs e)
         {
             Posa1NotChecked.BringToFront();
