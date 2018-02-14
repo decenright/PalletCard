@@ -529,7 +529,7 @@ namespace PalletCard
         }
 
         private void Search()
-        {            
+        {   
                 try
                 {   
                     ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("JobNo like '%{0}%' and Filter = 1 ", tbxSearchBox.Text.Trim().Replace("'", "''"));
@@ -563,7 +563,7 @@ namespace PalletCard
                 btnBack.Visible = false;
                 btnPalletCardPrint.Visible = true;
                 sectionFinishedClicked = false;
-                dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Ascending);            
+                dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Ascending);
         }       
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -730,6 +730,8 @@ namespace PalletCard
             disableSectionButtons.Clear();
             pnlHome0.BringToFront();
 
+            sigBtns = false;
+            //pnlPalletCard2.Controls.Clear();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -1702,8 +1704,7 @@ namespace PalletCard
                             view.RowFilter = "SectionName = '" + btn.Text + "' and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
                             view.Sort = "PaperSectionNo";
                             DataTable distinctValues = view.ToTable(true, "PaperSectionNo");
-                        
-
+                            flowLayoutPanel1.Controls.Clear();
                             foreach (DataRow row in distinctValues.Rows)
                             {
                                 Button btnSig = new Button();
@@ -1786,7 +1787,7 @@ namespace PalletCard
                             view.RowFilter = "SectionName = '" + btn.Text + "' and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
                             view.Sort = "PaperSectionNo";
                             DataTable distinctValues = view.ToTable(true, "PaperSectionNo");
-
+                            flowLayoutPanel1.Controls.Clear();
                             foreach (DataRow row in distinctValues.Rows)
                             {
                                 Button btnSig = new Button();
