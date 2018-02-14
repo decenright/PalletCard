@@ -564,6 +564,40 @@ namespace PalletCard
                 btnPalletCardPrint.Visible = true;
                 sectionFinishedClicked = false;
                 dataGridView1.Sort(this.dataGridView1.Columns["StartOp"], ListSortDirection.Ascending);
+
+            // Disable Sig buttons that have already been recorded in the log table
+            string ConnectionString = Convert.ToString("Dsn=PalletCard;uid=PalletCardAdmin");
+            string CommandText = "SELECT * FROM Log where JobNo = '" + lblJobNo.Text + "'";
+            OdbcConnection myConnection = new OdbcConnection(ConnectionString);
+            OdbcCommand myCommand = new OdbcCommand(CommandText, myConnection);
+            OdbcDataAdapter myAdapter = new OdbcDataAdapter();
+            myAdapter.SelectCommand = myCommand;
+            DataSet palletCardData = new DataSet();
+            try
+            {
+                myConnection.Open();
+                myAdapter.Fill(palletCardData);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            using (DataTable palletCardLog = new DataTable())
+            {
+                myAdapter.Fill(palletCardLog);
+                if (palletCardLog.Rows.Count != 0)
+                    foreach (DataRow dr in palletCardLog.Rows)
+                    {
+                        if (Convert.ToInt32(dr["JobCancelled"]) != 1)
+                        {
+                            disableSectionButtons.Add(dr["PaperSectionNo"].ToString());
+                        }                       
+                    }                        
+            }
         }       
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -728,10 +762,8 @@ namespace PalletCard
             sheetsAffectedBadSection = 0;
             dataGridView2.Columns.Clear();
             disableSectionButtons.Clear();
-            pnlHome0.BringToFront();
-
             sigBtns = false;
-            //pnlPalletCard2.Controls.Clear();
+            pnlHome0.BringToFront();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
