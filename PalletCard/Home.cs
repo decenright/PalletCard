@@ -3240,7 +3240,6 @@ namespace PalletCard
 
         private void btnFinishPalletContinue_Click(object sender, EventArgs e)
         {
-
             if (dataGridView2.RowCount == 0)
             {
                 int account = Convert.ToInt32(dataGridView1.Rows[0].Cells[21].Value);
@@ -3305,6 +3304,14 @@ namespace PalletCard
                     btnCancel.Visible = false;
                 }
             }
+            flowLayoutPanel2.Enabled = true;
+            tbxSheetsAffectedBadSection.Enabled = true;
+            tbxSheetsAffectedBadSection.Text = "";
+            badSectionLbls = false;
+            btnBadSectionOK.Visible = false;
+            numberBadList.Clear();
+            sheetsAffectedList.Clear();
+            numberUp = 0;
         }
 
         private void btnPalletFinished_Click(object sender, EventArgs e)
@@ -3412,9 +3419,16 @@ namespace PalletCard
             btnPalletCard_Click(btnPalletCard, EventArgs.Empty);
             badSectionLbls = false;
             cancelPrintMoreClicked = true;
-            //btnFinishPallet.PerformClick();
             btnMarkBad.Enabled = true;
             btnMarkBad.BackColor = Color.SteelBlue;
+            flowLayoutPanel2.Enabled = true;
+            tbxSheetsAffectedBadSection.Enabled = true;
+            tbxSheetsAffectedBadSection.Text = "";
+            badSectionLbls = false;
+            btnBadSectionOK.Visible = false;
+            numberBadList.Clear();
+            sheetsAffectedList.Clear();
+            numberUp = 0;
         }
 
 #endregion
@@ -3972,11 +3986,16 @@ namespace PalletCard
                     }
 
                     // Send email notification
-                    MailMessage mail = new MailMessage("Press@colorman.ie", defaultEmail , "Print Job Shortage", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + "- has " + shortBy + " insufficient sheets");
-                    SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
-                    client.Port = 25;
-                    client.EnableSsl = false;
-                    client.Send(mail);
+                    try
+                    {
+                        MailMessage mail = new MailMessage("Press@colorman.ie", defaultEmail, "Print Job Shortage", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + "- has " + shortBy + " insufficient sheets");
+                        SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+                        client.Port = 25;
+                        client.EnableSsl = false;
+                        client.Send(mail);
+                    }
+                    catch
+                    { }
                 }
 
                 else if (produced > oversCalc)
@@ -4034,12 +4053,17 @@ namespace PalletCard
                     }
 
                     // Send email notification
-                    MailMessage mail = new MailMessage("Press@colorman.ie", defaultEmail, "Print Job Over", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + " - is over by " + overBy);
-                    SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
-                    client.Port = 25;
-                    client.EnableSsl = false;
-                    client.Send(mail);
-                    index = 16;
+                    try
+                    {
+                        MailMessage mail = new MailMessage("Press@colorman.ie", defaultEmail, "Print Job Over", "Job Number " + lblJobNo.Text + " - Section " + dataGridView2.Rows[0].Cells[8].Value.ToString() + " - is over by " + overBy);
+                        SmtpClient client = new SmtpClient("ex0101.ColorMan.local");
+                        client.Port = 25;
+                        client.EnableSsl = false;
+                        client.Send(mail);
+                        index = 16;
+                    }
+                    catch
+                    { }
                 }
                 else if (produced <= oversCalc)
                 {
@@ -4287,7 +4311,15 @@ namespace PalletCard
         private void btnPalletCardPrint_Click(object sender, EventArgs e)
         {
             lblPrinting.Visible = true;
+
             flowLayoutPanel2.Enabled = true;
+            tbxSheetsAffectedBadSection.Enabled = true;
+            tbxSheetsAffectedBadSection.Text = "";
+            badSectionLbls = false;
+            btnBadSectionOK.Visible = false;
+            numberBadList.Clear();
+            sheetsAffectedList.Clear();
+            numberUp = 0;
 
             // Test to List Local Printers
             //foreach (string printerName in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
