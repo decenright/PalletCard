@@ -52,10 +52,10 @@ namespace PalletCard
         //int resourceID = 67;
         //string press = "XL106UV";
         //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        ////string defaultEmail = "martin@colorman.ie";
-        ////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
-        //string defaultEmail = "declan.enright@colorman.ie";
-        //string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
+        //string defaultEmail = "martin@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+        ////string defaultEmail = "declan.enright@colorman.ie";
+        ////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
 
         //// XL758
         //int resourceID = 68;
@@ -2051,7 +2051,6 @@ namespace PalletCard
                     lbl5.Visible = true;
                 }
 
-
             if (lbl4.Visible == false)
             {
                 MessageBox.Show("please enter a value");
@@ -2826,6 +2825,7 @@ namespace PalletCard
                                 textBox1.TextAlign = HorizontalAlignment.Center;
                                 textBox1.Margin = new Padding(0, 0, 0, 0);
                                 textBox1.TextChanged += new System.EventHandler(this.notGangedNumberUpBad);
+                                textBox1.Name = badStation;
                                 TextBox textBox2 = new TextBox();
                                 this.flowLayoutPanel2.Controls.Add(textBox2);
                                 textBox2.Height = 40;
@@ -3096,7 +3096,7 @@ namespace PalletCard
         {
             gangWholePalletButtonPressed = 1;
 
-            if (badStation == "")
+            if (badQty == null)
             {
                 MessageBox.Show("Please enter a value in the Bad Stations box");
             }
@@ -3104,6 +3104,8 @@ namespace PalletCard
             {
                 sheetsAffected = Convert.ToString(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
                 notGanged();
+                Button button = sender as Button;
+                button.BackColor = Color.Gray;
             }
         }
 
@@ -3154,6 +3156,8 @@ namespace PalletCard
                     wholePalletList[i] = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
                 }
             queryGangClassic();
+            Button button = sender as Button;
+            button.BackColor = Color.Gray;
         }
 
         private void gangProNumberUpBad(Object sender, EventArgs e)
@@ -3203,6 +3207,8 @@ namespace PalletCard
                     wholePalletList[i] = Convert.ToInt32(Regex.Replace(lbl5.Text, "[^0-9.]", ""));
                 }
             queryGangpro();
+            Button button = sender as Button;
+            button.BackColor = Color.Gray;
         }
 
         private void btnBadSectionOK_Click(object sender, EventArgs e)
