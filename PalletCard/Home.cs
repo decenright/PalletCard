@@ -3454,6 +3454,8 @@ namespace PalletCard
             btnBadSectionOK.Visible = false;
             numberBadList.Clear();
             sheetsAffectedList.Clear();
+            tbxBadSectionComment.Text = "";
+            tbxExtraInfoComment.Text = "";
             numberUp = 0;
         }
 
