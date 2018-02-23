@@ -33,29 +33,29 @@ namespace PalletCard
         ////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
         //////////string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
-        //// XL106
-        //int resourceID = 6;
-        //string press = "XL106";
-        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        //string defaultEmail = "martin@colorman.ie";
-        ////string defaultEmail = "declan.enright@colorman.ie";
-        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
-
-        // SM102
-        int resourceID = 1;
-        string press = "SM102";
+        // XL106
+        int resourceID = 6;
+        string press = "XL106";
         string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
         //string defaultEmail = "martin@colorman.ie";
         string defaultEmail = "declan.enright@colorman.ie";
         string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
 
+        //// SM102
+        //int resourceID = 1;
+        //string press = "SM102";
+        //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
+        ////string defaultEmail = "martin@colorman.ie";
+        //string defaultEmail = "declan.enright@colorman.ie";
+        //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
+
         //// XL106UV
         //int resourceID = 67;
         //string press = "XL106UV";
         //string ConnectionString = Convert.ToString("Dsn=TharData;uid=tharuser");
-        ////string defaultEmail = "martin@colorman.ie";
+        //string defaultEmail = "martin@colorman.ie";
         //string defaultPrinter = @"\\DC2012.ColorMan.local\Xerox 5335 PS Upstairs";
-        //string defaultEmail = "declan.enright@colorman.ie";
+        ////string defaultEmail = "declan.enright@colorman.ie";
         ////string defaultPrinter = "ProC5100S (Pro C5100Sseries E-42B PS US1.1)";
 
         //// XL758
@@ -1691,117 +1691,124 @@ namespace PalletCard
 
 
 
+            var distinctRowsPaperSectionNumber = (from DataGridViewRow row in dataGridView1.Rows select row.Cells[19].Value).Distinct().Count();
+            var distinctRowsSectionName = (from DataGridViewRow row in dataGridView1.Rows select row.Cells[15].Value).Distinct().Count();
+            var distinctRowsExpr1 = (from DataGridViewRow row in dataGridView1.Rows select row.Cells[11].Value).Distinct().Count();
 
-
-
-
-            lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
-
-            string a;
-            string b;
-            //a = PaperSectionNo value at Row 0
-            a = dataGridView1.Rows[0].Cells[19].Value.ToString();
-            //initialize variable b with a value - this will change to PaperSectionNo value at row 1 once it enters the loop
-            b = dataGridView1.Rows[0].Cells[19].Value.ToString();
+            if (distinctRowsSectionName == 1 && distinctRowsExpr1 == 1 && distinctRowsPaperSectionNumber > 1)
             {
-                for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
-                {
-                    //b = PaperSectionNo value at Row 1
-                    b = dataGridView1.Rows[i].Cells[19].Value.ToString();
-                }
-                if (a == b)
-                {
-                    pnlPalletCard3.BringToFront();
-                    string sig = dataGridView1.Rows[0].Cells[19].Value.ToString();
-                    lbl2.Text = dataGridView1.Rows[0].Cells[15].Value.ToString();
-                    lbl2.Visible = true;
-                    lbl3.Text = "Sheet " + sig;
-                    lbl3.Visible = true;
-                    index = 10;
-                    sectionBtns = true;
-                }
+                lbl7.Text = dataGridView1.Rows[0].Cells[25].Value.ToString();
 
-                else
+                string a;
+                string b;
+                //a = PaperSectionNo value at Row 0
+                a = dataGridView1.Rows[0].Cells[19].Value.ToString();
+                //initialize variable b with a value - this will change to PaperSectionNo value at row 1 once it enters the loop
+                b = dataGridView1.Rows[0].Cells[19].Value.ToString();
                 {
-                    if (!sigBtns)
+                    for (int i = 1; i < this.dataGridView1.Rows.Count; i++)
                     {
-                        if (dataGridView1.Rows[0].Cells[15].Value != null)
-                        {
-                            //create a button for each value of field "PaperSectionNo"  
-                            DataTable data = (DataTable)(dataGridView1.DataSource);
-                            DataView view = new DataView(data);
-                            view.RowFilter = "SectionName = '" + dataGridView1.Rows[0].Cells[15].Value.ToString() + "' and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
-                            view.Sort = "PaperSectionNo";
-                            DataTable distinctValues = view.ToTable(true, "PaperSectionNo");
-                            flowLayoutPanel1.Controls.Clear();
-                            foreach (DataRow row in distinctValues.Rows)
-                            {
-                                Button btnSig = new Button();
-                                this.flowLayoutPanel1.Controls.Add(btnSig);
-                                btnSig.Text = row["PaperSectionNo"].ToString();
-                                if (disableSectionButtons.Contains(btnSig.Text))
-                                {
-                                    btnSig.BackColor = Color.Silver;
-                                    btnSig.Enabled = false;
-                                }
-                                else
-                                {
-                                    btnSig.BackColor = Color.SteelBlue;
-                                }
-
-                                btnSig.Height = 70;
-                                btnSig.Width = 120;
-                                btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
-                                btnSig.ForeColor = Color.White;
-                                btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                                btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
-                                //get all the section numbers in a list for later                           
-                                allSections.Add(row["PaperSectionNo"].ToString());
-                                allSections = allSections.Distinct().ToList();
-                            }
-                            pnlPalletCard2.BringToFront();
-                        }
-                        else
-                        {
-                            //create a button for each value of field "PaperSectionNo"  
-                            DataTable data = (DataTable)(dataGridView1.DataSource);
-                            DataView view = new DataView(data);
-                            view.RowFilter = "SectionName = '" + dataGridView1.Rows[0].Cells[11].Value.ToString() + "' and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
-                            view.Sort = "PaperSectionNo";
-                            DataTable distinctValues = view.ToTable(true, "PaperSectionNo");
-                            flowLayoutPanel1.Controls.Clear();
-                            foreach (DataRow row in distinctValues.Rows)
-                            {
-                                Button btnSig = new Button();
-                                this.flowLayoutPanel1.Controls.Add(btnSig);
-                                btnSig.Text = row["PaperSectionNo"].ToString();
-                                if (disableSectionButtons.Contains(btnSig.Text))
-                                {
-                                    btnSig.BackColor = Color.Silver;
-                                    btnSig.Enabled = false;
-                                }
-                                else
-                                {
-                                    btnSig.BackColor = Color.SteelBlue;
-                                }
-
-                                btnSig.Height = 70;
-                                btnSig.Width = 120;
-                                btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
-                                btnSig.ForeColor = Color.White;
-                                btnSig.TextAlign = ContentAlignment.MiddleCenter;
-                                btnSig.Click += new System.EventHandler(this.sectionButtonExpr1);
-                                //get all the section numbers in a list for later                           
-                                allSections.Add(row["PaperSectionNo"].ToString());
-                                allSections = allSections.Distinct().ToList();
-                            }
-                            pnlPalletCard2.BringToFront();
-                        }
-
+                        //b = PaperSectionNo value at Row 1
+                        b = dataGridView1.Rows[i].Cells[19].Value.ToString();
                     }
-                    sigBtns = true;
-                }              
+                    if (a == b)
+                    {
+                        pnlPalletCard3.BringToFront();
+                        string sig = dataGridView1.Rows[0].Cells[19].Value.ToString();
+                        lbl2.Text = dataGridView1.Rows[0].Cells[15].Value.ToString();
+                        lbl2.Visible = true;
+                        lbl3.Text = "Sheet " + sig;
+                        lbl3.Visible = true;
+                        index = 10;
+                        sectionBtns = true;
+                    }
+
+                    else
+                    {
+                        if (!sigBtns)
+                        {
+                            if (dataGridView1.Rows[0].Cells[15].Value.ToString() != "")
+                            {
+                                //create a button for each value of field "PaperSectionNo"  
+                                DataTable data = (DataTable)(dataGridView1.DataSource);
+                                DataView view = new DataView(data);
+                                view.RowFilter = "SectionName = '" + dataGridView1.Rows[0].Cells[15].Value.ToString() + "' and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
+                                view.Sort = "PaperSectionNo";
+                                DataTable distinctValues = view.ToTable(true, "PaperSectionNo");
+                                flowLayoutPanel1.Controls.Clear();
+                                foreach (DataRow row in distinctValues.Rows)
+                                {
+                                    Button btnSig = new Button();
+                                    this.flowLayoutPanel1.Controls.Add(btnSig);
+                                    btnSig.Text = row["PaperSectionNo"].ToString();
+                                    if (disableSectionButtons.Contains(btnSig.Text))
+                                    {
+                                        btnSig.BackColor = Color.Silver;
+                                        btnSig.Enabled = false;
+                                    }
+                                    else
+                                    {
+                                        btnSig.BackColor = Color.SteelBlue;
+                                    }
+
+                                    btnSig.Height = 70;
+                                    btnSig.Width = 120;
+                                    btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
+                                    btnSig.ForeColor = Color.White;
+                                    btnSig.TextAlign = ContentAlignment.MiddleCenter;
+                                    btnSig.Click += new System.EventHandler(this.sectionButtonSectionName);
+                                    //get all the section numbers in a list for later                           
+                                    allSections.Add(row["PaperSectionNo"].ToString());
+                                    allSections = allSections.Distinct().ToList();
+                                }
+                                pnlPalletCard2.BringToFront();
+                            }
+                            else
+                            {
+                                //create a button for each value of field "PaperSectionNo"  
+                                DataTable data = (DataTable)(dataGridView1.DataSource);
+                                DataView view = new DataView(data);
+                                view.RowFilter = "Expr1 = '" + dataGridView1.Rows[0].Cells[11].Value.ToString() + "' and JobNo like '%" + lblJobNo.Text + "%' and Filter = 1";
+                                view.Sort = "PaperSectionNo";
+                                DataTable distinctValues = view.ToTable(true, "PaperSectionNo");
+                                flowLayoutPanel1.Controls.Clear();
+                                foreach (DataRow row in distinctValues.Rows)
+                                {
+                                    Button btnSig = new Button();
+                                    this.flowLayoutPanel1.Controls.Add(btnSig);
+                                    btnSig.Text = row["PaperSectionNo"].ToString();
+                                    if (disableSectionButtons.Contains(btnSig.Text))
+                                    {
+                                        btnSig.BackColor = Color.Silver;
+                                        btnSig.Enabled = false;
+                                    }
+                                    else
+                                    {
+                                        btnSig.BackColor = Color.SteelBlue;
+                                    }
+
+                                    btnSig.Height = 70;
+                                    btnSig.Width = 120;
+                                    btnSig.Font = new System.Drawing.Font("Microsoft Sans Serif", 20);
+                                    btnSig.ForeColor = Color.White;
+                                    btnSig.TextAlign = ContentAlignment.MiddleCenter;
+                                    btnSig.Click += new System.EventHandler(this.sectionButtonExpr1);
+                                    //get all the section numbers in a list for later                           
+                                    allSections.Add(row["PaperSectionNo"].ToString());
+                                    allSections = allSections.Distinct().ToList();
+                                }
+                                pnlPalletCard2.BringToFront();
+                            }
+
+                        }
+                        sigBtns = true;
+                    }
+                }
             }
+
+
+
+
 
 
 
